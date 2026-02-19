@@ -74,7 +74,15 @@
 
     .about-why-compact .why-choose-four__img-box {
         margin-top: 34px;
-        padding-bottom: 160px;
+        padding-bottom: 190px;
+    }
+
+    .about-why-compact .why-choose-four__left {
+        padding-bottom: 36px;
+    }
+
+    .about-why-compact .why-choose-four__img-2 {
+        bottom: -108px;
     }
 
     .about-why-compact .why-choose-four__single h3 {
@@ -292,6 +300,14 @@
         .about-why-compact {
             padding-top: 56px !important;
             padding-bottom: 75px !important;
+        }
+
+        .about-why-compact .why-choose-four__img-box {
+            padding-bottom: 120px;
+        }
+
+        .about-why-compact .why-choose-four__img-2 {
+            bottom: -70px;
         }
 
         .about-why-compact .why-choose-four__right-title {
