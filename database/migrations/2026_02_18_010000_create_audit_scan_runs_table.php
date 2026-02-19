@@ -11,7 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('audit_target_id')->nullable();
             $table->string('business_name', 180)->nullable();
-            $table->string('website_url', 255);
+            // 191 keeps index compatible with older MySQL/MariaDB key limits on shared hosting.
+            $table->string('website_url', 191);
             $table->unsignedTinyInteger('overall_score')->default(0);
             $table->unsignedTinyInteger('performance_score')->nullable();
             $table->unsignedTinyInteger('seo_score')->nullable();
