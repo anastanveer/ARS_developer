@@ -2806,6 +2806,7 @@
 
     .portfolio-two__img {
         border-radius: 16px;
+        height: auto;
     }
 
     .portfolio-two__img img {

@@ -545,11 +545,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ $seoTitle }}</title>
-    <!-- favicons Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/favicons/apple-touch-icon.png') }}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/favicons/favicon-32x32.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicons/favicon-16x16.png') }}" />
-    <link rel="manifest" href="{{ asset('assets/images/favicons/site.webmanifest') }}" />
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicons/favicon.png') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/favicons/favicon.png') }}" />
     <meta name="description" content="{{ $seoDescription }}" />
     <meta name="keywords" content="{{ $seoKeywords }}" />
     <meta name="author" content="ARSDeveloper" />
