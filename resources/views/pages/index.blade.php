@@ -455,7 +455,7 @@
                                         </div>
                                         <div class="about-two__call-content">
                                             <p class="about-two__call-sub-title">Connect us</p>
-                                            <h3 class="about-two__call-number"><a href="tel:+971542435418">+971 54 243 5418</a></h3>
+                                            <h3 class="about-two__call-number"><a href="tel:+44747803428">+44 747803428</a></h3>
                                         </div>
                                     </div>
                                 </div>

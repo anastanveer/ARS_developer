@@ -408,7 +408,7 @@
                 'name' => config('company.legal_name', 'ARS Developer Ltd'),
                 'url' => $siteRootUrl,
                 'email' => 'info@arsdeveloper.co.uk',
-                'telephone' => '+971542435418',
+                'telephone' => '+44747803428',
                 'sameAs' => [
                     'https://www.facebook.com/arsdeveloperuk',
                     'http://linkedin.com/company/arsdeveloperuk',
@@ -443,7 +443,7 @@
                 'name' => config('company.legal_name', 'ARS Developer Ltd'),
                 'url' => $siteRootUrl,
                 'image' => url('/assets/images/resources/ars-logo-dark.png'),
-                'telephone' => '+971542435418',
+                'telephone' => '+44747803428',
                 'email' => 'info@arsdeveloper.co.uk',
                 'address' => [
                     '@type' => 'PostalAddress',
@@ -836,7 +836,7 @@
                                 <i class="icon-phone"></i>
                             </div>
                             <div class="text">
-                                <p><a href="tel:+971542435418">+971 54 243 5418</a></p>
+                                <p><a href="tel:+44747803428">+44 747803428</a></p>
                             </div>
                         </li>
                         <li>
@@ -901,7 +901,7 @@
                                 </div>
                                 <div class="main-menu-two__call-content">
                                     <p class="main-menu-two__call-sub-title">{{ __('ui.call_anytime') }}</p>
-                                    <h5 class="main-menu-two__call-number"><a href="tel:+971542435418">+971 54 243 5418</a></h5>
+                                    <h5 class="main-menu-two__call-number"><a href="tel:+44747803428">+44 747803428</a></h5>
                                 </div>
                             </div>
                             <div class="main-menu-two__search-cart-box">

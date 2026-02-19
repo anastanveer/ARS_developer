@@ -162,7 +162,7 @@
                                             <div class="contact-page__contact-icon-shape"></div>
                                         </div>
                                         <h3 class="contact-page__contact-single-title">Contact Info</h3>
-                                        <p><a href="tel:+971542435418">+971 54 243 5418</a></p>
+                                        <p><a href="tel:+44747803428">+44 747803428</a></p>
                                         <p><a href="mailto:info@arsdeveloper.co.uk">info@arsdeveloper.co.uk</a></p>
                                     </div>
                                 </div>

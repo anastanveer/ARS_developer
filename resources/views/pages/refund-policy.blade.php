@@ -69,7 +69,7 @@
                 <p>Please verify any payment instruction against official ARS communication channels before transfer. ARSDeveloper is not liable for funds sent to impersonated or unverified recipients.</p>
 
                 <h3 style="margin-top: 28px;">9. Contact for legal or billing support</h3>
-                <p>Email: <a href="mailto:info@arsdeveloper.co.uk">info@arsdeveloper.co.uk</a><br>Phone: <a href="tel:+971542435418">+971 54 243 5418</a><br>Registered Office: {{ config('company.registered_office') }}</p>
+                <p>Email: <a href="mailto:info@arsdeveloper.co.uk">info@arsdeveloper.co.uk</a><br>Phone: <a href="tel:+44747803428">+44 747803428</a><br>Registered Office: {{ config('company.registered_office') }}</p>
 
                 <h4 style="margin-top: 28px;">Last updated</h4>
                 <p>{{ $refundLastUpdated }}</p>

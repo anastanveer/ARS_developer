@@ -40,7 +40,7 @@
                                                     <span class="icon-phone"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <p><a href="tel:+971542435418">+971 54 243 5418</a></p>
+                                                    <p><a href="tel:+44747803428">+44 747803428</a></p>
                                                 </div>
                                             </li>
                                         </ul>
@@ -153,7 +153,7 @@
                 </li>
                 <li>
                     <i class="fas fa-phone"></i>
-                    <a href="tel:+971542435418">+971 54 243 5418</a>
+                    <a href="tel:+44747803428">+44 747803428</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">
