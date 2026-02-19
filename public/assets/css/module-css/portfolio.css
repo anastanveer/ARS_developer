@@ -354,7 +354,7 @@
     display: block;
     overflow: hidden;
     border-radius: 20px;
-    height: clamp(360px, 40vw, 620px);
+    height: clamp(260px, 30vw, 450px);
     z-index: 1;
 }
 
@@ -388,15 +388,18 @@
 
 .portfolio-two__content {
     position: absolute;
-    bottom: 30px;
-    left: 30px;
-    right: 30px;
-    background-color: var(--finris-white);
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+    background: rgba(10, 33, 73, 0.92);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 22px 15px 22px;
+    padding: 14px 14px;
     border-radius: 16px;
     opacity: 0;
     transform: translateY(50px);
@@ -430,7 +433,7 @@
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: var(--finris-gray);
+    color: rgba(255, 255, 255, 0.82);
     font-weight: 500;
 }
 
@@ -443,7 +446,7 @@
 }
 
 .portfolio-two__title a {
-    color: var(--finris-black);
+    color: var(--finris-white);
 }
 
 .portfolio-two__title a:hover {
