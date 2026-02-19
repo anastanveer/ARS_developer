@@ -364,6 +364,9 @@ class DatabaseSeeder extends Seeder
             ->whereNotIn('slug', collect($portfolioSeeds)->pluck('slug')->all())
             ->update(['is_published' => false]);
 
+        // Keep live portfolio aligned with the richer catalog used in local demos.
+        $this->call(PortfolioCatalogSeeder::class);
+
         BlockedContact::firstOrCreate(
             ['email' => 'bot-spam@example.net', 'ip' => null],
             ['reason' => 'Spam bot', 'is_active' => true]
