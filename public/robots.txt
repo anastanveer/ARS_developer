@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /admin/
+Disallow: /client-portal/
+
+Host: arsdeveloper.co.uk
+Sitemap: https://arsdeveloper.co.uk/sitemap.xml
