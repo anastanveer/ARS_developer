@@ -1,43 +1,32 @@
 @php
     $page_title = 'Portfolio';
 
-    $categoryOrder = [
-        'WordPress',
-        'Shopify',
-        'Wix',
-        'Webflow',
-        'Custom Coding',
-        'CRM',
-        'Landing Pages',
-        'Fiverr',
-    ];
+    $normaliseCategory = static function (?string $value): string {
+        $raw = trim((string) $value);
+        $slug = \Illuminate\Support\Str::slug($raw);
 
-    $categoryKeyMap = [
-        'wordpress' => 'WordPress',
-        'shopify' => 'Shopify',
-        'wix' => 'Wix',
-        'webflow' => 'Webflow',
-        'custom-coding' => 'Custom Coding',
-        'crm' => 'CRM',
-        'landing-page' => 'Landing Pages',
-        'fiverr' => 'Fiverr',
-    ];
+        if (str_contains($slug, 'wordpress')) return 'WordPress';
+        if (str_contains($slug, 'shopify') || str_contains($slug, 'woocommerce') || str_contains($slug, 'ecommerce')) return 'Shopify';
+        if ($slug === 'wix') return 'Wix';
+        if ($slug === 'webflow') return 'Webflow';
+        if (str_contains($slug, 'crm') || str_contains($slug, 'portal')) return 'CRM';
+        if (str_contains($slug, 'landing')) return 'Landing Pages';
+        if (str_contains($slug, 'fiverr')) return 'Fiverr';
+        if (str_contains($slug, 'custom') || str_contains($slug, 'software') || str_contains($slug, 'saas')) return 'Custom Coding';
 
-    $portfolioGroups = [];
-    foreach ($categoryOrder as $label) {
-        $items = collect($portfolios ?? [])->filter(function ($item) use ($label) {
-            return strcasecmp(trim((string) ($item->category ?? '')), $label) === 0;
-        })->values();
+        return $raw !== '' ? $raw : 'Other';
+    };
 
-        if ($items->isNotEmpty()) {
-            $portfolioGroups[$label] = $items;
-        }
-    }
+    $portfolioGroups = collect($portfolios ?? [])
+        ->groupBy(fn ($item) => $normaliseCategory($item->category ?? null))
+        ->map(fn ($items) => $items->values());
 
     $tabs = ['all' => 'All'];
     foreach ($portfolioGroups as $label => $items) {
-        $key = array_search($label, $categoryKeyMap, true);
-        $tabs[$key ?: \Illuminate\Support\Str::slug($label)] = $label;
+        if ($items->isEmpty()) {
+            continue;
+        }
+        $tabs[\Illuminate\Support\Str::slug($label)] = $label;
     }
 
     $flatItems = collect();
@@ -46,7 +35,7 @@
             continue;
         }
 
-        $group = $portfolioGroups[$tabLabel] ?? collect();
+        $group = $portfolioGroups->get($tabLabel, collect());
         foreach ($group as $item) {
             $flatItems->push([
                 'tab' => $tabKey,
