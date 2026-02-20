@@ -653,10 +653,12 @@ class ContactFormController extends Controller
             'country' => $payload['country'] ?: $client->country,
         ]))->save();
 
-        $projectType = trim((string) ($payload['project_type'] ?? 'Website Project'));
+        $projectTypeRaw = trim((string) ($payload['project_type'] ?? 'Website Project'));
+        $projectType = $this->normalizeProjectType($projectTypeRaw);
+        $projectTitle = $this->normalizeProjectTitle($projectTypeRaw, $projectType);
         $projectData = $this->filterExistingColumns('projects', [
             'client_id' => (int) $client->id,
-            'title' => $projectType !== '' ? $projectType : 'Website Project',
+            'title' => $projectTitle,
             'type' => $projectType,
             'status' => 'planning',
             'start_date' => now()->toDateString(),
@@ -813,6 +815,28 @@ class ContactFormController extends Controller
 
         $url = (string) data_get($response->json(), 'url', '');
         return $url !== '' ? $url : null;
+    }
+
+    private function normalizeProjectType(string $value): string
+    {
+        $clean = preg_replace('/\|\s*Coupon.*$/i', '', $value) ?? $value;
+        $clean = preg_replace('/\s*-\s*GBP\s*[0-9,]+(?:\.[0-9]{1,2})?.*$/i', '', $clean) ?? $clean;
+        $clean = preg_replace('/\s+/', ' ', trim($clean)) ?: '';
+        if ($clean === '') {
+            $clean = 'Website Project';
+        }
+
+        return (string) Str::limit($clean, 80, '');
+    }
+
+    private function normalizeProjectTitle(string $rawValue, string $fallbackType): string
+    {
+        $title = preg_replace('/\s+/', ' ', trim($rawValue)) ?: '';
+        if ($title === '') {
+            $title = $fallbackType !== '' ? $fallbackType : 'Website Project';
+        }
+
+        return (string) Str::limit($title, 180, '');
     }
 
     private function filterExistingColumns(string $table, array $attributes): array

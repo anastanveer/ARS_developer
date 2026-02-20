@@ -30,6 +30,10 @@
     if ($flowBillingLabel !== '') {
         $flowPlanDescriptor .= $flowPlanDescriptor !== '' ? " ({$flowBillingLabel})" : $flowBillingLabel;
     }
+    $flowProjectType = $flowPlanLabel;
+    if ($flowBillingLabel !== '') {
+        $flowProjectType .= $flowProjectType !== '' ? " ({$flowBillingLabel})" : $flowBillingLabel;
+    }
     if (is_numeric($flowPriceRaw) && (float) $flowPriceRaw > 0) {
         $flowPlanDescriptor .= ' - GBP ' . number_format((float) $flowPriceRaw, 2);
     }
@@ -221,8 +225,8 @@
                                 @csrf
                                 <input type="hidden" name="form_type" value="{{ $prefillFormType }}">
                                 <input type="hidden" name="start_order_payment" value="0" data-order-pay-flag>
-                                @if($flowPlanDescriptor !== '')
-                                    <input type="hidden" name="project_type" value="{{ $flowPlanDescriptor }}">
+                                @if($flowProjectType !== '')
+                                    <input type="hidden" name="project_type" value="{{ $flowProjectType }}">
                                 @endif
                                 @if(is_numeric($flowBasePrice))
                                     <input type="hidden" name="selected_plan_price" value="{{ (float) $flowBasePrice }}">
