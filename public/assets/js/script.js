@@ -907,14 +907,38 @@
 
 
   function submitAjaxForm(form) {
-    $.post(
-      $(form).attr("action"),
-      $(form).serialize(),
-      function (response) {
-        $(form).parent().find(".result").html(response);
+    $.ajax({
+      url: $(form).attr("action"),
+      type: "POST",
+      data: $(form).serialize(),
+      dataType: "json",
+      headers: {
+        "Accept": "application/json"
+      },
+      success: function (response) {
+        var message = (response && response.message) ? response.message : "Request submitted successfully.";
+        if ($(form).parent().find(".result").length) {
+          $(form).parent().find(".result").html('<p class="contact-success-message">' + escapeHtml(message) + "</p>");
+        }
+        showSubmissionPopup("success", "Done", message);
         form.reset();
+        if (response && response.redirect_url) {
+          setTimeout(function () {
+            window.location.href = response.redirect_url;
+          }, 1200);
+        }
+      },
+      error: function (xhr) {
+        var message = "Message could not be sent right now. Please try again.";
+        if (xhr && xhr.responseJSON && xhr.responseJSON.message) {
+          message = xhr.responseJSON.message;
+        }
+        if ($(form).parent().find(".result").length) {
+          $(form).parent().find(".result").html('<p class="contact-error-message">' + escapeHtml(message) + "</p>");
+        }
+        showSubmissionPopup("error", "Not Sent", message);
       }
-    );
+    });
   }
 
   if ($(".contact-form-validated").length) {
@@ -967,6 +991,68 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
+  }
+
+  function showSubmissionPopup(type, title, message) {
+    var popupId = "ars-submit-popup";
+    var existing = document.getElementById(popupId);
+    if (existing && existing.parentNode) {
+      existing.parentNode.removeChild(existing);
+    }
+
+    if (!document.getElementById("ars-submit-popup-style")) {
+      var style = document.createElement("style");
+      style.id = "ars-submit-popup-style";
+      style.textContent = "" +
+        ".ars-submit-popup{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(9,22,54,.58);opacity:0;pointer-events:none;transition:opacity .22s ease;}" +
+        ".ars-submit-popup.is-visible{opacity:1;pointer-events:auto;}" +
+        ".ars-submit-popup__card{width:min(460px,100%);background:#fff;border-radius:18px;padding:24px 22px;box-shadow:0 24px 70px rgba(7,22,59,.35);transform:translateY(10px) scale(.98);transition:transform .24s ease;}" +
+        ".ars-submit-popup.is-visible .ars-submit-popup__card{transform:translateY(0) scale(1);}" +
+        ".ars-submit-popup__badge{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;margin-bottom:12px;color:#fff;}" +
+        ".ars-submit-popup__badge--success{background:linear-gradient(135deg,#14c8a8,#1381e2);}" +
+        ".ars-submit-popup__badge--error{background:linear-gradient(135deg,#f0647f,#e54761);}" +
+        ".ars-submit-popup__title{margin:0 0 6px;font-size:24px;line-height:1.2;color:#0f2b5a;font-weight:800;}" +
+        ".ars-submit-popup__text{margin:0;font-size:16px;line-height:1.6;color:#35517d;}" +
+        ".ars-submit-popup__close{margin-top:16px;border:0;background:#1f7fd6;color:#fff;padding:11px 16px;border-radius:10px;font-weight:700;cursor:pointer;}";
+      document.head.appendChild(style);
+    }
+
+    var popup = document.createElement("div");
+    popup.className = "ars-submit-popup";
+    popup.id = popupId;
+    popup.innerHTML = '' +
+      '<div class="ars-submit-popup__card" role="alertdialog" aria-live="assertive">' +
+      '<div class="ars-submit-popup__badge ars-submit-popup__badge--' + (type === "success" ? "success" : "error") + '">' + (type === "success" ? "✓" : "!") + "</div>" +
+      '<h4 class="ars-submit-popup__title">' + escapeHtml(title || (type === "success" ? "Success" : "Error")) + "</h4>" +
+      '<p class="ars-submit-popup__text">' + escapeHtml(message || "") + "</p>" +
+      '<button type="button" class="ars-submit-popup__close">OK</button>' +
+      "</div>";
+
+    document.body.appendChild(popup);
+    requestAnimationFrame(function () {
+      popup.classList.add("is-visible");
+    });
+
+    function closePopup() {
+      popup.classList.remove("is-visible");
+      setTimeout(function () {
+        if (popup.parentNode) popup.parentNode.removeChild(popup);
+      }, 220);
+    }
+
+    var closeBtn = popup.querySelector(".ars-submit-popup__close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closePopup);
+    }
+    popup.addEventListener("click", function (event) {
+      if (event.target === popup) {
+        closePopup();
+      }
+    });
+
+    if (type === "success") {
+      setTimeout(closePopup, 2600);
+    }
   }
 
   function initMeetingMultiStepForm(form) {
@@ -1126,10 +1212,14 @@
         },
         success: function (response) {
           if (response && response.redirect_url) {
-            window.location.href = response.redirect_url;
+            showSubmissionPopup('success', 'Booking Confirmed', (response && response.message) ? response.message : 'Meeting booked successfully.');
+            setTimeout(function () {
+              window.location.href = response.redirect_url;
+            }, 1200);
             return;
           }
           setResult('success', (response && response.message) ? response.message : 'Meeting booked successfully.');
+          showSubmissionPopup('success', 'Booking Confirmed', (response && response.message) ? response.message : 'Meeting booked successfully.');
           form.reset();
           showStep(1);
           if (submitBtn) {
@@ -1143,6 +1233,7 @@
             message = xhr.responseJSON.message;
           }
           setResult('error', message);
+          showSubmissionPopup('error', 'Booking Failed', message);
           if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.innerHTML = submitLabel;
