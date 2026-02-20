@@ -94,10 +94,10 @@ class ContactFormController extends Controller
             && is_numeric($payload['selected_plan_price'] ?? null);
 
         if ($wantsDirectOrderPayment) {
+            $checkoutUrl = null;
             try {
                 $checkoutUrl = $this->buildDirectOrderCheckoutUrl($payload);
             } catch (\Throwable $exception) {
-                $checkoutUrl = null;
                 Log::error('Direct order payment initialization failed.', [
                     'exception' => $exception->getMessage(),
                     'email' => $payload['email'] ?? null,
@@ -115,6 +115,19 @@ class ContactFormController extends Controller
 
                 return redirect()->away($checkoutUrl);
             }
+
+            Log::warning('Direct order payment session could not be created.', [
+                'email' => $payload['email'] ?? null,
+                'project_type' => $payload['project_type'] ?? null,
+                'has_stripe_secret' => trim((string) config('services.stripe.secret')) !== '',
+                'has_stripe_key' => trim((string) config('services.stripe.key')) !== '',
+            ]);
+
+            return $this->errorResponse(
+                'Secure payment link could not be created right now. Please try again after one minute.',
+                $expectsJson,
+                503
+            );
         }
 
         $adminEmail = (string) config('contact.inbox_email', 'info@arsdeveloper.co.uk');
