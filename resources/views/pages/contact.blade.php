@@ -38,6 +38,10 @@
     }
     $flowPlanSuffix = $flowPlanDescriptor !== '' ? ' - ' . $flowPlanDescriptor : '';
     $flowPlanText = $flowPlanDescriptor !== '' ? ' for ' . $flowPlanDescriptor : '';
+    $flowBasePrice = is_numeric($flowPriceRaw) ? max(0, (float) $flowPriceRaw) : null;
+    $flowFinalPrice = is_numeric($flowFinalRaw) ? max(0, (float) $flowFinalRaw) : null;
+    $flowPayableAmount = $flowFinalPrice && $flowFinalPrice > 0 ? $flowFinalPrice : $flowBasePrice;
+    $canDirectOrderCheckout = $flowIntent === 'kickoff_payment' && is_numeric($flowPayableAmount) && (float) $flowPayableAmount > 0;
 
     $flowIntents = [
         'requirements' => [
@@ -216,8 +220,12 @@
                                 method="post" novalidate="novalidate">
                                 @csrf
                                 <input type="hidden" name="form_type" value="{{ $prefillFormType }}">
+                                <input type="hidden" name="start_order_payment" value="0" data-order-pay-flag>
                                 @if($flowPlanDescriptor !== '')
                                     <input type="hidden" name="project_type" value="{{ $flowPlanDescriptor }}">
+                                @endif
+                                @if(is_numeric($flowBasePrice))
+                                    <input type="hidden" name="selected_plan_price" value="{{ (float) $flowBasePrice }}">
                                 @endif
                                 @if($flowCouponRaw !== '')
                                     <input type="hidden" name="coupon_code" value="{{ $flowCouponRaw }}">
@@ -266,6 +274,14 @@
                                         <div class="contact-page__btn-box">
                                             <button type="submit" class="thm-btn contact-page__btn"><span
                                                     class="icon-right"></span>SEND MESSAGE</button>
+                                            @if($canDirectOrderCheckout)
+                                                <button type="button" class="thm-btn contact-page__btn thm-btn-two js-direct-order-pay" style="margin-top:10px;">
+                                                    <span class="icon-right"></span>PAY NOW & START ORDER (GBP {{ number_format((float) $flowPayableAmount, 2) }})
+                                                </button>
+                                                <p style="margin:10px 0 0;font-size:13px;color:#4b6187;">
+                                                    Direct checkout will create your order, generate invoice, and send portal access after payment.
+                                                </p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -421,6 +437,32 @@
             </div>
         </section>
         <!--Newsletter Two End -->
+
+        <script>
+            (function () {
+                var payBtn = document.querySelector('.js-direct-order-pay');
+                if (!payBtn) return;
+
+                payBtn.addEventListener('click', function () {
+                    var form = payBtn.closest('form');
+                    if (!form) return;
+
+                    var flagInput = form.querySelector('[data-order-pay-flag]');
+                    if (flagInput) {
+                        flagInput.value = '1';
+                    }
+
+                    if (typeof window.jQuery !== 'undefined' && jQuery(form).valid && !jQuery(form).valid()) {
+                        if (flagInput) {
+                            flagInput.value = '0';
+                        }
+                        return;
+                    }
+
+                    form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+                });
+            })();
+        </script>
 
 
 

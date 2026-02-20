@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use App\Mail\ContactAdminMail;
 use App\Mail\ContactUserAcknowledgementMail;
 use App\Models\BlockedContact;
+use App\Models\Client;
 use App\Models\Coupon;
 use App\Models\CouponRedemption;
+use App\Models\Invoice;
 use App\Models\Lead;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
@@ -39,6 +43,8 @@ class ContactFormController extends Controller
             'meeting_timezone' => [$isMeeting ? 'required' : 'nullable', 'string', 'max:80'],
             'project_type' => [$isMeeting ? 'required' : 'nullable', 'string', 'max:120'],
             'budget_range' => ['nullable', 'string', 'max:120'],
+            'selected_plan_price' => ['nullable', 'numeric', 'min:0'],
+            'start_order_payment' => ['nullable', 'boolean'],
             'company' => ['nullable', 'string', 'max:120'],
             'coupon_code' => ['nullable', 'string', 'max:40'],
             'coupon_discount' => ['nullable', 'numeric', 'min:0'],
@@ -70,6 +76,25 @@ class ContactFormController extends Controller
         $lead = $this->storeLead($payload, $isNewsletter, $isMeeting);
         if ($isMeeting && $lead) {
             $payload = $this->hydrateMeetingPayload($payload, $lead, 'booked');
+        }
+
+        $wantsDirectOrderPayment = ($payload['form_type'] ?? '') === 'pricing_order'
+            && filter_var($payload['start_order_payment'] ?? false, FILTER_VALIDATE_BOOLEAN)
+            && is_numeric($payload['selected_plan_price'] ?? null);
+
+        if ($wantsDirectOrderPayment) {
+            $checkoutUrl = $this->buildDirectOrderCheckoutUrl($payload);
+            if ($checkoutUrl) {
+                if ($expectsJson) {
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Order started successfully. Redirecting to secure payment...',
+                        'redirect_url' => $checkoutUrl,
+                    ]);
+                }
+
+                return redirect()->away($checkoutUrl);
+            }
         }
 
         $adminEmail = (string) config('contact.inbox_email', 'info@arsdeveloper.co.uk');
@@ -204,6 +229,8 @@ class ContactFormController extends Controller
             'meeting_timezone' => trim((string) $meetingTimezone),
             'project_type' => trim((string) $projectType),
             'budget_range' => trim((string) $budgetRange),
+            'selected_plan_price' => trim((string) ($this->firstFilled($request, ['selected_plan_price']) ?: '')),
+            'start_order_payment' => filter_var($request->input('start_order_payment', false), FILTER_VALIDATE_BOOLEAN),
             'coupon_code' => $couponCode,
             'coupon_discount' => $couponDiscount,
             'final_quote_preview' => $finalQuotePreview,
@@ -555,5 +582,197 @@ class ContactFormController extends Controller
                 }
             })
             ->exists();
+    }
+
+    private function buildDirectOrderCheckoutUrl(array $payload): ?string
+    {
+        if (!$this->hasStripeConfig()) {
+            return null;
+        }
+
+        $basePrice = is_numeric($payload['selected_plan_price'] ?? null) ? (float) $payload['selected_plan_price'] : 0.0;
+        $finalPreview = is_numeric($payload['final_quote_preview'] ?? null) ? (float) $payload['final_quote_preview'] : 0.0;
+        $payable = $finalPreview > 0 ? $finalPreview : $basePrice;
+        $payable = round(max(0.0, $payable), 2);
+        if ($payable <= 0) {
+            return null;
+        }
+
+        $client = Client::query()->firstOrCreate(
+            ['email' => strtolower((string) $payload['email'])],
+            [
+                'name' => $payload['name'] ?: 'Client',
+                'phone' => $payload['phone'] ?: null,
+                'company' => $payload['company'] ?: null,
+                'country' => $payload['country'] ?? null,
+            ]
+        );
+
+        $client->fill([
+            'name' => $payload['name'] ?: $client->name,
+            'phone' => $payload['phone'] ?: $client->phone,
+            'company' => $payload['company'] ?: $client->company,
+            'country' => $payload['country'] ?: $client->country,
+        ])->save();
+
+        $projectType = trim((string) ($payload['project_type'] ?? 'Website Project'));
+        $project = Project::query()->create([
+            'client_id' => (int) $client->id,
+            'title' => $projectType !== '' ? $projectType : 'Website Project',
+            'type' => $projectType,
+            'status' => 'planning',
+            'start_date' => now()->toDateString(),
+            'delivery_date' => now()->addMonths(2)->toDateString(),
+            'delivery_months' => 2,
+            'budget_total' => $payable,
+            'paid_total' => 0,
+            'currency' => 'GBP',
+            'portal_token' => Str::random(56),
+            'description' => (string) ($payload['message'] ?? ''),
+        ]);
+
+        $project->milestones()->createMany([
+            [
+                'title' => 'Scope Review',
+                'details' => 'Admin will verify submitted requirements and finalize execution scope.',
+                'due_date' => now()->addDays(2)->toDateString(),
+                'status' => 'in_progress',
+                'sort_order' => 1,
+            ],
+            [
+                'title' => 'Kickoff Setup',
+                'details' => 'Project workspace and delivery timeline are prepared after payment confirmation.',
+                'due_date' => now()->addDays(5)->toDateString(),
+                'status' => 'pending',
+                'sort_order' => 2,
+            ],
+            [
+                'title' => 'Delivery Sprint',
+                'details' => 'Implementation starts with milestone-based updates in client portal.',
+                'due_date' => now()->addMonths(2)->toDateString(),
+                'status' => 'pending',
+                'sort_order' => 3,
+            ],
+        ]);
+
+        if (trim((string) ($payload['message'] ?? '')) !== '') {
+            $project->requirements()->create([
+                'title' => 'Client Submitted Requirement',
+                'description' => (string) $payload['message'],
+                'source' => 'client',
+                'status' => 'open',
+            ]);
+        }
+
+        $invoiceData = [
+            'invoice_number' => $this->generateInvoiceNumber(),
+            'invoice_date' => now()->toDateString(),
+            'due_date' => now()->addDays(7)->toDateString(),
+            'amount' => $payable,
+            'paid_amount' => 0,
+            'status' => 'unpaid',
+            'notes' => $this->buildInvoiceNotes($payload, $basePrice, $payable),
+        ];
+        if (Schema::hasColumn('invoices', 'client_invoice_number')) {
+            $invoiceData['client_invoice_number'] = $this->generateClientInvoiceNumber($project);
+        }
+
+        $invoice = $project->invoices()->create($invoiceData);
+
+        return $this->createStripeCheckoutSession($project, $invoice, $payable, 'direct-order');
+    }
+
+    private function buildInvoiceNotes(array $payload, float $basePrice, float $payable): string
+    {
+        $notes = [];
+        $notes[] = 'Direct order started from pricing flow.';
+        if (!empty($payload['coupon_code'])) {
+            $notes[] = 'Coupon: ' . strtoupper((string) $payload['coupon_code']);
+        }
+        if (is_numeric($payload['coupon_discount'] ?? null)) {
+            $notes[] = 'Discount: GBP ' . number_format((float) $payload['coupon_discount'], 2);
+        }
+        if ($basePrice > 0 && $payable > 0) {
+            $notes[] = 'Price: GBP ' . number_format($basePrice, 2) . ' | Payable: GBP ' . number_format($payable, 2);
+        }
+        return implode(' ', $notes);
+    }
+
+    private function generateInvoiceNumber(): string
+    {
+        $year = now()->format('Y');
+        $counter = (int) (Invoice::query()->count() + 1);
+        do {
+            $candidate = 'INV-' . $year . '-' . str_pad((string) $counter, 4, '0', STR_PAD_LEFT);
+            $exists = Invoice::query()->where('invoice_number', $candidate)->exists();
+            $counter++;
+        } while ($exists);
+        return $candidate;
+    }
+
+    private function generateClientInvoiceNumber(Project $project): string
+    {
+        if (!Schema::hasColumn('invoices', 'client_invoice_number')) {
+            return '';
+        }
+
+        $year = now()->format('Y');
+        $counter = max(1, (int) Invoice::query()->where('project_id', $project->id)->count() + 1);
+        do {
+            $candidate = 'CL-' . (int) $project->client_id . '-' . $year . '-' . str_pad((string) $counter, 4, '0', STR_PAD_LEFT);
+            $exists = Invoice::query()->where('client_invoice_number', $candidate)->exists();
+            $counter++;
+        } while ($exists);
+        return $candidate;
+    }
+
+    private function hasStripeConfig(): bool
+    {
+        return trim((string) config('services.stripe.secret')) !== ''
+            && trim((string) config('services.stripe.key')) !== '';
+    }
+
+    private function createStripeCheckoutSession(Project $project, Invoice $invoice, float $amount, string $reference = ''): ?string
+    {
+        $successUrl = route('client.portal.pay.success', ['token' => $project->portal_token]) . '?session_id={CHECKOUT_SESSION_ID}';
+        $cancelUrl = route('client.portal', ['token' => $project->portal_token]) . '#invoices';
+        $unitAmount = (int) round($amount * 100);
+
+        $payload = [
+            'mode' => 'payment',
+            'success_url' => $successUrl,
+            'cancel_url' => $cancelUrl,
+            'payment_method_types[0]' => 'card',
+            'client_reference_id' => 'project_' . $project->id . '_invoice_' . $invoice->id,
+            'customer_email' => (string) ($project->client?->email ?? ''),
+            'metadata[project_id]' => (string) $project->id,
+            'metadata[invoice_id]' => (string) $invoice->id,
+            'metadata[portal_token]' => (string) $project->portal_token,
+            'metadata[user_reference]' => trim($reference),
+            'line_items[0][quantity]' => 1,
+            'line_items[0][price_data][currency]' => strtolower((string) ($project->currency ?: 'GBP')),
+            'line_items[0][price_data][unit_amount]' => $unitAmount,
+            'line_items[0][price_data][product_data][name]' => 'Invoice ' . $invoice->invoice_number . ' - ARSDeveloper',
+        ];
+
+        $response = Http::asForm()
+            ->withToken((string) config('services.stripe.secret'))
+            ->post('https://api.stripe.com/v1/checkout/sessions', array_filter(
+                $payload,
+                static fn ($value) => $value !== null && $value !== ''
+            ));
+
+        if ($response->failed()) {
+            Log::error('Direct order stripe checkout session failed.', [
+                'project_id' => $project->id,
+                'invoice_id' => $invoice->id,
+                'status' => $response->status(),
+                'body' => $response->body(),
+            ]);
+            return null;
+        }
+
+        $url = (string) data_get($response->json(), 'url', '');
+        return $url !== '' ? $url : null;
     }
 }
