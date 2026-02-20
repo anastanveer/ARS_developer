@@ -9,15 +9,7 @@
                 style="background-image: url(assets/images/backgrounds/coming-soon-page-bg.jpg);"></div>
             <div class="coming-soon-page__content">
                 <div class="inner">
-                    <h1 class="big-title">We're Coming Soon...</h1>
-            <div class="seo-heading-ladder" aria-hidden="true">
-                <h2 class="seo-hidden-heading">Core page sections</h2>
-                <h3 class="seo-hidden-heading">Section details</h3>
-                <h4 class="seo-hidden-heading">Supporting information</h4>
-                <h5 class="seo-hidden-heading">Additional notes</h5>
-                <h6 class="seo-hidden-heading">Reference points</h6>
-            </div>
-                    <div class="timer-box clearfix">
+                    <h1 class="big-title">We're Coming Soon...</h1><div class="timer-box clearfix">
                         <div class="countdown-timer">
                             <div class="default-coundown">
                                 <div class="box">

@@ -302,7 +302,7 @@
 
     <div class="card" id="invoices">
         <h3>Invoices & Payments</h3>
-        <p class="section-sub">Review invoice balances and submit payment references from this section.</p>
+        <p class="section-sub">Review invoice balances and pay securely by Stripe card from this section.</p>
         <div class="table-wrap">
             <table>
                 <thead><tr><th>Invoice</th><th>Date</th><th>Amount</th><th>Paid</th><th>Status</th><th>Pay</th></tr></thead>
@@ -326,12 +326,12 @@
                                     <input type="hidden" name="invoice_id" value="{{ $invoice->id }}">
                                     <input type="number" step="0.01" min="0.01" max="{{ $remaining }}" name="amount" value="{{ $remaining }}" required aria-label="Payment amount">
                                     <select name="method" aria-label="Payment method">
-                                        <option value="Portal Payment">Portal Payment</option>
+                                        <option value="Portal Payment">Stripe Card</option>
+                                        <option value="Card">Card (Stripe)</option>
                                         <option value="Bank Transfer">Bank Transfer</option>
-                                        <option value="Card">Card</option>
                                     </select>
                                     <input name="reference" placeholder="Reference" aria-label="Payment reference">
-                                    <button type="submit" class="btn">Pay Now</button>
+                                    <button type="submit" class="btn">Pay Securely</button>
                                 </form>
                             @else
                                 <button class="btn" disabled>Paid</button>

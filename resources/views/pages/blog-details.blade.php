@@ -54,6 +54,56 @@
         text-underline-offset: 2px;
     }
 
+    .blog-details__eeat {
+        margin: 20px 0 24px;
+        border: 1px solid #d6e6fb;
+        background: #f8fbff;
+        border-radius: 12px;
+        padding: 16px 18px;
+    }
+
+    .blog-details__eeat strong {
+        color: #0f2a4d;
+    }
+
+    .blog-details__cluster-links {
+        margin-top: 22px;
+        border: 1px solid #d6e6fb;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 18px;
+    }
+
+    .blog-details__cluster-links h3 {
+        margin-bottom: 10px;
+        color: #102a4d;
+    }
+
+    .blog-details__cluster-links-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .blog-details__cluster-links-list a {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 14px;
+        border-radius: 40px;
+        border: 1px solid #cae0ff;
+        color: #123561;
+        font-weight: 600;
+        line-height: 1.1;
+        text-decoration: none;
+        transition: all .2s ease;
+    }
+
+    .blog-details__cluster-links-list a:hover {
+        background: #0f7fe9;
+        border-color: #0f7fe9;
+        color: #fff;
+    }
+
     .sidebar__search-form.blog-search-ui {
         position: relative;
         border: 1px solid #d3e2fb;
@@ -124,15 +174,7 @@
     </div>
     <div class="container">
         <div class="page-header__inner">
-            <h1>{{ \Illuminate\Support\Str::limit($post->title, 70) }}</h1>
-            <div class="seo-heading-ladder" aria-hidden="true">
-                <h2 class="seo-hidden-heading">Core page sections</h2>
-                <h3 class="seo-hidden-heading">Section details</h3>
-                <h4 class="seo-hidden-heading">Supporting information</h4>
-                <h5 class="seo-hidden-heading">Additional notes</h5>
-                <h6 class="seo-hidden-heading">Reference points</h6>
-            </div>
-            <div class="thm-breadcrumb__inner">
+            <h1>{{ \Illuminate\Support\Str::limit($post->title, 70) }}</h1><div class="thm-breadcrumb__inner">
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><i class="icon-home"></i><a href="{{ url('/') }}">Home</a></li>
                     <li><span></span></li>
@@ -154,7 +196,7 @@
                     : asset('assets/images/blog/blog-details-img-1.jpg');
             @endphp
             <div class="col-xl-8 col-lg-7">
-                <div class="blog-details__left">
+                <article class="blog-details__left">
                     <div class="blog-details__img">
                         <img src="{{ $heroImage }}" alt="{{ $post->featured_image_alt ?: $post->title }}">
                     </div>
@@ -190,6 +232,14 @@
 
                         <h2 class="blog-details__title-1">{{ $post->title }}</h2>
 
+                        <div class="blog-details__eeat">
+                            <p>
+                                <strong>Reviewed by:</strong> {{ $post->author_name ?: 'ARS Developer Editorial Team' }} |
+                                <strong>Updated:</strong> {{ optional($post->updated_at)->format('d M Y') }} |
+                                <strong>UK Focus:</strong> Buyer-intent SEO, web delivery, and measurable conversion growth.
+                            </p>
+                        </div>
+
                         @if(!empty($post->excerpt))
                             <div class="blog-details__insight">
                                 <h3>Quick Summary</h3>
@@ -204,6 +254,17 @@
                             @else
                                 {!! nl2br(e((string) $post->content)) !!}
                             @endif
+                        </div>
+
+                        <div class="blog-details__cluster-links">
+                            <h3>Next Step Resources</h3>
+                            <div class="blog-details__cluster-links-list">
+                                <a href="/uk-growth-hub">UK SEO Growth Hub</a>
+                                <a href="/services">Service Solutions</a>
+                                <a href="/portfolio">Case Studies</a>
+                                <a href="/pricing">Pricing Plans</a>
+                                <a href="/contact">Book Strategy Call</a>
+                            </div>
                         </div>
 
                         <div class="blog-details__tag-and-share" style="margin-top:30px;">
@@ -229,7 +290,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
 
             <div class="col-xl-4 col-lg-5">

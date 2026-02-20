@@ -19,6 +19,7 @@ use App\Http\Controllers\BlogPageController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\ClientPortalController;
 use App\Http\Controllers\MeetingBookingController;
+use App\Http\Controllers\SeoHubController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\PortfolioPageController;
@@ -120,6 +121,7 @@ Route::get('/blog', [BlogPageController::class, 'index'])->name('blog.index');
 Route::get('/blog-list', [BlogPageController::class, 'index']);
 Route::get('/blog-details', [BlogPageController::class, 'detailsLegacy']);
 Route::get('/blog/{slug}', [BlogPageController::class, 'show'])->name('blog.show');
+Route::get('/uk-growth-hub', [SeoHubController::class, 'index'])->name('seo.hub');
 Route::get('/search/suggest', [SearchController::class, 'suggest'])->name('search.suggest');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
@@ -162,6 +164,7 @@ Route::get('/index.php/{any}', function (string $any) {
         '404.php' => '/404',
         'coming-soon.php' => '/coming-soon',
         'blog.php' => '/blog',
+        'uk-growth-hub.php' => '/uk-growth-hub',
         'blog-list.php' => '/blog-list',
         'blog-details.php' => '/blog-details',
         'search.php' => '/search',
@@ -210,6 +213,7 @@ Route::redirect('/faq.php', '/faq', 301);
 Route::redirect('/404.php', '/404', 301);
 Route::redirect('/coming-soon.php', '/coming-soon', 301);
 Route::redirect('/blog.php', '/blog', 301);
+Route::redirect('/uk-growth-hub.php', '/uk-growth-hub', 301);
 Route::redirect('/blog-list.php', '/blog-list', 301);
 Route::get('/blog-details.php', [BlogPageController::class, 'detailsLegacy']);
 Route::redirect('/search.php', '/search', 301);
@@ -223,6 +227,8 @@ Route::redirect('/service-disclaimer.php', '/service-disclaimer', 301);
 Route::get('/client-portal/{token}', [ClientPortalController::class, 'show'])->name('client.portal');
 Route::post('/client-portal/{token}/requirements', [ClientPortalController::class, 'addRequirement'])->name('client.portal.requirement');
 Route::post('/client-portal/{token}/pay', [ClientPortalController::class, 'payInvoice'])->name('client.portal.pay');
+Route::get('/client-portal/{token}/pay/success', [ClientPortalController::class, 'handleStripeSuccess'])->name('client.portal.pay.success');
+Route::post('/stripe/webhook', [ClientPortalController::class, 'stripeWebhook'])->name('stripe.webhook');
 Route::get('/client-portal-demo', function () {
     abort_unless(app()->environment('local'), 404);
 

@@ -18,15 +18,7 @@
     </div>
     <div class="container">
         <div class="page-header__inner">
-            <h1>Privacy <span>Policy</span></h1>
-            <div class="seo-heading-ladder" aria-hidden="true">
-                <h2 class="seo-hidden-heading">Core page sections</h2>
-                <h3 class="seo-hidden-heading">Section details</h3>
-                <h4 class="seo-hidden-heading">Supporting information</h4>
-                <h5 class="seo-hidden-heading">Additional notes</h5>
-                <h6 class="seo-hidden-heading">Reference points</h6>
-            </div>
-            <div class="thm-breadcrumb__inner">
+            <h1>Privacy <span>Policy</span></h1><div class="thm-breadcrumb__inner">
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><i class="icon-home"></i><a href="{{ url('/') }}">Home</a></li>
                     <li><span></span></li>

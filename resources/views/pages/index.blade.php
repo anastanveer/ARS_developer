@@ -4,6 +4,33 @@
         'title' => 'UK Software Development Company for Websites, CRM and SEO',
         'description' => 'ARSDeveloper is a UK software development company helping startups and growing businesses with custom websites, CRM systems, ecommerce development, and technical SEO.',
         'keywords' => 'uk software development company, custom website development uk, crm software uk, ecommerce development uk, technical seo services uk, wordpress development uk',
+        'preload_image' => asset('assets/images/resources/main-slider-img-1-1.png'),
+        'faq_items' => [
+            [
+                'question' => 'How long does a UK business website usually take?',
+                'answer' => 'Most conversion-focused UK business websites are delivered in 2 to 6 weeks based on scope, page count, and integrations.',
+            ],
+            [
+                'question' => 'Do you handle technical SEO and Core Web Vitals fixes?',
+                'answer' => 'Yes. We improve crawl structure, indexation, Core Web Vitals, and on-page technical signals to support stable ranking growth.',
+            ],
+            [
+                'question' => 'Can CRM be connected with website leads?',
+                'answer' => 'Yes. We connect forms and lead pipelines so enquiries move from website submission into structured team workflows.',
+            ],
+            [
+                'question' => 'Do you build Shopify and WooCommerce stores?',
+                'answer' => 'Yes. We deliver Shopify and WooCommerce builds with conversion-ready product architecture, checkout flow, and analytics tracking.',
+            ],
+            [
+                'question' => 'Will you write structure for better conversion?',
+                'answer' => 'Yes. We design page flow, trust sections, and call-to-action structure to improve lead quality and conversion intent.',
+            ],
+            [
+                'question' => 'How quickly can rankings improve?',
+                'answer' => 'Initial improvements are often visible in 6 to 12 weeks when technical fixes and search-intent content are aligned.',
+            ],
+        ],
     ];
 @endphp
 @include('layouts.header')
@@ -37,7 +64,7 @@
                 <div class="item">
                     <div class="main-slider__img-box">
                         <div class="main-slider__img">
-                            <img src="assets/images/resources/main-slider-img-1-1.png" alt="">
+                            <img src="assets/images/resources/main-slider-img-1-1.png" alt="UK software delivery hero visual" width="630" height="734" loading="eager" fetchpriority="high" decoding="async">
                             <div class="main-slider__img-shape-box float-bob-y">
                                 <div class="main-slider__img-shape-1">
                                     <div class="main-slider__img-shape-2"></div>
@@ -102,7 +129,7 @@
                 <div class="item">
                     <div class="main-slider__img-box">
                         <div class="main-slider__img">
-                            <img src="assets/images/resources/main-slider-img-1-1.png" alt="">
+                            <img src="assets/images/resources/main-slider-img-1-1.png" alt="UK CRM development hero visual" width="630" height="734" loading="lazy" decoding="async">
                             <div class="main-slider__img-shape-box float-bob-y">
                                 <div class="main-slider__img-shape-1">
                                     <div class="main-slider__img-shape-2"></div>
@@ -167,7 +194,7 @@
                 <div class="item">
                     <div class="main-slider__img-box">
                         <div class="main-slider__img">
-                            <img src="assets/images/resources/main-slider-img-1-1.png" alt="">
+                            <img src="assets/images/resources/main-slider-img-1-1.png" alt="UK SEO services hero visual" width="630" height="734" loading="lazy" decoding="async">
                             <div class="main-slider__img-shape-box float-bob-y">
                                 <div class="main-slider__img-shape-1">
                                     <div class="main-slider__img-shape-2"></div>
@@ -1225,7 +1252,6 @@
         <!-- Client Portal Discovery End -->
         --}}
 
-        {{-- Secondary tabbed lead switch hidden; keep single clear audit form
         <!-- Lead Forms Tabs Start -->
         <section class="lead-forms-tabs" id="free-audit">
             <div class="container">
@@ -1244,7 +1270,6 @@
             </div>
         </section>
         <!-- Lead Forms Tabs End -->
-        --}}
 
         <!-- Audit Lead Section Start -->
         <section class="audit-lead lead-forms-section is-active" id="free-audit-section" data-lead-panel="audit">
@@ -1346,7 +1371,6 @@
         </section>
         <!-- Audit Lead Section End -->
 
-        {{-- Quick estimate panel hidden on homepage to reduce decision friction
         <!-- Cost Estimator Start -->
         <section class="cost-estimator lead-forms-section" id="estimate-section" data-lead-panel="estimate">
             <div class="container">
@@ -1444,8 +1468,7 @@
             </div>
         </section>
         <!-- Cost Estimator End -->
-        --}}
-        {{--
+
         <script>
             (function () {
                 function initLeadTabs() {
@@ -1486,7 +1509,6 @@
                 }
             })();
         </script>
-        --}}
 
         <!--Blog Two Start -->
         @php

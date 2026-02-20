@@ -7,6 +7,27 @@
         margin-bottom: 26px;
     }
 
+    .blog-cluster-banner {
+        border: 1px solid #d4e3fb;
+        background: linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%);
+        border-radius: 16px;
+        padding: 18px 20px;
+        margin-bottom: 30px;
+    }
+
+    .blog-cluster-banner h2 {
+        font-size: 28px;
+        line-height: 1.2;
+        margin: 0 0 8px;
+        color: #102a4d;
+    }
+
+    .blog-cluster-banner p {
+        margin: 0 0 14px;
+        color: #536987;
+        max-width: 820px;
+    }
+
     .blog-search-form {
         display: flex;
         align-items: center;
@@ -77,15 +98,7 @@
     </div>
     <div class="container">
         <div class="page-header__inner">
-            <h1>Our <span>Blogs</span></h1>
-            <div class="seo-heading-ladder" aria-hidden="true">
-                <h2 class="seo-hidden-heading">Core page sections</h2>
-                <h3 class="seo-hidden-heading">Section details</h3>
-                <h4 class="seo-hidden-heading">Supporting information</h4>
-                <h5 class="seo-hidden-heading">Additional notes</h5>
-                <h6 class="seo-hidden-heading">Reference points</h6>
-            </div>
-            <div class="thm-breadcrumb__inner">
+            <h1>Our <span>Blogs</span></h1><div class="thm-breadcrumb__inner">
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><i class="icon-home"></i><a href="{{ url('/') }}">Home</a></li>
                     <li><span></span></li>
@@ -108,6 +121,12 @@
                     @endif
                 </form>
             </div>
+        </div>
+
+        <div class="blog-cluster-banner">
+            <h2>Start with the UK SEO Growth Hub</h2>
+            <p>Read the pillar guide first, then go deeper into supporting posts for AEO, GEO, EEAT, technical SEO, and conversion-focused implementation.</p>
+            <a href="{{ route('seo.hub') }}" class="thm-btn thm-btn-two"><span class="icon-right"></span>Open Pillar Guide</a>
         </div>
 
         <div class="row">

@@ -44,9 +44,15 @@
                 'type' => 'WebPage',
             ],
             '/about.php' => [
-                'title' => 'About ARSDeveloper: UK Web, CRM and SEO Agency',
-                'description' => 'Meet ARSDeveloper, a UK software agency delivering web development, CRM systems, and SEO support for growing businesses.',
-                'keywords' => 'about software agency UK, ARSDeveloper, UK digital agency, software company Stoke-on-Trent',
+                'title' => 'About ARSDeveloper UK Team for Web, CRM and SEO Delivery',
+                'description' => 'Meet ARSDeveloper UK, delivering business websites, CRM systems, and SEO growth with transparent scope and practical project ownership.',
+                'keywords' => 'about arsdeveloper uk, uk web development team, crm development partner uk, seo delivery team uk, software agency stoke-on-trent',
+                'type' => 'AboutPage',
+            ],
+            '/about' => [
+                'title' => 'About ARSDeveloper UK Team for Web, CRM and SEO Delivery',
+                'description' => 'Meet ARSDeveloper UK, delivering business websites, CRM systems, and SEO growth with transparent scope and practical project ownership.',
+                'keywords' => 'about arsdeveloper uk, uk web development team, crm development partner uk, seo delivery team uk, software agency stoke-on-trent',
                 'type' => 'AboutPage',
             ],
             '/services.php' => [
@@ -54,6 +60,20 @@
                 'description' => 'UK software services for web development, CRM systems, app development, WordPress builds, and SEO growth.',
                 'keywords' => 'software development services uk, website development services uk, crm development services uk, wordpress development services uk, ecommerce website development uk, shopify development uk, wix development uk, seo services uk',
                 'type' => 'Service',
+                'faq_items' => [
+                    [
+                        'question' => 'What software services are most requested by UK businesses?',
+                        'answer' => 'Most UK businesses request conversion-focused websites, CRM workflow automation, technical SEO, and ongoing monthly growth support.',
+                    ],
+                    [
+                        'question' => 'Can ARSDeveloper handle strategy, delivery, and post-launch support together?',
+                        'answer' => 'Yes. We handle planning, build, launch, and monthly optimization with one accountable delivery model and clear milestones.',
+                    ],
+                    [
+                        'question' => 'How quickly can a UK business start after enquiry?',
+                        'answer' => 'Most projects can start within one to five business days once scope, timeline, and onboarding documents are confirmed.',
+                    ],
+                ],
             ],
             '/digital-marketing.php' => [
                 'title' => 'Digital Marketing Services UK',
@@ -83,6 +103,28 @@
                 'title' => 'App Development Services UK',
                 'description' => 'Mobile and web app development for UK businesses building scalable products and workflows.',
                 'keywords' => 'app development company uk, mobile app development uk, web app development uk, custom saas development uk, mvp development uk',
+                'type' => 'Service',
+            ],
+            '/software-development.php' => [
+                'title' => 'Custom Software Development Company UK',
+                'description' => 'Custom software development for UK businesses that need secure workflows, integrations, and scalable delivery systems.',
+                'keywords' => 'custom software development uk, software development company uk, bespoke software uk, business automation software uk, enterprise software developers uk',
+                'type' => 'Service',
+                'faq_items' => [
+                    [
+                        'question' => 'What type of custom software projects do you build in the UK?',
+                        'answer' => 'We build business workflow systems, admin portals, CRM modules, automation tools, and integration-ready platforms for UK teams.',
+                    ],
+                    [
+                        'question' => 'Do you support existing software or only new builds?',
+                        'answer' => 'We support both new systems and existing software modernization, including refactors, integration fixes, and performance upgrades.',
+                    ],
+                ],
+            ],
+            '/software-development' => [
+                'title' => 'Custom Software Development Company UK',
+                'description' => 'Custom software development for UK businesses that need secure workflows, integrations, and scalable delivery systems.',
+                'keywords' => 'custom software development uk, software development company uk, bespoke software uk, business automation software uk, enterprise software developers uk',
                 'type' => 'Service',
             ],
             '/portfolio.php' => [
@@ -121,6 +163,16 @@
                 'description' => 'Transparent pricing options for web development, SEO, CRM, and digital services by ARSDeveloper.',
                 'keywords' => 'web development packages uk, software development pricing uk, seo pricing uk, monthly website support uk, crm development cost uk',
                 'type' => 'WebPage',
+                'faq_items' => [
+                    [
+                        'question' => 'How is pricing structured for UK projects?',
+                        'answer' => 'Pricing is based on delivery scope, timeline, integrations, and post-launch support, with clear milestones and documented outputs.',
+                    ],
+                    [
+                        'question' => 'Can we start with a smaller package and scale later?',
+                        'answer' => 'Yes. Many clients start with a focused build and then move to monthly growth support once baseline delivery is complete.',
+                    ],
+                ],
             ],
             '/gallery.php' => [
                 'title' => 'Gallery of UK Web, CRM and SEO Project Work',
@@ -152,6 +204,12 @@
                 'keywords' => 'web development blog UK, SEO blog UK, CRM blog UK, WordPress tips UK',
                 'type' => 'Blog',
             ],
+            '/uk-growth-hub' => [
+                'title' => 'UK SEO Growth Hub: AEO, GEO and EEAT Playbook',
+                'description' => 'Pillar guide for UK businesses covering AEO, GEO, EEAT, technical SEO, topic clusters, and conversion-focused search growth.',
+                'keywords' => 'uk seo strategy 2026, aeo optimization uk, geo seo uk, eeat framework uk, ai overview seo uk',
+                'type' => 'CollectionPage',
+            ],
             '/blog-list.php' => [
                 'title' => 'Blog Articles - ARSDeveloper',
                 'description' => 'Browse ARSDeveloper blog articles on software, SEO, web development, and business growth.',
@@ -170,18 +228,44 @@
                 'description' => 'Search ARSDeveloper pages, services, portfolio and blog content for web development, CRM, WordPress and SEO topics.',
                 'keywords' => 'search ARSDeveloper, website search UK software agency, service search',
                 'type' => 'SearchResultsPage',
+                'robots' => 'noindex, follow',
             ],
             '/search.php' => [
                 'title' => 'Search Results - ARSDeveloper UK Software Agency',
                 'description' => 'Search ARSDeveloper pages, services, portfolio and blog content for web development, CRM, WordPress and SEO topics.',
                 'keywords' => 'search ARSDeveloper, website search UK software agency, service search',
                 'type' => 'SearchResultsPage',
+                'robots' => 'noindex, follow',
             ],
             '/contact.php' => [
                 'title' => 'Contact ARSDeveloper UK Software Agency',
                 'description' => 'Contact ARSDeveloper for web development, CRM software, WordPress projects, and SEO services.',
                 'keywords' => 'hire web developers uk, contact software development company uk, request website quote uk, crm consultation uk',
                 'type' => 'ContactPage',
+                'faq_items' => [
+                    [
+                        'question' => 'How quickly does ARSDeveloper respond to new UK enquiries?',
+                        'answer' => 'New enquiries are usually reviewed within one business day with next-step recommendations and scope clarification points.',
+                    ],
+                    [
+                        'question' => 'Can we book a strategy call before final scope?',
+                        'answer' => 'Yes. You can book a strategy call to align goals, budget band, timeline, and the best delivery path for your project.',
+                    ],
+                ],
+            ],
+            '/client-portal-access' => [
+                'title' => 'Client Portal Access - ARSDeveloper UK',
+                'description' => 'Secure access for approved clients to view milestones, invoice status, and project communication in one place.',
+                'keywords' => 'client portal access uk, secure project portal software agency',
+                'type' => 'WebPage',
+                'robots' => 'noindex, follow',
+            ],
+            '/client-portal-access.php' => [
+                'title' => 'Client Portal Access - ARSDeveloper UK',
+                'description' => 'Secure access for approved clients to view milestones, invoice status, and project communication in one place.',
+                'keywords' => 'client portal access uk, secure project portal software agency',
+                'type' => 'WebPage',
+                'robots' => 'noindex, follow',
             ],
             '/privacy-policy.php' => [
                 'title' => 'Privacy Policy for ARSDeveloper UK Software Services',
@@ -242,6 +326,7 @@
             '/search-engine-optimization' => '/search-engine-optimization.php',
             '/design-and-branding' => '/design-and-branding.php',
             '/app-development' => '/app-development.php',
+            '/software-development' => '/software-development.php',
             '/portfolio' => '/portfolio.php',
             '/portfolio-details' => '/portfolio-details.php',
             '/testimonials' => '/testimonials.php',
@@ -250,9 +335,11 @@
             '/gallery' => '/gallery.php',
             '/faq' => '/faq.php',
             '/blog' => '/blog.php',
+            '/uk-growth-hub' => '/uk-growth-hub',
             '/blog-list' => '/blog-list.php',
             '/blog-details' => '/blog-details.php',
             '/contact' => '/contact.php',
+            '/client-portal-access' => '/client-portal-access.php',
             '/privacy-policy' => '/privacy-policy.php',
             '/terms-and-conditions' => '/terms-and-conditions.php',
             '/cookie-policy' => '/cookie-policy.php',
@@ -360,6 +447,7 @@
             '/search-engine-optimization.php' => '/search-engine-optimization',
             '/design-and-branding.php' => '/design-and-branding',
             '/app-development.php' => '/app-development',
+            '/software-development.php' => '/software-development',
             '/portfolio.php' => '/portfolio',
             '/portfolio-details.php' => '/portfolio-details',
             '/testimonials.php' => '/testimonials',
@@ -370,10 +458,13 @@
             '/404.php' => '/404',
             '/coming-soon.php' => '/coming-soon',
             '/blog.php' => '/blog',
+            '/uk-growth-hub.php' => '/uk-growth-hub',
+            '/uk-growth-hub' => '/uk-growth-hub',
             '/blog-list.php' => '/blog-list',
             '/blog-details.php' => '/blog-details',
             '/search.php' => '/search',
             '/contact.php' => '/contact',
+            '/client-portal-access.php' => '/client-portal-access',
             '/privacy-policy.php' => '/privacy-policy',
             '/terms-and-conditions.php' => '/terms-and-conditions',
             '/cookie-policy.php' => '/cookie-policy',
@@ -396,30 +487,147 @@
             ? rtrim((string) url('/'), '/')
             : rtrim((string) ($selectedRegion['base_url'] ?? url('/')), '/');
         $canonicalUrl = $seo['canonical'] ?? ($ukBase . $canonicalPath . $canonicalSuffix);
+        $resolvedRobots = (string) ($seo['robots'] ?? 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+        $hasQueryParams = count(request()->query()) > 0;
+        $isAllowedQueryIndexable = $allowQueryCanonical && $queryString !== '';
+        if ($hasQueryParams && !$isAllowedQueryIndexable) {
+            $resolvedRobots = 'noindex, follow';
+        }
         $siteRootUrl = $ukBase;
         $areaServed = 'United Kingdom';
         $schemaLanguage = $currentHreflang;
+        $currentPathKey = $canonicalPath !== '' ? $canonicalPath : '/';
+
+        $companyName = (string) config('company.legal_name', 'ARS Developer Ltd');
+        $companyBrand = (string) config('company.brand_name', 'ARSDeveloper');
+        $companyEmail = (string) config('company.email', 'info@arsdeveloper.co.uk');
+        $companyPhone = (string) config('company.phone', '+44747803428');
+        $companyStreetAddress = (string) config('company.street_address', '38 Elm Street');
+        $companyPostalCode = (string) config('company.postal_code', 'ST6 2HN');
+        $companyLocality = (string) config('company.address_locality', 'Stoke-on-Trent');
+        $companyCountryCode = (string) config('company.address_country', 'GB');
+        $companyCountryName = (string) config('company.country_name', 'United Kingdom');
+        $companyOpeningHours = (string) config('company.opening_hours', 'Mo-Fr 09:00-17:00');
+        $entityTopics = array_values(array_filter(array_map(
+            static fn ($item) => trim((string) $item),
+            (array) config('company.entity_topics', [])
+        )));
+
+        $organizationSameAs = array_values(array_filter(array_map(
+            static fn ($item) => trim((string) $item),
+            (array) config('company.same_as', [])
+        )));
+        if (count($organizationSameAs) === 0) {
+            $organizationSameAs = [
+                'https://www.facebook.com/arsdeveloperuk',
+                'https://www.linkedin.com/company/arsdeveloperuk',
+                'https://www.instagram.com/arsdeveloperuk/',
+            ];
+        }
+
+        $founderConfig = (array) config('company.founder', []);
+        $founderName = trim((string) ($founderConfig['name'] ?? ''));
+        $founderJobTitle = trim((string) ($founderConfig['job_title'] ?? 'Founder & Technical Lead'));
+        $founderDescription = trim((string) ($founderConfig['description'] ?? ''));
+        $founderSameAs = array_values(array_filter(array_map(
+            static fn ($item) => trim((string) $item),
+            (array) ($founderConfig['same_as'] ?? [])
+        )));
+
+        $internalLinkMap = [
+            '/' => ['/services', '/portfolio', '/pricing', '/blog', '/uk-growth-hub', '/contact'],
+            '/about' => ['/services', '/portfolio', '/contact', '/pricing'],
+            '/services' => ['/web-design-development', '/search-engine-optimization', '/digital-marketing', '/app-development', '/software-development', '/pricing'],
+            '/web-design-development' => ['/services', '/portfolio', '/pricing', '/contact'],
+            '/search-engine-optimization' => ['/services', '/uk-growth-hub', '/blog', '/contact'],
+            '/digital-marketing' => ['/services', '/pricing', '/portfolio', '/contact'],
+            '/app-development' => ['/services', '/software-development', '/portfolio', '/contact'],
+            '/software-development' => ['/services', '/app-development', '/portfolio', '/contact'],
+            '/portfolio' => ['/services', '/pricing', '/contact'],
+            '/pricing' => ['/services', '/portfolio', '/contact'],
+            '/blog' => ['/uk-growth-hub', '/services', '/portfolio', '/contact'],
+            '/uk-growth-hub' => ['/blog', '/services', '/pricing', '/contact'],
+            '/contact' => ['/services', '/pricing', '/portfolio'],
+        ];
+
+        $entityCoverageMap = [
+            '/' => ['Web Development', 'Custom CRM Development', 'WordPress Development', 'Technical SEO', 'Digital Marketing'],
+            '/services' => ['Website Development', 'SEO Services', 'CRM Systems', 'Software Engineering', 'Growth Marketing'],
+            '/web-design-development' => ['Responsive Web Design', 'Conversion UX', 'Business Website Architecture'],
+            '/search-engine-optimization' => ['Technical SEO', 'On-Page SEO', 'Core Web Vitals', 'Search Intent Mapping'],
+            '/digital-marketing' => ['Paid Campaigns', 'Landing Page CRO', 'Lead Qualification'],
+            '/app-development' => ['Web Application Development', 'MVP Delivery', 'Workflow Automation'],
+            '/software-development' => ['Custom Software Development', 'API Integrations', 'Operational Automation'],
+            '/portfolio' => ['Case Studies', 'Digital Delivery', 'Project Outcomes'],
+            '/blog' => ['AEO', 'GEO', 'EEAT', 'Entity SEO', 'Conversion Strategy'],
+            '/uk-growth-hub' => ['AEO', 'GEO', 'EEAT', 'Topic Clusters', 'Featured Snippets'],
+        ];
+
+        $serviceSchemaCatalog = [
+            'web-design-development' => [
+                'name' => 'Web Design and Development Services UK',
+                'description' => 'Conversion-focused website design and web development for UK businesses with fast performance and structured lead flow.',
+                'path' => '/web-design-development',
+                'type' => 'Web Development',
+            ],
+            'search-engine-optimization' => [
+                'name' => 'Technical SEO and Search Growth Services UK',
+                'description' => 'Technical SEO, entity optimization, and buyer-intent content implementation for UK visibility and qualified enquiries.',
+                'path' => '/search-engine-optimization',
+                'type' => 'SEO Services',
+            ],
+            'digital-marketing' => [
+                'name' => 'Digital Marketing and Paid Campaign Services UK',
+                'description' => 'Lead-focused paid campaigns, funnel optimization, and conversion reporting for UK service and ecommerce businesses.',
+                'path' => '/digital-marketing',
+                'type' => 'Digital Marketing',
+            ],
+            'app-development' => [
+                'name' => 'App Development Services UK',
+                'description' => 'Custom web app and MVP development for UK teams that need scalable product workflows and secure delivery.',
+                'path' => '/app-development',
+                'type' => 'Application Development',
+            ],
+            'software-development' => [
+                'name' => 'Custom Software Development Services UK',
+                'description' => 'Bespoke software systems, integrations, and workflow automation designed for UK operational growth.',
+                'path' => '/software-development',
+                'type' => 'Custom Software Development',
+            ],
+            'design-and-branding' => [
+                'name' => 'Design and Branding Services UK',
+                'description' => 'Brand direction, UI/UX design, and digital identity systems that improve trust and conversion quality.',
+                'path' => '/design-and-branding',
+                'type' => 'Brand Strategy and UX Design',
+            ],
+        ];
+
+        $servicePageMap = [
+            '/services' => array_keys($serviceSchemaCatalog),
+            '/web-design-development' => ['web-design-development'],
+            '/search-engine-optimization' => ['search-engine-optimization'],
+            '/digital-marketing' => ['digital-marketing'],
+            '/app-development' => ['app-development'],
+            '/software-development' => ['software-development'],
+            '/design-and-branding' => ['design-and-branding'],
+        ];
 
         $schemaGraph = [
             [
                 '@context' => 'https://schema.org',
                 '@type' => 'Organization',
                 '@id' => $siteRootUrl . '#organization',
-                'name' => config('company.legal_name', 'ARS Developer Ltd'),
+                'name' => $companyName,
                 'url' => $siteRootUrl,
-                'email' => 'info@arsdeveloper.co.uk',
-                'telephone' => '+44747803428',
-                'sameAs' => [
-                    'https://www.facebook.com/arsdeveloperuk',
-                    'http://linkedin.com/company/arsdeveloperuk',
-                    'https://www.instagram.com/arsdeveloperuk/',
-                ],
+                'email' => $companyEmail,
+                'telephone' => $companyPhone,
+                'sameAs' => $organizationSameAs,
                 'address' => [
                     '@type' => 'PostalAddress',
-                    'streetAddress' => '38 Elm Street',
-                    'postalCode' => 'ST6 2HN',
-                    'addressLocality' => 'Stoke-on-Trent',
-                    'addressCountry' => 'GB',
+                    'streetAddress' => $companyStreetAddress,
+                    'postalCode' => $companyPostalCode,
+                    'addressLocality' => $companyLocality,
+                    'addressCountry' => $companyCountryCode,
                 ],
             ],
             [
@@ -427,7 +635,7 @@
                 '@type' => 'WebSite',
                 '@id' => $siteRootUrl . '#website',
                 'url' => $siteRootUrl,
-                'name' => config('company.legal_name', 'ARS Developer Ltd'),
+                'name' => $companyBrand,
                 'publisher' => ['@id' => $siteRootUrl . '#organization'],
                 'inLanguage' => $schemaLanguage,
                 'potentialAction' => [
@@ -440,17 +648,17 @@
                 '@context' => 'https://schema.org',
                 '@type' => 'ProfessionalService',
                 '@id' => $siteRootUrl . '#local-business',
-                'name' => config('company.legal_name', 'ARS Developer Ltd'),
+                'name' => $companyName,
                 'url' => $siteRootUrl,
                 'image' => url('/assets/images/resources/ars-logo-dark.png'),
-                'telephone' => '+44747803428',
-                'email' => 'info@arsdeveloper.co.uk',
+                'telephone' => $companyPhone,
+                'email' => $companyEmail,
                 'address' => [
                     '@type' => 'PostalAddress',
-                    'streetAddress' => '38 Elm Street',
-                    'postalCode' => 'ST6 2HN',
-                    'addressLocality' => 'Stoke-on-Trent',
-                    'addressCountry' => 'GB',
+                    'streetAddress' => $companyStreetAddress,
+                    'postalCode' => $companyPostalCode,
+                    'addressLocality' => $companyLocality,
+                    'addressCountry' => $companyCountryCode,
                 ],
                 'areaServed' => $areaServed,
                 'serviceType' => [
@@ -460,6 +668,29 @@
                     'SEO Services',
                     'Custom Software Development',
                 ],
+            ],
+            [
+                '@context' => 'https://schema.org',
+                '@type' => 'LocalBusiness',
+                '@id' => $siteRootUrl . '#localbusiness',
+                'name' => $companyName,
+                'url' => $siteRootUrl,
+                'image' => url('/assets/images/resources/ars-logo-dark.png'),
+                'telephone' => $companyPhone,
+                'email' => $companyEmail,
+                'priceRange' => 'GBP',
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'streetAddress' => $companyStreetAddress,
+                    'postalCode' => $companyPostalCode,
+                    'addressLocality' => $companyLocality,
+                    'addressCountry' => $companyCountryCode,
+                ],
+                'areaServed' => [
+                    '@type' => 'Country',
+                    'name' => $companyCountryName,
+                ],
+                'parentOrganization' => ['@id' => $siteRootUrl . '#organization'],
             ],
             [
                 '@context' => 'https://schema.org',
@@ -473,6 +704,179 @@
             ],
         ];
 
+        if (!empty($entityTopics)) {
+            $schemaGraph[0]['knowsAbout'] = $entityTopics;
+        }
+
+        $foundingDate = trim((string) config('company.incorporation_date', ''));
+        if ($foundingDate !== '') {
+            $schemaGraph[0]['foundingDate'] = $foundingDate;
+        }
+
+        $schemaGraph[0]['legalName'] = $companyName;
+        $schemaGraph[0]['areaServed'] = [
+            [
+                '@type' => 'Country',
+                'name' => $companyCountryName,
+            ],
+        ];
+        $schemaGraph[0]['contactPoint'] = [
+            [
+                '@type' => 'ContactPoint',
+                'contactType' => 'customer support',
+                'telephone' => $companyPhone,
+                'email' => $companyEmail,
+                'availableLanguage' => ['English'],
+                'areaServed' => 'GB',
+            ],
+            [
+                '@type' => 'ContactPoint',
+                'contactType' => 'sales',
+                'telephone' => $companyPhone,
+                'email' => $companyEmail,
+                'availableLanguage' => ['English'],
+                'areaServed' => 'GB',
+            ],
+        ];
+
+        $schemaGraph[3]['openingHoursSpecification'] = [
+            [
+                '@type' => 'OpeningHoursSpecification',
+                'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                'opens' => '09:00',
+                'closes' => '17:00',
+            ],
+        ];
+        $schemaGraph[3]['openingHours'] = $companyOpeningHours;
+        $schemaGraph[3]['sameAs'] = $organizationSameAs;
+
+        if ($founderName !== '') {
+            $founderNode = [
+                '@context' => 'https://schema.org',
+                '@type' => 'Person',
+                '@id' => $siteRootUrl . '#founder',
+                'name' => $founderName,
+                'jobTitle' => $founderJobTitle,
+                'worksFor' => ['@id' => $siteRootUrl . '#organization'],
+            ];
+            if ($founderDescription !== '') {
+                $founderNode['description'] = $founderDescription;
+            }
+            if (!empty($founderSameAs)) {
+                $founderNode['sameAs'] = $founderSameAs;
+            }
+            $schemaGraph[0]['founder'] = ['@id' => $siteRootUrl . '#founder'];
+            $schemaGraph[] = $founderNode;
+        }
+
+        $clusterLinks = [
+            $siteRootUrl . '/uk-growth-hub',
+            $siteRootUrl . '/blog/uk-seo-growth-system-2026-aeo-geo-eeat-guide',
+            $siteRootUrl . '/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+            $siteRootUrl . '/blog/technical-seo-checklist-for-uk-websites-before-launch',
+            $siteRootUrl . '/blog/landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries',
+        ];
+        if ($currentPathKey === '/uk-growth-hub' || $currentPathKey === '/blog' || str_starts_with($currentPathKey, '/blog/')) {
+            $schemaGraph[] = [
+                '@context' => 'https://schema.org',
+                '@type' => 'ItemList',
+                '@id' => $siteRootUrl . '#uk-growth-cluster',
+                'name' => 'UK SEO Growth Topic Cluster',
+                'itemListOrder' => 'https://schema.org/ItemListOrderAscending',
+                'numberOfItems' => count($clusterLinks),
+                'itemListElement' => collect($clusterLinks)->values()->map(
+                    static fn ($url, $index) => [
+                        '@type' => 'ListItem',
+                        'position' => $index + 1,
+                        'url' => $url,
+                    ]
+                )->all(),
+            ];
+        }
+
+        $pageEntityCoverage = $entityCoverageMap[$currentPathKey] ?? [];
+        if (!empty($pageEntityCoverage)) {
+            $schemaGraph[4]['about'] = collect($pageEntityCoverage)->map(
+                static fn ($name) => ['@type' => 'Thing', 'name' => $name]
+            )->all();
+        }
+
+        $significantLinks = $internalLinkMap[$currentPathKey] ?? [];
+        if (!empty($seo['related_links']) && is_array($seo['related_links'])) {
+            $significantLinks = array_merge($significantLinks, $seo['related_links']);
+        }
+        $significantLinks = array_values(array_unique(array_filter(array_map(
+            static function ($path) use ($siteRootUrl) {
+                $path = trim((string) $path);
+                if ($path === '') {
+                    return null;
+                }
+                return str_starts_with($path, 'http') ? $path : ($siteRootUrl . '/' . ltrim($path, '/'));
+            },
+            $significantLinks
+        ))));
+        if (!empty($significantLinks)) {
+            $schemaGraph[4]['significantLink'] = $significantLinks;
+        }
+
+        $activeServiceKeys = $servicePageMap[$currentPathKey] ?? [];
+        if (!empty($activeServiceKeys)) {
+            $serviceNodes = [];
+            foreach ($activeServiceKeys as $serviceKey) {
+                $serviceData = $serviceSchemaCatalog[$serviceKey] ?? null;
+                if (!$serviceData) {
+                    continue;
+                }
+
+                $serviceNodes[] = [
+                    '@context' => 'https://schema.org',
+                    '@type' => 'Service',
+                    '@id' => $siteRootUrl . '#service-' . $serviceKey,
+                    'name' => $serviceData['name'],
+                    'description' => $serviceData['description'],
+                    'serviceType' => $serviceData['type'],
+                    'url' => $siteRootUrl . $serviceData['path'],
+                    'provider' => ['@id' => $siteRootUrl . '#organization'],
+                    'areaServed' => [
+                        '@type' => 'Country',
+                        'name' => $companyCountryName,
+                    ],
+                    'audience' => [
+                        '@type' => 'BusinessAudience',
+                        'audienceType' => 'UK businesses',
+                    ],
+                    'availableChannel' => [
+                        [
+                            '@type' => 'ServiceChannel',
+                            'serviceUrl' => $siteRootUrl . $serviceData['path'],
+                        ],
+                    ],
+                ];
+            }
+
+            if (!empty($serviceNodes)) {
+                $schemaGraph = array_merge($schemaGraph, $serviceNodes);
+                $schemaGraph[4]['mainEntity'] = ['@id' => $serviceNodes[0]['@id']];
+            }
+
+            if ($currentPathKey === '/services' && !empty($serviceNodes)) {
+                $schemaGraph[] = [
+                    '@context' => 'https://schema.org',
+                    '@type' => 'ItemList',
+                    '@id' => $siteRootUrl . '#service-catalog',
+                    'name' => 'ARSDeveloper UK Service Catalog',
+                    'itemListElement' => collect($serviceNodes)->values()->map(
+                        static fn ($item, $index) => [
+                            '@type' => 'ListItem',
+                            'position' => $index + 1,
+                            'url' => $item['url'],
+                            'name' => $item['name'],
+                        ]
+                    )->all(),
+                ];
+            }
+        }
+
         $breadcrumbPath = trim((string) ($canonicalPath ?: ''), '/');
         $breadcrumbMap = [
             'about' => 'About',
@@ -482,6 +886,7 @@
             'search-engine-optimization' => 'SEO Services',
             'design-and-branding' => 'Design & Branding',
             'app-development' => 'App Development',
+            'software-development' => 'Software Development',
             'portfolio' => 'Portfolio',
             'portfolio-details' => 'Project Details',
             'testimonials' => 'Testimonials',
@@ -490,7 +895,9 @@
             'gallery' => 'Gallery',
             'faq' => 'FAQs',
             'blog' => 'Blog',
+            'uk-growth-hub' => 'UK SEO Growth Hub',
             'contact' => 'Contact',
+            'client-portal-access' => 'Client Portal Access',
             'privacy-policy' => 'Privacy Policy',
             'terms-and-conditions' => 'Terms and Conditions',
             'cookie-policy' => 'Cookie Policy',
@@ -541,6 +948,121 @@
                 'itemListElement' => $breadcrumbItems,
             ];
         }
+
+        $faqItems = $seo['faq_items'] ?? [];
+        if (is_array($faqItems) && count($faqItems) > 0) {
+            $faqEntities = [];
+            foreach ($faqItems as $faqItem) {
+                $question = trim((string) ($faqItem['question'] ?? ''));
+                $answer = trim((string) ($faqItem['answer'] ?? ''));
+                if ($question === '' || $answer === '') {
+                    continue;
+                }
+
+                $faqEntities[] = [
+                    '@type' => 'Question',
+                    'name' => $question,
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $answer,
+                    ],
+                ];
+            }
+
+            if (count($faqEntities) > 0) {
+                $schemaGraph[] = [
+                    '@context' => 'https://schema.org',
+                    '@type' => 'FAQPage',
+                    'mainEntity' => $faqEntities,
+                ];
+            }
+        }
+
+        $articleSchemaData = is_array($seo['article'] ?? null) ? $seo['article'] : [];
+        if (strtolower((string) $seoType) === 'article' || count($articleSchemaData) > 0) {
+            $articleHeadline = trim((string) ($articleSchemaData['headline'] ?? $seoTitle));
+            $articleDescription = trim((string) ($articleSchemaData['description'] ?? $seoDescription));
+            $articleImage = (string) ($articleSchemaData['image'] ?? ($seo['og_image'] ?? url('/assets/images/resources/ars-logo-dark.png')));
+            $articlePublished = $articleSchemaData['datePublished'] ?? null;
+            $articleModified = $articleSchemaData['dateModified'] ?? $articlePublished;
+            $articleAuthor = trim((string) ($articleSchemaData['author'] ?? 'ARS Developer Editorial Team'));
+            $articleSection = trim((string) ($articleSchemaData['articleSection'] ?? ''));
+            $articleWordCount = (int) ($articleSchemaData['wordCount'] ?? 0);
+            $articleKeywords = $articleSchemaData['keywords'] ?? [];
+            $articleAbout = $articleSchemaData['about'] ?? [];
+            $articleMentions = $articleSchemaData['mentions'] ?? [];
+            $articleCitation = $articleSchemaData['citation'] ?? ($articleSchemaData['citations'] ?? []);
+            $articleIsAccessibleForFree = $articleSchemaData['isAccessibleForFree'] ?? true;
+
+            $articleSchema = [
+                '@context' => 'https://schema.org',
+                '@type' => 'Article',
+                '@id' => $canonicalUrl . '#article',
+                'mainEntityOfPage' => $canonicalUrl,
+                'headline' => $articleHeadline,
+                'description' => $articleDescription,
+                'image' => [$articleImage],
+                'author' => [
+                    '@type' => 'Person',
+                    'name' => $articleAuthor,
+                ],
+                'publisher' => [
+                    '@type' => 'Organization',
+                    '@id' => $siteRootUrl . '#organization',
+                    'name' => $companyName,
+                    'logo' => [
+                        '@type' => 'ImageObject',
+                        'url' => url('/assets/images/resources/ars-logo-dark.png'),
+                    ],
+                ],
+                'inLanguage' => $schemaLanguage,
+                'isAccessibleForFree' => (bool) $articleIsAccessibleForFree,
+            ];
+
+            if ($articlePublished) {
+                $articleSchema['datePublished'] = $articlePublished;
+            }
+            if ($articleModified) {
+                $articleSchema['dateModified'] = $articleModified;
+            }
+            if ($articleSection !== '') {
+                $articleSchema['articleSection'] = $articleSection;
+            }
+            if ($articleWordCount > 0) {
+                $articleSchema['wordCount'] = $articleWordCount;
+            }
+            if (is_array($articleKeywords) && count($articleKeywords) > 0) {
+                $articleSchema['keywords'] = implode(', ', array_values(array_filter(array_map(
+                    static fn ($item) => trim((string) $item),
+                    $articleKeywords
+                ))));
+            } elseif (is_string($articleKeywords) && trim($articleKeywords) !== '') {
+                $articleSchema['keywords'] = trim($articleKeywords);
+            }
+            if (is_array($articleAbout) && count($articleAbout) > 0) {
+                $articleSchema['about'] = $articleAbout;
+            }
+            if (is_array($articleMentions) && count($articleMentions) > 0) {
+                $articleSchema['mentions'] = $articleMentions;
+            }
+            if (is_string($articleCitation) && trim($articleCitation) !== '') {
+                $articleCitation = [trim($articleCitation)];
+            }
+            if (is_array($articleCitation) && count($articleCitation) > 0) {
+                $articleSchema['citation'] = array_values(array_filter(array_map(
+                    static fn ($item) => trim((string) $item),
+                    $articleCitation
+                )));
+            }
+            if (!empty($articleSchemaData['speakable'])) {
+                $articleSchema['speakable'] = [
+                    '@type' => 'SpeakableSpecification',
+                    'xpath' => (array) $articleSchemaData['speakable'],
+                ];
+            }
+
+            $schemaGraph[] = $articleSchema;
+        }
     @endphp
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -554,8 +1076,11 @@
     @if (env('GOOGLE_SITE_VERIFICATION'))
         <meta name="google-site-verification" content="{{ env('GOOGLE_SITE_VERIFICATION') }}" />
     @endif
-    <meta name="robots" content="{{ $seo['robots'] ?? 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' }}" />
+    <meta name="robots" content="{{ $resolvedRobots }}" />
     <link rel="canonical" href="{{ $canonicalUrl }}" />
+    @if(!empty($seo['preload_image']))
+        <link rel="preload" as="image" href="{{ $seo['preload_image'] }}" fetchpriority="high">
+    @endif
     <meta name="language" content="{{ $currentHreflang }}" />
     <meta name="geo.region" content="GB-STS" />
     <meta name="geo.placename" content="Stoke-on-Trent" />
@@ -571,6 +1096,15 @@
     <meta property="og:site_name" content="ARSDeveloper" />
     <meta property="og:image" content="{{ $seo['og_image'] ?? url('/assets/images/resources/ars-logo-dark.png') }}" />
     <meta property="og:image:alt" content="{{ $seo['og_image_alt'] ?? 'ARSDeveloper UK Software Agency' }}" />
+    @if(!empty($articleSchemaData['datePublished']))
+        <meta property="article:published_time" content="{{ $articleSchemaData['datePublished'] }}" />
+    @endif
+    @if(!empty($articleSchemaData['dateModified']))
+        <meta property="article:modified_time" content="{{ $articleSchemaData['dateModified'] }}" />
+    @endif
+    @if(!empty($articleSchemaData['author']))
+        <meta property="article:author" content="{{ $articleSchemaData['author'] }}" />
+    @endif
     <meta name="twitter:card" content="{{ $seo['twitter_card'] ?? 'summary_large_image' }}" />
     <meta name="twitter:title" content="{{ $seoTwitterTitle }}" />
     <meta name="twitter:description" content="{{ $seoTwitterDescription }}" />
@@ -865,7 +1399,7 @@
                         </div>
                         <div class="main-menu-two__social">
                             <a href="https://www.facebook.com/arsdeveloperuk" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
-                            <a href="http://linkedin.com/company/arsdeveloperuk" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://linkedin.com/company/arsdeveloperuk" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
                             <a href="https://www.instagram.com/arsdeveloperuk/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>

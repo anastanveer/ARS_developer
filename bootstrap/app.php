@@ -15,6 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\ForcePrimaryDomain::class,
         ]);
 
+        $middleware->validateCsrfTokens(except: [
+            'stripe/webhook',
+        ]);
+
         $middleware->alias([
             'admin.auth' => \App\Http\Middleware\AdminAuthenticate::class,
             'admin.role' => \App\Http\Middleware\AdminRole::class,

@@ -1,5 +1,26 @@
 @php
     $page_title = 'About';
+    $seoOverride = [
+        'title' => 'About ARSDeveloper UK Team for Web, CRM and SEO Delivery',
+        'description' => 'Meet ARSDeveloper UK, delivering business websites, CRM systems, and SEO growth with transparent scope, practical timelines, and reliable post-launch support.',
+        'keywords' => 'about arsdeveloper uk, uk web development team, crm development partner uk, seo delivery team uk, software agency stoke-on-trent',
+        'type' => 'AboutPage',
+        'preload_image' => asset('assets/images/resources/about-three-img-1.jpg'),
+        'faq_items' => [
+            [
+                'question' => 'What does ARSDeveloper actually deliver for UK businesses?',
+                'answer' => 'We deliver conversion-focused websites, CRM workflows, and SEO-ready technical foundations with practical implementation support.',
+            ],
+            [
+                'question' => 'Can ARSDeveloper improve an existing website instead of rebuilding everything?',
+                'answer' => 'Yes. We can improve your current site through UX, performance, SEO, and workflow updates without forcing a full rebuild.',
+            ],
+            [
+                'question' => 'Do you provide post-launch support after delivery?',
+                'answer' => 'Yes. We provide structured post-launch support, priority fixes, and ongoing improvement plans based on your growth goals.',
+            ],
+        ],
+    ];
 @endphp
 @include('layouts.header')
 
@@ -60,38 +81,8 @@
         flex-wrap: wrap;
     }
 
-    .about-why-compact {
-        padding-top: 64px !important;
-        padding-bottom: 95px !important;
-    }
-
-    .about-why-compact .why-choose-four__right-title {
-        font-size: 56px;
-        line-height: 1.05;
-        margin-bottom: 34px;
-        -webkit-text-stroke: 1.5px rgba(var(--finris-base-rgb), 0.12);
-    }
-
-    .about-why-compact .why-choose-four__img-box {
-        margin-top: 34px;
-        padding-bottom: 190px;
-    }
-
-    .about-why-compact .why-choose-four__left {
-        padding-bottom: 36px;
-    }
-
-    .about-why-compact .why-choose-four__img-2 {
-        bottom: -108px;
-    }
-
-    .about-why-compact .why-choose-four__single h3 {
-        margin-top: 20px;
-        margin-bottom: 8px;
-    }
-
     .about-proof {
-        padding: 72px 0 90px;
+        padding: 56px 0 74px;
         position: relative;
         z-index: 2;
     }
@@ -198,7 +189,7 @@
     }
 
     .about-lifecycle {
-        padding: 10px 0 100px;
+        padding: 4px 0 78px;
     }
 
     .about-lifecycle__inner {
@@ -284,6 +275,32 @@
         border-radius: 999px;
     }
 
+    .about-company-profile__qa {
+        margin-top: 24px;
+        display: grid;
+        gap: 12px;
+    }
+
+    .about-company-profile__qa-item {
+        border: 1px solid #dbe8f9;
+        background: #f8fbff;
+        border-radius: 12px;
+        padding: 14px 16px;
+    }
+
+    .about-company-profile__qa-item h3 {
+        margin: 0 0 6px;
+        font-size: 20px;
+        line-height: 1.35;
+        color: #0f2c57;
+    }
+
+    .about-company-profile__qa-item p {
+        margin: 0;
+        color: var(--finris-gray);
+        line-height: 1.6;
+    }
+
     @media (max-width: 991px) {
         .about-company-profile {
             padding-top: 34px;
@@ -295,24 +312,6 @@
 
         .about-company-profile__inner {
             padding: 24px;
-        }
-
-        .about-why-compact {
-            padding-top: 56px !important;
-            padding-bottom: 75px !important;
-        }
-
-        .about-why-compact .why-choose-four__img-box {
-            padding-bottom: 120px;
-        }
-
-        .about-why-compact .why-choose-four__img-2 {
-            bottom: -70px;
-        }
-
-        .about-why-compact .why-choose-four__right-title {
-            font-size: 38px;
-            margin-bottom: 20px;
         }
 
         .about-proof__grid {
@@ -337,7 +336,7 @@
         }
 
         .about-lifecycle {
-            padding: 0 0 80px;
+            padding: 0 0 70px;
         }
 
         .about-lifecycle__inner {
@@ -375,13 +374,6 @@
             <div class="container">
                 <div class="page-header__inner">
                     <h1>About <span>Us</span></h1>
-            <div class="seo-heading-ladder" aria-hidden="true">
-                <h2 class="seo-hidden-heading">Core page sections</h2>
-                <h3 class="seo-hidden-heading">Section details</h3>
-                <h4 class="seo-hidden-heading">Supporting information</h4>
-                <h5 class="seo-hidden-heading">Additional notes</h5>
-                <h6 class="seo-hidden-heading">Reference points</h6>
-            </div>
                     <div class="thm-breadcrumb__inner">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><i class="icon-home"></i><a href="/">Home</a></li>
@@ -554,94 +546,6 @@
         </section>
 
 
-
-        <!--Why Choose Three Start-->
-        <section class="why-choose-four about-why-compact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div class="why-choose-four__left" data-aos="slide-right" data-aos-duration="1200"
-                            data-aos-delay="300">
-                            <div class="section-title-two text-left sec-title-animation animation-style2">
-                                <div class="section-title-two__tagline-box">
-                                    <div class="section-title-two__tagline-icon-box">
-                                        <div class="section-title-two__tagline-icon-1"></div>
-                                        <div class="section-title-two__tagline-icon-2"></div>
-                                    </div>
-                                    <span class="section-title-two__tagline">Why Choose Us</span>
-                                </div>
-                                <h2 class="section-title-two__title title-animation">Why UK businesses choose
-                                    <br><span>ARSDeveloper</span></h2>
-                            </div>
-                            <p class="why-choose-four__text">We focus on outcomes: faster websites, stronger rankings,
-                                better lead quality, and scalable software systems that support business growth.</p>
-                            <div class="why-choose-four__img-box">
-                                <div class="why-choose-four__img">
-                                    <img src="assets/images/resources/why-choose-four-img-1.jpg" alt="">
-                                </div>
-                                <div class="why-choose-four__img-shape-1 img-bounce">
-                                    <img src="assets/images/shapes/why-choose-four-img-shape-1.png" alt="">
-                                </div>
-                                <div class="why-choose-four__img-2">
-                                    <img src="assets/images/resources/why-choose-four-img-2.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="why-choose-four__right">
-                            <h2 class="why-choose-four__right-title">PROVEN DELIVERY</h2>
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="why-choose-four__single" data-aos="fade-up" data-aos-duration="1200"
-                                        data-aos-delay="100">
-                                        <div class="why-choose-four__icon">
-                                            <img src="assets/images/icon/why-choose-four-single-icon-1-1.png" alt="">
-                                        </div>
-                                        <h3>SEO + Speed Foundation</h3>
-                                        <p>We build pages that load faster, communicate clearly, and support better Google visibility.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="why-choose-four__single" data-aos="fade-up" data-aos-duration="1200"
-                                        data-aos-delay="200">
-                                        <div class="why-choose-four__icon">
-                                            <img src="assets/images/icon/why-choose-four-single-icon-1-2.png" alt="">
-                                        </div>
-                                        <h3>Business Workflow Integration</h3>
-                                        <p>CRM, forms, automations, and admin actions are mapped to your real operational process.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="why-choose-four__single" data-aos="fade-up" data-aos-duration="1200"
-                                        data-aos-delay="300">
-                                        <div class="why-choose-four__icon">
-                                            <img src="assets/images/icon/why-choose-four-single-icon-1-3.png" alt="">
-                                        </div>
-                                        <h3>Conversion-Led UX</h3>
-                                        <p>Each section is structured to reduce friction and move users toward enquiry or purchase actions.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="why-choose-four__single" data-aos="fade-up" data-aos-duration="1200"
-                                        data-aos-delay="400">
-                                        <div class="why-choose-four__icon">
-                                            <img src="assets/images/icon/why-choose-four-single-icon-1-4.png" alt="">
-                                        </div>
-                                        <h3>Direct Technical Support</h3>
-                                        <p>After launch, you get practical support for updates, fixes, and priority improvements.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Why Choose Three End-->
-
-
-
         <section class="about-lifecycle">
             <div class="container">
                 <div class="about-lifecycle__inner">
@@ -750,6 +654,20 @@
                         <li>Technical quality checks for speed, SEO-readiness, and security basics.</li>
                         <li>Handover documentation and ongoing support options after launch.</li>
                     </ul>
+                    <div class="about-company-profile__qa">
+                        <article class="about-company-profile__qa-item">
+                            <h3>How quickly can we start a UK project?</h3>
+                            <p>After a short discovery call, most projects move into scope and milestone planning within one business week.</p>
+                        </article>
+                        <article class="about-company-profile__qa-item">
+                            <h3>Can you work with an existing site or CRM?</h3>
+                            <p>Yes. We improve existing systems through focused updates across <a href="/services">services</a>, performance, and conversion flow.</p>
+                        </article>
+                        <article class="about-company-profile__qa-item">
+                            <h3>What support comes after launch?</h3>
+                            <p>We provide structured support plans, optimization reviews, and growth actions. You can review options on <a href="/pricing">pricing</a> or <a href="/contact">contact us</a> directly.</p>
+                        </article>
+                    </div>
                     <div class="about-company-profile__actions">
                         <a href="/portfolio" class="thm-btn thm-btn-two"><span class="icon-right"></span> View Our Work</a>
                         <a href="/contact" class="thm-btn"><span class="icon-right"></span> Talk to Our Team</a>
@@ -759,52 +677,6 @@
         </section>
 
 
-        <!--Counter One Start -->
-        <section class="counter-one">
-            <div class="counter-one__shape-1 float-bob-x"
-                style="background-image: url(assets/images/shapes/counter-one-shape-1.png);"></div>
-            <div class="container">
-                <ul class="list-unstyled counter-one__list">
-                    <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
-                        <div class="counter-one__single">
-                            <div class="counter-one__count count-box">
-                                <p class="count-text" data-stop="240" data-speed="1500">00</p>
-                                <span class="counter-one__count-plus">+</span>
-                            </div>
-                            <p class="counter-one__text">Projects Completed</p>
-                        </div>
-                    </li>
-                    <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
-                        <div class="counter-one__single">
-                            <div class="counter-one__count count-box">
-                                <p class="count-text" data-stop="40" data-speed="1500">00</p>
-                                <span class="counter-one__count-plus">+</span>
-                            </div>
-                            <p class="counter-one__text">Awards Achieve</p>
-                        </div>
-                    </li>
-                    <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
-                        <div class="counter-one__single">
-                            <div class="counter-one__count count-box">
-                                <p class="count-text" data-stop="780" data-speed="1500">00</p>
-                                <span class="counter-one__count-plus">+</span>
-                            </div>
-                            <p class="counter-one__text">Positive Review</p>
-                        </div>
-                    </li>
-                    <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="250">
-                        <div class="counter-one__single">
-                            <div class="counter-one__count count-box">
-                                <p class="count-text" data-stop="130" data-speed="1500">00</p>
-                                <span class="counter-one__count-plus">+</span>
-                            </div>
-                            <p class="counter-one__text">Satisfied Client</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <!--Counter One End -->
         @include('partials.testimonial-two-section', ['testimonialSeoHeading' => 'About page client testimonials'])
 
 

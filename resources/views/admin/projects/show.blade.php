@@ -40,7 +40,10 @@
             ]);
         }
         foreach ($project->payments as $payment) {
-            if (str_contains((string) $payment->notes, 'Paid by client via portal.') || (string) $payment->method === 'Portal Payment') {
+            $isClientPortalPayment = str_contains((string) $payment->notes, 'Paid by client via portal.')
+                || str_contains((string) $payment->notes, 'Paid by client via Stripe Checkout.')
+                || in_array((string) $payment->method, ['Portal Payment', 'Stripe Card'], true);
+            if ($isClientPortalPayment) {
                 $projectActivity->push([
                     'at' => $payment->created_at,
                     'type' => 'Payment',

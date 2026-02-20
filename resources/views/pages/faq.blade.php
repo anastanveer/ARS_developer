@@ -1,5 +1,36 @@
 @php
     $page_title = 'FAQ';
+    $seoOverride = [
+        'title' => 'FAQ for UK Web Development, CRM and SEO Services',
+        'description' => 'Answers to common UK client questions on website delivery, CRM systems, ecommerce, SEO, timelines, support, and project workflow.',
+        'keywords' => 'uk website faq, crm faq uk, ecommerce development faq, seo services faq uk',
+        'faq_items' => [
+            [
+                'question' => 'What type of projects can ARSDeveloper handle?',
+                'answer' => 'We handle business websites, ecommerce stores, CRM and portal systems, landing pages, technical SEO, and growth-focused support plans.',
+            ],
+            [
+                'question' => 'How quickly can we start after approving the proposal?',
+                'answer' => 'Most projects start in 3 to 7 business days after discovery confirmation, milestone approval, and initial payment.',
+            ],
+            [
+                'question' => 'Can you redesign an existing website without losing SEO rankings?',
+                'answer' => 'Yes. We use URL mapping, 301 redirects, canonical control, and crawl/index monitoring to protect search visibility during migration.',
+            ],
+            [
+                'question' => 'Will I get a client portal to track project progress?',
+                'answer' => 'Yes. Portal access can include milestones, timeline updates, invoices, payments, and requirement tracking.',
+            ],
+            [
+                'question' => 'Do you provide maintenance after project delivery?',
+                'answer' => 'Yes. We provide post-launch support and monthly care plans for updates, fixes, security, and performance optimization.',
+            ],
+            [
+                'question' => 'How do we proceed if we want to start now?',
+                'answer' => 'Send your requirements through the contact form, then we schedule a discovery call and share a milestone-based action plan.',
+            ],
+        ],
+    ];
 @endphp
 @include('layouts.header')
 
@@ -14,15 +45,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h1>Our <span>FAQ</span></h1>
-            <div class="seo-heading-ladder" aria-hidden="true">
-                <h2 class="seo-hidden-heading">Core page sections</h2>
-                <h3 class="seo-hidden-heading">Section details</h3>
-                <h4 class="seo-hidden-heading">Supporting information</h4>
-                <h5 class="seo-hidden-heading">Additional notes</h5>
-                <h6 class="seo-hidden-heading">Reference points</h6>
-            </div>
-                    <div class="thm-breadcrumb__inner">
+                    <h1>Our <span>FAQ</span></h1><div class="thm-breadcrumb__inner">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><i class="icon-home"></i><a href="/">Home</a></li>
                             <li><span></span></li>

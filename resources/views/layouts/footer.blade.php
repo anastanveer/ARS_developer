@@ -48,7 +48,7 @@
                                             <p class="site-footer-two__social-title">{{ __('ui.follow_us') }}</p>
                                             <div class="site-footer-two__social">
                                                 <a href="https://www.facebook.com/arsdeveloperuk" target="_blank" rel="noopener"><i class="icon-facebook"></i></a>
-                                                <a href="http://linkedin.com/company/arsdeveloperuk" target="_blank" rel="noopener"><i class="icon-linkedin"></i></a>
+                                                <a href="https://linkedin.com/company/arsdeveloperuk" target="_blank" rel="noopener"><i class="icon-linkedin"></i></a>
                                                 <a href="https://www.instagram.com/arsdeveloperuk/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
                                             </div>
                                         </div>
@@ -65,6 +65,7 @@
                                             <li><a href="/services">{{ __('ui.services') }}</a></li>
                                             <li><a href="/pricing">{{ __('ui.pricing') }}</a></li>
                                             <li><a href="/blog">{{ __('ui.blog') }}</a></li>
+                                            <li><a href="/uk-growth-hub">UK SEO Growth Hub</a></li>
                                             <li><a href="{{ route('client.portal.access') }}">Client Portal</a></li>
                                             <li><a href="/contact">{{ __('ui.contact') }}</a></li>
                                         </ul>
@@ -159,7 +160,7 @@
             <div class="mobile-nav__top">
                 <div class="mobile-nav__social">
                     <a href="https://www.facebook.com/arsdeveloperuk" target="_blank" rel="noopener" class="fab fa-facebook-square"></a>
-                    <a href="http://linkedin.com/company/arsdeveloperuk" target="_blank" rel="noopener" class="fab fa-linkedin"></a>
+                    <a href="https://linkedin.com/company/arsdeveloperuk" target="_blank" rel="noopener" class="fab fa-linkedin"></a>
                     <a href="https://www.instagram.com/arsdeveloperuk/" target="_blank" rel="noopener" class="fab fa-instagram"></a>
                 </div><!-- /.mobile-nav__social -->
             </div><!-- /.mobile-nav__top -->
@@ -428,15 +429,67 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            function toReadable(text) {
+                return String(text || '')
+                    .replace(/\.[a-z0-9]+$/i, '')
+                    .replace(/[_-]+/g, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+            }
+
+            function guessContextualLabel(img) {
+                var explicit = img.getAttribute('data-seo-alt') || img.getAttribute('data-alt');
+                if (explicit && explicit.trim().length > 0) {
+                    return explicit.trim();
+                }
+
+                var nearestHeading = img.closest('section, article, .container, .row, .col, .blog, .portfolio, .services, .about');
+                if (nearestHeading) {
+                    var heading = nearestHeading.querySelector('h1, h2, h3, h4');
+                    if (heading && heading.textContent.trim().length > 0) {
+                        return 'ARSDeveloper UK - ' + heading.textContent.trim() + ' visual';
+                    }
+                }
+
+                var src = img.getAttribute('src') || '';
+                var srcParts = src.split('/');
+                var fileName = srcParts.length ? srcParts[srcParts.length - 1] : '';
+                var readable = toReadable(fileName);
+                if (readable.length > 0) {
+                    return 'ARSDeveloper UK - ' + readable;
+                }
+
+                return 'ARSDeveloper UK service image';
+            }
+
             var images = document.querySelectorAll('img');
             images.forEach(function (img, index) {
+                var isHeroImage = Boolean(
+                    img.closest('.main-slider') ||
+                    img.closest('.page-header') ||
+                    img.closest('.blog-details') ||
+                    img.closest('.portfolio-details') ||
+                    img.hasAttribute('data-lcp')
+                );
+
+                var alt = (img.getAttribute('alt') || '').trim();
+                if (alt.length === 0) {
+                    alt = guessContextualLabel(img);
+                    img.setAttribute('alt', alt);
+                }
+
+                var title = (img.getAttribute('title') || '').trim();
+                if (title.length === 0) {
+                    img.setAttribute('title', alt);
+                }
+
                 if (!img.hasAttribute('loading')) {
-                    img.setAttribute('loading', index === 0 ? 'eager' : 'lazy');
+                    img.setAttribute('loading', isHeroImage ? 'eager' : 'lazy');
                 }
                 if (!img.hasAttribute('decoding')) {
                     img.setAttribute('decoding', 'async');
                 }
-                if (index === 0 && !img.hasAttribute('fetchpriority')) {
+                if (isHeroImage && !img.hasAttribute('fetchpriority')) {
                     img.setAttribute('fetchpriority', 'high');
                 }
             });
