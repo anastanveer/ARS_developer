@@ -467,6 +467,7 @@
         </section>
         <!--About Two End -->
 
+        {{-- Quick Start Path hidden to reduce homepage cognitive load for first-time UK visitors
         <!-- Quick Start Path Start -->
         <section class="quick-path">
             <div class="container">
@@ -530,7 +531,9 @@
             </div>
         </section>
         <!-- Quick Start Path End -->
+        --}}
 
+        {{-- Industry Fit hidden on home (kept on dedicated sector pages)
         <!-- Industry Fit Start -->
         <section class="industry-fit">
             <div class="container">
@@ -574,6 +577,7 @@
             </div>
         </section>
         <!-- Industry Fit End -->
+        --}}
 
         @include('partials.trust-pillars', [
             'trustPillars' => [
@@ -728,6 +732,7 @@
         </section>
         <!--Counter One End -->
 
+        {{-- Results Strip hidden to avoid repeated "outcomes" messaging on homepage
         <!-- Results Strip Start -->
         <section class="results-strip">
             <div class="container">
@@ -763,6 +768,7 @@
             </div>
         </section>
         <!-- Results Strip End -->
+        --}}
 
         <!--Process Two Start -->
         <section class="process-two">
@@ -1194,6 +1200,7 @@
         </section>
         <!-- Meeting Scheduler End -->
 
+        {{-- Client portal promo hidden from home to keep flow focused on new leads
         <!-- Client Portal Discovery Start -->
         <section class="client-portal-discovery">
             <div class="container">
@@ -1216,7 +1223,9 @@
             </div>
         </section>
         <!-- Client Portal Discovery End -->
+        --}}
 
+        {{-- Secondary tabbed lead switch hidden; keep single clear audit form
         <!-- Lead Forms Tabs Start -->
         <section class="lead-forms-tabs" id="free-audit">
             <div class="container">
@@ -1235,6 +1244,7 @@
             </div>
         </section>
         <!-- Lead Forms Tabs End -->
+        --}}
 
         <!-- Audit Lead Section Start -->
         <section class="audit-lead lead-forms-section is-active" id="free-audit-section" data-lead-panel="audit">
@@ -1336,6 +1346,7 @@
         </section>
         <!-- Audit Lead Section End -->
 
+        {{-- Quick estimate panel hidden on homepage to reduce decision friction
         <!-- Cost Estimator Start -->
         <section class="cost-estimator lead-forms-section" id="estimate-section" data-lead-panel="estimate">
             <div class="container">
@@ -1433,6 +1444,8 @@
             </div>
         </section>
         <!-- Cost Estimator End -->
+        --}}
+        {{--
         <script>
             (function () {
                 function initLeadTabs() {
@@ -1473,6 +1486,7 @@
                 }
             })();
         </script>
+        --}}
 
         <!--Blog Two Start -->
         @php
