@@ -1168,10 +1168,10 @@
                                                 <div class="meeting-scheduler__input">
                                                     <select name="budget_range">
                                                         <option value="">Budget Range (Optional)</option>
-                                                        <option value="$1k - $3k">$1k - $3k</option>
-                                                        <option value="$3k - $6k">$3k - $6k</option>
-                                                        <option value="$6k - $12k">$6k - $12k</option>
-                                                        <option value="$12k+">$12k+</option>
+                                                        <option value="GBP 1k - 3k">GBP 1k - 3k</option>
+                                                        <option value="GBP 3k - 6k">GBP 3k - 6k</option>
+                                                        <option value="GBP 6k - 12k">GBP 6k - 12k</option>
+                                                        <option value="GBP 12k+">GBP 12k+</option>
                                                     </select>
                                                 </div>
                                             </div>
