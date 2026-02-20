@@ -50,7 +50,7 @@
                 'Receive proposal with delivery milestones',
             ],
             'form_type' => 'pricing_requirements',
-            'subject' => 'Requirements Submission' . $flowPlanSuffix,
+            'subject' => 'Requirements Submission',
             'message' => 'I want to submit project requirements' . $flowPlanText . '. Please review and share timeline, scope, and quotation.',
         ],
         'order' => [
@@ -64,7 +64,7 @@
             ],
             'form_type' => 'pricing_order',
             'budget_hint' => 'Kickoff invoice requested',
-            'subject' => 'Order Start Request' . $flowPlanSuffix,
+            'subject' => 'Order Start Request',
             'message' => 'I am ready to start the order' . $flowPlanText . '. Please send onboarding steps and invoice details.',
         ],
         'kickoff_payment' => [
@@ -78,7 +78,7 @@
             ],
             'form_type' => 'pricing_order',
             'budget_hint' => 'Kickoff invoice requested',
-            'subject' => 'Kickoff Payment Request' . $flowPlanSuffix,
+            'subject' => 'Kickoff Payment Request',
             'message' => 'I am ready to start and request kickoff invoice/payment link' . $flowPlanText . '. Please share next onboarding steps.',
         ],
         'meeting' => [
@@ -91,7 +91,7 @@
                 'Finalize scope and start plan',
             ],
             'form_type' => 'pricing_requirements',
-            'subject' => 'Planning Meeting Request' . $flowPlanSuffix,
+            'subject' => 'Planning Meeting Request',
             'message' => 'I want to schedule a planning call before finalizing scope' . $flowPlanText . '.',
         ],
     ];

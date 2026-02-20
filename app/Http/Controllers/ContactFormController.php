@@ -72,49 +72,68 @@ class ContactFormController extends Controller
             $payload = $this->hydrateMeetingPayload($payload, $lead, 'booked');
         }
 
-        try {
-            $adminEmail = (string) config('contact.inbox_email', 'info@arsdeveloper.co.uk');
+        $adminEmail = (string) config('contact.inbox_email', 'info@arsdeveloper.co.uk');
+        $adminMailSent = false;
+        $userMailSent = false;
 
+        try {
             Mail::to($adminEmail)
                 ->send((new ContactAdminMail($payload))->replyTo($payload['email'], $payload['name']));
-
-            if ((bool) config('contact.auto_reply', true)) {
-                Mail::to($payload['email'])->send(new ContactUserAcknowledgementMail($payload));
-            }
-
-            $successMessage = $isNewsletter
-                ? 'Thank you. You have been subscribed successfully.'
-                : ($isMeeting
-                    ? 'Meeting booked successfully. Confirmation details have been sent to your email.'
-                    : 'Thank you. Your message has been sent successfully.');
-
-            if ($expectsJson) {
-                return response()->json([
-                    'success' => true,
-                    'message' => $successMessage,
-                    'redirect_url' => $isMeeting && $lead && $lead->meeting_token
-                        ? route('meeting.confirmation', ['token' => $lead->meeting_token])
-                        : null,
-                ]);
-            }
-
-            if ($isMeeting && $lead && $lead->meeting_token) {
-                return redirect()->route('meeting.confirmation', ['token' => $lead->meeting_token]);
-            }
-
-            return response($this->htmlMessage('success', $successMessage));
+            $adminMailSent = true;
         } catch (\Throwable $exception) {
-            if ($lead) {
-                $lead->update(['status' => 'in_progress']);
-            }
-            Log::error('Contact form email delivery failed.', [
+            Log::error('Contact form admin email failed.', [
                 'exception' => $exception->getMessage(),
                 'email' => $payload['email'] ?? null,
                 'subject' => $payload['subject'] ?? null,
+                'form_type' => $payload['form_type'] ?? null,
             ]);
-
-            return $this->errorResponse('Message could not be sent right now. Please try again shortly.', $expectsJson, 500);
         }
+
+        if ((bool) config('contact.auto_reply', true)) {
+            try {
+                Mail::to($payload['email'])->send(new ContactUserAcknowledgementMail($payload));
+                $userMailSent = true;
+            } catch (\Throwable $exception) {
+                Log::error('Contact form user acknowledgement email failed.', [
+                    'exception' => $exception->getMessage(),
+                    'email' => $payload['email'] ?? null,
+                    'subject' => $payload['subject'] ?? null,
+                    'form_type' => $payload['form_type'] ?? null,
+                ]);
+            }
+        } else {
+            $userMailSent = true;
+        }
+
+        $formType = (string) ($payload['form_type'] ?? '');
+        $successMessage = match ($formType) {
+            'newsletter' => 'Thank you. You have been subscribed successfully.',
+            'meeting' => 'Meeting booked successfully. Your slot is saved.',
+            'pricing_order' => 'Order request received. We will send your invoice and onboarding steps shortly.',
+            default => 'Thank you. Your request has been submitted successfully.',
+        };
+
+        if (!$adminMailSent || !$userMailSent) {
+            $successMessage .= ' If confirmation email is delayed, our team still received your request.';
+        }
+
+        if ($expectsJson) {
+            return response()->json([
+                'success' => true,
+                'message' => $successMessage,
+                'mail_admin_sent' => $adminMailSent,
+                'mail_user_sent' => $userMailSent,
+                'redirect_url' => $isMeeting && $lead && $lead->meeting_token
+                    ? route('meeting.confirmation', ['token' => $lead->meeting_token])
+                    : null,
+            ]);
+        }
+
+        if ($isMeeting && $lead && $lead->meeting_token) {
+            return redirect()->route('meeting.confirmation', ['token' => $lead->meeting_token]);
+        }
+
+        return response($this->htmlMessage('success', $successMessage));
     }
 
     public function availability(Request $request)

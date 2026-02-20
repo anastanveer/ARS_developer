@@ -3,87 +3,122 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>New Contact Query</title>
+    <title>ARSDeveloper | New Lead Alert</title>
 </head>
-<body style="margin:0;padding:0;background:#f3f6fb;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f6fb;padding:18px 0;">
+<body style="margin:0;padding:0;background:#eef3fb;">
+@php
+    $logoUrl = rtrim((string) config('app.url'), '/') . '/assets/images/resources/ars-logo-nav-white.png';
+@endphp
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef3fb;padding:20px 8px;">
     <tr>
         <td align="center">
-            <table role="presentation" width="680" cellpadding="0" cellspacing="0" style="max-width:680px;width:100%;background:#ffffff;border:1px solid #dbe5f5;border-radius:14px;overflow:hidden;">
+            <table role="presentation" width="700" cellpadding="0" cellspacing="0" style="max-width:700px;width:100%;background:#ffffff;border:1px solid #d6e2f5;border-radius:16px;overflow:hidden;">
                 <tr>
-                    <td style="padding:16px 20px;background:#133d7b;color:#ffffff;font-family:Arial,sans-serif;font-size:20px;font-weight:700;">
-                        New Contact Query Received
+                    <td style="background:#0f376f;padding:18px 20px;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td align="left" style="vertical-align:middle;">
+                                    <img src="{{ $logoUrl }}" alt="ARSDeveloper" width="140" style="display:block;max-width:140px;height:auto;">
+                                </td>
+                                <td align="right" style="vertical-align:middle;font-family:Arial,sans-serif;color:#d6e6ff;font-size:13px;line-height:1.5;">
+                                    New Lead Alert<br>{{ now()->format('d M Y, h:i A') }}
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
+
                 <tr>
-                    <td style="padding:20px;font-family:Arial,sans-serif;color:#1a2b44;font-size:14px;line-height:1.6;">
-                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:#f8fbff;border:1px solid #e1eaf8;border-radius:10px;">
-                            <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Name</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ $payload['name'] ?? '' }}</td></tr>
-                            <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Email</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ $payload['email'] ?? '' }}</td></tr>
+                    <td style="padding:20px 22px 10px 22px;font-family:Arial,sans-serif;color:#1b2d4d;">
+                        <p style="margin:0 0 8px;font-size:23px;font-weight:800;color:#123b75;">New Contact/Order Submission</p>
+                        <p style="margin:0;font-size:14px;line-height:1.6;color:#3f5478;">A new lead has been received from website forms. Review details and follow up quickly.</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding:10px 22px 8px 22px;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border:1px solid #dce8f8;border-radius:12px;overflow:hidden;background:#f8fbff;">
+                            <tr><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;font-weight:700;color:#173153;width:180px;">Name</td><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ $payload['name'] ?? '-' }}</td></tr>
+                            <tr><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;font-weight:700;color:#173153;">Email</td><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ $payload['email'] ?? '-' }}</td></tr>
+                            <tr><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;font-weight:700;color:#173153;">Form Type</td><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ strtoupper((string) ($payload['form_type'] ?? 'contact')) }}</td></tr>
                             @if(!empty($payload['phone']))
-                                <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Phone</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ $payload['phone'] }}</td></tr>
+                                <tr><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;font-weight:700;color:#173153;">Phone</td><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ $payload['phone'] }}</td></tr>
                             @endif
                             @if(!empty($payload['company']))
-                                <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Company</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ $payload['company'] }}</td></tr>
+                                <tr><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;font-weight:700;color:#173153;">Company</td><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ $payload['company'] }}</td></tr>
                             @endif
                             @if(!empty($payload['project_type']))
-                                <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Project Type</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ $payload['project_type'] }}</td></tr>
+                                <tr><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;font-weight:700;color:#173153;">Project Type</td><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ $payload['project_type'] }}</td></tr>
                             @endif
                             @if(!empty($payload['budget_range']))
-                                <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Budget Range</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ $payload['budget_range'] }}</td></tr>
+                                <tr><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;font-weight:700;color:#173153;">Budget Range</td><td style="padding:11px 13px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ $payload['budget_range'] }}</td></tr>
                             @endif
-                            @if(!empty($payload['coupon_code']) || !empty($payload['coupon_discount']) || !empty($payload['final_quote_preview']))
+                            <tr><td style="padding:11px 13px;font-family:Arial,sans-serif;font-size:14px;font-weight:700;color:#173153;">Subject</td><td style="padding:11px 13px;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ $payload['subject'] ?? '-' }}</td></tr>
+                        </table>
+                    </td>
+                </tr>
+
+                @if(!empty($payload['coupon_code']) || is_numeric($payload['coupon_discount'] ?? null) || is_numeric($payload['final_quote_preview'] ?? null))
+                    <tr>
+                        <td style="padding:8px 22px 0 22px;">
+                            <div style="border:1px solid #cde0fa;background:#f3f9ff;border-radius:10px;padding:12px 14px;font-family:Arial,sans-serif;">
+                                <p style="margin:0 0 8px;font-size:14px;font-weight:800;color:#123b75;">Coupon Details</p>
                                 @if(!empty($payload['coupon_code']))
-                                    <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Coupon Code</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ strtoupper((string) $payload['coupon_code']) }}</td></tr>
+                                    <p style="margin:0 0 4px;font-size:14px;color:#2f466c;"><strong>Code:</strong> {{ strtoupper((string) $payload['coupon_code']) }}</p>
                                 @endif
                                 @if(is_numeric($payload['coupon_discount'] ?? null))
-                                    <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Coupon Discount</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">GBP {{ number_format((float) $payload['coupon_discount'], 2) }}</td></tr>
+                                    <p style="margin:0 0 4px;font-size:14px;color:#2f466c;"><strong>Discount:</strong> GBP {{ number_format((float) $payload['coupon_discount'], 2) }}</p>
                                 @endif
                                 @if(is_numeric($payload['final_quote_preview'] ?? null))
-                                    <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Final Quote Preview</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">GBP {{ number_format((float) $payload['final_quote_preview'], 2) }}</td></tr>
+                                    <p style="margin:0;font-size:14px;color:#2f466c;"><strong>Final Quote Preview:</strong> GBP {{ number_format((float) $payload['final_quote_preview'], 2) }}</p>
                                 @endif
-                            @endif
-                            @if(!empty($payload['meeting_date']))
-                                <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Preferred Date</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ $payload['meeting_date'] }}</td></tr>
-                            @endif
-                            @if(!empty($payload['meeting_slot']))
-                                <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Preferred Time Slot</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ $payload['meeting_slot'] }}</td></tr>
-                            @endif
-                            @if(!empty($payload['meeting_timezone']))
-                                <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Meeting Timezone</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ $payload['meeting_timezone'] }}</td></tr>
-                            @endif
-                            @if(!empty($payload['meeting_reference']))
-                                <tr><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;"><strong>Meeting Reference</strong></td><td style="padding:10px 12px;border-bottom:1px solid #e8eef9;">{{ $payload['meeting_reference'] }}</td></tr>
-                            @endif
-                            <tr><td style="padding:10px 12px;"><strong>Subject</strong></td><td style="padding:10px 12px;">{{ $payload['subject'] ?? '' }}</td></tr>
-                        </table>
+                            </div>
+                        </td>
+                    </tr>
+                @endif
 
-                        @if(!empty($payload['meeting_manage_url']) || !empty($payload['meeting_confirmation_url']))
-                            <p style="margin:12px 0 6px;"><strong>Client Self-Service Links</strong></p>
-                            @if(!empty($payload['meeting_confirmation_url']))
-                                <p style="margin:0;"><a href="{{ $payload['meeting_confirmation_url'] }}">Confirmation Page</a></p>
-                            @endif
-                            @if(!empty($payload['meeting_manage_url']))
-                                <p style="margin:0;"><a href="{{ $payload['meeting_manage_url'] }}">Manage Booking</a></p>
-                            @endif
-                            @if(!empty($payload['meeting_cancel_url']))
-                                <p style="margin:0 0 8px;"><a href="{{ $payload['meeting_cancel_url'] }}">Cancel Link</a></p>
-                            @endif
-                        @endif
+                @if(!empty($payload['meeting_date']) || !empty($payload['meeting_slot']) || !empty($payload['meeting_timezone']))
+                    <tr>
+                        <td style="padding:8px 22px 0 22px;">
+                            <div style="border:1px solid #d6e5fa;background:#fbfdff;border-radius:10px;padding:12px 14px;font-family:Arial,sans-serif;">
+                                <p style="margin:0 0 8px;font-size:14px;font-weight:800;color:#123b75;">Meeting Details</p>
+                                @if(!empty($payload['meeting_reference']))
+                                    <p style="margin:0 0 4px;font-size:14px;color:#2f466c;"><strong>Reference:</strong> {{ $payload['meeting_reference'] }}</p>
+                                @endif
+                                @if(!empty($payload['meeting_date']))
+                                    <p style="margin:0 0 4px;font-size:14px;color:#2f466c;"><strong>Date:</strong> {{ $payload['meeting_date'] }}</p>
+                                @endif
+                                @if(!empty($payload['meeting_slot']))
+                                    <p style="margin:0 0 4px;font-size:14px;color:#2f466c;"><strong>Slot:</strong> {{ $payload['meeting_slot'] }}</p>
+                                @endif
+                                @if(!empty($payload['meeting_timezone']))
+                                    <p style="margin:0;font-size:14px;color:#2f466c;"><strong>Timezone:</strong> {{ $payload['meeting_timezone'] }}</p>
+                                @endif
+                            </div>
+                        </td>
+                    </tr>
+                @endif
 
-                        <p style="margin:14px 0 6px;"><strong>Message</strong></p>
-                        <div style="padding:12px;border:1px solid #e1eaf8;background:#fbfdff;border-radius:8px;">{!! nl2br(e($payload['message'] ?? '')) !!}</div>
+                <tr>
+                    <td style="padding:10px 22px 6px 22px;font-family:Arial,sans-serif;">
+                        <p style="margin:0 0 6px;font-size:14px;font-weight:800;color:#123b75;">Message</p>
+                        <div style="padding:12px 14px;border:1px solid #dce8f8;background:#ffffff;border-radius:10px;font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#2f466c;">{!! nl2br(e($payload['message'] ?? '-')) !!}</div>
+                    </td>
+                </tr>
 
-                        <p style="margin:16px 0 6px;"><strong>Submission Metadata</strong></p>
-                        <p style="margin:0;"><strong>Submitted At:</strong> {{ $payload['submitted_at'] ?? '' }}</p>
-                        <p style="margin:0;"><strong>Submitted From:</strong> {{ $payload['submitted_from'] ?? '' }}</p>
-                        <p style="margin:0;"><strong>IP Address:</strong> {{ $payload['ip'] ?? '' }}</p>
-                        <p style="margin:0;"><strong>User Agent:</strong> {{ $payload['user_agent'] ?? '' }}</p>
+                <tr>
+                    <td style="padding:8px 22px 14px 22px;font-family:Arial,sans-serif;font-size:13px;color:#5b7398;line-height:1.7;">
+                        <strong>Metadata:</strong><br>
+                        Submitted At: {{ $payload['submitted_at'] ?? '-' }}<br>
+                        Source: {{ $payload['submitted_from'] ?? '-' }}<br>
+                        IP: {{ $payload['ip'] ?? '-' }}<br>
+                        Country: {{ $payload['country'] ?? '-' }}
+                    </td>
+                </tr>
 
-                        <div style="margin-top:14px;padding-top:10px;border-top:1px dashed #d9e6fa;">
-                            <p style="margin:0;">&copy; {{ now()->year }} {{ config('company.legal_name') }}.</p>
-                            <p style="margin:4px 0 0;">Company No: {{ config('company.company_number') }} | Registered in {{ config('company.registered_in') }}</p>
-                        </div>
+                <tr>
+                    <td style="background:#f6f9ff;border-top:1px solid #e3ecfa;padding:12px 22px;font-family:Arial,sans-serif;color:#61789c;font-size:12px;line-height:1.6;">
+                        © {{ now()->year }} {{ config('company.legal_name') }} · Company No: {{ config('company.company_number') }} · {{ config('company.registered_in') }}
                     </td>
                 </tr>
             </table>
