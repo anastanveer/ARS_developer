@@ -23,6 +23,8 @@ use Illuminate\Support\Str;
 
 class ContactFormController extends Controller
 {
+    private array $tableColumnsCache = [];
+
     public function __invoke(Request $request)
     {
         $payload = $this->normalizePayload($request);
@@ -73,7 +75,16 @@ class ContactFormController extends Controller
             }
         }
 
-        $lead = $this->storeLead($payload, $isNewsletter, $isMeeting);
+        try {
+            $lead = $this->storeLead($payload, $isNewsletter, $isMeeting);
+        } catch (\Throwable $exception) {
+            $lead = null;
+            Log::error('Contact form lead storage failed.', [
+                'exception' => $exception->getMessage(),
+                'email' => $payload['email'] ?? null,
+                'form_type' => $payload['form_type'] ?? null,
+            ]);
+        }
         if ($isMeeting && $lead) {
             $payload = $this->hydrateMeetingPayload($payload, $lead, 'booked');
         }
@@ -83,7 +94,16 @@ class ContactFormController extends Controller
             && is_numeric($payload['selected_plan_price'] ?? null);
 
         if ($wantsDirectOrderPayment) {
-            $checkoutUrl = $this->buildDirectOrderCheckoutUrl($payload);
+            try {
+                $checkoutUrl = $this->buildDirectOrderCheckoutUrl($payload);
+            } catch (\Throwable $exception) {
+                $checkoutUrl = null;
+                Log::error('Direct order payment initialization failed.', [
+                    'exception' => $exception->getMessage(),
+                    'email' => $payload['email'] ?? null,
+                    'project_type' => $payload['project_type'] ?? null,
+                ]);
+            }
             if ($checkoutUrl) {
                 if ($expectsJson) {
                     return response()->json([
@@ -435,6 +455,17 @@ class ContactFormController extends Controller
             }
         }
 
+        $attributes = $this->filterExistingColumns('leads', $attributes);
+        if (!array_key_exists('email', $attributes)) {
+            $attributes['email'] = $payload['email'] ?? '';
+        }
+        if (!array_key_exists('type', $attributes)) {
+            $attributes['type'] = $isNewsletter ? 'newsletter' : ($isMeeting ? 'meeting' : 'contact');
+        }
+        if (!array_key_exists('status', $attributes)) {
+            $attributes['status'] = 'new';
+        }
+
         $lead = Lead::create($attributes);
 
         if ($resolvedCoupon && Schema::hasTable('coupon_redemptions')) {
@@ -586,6 +617,14 @@ class ContactFormController extends Controller
 
     private function buildDirectOrderCheckoutUrl(array $payload): ?string
     {
+        if (
+            !Schema::hasTable('clients')
+            || !Schema::hasTable('projects')
+            || !Schema::hasTable('invoices')
+        ) {
+            return null;
+        }
+
         if (!$this->hasStripeConfig()) {
             return null;
         }
@@ -598,25 +637,24 @@ class ContactFormController extends Controller
             return null;
         }
 
-        $client = Client::query()->firstOrCreate(
-            ['email' => strtolower((string) $payload['email'])],
-            [
-                'name' => $payload['name'] ?: 'Client',
-                'phone' => $payload['phone'] ?: null,
-                'company' => $payload['company'] ?: null,
-                'country' => $payload['country'] ?? null,
-            ]
-        );
+        $clientLookup = ['email' => strtolower((string) $payload['email'])];
+        $clientDefaults = $this->filterExistingColumns('clients', [
+            'name' => $payload['name'] ?: 'Client',
+            'phone' => $payload['phone'] ?: null,
+            'company' => $payload['company'] ?: null,
+            'country' => $payload['country'] ?? null,
+        ]);
+        $client = Client::query()->firstOrCreate($clientLookup, $clientDefaults);
 
-        $client->fill([
+        $client->fill($this->filterExistingColumns('clients', [
             'name' => $payload['name'] ?: $client->name,
             'phone' => $payload['phone'] ?: $client->phone,
             'company' => $payload['company'] ?: $client->company,
             'country' => $payload['country'] ?: $client->country,
-        ])->save();
+        ]))->save();
 
         $projectType = trim((string) ($payload['project_type'] ?? 'Website Project'));
-        $project = Project::query()->create([
+        $projectData = $this->filterExistingColumns('projects', [
             'client_id' => (int) $client->id,
             'title' => $projectType !== '' ? $projectType : 'Website Project',
             'type' => $projectType,
@@ -630,6 +668,7 @@ class ContactFormController extends Controller
             'portal_token' => Str::random(56),
             'description' => (string) ($payload['message'] ?? ''),
         ]);
+        $project = Project::query()->create($projectData);
 
         $project->milestones()->createMany([
             [
@@ -664,7 +703,7 @@ class ContactFormController extends Controller
             ]);
         }
 
-        $invoiceData = [
+        $invoiceData = $this->filterExistingColumns('invoices', [
             'invoice_number' => $this->generateInvoiceNumber(),
             'invoice_date' => now()->toDateString(),
             'due_date' => now()->addDays(7)->toDateString(),
@@ -672,7 +711,7 @@ class ContactFormController extends Controller
             'paid_amount' => 0,
             'status' => 'unpaid',
             'notes' => $this->buildInvoiceNotes($payload, $basePrice, $payable),
-        ];
+        ]);
         if (Schema::hasColumn('invoices', 'client_invoice_number')) {
             $invoiceData['client_invoice_number'] = $this->generateClientInvoiceNumber($project);
         }
@@ -774,5 +813,40 @@ class ContactFormController extends Controller
 
         $url = (string) data_get($response->json(), 'url', '');
         return $url !== '' ? $url : null;
+    }
+
+    private function filterExistingColumns(string $table, array $attributes): array
+    {
+        $columns = $this->getTableColumns($table);
+        if ($columns === []) {
+            return $attributes;
+        }
+
+        return array_filter(
+            $attributes,
+            static fn ($value, $key) => in_array((string) $key, $columns, true),
+            ARRAY_FILTER_USE_BOTH
+        );
+    }
+
+    private function getTableColumns(string $table): array
+    {
+        if (array_key_exists($table, $this->tableColumnsCache)) {
+            return $this->tableColumnsCache[$table];
+        }
+
+        if (!Schema::hasTable($table)) {
+            return $this->tableColumnsCache[$table] = [];
+        }
+
+        try {
+            return $this->tableColumnsCache[$table] = Schema::getColumnListing($table);
+        } catch (\Throwable $exception) {
+            Log::warning('Unable to read table columns list.', [
+                'table' => $table,
+                'exception' => $exception->getMessage(),
+            ]);
+            return $this->tableColumnsCache[$table] = [];
+        }
     }
 }
