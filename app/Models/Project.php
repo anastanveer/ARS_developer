@@ -43,4 +43,9 @@ class Project extends Model
     {
         return $this->hasMany(Payment::class)->latest('payment_date');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(ClientReview::class)->latest();
+    }
 }

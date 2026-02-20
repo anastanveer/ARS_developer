@@ -10,7 +10,7 @@ class Invoice extends Model
     use HasFactory;
 
     protected $fillable = [
-        'project_id', 'invoice_number', 'invoice_date', 'due_date',
+        'project_id', 'invoice_number', 'client_invoice_number', 'invoice_date', 'due_date',
         'amount', 'paid_amount', 'status', 'notes',
     ];
 
@@ -27,5 +27,10 @@ class Invoice extends Model
     public function payments()
     {
         return $this->hasMany(Payment::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(ClientReview::class);
     }
 }

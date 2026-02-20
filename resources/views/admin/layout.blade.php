@@ -390,6 +390,7 @@
             <div class="nav-title">Sales</div>
             <a href="{{ route('admin.clients.index') }}" class="{{ request()->routeIs('admin.clients.*') ? 'active' : '' }}"><span class="nav-ico">👥</span><span class="nav-label">Clients</span></a>
             <a href="{{ route('admin.projects.index') }}" class="{{ request()->routeIs('admin.projects.*') ? 'active' : '' }}"><span class="nav-ico">🗂️</span><span class="nav-label">Projects</span></a>
+            <a href="{{ route('admin.reviews.index') }}" class="{{ request()->routeIs('admin.reviews.*') ? 'active' : '' }}"><span class="nav-ico">⭐</span><span class="nav-label">Client Reviews</span></a>
             <a href="{{ route('admin.operations.index') }}" class="{{ request()->routeIs('admin.operations.*') ? 'active' : '' }}"><span class="nav-ico">⚙️</span><span class="nav-label">Operations & Audit</span></a>
             <a href="{{ route('admin.finance.index') }}" class="{{ request()->routeIs('admin.finance.*') ? 'active' : '' }}"><span class="nav-ico">💷</span><span class="nav-label">Finance Control</span></a>
             <a href="{{ route('admin.audits.index') }}" class="{{ request()->routeIs('admin.audits.*') ? 'active' : '' }}"><span class="nav-ico">🧪</span><span class="nav-label">Audit Lab</span></a>
@@ -460,8 +461,32 @@
                         ];
                     });
 
+                $adminReviewActivity = collect();
+                if (\Illuminate\Support\Facades\Schema::hasTable('client_reviews')) {
+                    $adminReviewActivity = \App\Models\ClientReview::query()
+                        ->with(['project.client'])
+                        ->whereNotNull('submitted_at')
+                        ->where('is_approved', false)
+                        ->latest('submitted_at')
+                        ->limit(10)
+                        ->get()
+                        ->map(function ($item) {
+                            return [
+                                'at' => $item->submitted_at ?: $item->created_at,
+                                'label' => 'New review submitted',
+                                'detail' => $item->review_title ?: 'Client review pending approval',
+                                'client' => $item->project?->client?->name ?: ($item->reviewer_name ?: 'Client'),
+                                'project' => $item->project?->title ?: '-',
+                                'project_id' => $item->project_id,
+                                'type' => 'review',
+                                'activity_id' => (int) $item->id,
+                            ];
+                        });
+                }
+
                 $adminBellActivity = $adminRequirementActivity
                     ->merge($adminPaymentActivity)
+                    ->merge($adminReviewActivity)
                     ->sortByDesc('at')
                     ->take(12)
                     ->values();

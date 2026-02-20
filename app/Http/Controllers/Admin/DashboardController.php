@@ -7,18 +7,27 @@ use App\Models\Client;
 use App\Models\Coupon;
 use App\Models\EmailLog;
 use App\Models\Lead;
+use App\Models\ClientReview;
 use App\Models\Payment;
 use App\Models\Portfolio;
 use App\Models\Project;
 use App\Models\ProjectRequirement;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
     public function index(): View
     {
+        $pendingReviewsCount = 0;
+        if (Schema::hasTable('client_reviews')) {
+            $pendingReviewsCount = ClientReview::whereNotNull('submitted_at')
+                ->where('is_approved', false)
+                ->count();
+        }
+
         $stats = [
             'total_leads' => Lead::count(),
             'new_leads' => Lead::where('status', 'new')->count(),
@@ -29,6 +38,7 @@ class DashboardController extends Controller
             'clients' => Client::count(),
             'projects' => Project::count(),
             'revenue' => Payment::sum('amount'),
+            'pending_reviews' => $pendingReviewsCount,
             'client_actions_7d' => ProjectRequirement::where('source', 'client')->where('created_at', '>=', now()->subDays(7))->count()
                 + Payment::where(function ($q) {
                     $q->where('notes', 'like', 'Paid by client via portal.%')

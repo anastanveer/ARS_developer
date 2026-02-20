@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\ClientReview;
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\Project;
@@ -174,6 +175,7 @@ class ProjectController extends Controller
         ]);
 
         $data['paid_amount'] = 0;
+        $data['client_invoice_number'] = $this->generateClientInvoiceNumber($project);
         $invoice = $project->invoices()->create($data);
         $this->sendInvoiceCreatedEmail($project->load('client'), $invoice);
 
@@ -191,11 +193,14 @@ class ProjectController extends Controller
             'notes' => ['nullable', 'string'],
         ]);
 
+        $invoiceJustPaid = false;
         if (!empty($data['invoice_id'])) {
             $invoice = Invoice::query()->where('project_id', $project->id)->findOrFail($data['invoice_id']);
+            $invoiceWasPaidBefore = (string) $invoice->status === 'paid';
             $invoice->paid_amount = (float) $invoice->paid_amount + (float) $data['amount'];
             $invoice->status = $invoice->paid_amount >= (float) $invoice->amount ? 'paid' : 'partially_paid';
             $invoice->save();
+            $invoiceJustPaid = !$invoiceWasPaidBefore && (string) $invoice->status === 'paid';
         }
 
         $payment = $project->payments()->create($data);
@@ -207,6 +212,10 @@ class ProjectController extends Controller
 
         if (isset($invoice)) {
             $this->sendPaymentReceivedEmail($project->load('client'), $invoice, $payment);
+            $this->sendAdminOrderAlertEmail($project->load('client'), $invoice, $payment);
+            if ($invoiceJustPaid) {
+                $this->sendReviewRequestEmail($project->load('client'), $invoice, $payment);
+            }
             $message = 'Payment logged, project balance updated, and receipt emailed.';
         }
 
@@ -305,6 +314,98 @@ class ProjectController extends Controller
             Log::error('Failed to send payment email.', [
                 'project_id' => $project->id,
                 'invoice_id' => $invoice->id,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    private function generateClientInvoiceNumber(Project $project): string
+    {
+        $year = now()->format('Y');
+        $counter = max(1, (int) Invoice::query()->where('project_id', $project->id)->count() + 1);
+
+        do {
+            $candidate = 'CL-' . (int) $project->client_id . '-' . $year . '-' . str_pad((string) $counter, 4, '0', STR_PAD_LEFT);
+            $exists = Invoice::query()->where('client_invoice_number', $candidate)->exists();
+            $counter++;
+        } while ($exists);
+
+        return $candidate;
+    }
+
+    private function sendAdminOrderAlertEmail(Project $project, Invoice $invoice, Payment $payment): void
+    {
+        $adminEmail = trim((string) config('contact.inbox_email', 'info@arsdeveloper.co.uk'));
+        if ($adminEmail === '') {
+            return;
+        }
+
+        $payload = [
+            'project' => $project,
+            'invoice' => $invoice,
+            'payment' => $payment,
+        ];
+
+        try {
+            Mail::send('emails.admin-order-alert', $payload, function ($message) use ($adminEmail, $invoice) {
+                $message->to($adminEmail)
+                    ->subject('Order Payment Received - ' . $invoice->invoice_number);
+            });
+        } catch (\Throwable $e) {
+            Log::error('Failed to send admin order alert email.', [
+                'project_id' => $project->id,
+                'invoice_id' => $invoice->id,
+                'payment_id' => $payment->id,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    private function sendReviewRequestEmail(Project $project, Invoice $invoice, Payment $payment): void
+    {
+        $clientEmail = trim((string) ($project->client?->email ?? ''));
+        if ($clientEmail === '') {
+            return;
+        }
+
+        $review = ClientReview::query()->firstOrCreate(
+            ['invoice_id' => $invoice->id],
+            [
+                'client_id' => $project->client_id,
+                'project_id' => $project->id,
+                'payment_id' => $payment->id,
+                'review_token' => Str::random(56),
+                'reviewer_name' => (string) ($project->client?->name ?? ''),
+                'reviewer_email' => $clientEmail,
+                'company_name' => (string) ($project->client?->company ?? ''),
+            ]
+        );
+
+        if ($review->email_sent_at) {
+            return;
+        }
+
+        $payload = [
+            'project' => $project,
+            'invoice' => $invoice,
+            'payment' => $payment,
+            'reviewUrl' => route('review.show', ['token' => $review->review_token]),
+            'portalUrl' => route('client.portal', ['token' => $project->portal_token]),
+        ];
+
+        try {
+            Mail::send('emails.client-thank-you-review-request', $payload, function ($message) use ($clientEmail, $project, $invoice) {
+                $message->to($clientEmail, $project->client?->name ?: 'Client')
+                    ->subject('Thank You - Invoice Paid (' . $invoice->invoice_number . ')');
+            });
+
+            $review->email_sent_at = now();
+            $review->save();
+        } catch (\Throwable $e) {
+            Log::error('Failed to send client review request email.', [
+                'project_id' => $project->id,
+                'invoice_id' => $invoice->id,
+                'payment_id' => $payment->id,
                 'error' => $e->getMessage(),
             ]);
         }

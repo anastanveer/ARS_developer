@@ -12,6 +12,7 @@
     <div class="stat"><b>Meetings</b><span>{{ $stats['meetings'] }}</span></div>
     <div class="stat"><b>Clients</b><span>{{ $stats['clients'] }}</span></div>
     <div class="stat"><b>Projects</b><span>{{ $stats['projects'] }}</span></div>
+    <div class="stat"><b>Pending Reviews</b><span>{{ $stats['pending_reviews'] }}</span></div>
     <div class="stat"><b>Revenue</b><span>GBP {{ number_format((float) $stats['revenue'], 0) }}</span></div>
     <div class="stat"><b>Client Actions (7d)</b><span>{{ $stats['client_actions_7d'] }}</span></div>
 </div>

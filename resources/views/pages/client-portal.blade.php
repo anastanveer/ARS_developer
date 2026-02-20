@@ -311,7 +311,10 @@
                     @php($remaining = max(0, (float)$invoice->amount - (float)$invoice->paid_amount))
                     @php($invoiceStatusClass = str_replace('_','-', strtolower($invoice->status)))
                     <tr>
-                        <td><strong>{{ $invoice->invoice_number }}</strong></td>
+                        <td>
+                            <strong>{{ $invoice->invoice_number }}</strong><br>
+                            <span class="muted">Client Ref: {{ $invoice->client_invoice_number ?: '-' }}</span>
+                        </td>
                         <td>{{ optional($invoice->invoice_date)->format('d M Y') ?: '-' }}<br><span class="muted">Due: {{ optional($invoice->due_date)->format('d M Y') ?: '-' }}</span></td>
                         <td>{{ $project->currency }} {{ number_format((float)$invoice->amount,2) }}</td>
                         <td>{{ $project->currency }} {{ number_format((float)$invoice->paid_amount,2) }}</td>

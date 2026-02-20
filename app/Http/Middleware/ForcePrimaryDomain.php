@@ -80,6 +80,7 @@ class ForcePrimaryDomain
 
         $noindexWildcard = [
             'client-portal/*',
+            'review/*',
             'admin',
             'admin/*',
             'meeting/confirmation/*',

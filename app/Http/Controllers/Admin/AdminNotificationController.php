@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdminNotificationRead;
+use App\Models\ClientReview;
 use App\Models\Payment;
 use App\Models\ProjectRequirement;
 use Illuminate\Http\RedirectResponse;
@@ -15,7 +16,7 @@ class AdminNotificationController extends Controller
     public function open(Request $request, string $type, int $activityId, int $projectId): RedirectResponse
     {
         $adminUserId = (int) $request->session()->get('admin_user_id', 0);
-        if ($adminUserId > 0 && in_array($type, ['requirement', 'payment'], true)) {
+        if ($adminUserId > 0 && in_array($type, ['requirement', 'payment', 'review'], true)) {
             AdminNotificationRead::query()->updateOrCreate(
                 [
                     'admin_user_id' => $adminUserId,
@@ -67,7 +68,22 @@ class AdminNotificationController extends Controller
                 'updated_at' => now(),
             ]);
 
-        $rows = $requirements->merge($payments)->values()->all();
+        $reviews = ClientReview::query()
+            ->whereNotNull('submitted_at')
+            ->where('is_approved', false)
+            ->latest('submitted_at')
+            ->limit(200)
+            ->pluck('id')
+            ->map(fn ($id) => [
+                'admin_user_id' => $adminUserId,
+                'activity_type' => 'review',
+                'activity_id' => (int) $id,
+                'read_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+        $rows = $requirements->merge($payments)->merge($reviews)->values()->all();
         if (!empty($rows)) {
             DB::table('admin_notification_reads')->upsert(
                 $rows,

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\BlockedContact;
 use App\Models\Client;
+use App\Models\ClientReview;
 use App\Models\Coupon;
 use App\Models\Lead;
 use App\Models\MonthlyMetric;
@@ -124,6 +125,7 @@ class DatabaseSeeder extends Seeder
             ['invoice_number' => 'INV-2026-1001'],
             [
                 'project_id' => $projectA->id,
+                'client_invoice_number' => 'CL-' . $projectA->client_id . '-2026-0001',
                 'invoice_date' => now()->subDays(20)->toDateString(),
                 'due_date' => now()->subDays(5)->toDateString(),
                 'amount' => 9000,
@@ -136,6 +138,7 @@ class DatabaseSeeder extends Seeder
             ['invoice_number' => 'INV-2026-1002'],
             [
                 'project_id' => $projectB->id,
+                'client_invoice_number' => 'CL-' . $projectB->client_id . '-2026-0001',
                 'invoice_date' => now()->subDays(5)->toDateString(),
                 'due_date' => now()->addDays(15)->toDateString(),
                 'amount' => 10000,
@@ -148,6 +151,7 @@ class DatabaseSeeder extends Seeder
             ['invoice_number' => 'INV-2026-1003'],
             [
                 'project_id' => $projectB->id,
+                'client_invoice_number' => 'CL-' . $projectB->client_id . '-2026-0002',
                 'invoice_date' => now()->toDateString(),
                 'due_date' => now()->addDays(21)->toDateString(),
                 'amount' => 8000,
@@ -174,6 +178,44 @@ class DatabaseSeeder extends Seeder
                 'amount' => 10000,
                 'payment_date' => now()->subDays(2)->toDateString(),
                 'method' => 'bank_transfer',
+            ]
+        );
+
+        ClientReview::updateOrCreate(
+            ['invoice_id' => $invoiceA1->id],
+            [
+                'client_id' => $projectA->client_id,
+                'project_id' => $projectA->id,
+                'review_token' => 'demo-review-token-northstar-2026',
+                'reviewer_name' => 'Emma Carter',
+                'reviewer_email' => 'hello@northstar-retail.co.uk',
+                'company_name' => 'Northstar Retail',
+                'rating' => 5,
+                'review_title' => 'Excellent delivery and communication',
+                'review_text' => 'The ARSDeveloper team handled the ecommerce build and SEO implementation with great clarity. Delivery milestones were on time and support remained strong after launch.',
+                'result_summary' => 'Higher conversion rate and faster page speed after launch.',
+                'submitted_at' => now()->subDays(8),
+                'is_approved' => true,
+                'approved_at' => now()->subDays(6),
+            ]
+        );
+
+        ClientReview::updateOrCreate(
+            ['invoice_id' => $invoiceB1->id],
+            [
+                'client_id' => $projectB->client_id,
+                'project_id' => $projectB->id,
+                'review_token' => 'demo-review-token-sterling-2026',
+                'reviewer_name' => 'Daniel Brooks',
+                'reviewer_email' => 'ops@sterlingclinics.co.uk',
+                'company_name' => 'Sterling Clinics',
+                'rating' => 5,
+                'review_title' => 'Structured process and reliable outcomes',
+                'review_text' => 'From discovery through implementation, everything was managed in a clear structure. Our team had visibility on milestones, payments, and requirements throughout the project.',
+                'result_summary' => 'Improved enquiry workflow and admin visibility.',
+                'submitted_at' => now()->subDays(5),
+                'is_approved' => true,
+                'approved_at' => now()->subDays(4),
             ]
         );
 

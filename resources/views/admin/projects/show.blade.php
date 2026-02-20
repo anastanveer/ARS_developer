@@ -152,6 +152,7 @@
         <form method="post" action="{{ route('admin.projects.invoices.store', $project) }}" class="row">
             @csrf
             <div><label>Invoice #</label><input name="invoice_number" required placeholder="INV-2026-001"></div>
+            <div><label>Client Invoice #</label><input value="Auto generated per client" disabled></div>
             <div><label>Invoice Date</label><input type="date" name="invoice_date" required></div>
             <div><label>Due Date</label><input type="date" name="due_date"></div>
             <div><label>Amount</label><input type="number" step="0.01" name="amount" required></div>
@@ -164,7 +165,11 @@
             <tbody>
             @forelse($project->invoices as $invoice)
                 <tr>
-                    <td><strong>{{ $invoice->invoice_number }}</strong><br><span class="muted">{{ $invoice->notes }}</span></td>
+                    <td>
+                        <strong>{{ $invoice->invoice_number }}</strong><br>
+                        <span class="muted">Client Ref: {{ $invoice->client_invoice_number ?: 'Not generated' }}</span><br>
+                        <span class="muted">{{ $invoice->notes }}</span>
+                    </td>
                     <td>{{ optional($invoice->invoice_date)->format('d M Y') }}<br>{{ optional($invoice->due_date)->format('d M Y') ?: '-' }}</td>
                     <td>{{ number_format((float)$invoice->amount,2) }}</td>
                     <td>{{ number_format((float)$invoice->paid_amount,2) }}</td>
@@ -197,18 +202,25 @@
             <div class="full"><button class="btn" type="submit">Log Payment</button></div>
         </form>
         <table>
-            <thead><tr><th>Date</th><th>Amount</th><th>Method</th><th>Reference</th><th>Invoice</th></tr></thead>
+            <thead><tr><th>ID</th><th>Date</th><th>Amount</th><th>Method</th><th>Payment ID</th><th>Invoice</th></tr></thead>
             <tbody>
             @forelse($project->payments as $payment)
                 <tr>
+                    <td>#{{ $payment->id }}</td>
                     <td>{{ optional($payment->payment_date)->format('d M Y') }}</td>
                     <td>{{ $project->currency }} {{ number_format((float)$payment->amount,2) }}</td>
                     <td>{{ $payment->method ?: '-' }}</td>
-                    <td>{{ $payment->reference ?: '-' }}</td>
-                    <td>{{ $payment->invoice?->invoice_number ?: '-' }}</td>
+                    <td>
+                        Ref: {{ $payment->reference ?: '-' }}<br>
+                        Gateway: {{ $payment->gateway_payment_id ?: '-' }}
+                    </td>
+                    <td>
+                        {{ $payment->invoice?->invoice_number ?: '-' }}<br>
+                        <span class="muted">{{ $payment->invoice?->client_invoice_number ?: '-' }}</span>
+                    </td>
                 </tr>
             @empty
-                <tr><td colspan="5">No payments yet.</td></tr>
+                <tr><td colspan="6">No payments yet.</td></tr>
             @endforelse
             </tbody>
         </table>

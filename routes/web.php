@@ -15,9 +15,12 @@ use App\Http\Controllers\Admin\FinanceController;
 use App\Http\Controllers\Admin\OperationsController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\Admin\ClientReviewController as AdminClientReviewController;
 use App\Http\Controllers\BlogPageController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\ClientReviewController;
 use App\Http\Controllers\ClientPortalController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MeetingBookingController;
 use App\Http\Controllers\SeoHubController;
 use App\Http\Controllers\SearchController;
@@ -27,7 +30,7 @@ use App\Http\Controllers\PricingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'pages.index')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/about', 'pages.about');
 Route::view('/services', 'pages.services');
 Route::view('/software-development', 'pages.software-development');
@@ -229,6 +232,8 @@ Route::post('/client-portal/{token}/requirements', [ClientPortalController::clas
 Route::post('/client-portal/{token}/pay', [ClientPortalController::class, 'payInvoice'])->name('client.portal.pay');
 Route::get('/client-portal/{token}/pay/success', [ClientPortalController::class, 'handleStripeSuccess'])->name('client.portal.pay.success');
 Route::post('/stripe/webhook', [ClientPortalController::class, 'stripeWebhook'])->name('stripe.webhook');
+Route::get('/review/{token}', [ClientReviewController::class, 'show'])->name('review.show');
+Route::post('/review/{token}', [ClientReviewController::class, 'submit'])->name('review.submit');
 Route::get('/client-portal-demo', function () {
     abort_unless(app()->environment('local'), 404);
 
@@ -312,6 +317,7 @@ Route::get('/client-portal-demo', function () {
         ['invoice_number' => 'DEMO-INV-2026-001'],
         [
             'project_id' => $project->id,
+            'client_invoice_number' => 'CL-' . $project->client_id . '-2026-0001',
             'invoice_date' => now()->subDays(2)->toDateString(),
             'due_date' => now()->addDays(12)->toDateString(),
             'amount' => 2000,
@@ -361,6 +367,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::resource('/blocked-contacts', BlockedContactController::class)->except('show');
             Route::resource('/clients', ClientController::class)->except('show');
             Route::resource('/projects', ProjectController::class);
+            Route::get('/reviews', [AdminClientReviewController::class, 'index'])->name('reviews.index');
+            Route::post('/reviews/{review}/approve', [AdminClientReviewController::class, 'approve'])->name('reviews.approve');
+            Route::post('/reviews/{review}/unapprove', [AdminClientReviewController::class, 'unapprove'])->name('reviews.unapprove');
+            Route::post('/reviews/{review}/delete', [AdminClientReviewController::class, 'destroy'])->name('reviews.delete');
             Route::get('/operations', [OperationsController::class, 'index'])->name('operations.index');
             Route::post('/operations/expenses', [OperationsController::class, 'storeExpense'])->name('operations.expenses.store');
             Route::post('/operations/expenses/{expense}/delete', [OperationsController::class, 'destroyExpense'])->name('operations.expenses.delete');

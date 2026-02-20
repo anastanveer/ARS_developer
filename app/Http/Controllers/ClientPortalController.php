@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClientReview;
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\Project;
@@ -93,9 +94,11 @@ class ClientPortalController extends Controller
             'payment_date' => now()->toDateString(),
             'method' => $method !== '' ? $method : 'Portal Payment',
             'reference' => $data['reference'] ?: null,
+            'gateway_payment_id' => null,
             'notes' => 'Paid by client via portal.',
         ]);
 
+        $invoiceWasPaidBefore = (string) $invoice->status === 'paid';
         $invoice->paid_amount = (float) $invoice->paid_amount + $paidAmount;
         $invoice->status = $invoice->paid_amount >= (float) $invoice->amount ? 'paid' : 'partially_paid';
         $invoice->save();
@@ -104,6 +107,10 @@ class ClientPortalController extends Controller
         $project->save();
 
         $this->sendPaymentEmail($project, $invoice, $payment);
+        $this->sendAdminOrderAlertEmail($project, $invoice, $payment);
+        if (!$invoiceWasPaidBefore && (string) $invoice->status === 'paid') {
+            $this->sendReviewRequestEmail($project, $invoice, $payment);
+        }
 
         return back()->with('success', 'Payment recorded successfully. Receipt email sent.');
     }
@@ -394,15 +401,21 @@ class ClientPortalController extends Controller
                 'payment_date' => now()->toDateString(),
                 'method' => 'Stripe Card',
                 'reference' => $sessionId,
+                'gateway_payment_id' => $paymentIntent !== '' ? $paymentIntent : null,
                 'notes' => implode(' ', $notes),
             ]);
 
+            $invoiceWasPaidBefore = (string) $lockedInvoice->status === 'paid';
             $lockedInvoice->paid_amount = (float) $lockedInvoice->paid_amount + $recordAmount;
             $lockedInvoice->status = $lockedInvoice->paid_amount >= (float) $lockedInvoice->amount ? 'paid' : 'partially_paid';
             $lockedInvoice->save();
 
             $project->paid_total = (float) $project->payments()->sum('amount');
             $project->save();
+
+            if (!$invoiceWasPaidBefore && (string) $lockedInvoice->status === 'paid') {
+                $createdPayment->setAttribute('invoice_now_paid', true);
+            }
         });
 
         if ($createdPayment instanceof Payment) {
@@ -410,6 +423,10 @@ class ClientPortalController extends Controller
             $project->refresh();
             $project->loadMissing('client');
             $this->sendPaymentEmail($project, $invoice, $createdPayment);
+            $this->sendAdminOrderAlertEmail($project, $invoice, $createdPayment);
+            if ((bool) $createdPayment->getAttribute('invoice_now_paid')) {
+                $this->sendReviewRequestEmail($project, $invoice, $createdPayment);
+            }
             return 'paid';
         }
 
@@ -475,5 +492,82 @@ class ClientPortalController extends Controller
 
         return false;
     }
-}
 
+    private function sendAdminOrderAlertEmail(Project $project, Invoice $invoice, Payment $payment): void
+    {
+        $adminEmail = trim((string) config('contact.inbox_email', 'info@arsdeveloper.co.uk'));
+        if ($adminEmail === '') {
+            return;
+        }
+
+        $payload = [
+            'project' => $project,
+            'invoice' => $invoice,
+            'payment' => $payment,
+        ];
+
+        try {
+            Mail::send('emails.admin-order-alert', $payload, function ($message) use ($adminEmail, $invoice) {
+                $message->to($adminEmail)
+                    ->subject('Order Payment Received - ' . $invoice->invoice_number);
+            });
+        } catch (Throwable $e) {
+            Log::error('Failed to send admin order alert email from client portal.', [
+                'project_id' => $project->id,
+                'invoice_id' => $invoice->id,
+                'payment_id' => $payment->id,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    private function sendReviewRequestEmail(Project $project, Invoice $invoice, Payment $payment): void
+    {
+        $clientEmail = trim((string) ($project->client?->email ?? ''));
+        if ($clientEmail === '') {
+            return;
+        }
+
+        $review = ClientReview::query()->firstOrCreate(
+            ['invoice_id' => $invoice->id],
+            [
+                'client_id' => $project->client_id,
+                'project_id' => $project->id,
+                'payment_id' => $payment->id,
+                'review_token' => \Illuminate\Support\Str::random(56),
+                'reviewer_name' => (string) ($project->client?->name ?? ''),
+                'reviewer_email' => $clientEmail,
+                'company_name' => (string) ($project->client?->company ?? ''),
+            ]
+        );
+
+        if ($review->email_sent_at) {
+            return;
+        }
+
+        $payload = [
+            'project' => $project,
+            'invoice' => $invoice,
+            'payment' => $payment,
+            'reviewUrl' => route('review.show', ['token' => $review->review_token]),
+            'portalUrl' => route('client.portal', ['token' => $project->portal_token]),
+        ];
+
+        try {
+            Mail::send('emails.client-thank-you-review-request', $payload, function ($message) use ($clientEmail, $project, $invoice) {
+                $message->to($clientEmail, $project->client?->name ?: 'Client')
+                    ->subject('Thank You - Invoice Paid (' . $invoice->invoice_number . ')');
+            });
+
+            $review->email_sent_at = now();
+            $review->save();
+        } catch (Throwable $e) {
+            Log::error('Failed to send review request from client portal flow.', [
+                'project_id' => $project->id,
+                'invoice_id' => $invoice->id,
+                'payment_id' => $payment->id,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+}

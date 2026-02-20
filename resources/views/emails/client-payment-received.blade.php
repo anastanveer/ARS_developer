@@ -29,6 +29,14 @@
                                 <td style="padding:12px 14px;border-bottom:1px solid #e8eef9;">{{ $invoice->invoice_number }}</td>
                             </tr>
                             <tr>
+                                <td style="padding:12px 14px;border-bottom:1px solid #e8eef9;"><strong>Client Invoice Ref</strong></td>
+                                <td style="padding:12px 14px;border-bottom:1px solid #e8eef9;">{{ $invoice->client_invoice_number ?: 'N/A' }}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:12px 14px;border-bottom:1px solid #e8eef9;"><strong>Payment Record ID</strong></td>
+                                <td style="padding:12px 14px;border-bottom:1px solid #e8eef9;">#{{ $payment->id }}</td>
+                            </tr>
+                            <tr>
                                 <td style="padding:12px 14px;border-bottom:1px solid #e8eef9;"><strong>Payment Date</strong></td>
                                 <td style="padding:12px 14px;border-bottom:1px solid #e8eef9;">{{ optional($payment->payment_date)->format('d M Y') }}</td>
                             </tr>
@@ -42,7 +50,7 @@
                             </tr>
                             <tr>
                                 <td style="padding:12px 14px;"><strong>Reference</strong></td>
-                                <td style="padding:12px 14px;">{{ $payment->reference ?: 'N/A' }}</td>
+                                <td style="padding:12px 14px;">{{ $payment->gateway_payment_id ?: ($payment->reference ?: 'N/A') }}</td>
                             </tr>
                         </table>
 
