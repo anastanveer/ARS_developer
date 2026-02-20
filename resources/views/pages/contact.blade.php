@@ -225,6 +225,7 @@
                                 @csrf
                                 <input type="hidden" name="form_type" value="{{ $prefillFormType }}">
                                 <input type="hidden" name="start_order_payment" value="0" data-order-pay-flag>
+                                <input type="hidden" name="payment_intent" value="{{ $flowIntent }}">
                                 @if($flowProjectType !== '')
                                     <input type="hidden" name="project_type" value="{{ $flowProjectType }}">
                                 @endif

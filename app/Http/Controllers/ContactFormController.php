@@ -46,6 +46,7 @@ class ContactFormController extends Controller
             'project_type' => [$isMeeting ? 'required' : 'nullable', 'string', 'max:120'],
             'budget_range' => ['nullable', 'string', 'max:120'],
             'selected_plan_price' => ['nullable', 'numeric', 'min:0'],
+            'payment_intent' => ['nullable', 'string', 'max:60'],
             'start_order_payment' => ['nullable', 'boolean'],
             'company' => ['nullable', 'string', 'max:120'],
             'coupon_code' => ['nullable', 'string', 'max:40'],
@@ -89,9 +90,15 @@ class ContactFormController extends Controller
             $payload = $this->hydrateMeetingPayload($payload, $lead, 'booked');
         }
 
+        $hasPayableAmount = is_numeric($payload['selected_plan_price'] ?? null)
+            || is_numeric($payload['final_quote_preview'] ?? null);
+        $isKickoffIntent = strtolower(trim((string) ($payload['payment_intent'] ?? ''))) === 'kickoff_payment';
         $wantsDirectOrderPayment = ($payload['form_type'] ?? '') === 'pricing_order'
-            && filter_var($payload['start_order_payment'] ?? false, FILTER_VALIDATE_BOOLEAN)
-            && is_numeric($payload['selected_plan_price'] ?? null);
+            && $hasPayableAmount
+            && (
+                filter_var($payload['start_order_payment'] ?? false, FILTER_VALIDATE_BOOLEAN)
+                || $isKickoffIntent
+            );
 
         if ($wantsDirectOrderPayment) {
             $checkoutUrl = null;
@@ -263,6 +270,7 @@ class ContactFormController extends Controller
             'project_type' => trim((string) $projectType),
             'budget_range' => trim((string) $budgetRange),
             'selected_plan_price' => trim((string) ($this->firstFilled($request, ['selected_plan_price']) ?: '')),
+            'payment_intent' => trim((string) ($this->firstFilled($request, ['payment_intent']) ?: '')),
             'start_order_payment' => filter_var($request->input('start_order_payment', false), FILTER_VALIDATE_BOOLEAN),
             'coupon_code' => $couponCode,
             'coupon_discount' => $couponDiscount,
