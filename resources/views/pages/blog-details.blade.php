@@ -201,6 +201,8 @@
                         <img src="{{ $heroImage }}" alt="{{ $post->featured_image_alt ?: $post->title }}">
                     </div>
                     <div class="blog-details__content">
+                        <h2 class="seo-hidden-heading">Blog post overview and metadata</h2>
+                        <h3 class="seo-hidden-heading">Author, publish date, read time, and category</h3>
                         <ul class="blog-details__meta list-unstyled">
                             <li>
                                 <div class="content">
@@ -259,11 +261,20 @@
                         <div class="blog-details__cluster-links">
                             <h3>Next Step Resources</h3>
                             <div class="blog-details__cluster-links-list">
-                                <a href="/uk-growth-hub">UK SEO Growth Hub</a>
-                                <a href="/services">Service Solutions</a>
-                                <a href="/portfolio">Case Studies</a>
-                                <a href="/pricing">Pricing Plans</a>
-                                <a href="/contact">Book Strategy Call</a>
+                                @php
+                                    $resourceLinks = !empty($clusterLinks) && is_array($clusterLinks)
+                                        ? $clusterLinks
+                                        : [
+                                            ['label' => 'UK SEO Growth Hub', 'url' => '/uk-growth-hub'],
+                                            ['label' => 'Service Solutions', 'url' => '/services'],
+                                            ['label' => 'Case Studies', 'url' => '/portfolio'],
+                                            ['label' => 'Pricing Plans', 'url' => '/pricing'],
+                                            ['label' => 'Book Strategy Call', 'url' => '/contact'],
+                                        ];
+                                @endphp
+                                @foreach($resourceLinks as $resourceLink)
+                                    <a href="{{ $resourceLink['url'] }}">{{ $resourceLink['label'] }}</a>
+                                @endforeach
                             </div>
                         </div>
 

@@ -389,6 +389,7 @@
         <!--About Three Start-->
         <section class="about-three">
             <div class="container">
+                <h2 class="seo-hidden-heading">About ARSDeveloper UK team and delivery model</h2>
                 <div class="row">
                     <div class="col-xl-7">
                         <div class="about-three__left" data-aos="fade-right" data-aos-duration="1200"
@@ -443,7 +444,7 @@
                             <div class="about-three__client-and-text-box">
                                 <div class="about-three__client-box">
                                     <div class="about-three__client-img">
-                                        <img src="assets/images/resources/about-three-client-img.jpg" alt="">
+                                        <img src="assets/images/favicons/favicon.png" alt="ARSDeveloper Team" width="60" height="60" loading="lazy">
                                     </div>
                                     <div class="about-three__client-content">
                                         <h3>ARSDeveloper Team</h3>
@@ -622,8 +623,8 @@
 
         <section class="about-company-profile">
             <div class="container">
-                <div class="about-company-profile__inner">
-                    <div class="section-title-two text-left sec-title-animation animation-style2">
+                    <div class="about-company-profile__inner">
+                        <div class="section-title-two text-left sec-title-animation animation-style2">
                         <div class="section-title-two__tagline-box">
                             <div class="section-title-two__tagline-icon-box">
                                 <div class="section-title-two__tagline-icon-1"></div>
@@ -634,6 +635,7 @@
                         <h2 class="section-title-two__title title-animation">Who runs ARS Developer Ltd and how we deliver projects</h2>
                     </div>
                     <p>ARS Developer Ltd is a UK-registered software and web development company focused on business websites, ecommerce delivery, CRM systems, and growth support for companies across the UK market.</p>
+                    <h3 class="seo-hidden-heading">Company legal identity, leadership, and delivery ownership details</h3>
                     <div class="about-company-profile__meta">
                         <div class="about-company-profile__meta-item">
                             <h4>Legal Identity</h4>

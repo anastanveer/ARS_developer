@@ -1,0 +1,15 @@
+priority,platform,type,region,notes
+high,Google Business Profile,map profile,UK,Must be completed first with full NAP consistency
+high,Bing Places,directory profile,UK,Sync profile with GBP data
+high,Yell,directory,UK,Strong local citation coverage
+high,Thomson Local,directory,UK,Good trust signal for UK SMEs
+high,Scoot,directory,UK,Keep NAP and website consistent
+medium,192.com,business directory,UK,Use official legal company details
+medium,Cylex UK,directory,UK,Add services and contact page URL
+medium,Hotfrog UK,directory,UK,Include short business summary with keywords
+medium,FreeIndex,directory,UK,Collect review signals over time
+medium,Bark service profile,marketplace profile,UK,Use for lead and trust exposure
+medium,Clutch profile,review platform,Global/UK,Collect project reviews and case proof
+medium,DesignRush profile,agency listing,Global/UK,Service category alignment matters
+low,Foursquare profile,business listing,Global,Optional consistency layer
+low,Apple Business Connect,map profile,Global,Useful for Apple ecosystem discovery

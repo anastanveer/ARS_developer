@@ -60,6 +60,8 @@
         <!--Faq Page Start-->
         <section class="faq-page">
             <div class="container">
+                <h2 class="seo-hidden-heading">Frequently asked questions about ARSDeveloper UK services</h2>
+                <h3 class="seo-hidden-heading">Project scope, delivery, payments, and support questions</h3>
                 <div class="row">
                     <div class="col-xl-6 col-lg-6">
                         <div class="faq-one__right">

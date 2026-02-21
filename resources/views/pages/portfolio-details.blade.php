@@ -169,6 +169,7 @@
 
         <section class="portfolio-details">
             <div class="container">
+                <h2 class="seo-hidden-heading">Project delivery overview for this UK portfolio case study</h2>
                 <div class="row">
                     <div class="col-xl-4 col-lg-5">
                         <div class="portfolio-details__left">
@@ -227,6 +228,7 @@
                                 <p class="portfolio-details__text-2">Our delivery focused on UK market expectations: fast-loading user experience, trust-first messaging, conversion-driven page flow, and practical admin handling for day-to-day operations.</p>
                                 <h2 class="portfolio-details__title-2">Project Case Study</h2>
                                 <p class="portfolio-details__text-3">{{ $caseNarrative['case_study_intro'] }}</p>
+                                <h3 class="seo-hidden-heading">Problem, solution, and measurable result</h3>
                                 <div class="portfolio-case-proof">
                                     <div class="portfolio-case-proof__item">
                                         <h4>Problem</h4>

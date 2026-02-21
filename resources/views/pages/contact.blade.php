@@ -139,6 +139,7 @@
         <!--Contact Page Start-->
         <section class="contact-page">
             <div class="container">
+                <h2 class="seo-hidden-heading">Contact ARSDeveloper UK for project requirements and support</h2>
                 <div class="row">
                     <div class="col-xl-6 col-lg-6">
                         <div class="contact-page__left">

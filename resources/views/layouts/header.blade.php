@@ -36,12 +36,24 @@
                 'description' => 'ARSDeveloper helps UK businesses with custom websites, CRM software, WordPress development, SEO, and digital growth strategies.',
                 'keywords' => 'web development agency uk, custom software company uk, crm development uk, wordpress agency uk, shopify developers uk, wix website experts uk, seo services uk, business automation uk',
                 'type' => 'WebPage',
+                'preload_image' => asset('assets/images/resources/main-slider-img-1-1.png'),
+                'faq_items' => [
+                    [
+                        'question' => 'How fast can a UK business website project start?',
+                        'answer' => 'Most website and CRM projects can start within one to five business days after scope confirmation and onboarding.',
+                    ],
+                    [
+                        'question' => 'Do you provide both development and SEO support?',
+                        'answer' => 'Yes. We provide web delivery, CRM implementation, technical SEO, and monthly growth support in one execution flow.',
+                    ],
+                ],
             ],
             '/index.php' => [
                 'title' => 'UK Software Agency for Web, CRM and WordPress Development',
                 'description' => 'ARSDeveloper helps UK businesses with custom websites, CRM software, WordPress development, SEO, and digital growth strategies.',
                 'keywords' => 'web development agency uk, custom software company uk, crm development uk, wordpress agency uk, shopify developers uk, wix website experts uk, seo services uk, business automation uk',
                 'type' => 'WebPage',
+                'preload_image' => asset('assets/images/resources/main-slider-img-1-1.png'),
             ],
             '/about.php' => [
                 'title' => 'About ARSDeveloper UK Team for Web, CRM and SEO Delivery',
@@ -149,13 +161,13 @@
                 'title' => 'Client Testimonials - ARSDeveloper UK',
                 'description' => 'Read client reviews and testimonials about ARSDeveloper software development and digital services.',
                 'keywords' => 'software agency reviews UK, client testimonials ARSDeveloper',
-                'type' => 'ReviewNewsArticle',
+                'type' => 'CollectionPage',
             ],
             '/testimonial-carousel.php' => [
                 'title' => 'Testimonials - ARSDeveloper',
                 'description' => 'Client feedback and success stories from UK software, web, and SEO projects.',
                 'keywords' => 'client feedback software agency UK, testimonials web development UK',
-                'type' => 'ReviewNewsArticle',
+                'type' => 'CollectionPage',
                 'robots' => 'noindex, follow',
             ],
             '/pricing.php' => [
@@ -420,7 +432,8 @@
             $seoKeywords = 'uk software agency, web development uk, crm development uk, seo services uk';
         }
         $seoType = $seo['type'] ?? 'WebPage';
-        $queryParams = request()->query();
+        $queryParamsRaw = request()->query();
+        $queryParams = $queryParamsRaw;
         $blockedCanonicalParams = [
             'region',
             'utm_source',
@@ -428,14 +441,37 @@
             'utm_campaign',
             'utm_term',
             'utm_content',
+            'utm_id',
+            'utm_source_platform',
+            'utm_creative_format',
+            'utm_marketing_tactic',
             'gclid',
             'fbclid',
             'msclkid',
+            'dclid',
+            'twclid',
+            'yclid',
+            'rb_clickid',
+            'srsltid',
+            'igshid',
+            'gad_source',
+            'fb_action_ids',
+            'fb_action_types',
+            'fb_source',
+            'mc_cid',
+            'mc_eid',
+            '_ga',
+            '_gl',
+            'sort',
+            'filter',
+            'ref',
+            'source',
+            'session',
+            'token',
         ];
         foreach ($blockedCanonicalParams as $blockedParam) {
             unset($queryParams[$blockedParam]);
         }
-        $queryString = http_build_query($queryParams);
         $canonicalPathRaw = request()->getPathInfo();
         $canonicalPath = $canonicalPathRaw === '/' ? '' : $canonicalPathRaw;
         $legacyToCleanPath = [
@@ -481,14 +517,25 @@
         if ($canonicalPath === '/') {
             $canonicalPath = '';
         }
-        $allowQueryCanonical = (bool) ($seo['allow_query_canonical'] ?? false);
+        if (request()->is('blog') && isset($queryParams['page']) && (int) $queryParams['page'] <= 1) {
+            unset($queryParams['page']);
+        }
+
+        $queryKeys = array_keys($queryParams);
+        sort($queryKeys);
+        $isBlogPaginationQuery = request()->is('blog')
+            && $queryKeys === ['page']
+            && (int) ($queryParams['page'] ?? 0) > 1;
+
+        $queryString = http_build_query($queryParams);
+        $allowQueryCanonical = (bool) ($seo['allow_query_canonical'] ?? false) || $isBlogPaginationQuery;
         $canonicalSuffix = ($allowQueryCanonical && $queryString) ? ('?' . $queryString) : '';
         $ukBase = app()->environment('local')
             ? rtrim((string) url('/'), '/')
             : rtrim((string) ($selectedRegion['base_url'] ?? url('/')), '/');
         $canonicalUrl = $seo['canonical'] ?? ($ukBase . $canonicalPath . $canonicalSuffix);
         $resolvedRobots = (string) ($seo['robots'] ?? 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
-        $hasQueryParams = count(request()->query()) > 0;
+        $hasQueryParams = count($queryParamsRaw) > 0;
         $isAllowedQueryIndexable = $allowQueryCanonical && $queryString !== '';
         if ($hasQueryParams && !$isAllowedQueryIndexable) {
             $resolvedRobots = 'noindex, follow';
@@ -533,22 +580,38 @@
             static fn ($item) => trim((string) $item),
             (array) ($founderConfig['same_as'] ?? [])
         )));
+        if (count($founderSameAs) === 0) {
+            $defaultFounderProfile = trim((string) env('COMPANY_FOUNDER_PROFILE_URL', 'https://github.com/anastanveer'));
+            if ($defaultFounderProfile !== '') {
+                $founderSameAs = [$defaultFounderProfile];
+            }
+        }
 
         $internalLinkMap = [
             '/' => ['/services', '/portfolio', '/pricing', '/blog', '/uk-growth-hub', '/contact'],
-            '/about' => ['/services', '/portfolio', '/contact', '/pricing'],
-            '/services' => ['/web-design-development', '/search-engine-optimization', '/digital-marketing', '/app-development', '/software-development', '/pricing'],
-            '/web-design-development' => ['/services', '/portfolio', '/pricing', '/contact'],
-            '/search-engine-optimization' => ['/services', '/uk-growth-hub', '/blog', '/contact'],
-            '/digital-marketing' => ['/services', '/pricing', '/portfolio', '/contact'],
-            '/app-development' => ['/services', '/software-development', '/portfolio', '/contact'],
-            '/software-development' => ['/services', '/app-development', '/portfolio', '/contact'],
-            '/portfolio' => ['/services', '/pricing', '/contact'],
-            '/pricing' => ['/services', '/portfolio', '/contact'],
-            '/blog' => ['/uk-growth-hub', '/services', '/portfolio', '/contact'],
-            '/uk-growth-hub' => ['/blog', '/services', '/pricing', '/contact'],
-            '/contact' => ['/services', '/pricing', '/portfolio'],
+            '/about' => ['/services', '/portfolio', '/contact', '/pricing', '/sectors/healthcare', '/sectors/law-firms', '/sectors/ecommerce', '/sectors/b2b'],
+            '/services' => ['/web-design-development', '/search-engine-optimization', '/digital-marketing', '/app-development', '/software-development', '/pricing', '/sectors/healthcare', '/sectors/law-firms', '/sectors/ecommerce', '/sectors/b2b'],
+            '/web-design-development' => ['/services', '/portfolio', '/pricing', '/contact', '/sectors/healthcare', '/sectors/law-firms'],
+            '/search-engine-optimization' => ['/services', '/uk-growth-hub', '/blog', '/contact', '/sectors/healthcare', '/sectors/ecommerce', '/sectors/law-firms'],
+            '/digital-marketing' => ['/services', '/pricing', '/portfolio', '/contact', '/sectors/ecommerce', '/sectors/b2b'],
+            '/app-development' => ['/services', '/software-development', '/portfolio', '/contact', '/sectors/b2b'],
+            '/software-development' => ['/services', '/app-development', '/portfolio', '/contact', '/sectors/b2b', '/sectors/ecommerce'],
+            '/portfolio' => ['/services', '/pricing', '/contact', '/blog', '/sectors/healthcare', '/sectors/ecommerce'],
+            '/pricing' => ['/services', '/portfolio', '/contact', '/faq'],
+            '/blog' => ['/uk-growth-hub', '/services', '/portfolio', '/contact', '/search-engine-optimization', '/sectors/healthcare', '/sectors/law-firms', '/sectors/ecommerce', '/sectors/b2b'],
+            '/uk-growth-hub' => ['/blog', '/services', '/pricing', '/contact', '/search-engine-optimization', '/web-design-development'],
+            '/contact' => ['/services', '/pricing', '/portfolio', '/faq'],
+            '/faq' => ['/services', '/pricing', '/contact', '/uk-growth-hub'],
+            '/sectors/healthcare' => ['/services', '/web-design-development', '/search-engine-optimization', '/portfolio', '/contact', '/pricing', '/blog', '/uk-growth-hub'],
+            '/sectors/law-firms' => ['/services', '/web-design-development', '/search-engine-optimization', '/portfolio', '/contact', '/pricing', '/blog', '/uk-growth-hub'],
+            '/sectors/ecommerce' => ['/services', '/digital-marketing', '/search-engine-optimization', '/portfolio', '/contact', '/pricing', '/blog', '/uk-growth-hub'],
+            '/sectors/b2b' => ['/services', '/software-development', '/app-development', '/portfolio', '/contact', '/pricing', '/blog', '/uk-growth-hub'],
+            '/portfolio-details' => ['/portfolio', '/services', '/pricing', '/contact'],
+            '/testimonials' => ['/portfolio', '/services', '/contact'],
+            '/gallery' => ['/portfolio', '/services', '/contact'],
         ];
+
+        $cornerstoneLinks = ['/services', '/portfolio', '/pricing', '/blog', '/uk-growth-hub', '/contact', '/about', '/sectors/healthcare', '/sectors/law-firms', '/sectors/ecommerce', '/sectors/b2b'];
 
         $entityCoverageMap = [
             '/' => ['Web Development', 'Custom CRM Development', 'WordPress Development', 'Technical SEO', 'Digital Marketing'],
@@ -561,6 +624,10 @@
             '/portfolio' => ['Case Studies', 'Digital Delivery', 'Project Outcomes'],
             '/blog' => ['AEO', 'GEO', 'EEAT', 'Entity SEO', 'Conversion Strategy'],
             '/uk-growth-hub' => ['AEO', 'GEO', 'EEAT', 'Topic Clusters', 'Featured Snippets'],
+            '/sectors/healthcare' => ['Healthcare Website Development', 'Clinic Booking Workflow', 'Medical Lead Generation', 'Private Clinic SEO'],
+            '/sectors/law-firms' => ['Law Firm Website Design', 'Legal Service SEO', 'Solicitor Lead Generation', 'Consultation Funnels'],
+            '/sectors/ecommerce' => ['Shopify Development UK', 'WooCommerce Growth', 'Ecommerce SEO', 'Checkout Conversion'],
+            '/sectors/b2b' => ['B2B Website Development', 'CRM Workflow Automation', 'Lead Pipeline Visibility', 'Operational Dashboards'],
         ];
 
         $serviceSchemaCatalog = [
@@ -610,6 +677,10 @@
             '/app-development' => ['app-development'],
             '/software-development' => ['software-development'],
             '/design-and-branding' => ['design-and-branding'],
+            '/sectors/healthcare' => ['web-design-development', 'search-engine-optimization'],
+            '/sectors/law-firms' => ['web-design-development', 'search-engine-optimization'],
+            '/sectors/ecommerce' => ['web-design-development', 'digital-marketing', 'search-engine-optimization'],
+            '/sectors/b2b' => ['software-development', 'app-development', 'search-engine-optimization'],
         ];
 
         $schemaGraph = [
@@ -714,6 +785,11 @@
         }
 
         $schemaGraph[0]['legalName'] = $companyName;
+        $schemaGraph[0]['description'] = 'UK software agency for web development, CRM systems, SEO implementation, and conversion-focused delivery.';
+        $schemaGraph[0]['logo'] = [
+            '@type' => 'ImageObject',
+            'url' => url('/assets/images/resources/ars-logo-dark.png'),
+        ];
         $schemaGraph[0]['areaServed'] = [
             [
                 '@type' => 'Country',
@@ -750,6 +826,85 @@
         $schemaGraph[3]['openingHours'] = $companyOpeningHours;
         $schemaGraph[3]['sameAs'] = $organizationSameAs;
 
+        $schemaGraph[] = [
+            '@context' => 'https://schema.org',
+            '@type' => 'SiteNavigationElement',
+            '@id' => $siteRootUrl . '#site-navigation',
+            'name' => ['Home', 'About', 'Services', 'Portfolio', 'Pricing', 'Blog', 'UK SEO Growth Hub', 'Contact'],
+            'url' => [
+                $siteRootUrl . '/',
+                $siteRootUrl . '/about',
+                $siteRootUrl . '/services',
+                $siteRootUrl . '/portfolio',
+                $siteRootUrl . '/pricing',
+                $siteRootUrl . '/blog',
+                $siteRootUrl . '/uk-growth-hub',
+                $siteRootUrl . '/contact',
+            ],
+        ];
+        $schemaGraph[1]['hasPart'] = [
+            ['@id' => $siteRootUrl . '#site-navigation'],
+            ['@id' => $siteRootUrl . '#offer-catalog'],
+        ];
+
+        $pillarPageLinks = [
+            $siteRootUrl . '/',
+            $siteRootUrl . '/services',
+            $siteRootUrl . '/sectors/healthcare',
+            $siteRootUrl . '/sectors/law-firms',
+            $siteRootUrl . '/sectors/ecommerce',
+            $siteRootUrl . '/sectors/b2b',
+            $siteRootUrl . '/portfolio',
+            $siteRootUrl . '/pricing',
+            $siteRootUrl . '/blog',
+            $siteRootUrl . '/uk-growth-hub',
+            $siteRootUrl . '/contact',
+        ];
+        $schemaGraph[] = [
+            '@context' => 'https://schema.org',
+            '@type' => 'ItemList',
+            '@id' => $siteRootUrl . '#pillar-page-map',
+            'name' => 'ARSDeveloper UK Cornerstone Pages',
+            'itemListOrder' => 'https://schema.org/ItemListOrderAscending',
+            'itemListElement' => collect($pillarPageLinks)->values()->map(
+                static fn ($url, $index) => [
+                    '@type' => 'ListItem',
+                    'position' => $index + 1,
+                    'url' => $url,
+                ]
+            )->all(),
+        ];
+
+        $offerCatalogId = $siteRootUrl . '#offer-catalog';
+        $offerCatalogItems = collect($serviceSchemaCatalog)->values()->map(
+            static fn ($service, $index) => [
+                '@type' => 'ListItem',
+                'position' => $index + 1,
+                'item' => [
+                    '@type' => 'Offer',
+                    'name' => $service['name'],
+                    'url' => $siteRootUrl . $service['path'],
+                    'itemOffered' => [
+                        '@type' => 'Service',
+                        'name' => $service['name'],
+                        'serviceType' => $service['type'],
+                    ],
+                ],
+            ]
+        )->all();
+
+        $schemaGraph[] = [
+            '@context' => 'https://schema.org',
+            '@type' => 'OfferCatalog',
+            '@id' => $offerCatalogId,
+            'name' => 'ARSDeveloper UK Service Offer Catalog',
+            'url' => $siteRootUrl . '/services',
+            'itemListElement' => $offerCatalogItems,
+        ];
+        $schemaGraph[0]['hasOfferCatalog'] = ['@id' => $offerCatalogId];
+        $schemaGraph[1]['about'] = ['@id' => $siteRootUrl . '#organization'];
+        $schemaGraph[4]['about'][] = ['@id' => $siteRootUrl . '#organization'];
+
         if ($founderName !== '') {
             $founderNode = [
                 '@context' => 'https://schema.org',
@@ -767,6 +922,11 @@
             }
             $schemaGraph[0]['founder'] = ['@id' => $siteRootUrl . '#founder'];
             $schemaGraph[] = $founderNode;
+        }
+
+        if ($currentPathKey === '/about' && $founderName !== '') {
+            $schemaGraph[4]['mainEntity'] = ['@id' => $siteRootUrl . '#founder'];
+            $schemaGraph[4]['about'][] = ['@id' => $siteRootUrl . '#founder'];
         }
 
         $clusterLinks = [
@@ -794,14 +954,40 @@
             ];
         }
 
-        $pageEntityCoverage = $entityCoverageMap[$currentPathKey] ?? [];
+        $pathLookupKey = $currentPathKey;
+        if (!array_key_exists($pathLookupKey, $internalLinkMap)) {
+            if (str_starts_with($pathLookupKey, '/blog/')) {
+                $pathLookupKey = '/blog';
+            } elseif (str_starts_with($pathLookupKey, '/portfolio-details/')) {
+                $pathLookupKey = '/portfolio-details';
+            } elseif (str_starts_with($pathLookupKey, '/sectors/')) {
+                $pathLookupKey = '/services';
+            }
+        }
+
+        $entityLookupKey = $currentPathKey;
+        if (!array_key_exists($entityLookupKey, $entityCoverageMap)) {
+            if (str_starts_with($entityLookupKey, '/blog/')) {
+                $entityLookupKey = '/blog';
+            } elseif (str_starts_with($entityLookupKey, '/portfolio-details/')) {
+                $entityLookupKey = '/portfolio';
+            } elseif (str_starts_with($entityLookupKey, '/sectors/')) {
+                $entityLookupKey = '/services';
+            }
+        }
+
+        $pageEntityCoverage = $entityCoverageMap[$entityLookupKey] ?? [];
         if (!empty($pageEntityCoverage)) {
             $schemaGraph[4]['about'] = collect($pageEntityCoverage)->map(
                 static fn ($name) => ['@type' => 'Thing', 'name' => $name]
             )->all();
         }
 
-        $significantLinks = $internalLinkMap[$currentPathKey] ?? [];
+        $significantLinks = $internalLinkMap[$pathLookupKey] ?? [];
+        if (str_starts_with($currentPathKey, '/blog/')) {
+            $significantLinks = array_merge($significantLinks, $clusterLinks);
+        }
+        $significantLinks = array_merge($significantLinks, $cornerstoneLinks);
         if (!empty($seo['related_links']) && is_array($seo['related_links'])) {
             $significantLinks = array_merge($significantLinks, $seo['related_links']);
         }
@@ -941,16 +1127,20 @@
             }
         }
 
-        if (count($breadcrumbItems) > 1) {
+        if (count($breadcrumbItems) >= 1) {
+            $breadcrumbId = $canonicalUrl . '#breadcrumb';
             $schemaGraph[] = [
                 '@context' => 'https://schema.org',
                 '@type' => 'BreadcrumbList',
+                '@id' => $breadcrumbId,
                 'itemListElement' => $breadcrumbItems,
             ];
+            $schemaGraph[4]['breadcrumb'] = ['@id' => $breadcrumbId];
         }
 
         $faqItems = $seo['faq_items'] ?? [];
-        if (is_array($faqItems) && count($faqItems) > 0) {
+        $isIndexableForFaqSchema = !str_contains(strtolower((string) $resolvedRobots), 'noindex');
+        if ($isIndexableForFaqSchema && is_array($faqItems) && count($faqItems) > 0) {
             $faqEntities = [];
             foreach ($faqItems as $faqItem) {
                 $question = trim((string) ($faqItem['question'] ?? ''));
@@ -973,6 +1163,7 @@
                 $schemaGraph[] = [
                     '@context' => 'https://schema.org',
                     '@type' => 'FAQPage',
+                    '@id' => $canonicalUrl . '#faq',
                     'mainEntity' => $faqEntities,
                 ];
             }
@@ -985,7 +1176,9 @@
             $articleImage = (string) ($articleSchemaData['image'] ?? ($seo['og_image'] ?? url('/assets/images/resources/ars-logo-dark.png')));
             $articlePublished = $articleSchemaData['datePublished'] ?? null;
             $articleModified = $articleSchemaData['dateModified'] ?? $articlePublished;
-            $articleAuthor = trim((string) ($articleSchemaData['author'] ?? 'ARS Developer Editorial Team'));
+            $articleAuthor = trim((string) ($articleSchemaData['author'] ?? $companyName));
+            $articleAuthorType = strtolower(trim((string) ($articleSchemaData['authorType'] ?? 'person')));
+            $articleAuthorUrl = trim((string) ($articleSchemaData['authorUrl'] ?? ''));
             $articleSection = trim((string) ($articleSchemaData['articleSection'] ?? ''));
             $articleWordCount = (int) ($articleSchemaData['wordCount'] ?? 0);
             $articleKeywords = $articleSchemaData['keywords'] ?? [];
@@ -1002,10 +1195,6 @@
                 'headline' => $articleHeadline,
                 'description' => $articleDescription,
                 'image' => [$articleImage],
-                'author' => [
-                    '@type' => 'Person',
-                    'name' => $articleAuthor,
-                ],
                 'publisher' => [
                     '@type' => 'Organization',
                     '@id' => $siteRootUrl . '#organization',
@@ -1018,6 +1207,23 @@
                 'inLanguage' => $schemaLanguage,
                 'isAccessibleForFree' => (bool) $articleIsAccessibleForFree,
             ];
+
+            if ($articleAuthorType === 'organization') {
+                $articleSchema['author'] = [
+                    '@type' => 'Organization',
+                    '@id' => $siteRootUrl . '#organization',
+                    'name' => $articleAuthor !== '' ? $articleAuthor : $companyName,
+                    'url' => $articleAuthorUrl !== '' ? $articleAuthorUrl : $siteRootUrl,
+                ];
+            } else {
+                $articleSchema['author'] = [
+                    '@type' => 'Person',
+                    'name' => $articleAuthor !== '' ? $articleAuthor : 'ARS Developer Editorial Team',
+                ];
+                if ($articleAuthorUrl !== '') {
+                    $articleSchema['author']['url'] = $articleAuthorUrl;
+                }
+            }
 
             if ($articlePublished) {
                 $articleSchema['datePublished'] = $articlePublished;
@@ -1063,6 +1269,15 @@
 
             $schemaGraph[] = $articleSchema;
         }
+
+        $metaAuthor = trim((string) (
+            (strtolower((string) $seoType) === 'article')
+                ? ($articleSchemaData['author'] ?? $companyName)
+                : $companyName
+        ));
+        if ($metaAuthor === '') {
+            $metaAuthor = 'ARS Developer Ltd';
+        }
     @endphp
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1072,12 +1287,25 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/favicons/favicon.png') }}" />
     <meta name="description" content="{{ $seoDescription }}" />
     <meta name="keywords" content="{{ $seoKeywords }}" />
-    <meta name="author" content="ARSDeveloper" />
+    <meta name="author" content="{{ $metaAuthor }}" />
     @if (env('GOOGLE_SITE_VERIFICATION'))
         <meta name="google-site-verification" content="{{ env('GOOGLE_SITE_VERIFICATION') }}" />
     @endif
+    <meta name="msvalidate.01" content="07A57B3E08C81EF8DECA42EA91321EC0" />
     <meta name="robots" content="{{ $resolvedRobots }}" />
+    <meta name="googlebot" content="{{ $resolvedRobots }}" />
+    <meta name="bingbot" content="{{ $resolvedRobots }}" />
     <link rel="canonical" href="{{ $canonicalUrl }}" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ $siteRootUrl }}/sitemap.xml" />
+    <link rel="home" href="{{ $siteRootUrl }}/" />
+    @if ($currentPathKey !== '/')
+        <link rel="up" href="{{ $siteRootUrl }}/" />
+    @endif
+    @foreach(array_slice($significantLinks, 0, 12) as $relatedHref)
+        @if($relatedHref !== $canonicalUrl)
+            <link rel="related" href="{{ $relatedHref }}" />
+        @endif
+    @endforeach
     @if(!empty($seo['preload_image']))
         <link rel="preload" as="image" href="{{ $seo['preload_image'] }}" fetchpriority="high">
     @endif
@@ -1086,8 +1314,6 @@
     <meta name="geo.placename" content="Stoke-on-Trent" />
     <meta name="geo.position" content="53.0027;-2.1794" />
     <meta name="ICBM" content="53.0027, -2.1794" />
-    <link rel="alternate" hreflang="en-gb" href="{{ $canonicalUrl }}" />
-    <link rel="alternate" hreflang="x-default" href="{{ $canonicalUrl }}" />
     <meta property="og:locale" content="{{ $currentOgLocale }}" />
     <meta property="og:type" content="{{ strtolower($seoType) === 'article' ? 'article' : 'website' }}" />
     <meta property="og:title" content="{{ $seoOgTitle }}" />
@@ -1105,11 +1331,25 @@
     @if(!empty($articleSchemaData['author']))
         <meta property="article:author" content="{{ $articleSchemaData['author'] }}" />
     @endif
+    @if(strtolower((string) $seoType) === 'article')
+        <meta property="article:publisher" content="{{ $companyName }}" />
+    @endif
     <meta name="twitter:card" content="{{ $seo['twitter_card'] ?? 'summary_large_image' }}" />
     <meta name="twitter:title" content="{{ $seoTwitterTitle }}" />
     <meta name="twitter:description" content="{{ $seoTwitterDescription }}" />
     <meta name="twitter:image" content="{{ $seo['twitter_image'] ?? ($seo['og_image'] ?? url('/assets/images/resources/ars-logo-dark.png')) }}" />
     <meta name="theme-color" content="#102A4D" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9CN4PVV3B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-S9CN4PVV3B');
+    </script>
     <script type="application/ld+json">
         {!! json_encode(['@' . 'context' => 'https://schema.org', '@' . 'graph' => $schemaGraph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
     </script>
@@ -1433,7 +1673,7 @@
                                 </div>
                                 <div class="main-menu-two__call-content">
                                     <p class="main-menu-two__call-sub-title">{{ __('ui.call_anytime') }}</p>
-                                    <h5 class="main-menu-two__call-number"><a href="tel:+44747803428">+44 747803428</a></h5>
+                                    <p class="main-menu-two__call-number"><a href="tel:+44747803428">+44 747803428</a></p>
                                 </div>
                             </div>
                             <div class="main-menu-two__search-cart-box">

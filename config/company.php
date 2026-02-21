@@ -40,7 +40,7 @@ return [
         ),
         'same_as' => array_values(array_filter(array_map(
             static fn ($value) => trim((string) $value),
-            explode(',', (string) env('COMPANY_FOUNDER_SAME_AS', ''))
+            explode(',', (string) env('COMPANY_FOUNDER_SAME_AS', 'https://github.com/anastanveer'))
         ))),
     ],
     'entity_topics' => array_values(array_filter(array_map(

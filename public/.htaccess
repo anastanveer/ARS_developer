@@ -5,6 +5,25 @@
 
     RewriteEngine On
 
+    # Canonicalize legacy .php URLs in one hop (host + clean path)
+    RewriteCond %{THE_REQUEST} \s/+([^\s?]+)\.php(?:[\s?]|$) [NC]
+    RewriteCond %1 !^index$ [NC]
+    RewriteRule ^ https://arsdeveloper.co.uk/%1 [L,R=301]
+
+    # Force HTTPS for canonical domain
+    RewriteCond %{HTTP_HOST} ^(www\.)?arsdeveloper\.co\.uk$ [NC]
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://arsdeveloper.co.uk%{REQUEST_URI} [L,R=301]
+
+    # Force single canonical host in production
+    RewriteCond %{HTTP_HOST} !^arsdeveloper\.co\.uk$ [NC]
+    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:\d+)?$ [NC]
+    RewriteRule ^ https://arsdeveloper.co.uk%{REQUEST_URI} [L,R=301]
+
+    # Normalize direct /index.php requests
+    RewriteCond %{THE_REQUEST} \s/+index\.php(?:[\s?]|/.*)
+    RewriteRule ^index\.php/?(.*)$ https://arsdeveloper.co.uk/$1 [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -47,10 +66,25 @@
     <FilesMatch "\.(css|js|jpg|jpeg|png|gif|webp|svg|ico|woff|woff2)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
+    <FilesMatch "\.(xml|txt)$">
+        Header set Cache-Control "public, max-age=3600, s-maxage=3600"
+    </FilesMatch>
     <FilesMatch "\.(html|php)$">
         Header set Cache-Control "public, max-age=300, s-maxage=300"
     </FilesMatch>
+    Header append Vary "Accept-Encoding"
+    Header unset ETag
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "accelerometer=(), autoplay=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+    Header always set Cross-Origin-Resource-Policy "same-site"
+    Header always set Content-Security-Policy "upgrade-insecure-requests"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
 </IfModule>
+
+FileETag None
 
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain

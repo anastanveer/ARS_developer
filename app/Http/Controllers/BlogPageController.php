@@ -122,8 +122,9 @@ class BlogPageController extends Controller
                 '/contact',
             ],
         ];
+        $clusterLinks = $this->buildTopicalClusterLinks($post);
 
-        return view('pages.blog-details', compact('post', 'recentPosts', 'relatedPosts', 'seoOverride'));
+        return view('pages.blog-details', compact('post', 'recentPosts', 'relatedPosts', 'seoOverride', 'clusterLinks'));
     }
 
     public function detailsLegacy(Request $request): RedirectResponse
@@ -157,6 +158,12 @@ class BlogPageController extends Controller
 
     private function buildArticleSchema(BlogPost $post, string $canonical): array
     {
+        $companyName = trim((string) config('company.legal_name', 'ARS Developer Ltd'));
+        $authorNameRaw = trim((string) ($post->author_name ?? ''));
+        $authorName = $authorNameRaw !== '' ? $authorNameRaw : $companyName;
+        $authorType = $authorNameRaw !== '' ? 'Person' : 'Organization';
+        $authorUrl = $authorType === 'Person' ? url('/about') : url('/');
+
         $description = Str::limit(
             strip_tags((string) ($post->meta_description ?: $post->excerpt ?: $post->content)),
             155,
@@ -177,7 +184,10 @@ class BlogPageController extends Controller
             'image' => $post->featured_image ? url('/' . ltrim($post->featured_image, '/')) : url('/assets/images/resources/ars-logo-dark.png'),
             'datePublished' => optional($post->published_at ?: $post->created_at)?->toIso8601String(),
             'dateModified' => optional($post->updated_at ?: $post->published_at ?: $post->created_at)?->toIso8601String(),
-            'author' => $post->author_name ?: 'ARS Developer Editorial Team',
+            'author' => $authorName,
+            'authorType' => $authorType,
+            'authorUrl' => $authorUrl,
+            'publisher' => $companyName,
             'articleSection' => $post->category ?: 'UK Digital Growth',
             'wordCount' => $wordCount > 0 ? $wordCount : null,
             'keywords' => $keywords,
@@ -330,5 +340,71 @@ class BlogPageController extends Controller
             static fn ($item) => trim((string) $item),
             $citations
         ))));
+    }
+
+    private function buildTopicalClusterLinks(BlogPost $post): array
+    {
+        $category = Str::lower(trim((string) $post->category));
+
+        $clusterByCategory = [
+            'seo' => [
+                ['label' => 'UK SEO Growth Hub', 'url' => '/uk-growth-hub'],
+                ['label' => 'Technical SEO Services', 'url' => '/search-engine-optimization'],
+                ['label' => 'UK SEO Pricing', 'url' => '/pricing'],
+                ['label' => 'SEO Case Studies', 'url' => '/portfolio'],
+                ['label' => 'Book SEO Strategy Call', 'url' => '/contact'],
+            ],
+            'web development' => [
+                ['label' => 'Web Design & Development', 'url' => '/web-design-development'],
+                ['label' => 'Software Development Services', 'url' => '/software-development'],
+                ['label' => 'Website Project Pricing', 'url' => '/pricing'],
+                ['label' => 'Website Portfolio Examples', 'url' => '/portfolio'],
+                ['label' => 'Start Website Project', 'url' => '/contact'],
+            ],
+            'crm' => [
+                ['label' => 'CRM Development Services', 'url' => '/software-development'],
+                ['label' => 'Custom Web App Development', 'url' => '/app-development'],
+                ['label' => 'CRM and Portal Pricing', 'url' => '/pricing'],
+                ['label' => 'CRM Project Portfolio', 'url' => '/portfolio'],
+                ['label' => 'Book CRM Discovery Call', 'url' => '/contact'],
+            ],
+            'ecommerce' => [
+                ['label' => 'Ecommerce Web Development', 'url' => '/web-design-development'],
+                ['label' => 'Ecommerce SEO and CRO', 'url' => '/search-engine-optimization'],
+                ['label' => 'Ecommerce Growth Services', 'url' => '/digital-marketing'],
+                ['label' => 'Ecommerce Portfolio Cases', 'url' => '/portfolio'],
+                ['label' => 'Start Ecommerce Build', 'url' => '/contact'],
+            ],
+            'digital marketing' => [
+                ['label' => 'Digital Marketing Services', 'url' => '/digital-marketing'],
+                ['label' => 'SEO and Performance Services', 'url' => '/search-engine-optimization'],
+                ['label' => 'Landing Page Development', 'url' => '/web-design-development'],
+                ['label' => 'Growth Retainer Pricing', 'url' => '/pricing'],
+                ['label' => 'Book Growth Strategy Call', 'url' => '/contact'],
+            ],
+            'pillar guide' => [
+                ['label' => 'UK SEO Growth Hub', 'url' => '/uk-growth-hub'],
+                ['label' => 'SEO Service Delivery', 'url' => '/search-engine-optimization'],
+                ['label' => 'Full Services Overview', 'url' => '/services'],
+                ['label' => 'Proof-Based Portfolio', 'url' => '/portfolio'],
+                ['label' => 'Get a Custom SEO Plan', 'url' => '/contact'],
+            ],
+        ];
+
+        $fallback = [
+            ['label' => 'UK SEO Growth Hub', 'url' => '/uk-growth-hub'],
+            ['label' => 'Service Solutions', 'url' => '/services'],
+            ['label' => 'Case Studies', 'url' => '/portfolio'],
+            ['label' => 'Pricing Plans', 'url' => '/pricing'],
+            ['label' => 'Book Strategy Call', 'url' => '/contact'],
+        ];
+
+        $links = $clusterByCategory[$category] ?? $fallback;
+
+        return collect($links)
+            ->filter(static fn (array $link) => !empty($link['label']) && !empty($link['url']))
+            ->unique(static fn (array $link) => trim((string) $link['url']))
+            ->values()
+            ->all();
     }
 }

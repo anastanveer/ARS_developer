@@ -45,45 +45,53 @@ Route::get('/sectors/{sector}', function (string $sector) {
             'name' => 'Healthcare Clinics',
             'headline' => 'Healthcare Website and Booking Systems for UK Clinics',
             'summary' => 'Appointment-ready websites, patient enquiry flows, and secure lead handling for private clinics and healthcare practices in the UK.',
+            'keywords' => 'healthcare website development uk, clinic website design uk, private clinic seo uk, medical lead generation website uk',
             'highlights' => [
                 'Patient-friendly landing pages with trust-first UX',
                 'Online appointment request and callback workflows',
                 'Location pages, service pages, and clinician profile setup',
                 'GDPR-aware form capture and admin notification flow',
             ],
+            'related_links' => ['/services', '/web-design-development', '/search-engine-optimization', '/portfolio', '/pricing', '/contact'],
         ],
         'law-firms' => [
             'name' => 'Law Firms',
             'headline' => 'Conversion-Focused Digital Setup for UK Law Firms',
             'summary' => 'Structured legal service pages, consultation enquiry funnels, and credibility-focused design that converts visitors into case enquiries.',
+            'keywords' => 'law firm website design uk, solicitor seo services uk, legal lead generation website uk, law practice marketing website uk',
             'highlights' => [
                 'Practice-area page structure with SEO intent mapping',
                 'Consultation forms and lead qualification workflow',
                 'Trust badges, review blocks, and local authority signals',
                 'Content architecture for long-term legal SEO growth',
             ],
+            'related_links' => ['/services', '/search-engine-optimization', '/digital-marketing', '/portfolio', '/pricing', '/contact'],
         ],
         'ecommerce' => [
             'name' => 'Ecommerce Brands',
             'headline' => 'Ecommerce Growth Systems for Shopify and WooCommerce',
             'summary' => 'Store build, catalog optimization, checkout improvements, and performance-first implementation for UK ecommerce brands.',
+            'keywords' => 'shopify development uk, woocommerce development uk, ecommerce seo uk, ecommerce conversion optimization uk',
             'highlights' => [
                 'Shopify and WooCommerce setup with conversion UX',
                 'Product structure, category flow, and search navigation',
                 'Checkout, shipping, and payment journey optimization',
                 'Analytics tracking and campaign-ready landing pages',
             ],
+            'related_links' => ['/services', '/web-design-development', '/digital-marketing', '/search-engine-optimization', '/portfolio', '/pricing'],
         ],
         'b2b' => [
             'name' => 'B2B Service Teams',
             'headline' => 'B2B Websites, CRM Portals and Lead Workflow Automation',
             'summary' => 'Lead capture systems, CRM-aligned operations, and milestone-based project visibility for B2B service companies across the UK.',
+            'keywords' => 'b2b website development uk, crm development uk, b2b lead generation website uk, workflow automation software uk',
             'highlights' => [
                 'Pipeline-focused website and landing flow architecture',
                 'CRM handoff automation and internal team workflows',
                 'Role-based admin views and client communication timeline',
                 'Reporting structure for enquiry, conversion, and follow-up',
             ],
+            'related_links' => ['/services', '/software-development', '/app-development', '/portfolio', '/pricing', '/contact'],
         ],
     ];
 
@@ -95,11 +103,28 @@ Route::get('/sectors/{sector}', function (string $sector) {
     $canonicalBase = rtrim((string) (app()->environment('local')
         ? url('/')
         : config('regions.regions.uk.base_url', url('/'))), '/');
+    $sectorFaq = [
+        [
+            'question' => 'Can you deliver this sector in phased milestones?',
+            'answer' => 'Yes. We split delivery into planning, build, review, and launch phases so your team can approve each stage clearly.',
+        ],
+        [
+            'question' => 'Will this setup be SEO and speed ready?',
+            'answer' => 'Yes. We implement technical SEO structure, conversion-focused content flow, and performance optimization from the initial build.',
+        ],
+        [
+            'question' => 'Can internal teams manage updates after launch?',
+            'answer' => 'Yes. We provide admin-friendly content structure and handover support so your team can manage daily updates smoothly.',
+        ],
+    ];
     $seoOverride = [
         'title' => $data['name'] . ' Software Services UK',
         'description' => $data['summary'],
-        'keywords' => strtolower($data['name']) . ' uk, uk software services, website development uk, crm and seo uk',
+        'keywords' => $data['keywords'] . ', uk software services, website development uk, crm and seo uk',
         'canonical' => $canonicalBase . '/sectors/' . $sector,
+        'related_links' => $data['related_links'] ?? ['/services', '/portfolio', '/pricing', '/contact'],
+        'faq_items' => $sectorFaq,
+        'type' => 'Service',
     ];
 
     return view('pages.sector-landing', [
@@ -121,7 +146,7 @@ Route::view('/404', 'pages.404');
 Route::view('/coming-soon', 'pages.coming-soon');
 
 Route::get('/blog', [BlogPageController::class, 'index'])->name('blog.index');
-Route::get('/blog-list', [BlogPageController::class, 'index']);
+Route::redirect('/blog-list', '/blog', 301);
 Route::get('/blog-details', [BlogPageController::class, 'detailsLegacy']);
 Route::get('/blog/{slug}', [BlogPageController::class, 'show'])->name('blog.show');
 Route::get('/uk-growth-hub', [SeoHubController::class, 'index'])->name('seo.hub');
@@ -168,7 +193,7 @@ Route::get('/index.php/{any}', function (string $any) {
         'coming-soon.php' => '/coming-soon',
         'blog.php' => '/blog',
         'uk-growth-hub.php' => '/uk-growth-hub',
-        'blog-list.php' => '/blog-list',
+        'blog-list.php' => '/blog',
         'blog-details.php' => '/blog-details',
         'search.php' => '/search',
         'contact.php' => '/contact',
@@ -217,7 +242,7 @@ Route::redirect('/404.php', '/404', 301);
 Route::redirect('/coming-soon.php', '/coming-soon', 301);
 Route::redirect('/blog.php', '/blog', 301);
 Route::redirect('/uk-growth-hub.php', '/uk-growth-hub', 301);
-Route::redirect('/blog-list.php', '/blog-list', 301);
+Route::redirect('/blog-list.php', '/blog', 301);
 Route::get('/blog-details.php', [BlogPageController::class, 'detailsLegacy']);
 Route::redirect('/search.php', '/search', 301);
 Route::redirect('/contact.php', '/contact', 301);

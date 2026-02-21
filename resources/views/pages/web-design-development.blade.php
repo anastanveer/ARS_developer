@@ -31,6 +31,7 @@
         <!--Services Details Start-->
         <section class="services-details">
             <div class="container">
+                <h2 class="seo-hidden-heading">UK web design and development service overview</h2>
                 <div class="row">
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__left">

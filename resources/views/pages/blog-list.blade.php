@@ -29,6 +29,7 @@
         <!--Blog List Start-->
         <section class="blog-list">
             <div class="container">
+                <h2 class="seo-hidden-heading">UK digital growth blog archive and insights</h2>
                 <div class="row">
                     <div class="col-xl-8 col-lg-7">
                         <div class="blog-list__left">

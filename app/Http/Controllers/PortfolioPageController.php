@@ -29,6 +29,12 @@ class PortfolioPageController extends Controller
             'keywords' => 'uk software portfolio, uk web development portfolio, crm case studies uk, ecommerce website projects uk',
             'canonical' => $canonicalBase . '/portfolio',
             'type' => 'CollectionPage',
+            'related_links' => [
+                '/services',
+                '/pricing',
+                '/contact',
+                '/uk-growth-hub',
+            ],
         ];
 
         return view('pages.portfolio', compact('portfolios', 'seoOverride'));
@@ -48,14 +54,20 @@ class PortfolioPageController extends Controller
         if ($staticPortfolio instanceof stdClass) {
             $seoTitle = $staticPortfolio->title;
             $seoDescription = Str::limit(strip_tags((string) $staticPortfolio->excerpt), 160, '');
-            $portfolioUrl = $canonicalBase . '/portfolio-details?tab=' . urlencode($staticPortfolio->tab) . '&item=' . $staticPortfolio->item;
 
             $seoOverride = [
                 'title' => $seoTitle,
                 'description' => $seoDescription,
                 'keywords' => 'uk project case study, web development project uk, crm implementation uk',
-                'canonical' => $portfolioUrl,
-                'type' => 'Article',
+                'canonical' => $canonicalBase . '/portfolio',
+                'type' => 'WebPage',
+                'robots' => 'noindex, follow',
+                'related_links' => [
+                    '/portfolio',
+                    '/services',
+                    '/pricing',
+                    '/contact',
+                ],
                 'og_title' => $seoTitle,
                 'og_description' => $seoDescription,
                 'og_image' => asset($staticPortfolio->image_path),
@@ -116,6 +128,14 @@ class PortfolioPageController extends Controller
             'keywords' => 'uk project case study, web development project uk, crm implementation uk',
             'canonical' => $portfolioUrl,
             'type' => 'Article',
+            'preload_image' => $portfolio->image_path ? asset($portfolio->image_path) : null,
+            'related_links' => [
+                '/portfolio',
+                '/services',
+                '/pricing',
+                '/contact',
+                '/uk-growth-hub',
+            ],
             'og_title' => $seoTitle,
             'og_description' => $seoDescription,
             'og_image' => $portfolio->image_path ? asset($portfolio->image_path) : null,

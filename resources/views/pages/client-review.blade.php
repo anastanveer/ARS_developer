@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Client Review - {{ $review->project?->title ?: 'ARSDeveloper' }}</title>
     <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="{{ route('review.show', ['token' => $review->review_token]) }}">
     <style>
         body{margin:0;background:#eef4ff;font-family:"DM Sans",Arial,sans-serif;color:#11284a}
         .wrap{max-width:860px;margin:0 auto;padding:26px 16px}
@@ -86,4 +87,3 @@
 </div>
 </body>
 </html>
-

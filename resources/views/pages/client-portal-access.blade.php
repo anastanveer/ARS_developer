@@ -5,6 +5,7 @@
         'description' => 'Secure entry page for existing ARSDeveloper clients to access private project portals.',
         'keywords' => 'client portal access arsdeveloper',
         'robots' => 'noindex, nofollow',
+        'canonical' => route('client.portal.access'),
         'type' => 'WebPage',
     ];
 @endphp

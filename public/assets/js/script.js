@@ -906,6 +906,71 @@
 
 
 
+  function toFloatOrNull(value) {
+    var normalized = String(value || '').replace(/[^0-9.\-]/g, '');
+    if (!normalized) return null;
+    var parsed = parseFloat(normalized);
+    return isNaN(parsed) ? null : parsed;
+  }
+
+  function readFormValue(form, name) {
+    var el = form ? form.querySelector('[name="' + name + '"]') : null;
+    return el ? String(el.value || '').trim() : '';
+  }
+
+  function cleanEventParams(params) {
+    var cleaned = {};
+    Object.keys(params || {}).forEach(function (key) {
+      var value = params[key];
+      if (value === null || value === undefined || value === '') return;
+      cleaned[key] = value;
+    });
+    return cleaned;
+  }
+
+  function trackGa4Event(eventName, params) {
+    if (!eventName) return;
+    var payload = cleanEventParams(params || {});
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, payload);
+        return;
+      }
+      if (Array.isArray(window.dataLayer)) {
+        window.dataLayer.push(Object.assign({ event: eventName }, payload));
+      }
+    } catch (e) {
+      // Silent fail to avoid impacting form submission flow.
+    }
+  }
+
+  function buildConversionContext(form) {
+    var formType = readFormValue(form, 'form_type') || 'contact';
+    var projectType = readFormValue(form, 'project_type') || readFormValue(form, 'subject');
+    var budgetRange = readFormValue(form, 'budget_range');
+    var quoteValue = toFloatOrNull(readFormValue(form, 'final_quote_preview'));
+    if (quoteValue === null) {
+      quoteValue = toFloatOrNull(readFormValue(form, 'selected_plan_price'));
+    }
+    var directOrder = readFormValue(form, 'start_order_payment') === '1';
+    var currency = 'GBP';
+
+    return {
+      formType: formType,
+      directOrder: directOrder,
+      params: cleanEventParams({
+        form_type: formType,
+        project_type: projectType,
+        budget_range: budgetRange,
+        page_path: window.location.pathname,
+        page_location: window.location.href,
+        method: 'website_form',
+        value: quoteValue,
+        currency: quoteValue !== null ? currency : null
+      })
+    };
+  }
+
   function submitAjaxForm(form) {
     $.ajax({
       url: $(form).attr("action"),
@@ -916,6 +981,18 @@
         "Accept": "application/json"
       },
       success: function (response) {
+        var conversionContext = buildConversionContext(form);
+        var hasCheckoutRedirect = !!(response && response.redirect_url && String(response.redirect_url).indexOf('checkout.stripe.com') !== -1);
+        if (conversionContext.directOrder || hasCheckoutRedirect) {
+          trackGa4Event('begin_checkout', conversionContext.params);
+        } else if (conversionContext.formType === 'newsletter') {
+          trackGa4Event('sign_up', conversionContext.params);
+        } else if (conversionContext.formType === 'meeting') {
+          trackGa4Event('schedule_meeting', conversionContext.params);
+        } else {
+          trackGa4Event('generate_lead', conversionContext.params);
+        }
+
         var message = (response && response.message) ? response.message : "Request submitted successfully.";
         if ($(form).parent().find(".result").length) {
           $(form).parent().find(".result").html('<p class="contact-success-message">' + escapeHtml(message) + "</p>");
@@ -1211,6 +1288,18 @@
           'Accept': 'application/json'
         },
         success: function (response) {
+          var conversionParams = cleanEventParams({
+            form_type: 'meeting',
+            project_type: readFormValue(form, 'project_type'),
+            budget_range: readFormValue(form, 'budget_range'),
+            meeting_date: readFormValue(form, 'meeting_date'),
+            meeting_slot: readFormValue(form, 'meeting_slot'),
+            page_path: window.location.pathname,
+            page_location: window.location.href,
+            method: 'website_form'
+          });
+          trackGa4Event('schedule_meeting', conversionParams);
+
           if (response && response.redirect_url) {
             showSubmissionPopup('success', 'Booking Confirmed', (response && response.message) ? response.message : 'Meeting booked successfully.');
             setTimeout(function () {

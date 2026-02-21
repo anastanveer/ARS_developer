@@ -776,8 +776,8 @@
 .about-three__client-and-text-box {
     position: relative;
     display: flex;
-    align-items: center;
-    gap: 55px;
+    align-items: flex-start;
+    gap: 30px;
     margin-top: 28px;
 }
 
@@ -786,21 +786,26 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    max-width: 210px;
+    max-width: 280px;
     width: 100%;
 }
 
 .about-three__client-img {
     position: relative;
     display: block;
-    max-width: 60px;
-    width: 100%;
+    width: 60px;
+    min-width: 60px;
+    height: 60px;
 }
 
 .about-three__client-img img {
     width: 100%;
-    border: 1px solid var(--finris-gray);
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid rgba(var(--finris-gray-rgb), 0.8);
     border-radius: 50%;
+    background-color: #ffffff;
+    padding: 6px;
 }
 
 .about-three__client-content {
