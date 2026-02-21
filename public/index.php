@@ -5,16 +5,27 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-// Determine if the application is in maintenance mode...
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-    require $maintenance;
+/*
+|--------------------------------------------------------------------------
+| Resolve Paths For Local + cPanel Split Deploy
+|--------------------------------------------------------------------------
+|
+| Local:   project/public -> ../vendor, ../bootstrap, ../storage
+| cPanel:  domain_root     -> ../arsdeveloper_app/vendor, .../bootstrap, .../storage
+|
+*/
+$appBasePath = is_dir(__DIR__.'/../vendor')
+    ? dirname(__DIR__)
+    : dirname(__DIR__).'/arsdeveloper_app';
+
+$maintenancePath = $appBasePath.'/storage/framework/maintenance.php';
+if (file_exists($maintenancePath)) {
+    require $maintenancePath;
 }
 
-// Register the Composer autoloader...
-require __DIR__.'/../vendor/autoload.php';
+require $appBasePath.'/vendor/autoload.php';
 
-// Bootstrap Laravel and handle the request...
 /** @var Application $app */
-$app = require_once __DIR__.'/../bootstrap/app.php';
+$app = require_once $appBasePath.'/bootstrap/app.php';
 
 $app->handleRequest(Request::capture());
