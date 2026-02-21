@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
+use App\Services\IndexNowService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -11,6 +12,10 @@ use Illuminate\View\View;
 
 class BlogPostController extends Controller
 {
+    public function __construct(private readonly IndexNowService $indexNow)
+    {
+    }
+
     public function index(): View
     {
         $posts = BlogPost::query()
@@ -36,7 +41,8 @@ class BlogPostController extends Controller
         $data['og_image'] = $data['og_image'] ?: $data['featured_image'];
         $data['twitter_image'] = $data['twitter_image'] ?: $data['featured_image'];
 
-        BlogPost::create($data);
+        $blogPost = BlogPost::create($data);
+        $this->submitIndexNowForBlog($blogPost, 'blog_post_created');
 
         return redirect()->route('admin.blog-posts.index')->with('success', 'Blog post created.');
     }
@@ -48,6 +54,9 @@ class BlogPostController extends Controller
 
     public function update(Request $request, BlogPost $blogPost): RedirectResponse
     {
+        $wasPublished = (bool) $blogPost->is_published;
+        $oldSlug = (string) $blogPost->slug;
+
         $data = $this->validateData($request);
         $data['slug'] = $this->uniqueSlug($data['slug'] ?: $data['title'], $blogPost->id);
         $data['featured_image'] = $this->handleImageUpload($request, $data['featured_image'] ?? $blogPost->featured_image);
@@ -55,6 +64,13 @@ class BlogPostController extends Controller
         $data['twitter_image'] = $data['twitter_image'] ?: $data['featured_image'];
 
         $blogPost->update($data);
+        $isPublished = (bool) $blogPost->is_published;
+        $slugChanged = $oldSlug !== (string) $blogPost->slug;
+
+        if ($isPublished && (!$wasPublished || $slugChanged)) {
+            $reason = !$wasPublished ? 'blog_post_published' : 'blog_post_slug_changed';
+            $this->submitIndexNowForBlog($blogPost, $reason);
+        }
 
         return redirect()->route('admin.blog-posts.index')->with('success', 'Blog post updated.');
     }
@@ -143,5 +159,18 @@ class BlogPostController extends Controller
         $file->move($destination, $filename);
 
         return 'uploads/blog/' . $filename;
+    }
+
+    private function submitIndexNowForBlog(BlogPost $blogPost, string $reason): void
+    {
+        if (!$blogPost->is_published || trim((string) $blogPost->slug) === '') {
+            return;
+        }
+
+        $this->indexNow->submitUrls([
+            route('blog.show', ['slug' => $blogPost->slug]),
+            route('blog.index'),
+            url('/sitemap.xml'),
+        ], $reason);
     }
 }

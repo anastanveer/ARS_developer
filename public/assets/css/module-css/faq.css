@@ -41,6 +41,10 @@
     display: block;
 }
 
+.faq-one__btn.thm-btn {
+    background-color: #0f63b8;
+}
+
 .faq-one__right {
     position: relative;
     display: block;

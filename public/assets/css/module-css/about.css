@@ -460,6 +460,10 @@
     display: block;
 }
 
+.about-two__btn.thm-btn {
+    background-color: #0f63b8;
+}
+
 .about-two__call {
     position: relative;
     display: flex;

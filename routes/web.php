@@ -31,6 +31,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/{indexNowKey}.txt', function (string $indexNowKey) {
+    $configuredKey = trim((string) config('indexnow.key', ''));
+    if ($configuredKey === '' || !hash_equals($configuredKey, $indexNowKey)) {
+        abort(404);
+    }
+
+    return response($configuredKey, 200, ['Content-Type' => 'text/plain; charset=UTF-8']);
+})->where('indexNowKey', '[A-Za-z0-9\-]{8,128}');
+
 Route::view('/about', 'pages.about');
 Route::view('/services', 'pages.services');
 Route::view('/software-development', 'pages.software-development');

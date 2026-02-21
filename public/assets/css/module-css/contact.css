@@ -413,20 +413,20 @@
 
 .meeting-scheduler__quick-date.is-active {
     border-color: #1e81db;
-    background: linear-gradient(135deg, #1e4f96 0%, #2081db 100%);
+    background: linear-gradient(135deg, #1a4d92 0%, #166fbe 100%);
     color: #fff;
 }
 
 .meeting-scheduler__quick-date small {
     font-size: 10px;
     font-weight: 700;
-    color: #6b84a7;
+    color: #365880;
     text-transform: uppercase;
     letter-spacing: .04em;
 }
 
 .meeting-scheduler__quick-date.is-active small {
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
 }
 
 .meeting-scheduler__quick-empty {
@@ -497,6 +497,10 @@
 
 .meeting-scheduler__btn {
     border: none;
+}
+
+.meeting-scheduler__btn.thm-btn {
+    background-color: #0f63b8;
 }
 
 .meeting-scheduler__btn:disabled {
@@ -725,7 +729,7 @@
 }
 
 .meeting-calendar__day.is-selected {
-    background: var(--finris-base);
+    background: #0f63b8;
     color: #fff;
 }
 
@@ -2012,6 +2016,8 @@
 
 .audit-lead__btn {
     border: none;
+    background-color: #0f63b8;
+    color: #fff;
 }
 
 @media (max-width: 1199px) {

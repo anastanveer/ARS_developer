@@ -236,6 +236,10 @@
     padding-top: 12px;
 }
 
+.services-two__btn.thm-btn {
+    background-color: #0f63b8;
+}
+
 .services-two .row {
     row-gap: 14px;
 }

@@ -1608,7 +1608,7 @@
                                 <i class="icon-phone"></i>
                             </div>
                             <div class="text">
-                                <p><a href="tel:+44747803428">+44 747803428</a></p>
+                                <p><a class="main-menu-two__phone-link" href="tel:+44747803428">+44 747803428</a></p>
                             </div>
                         </li>
                         <li>
@@ -1638,9 +1638,9 @@
                             <p class="main-menu-two__top-text">Mon - Fri: 09:00 - 05:00</p>
                         </div>
                         <div class="main-menu-two__social">
-                            <a href="https://www.facebook.com/arsdeveloperuk" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
-                            <a href="https://linkedin.com/company/arsdeveloperuk" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/arsdeveloperuk/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                            <a class="main-menu-two__social-link" href="https://www.facebook.com/arsdeveloperuk" target="_blank" rel="noopener" aria-label="ARSDeveloper on Facebook"><i class="fab fa-facebook"></i></a>
+                            <a class="main-menu-two__social-link" href="https://linkedin.com/company/arsdeveloperuk" target="_blank" rel="noopener" aria-label="ARSDeveloper on LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a class="main-menu-two__social-link" href="https://www.instagram.com/arsdeveloperuk/" target="_blank" rel="noopener" aria-label="ARSDeveloper on Instagram"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1695,3 +1695,4 @@
         <div class="stricky-header stricked-menu main-menu main-menu-two">
             <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
         </div><!-- /.stricky-header -->
+        <main id="main-content" role="main">

@@ -4,14 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portfolio;
+use App\Services\IndexNowService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class PortfolioController extends Controller
 {
+    public function __construct(private readonly IndexNowService $indexNow)
+    {
+    }
+
     public function index(): View
     {
         $portfolios = Portfolio::orderBy('sort_order')->orderByDesc('id')->paginate(20);
@@ -32,7 +36,8 @@ class PortfolioController extends Controller
         $data['image_path_2'] = $this->handleImageUpload($request, 'image_2', $data['image_path_2'] ?? null);
         $data['image_path_3'] = $this->handleImageUpload($request, 'image_3', $data['image_path_3'] ?? null);
 
-        Portfolio::create($data);
+        $portfolio = Portfolio::create($data);
+        $this->submitIndexNowForPortfolio($portfolio, 'portfolio_created');
 
         return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio item created.');
     }
@@ -44,6 +49,9 @@ class PortfolioController extends Controller
 
     public function update(Request $request, Portfolio $portfolio): RedirectResponse
     {
+        $wasPublished = (bool) $portfolio->is_published;
+        $oldSlug = (string) $portfolio->slug;
+
         $data = $this->validateData($request);
         $data['slug'] = $this->uniqueSlug($data['slug'] ?: $data['title'], $portfolio->id);
         $data['image_path'] = $this->handleImageUpload($request, 'image', $data['image_path'] ?? $portfolio->image_path);
@@ -51,6 +59,13 @@ class PortfolioController extends Controller
         $data['image_path_3'] = $this->handleImageUpload($request, 'image_3', $data['image_path_3'] ?? $portfolio->image_path_3);
 
         $portfolio->update($data);
+        $isPublished = (bool) $portfolio->is_published;
+        $slugChanged = $oldSlug !== (string) $portfolio->slug;
+
+        if ($isPublished && (!$wasPublished || $slugChanged)) {
+            $reason = !$wasPublished ? 'portfolio_published' : 'portfolio_slug_changed';
+            $this->submitIndexNowForPortfolio($portfolio, $reason);
+        }
 
         return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio item updated.');
     }
@@ -120,5 +135,18 @@ class PortfolioController extends Controller
         $storedPath = $file->storeAs('portfolios', $filename, 'public');
 
         return 'storage/' . ltrim((string) $storedPath, '/');
+    }
+
+    private function submitIndexNowForPortfolio(Portfolio $portfolio, string $reason): void
+    {
+        if (!$portfolio->is_published || trim((string) $portfolio->slug) === '') {
+            return;
+        }
+
+        $this->indexNow->submitUrls([
+            route('portfolio.show', ['slug' => $portfolio->slug]),
+            url('/portfolio'),
+            url('/sitemap.xml'),
+        ], $reason);
     }
 }

@@ -883,36 +883,6 @@
         </section>
         <!--Process Two End -->
 
-        <!-- Sliding Text Two Start -->
-        <section class="sliding-text-two">
-            <div class="sliding-text-two__wrap">
-                <ul class="sliding-text-two__list list-unstyled marquee_mode">
-                    <li>
-                        <h2 data-hover="PORTFOLIO" class="sliding-text-two__title">PORTFOLIO</h2>
-                    </li>
-                    <li><span></span></li>
-                    <li>
-                        <h2 data-hover="PORTFOLIO" class="sliding-text-two__title">PORTFOLIO</h2>
-                    </li>
-                    <li><span></span></li>
-                    <li>
-                        <h2 data-hover="PORTFOLIO" class="sliding-text-two__title">PORTFOLIO</h2>
-                    </li>
-                    <li><span></span></li>
-                    <li>
-                        <h2 data-hover="PORTFOLIO" class="sliding-text-two__title">PORTFOLIO</h2>
-                    </li>
-                    <li><span></span></li>
-                    <li>
-                        <h2 data-hover="PORTFOLIO" class="sliding-text-two__title">PORTFOLIO</h2>
-                    </li>
-                    <li><span></span></li>
-                </ul>
-            </div>
-        </section>
-        <!-- Sliding Text Two End -->
-
-
         @php
             $homePortfolioItems = \App\Models\Portfolio::query()
                 ->where('is_published', true)
@@ -1260,10 +1230,10 @@
                     <p class="lead-forms-tabs__label">Choose one option below to continue</p>
                 </div>
                 <div class="lead-forms-tabs__nav" role="tablist" aria-label="Lead Forms">
-                    <button type="button" class="lead-forms-tabs__btn is-active" data-lead-tab="audit" aria-selected="true">
+                    <button type="button" id="lead-tab-audit" role="tab" aria-controls="free-audit-section" tabindex="0" class="lead-forms-tabs__btn is-active" data-lead-tab="audit" aria-selected="true">
                         Free Audit
                     </button>
-                    <button type="button" class="lead-forms-tabs__btn" data-lead-tab="estimate" aria-selected="false">
+                    <button type="button" id="lead-tab-estimate" role="tab" aria-controls="estimate-section" tabindex="-1" class="lead-forms-tabs__btn" data-lead-tab="estimate" aria-selected="false">
                         Quick Estimate
                     </button>
                 </div>
@@ -1272,7 +1242,7 @@
         <!-- Lead Forms Tabs End -->
 
         <!-- Audit Lead Section Start -->
-        <section class="audit-lead lead-forms-section is-active" id="free-audit-section" data-lead-panel="audit">
+        <section class="audit-lead lead-forms-section is-active" id="free-audit-section" role="tabpanel" aria-labelledby="lead-tab-audit" aria-hidden="false" tabindex="0" data-lead-panel="audit">
             <div class="container">
                 <div class="audit-lead__inner">
                     <div class="row">
@@ -1372,7 +1342,7 @@
         <!-- Audit Lead Section End -->
 
         <!-- Cost Estimator Start -->
-        <section class="cost-estimator lead-forms-section" id="estimate-section" data-lead-panel="estimate">
+        <section class="cost-estimator lead-forms-section" id="estimate-section" role="tabpanel" aria-labelledby="lead-tab-estimate" aria-hidden="true" tabindex="-1" data-lead-panel="estimate">
             <div class="container">
                 <div class="cost-estimator__inner">
                     <div class="row">
@@ -1480,11 +1450,15 @@
                         tabButtons.forEach(function (btn) {
                             var isActive = btn.getAttribute('data-lead-tab') === tabKey;
                             btn.classList.toggle('is-active', isActive);
+                            btn.setAttribute('tabindex', isActive ? '0' : '-1');
                             btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
                         });
 
                         panels.forEach(function (panel) {
-                            panel.classList.toggle('is-active', panel.getAttribute('data-lead-panel') === tabKey);
+                            var isPanelActive = panel.getAttribute('data-lead-panel') === tabKey;
+                            panel.classList.toggle('is-active', isPanelActive);
+                            panel.setAttribute('aria-hidden', isPanelActive ? 'false' : 'true');
+                            panel.setAttribute('tabindex', isPanelActive ? '0' : '-1');
                         });
                     }
 

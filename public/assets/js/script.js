@@ -2425,15 +2425,57 @@
 
   // Lead forms tabs
   if ($(".lead-forms-tabs__btn").length && $(".lead-forms-section").length) {
+    var leadTabsNav = $(".lead-forms-tabs__nav");
+    if (leadTabsNav.length) {
+      leadTabsNav.attr("role", "tablist").attr("aria-label", "Lead Forms");
+    }
+
+    $(".lead-forms-tabs__btn").each(function () {
+      var tabKey = ($(this).data("lead-tab") || "").toString();
+      var fallbackId = "lead-tab-" + (tabKey || "audit");
+      var targetPanelId = tabKey === "estimate" ? "estimate-section" : "free-audit-section";
+
+      if (!$(this).attr("id")) {
+        $(this).attr("id", fallbackId);
+      }
+
+      $(this)
+        .attr("role", "tab")
+        .attr("aria-controls", targetPanelId)
+        .attr("tabindex", "-1");
+    });
+
+    $(".lead-forms-section").each(function () {
+      var panelKey = ($(this).data("lead-panel") || "").toString();
+      var labelledBy = panelKey === "estimate" ? "lead-tab-estimate" : "lead-tab-audit";
+      $(this)
+        .attr("role", "tabpanel")
+        .attr("aria-labelledby", labelledBy)
+        .attr("aria-hidden", "true")
+        .attr("tabindex", "-1");
+    });
+
     var setLeadTab = function (tabKey) {
       var safeTabKey = (tabKey || "audit").toString();
-      $(".lead-forms-tabs__btn").removeClass("is-active").attr("aria-selected", "false");
+      $(".lead-forms-tabs__btn")
+        .removeClass("is-active")
+        .attr("aria-selected", "false")
+        .attr("tabindex", "-1");
+
       $('.lead-forms-tabs__btn[data-lead-tab="' + safeTabKey + '"]')
         .addClass("is-active")
-        .attr("aria-selected", "true");
+        .attr("aria-selected", "true")
+        .attr("tabindex", "0");
 
-      $(".lead-forms-section").removeClass("is-active");
-      $('.lead-forms-section[data-lead-panel="' + safeTabKey + '"]').addClass("is-active");
+      $(".lead-forms-section")
+        .removeClass("is-active")
+        .attr("aria-hidden", "true")
+        .attr("tabindex", "-1");
+
+      $('.lead-forms-section[data-lead-panel="' + safeTabKey + '"]')
+        .addClass("is-active")
+        .attr("aria-hidden", "false")
+        .attr("tabindex", "0");
 
       if ($.fn.niceSelect) {
         try {

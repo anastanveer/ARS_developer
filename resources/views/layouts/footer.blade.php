@@ -1,4 +1,5 @@
-<footer class="site-footer-two">
+        </main>
+        <footer class="site-footer-two">
             <div class="site-footer-two__shape-bg"
                 style="background-image: url({{ asset('assets/images/shapes/site-footer-two-shape-bg.png') }});"></div>
             <div class="site-footer-two__shape-1 zoominout"></div>
@@ -425,6 +426,24 @@
 
                 node.textContent = updatedText;
             });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var mainLandmark = document.querySelector('main, [role="main"]');
+            if (mainLandmark) {
+                return;
+            }
+
+            var wrapper = document.querySelector('.page-wrapper');
+            if (!wrapper) {
+                return;
+            }
+
+            wrapper.setAttribute('role', 'main');
+            if (!wrapper.id) {
+                wrapper.id = 'main-content';
+            }
         });
     </script>
     <script>
