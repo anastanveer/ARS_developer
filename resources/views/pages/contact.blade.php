@@ -45,7 +45,8 @@
     $flowBasePrice = is_numeric($flowPriceRaw) ? max(0, (float) $flowPriceRaw) : null;
     $flowFinalPrice = is_numeric($flowFinalRaw) ? max(0, (float) $flowFinalRaw) : null;
     $flowPayableAmount = $flowFinalPrice && $flowFinalPrice > 0 ? $flowFinalPrice : $flowBasePrice;
-    $canDirectOrderCheckout = $flowIntent === 'kickoff_payment' && is_numeric($flowPayableAmount) && (float) $flowPayableAmount > 0;
+    $showDirectOrderButton = in_array($flowIntent, ['kickoff_payment', 'order'], true);
+    $canDirectOrderCheckout = $showDirectOrderButton && is_numeric($flowPayableAmount) && (float) $flowPayableAmount > 0;
 
     $flowIntents = [
         'requirements' => [
@@ -279,12 +280,21 @@
                                         <div class="contact-page__btn-box">
                                             <button type="submit" class="thm-btn contact-page__btn"><span
                                                     class="icon-right"></span>SEND MESSAGE</button>
-                                            @if($canDirectOrderCheckout)
-                                                <button type="button" class="thm-btn contact-page__btn thm-btn-two js-direct-order-pay" style="margin-top:10px;">
-                                                    <span class="icon-right"></span>PAY NOW & START ORDER (GBP {{ number_format((float) $flowPayableAmount, 2) }})
+                                            @if($showDirectOrderButton)
+                                                <button type="button" class="thm-btn contact-page__btn thm-btn-two js-direct-order-pay" style="margin-top:10px;" data-direct-enabled="{{ $canDirectOrderCheckout ? '1' : '0' }}">
+                                                    <span class="icon-right"></span>
+                                                    @if($canDirectOrderCheckout)
+                                                        PAY NOW & START ORDER (GBP {{ number_format((float) $flowPayableAmount, 2) }})
+                                                    @else
+                                                        SELECT PACKAGE TO ENABLE PAY NOW
+                                                    @endif
                                                 </button>
                                                 <p style="margin:10px 0 0;font-size:13px;color:#4b6187;">
-                                                    Direct checkout will create your order, generate invoice, and send portal access after payment.
+                                                    @if($canDirectOrderCheckout)
+                                                        Direct checkout will create your order, generate invoice, and send portal access after payment.
+                                                    @else
+                                                        Select package and price from the Pricing page first to enable direct payment.
+                                                    @endif
                                                 </p>
                                             @endif
                                         </div>
@@ -451,6 +461,14 @@
                 payBtn.addEventListener('click', function () {
                     var form = payBtn.closest('form');
                     if (!form) return;
+                    var canDirectOrderCheckout = payBtn.getAttribute('data-direct-enabled') === '1';
+                    if (!canDirectOrderCheckout) {
+                        var resultBox = form.parentNode ? form.parentNode.querySelector('.result') : null;
+                        if (resultBox) {
+                            resultBox.innerHTML = '<p class="contact-error-message">Please choose a pricing package first, then click Start Order again.</p>';
+                        }
+                        return;
+                    }
 
                     var flagInput = form.querySelector('[data-order-pay-flag]');
                     if (flagInput) {

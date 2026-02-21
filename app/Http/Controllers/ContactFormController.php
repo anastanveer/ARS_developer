@@ -93,12 +93,21 @@ class ContactFormController extends Controller
         $hasPayableAmount = is_numeric($payload['selected_plan_price'] ?? null)
             || is_numeric($payload['final_quote_preview'] ?? null);
         $isKickoffIntent = strtolower(trim((string) ($payload['payment_intent'] ?? ''))) === 'kickoff_payment';
-        $wantsDirectOrderPayment = ($payload['form_type'] ?? '') === 'pricing_order'
-            && $hasPayableAmount
+        $isPricingOrderForm = ($payload['form_type'] ?? '') === 'pricing_order';
+        $isDirectOrderAction = $isPricingOrderForm
             && (
                 filter_var($payload['start_order_payment'] ?? false, FILTER_VALIDATE_BOOLEAN)
                 || $isKickoffIntent
             );
+
+        if ($isDirectOrderAction && !$hasPayableAmount) {
+            return $this->errorResponse(
+                'Please select a package with price on Pricing page, then click Start Order again.',
+                $expectsJson
+            );
+        }
+
+        $wantsDirectOrderPayment = $isDirectOrderAction && $hasPayableAmount;
 
         if ($wantsDirectOrderPayment) {
             $checkoutUrl = null;

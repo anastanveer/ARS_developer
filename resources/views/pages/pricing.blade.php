@@ -764,6 +764,30 @@
         showCouponSummary(false);
     }
 
+    function handleStartLinkGuard(event, link) {
+        var mode = safeValue(link.getAttribute('data-start-link')).toLowerCase();
+        if (mode !== 'kickoff') {
+            return;
+        }
+
+        var hasFixedPrice = typeof state.planPrice === 'number' && isFinite(state.planPrice) && state.planPrice > 0;
+        if (hasFixedPrice) {
+            return;
+        }
+
+        event.preventDefault();
+        if (couponResult) {
+            couponResult.textContent = 'Please select a package with fixed price before clicking Start Order.';
+            couponResult.style.color = '#a66a00';
+        }
+        showCouponSummary(false);
+        setNextStepMessage('For direct payment, choose a package first. For custom scope, use Submit Form or Book Planning Call.', '#a66a00');
+
+        if (startFlow) {
+            startFlow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
     planButtons.forEach(function (btn) {
         btn.addEventListener('click', function () {
             state.plan = safeValue(btn.getAttribute('data-plan'));
@@ -793,6 +817,12 @@
                 }
             }
             updateStartLinks();
+        });
+    });
+
+    startLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            handleStartLinkGuard(event, link);
         });
     });
 
