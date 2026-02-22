@@ -2331,7 +2331,7 @@
 
 
 
-    if ($(".marquee_mode").length && !lowPowerMode) {
+    if ($(".marquee_mode").length && !lowPowerMode && typeof $.fn.marquee === "function") {
       $('.marquee_mode').marquee({
         speed: 40,
         gap: 0,
@@ -2427,7 +2427,10 @@
   if ($(".lead-forms-tabs__btn").length && $(".lead-forms-section").length) {
     var leadTabsNav = $(".lead-forms-tabs__nav");
     if (leadTabsNav.length) {
-      leadTabsNav.attr("role", "tablist").attr("aria-label", "Lead Forms");
+      leadTabsNav
+        .attr("role", "tablist")
+        .attr("aria-label", "Lead Forms")
+        .attr("aria-orientation", "horizontal");
     }
 
     $(".lead-forms-tabs__btn").each(function () {
@@ -2470,12 +2473,14 @@
       $(".lead-forms-section")
         .removeClass("is-active")
         .attr("aria-hidden", "true")
-        .attr("tabindex", "-1");
+        .attr("tabindex", "-1")
+        .attr("hidden", "hidden");
 
       $('.lead-forms-section[data-lead-panel="' + safeTabKey + '"]')
         .addClass("is-active")
         .attr("aria-hidden", "false")
-        .attr("tabindex", "0");
+        .attr("tabindex", "0")
+        .removeAttr("hidden");
 
       if ($.fn.niceSelect) {
         try {
@@ -2488,6 +2493,34 @@
 
     $(".lead-forms-tabs__btn").on("click", function () {
       setLeadTab($(this).data("lead-tab"));
+    });
+
+    $(".lead-forms-tabs__btn").on("keydown", function (event) {
+      var key = event.key || event.which;
+      var tabs = $(".lead-forms-tabs__btn");
+      var currentIndex = tabs.index(this);
+      var targetIndex = currentIndex;
+
+      if (key === "ArrowRight" || key === 39) {
+        targetIndex = (currentIndex + 1) % tabs.length;
+      } else if (key === "ArrowLeft" || key === 37) {
+        targetIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      } else if (key === "Home" || key === 36) {
+        targetIndex = 0;
+      } else if (key === "End" || key === 35) {
+        targetIndex = tabs.length - 1;
+      } else if (key === "Enter" || key === " " || key === 13 || key === 32) {
+        event.preventDefault();
+        setLeadTab($(this).data("lead-tab"));
+        return;
+      } else {
+        return;
+      }
+
+      event.preventDefault();
+      var targetTab = tabs.eq(targetIndex);
+      targetTab.trigger("focus");
+      setLeadTab(targetTab.data("lead-tab"));
     });
 
     $(document).on("click", 'a[href="#free-audit"], a[href="#free-audit-section"]', function () {

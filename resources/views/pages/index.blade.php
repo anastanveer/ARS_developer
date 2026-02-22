@@ -1229,7 +1229,7 @@
                     <h3 class="lead-forms-tabs__title title-animation">Tell us what you need</h3>
                     <p class="lead-forms-tabs__label">Choose one option below to continue</p>
                 </div>
-                <div class="lead-forms-tabs__nav" role="tablist" aria-label="Lead Forms">
+                <div class="lead-forms-tabs__nav" role="tablist" aria-label="Lead Forms" aria-orientation="horizontal">
                     <button type="button" id="lead-tab-audit" role="tab" aria-controls="free-audit-section" tabindex="0" class="lead-forms-tabs__btn is-active" data-lead-tab="audit" aria-selected="true">
                         Free Audit
                     </button>
@@ -1438,51 +1438,6 @@
             </div>
         </section>
         <!-- Cost Estimator End -->
-
-        <script>
-            (function () {
-                function initLeadTabs() {
-                    var tabButtons = document.querySelectorAll('.lead-forms-tabs__btn');
-                    var panels = document.querySelectorAll('.lead-forms-section');
-                    if (!tabButtons.length || !panels.length) return;
-
-                    function setTab(tabKey) {
-                        tabButtons.forEach(function (btn) {
-                            var isActive = btn.getAttribute('data-lead-tab') === tabKey;
-                            btn.classList.toggle('is-active', isActive);
-                            btn.setAttribute('tabindex', isActive ? '0' : '-1');
-                            btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-                        });
-
-                        panels.forEach(function (panel) {
-                            var isPanelActive = panel.getAttribute('data-lead-panel') === tabKey;
-                            panel.classList.toggle('is-active', isPanelActive);
-                            panel.setAttribute('aria-hidden', isPanelActive ? 'false' : 'true');
-                            panel.setAttribute('tabindex', isPanelActive ? '0' : '-1');
-                        });
-                    }
-
-                    tabButtons.forEach(function (btn) {
-                        btn.addEventListener('click', function () {
-                            setTab(btn.getAttribute('data-lead-tab') || 'audit');
-                        });
-                    });
-
-                    var hash = (window.location.hash || '').toLowerCase();
-                    if (hash.indexOf('estimate') !== -1) {
-                        setTab('estimate');
-                    } else {
-                        setTab('audit');
-                    }
-                }
-
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', initLeadTabs);
-                } else {
-                    initLeadTabs();
-                }
-            })();
-        </script>
 
         <!--Blog Two Start -->
         @php

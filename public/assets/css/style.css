@@ -1971,12 +1971,12 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .main-menu-two__contact-list li .text p {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--finris-white);
   text-transform: uppercase;
   font-family: var(--finris-font-two);
   letter-spacing: 0.03em;
-  line-height: 16px;
+  line-height: 20px;
 }
 
 .main-menu-two__contact-list li .text p a {
@@ -1989,9 +1989,13 @@ body.megamenu-popup-active .mobile-nav__content {
   position: relative;
   display: inline-flex;
   align-items: center;
-  line-height: 1;
-  padding: 10px 0;
-  margin: -10px 0;
+  justify-content: center;
+  line-height: 1.1;
+  min-height: 48px;
+  min-width: 132px;
+  padding: 12px 10px;
+  border-radius: 8px;
+  margin: 0;
 }
 
 .main-menu-two__contact-list li .text p a:hover {
@@ -2051,7 +2055,7 @@ body.megamenu-popup-active .mobile-nav__content {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   margin-left: 40px;
 }
 
@@ -2060,10 +2064,10 @@ body.megamenu-popup-active .mobile-nav__content {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 44px;
-  width: 44px;
-  min-height: 44px;
-  min-width: 44px;
+  height: 50px;
+  width: 50px;
+  min-height: 50px;
+  min-width: 50px;
   border: 1px solid rgba(var(--finris-white-rgb), .10);
   border-radius: 5px;
   font-size: 15px;
@@ -2105,6 +2109,12 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .main-menu-two__social a+a {
   margin-left: 0;
+}
+
+.main-menu-two__social-link:focus-visible,
+.main-menu-two__phone-link:focus-visible {
+  outline: 2px solid var(--finris-primary);
+  outline-offset: 2px;
 }
 
 .main-menu-two__wrapper {
@@ -2608,6 +2618,59 @@ body.megamenu-popup-active .mobile-nav__content {
   color: var(--finris-black);
 }
 
+/*--------------------------------------------------------------
+# Accessibility / Visibility Fixes (No layout changes)
+--------------------------------------------------------------*/
+.sliding-text-two,
+.sliding-text-two__wrap,
+.sliding-text-two__list {
+  display: none !important;
+}
+
+.section-title-two__tagline {
+  color: #0d4f94;
+  font-weight: 600;
+}
+
+.section-title-two__tagline-icon-2 {
+  background-color: #0d73c6;
+}
+
+.thm-btn {
+  background-color: #0d63b8;
+}
+
+.services-two__btn.thm-btn,
+.faq-one__btn.thm-btn,
+.audit-lead__btn.thm-btn,
+.meeting-scheduler__btn.thm-btn {
+  background-color: #0b5aa9;
+}
+
+.meeting-scheduler__quick-date {
+  color: #123f77;
+  border-color: #bdd5f4;
+}
+
+.meeting-scheduler__quick-date small {
+  color: #204f87;
+  font-size: 11px;
+}
+
+.main-menu-two__phone-link {
+  min-height: 48px;
+  min-width: 132px;
+}
+
+.main-menu-two__social a {
+  min-height: 50px;
+  min-width: 50px;
+  border-color: rgba(var(--finris-white-rgb), 0.22);
+}
+
+.lead-forms-tabs__btn {
+  min-height: 46px;
+}
 
 
 

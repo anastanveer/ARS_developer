@@ -282,15 +282,11 @@
         if ($footerPath === '//') {
             $footerPath = '/';
         }
-        $isHomeFooterPath = in_array($footerPath, ['/', '/index.php'], true);
         $isGalleryFooterPath = in_array($footerPath, ['/gallery', '/gallery.php'], true);
         $isComingSoonFooterPath = in_array($footerPath, ['/coming-soon', '/coming-soon.php'], true);
     @endphp
     @if($isGalleryFooterPath)
         <script defer src="{{ asset('assets/js/isotope.js') }}"></script>
-    @endif
-    @if($isHomeFooterPath)
-        <script defer src="{{ asset('assets/js/marquee.min.js') }}"></script>
     @endif
     @if($isComingSoonFooterPath)
         <script defer src="{{ asset('assets/js/countdown.min.js') }}"></script>

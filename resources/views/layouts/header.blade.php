@@ -1410,7 +1410,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/module-css/newsletter.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/module-css/cta.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/module-css/counter.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/sliding-text.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/module-css/shop.css') }}" />
     @if($isComingSoonPath)
         <link rel="stylesheet" href="{{ asset('assets/css/module-css/coming-soon.css') }}" />
@@ -1695,4 +1694,4 @@
         <div class="stricky-header stricked-menu main-menu main-menu-two">
             <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
         </div><!-- /.stricky-header -->
-        <main id="main-content" role="main">
+        <main id="main-content" role="main" aria-label="Main content">
