@@ -1591,7 +1591,7 @@
     </style>
 </head>
 
-<body class="custom-cursor">
+<body class="custom-cursor{{ $isHomePath ? ' is-home' : '' }}">
 
 
 
