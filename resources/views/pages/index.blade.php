@@ -39,8 +39,7 @@
 
 
 
-        <!-- Main Slider Start -->
-        <section class="main-slider">
+        <section class="main-slider hero-text-slider">
             <div class="main-slider__shape-bg-2"
                 style="background-image: url(assets/images/shapes/main-slider-shape-bg-2.png);"></div>
             <div class="main-slider__shape-bg"
@@ -60,429 +59,49 @@
                 <img src="assets/images/shapes/main-slider-shape-4.png" alt="">
             </div>
             <div class="main-slider__carousel owl-carousel owl-theme">
-
                 <div class="item">
-                    <div class="main-slider__img-box">
-                        <div class="main-slider__img">
-                            <img src="assets/images/resources/main-slider-img-1-1.png" alt="UK software delivery hero visual" width="630" height="734" loading="eager" fetchpriority="high" decoding="async">
-                            <div class="main-slider__img-shape-box float-bob-y">
-                                <div class="main-slider__img-shape-1">
-                                    <div class="main-slider__img-shape-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="container">
-                        <div class="main-slider__content">
-                            <div class="main-slider__title-box">
-                                <h2 class="main-slider__title">UK Web Development <br> For Fast-Scaling <br><span>Businesses</span></h2>
-                                <div class="main-slider__btn">
-                                    <a href="/contact"><span class="icon-right"></span>Get Started</a>
+                        <div class="main-slider__content hero-text-slider__content">
+                            <div class="main-slider__title-box hero-text-slider__title-box">
+                                <p class="hero-text-slider__eyebrow">UK Focus</p>
+                                <h2 class="main-slider__title">UK Web Development, CRM Systems, and Technical SEO for Growth</h2>
+                                <p class="main-slider__text">Conversion-focused delivery for UK businesses with clean UX, fast performance, and reliable technical foundations.</p>
+                                <div class="main-slider__btn hero-text-slider__cta">
+                                    <a href="/contact"><span class="icon-right"></span>Talk to the UK Team</a>
+                                    <a href="/portfolio" class="hero-text-slider__outline-btn"><span class="icon-right"></span>View Case Studies</a>
                                 </div>
                             </div>
-                            <p class="main-slider__text">Custom websites and conversion-focused builds for UK companies that need growth-ready digital systems.</p>
-                            <div class="main-slider__satisfied-client-and-rating-box">
+                            <div class="main-slider__satisfied-client-and-rating-box hero-text-slider__stats">
                                 <div class="main-slider__satisfied-client-box">
                                     <ul class="list-unstyled main-slider__satisfied-client-list">
                                         <li>
                                             <div class="main-slider__satisfied-client-img">
-                                                <img src="assets/images/resources/main-slider-satisfied-client-1-1.jpg"
-                                                    alt="">
+                                                <img src="assets/images/resources/main-slider-satisfied-client-1-1.jpg" alt="Happy client profile">
                                             </div>
                                         </li>
                                         <li>
                                             <div class="main-slider__satisfied-client-img">
-                                                <img src="assets/images/resources/main-slider-satisfied-client-1-2.jpg"
-                                                    alt="">
+                                                <img src="assets/images/resources/main-slider-satisfied-client-1-2.jpg" alt="Client success profile">
                                             </div>
                                         </li>
                                     </ul>
                                     <div class="main-slider__satisfied-client-content">
                                         <div class="main-slider__satisfied-client-count count-box">
-                                            <h3 class="count-text" data-stop="2000" data-speed="1500">00
-                                            </h3>
+                                            <h3 class="count-text" data-stop="2000" data-speed="1500">00</h3>
                                             <span class="main-slider__satisfied-client-count-plus">+</span>
                                         </div>
-                                        <p class="main-slider__satisfied-client-count-text">Happy Clients
-                                        </p>
+                                        <p class="main-slider__satisfied-client-count-text">Happy Clients</p>
                                     </div>
                                 </div>
                                 <div class="main-slider__rating-box">
                                     <div class="main-slider__rating-count count-box">
-                                        <h3 class="count-text" data-stop="25" data-speed="1500">00
-                                        </h3>
+                                        <h3 class="count-text" data-stop="25" data-speed="1500">00</h3>
                                         <span class="main-slider__satisfied-client-count-letter">k</span>
                                     </div>
                                     <div class="main-slider__rating-content">
                                         <p class="main-slider__rating-content-sub-title">Positive Rating</p>
                                         <div class="main-slider__rating-content-logo">
-                                            <img src="assets/images/resources/main-slider-rating-content-logo.png"
-                                                alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="main-slider__img-box">
-                        <div class="main-slider__img">
-                            <img src="assets/images/resources/main-slider-img-1-1.png" alt="UK CRM development hero visual" width="630" height="734" loading="lazy" decoding="async">
-                            <div class="main-slider__img-shape-box float-bob-y">
-                                <div class="main-slider__img-shape-1">
-                                    <div class="main-slider__img-shape-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="main-slider__content">
-                            <div class="main-slider__title-box">
-                                <h2 class="main-slider__title">UK CRM Development <br> To Streamline Your <br><span>Operations</span></h2>
-                                <div class="main-slider__btn">
-                                    <a href="/contact"><span class="icon-right"></span>Get Started</a>
-                                </div>
-                            </div>
-                            <p class="main-slider__text">From lead handling to team workflows, we build CRM platforms that improve speed, visibility, and control.</p>
-                            <div class="main-slider__satisfied-client-and-rating-box">
-                                <div class="main-slider__satisfied-client-box">
-                                    <ul class="list-unstyled main-slider__satisfied-client-list">
-                                        <li>
-                                            <div class="main-slider__satisfied-client-img">
-                                                <img src="assets/images/resources/main-slider-satisfied-client-1-1.jpg"
-                                                    alt="">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="main-slider__satisfied-client-img">
-                                                <img src="assets/images/resources/main-slider-satisfied-client-1-2.jpg"
-                                                    alt="">
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="main-slider__satisfied-client-content">
-                                        <div class="main-slider__satisfied-client-count count-box">
-                                            <h3 class="count-text" data-stop="2000" data-speed="1500">00
-                                            </h3>
-                                            <span class="main-slider__satisfied-client-count-plus">+</span>
-                                        </div>
-                                        <p class="main-slider__satisfied-client-count-text">Happy Clients
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="main-slider__rating-box">
-                                    <div class="main-slider__rating-count count-box">
-                                        <h3 class="count-text" data-stop="25" data-speed="1500">00
-                                        </h3>
-                                        <span class="main-slider__satisfied-client-count-letter">k</span>
-                                    </div>
-                                    <div class="main-slider__rating-content">
-                                        <p class="main-slider__rating-content-sub-title">Positive Rating</p>
-                                        <div class="main-slider__rating-content-logo">
-                                            <img src="assets/images/resources/main-slider-rating-content-logo.png"
-                                                alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="main-slider__img-box">
-                        <div class="main-slider__img">
-                            <img src="assets/images/resources/main-slider-img-1-1.png" alt="UK SEO services hero visual" width="630" height="734" loading="lazy" decoding="async">
-                            <div class="main-slider__img-shape-box float-bob-y">
-                                <div class="main-slider__img-shape-1">
-                                    <div class="main-slider__img-shape-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="main-slider__content">
-                            <div class="main-slider__title-box">
-                                <h2 class="main-slider__title">UK SEO Services <br> That Bring Qualified <br><span>Leads</span></h2>
-                                <div class="main-slider__btn">
-                                    <a href="/contact"><span class="icon-right"></span>Get Started</a>
-                                </div>
-                            </div>
-                            <p class="main-slider__text">Technical SEO, content structure, and on-page optimization to lift rankings and increase real enquiries.</p>
-                            <div class="main-slider__satisfied-client-and-rating-box">
-                                <div class="main-slider__satisfied-client-box">
-                                    <ul class="list-unstyled main-slider__satisfied-client-list">
-                                        <li>
-                                            <div class="main-slider__satisfied-client-img">
-                                                <img src="assets/images/resources/main-slider-satisfied-client-1-1.jpg"
-                                                    alt="">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="main-slider__satisfied-client-img">
-                                                <img src="assets/images/resources/main-slider-satisfied-client-1-2.jpg"
-                                                    alt="">
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="main-slider__satisfied-client-content">
-                                        <div class="main-slider__satisfied-client-count count-box">
-                                            <h3 class="count-text" data-stop="2000" data-speed="1500">00
-                                            </h3>
-                                            <span class="main-slider__satisfied-client-count-plus">+</span>
-                                        </div>
-                                        <p class="main-slider__satisfied-client-count-text">Happy Clients
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="main-slider__rating-box">
-                                    <div class="main-slider__rating-count count-box">
-                                        <h3 class="count-text" data-stop="25" data-speed="1500">00
-                                        </h3>
-                                        <span class="main-slider__satisfied-client-count-letter">k</span>
-                                    </div>
-                                    <div class="main-slider__rating-content">
-                                        <p class="main-slider__rating-content-sub-title">Positive Rating</p>
-                                        <div class="main-slider__rating-content-logo">
-                                            <img src="assets/images/resources/main-slider-rating-content-logo.png"
-                                                alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <!--Main Slider Start -->
-
-        <!--Services Two Start -->
-        <section class="services-two">
-            <div class="services-two__bg-shape"
-                style="background-image: url(assets/images/shapes/services-two-bg-shape.png);"></div>
-            <div class="container">
-                <div class="section-title-two text-center sec-title-animation animation-style1">
-                    <div class="section-title-two__tagline-box justify-content-center">
-                        <div class="section-title-two__tagline-icon-box">
-                            <div class="section-title-two__tagline-icon-1"></div>
-                            <div class="section-title-two__tagline-icon-2"></div>
-                        </div>
-                        <span class="section-title-two__tagline">Services</span>
-                    </div>
-                    <h2 class="section-title-two__title title-animation">UK software services for startups, SMEs <br> and
-                        <span>growth-focused teams</span></h2>
-                </div>
-                <div class="row">
-                    <!--Services Two Single Start -->
-                    <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200"
-                        data-aos-delay="150">
-                        <div class="services-two__single">
-                            <div class="services-two__icon">
-                                <img src="assets/images/icon/services-two-icon-2.png" alt="">
-                            </div>
-                            <h3 class="services-two__title"><a href="/web-design-development">Web Design &
-                                    Development</a></h3>
-                            <p class="services-two__text">Conversion-focused websites for UK businesses, from landing
-                                pages to full business sites.</p>
-                            <div class="services-two__btn-box">
-                                <a href="/web-design-development" class="services-two__btn thm-btn thm-btn-two"><span
-                                        class="icon-right"></span> Know More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Two Single End -->
-                    <!--Services Two Single Start -->
-                    <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200"
-                        data-aos-delay="200">
-                        <div class="services-two__single">
-                            <div class="services-two__icon">
-                                <img src="assets/images/icon/digital-marketing.png" alt="">
-                            </div>
-                            <h3 class="services-two__title"><a href="/digital-marketing">Digital Marketing &
-                                    Paid Campaigns</a></h3>
-                            <p class="services-two__text">SEO, PPC and social ad execution designed to grow qualified
-                                leads month after month.</p>
-                            <div class="services-two__btn-box">
-                                <a href="/digital-marketing" class="services-two__btn thm-btn thm-btn-two"><span
-                                        class="icon-right"></span> Know More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Two Single End -->
-                    <!--Services Two Single Start -->
-                    <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200"
-                        data-aos-delay="250">
-                        <div class="services-two__single">
-                            <div class="services-two__icon">
-                                <img src="assets/images/icon/web-design.png" alt="">
-                            </div>
-                            <h3 class="services-two__title"><a href="/search-engine-optimization">SEO Technical Audit &
-                                    Performance</a></h3>
-                            <p class="services-two__text">Technical SEO cleanup, Core Web Vitals and content structure
-                                to improve organic rankings.</p>
-                            <div class="services-two__btn-box">
-                                <a href="/search-engine-optimization" class="services-two__btn thm-btn thm-btn-two"><span
-                                        class="icon-right"></span> Know More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Two Single End -->
-                    <!--Services Two Single Start -->
-                    <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200"
-                        data-aos-delay="300">
-                        <div class="services-two__single">
-                            <div class="services-two__icon">
-                                <img src="assets/images/icon/product-design.png" alt="">
-                            </div>
-                            <h3 class="services-two__title"><a href="/design-and-branding">Product Design &
-                                    Branding</a></h3>
-                            <p class="services-two__text">Brand systems, visual identity and product direction that
-                                make your offer look premium.</p>
-                            <div class="services-two__btn-box">
-                                <a href="/design-and-branding" class="services-two__btn thm-btn thm-btn-two"><span
-                                        class="icon-right"></span> Know More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Two Single End -->
-                    <!--Services Two Single Start -->
-                    <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200"
-                        data-aos-delay="350">
-                        <div class="services-two__single">
-                            <div class="services-two__icon">
-                                <img src="assets/images/icon/user-reaserach.png" alt="">
-                            </div>
-                            <h3 class="services-two__title"><a href="/app-development">UI/UX Design &
-                                    User Research</a></h3>
-                            <p class="services-two__text">Customer journey mapping and interface prototyping for web
-                                apps, portals and SaaS products.</p>
-                            <div class="services-two__btn-box">
-                                <a href="/app-development" class="services-two__btn thm-btn thm-btn-two"><span
-                                        class="icon-right"></span> Know More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Two Single End -->
-                    <!--Services Two Single Start -->
-                    <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-duration="1200"
-                        data-aos-delay="400">
-                        <div class="services-two__single">
-                            <div class="services-two__icon">
-                                <img src="assets/images/icon/services-two-icon-3.png" alt="">
-                            </div>
-                            <h3 class="services-two__title"><a href="/digital-marketing">Content & Video Marketing</a></h3>
-                            <p class="services-two__text">Campaign-ready content, scripts and short-form video assets
-                                aligned with your growth goals.</p>
-                            <div class="services-two__btn-box">
-                                <a href="/digital-marketing" class="services-two__btn thm-btn thm-btn-two"><span
-                                        class="icon-right"></span> Know More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Two Single End -->
-                </div>
-            </div>
-        </section>
-        <!--Services Two End -->
-
-
-        <!--About Two Start -->
-        <section class="about-two">
-            <div class="about-two__shape-box">
-                <div class="about-two__shape-1">
-                    <div class="about-two__shape-2">
-                        <div class="about-two__shape-3"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-5 wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
-                        <div class="about-two__left">
-                            <div class="section-title-two text-left sec-title-animation animation-style2">
-                                <div class="section-title-two__tagline-box">
-                                    <div class="section-title-two__tagline-icon-box">
-                                        <div class="section-title-two__tagline-icon-1"></div>
-                                        <div class="section-title-two__tagline-icon-2"></div>
-                                    </div>
-                                    <span class="section-title-two__tagline">About Us</span>
-                                </div>
-                                <h2 class="section-title-two__title title-animation">A UK software partner focused on
-                                    <span>results and scale</span></h2>
-                            </div>
-                            <div class="about-two__img">
-                                <img src="assets/images/resources/about-two-img-1.jpg" alt="UK software strategy session" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-7">
-                        <div class="about-two__right">
-                            <p class="about-two__text">We support UK businesses with practical software delivery:
-                                conversion-ready websites, CRM workflows, ecommerce systems, and ongoing SEO growth.
-                                Every project is planned around real business outcomes, not vanity metrics.</p>
-                            <div class="about-two__points-box">
-                                <ul class="list-unstyled about-two__points">
-                                    <li data-aos="fade-right" data-aos-duration="1200" data-aos-delay="100">
-                                        <div class="icon">
-                                            <img src="assets/images/icon/about-two-icon-1.png" alt="">
-                                        </div>
-                                        <div class="content">
-                                            <h3>Commercial Strategy First</h3>
-                                            <p>Each project starts with goals, conversion paths, and the buyer journey
-                                                for your UK audience.</p>
-                                        </div>
-                                    </li>
-                                    <li data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
-                                        <div class="icon">
-                                            <img src="assets/images/icon/about-two-icon-2.png" alt="">
-                                        </div>
-                                        <div class="content">
-                                            <h3>Conversion-Led UI Design</h3>
-                                            <p>Design systems built for clarity, trust, and measurable enquiries or
-                                                online sales.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled about-two__points">
-                                    <li data-aos="fade-left" data-aos-duration="1200" data-aos-delay="150">
-                                        <div class="icon">
-                                            <img src="assets/images/icon/about-two-icon-3.png" alt="">
-                                        </div>
-                                        <div class="content">
-                                            <h3>SEO-Ready Build Quality</h3>
-                                            <p>Technical structure, clean headings, schema support, and Core Web Vitals
-                                                best practices.</p>
-                                        </div>
-                                    </li>
-                                    <li data-aos="fade-left" data-aos-duration="1200" data-aos-delay="250">
-                                        <div class="icon">
-                                            <img src="assets/images/icon/about-two-icon-4.png" alt="">
-                                        </div>
-                                        <div class="content">
-                                            <h3>CRM and Automation Integration</h3>
-                                            <p>Connect forms, pipeline, invoicing, and follow-up flows for a smoother
-                                                sales process.</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="about-two__bottom">
-                                <div class="about-two__btn-and-call-box">
-                                    <div class="about-two__btn-box">
-                                        <a href="/about" class="about-two__btn thm-btn thm-btn-two"><span
-                                                class="icon-right"></span> Know More</a>
-                                    </div>
-                                    <div class="about-two__call">
-                                        <div class="about-two__call-icon">
-                                            <i class="icon-phone"></i>
-                                        </div>
-                                        <div class="about-two__call-content">
-                                            <p class="about-two__call-sub-title">Connect us</p>
-                                            <h3 class="about-two__call-number"><a href="tel:+44747803428">+44 747803428</a></h3>
+                                            <img src="assets/images/resources/main-slider-rating-content-logo.png" alt="Google rating logo">
                                         </div>
                                     </div>
                                 </div>
@@ -605,15 +224,6 @@
         </section>
         <!-- Industry Fit End -->
         --}}
-
-        @include('partials.trust-pillars', [
-            'trustPillars' => [
-                ['title' => 'UK Address & Business Presence', 'text' => 'Clear UK business identity, contact details, and dependable communication process.'],
-                ['title' => 'Response SLA', 'text' => 'New enquiries receive an initial response within one UK business day.'],
-                ['title' => 'GDPR-Safe Data Handling', 'text' => 'Contact, booking, and project data is handled with privacy-first operational controls.'],
-                ['title' => 'Milestone Delivery Clarity', 'text' => 'Scope, timeline, and checkpoints are confirmed before implementation begins.'],
-            ],
-        ])
 
         <!--Why Choose Two Start -->
         <section class="why-choose-two">
