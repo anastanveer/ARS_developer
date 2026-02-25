@@ -196,7 +196,8 @@
 }
 
 .contact-page__input-box input[type="text"],
-.contact-page__input-box input[type="email"] {
+.contact-page__input-box input[type="email"],
+.contact-page__input-box select {
     height: 56px;
     width: 100%;
     background-color: transparent;
@@ -209,6 +210,24 @@
     display: block;
     font-weight: 500;
     border-radius: 8px;
+}
+
+.contact-page__input-box select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, #6f86ad 50%), linear-gradient(135deg, #6f86ad 50%, transparent 50%);
+    background-position: calc(100% - 24px) calc(50% - 3px), calc(100% - 18px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+.contact-page__input-box input[type="text"]:focus,
+.contact-page__input-box input[type="email"]:focus,
+.contact-page__input-box select:focus,
+.contact-page__input-box textarea:focus {
+    border-color: var(--finris-base);
 }
 
 .contact-page__input-box textarea {
@@ -245,6 +264,7 @@
     position: absolute;
     top: 19px;
     right: 20px;
+    pointer-events: none;
 }
 
 .contact-page__input-icon span {

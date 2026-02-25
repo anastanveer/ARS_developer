@@ -18,9 +18,6 @@
     $flowPlanLabel = trim((string) ucwords((string) $flowPlanLabel));
     $flowBillingRaw = strtolower(trim((string) request()->query('billing', '')));
     $flowPriceRaw = trim((string) request()->query('price', ''));
-    $flowCouponRaw = strtoupper(trim((string) request()->query('coupon', '')));
-    $flowDiscountRaw = trim((string) request()->query('discount', ''));
-    $flowFinalRaw = trim((string) request()->query('final', ''));
     $flowBillingLabel = match ($flowBillingRaw) {
         'subscription' => 'Subscription',
         'one_time' => 'One-Time',
@@ -37,13 +34,10 @@
     if (is_numeric($flowPriceRaw) && (float) $flowPriceRaw > 0) {
         $flowPlanDescriptor .= ' - GBP ' . number_format((float) $flowPriceRaw, 2);
     }
-    if ($flowCouponRaw !== '' && is_numeric($flowFinalRaw)) {
-        $flowPlanDescriptor .= ' | Coupon ' . $flowCouponRaw . ' Applied (Final GBP ' . number_format((float) $flowFinalRaw, 2) . ')';
-    }
     $flowPlanSuffix = $flowPlanDescriptor !== '' ? ' - ' . $flowPlanDescriptor : '';
     $flowPlanText = $flowPlanDescriptor !== '' ? ' for ' . $flowPlanDescriptor : '';
     $flowBasePrice = is_numeric($flowPriceRaw) ? max(0, (float) $flowPriceRaw) : null;
-    $flowFinalPrice = is_numeric($flowFinalRaw) ? max(0, (float) $flowFinalRaw) : null;
+    $flowFinalPrice = null;
     $flowPayableAmount = $flowFinalPrice && $flowFinalPrice > 0 ? $flowFinalPrice : $flowBasePrice;
     $showDirectOrderButton = in_array($flowIntent, ['kickoff_payment', 'order'], true);
     $canDirectOrderCheckout = $showDirectOrderButton && is_numeric($flowPayableAmount) && (float) $flowPayableAmount > 0;
@@ -234,15 +228,6 @@
                                 @if(is_numeric($flowBasePrice))
                                     <input type="hidden" name="selected_plan_price" value="{{ (float) $flowBasePrice }}">
                                 @endif
-                                @if($flowCouponRaw !== '')
-                                    <input type="hidden" name="coupon_code" value="{{ $flowCouponRaw }}">
-                                @endif
-                                @if(is_numeric($flowDiscountRaw))
-                                    <input type="hidden" name="coupon_discount" value="{{ (float) $flowDiscountRaw }}">
-                                @endif
-                                @if(is_numeric($flowFinalRaw))
-                                    <input type="hidden" name="final_quote_preview" value="{{ (float) $flowFinalRaw }}">
-                                @endif
                                 @if(!empty($flowContext['budget_hint']))
                                     <input type="hidden" name="budget_range" value="{{ $flowContext['budget_hint'] }}">
                                 @endif
@@ -266,9 +251,20 @@
                                     <div class="col-xl-12">
                                         <div class="contact-page__input-box">
                                             <div class="contact-page__input-icon">
+                                                <span class="icon-credit-card"></span>
+                                            </div>
+                                            <select class="ignore" name="action_mode" data-contact-action data-direct-enabled="{{ $canDirectOrderCheckout ? '1' : '0' }}">
+                                                <option value="message">Send message only</option>
+                                                <option value="pay">Pay now and start order</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="contact-page__input-box">
+                                            <div class="contact-page__input-icon">
                                                 <span class="icon-resume"></span>
                                             </div>
-                                            <input type="text" name="subject" placeholder="Subject" value="{{ $prefillSubject }}" required="">
+                                            <input type="text" name="subject" placeholder="Project Type / Subject" value="{{ $prefillSubject }}" required="">
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
@@ -279,25 +275,11 @@
                                             <textarea name="message" placeholder="Message">{{ $prefillMessage }}</textarea>
                                         </div>
                                         <div class="contact-page__btn-box">
-                                            <button type="submit" class="thm-btn contact-page__btn"><span
-                                                    class="icon-right"></span>SEND MESSAGE</button>
-                                            @if($showDirectOrderButton)
-                                                <button type="button" class="thm-btn contact-page__btn thm-btn-two js-direct-order-pay" style="margin-top:10px;" data-direct-enabled="{{ $canDirectOrderCheckout ? '1' : '0' }}">
-                                                    <span class="icon-right"></span>
-                                                    @if($canDirectOrderCheckout)
-                                                        PAY NOW & START ORDER (GBP {{ number_format((float) $flowPayableAmount, 2) }})
-                                                    @else
-                                                        SELECT PACKAGE TO ENABLE PAY NOW
-                                                    @endif
-                                                </button>
-                                                <p style="margin:10px 0 0;font-size:13px;color:#4b6187;">
-                                                    @if($canDirectOrderCheckout)
-                                                        Direct checkout will create your order, generate invoice, and send portal access after payment.
-                                                    @else
-                                                        Select package and price from the Pricing page first to enable direct payment.
-                                                    @endif
-                                                </p>
-                                            @endif
+                                            <button type="submit" class="thm-btn contact-page__btn" data-primary-submit><span
+                                                    class="icon-right"></span><span data-primary-submit-label>SEND MESSAGE</span></button>
+                                            <p style="margin:10px 0 0;font-size:13px;color:#4b6187;" data-contact-action-hint>
+                                                Choose one action: send message only, or pay now and start order.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -456,35 +438,38 @@
 
         <script>
             (function () {
-                var payBtn = document.querySelector('.js-direct-order-pay');
-                if (!payBtn) return;
+                var actionSelect = document.querySelector('[data-contact-action]');
+                if (!actionSelect) return;
 
-                payBtn.addEventListener('click', function () {
-                    var form = payBtn.closest('form');
-                    if (!form) return;
-                    var canDirectOrderCheckout = payBtn.getAttribute('data-direct-enabled') === '1';
-                    if (!canDirectOrderCheckout) {
-                        var resultBox = form.parentNode ? form.parentNode.querySelector('.result') : null;
-                        if (resultBox) {
-                            resultBox.innerHTML = '<p class="contact-error-message">Please choose a pricing package first, then click Start Order again.</p>';
-                        }
-                        return;
-                    }
+                var form = actionSelect.closest('form');
+                if (!form) return;
 
-                    var flagInput = form.querySelector('[data-order-pay-flag]');
+                var labelNode = form.querySelector('[data-primary-submit-label]');
+                var flagInput = form.querySelector('[data-order-pay-flag]');
+                var hintNode = form.querySelector('[data-contact-action-hint]');
+
+                function syncActionState() {
+                    var selectedMode = actionSelect.value;
+                    var isPayNow = selectedMode === 'pay';
+
                     if (flagInput) {
-                        flagInput.value = '1';
+                        flagInput.value = isPayNow ? '1' : '0';
                     }
-
-                    if (typeof window.jQuery !== 'undefined' && jQuery(form).valid && !jQuery(form).valid()) {
-                        if (flagInput) {
-                            flagInput.value = '0';
+                    if (labelNode) {
+                        labelNode.textContent = isPayNow ? 'PAY NOW' : 'SEND MESSAGE';
+                    }
+                    if (hintNode) {
+                        if (isPayNow) {
+                            hintNode.textContent = 'You will be redirected to secure Stripe checkout after submit.';
+                        } else {
+                            hintNode.textContent = 'Standard enquiry mode. We will review and respond quickly.';
                         }
-                        return;
                     }
+                }
 
-                    form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-                });
+                actionSelect.addEventListener('change', syncActionState);
+
+                syncActionState();
             })();
         </script>
 

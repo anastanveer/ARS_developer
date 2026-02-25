@@ -201,23 +201,26 @@
 
   if ($("#switch-toggle-tab").length) {
     var pricingTabs = $("#switch-toggle-tab .pricing-one__tab-btn");
-    var monthTabContent = $("#month");
-    var yearTabContent = $("#year");
+    var pricingPanels = $(".pricing-one__tab-panel");
 
     function setPricingTab(activeTab) {
-      var showMonth = activeTab === "month";
       pricingTabs.removeClass("active").attr("aria-selected", "false").attr("tabindex", "-1");
-
-      var activeTabBtn = pricingTabs.filter('[data-pricing-target="' + (showMonth ? "month" : "year") + '"]');
+      var activeTabBtn = pricingTabs.filter('[data-pricing-target="' + activeTab + '"]');
+      if (!activeTabBtn.length) {
+        activeTab = "month";
+        activeTabBtn = pricingTabs.filter('[data-pricing-target="month"]');
+      }
       activeTabBtn.addClass("active").attr("aria-selected", "true").attr("tabindex", "0");
-
-      monthTabContent.stop(true, true)[showMonth ? "fadeIn" : "fadeOut"](160).attr("aria-hidden", showMonth ? "false" : "true");
-      yearTabContent.stop(true, true)[showMonth ? "fadeOut" : "fadeIn"](160).attr("aria-hidden", showMonth ? "true" : "false");
+      pricingPanels.each(function () {
+        var panel = $(this);
+        var isActive = panel.attr("id") === activeTab;
+        panel.stop(true, true)[isActive ? "fadeIn" : "fadeOut"](160).attr("aria-hidden", isActive ? "false" : "true");
+      });
     }
 
     pricingTabs.on("click", function (e) {
       e.preventDefault();
-      setPricingTab($(this).data("pricing-target") === "year" ? "year" : "month");
+      setPricingTab($(this).data("pricing-target"));
     });
 
     pricingTabs.on("keydown", function (e) {
@@ -229,10 +232,10 @@
       if (nextIndex >= pricingTabs.length) nextIndex = 0;
       var nextTab = pricingTabs.eq(nextIndex);
       nextTab.trigger("focus");
-      setPricingTab(nextTab.data("pricing-target") === "year" ? "year" : "month");
+      setPricingTab(nextTab.data("pricing-target"));
     });
 
-    setPricingTab(pricingTabs.filter(".active").data("pricing-target") === "year" ? "year" : "month");
+    setPricingTab(pricingTabs.filter(".active").data("pricing-target") || "month");
   }
 
 

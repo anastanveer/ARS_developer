@@ -60,9 +60,13 @@
                             aria-selected="false" aria-controls="year" data-pricing-target="year">
                             Requirement-Based Delivery
                         </button>
+                        <button type="button" class="pricing-one__tab-btn" id="pricing-tab-hourly" role="tab"
+                            aria-selected="false" aria-controls="hourly" data-pricing-target="hourly">
+                            Hourly Rate (UK)
+                        </button>
                     </div>
-                    <p class="pricing-one__switch-note">Choose a package first, then pick your start option below:
-                        meeting, requirements form, or order kickoff.</p>
+                    <p class="pricing-one__switch-note">Pick a package and continue with one action: call, form, or
+                        direct order.</p>
                 </div>
 
                 <div class="tabed-content">
@@ -273,14 +277,109 @@
                             </div>
                         </div>
                     </div>
+
+                    <div id="hourly" class="pricing-one__tab-panel" role="tabpanel" aria-labelledby="pricing-tab-hourly" style="display:none;" aria-hidden="true">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInDown" data-wow-duration="500ms">
+                                <div class="pricing-one__single">
+                                    <div class="pricing-one__title-box">
+                                        <p class="pricing-one__title">HOURLY ESSENTIAL</p>
+                                        <h3 class="pricing-one__price-box">GBP 65 <span>/Hour</span> </h3>
+                                        <div class="pricing-one__border"></div>
+                                    </div>
+                                    <div class="pricing-one__feature-list-box">
+                                        <h4 class="pricing-one__feature-title">Minimum 10-hour block</h4>
+                                        <ul class="list-unstyled pricing-one__feature-list">
+                                            <li><div class="icon"><span class="fas fa-check"></span></div><div class="text"><p>Bug fixes, minor features, and content updates</p></div></li>
+                                            <li><div class="icon"><span class="fas fa-check"></span></div><div class="text"><p>Progress report and hours summary</p></div></li>
+                                            <li><div class="icon"><span class="fas fa-check"></span></div><div class="text"><p>Best for small ongoing tasks</p></div></li>
+                                        </ul>
+                                    </div>
+                                    <div class="pricing-one__btn-box">
+                                        <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
+                                            data-plan="Hourly Essential (10h block)" data-billing="hourly" data-price="650"><span class="icon-right"></span> Choose Package</a>
+                                    </div>
+                                    <div class="pricing-one__shape-1"></div>
+                                    <div class="pricing-one__shape-2"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-duration="500ms">
+                                <div class="pricing-one__single">
+                                    <div class="pricing-one__title-box">
+                                        <p class="pricing-one__title">HOURLY GROWTH</p>
+                                        <h3 class="pricing-one__price-box">GBP 75 <span>/Hour</span> </h3>
+                                        <div class="pricing-one__border"></div>
+                                    </div>
+                                    <div class="pricing-one__feature-list-box">
+                                        <h4 class="pricing-one__feature-title">Minimum 20-hour block</h4>
+                                        <ul class="list-unstyled pricing-one__feature-list">
+                                            <li><div class="icon"><span class="fas fa-check"></span></div><div class="text"><p>Landing page, SEO fixes, and conversion updates</p></div></li>
+                                            <li><div class="icon"><span class="fas fa-check"></span></div><div class="text"><p>Weekly status and priority turnaround</p></div></li>
+                                            <li><div class="icon"><span class="fas fa-check"></span></div><div class="text"><p>Best for growth teams with recurring tasks</p></div></li>
+                                        </ul>
+                                    </div>
+                                    <div class="pricing-one__btn-box">
+                                        <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
+                                            data-plan="Hourly Growth (20h block)" data-billing="hourly" data-price="1500"><span class="icon-right"></span> Choose Package</a>
+                                    </div>
+                                    <div class="pricing-one__shape-1"></div>
+                                    <div class="pricing-one__shape-2"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInDown" data-wow-duration="500ms">
+                                <div class="pricing-one__single">
+                                    <div class="pricing-one__title-box">
+                                        <p class="pricing-one__title">HOURLY SCALE</p>
+                                        <h3 class="pricing-one__price-box">GBP 85 <span>/Hour</span> </h3>
+                                        <div class="pricing-one__border"></div>
+                                    </div>
+                                    <div class="pricing-one__feature-list-box">
+                                        <h4 class="pricing-one__feature-title">Minimum 40-hour block</h4>
+                                        <ul class="list-unstyled pricing-one__feature-list">
+                                            <li><div class="icon"><span class="fas fa-check"></span></div><div class="text"><p>Development sprint, integrations, and QA tasks</p></div></li>
+                                            <li><div class="icon"><span class="fas fa-check"></span></div><div class="text"><p>Milestone-based delivery planning</p></div></li>
+                                            <li><div class="icon"><span class="fas fa-check"></span></div><div class="text"><p>Best for teams needing high monthly throughput</p></div></li>
+                                        </ul>
+                                    </div>
+                                    <div class="pricing-one__btn-box">
+                                        <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
+                                            data-plan="Hourly Scale (40h block)" data-billing="hourly" data-price="3400"><span class="icon-right"></span> Choose Package</a>
+                                    </div>
+                                    <div class="pricing-one__shape-1"></div>
+                                    <div class="pricing-one__shape-2"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-duration="500ms">
+                                <div class="pricing-one__single-last">
+                                    <div class="pricing-one__custom-pricing-box">
+                                        <div class="pricing-one__custom-pricing-icon">
+                                            <img src="assets/images/icon/pricing-one-custom-pricing-icon-1.png" alt="">
+                                        </div>
+                                        <p class="pricing-one__custom-pricing-title">Custom Hour Bank</p>
+                                        <p class="pricing-one__custom-pricing-text">Need a custom hour bank? We can set
+                                            monthly or quarterly hour allocation with clear reporting.</p>
+                                        <div class="pricing-one__btn-box-two">
+                                            <a href="#pricing-start-flow" class="pricing-one__btn-two thm-btn js-plan-select"
+                                                data-plan="Custom Hour Bank" data-billing="hourly" data-price=""><span class="icon-right"></span> Choose Custom</a>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-one__custom-pricing-img">
+                                        <img src="assets/images/resources/pricing-one-custom-pricing-img-1.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="pricing-one__start-flow" id="pricing-start-flow">
                     <div class="pricing-one__start-flow-head">
                         <span class="pricing-one__start-flow-tag">How To Start</span>
-                        <h3 class="pricing-one__start-flow-title">Pick your next step after package selection</h3>
-                        <p class="pricing-one__start-flow-text">Selected package and billing type are forwarded automatically
-                            so the team already knows your context.</p>
+                        <h3 class="pricing-one__start-flow-title">Choose your start action</h3>
+                        <p class="pricing-one__start-flow-text">Selected package info is forwarded automatically.</p>
                         <p class="pricing-one__start-flow-selected">Selected package:
                             <strong data-selected-plan>Not selected yet</strong>
                         </p>
@@ -318,14 +417,7 @@
                             </div>
                         </div>
                     </div>
-                    <ul class="list-unstyled pricing-one__start-flow-trust">
-                        <li><span class="icon-check"></span> No auto charges: scope, timeline and invoice are confirmed before execution.</li>
-                        <li><span class="icon-check"></span> Transparent milestone billing with proper business invoices.</li>
-                        <li><span class="icon-check"></span> Privacy-first process aligned with UK business expectations.</li>
-                    </ul>
-                    <div class="pricing-one__start-flow-head" style="margin-top:16px;">
-                        <span class="pricing-one__start-flow-tag">Next Step</span>
-                        <h3 class="pricing-one__start-flow-title">Choose one clear action</h3>
+                    <div class="pricing-one__start-flow-head" style="margin-top:10px;">
                         <p id="pricingStartStepMessage" class="pricing-one__start-flow-text" style="margin-top:8px;color:#173153;"></p>
                     </div>
                 </div>
@@ -522,7 +614,7 @@
         }
 
         event.preventDefault();
-        setNextStepMessage('For direct payment, choose a package first. For custom scope, use Submit Form or Book Planning Call.', '#a66a00');
+        setNextStepMessage('Direct pay needs a fixed package. For custom scope, use Submit Form or Book Planning Call.', '#a66a00');
 
         if (startFlow) {
             startFlow.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -535,10 +627,10 @@
             state.billing = safeValue(btn.getAttribute('data-billing'));
             var priceRaw = safeValue(btn.getAttribute('data-price')).trim();
             state.planPrice = priceRaw === '' ? null : Number(priceRaw);
-            setNextStepMessage('Now choose your next step: Book Planning Call, Submit Form, or Start Order.', '#173153');
+            setNextStepMessage('Now choose one action: Book Call, Submit Form, or Start Order.', '#173153');
 
             if (selectedPlanNode) {
-                selectedPlanNode.textContent = state.plan + (state.billing ? ' (' + state.billing.replace('_', ' ') + ')' : '');
+                selectedPlanNode.textContent = state.plan + (state.billing ? ' (' + state.billing.replace(/_/g, ' ') + ')' : '');
             }
             updateStartLinks();
         });
@@ -549,7 +641,7 @@
             handleStartLinkGuard(event, link);
         });
     });
-    setNextStepMessage('Select a package, then continue with Submit Form, Book Planning Call, or Start Order.', '#173153');
+    setNextStepMessage('Select a package, then continue with one action below.', '#173153');
     updateStartLinks();
 })();
 </script>

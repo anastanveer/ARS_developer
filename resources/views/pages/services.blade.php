@@ -683,7 +683,7 @@
                     </div>
                 </div>
                 <div class="text-center" style="margin-top:18px;">
-                    <p style="margin:0 0 10px;color:#5b6f90;">For coupons, exact inclusions, and order start options, open full pricing page.</p>
+                    <p style="margin:0 0 10px;color:#5b6f90;">For exact inclusions and order start options, open full pricing page.</p>
                     <a href="/pricing" class="thm-btn"><span class="icon-right"></span> View Full Pricing</a>
                 </div>
             </div>
