@@ -2608,6 +2608,7 @@
 
   // Pricing package selector + next-step links
   (function () {
+    var PRICING_SESSION_KEY = 'ars_selected_pricing_plan_v1';
     var planButtons = Array.prototype.slice.call(document.querySelectorAll('.js-plan-select'));
     var selectedPlanNode = document.querySelector('[data-selected-plan]');
     var startLinks = Array.prototype.slice.call(document.querySelectorAll('[data-start-link][data-base-href]'));
@@ -2620,7 +2621,7 @@
       return (value || '').replace(/_/g, ' ').trim();
     }
 
-    function buildLink(baseHref, plan, billing) {
+    function buildLink(baseHref, plan, billing, price) {
       if (!plan) return baseHref;
 
       var source = baseHref || '';
@@ -2636,21 +2637,38 @@
       if (billing) {
         url += '&billing=' + encodeURIComponent(billing);
       }
+      if (price !== null && price !== undefined && String(price).trim() !== '') {
+        url += '&price=' + encodeURIComponent(String(price).trim());
+      }
 
       return url + hash;
     }
 
-    function selectPlan(plan, billing, activeButton) {
+    function selectPlan(plan, billing, price, activeButton) {
       var safePlan = (plan || '').trim();
       var safeBilling = (billing || '').trim();
+      var safePrice = price == null ? '' : String(price).trim();
       var suffix = billingLabel(safeBilling);
 
       selectedPlanNode.textContent = safePlan !== '' ? (suffix ? (safePlan + ' (' + suffix + ')') : safePlan) : 'Not selected yet';
 
       startLinks.forEach(function (link) {
         var baseHref = link.getAttribute('data-base-href') || link.getAttribute('href') || '';
-        link.setAttribute('href', buildLink(baseHref, safePlan, safeBilling));
+        link.setAttribute('href', buildLink(baseHref, safePlan, safeBilling, safePrice));
       });
+
+      if (safePlan !== '') {
+        try {
+          window.sessionStorage.setItem(PRICING_SESSION_KEY, JSON.stringify({
+            plan: safePlan,
+            billing: safeBilling,
+            price: safePrice,
+            saved_at: Date.now()
+          }));
+        } catch (e) {
+          // Ignore storage errors so selection UX is unaffected.
+        }
+      }
 
       planButtons.forEach(function (button) {
         button.classList.remove('is-selected');
@@ -2670,8 +2688,9 @@
         var targetId = button.getAttribute('href') || '';
         var plan = button.getAttribute('data-plan') || '';
         var billing = button.getAttribute('data-billing') || '';
+        var price = button.getAttribute('data-price') || '';
 
-        selectPlan(plan, billing, button);
+        selectPlan(plan, billing, price, button);
 
         if (targetId && targetId.charAt(0) === '#') {
           var target = document.querySelector(targetId);
@@ -2686,7 +2705,7 @@
     var params = new URLSearchParams(window.location.search);
     var queryPlan = (params.get('plan') || '').trim();
     if (queryPlan !== '') {
-      selectPlan(queryPlan, (params.get('billing') || '').trim(), null);
+      selectPlan(queryPlan, (params.get('billing') || '').trim(), (params.get('price') || '').trim(), null);
     }
   })();
 

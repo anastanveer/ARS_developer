@@ -48,6 +48,7 @@ class ContactFormController extends Controller
             'selected_plan_price' => ['nullable', 'numeric', 'min:0'],
             'payment_intent' => ['nullable', 'string', 'max:60'],
             'start_order_payment' => ['nullable', 'boolean'],
+            'action_mode' => ['nullable', 'string', 'in:message,pay'],
             'company' => ['nullable', 'string', 'max:120'],
             'coupon_code' => ['nullable', 'string', 'max:40'],
             'coupon_discount' => ['nullable', 'numeric', 'min:0'],
@@ -94,10 +95,12 @@ class ContactFormController extends Controller
             || is_numeric($payload['final_quote_preview'] ?? null);
         $isKickoffIntent = strtolower(trim((string) ($payload['payment_intent'] ?? ''))) === 'kickoff_payment';
         $isPricingOrderForm = ($payload['form_type'] ?? '') === 'pricing_order';
+        $actionMode = strtolower(trim((string) ($payload['action_mode'] ?? '')));
+        $hasExplicitActionMode = in_array($actionMode, ['message', 'pay'], true);
         $isDirectOrderAction = $isPricingOrderForm
             && (
                 filter_var($payload['start_order_payment'] ?? false, FILTER_VALIDATE_BOOLEAN)
-                || $isKickoffIntent
+                || ($hasExplicitActionMode ? $actionMode === 'pay' : $isKickoffIntent)
             );
 
         if ($isDirectOrderAction && !$hasPayableAmount) {
@@ -281,6 +284,7 @@ class ContactFormController extends Controller
             'selected_plan_price' => trim((string) ($this->firstFilled($request, ['selected_plan_price']) ?: '')),
             'payment_intent' => trim((string) ($this->firstFilled($request, ['payment_intent']) ?: '')),
             'start_order_payment' => filter_var($request->input('start_order_payment', false), FILTER_VALIDATE_BOOLEAN),
+            'action_mode' => strtolower(trim((string) $request->input('action_mode', 'message'))),
             'coupon_code' => $couponCode,
             'coupon_discount' => $couponDiscount,
             'final_quote_preview' => $finalQuotePreview,

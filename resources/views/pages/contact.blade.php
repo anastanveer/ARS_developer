@@ -41,6 +41,7 @@
     $flowPayableAmount = $flowFinalPrice && $flowFinalPrice > 0 ? $flowFinalPrice : $flowBasePrice;
     $showDirectOrderButton = in_array($flowIntent, ['kickoff_payment', 'order'], true);
     $canDirectOrderCheckout = $showDirectOrderButton && is_numeric($flowPayableAmount) && (float) $flowPayableAmount > 0;
+    $prefillActionMode = old('action_mode', $canDirectOrderCheckout ? 'pay' : 'message');
 
     $flowIntents = [
         'requirements' => [
@@ -222,15 +223,9 @@
                                 <input type="hidden" name="form_type" value="{{ $prefillFormType }}">
                                 <input type="hidden" name="start_order_payment" value="0" data-order-pay-flag>
                                 <input type="hidden" name="payment_intent" value="{{ $flowIntent }}">
-                                @if($flowProjectType !== '')
-                                    <input type="hidden" name="project_type" value="{{ $flowProjectType }}">
-                                @endif
-                                @if(is_numeric($flowBasePrice))
-                                    <input type="hidden" name="selected_plan_price" value="{{ (float) $flowBasePrice }}">
-                                @endif
-                                @if(!empty($flowContext['budget_hint']))
-                                    <input type="hidden" name="budget_range" value="{{ $flowContext['budget_hint'] }}">
-                                @endif
+                                <input type="hidden" name="project_type" value="{{ old('project_type', $flowProjectType) }}">
+                                <input type="hidden" name="selected_plan_price" value="{{ old('selected_plan_price', is_numeric($flowBasePrice) ? (float) $flowBasePrice : '') }}">
+                                <input type="hidden" name="budget_range" value="{{ old('budget_range', $flowContext['budget_hint'] ?? '') }}">
                                 <div class="row">
                                     <div class="col-xl-12">
                                         <div class="contact-page__input-box">
@@ -254,8 +249,8 @@
                                                 <span class="icon-credit-card"></span>
                                             </div>
                                             <select class="ignore" name="action_mode" data-contact-action data-direct-enabled="{{ $canDirectOrderCheckout ? '1' : '0' }}">
-                                                <option value="message">Send message only</option>
-                                                <option value="pay">Pay now and start order</option>
+                                                <option value="message" @selected($prefillActionMode === 'message')>Send message only</option>
+                                                <option value="pay" @selected($prefillActionMode === 'pay')>Pay now and start order</option>
                                             </select>
                                         </div>
                                     </div>
@@ -438,6 +433,7 @@
 
         <script>
             (function () {
+                var PRICING_SESSION_KEY = 'ars_selected_pricing_plan_v1';
                 var actionSelect = document.querySelector('[data-contact-action]');
                 if (!actionSelect) return;
 
@@ -447,10 +443,86 @@
                 var labelNode = form.querySelector('[data-primary-submit-label]');
                 var flagInput = form.querySelector('[data-order-pay-flag]');
                 var hintNode = form.querySelector('[data-contact-action-hint]');
+                var projectTypeInput = form.querySelector('[name="project_type"]');
+                var priceInput = form.querySelector('[name="selected_plan_price"]');
+                var budgetInput = form.querySelector('[name="budget_range"]');
+                var subjectInput = form.querySelector('[name="subject"]');
+                var messageInput = form.querySelector('[name="message"]');
+
+                function parseStoredPlan() {
+                    try {
+                        var raw = window.sessionStorage.getItem(PRICING_SESSION_KEY);
+                        if (!raw) return null;
+                        var parsed = JSON.parse(raw);
+                        if (!parsed || typeof parsed !== 'object') return null;
+                        return parsed;
+                    } catch (e) {
+                        return null;
+                    }
+                }
+
+                function firstNonEmpty() {
+                    for (var i = 0; i < arguments.length; i++) {
+                        var value = arguments[i];
+                        if (value !== null && value !== undefined && String(value).trim() !== '') {
+                            return String(value).trim();
+                        }
+                    }
+                    return '';
+                }
+
+                function hydrateFromPricingContext() {
+                    var params = new URLSearchParams(window.location.search);
+                    var stored = parseStoredPlan();
+
+                    var resolvedPlan = firstNonEmpty(
+                        params.get('plan'),
+                        projectTypeInput ? projectTypeInput.value : '',
+                        stored ? stored.plan : ''
+                    );
+                    var resolvedPrice = firstNonEmpty(
+                        params.get('price'),
+                        priceInput ? priceInput.value : '',
+                        stored ? stored.price : ''
+                    );
+                    var resolvedBilling = firstNonEmpty(
+                        params.get('billing'),
+                        stored ? stored.billing : ''
+                    );
+
+                    if (projectTypeInput && resolvedPlan !== '') {
+                        projectTypeInput.value = resolvedPlan;
+                    }
+                    if (priceInput && resolvedPrice !== '') {
+                        priceInput.value = resolvedPrice;
+                    }
+                    if (budgetInput && budgetInput.value.trim() === '' && resolvedPrice !== '') {
+                        budgetInput.value = 'Selected package: GBP ' + resolvedPrice;
+                    }
+                    if (subjectInput && subjectInput.value.trim() === '' && resolvedPlan !== '') {
+                        subjectInput.value = resolvedPlan + (resolvedBilling ? ' (' + resolvedBilling.replace(/_/g, ' ') + ')' : '');
+                    }
+                    if (messageInput && messageInput.value.trim() === '' && resolvedPlan !== '') {
+                        messageInput.value = 'I am ready to start and request kickoff invoice/payment link for ' + resolvedPlan + '. Please share next onboarding steps.';
+                    }
+                }
+
+                function hasPayablePrice() {
+                    if (!priceInput) return false;
+                    var value = String(priceInput.value || '').trim();
+                    if (value === '') return false;
+                    var amount = parseFloat(value.replace(/[^0-9.\-]/g, ''));
+                    return !isNaN(amount) && amount > 0;
+                }
 
                 function syncActionState() {
                     var selectedMode = actionSelect.value;
-                    var isPayNow = selectedMode === 'pay';
+                    if (selectedMode === 'pay' && !hasPayablePrice()) {
+                        actionSelect.value = 'message';
+                        selectedMode = 'message';
+                    }
+
+                    var isPayNow = selectedMode === 'pay' && hasPayablePrice();
 
                     if (flagInput) {
                         flagInput.value = isPayNow ? '1' : '0';
@@ -467,6 +539,7 @@
                     }
                 }
 
+                hydrateFromPricingContext();
                 actionSelect.addEventListener('change', syncActionState);
 
                 syncActionState();
