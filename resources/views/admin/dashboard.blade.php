@@ -17,6 +17,23 @@
     <div class="stat"><b>Client Actions (7d)</b><span>{{ $stats['client_actions_7d'] }}</span></div>
 </div>
 
+<div class="card" style="margin-bottom:14px">
+    <div class="top" style="margin-bottom:10px">
+        <h3 style="margin:0">Invoice & Payment Control</h3>
+        <a href="{{ route('admin.invoices.index') }}" class="btn">Open Invoice Center</a>
+    </div>
+    <div class="grid" style="margin-bottom:10px">
+        <div class="stat"><b>Total Invoices</b><span>{{ number_format((int) $stats['invoices_total']) }}</span></div>
+        <div class="stat"><b>Pending Invoices</b><span>{{ number_format((int) $stats['invoices_pending']) }}</span></div>
+        <div class="stat"><b>Overdue Invoices</b><span>{{ number_format((int) $stats['invoices_overdue']) }}</span></div>
+        <div class="stat"><b>Balance Due</b><span>GBP {{ number_format((float) $stats['invoice_balance_due'], 2) }}</span></div>
+    </div>
+    <div class="muted">
+        Simple flow: create invoice or direct payment link, send email in one click, client pays by Stripe,
+        then update status (pending/paid/failed/overdue) with optional email notification.
+    </div>
+</div>
+
 <div class="row" style="margin-bottom:14px">
     <div class="card">
         <div class="top" style="margin-bottom:10px">

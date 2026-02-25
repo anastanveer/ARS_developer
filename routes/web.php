@@ -12,12 +12,14 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\LeadEmailController;
 use App\Http\Controllers\Admin\FinanceController;
+use App\Http\Controllers\Admin\InvoiceController as AdminInvoiceController;
 use App\Http\Controllers\Admin\OperationsController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\ClientReviewController as AdminClientReviewController;
 use App\Http\Controllers\BlogPageController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\SystemLogController;
 use App\Http\Controllers\ClientReviewController;
 use App\Http\Controllers\ClientPortalController;
 use App\Http\Controllers\HomeController;
@@ -27,6 +29,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\PortfolioPageController;
 use App\Http\Controllers\PricingController;
+use App\Http\Controllers\PublicInvoiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -267,6 +270,10 @@ Route::post('/client-portal/{token}/requirements', [ClientPortalController::clas
 Route::post('/client-portal/{token}/pay', [ClientPortalController::class, 'payInvoice'])->name('client.portal.pay');
 Route::get('/client-portal/{token}/pay/success', [ClientPortalController::class, 'handleStripeSuccess'])->name('client.portal.pay.success');
 Route::post('/stripe/webhook', [ClientPortalController::class, 'stripeWebhook'])->name('stripe.webhook');
+Route::get('/invoice/{token}', [PublicInvoiceController::class, 'show'])->name('invoice.public.show');
+Route::get('/invoice/{token}/pay-now', [PublicInvoiceController::class, 'quickPay'])->name('invoice.public.pay-now');
+Route::post('/invoice/{token}/pay', [PublicInvoiceController::class, 'pay'])->name('invoice.public.pay');
+Route::get('/invoice/{token}/pay/success', [PublicInvoiceController::class, 'success'])->name('invoice.public.pay.success');
 Route::get('/review/{token}', [ClientReviewController::class, 'show'])->name('review.show');
 Route::post('/review/{token}', [ClientReviewController::class, 'submit'])->name('review.submit');
 Route::get('/client-portal-demo', function () {
@@ -402,6 +409,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::resource('/blocked-contacts', BlockedContactController::class)->except('show');
             Route::resource('/clients', ClientController::class)->except('show');
             Route::resource('/projects', ProjectController::class);
+            Route::get('/invoices', [AdminInvoiceController::class, 'index'])->name('invoices.index');
+            Route::post('/invoices/direct-payment-link', [AdminInvoiceController::class, 'storeDirectPaymentLink'])->name('invoices.direct-payment-link');
             Route::get('/reviews', [AdminClientReviewController::class, 'index'])->name('reviews.index');
             Route::post('/reviews/{review}/approve', [AdminClientReviewController::class, 'approve'])->name('reviews.approve');
             Route::post('/reviews/{review}/unapprove', [AdminClientReviewController::class, 'unapprove'])->name('reviews.unapprove');
@@ -417,6 +426,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/finance/expense', [FinanceController::class, 'storeExpense'])->name('finance.expense.store');
             Route::post('/finance/budget', [FinanceController::class, 'storeBudget'])->name('finance.budget.store');
             Route::get('/finance/export-csv', [FinanceController::class, 'exportCsv'])->name('finance.export');
+            Route::get('/logs', [SystemLogController::class, 'index'])->name('logs.index');
             Route::get('/audits', [AuditReportController::class, 'index'])->name('audits.index');
             Route::get('/audits/create', [AuditReportController::class, 'create'])->name('audits.create');
             Route::post('/audits', [AuditReportController::class, 'store'])->name('audits.store');
@@ -434,6 +444,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/projects/{project}/requirements', [ProjectController::class, 'storeRequirement'])->name('projects.requirements.store');
             Route::post('/projects/{project}/requirements/{requirement}/status', [ProjectController::class, 'updateRequirement'])->name('projects.requirements.status');
             Route::post('/projects/{project}/invoices', [ProjectController::class, 'storeInvoice'])->name('projects.invoices.store');
+            Route::get('/projects/{project}/invoices/{invoice}/studio', [ProjectController::class, 'editInvoiceStudio'])->name('projects.invoices.studio');
+            Route::post('/projects/{project}/invoices/{invoice}/studio', [ProjectController::class, 'saveInvoiceStudio'])->name('projects.invoices.studio.save');
+            Route::post('/projects/{project}/invoices/{invoice}/send-link', [ProjectController::class, 'sendInvoiceLink'])->name('projects.invoices.send-link');
+            Route::post('/projects/{project}/invoices/{invoice}/status', [ProjectController::class, 'updateInvoiceStatus'])->name('projects.invoices.status');
             Route::post('/projects/{project}/payments', [ProjectController::class, 'storePayment'])->name('projects.payments.store');
 
             Route::get('/admin-users', [AdminUserController::class, 'index'])->name('admin-users.index');

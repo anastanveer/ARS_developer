@@ -70,6 +70,7 @@ class ForcePrimaryDomain
         $caseSensitivePrefixes = [
             '/admin',
             '/client-portal/',
+            '/invoice/',
             '/review/',
             '/meeting/',
             '/stripe/',

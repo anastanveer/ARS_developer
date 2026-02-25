@@ -245,15 +245,19 @@
   //Main Slider 
   if ($(".main-slider__carousel").length) {
     $(".main-slider__carousel").owlCarousel({
-      loop: true,
+      loop: false,
       animateOut: "fadeOut",
       animateIn: "fadeIn",
       margin: 0,
-      nav: true,
-      dots: true,
+      nav: false,
+      dots: false,
       smartSpeed: 500,
-      autoplay: !lowPowerMode,
-      autoplayTimeout: 7000,
+      autoplay: false,
+      autoplayTimeout: 0,
+      mouseDrag: false,
+      touchDrag: false,
+      pullDrag: false,
+      freeDrag: false,
       navText: [
         '<span class="icon-right-arrow-1"></span>',
         '<span class="icon-right-arrow-1"></span>',

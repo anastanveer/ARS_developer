@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Coupon;
 use App\Models\EmailLog;
+use App\Models\Invoice;
 use App\Models\Lead;
 use App\Models\ClientReview;
 use App\Models\Payment;
@@ -38,6 +39,10 @@ class DashboardController extends Controller
             'clients' => Client::count(),
             'projects' => Project::count(),
             'revenue' => Payment::sum('amount'),
+            'invoices_total' => Invoice::count(),
+            'invoices_pending' => Invoice::where('status', 'pending')->count(),
+            'invoices_overdue' => Invoice::where('status', 'overdue')->count(),
+            'invoice_balance_due' => max(0, (float) Invoice::sum('amount') - (float) Invoice::sum('paid_amount')),
             'pending_reviews' => $pendingReviewsCount,
             'client_actions_7d' => ProjectRequirement::where('source', 'client')->where('created_at', '>=', now()->subDays(7))->count()
                 + Payment::where(function ($q) {

@@ -11,12 +11,16 @@ class Invoice extends Model
 
     protected $fillable = [
         'project_id', 'invoice_number', 'client_invoice_number', 'invoice_date', 'due_date',
-        'amount', 'paid_amount', 'status', 'notes',
+        'public_token', 'amount', 'paid_amount', 'status', 'notes',
+        'invoice_payload', 'show_pay_button', 'sent_to_email', 'sent_at',
     ];
 
     protected $casts = [
         'invoice_date' => 'date',
         'due_date' => 'date',
+        'invoice_payload' => 'array',
+        'show_pay_button' => 'boolean',
+        'sent_at' => 'datetime',
     ];
 
     public function project()

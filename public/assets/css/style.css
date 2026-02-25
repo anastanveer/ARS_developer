@@ -2946,8 +2946,6 @@ body.is-home #main-content > section.why-choose-two,
 body.is-home #main-content > section.process-two,
 body.is-home #main-content > section.meeting-scheduler,
 body.is-home #main-content > section.client-portal-discovery,
-body.is-home #main-content > section.lead-forms-tabs,
-body.is-home #main-content > section.audit-lead,
 body.is-home #main-content > section.cost-estimator,
 body.is-home #main-content > section.blog-two,
 body.is-home #main-content > section.faq-one--home,
@@ -2957,13 +2955,29 @@ body.is-home #main-content > section.newsletter-two {
     padding-bottom: clamp(52px, 5.2vw, 82px);
 }
 
+/* Tighten Process -> Portfolio vertical spacing on home */
+body.is-home #main-content > section.process-two {
+    padding-bottom: clamp(20px, 2.2vw, 34px);
+}
+
+/* Keep lead-form tabs visually attached to the form block */
+body.is-home #main-content > section.lead-forms-tabs {
+    padding-top: 18px;
+    padding-bottom: 8px;
+}
+
+body.is-home #main-content > section.audit-lead {
+    padding-top: 10px;
+    padding-bottom: clamp(52px, 5.2vw, 82px);
+}
+
 body.is-home #main-content > section.counter-one {
     padding-top: clamp(44px, 4.4vw, 68px);
     padding-bottom: clamp(46px, 4.6vw, 70px);
 }
 
 body.is-home #main-content > section.portfolio-two {
-    padding-top: clamp(54px, 5.4vw, 86px);
+    padding-top: clamp(18px, 2vw, 30px);
     padding-bottom: clamp(34px, 3.6vw, 58px);
 }
 
@@ -2977,8 +2991,6 @@ body.is-home .section-title-two {
     body.is-home #main-content > section.portfolio-two,
     body.is-home #main-content > section.meeting-scheduler,
     body.is-home #main-content > section.client-portal-discovery,
-    body.is-home #main-content > section.lead-forms-tabs,
-    body.is-home #main-content > section.audit-lead,
     body.is-home #main-content > section.cost-estimator,
     body.is-home #main-content > section.blog-two,
     body.is-home #main-content > section.faq-one--home,
@@ -2986,6 +2998,24 @@ body.is-home .section-title-two {
     body.is-home #main-content > section.newsletter-two,
     body.is-home #main-content > section.counter-one {
         padding-top: 44px;
+        padding-bottom: 44px;
+    }
+
+    body.is-home #main-content > section.process-two {
+        padding-bottom: 18px;
+    }
+
+    body.is-home #main-content > section.portfolio-two {
+        padding-top: 16px;
+    }
+
+    body.is-home #main-content > section.lead-forms-tabs {
+        padding-top: 12px;
+        padding-bottom: 6px;
+    }
+
+    body.is-home #main-content > section.audit-lead {
+        padding-top: 8px;
         padding-bottom: 44px;
     }
 }
@@ -2996,8 +3026,6 @@ body.is-home .section-title-two {
     body.is-home #main-content > section.portfolio-two,
     body.is-home #main-content > section.meeting-scheduler,
     body.is-home #main-content > section.client-portal-discovery,
-    body.is-home #main-content > section.lead-forms-tabs,
-    body.is-home #main-content > section.audit-lead,
     body.is-home #main-content > section.cost-estimator,
     body.is-home #main-content > section.blog-two,
     body.is-home #main-content > section.faq-one--home,
@@ -3005,6 +3033,24 @@ body.is-home .section-title-two {
     body.is-home #main-content > section.newsletter-two,
     body.is-home #main-content > section.counter-one {
         padding-top: 34px;
+        padding-bottom: 34px;
+    }
+
+    body.is-home #main-content > section.process-two {
+        padding-bottom: 12px;
+    }
+
+    body.is-home #main-content > section.portfolio-two {
+        padding-top: 12px;
+    }
+
+    body.is-home #main-content > section.lead-forms-tabs {
+        padding-top: 10px;
+        padding-bottom: 4px;
+    }
+
+    body.is-home #main-content > section.audit-lead {
+        padding-top: 6px;
         padding-bottom: 34px;
     }
 }

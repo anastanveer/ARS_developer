@@ -64,6 +64,11 @@
                         <p style="margin:0 0 14px;">
                             <a href="{{ $portalUrl }}" style="display:inline-block;background:#1f76d2;color:#ffffff;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:700;">Open Client Portal</a>
                         </p>
+                        @if(!empty($invoiceUrl))
+                            <p style="margin:0 0 14px;">
+                                <a href="{{ $invoiceUrl }}" style="display:inline-block;background:#ffffff;color:#1f76d2;text-decoration:none;padding:10px 16px;border-radius:8px;border:1px solid #bcd5f5;font-weight:700;">View Paid Invoice</a>
+                            </p>
+                        @endif
                         <p style="margin:0 0 6px;"><strong>Quick access guide:</strong></p>
                         <p style="margin:0 0 4px;">1) Click the button above, or open <a href="{{ url('/client-portal-access') }}">{{ url('/client-portal-access') }}</a></p>
                         <p style="margin:0 0 16px;">2) Paste the full portal link, or token after <code>/client-portal/</code></p>

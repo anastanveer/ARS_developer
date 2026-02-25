@@ -394,9 +394,11 @@
             <div class="nav-title">Sales</div>
             <a href="{{ route('admin.clients.index') }}" class="{{ request()->routeIs('admin.clients.*') ? 'active' : '' }}"><span class="nav-ico">👥</span><span class="nav-label">Clients</span></a>
             <a href="{{ route('admin.projects.index') }}" class="{{ request()->routeIs('admin.projects.*') ? 'active' : '' }}"><span class="nav-ico">🗂️</span><span class="nav-label">Projects</span></a>
+            <a href="{{ route('admin.invoices.index') }}" class="{{ request()->routeIs('admin.invoices.*') ? 'active' : '' }}"><span class="nav-ico">🧾</span><span class="nav-label">Invoices</span></a>
             <a href="{{ route('admin.reviews.index') }}" class="{{ request()->routeIs('admin.reviews.*') ? 'active' : '' }}"><span class="nav-ico">⭐</span><span class="nav-label">Client Reviews</span></a>
             <a href="{{ route('admin.operations.index') }}" class="{{ request()->routeIs('admin.operations.*') ? 'active' : '' }}"><span class="nav-ico">⚙️</span><span class="nav-label">Operations & Audit</span></a>
             <a href="{{ route('admin.finance.index') }}" class="{{ request()->routeIs('admin.finance.*') ? 'active' : '' }}"><span class="nav-ico">💷</span><span class="nav-label">Finance Control</span></a>
+            <a href="{{ route('admin.logs.index') }}" class="{{ request()->routeIs('admin.logs.*') ? 'active' : '' }}"><span class="nav-ico">🧾</span><span class="nav-label">System Logs</span></a>
             <a href="{{ route('admin.audits.index') }}" class="{{ request()->routeIs('admin.audits.*') ? 'active' : '' }}"><span class="nav-ico">🧪</span><span class="nav-label">Audit Lab</span></a>
             <a href="{{ route('admin.coupons.index') }}" class="{{ request()->routeIs('admin.coupons.*') ? 'active' : '' }}"><span class="nav-ico">🏷️</span><span class="nav-label">Coupons</span></a>
         @endif

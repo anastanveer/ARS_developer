@@ -313,8 +313,16 @@ class ContactFormController extends Controller
     {
         foreach ($keys as $key) {
             $value = $request->input($key);
-            if (is_string($value) && trim($value) !== '') {
-                return $value;
+            if (is_string($value)) {
+                $trimmed = trim($value);
+                if ($trimmed !== '') {
+                    return $trimmed;
+                }
+                continue;
+            }
+
+            if (is_int($value) || is_float($value)) {
+                return (string) $value;
             }
         }
 
@@ -742,6 +750,25 @@ class ContactFormController extends Controller
             'amount' => $payable,
             'paid_amount' => 0,
             'status' => 'unpaid',
+            'public_token' => Str::random(56),
+            'show_pay_button' => true,
+            'invoice_payload' => [
+                'source' => 'website_direct_order',
+                'headline' => 'Invoice for ' . $projectTitle,
+                'intro' => 'Please review this invoice and complete secure payment to start delivery.',
+                'client_name' => (string) ($client->name ?? ''),
+                'client_company' => (string) ($client->company ?? ''),
+                'client_email' => (string) ($client->email ?? ''),
+                'client_phone' => (string) ($client->phone ?? ''),
+                'project_summary' => (string) ($payload['message'] ?? $projectTitle),
+                'scope_points' => array_values(array_filter([
+                    'Selected package: ' . $projectTitle,
+                    'Quoted amount: GBP ' . number_format($payable, 2),
+                ])),
+                'terms' => 'Payment confirms kickoff approval. Delivery timeline starts from payment date.',
+                'extra_notes' => '',
+                'payment_label' => 'Pay Securely with Stripe',
+            ],
             'notes' => $this->buildInvoiceNotes($payload, $basePrice, $payable),
         ]);
         if (Schema::hasColumn('invoices', 'client_invoice_number')) {
@@ -749,6 +776,9 @@ class ContactFormController extends Controller
         }
 
         $invoice = $project->invoices()->create($invoiceData);
+
+        $project->loadMissing('client');
+        $this->sendDirectOrderInvoiceEmail($project, $invoice);
 
         return $this->createStripeCheckoutSession($project, $invoice, $payable, 'direct-order');
     }
@@ -901,6 +931,45 @@ class ContactFormController extends Controller
                 'exception' => $exception->getMessage(),
             ]);
             return $this->tableColumnsCache[$table] = [];
+        }
+    }
+
+    private function sendDirectOrderInvoiceEmail(Project $project, Invoice $invoice): void
+    {
+        $clientEmail = trim((string) ($project->client?->email ?? ''));
+        if ($clientEmail === '') {
+            return;
+        }
+
+        $payload = [
+            'project' => $project,
+            'invoice' => $invoice,
+            'portalUrl' => route('client.portal', ['token' => (string) $project->portal_token]),
+            'invoiceUrl' => !empty($invoice->public_token)
+                ? route('invoice.public.show', ['token' => (string) $invoice->public_token])
+                : null,
+        ];
+
+        try {
+            Mail::send('emails.client-invoice-created', $payload, function ($message) use ($clientEmail, $project, $invoice) {
+                $message->to($clientEmail, $project->client?->name ?: 'Client')
+                    ->subject('Order Started - Invoice ' . $invoice->invoice_number);
+            });
+
+            if (Schema::hasColumn('invoices', 'sent_to_email')) {
+                $invoice->sent_to_email = $clientEmail;
+            }
+            if (Schema::hasColumn('invoices', 'sent_at')) {
+                $invoice->sent_at = now();
+            }
+            $invoice->save();
+        } catch (\Throwable $exception) {
+            Log::error('Direct order invoice email failed.', [
+                'project_id' => $project->id,
+                'invoice_id' => $invoice->id,
+                'email' => $clientEmail,
+                'exception' => $exception->getMessage(),
+            ]);
         }
     }
 }

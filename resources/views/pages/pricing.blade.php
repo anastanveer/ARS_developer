@@ -5,7 +5,6 @@
         'description' => 'Compare UK software pricing packages for websites, CRM systems, ecommerce stores, and SEO support with transparent monthly and one-time options.',
         'keywords' => 'software pricing uk, website package uk, crm project cost uk, ecommerce development cost uk, seo monthly support uk',
     ];
-    $liveCoupons = $liveCoupons ?? collect();
 @endphp
 @include('layouts.header')
 
@@ -325,63 +324,9 @@
                         <li><span class="icon-check"></span> Privacy-first process aligned with UK business expectations.</li>
                     </ul>
                     <div class="pricing-one__start-flow-head" style="margin-top:16px;">
-                        <span class="pricing-one__start-flow-tag">Coupon Support</span>
-                        <h3 class="pricing-one__start-flow-title">Apply coupon on selected package</h3>
-                        <p class="pricing-one__start-flow-text">Apply your valid offer code to preview your discounted total before you continue.</p>
-                        @if($liveCoupons->isNotEmpty())
-                            <div class="pricing-live-coupons" id="pricingLiveCoupons">
-                                <div class="pricing-live-coupons__head">
-                                    <h4 class="pricing-live-coupons__title">Live Offers</h4>
-                                    <div class="pricing-live-coupons__nav">
-                                        <button type="button" class="pricing-live-coupons__nav-btn" id="pricingLiveCouponPrev" aria-label="Previous offers">
-                                            <span class="fas fa-angle-left"></span>
-                                        </button>
-                                        <button type="button" class="pricing-live-coupons__nav-btn" id="pricingLiveCouponNext" aria-label="Next offers">
-                                            <span class="fas fa-angle-right"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="pricing-live-coupons__track" id="pricingLiveCouponTrack">
-                                    @foreach($liveCoupons as $offer)
-                                        <button type="button" class="pricing-live-coupons__card js-live-coupon-card" data-coupon-select="{{ $offer['code'] }}">
-                                            <span class="pricing-live-coupons__badge">{{ $offer['discount_label'] }}</span>
-                                            <p class="pricing-live-coupons__card-title">{{ $offer['title'] }}</p>
-                                            <p class="pricing-live-coupons__card-meta">Code: <strong>{{ $offer['code'] }}</strong></p>
-                                            <p class="pricing-live-coupons__card-meta">Expires: {{ $offer['expires_label'] }}</p>
-                                            @if(!is_null($offer['remaining_uses']))
-                                                <p class="pricing-live-coupons__card-meta">{{ $offer['remaining_uses'] }} uses left</p>
-                                            @endif
-                                        </button>
-                                    @endforeach
-                                </div>
-                                <p class="pricing-live-coupons__hint">Select an offer to auto-fill the coupon code.</p>
-                            </div>
-                        @endif
-                        <div class="row" style="margin-top:8px;">
-                            <div class="col-xl-4 col-lg-5 col-md-6">
-                                <input type="text" id="pricingCouponCode" class="form-control" placeholder="Enter coupon code (e.g. FIRST20)" style="height:48px;border-radius:10px;border:1px solid #d6deef;padding:0 14px;">
-                            </div>
-                            <div class="col-xl-4 col-lg-5 col-md-6">
-                                <input type="email" id="pricingCouponEmail" class="form-control" placeholder="Enter your email for validation" style="height:48px;border-radius:10px;border:1px solid #d6deef;padding:0 14px;">
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-4">
-                                <button type="button" id="applyPricingCouponBtn" class="thm-btn thm-btn-two pricing-coupon-btn"><span class="icon-right"></span> Apply Coupon</button>
-                            </div>
-                        </div>
-                        <ul class="list-unstyled pricing-one__start-flow-trust" style="margin-top:10px;">
-                            <li><span class="icon-check"></span> One coupon redemption is allowed per client email.</li>
-                            <li><span class="icon-check"></span> Discount is finalised when you submit your order enquiry.</li>
-                        </ul>
-                        <p id="pricingCouponResult" class="pricing-one__start-flow-text" style="margin-top:8px;"></p>
-                        <div id="pricingCouponSummary" style="display:none;margin-top:10px;padding:12px 14px;border:1px solid #b5d9c8;background:#f3fff9;border-radius:10px;">
-                            <p style="margin:0 0 4px;font-weight:700;color:#0d8051;">Coupon Applied: <span data-coupon-code-view>-</span></p>
-                            <p style="margin:0;color:#173153;font-size:14px;">
-                                Base: <strong>GBP <span data-coupon-base-view>0.00</span></strong>
-                                | Discount: <strong>GBP <span data-coupon-discount-view>0.00</span></strong>
-                                | Final: <strong>GBP <span data-coupon-final-view>0.00</span></strong>
-                            </p>
-                        </div>
-                        <p id="pricingCouponNextStep" class="pricing-one__start-flow-text" style="margin-top:8px;color:#173153;"></p>
+                        <span class="pricing-one__start-flow-tag">Next Step</span>
+                        <h3 class="pricing-one__start-flow-title">Choose one clear action</h3>
+                        <p id="pricingStartStepMessage" class="pricing-one__start-flow-text" style="margin-top:8px;color:#173153;"></p>
                     </div>
                 </div>
             </div>
@@ -522,166 +467,18 @@
         </section>
         <!--Newsletter Two End -->
 
-<style>
-.pricing-live-coupons {
-    margin-top: 14px;
-    padding: 14px;
-    border: 1px solid #d9e7fc;
-    border-radius: 12px;
-    background: #ffffff;
-}
-
-.pricing-live-coupons__head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.pricing-live-coupons__title {
-    margin: 0;
-    font-size: 18px;
-    color: #173153;
-}
-
-.pricing-live-coupons__nav {
-    display: inline-flex;
-    gap: 6px;
-}
-
-.pricing-live-coupons__nav-btn {
-    width: 34px;
-    height: 34px;
-    border: 1px solid #bcd3f6;
-    border-radius: 50%;
-    background: #f6f9ff;
-    color: #1d5ea9;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-
-.pricing-live-coupons__track {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(210px, 1fr);
-    gap: 10px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 4px;
-}
-
-.pricing-live-coupons__card {
-    scroll-snap-align: start;
-    text-align: left;
-    border: 1px solid #d7e4fb;
-    border-radius: 12px;
-    background: #f8fbff;
-    padding: 11px 12px;
-    min-height: 122px;
-    transition: all .2s ease;
-}
-
-.pricing-live-coupons__card:hover {
-    border-color: #1182d8;
-    background: #f0f8ff;
-}
-
-.pricing-live-coupons__card.is-active {
-    border-color: #1182d8;
-    background: #eaf6ff;
-    box-shadow: 0 0 0 2px rgba(17, 130, 216, .13);
-}
-
-.pricing-live-coupons__badge {
-    display: inline-block;
-    background: #1182d8;
-    color: #fff;
-    border-radius: 999px;
-    padding: 3px 9px;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.pricing-live-coupons__card-title {
-    margin: 9px 0 4px;
-    font-size: 15px;
-    line-height: 1.35;
-    color: #173153;
-    font-weight: 700;
-}
-
-.pricing-live-coupons__card-meta {
-    margin: 0;
-    font-size: 12px;
-    color: #4a6283;
-    line-height: 1.4;
-}
-
-.pricing-live-coupons__hint {
-    margin: 10px 0 0;
-    font-size: 13px;
-    color: #4a6283;
-}
-
-.pricing-coupon-btn {
-    min-height: 48px;
-    width: 100%;
-    border: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    line-height: 1;
-    padding: 0 18px;
-}
-
-.pricing-coupon-btn .icon-right {
-    margin: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-@media (max-width: 767px) {
-    .pricing-live-coupons__track {
-        grid-auto-columns: minmax(190px, 1fr);
-    }
-}
-</style>
-
 <script>
 (function () {
     var planButtons = document.querySelectorAll('.js-plan-select');
     var selectedPlanNode = document.querySelector('[data-selected-plan]');
     var startLinks = document.querySelectorAll('[data-start-link]');
-    var liveCouponCards = document.querySelectorAll('.js-live-coupon-card');
-    var liveCouponTrack = document.getElementById('pricingLiveCouponTrack');
-    var liveCouponPrevBtn = document.getElementById('pricingLiveCouponPrev');
-    var liveCouponNextBtn = document.getElementById('pricingLiveCouponNext');
-    var couponInput = document.getElementById('pricingCouponCode');
-    var couponEmailInput = document.getElementById('pricingCouponEmail');
-    var couponBtn = document.getElementById('applyPricingCouponBtn');
-    var couponResult = document.getElementById('pricingCouponResult');
-    var couponSummary = document.getElementById('pricingCouponSummary');
-    var couponCodeView = document.querySelector('[data-coupon-code-view]');
-    var couponBaseView = document.querySelector('[data-coupon-base-view]');
-    var couponDiscountView = document.querySelector('[data-coupon-discount-view]');
-    var couponFinalView = document.querySelector('[data-coupon-final-view]');
-    var couponNextStep = document.getElementById('pricingCouponNextStep');
+    var startStepMessage = document.getElementById('pricingStartStepMessage');
     var startFlow = document.getElementById('pricing-start-flow');
 
     var state = {
         plan: '',
         billing: '',
-        planPrice: null,
-        couponCode: '',
-        couponEmail: '',
-        discountAmount: 0,
-        finalPrice: null,
-        couponApplied: false
+        planPrice: null
     };
 
     function safeValue(value) {
@@ -702,66 +499,15 @@
             if (state.billing) url.searchParams.set('billing', state.billing);
             if (state.planPrice != null) url.searchParams.set('price', String(state.planPrice));
 
-            if (state.couponApplied && state.couponCode) {
-                url.searchParams.set('coupon', state.couponCode);
-                if (state.couponEmail) {
-                    url.searchParams.set('email', state.couponEmail);
-                }
-                url.searchParams.set('discount', String(state.discountAmount));
-                if (state.finalPrice != null) url.searchParams.set('final', String(state.finalPrice));
-            } else {
-                url.searchParams.delete('coupon');
-                url.searchParams.delete('email');
-                url.searchParams.delete('discount');
-                url.searchParams.delete('final');
-            }
-
             link.setAttribute('href', url.pathname + url.search + url.hash);
         });
     }
 
-    function showCouponSummary(show) {
-        if (couponSummary) {
-            couponSummary.style.display = show ? 'block' : 'none';
-        }
-    }
-
     function setNextStepMessage(message, color) {
-        if (couponNextStep) {
-            couponNextStep.textContent = message || '';
-            couponNextStep.style.color = color || '#173153';
+        if (startStepMessage) {
+            startStepMessage.textContent = message || '';
+            startStepMessage.style.color = color || '#173153';
         }
-    }
-
-    function clearLiveCouponSelection() {
-        liveCouponCards.forEach(function (card) {
-            card.classList.remove('is-active');
-        });
-    }
-
-    function activateLiveCouponCardByCode(code) {
-        var normalized = safeValue(code).toUpperCase();
-        var matched = false;
-        liveCouponCards.forEach(function (card) {
-            var cardCode = safeValue(card.getAttribute('data-coupon-select')).toUpperCase();
-            var isMatch = normalized !== '' && cardCode === normalized;
-            card.classList.toggle('is-active', isMatch);
-            if (isMatch) {
-                matched = true;
-            }
-        });
-
-        if (!matched) {
-            clearLiveCouponSelection();
-        }
-    }
-
-    function resetCouponAppliedState() {
-        state.couponApplied = false;
-        state.couponCode = '';
-        state.discountAmount = 0;
-        state.finalPrice = state.planPrice;
-        showCouponSummary(false);
     }
 
     function handleStartLinkGuard(event, link) {
@@ -776,11 +522,6 @@
         }
 
         event.preventDefault();
-        if (couponResult) {
-            couponResult.textContent = 'Please select a package with fixed price before clicking Start Order.';
-            couponResult.style.color = '#a66a00';
-        }
-        showCouponSummary(false);
         setNextStepMessage('For direct payment, choose a package first. For custom scope, use Submit Form or Book Planning Call.', '#a66a00');
 
         if (startFlow) {
@@ -794,27 +535,10 @@
             state.billing = safeValue(btn.getAttribute('data-billing'));
             var priceRaw = safeValue(btn.getAttribute('data-price')).trim();
             state.planPrice = priceRaw === '' ? null : Number(priceRaw);
-            resetCouponAppliedState();
-            state.couponEmail = couponEmailInput ? couponEmailInput.value.trim() : '';
-            setNextStepMessage('After applying your coupon, choose "Submit Form" or "Start Order" to continue.', '#173153');
+            setNextStepMessage('Now choose your next step: Book Planning Call, Submit Form, or Start Order.', '#173153');
 
             if (selectedPlanNode) {
                 selectedPlanNode.textContent = state.plan + (state.billing ? ' (' + state.billing.replace('_', ' ') + ')' : '');
-            }
-
-            if (couponResult) {
-                if (state.planPrice == null) {
-                    couponResult.textContent = 'Custom package selected. Coupon can be discussed in custom quotation.';
-                    couponResult.style.color = '#4a5f82';
-                    setNextStepMessage('Use "Book Planning Call" for custom scope and manual offer confirmation.', '#4a5f82');
-                } else {
-                    var presetCode = couponInput ? couponInput.value.trim().toUpperCase() : '';
-                    couponResult.textContent = presetCode !== ''
-                        ? ('Selected plan price: GBP ' + state.planPrice.toFixed(2) + '. Coupon ' + presetCode + ' is ready to apply.')
-                        : ('Selected plan price: GBP ' + state.planPrice.toFixed(2) + '. You can apply coupon now.');
-                    couponResult.style.color = '#4a5f82';
-                    setNextStepMessage('Apply your coupon, then continue with Submit Form or Start Order.', '#173153');
-                }
             }
             updateStartLinks();
         });
@@ -825,170 +549,7 @@
             handleStartLinkGuard(event, link);
         });
     });
-
-    if (liveCouponPrevBtn && liveCouponTrack) {
-        liveCouponPrevBtn.addEventListener('click', function () {
-            var delta = Math.max(220, Math.floor(liveCouponTrack.clientWidth * 0.8));
-            liveCouponTrack.scrollBy({ left: -delta, behavior: 'smooth' });
-        });
-    }
-
-    if (liveCouponNextBtn && liveCouponTrack) {
-        liveCouponNextBtn.addEventListener('click', function () {
-            var delta = Math.max(220, Math.floor(liveCouponTrack.clientWidth * 0.8));
-            liveCouponTrack.scrollBy({ left: delta, behavior: 'smooth' });
-        });
-    }
-
-    liveCouponCards.forEach(function (card) {
-        card.addEventListener('click', function () {
-            var code = safeValue(card.getAttribute('data-coupon-select')).toUpperCase();
-            if (!code) {
-                return;
-            }
-
-            activateLiveCouponCardByCode(code);
-            if (couponInput) {
-                couponInput.value = code;
-            }
-            resetCouponAppliedState();
-            state.couponEmail = couponEmailInput ? couponEmailInput.value.trim() : '';
-
-            if (couponResult) {
-                couponResult.textContent = 'Offer ' + code + ' selected. Enter your email and click Apply Coupon.';
-                couponResult.style.color = '#1d5ea9';
-            }
-
-            if (state.planPrice == null) {
-                setNextStepMessage('Now select a package with fixed price, then apply this coupon.', '#1d5ea9');
-            } else {
-                setNextStepMessage('Offer selected. Enter your email and click Apply Coupon to lock the discount.', '#1d5ea9');
-            }
-
-            updateStartLinks();
-            if (couponEmailInput && couponEmailInput.value.trim() === '') {
-                couponEmailInput.focus();
-            }
-        });
-    });
-
-    if (couponBtn) {
-        couponBtn.addEventListener('click', function () {
-            if (state.planPrice == null) {
-                if (couponResult) {
-                    couponResult.textContent = 'Please choose a package with fixed price before applying coupon.';
-                    couponResult.style.color = '#a66a00';
-                }
-                showCouponSummary(false);
-                return;
-            }
-
-            var code = couponInput ? couponInput.value.trim() : '';
-            var email = couponEmailInput ? couponEmailInput.value.trim() : '';
-            if (!code) {
-                if (couponResult) {
-                    couponResult.textContent = 'Please enter coupon code first.';
-                    couponResult.style.color = '#a66a00';
-                }
-                showCouponSummary(false);
-                setNextStepMessage('Please enter a coupon code and your email address to validate the offer.', '#a66a00');
-                return;
-            }
-
-            if (!email) {
-                if (couponResult) {
-                    couponResult.textContent = 'Please enter your email for one-time coupon validation.';
-                    couponResult.style.color = '#a66a00';
-                }
-                showCouponSummary(false);
-                setNextStepMessage('Your email is required to validate one-time coupon use.', '#a66a00');
-                return;
-            }
-
-            couponBtn.disabled = true;
-            couponBtn.textContent = 'Applying...';
-
-            fetch('{{ route('pricing.coupon.preview') }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({
-                    code: code,
-                    plan_price: state.planPrice,
-                    billing: state.billing || '',
-                    email: email || ''
-                })
-            })
-            .then(function (res) { return res.json(); })
-            .then(function (payload) {
-                if (!payload || payload.ok !== true || payload.valid !== true) {
-                    state.couponApplied = false;
-                    state.couponCode = '';
-                    state.discountAmount = 0;
-                    state.finalPrice = state.planPrice;
-                    if (couponResult) {
-                        couponResult.textContent = (payload && payload.message) ? payload.message : 'Coupon could not be applied.';
-                        couponResult.style.color = '#a12828';
-                    }
-                    showCouponSummary(false);
-                    setNextStepMessage('Coupon could not be validated. You can still continue with Submit Form or Start Order.', '#a12828');
-                    updateStartLinks();
-                    return;
-                }
-
-                state.couponApplied = true;
-                state.couponCode = safeValue(payload.code).toUpperCase();
-                state.couponEmail = email;
-                state.discountAmount = Number(payload.discount_amount || 0);
-                state.finalPrice = Number(payload.final_price || state.planPrice);
-                activateLiveCouponCardByCode(state.couponCode);
-
-                if (couponResult) {
-                    var capNote = payload.discount_capped === true
-                        ? ' Discount adjusted to selected package value.'
-                        : '';
-                    couponResult.textContent =
-                        'Coupon ' + state.couponCode + ' applied. Base: GBP ' + Number(payload.base_price).toFixed(2) +
-                        ' | Discount: GBP ' + Number(payload.discount_amount).toFixed(2) +
-                        ' | Final: GBP ' + Number(payload.final_price).toFixed(2) +
-                        '. ' + safeValue(payload.billing_note) + capNote;
-                    couponResult.style.color = '#0d8051';
-                }
-
-                if (couponCodeView) couponCodeView.textContent = state.couponCode;
-                if (couponBaseView) couponBaseView.textContent = Number(payload.base_price).toFixed(2);
-                if (couponDiscountView) couponDiscountView.textContent = Number(payload.discount_amount).toFixed(2);
-                if (couponFinalView) couponFinalView.textContent = Number(payload.final_price).toFixed(2);
-                showCouponSummary(true);
-                setNextStepMessage('Discount is locked for this email. Now choose Submit Form or Start Order to proceed.', '#0d8051');
-                updateStartLinks();
-
-                if (startFlow) {
-                    startFlow.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            })
-            .catch(function () {
-                if (couponResult) {
-                    couponResult.textContent = 'Coupon request failed. Please try again.';
-                    couponResult.style.color = '#a12828';
-                }
-                showCouponSummary(false);
-                setNextStepMessage('A technical issue occurred while applying the coupon. Please try again.', '#a12828');
-            })
-            .finally(function () {
-                couponBtn.disabled = false;
-                couponBtn.innerHTML = '<span class="icon-right"></span> Apply Coupon';
-            });
-        });
-    }
-
-    setNextStepMessage('Select a package, apply your coupon, then continue with Submit Form or Start Order.', '#173153');
-    if (couponInput && couponInput.value.trim() !== '') {
-        activateLiveCouponCardByCode(couponInput.value.trim().toUpperCase());
-    }
+    setNextStepMessage('Select a package, then continue with Submit Form, Book Planning Call, or Start Order.', '#173153');
     updateStartLinks();
 })();
 </script>

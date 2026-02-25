@@ -148,20 +148,51 @@
 
 <div class="row">
     <div class="card">
-        <h3 style="margin-top:0">Invoices</h3>
+        <div class="top" style="margin-bottom:8px">
+            <h3 style="margin:0">Invoices</h3>
+            <a href="{{ route('admin.invoices.index') }}" class="btn gray">Open Invoice Center</a>
+        </div>
+        <div class="muted" style="margin-bottom:10px">
+            For each invoice you can open public link, send direct payment link, send client email, and download PDF/print copy.
+        </div>
+        @if(session('direct_invoice_url') || session('direct_payment_url') || session('direct_pdf_url') || session('direct_portal_url'))
+            <div class="card" style="margin-bottom:10px;background:#f8fbff;border:1px solid #d9e6ff">
+                <div class="muted" style="margin-bottom:8px">Latest generated links (ready to share):</div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                    @if(session('direct_invoice_url'))
+                        <a href="{{ session('direct_invoice_url') }}" class="btn gray" target="_blank" rel="noopener">Open Invoice</a>
+                    @endif
+                    @if(session('direct_payment_url'))
+                        <a href="{{ session('direct_payment_url') }}" class="btn" target="_blank" rel="noopener">Open Payment Link</a>
+                    @endif
+                    @if(session('direct_pdf_url'))
+                        <a href="{{ session('direct_pdf_url') }}" class="btn gray" target="_blank" rel="noopener">Open PDF / Print</a>
+                    @endif
+                    @if(session('direct_portal_url'))
+                        <a href="{{ session('direct_portal_url') }}" class="btn gray" target="_blank" rel="noopener">Open Client Portal</a>
+                    @endif
+                </div>
+            </div>
+        @endif
         <form method="post" action="{{ route('admin.projects.invoices.store', $project) }}" class="row">
             @csrf
-            <div><label>Invoice #</label><input name="invoice_number" required placeholder="INV-2026-001"></div>
+            <div>
+                <label>Invoice #</label>
+                <input name="invoice_number" placeholder="Optional (auto generated)">
+            </div>
             <div><label>Client Invoice #</label><input value="Auto generated per client" disabled></div>
             <div><label>Invoice Date</label><input type="date" name="invoice_date" required></div>
             <div><label>Due Date</label><input type="date" name="due_date"></div>
             <div><label>Amount</label><input type="number" step="0.01" name="amount" required></div>
-            <div><label>Status</label><select name="status"><option value="unpaid">Unpaid</option><option value="partially_paid">Partially Paid</option><option value="paid">Paid</option><option value="overdue">Overdue</option><option value="cancelled">Cancelled</option></select></div>
+            <div><label>Status</label><select name="status"><option value="unpaid">Unpaid</option><option value="pending">Pending</option><option value="received">Received (mark paid)</option><option value="late">Late (mark overdue)</option><option value="failed">Failed</option><option value="partially_paid">Partially Paid</option><option value="paid">Paid</option><option value="overdue">Overdue</option><option value="cancelled">Cancelled</option></select></div>
+            <div><label>Send To Email</label><input type="email" name="send_to_email" value="{{ $project->client?->email }}" placeholder="Client email"></div>
+            <div><label>Auto Send Link</label><select name="send_link_mode"><option value="invoice">Invoice + payment</option><option value="payment">Direct payment only</option><option value="pdf">PDF / print only</option><option value="portal">Portal only</option><option value="none">Do not send now</option></select></div>
+            <div><label>Email Subject (optional)</label><input name="send_subject" placeholder="Auto subject by selected mode"></div>
             <div class="full"><label>Notes</label><textarea name="notes"></textarea></div>
-            <div class="full"><button class="btn" type="submit">Create Invoice</button></div>
+            <div class="full"><button class="btn" type="submit">Create Invoice + Optional Send</button></div>
         </form>
         <table>
-            <thead><tr><th>Invoice</th><th>Dates</th><th>Amount</th><th>Paid</th><th>Status</th></tr></thead>
+            <thead><tr><th>Invoice</th><th>Dates</th><th>Amount</th><th>Paid</th><th>Status</th><th>Actions</th></tr></thead>
             <tbody>
             @forelse($project->invoices as $invoice)
                 <tr>
@@ -174,9 +205,58 @@
                     <td>{{ number_format((float)$invoice->amount,2) }}</td>
                     <td>{{ number_format((float)$invoice->paid_amount,2) }}</td>
                     <td>{{ str_replace('_',' ', ucfirst($invoice->status)) }}</td>
+                    <td>
+                        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+                            <a href="{{ route('admin.projects.invoices.studio', [$project, $invoice]) }}" class="btn gray" style="padding:6px 10px;font-size:12px">Invoice Studio</a>
+                            @if(!empty($invoice->public_token))
+                                <a href="{{ route('invoice.public.show', ['token' => $invoice->public_token]) }}" target="_blank" rel="noopener" class="btn" style="padding:6px 10px;font-size:12px">Open Invoice</a>
+                                <a href="{{ route('invoice.public.pay-now', ['token' => $invoice->public_token]) }}" target="_blank" rel="noopener" class="btn gray" style="padding:6px 10px;font-size:12px">Payment Link</a>
+                            @endif
+                        </div>
+                        @if(!empty($project->client?->email))
+                            <div class="muted" style="font-size:12px;margin-bottom:6px">
+                                Send link to: {{ $project->client->email }}
+                            </div>
+                        @endif
+                        @if(!empty($project->client?->email))
+                            <form method="post" action="{{ route('admin.projects.invoices.send-link', [$project, $invoice]) }}" style="margin-bottom:8px">
+                                @csrf
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                                    <input type="email" name="email" value="{{ $project->client->email }}" placeholder="Client email" required>
+                                    <select name="link_mode">
+                                        <option value="invoice">Invoice + payment</option>
+                                        <option value="payment">Direct payment</option>
+                                        <option value="pdf">PDF / print link</option>
+                                        <option value="portal">Client portal</option>
+                                    </select>
+                                    <button class="btn" type="submit" style="padding:6px 10px;font-size:12px;grid-column:1 / -1">Send Email</button>
+                                </div>
+                            </form>
+                        @endif
+                        <form method="post" action="{{ route('admin.projects.invoices.status', [$project, $invoice]) }}">
+                            @csrf
+                            <input type="hidden" name="send_email" value="1">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                                <select name="status" style="min-width:130px">
+                                    <option value="unpaid" @selected($invoice->status==='unpaid')>Unpaid</option>
+                                    <option value="pending" @selected($invoice->status==='pending')>Pending</option>
+                                    <option value="received" @selected($invoice->status==='paid')>Received (mark paid)</option>
+                                    <option value="late" @selected($invoice->status==='overdue')>Late (mark overdue)</option>
+                                    <option value="failed" @selected($invoice->status==='failed')>Failed</option>
+                                    <option value="partially_paid" @selected($invoice->status==='partially_paid')>Partially Paid</option>
+                                    <option value="paid" @selected($invoice->status==='paid')>Paid</option>
+                                    <option value="overdue" @selected($invoice->status==='overdue')>Overdue</option>
+                                    <option value="cancelled" @selected($invoice->status==='cancelled')>Cancelled</option>
+                                </select>
+                                <span class="muted" style="display:flex;align-items:center;font-size:12px">Client email notification enabled</span>
+                                <input type="text" name="status_note" placeholder="Optional note for email" style="grid-column:1 / -1">
+                                <button class="btn" type="submit" style="padding:6px 10px;font-size:12px;grid-column:1 / -1">Update Status</button>
+                            </div>
+                        </form>
+                    </td>
                 </tr>
             @empty
-                <tr><td colspan="5">No invoices yet.</td></tr>
+                <tr><td colspan="6">No invoices yet.</td></tr>
             @endforelse
             </tbody>
         </table>
