@@ -398,7 +398,6 @@
             <a href="{{ route('admin.reviews.index') }}" class="{{ request()->routeIs('admin.reviews.*') ? 'active' : '' }}"><span class="nav-ico">⭐</span><span class="nav-label">Client Reviews</span></a>
             <a href="{{ route('admin.operations.index') }}" class="{{ request()->routeIs('admin.operations.*') ? 'active' : '' }}"><span class="nav-ico">⚙️</span><span class="nav-label">Operations & Audit</span></a>
             <a href="{{ route('admin.finance.index') }}" class="{{ request()->routeIs('admin.finance.*') ? 'active' : '' }}"><span class="nav-ico">💷</span><span class="nav-label">Finance Control</span></a>
-            <a href="{{ route('admin.logs.index') }}" class="{{ request()->routeIs('admin.logs.*') ? 'active' : '' }}"><span class="nav-ico">🧾</span><span class="nav-label">System Logs</span></a>
             <a href="{{ route('admin.audits.index') }}" class="{{ request()->routeIs('admin.audits.*') ? 'active' : '' }}"><span class="nav-ico">🧪</span><span class="nav-label">Audit Lab</span></a>
             <a href="{{ route('admin.coupons.index') }}" class="{{ request()->routeIs('admin.coupons.*') ? 'active' : '' }}"><span class="nav-ico">🏷️</span><span class="nav-label">Coupons</span></a>
         @endif
@@ -408,6 +407,7 @@
             <a href="{{ route('admin.portfolios.index') }}" class="{{ request()->routeIs('admin.portfolios.*') ? 'active' : '' }}"><span class="nav-ico">🧩</span><span class="nav-label">Portfolio</span></a>
         @endif
         <a href="{{ route('admin.blog-posts.index') }}" class="{{ request()->routeIs('admin.blog-posts.*') ? 'active' : '' }}"><span class="nav-ico">✍️</span><span class="nav-label">Blog Posts</span></a>
+        <a href="{{ route('admin.logs.index') }}" class="{{ request()->routeIs('admin.logs.*') ? 'active' : '' }}"><span class="nav-ico">🧾</span><span class="nav-label">System Logs</span></a>
         @if(in_array($adminRole, ['super_admin', 'advanced_admin'], true))
             <div class="nav-title">Administration</div>
             <a href="{{ route('admin.admin-users.index') }}" class="{{ request()->routeIs('admin.admin-users.*') ? 'active' : '' }}"><span class="nav-ico">🔐</span><span class="nav-label">Admin Users</span></a>

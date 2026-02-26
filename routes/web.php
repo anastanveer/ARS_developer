@@ -426,7 +426,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/finance/expense', [FinanceController::class, 'storeExpense'])->name('finance.expense.store');
             Route::post('/finance/budget', [FinanceController::class, 'storeBudget'])->name('finance.budget.store');
             Route::get('/finance/export-csv', [FinanceController::class, 'exportCsv'])->name('finance.export');
-            Route::get('/logs', [SystemLogController::class, 'index'])->name('logs.index');
             Route::get('/audits', [AuditReportController::class, 'index'])->name('audits.index');
             Route::get('/audits/create', [AuditReportController::class, 'create'])->name('audits.create');
             Route::post('/audits', [AuditReportController::class, 'store'])->name('audits.store');
@@ -459,6 +458,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::middleware('admin.role:super_admin,advanced_admin,blog_seo_admin')->group(function () {
             Route::resource('/blog-posts', BlogPostController::class)->except('show');
+            Route::get('/logs', [SystemLogController::class, 'index'])->name('logs.index');
         });
     });
 });
