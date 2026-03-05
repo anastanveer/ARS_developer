@@ -42,6 +42,7 @@
     $showDirectOrderButton = in_array($flowIntent, ['kickoff_payment', 'order'], true);
     $canDirectOrderCheckout = $showDirectOrderButton && is_numeric($flowPayableAmount) && (float) $flowPayableAmount > 0;
     $prefillActionMode = old('action_mode', $canDirectOrderCheckout ? 'pay' : 'message');
+    $showActionSelector = $canDirectOrderCheckout;
 
     $flowIntents = [
         'requirements' => [
@@ -243,17 +244,21 @@
                                             <input type="email" name="email" placeholder="Email" value="{{ old('email', request()->query('email')) }}" required="">
                                         </div>
                                     </div>
-                                    <div class="col-xl-12">
-                                        <div class="contact-page__input-box">
-                                            <div class="contact-page__input-icon">
-                                                <span class="icon-credit-card"></span>
+                                    @if($showActionSelector)
+                                        <div class="col-xl-12">
+                                            <div class="contact-page__input-box">
+                                                <div class="contact-page__input-icon">
+                                                    <span class="icon-credit-card"></span>
+                                                </div>
+                                                <select class="ignore" name="action_mode" data-contact-action data-direct-enabled="1">
+                                                    <option value="message" @selected($prefillActionMode === 'message')>Send message only</option>
+                                                    <option value="pay" @selected($prefillActionMode === 'pay')>Pay now and start order</option>
+                                                </select>
                                             </div>
-                                            <select class="ignore" name="action_mode" data-contact-action data-direct-enabled="{{ $canDirectOrderCheckout ? '1' : '0' }}">
-                                                <option value="message" @selected($prefillActionMode === 'message')>Send message only</option>
-                                                <option value="pay" @selected($prefillActionMode === 'pay')>Pay now and start order</option>
-                                            </select>
                                         </div>
-                                    </div>
+                                    @else
+                                        <input type="hidden" name="action_mode" value="message">
+                                    @endif
                                     <div class="col-xl-12">
                                         <div class="contact-page__input-box">
                                             <div class="contact-page__input-icon">
@@ -273,7 +278,7 @@
                                             <button type="submit" class="thm-btn contact-page__btn" data-primary-submit><span
                                                     class="icon-right"></span><span data-primary-submit-label>SEND MESSAGE</span></button>
                                             <p style="margin:10px 0 0;font-size:13px;color:#4b6187;" data-contact-action-hint>
-                                                Choose one action: send message only, or pay now and start order.
+                                                {{ $showActionSelector ? 'Choose one action: send message only, or pay now and start order.' : 'Standard enquiry mode. We will review and respond quickly.' }}
                                             </p>
                                         </div>
                                     </div>
@@ -473,21 +478,23 @@
 
                 function hydrateFromPricingContext() {
                     var params = new URLSearchParams(window.location.search);
+                    var intent = firstNonEmpty(params.get('intent')).toLowerCase();
+                    var allowPricingHydration = intent === 'kickoff_payment' || intent === 'order';
                     var stored = parseStoredPlan();
 
                     var resolvedPlan = firstNonEmpty(
                         params.get('plan'),
                         projectTypeInput ? projectTypeInput.value : '',
-                        stored ? stored.plan : ''
+                        allowPricingHydration && stored ? stored.plan : ''
                     );
                     var resolvedPrice = firstNonEmpty(
                         params.get('price'),
                         priceInput ? priceInput.value : '',
-                        stored ? stored.price : ''
+                        allowPricingHydration && stored ? stored.price : ''
                     );
                     var resolvedBilling = firstNonEmpty(
                         params.get('billing'),
-                        stored ? stored.billing : ''
+                        allowPricingHydration && stored ? stored.billing : ''
                     );
 
                     if (projectTypeInput && resolvedPlan !== '') {

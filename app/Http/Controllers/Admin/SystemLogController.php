@@ -16,6 +16,7 @@ class SystemLogController extends Controller
     public function index(Request $request): View
     {
         $availableDates = $this->logService->collectAvailableDates(21);
+        $digestMeta = $this->logService->collectDigestMeta(21);
         $selectedDate = (string) $request->query('date', now()->toDateString());
         if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $selectedDate)) {
             $selectedDate = now()->toDateString();
@@ -35,14 +36,17 @@ class SystemLogController extends Controller
         $limit = (int) $request->query('limit', 250);
         $limit = max(50, min($limit, 1000));
         $entries = $this->logService->collectEntriesByDate($selectedDate, $limit);
+        $autoRefresh = (int) $request->query('auto', 0);
+        $autoRefresh = in_array($autoRefresh, [0, 15, 30, 60], true) ? $autoRefresh : 0;
 
         return view('admin.logs.index', compact(
             'availableDates',
+            'digestMeta',
             'selectedDate',
             'digest',
             'entries',
-            'limit'
+            'limit',
+            'autoRefresh'
         ));
     }
 }
-

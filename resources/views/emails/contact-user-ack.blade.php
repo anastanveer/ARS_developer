@@ -10,7 +10,11 @@
     $meetingEvent = (string) ($payload['meeting_event'] ?? 'booked');
     $isMeeting = (($payload['form_type'] ?? '') === 'meeting');
     $isOrder = (($payload['form_type'] ?? '') === 'pricing_order');
-    $logoUrl = rtrim((string) config('app.url'), '/') . '/assets/images/resources/ars-logo-nav-white.png';
+    $primaryHost = trim((string) config('app.primary_domain'));
+    $baseUrl = $primaryHost !== ''
+        ? ('https://' . preg_replace('#^https?://#', '', $primaryHost))
+        : rtrim((string) config('app.url'), '/');
+    $logoUrl = rtrim($baseUrl, '/') . '/assets/images/resources/ars-logo-nav-white.png';
 @endphp
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
     Your request is received. ARSDeveloper team will respond shortly.

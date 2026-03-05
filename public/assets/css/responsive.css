@@ -1382,6 +1382,66 @@
         gap: 25px;
     }
 
+    .counter-one--enhanced .counter-one__list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .counter-one--enhanced .counter-one__single {
+        padding: 14px 12px;
+        min-height: 170px;
+    }
+
+    .counter-one--enhanced .counter-one__count p,
+    .counter-one--enhanced .counter-one__count-plus {
+        font-size: 34px;
+    }
+
+    .counter-one--enhanced .counter-one__text {
+        font-size: 15px;
+    }
+
+    .counter-one--enhanced .counter-one__meta,
+    .counter-one--enhanced .counter-one__stat-link {
+        font-size: 12px;
+    }
+
+    .counter-one--enhanced .counter-one__proof-strip {
+        margin-top: 12px;
+        padding: 10px 12px;
+    }
+
+    .counter-one--enhanced .counter-one__proof-logos {
+        gap: 14px;
+    }
+
+    .counter-one--enhanced .counter-one__proof-logos img {
+        max-height: 20px;
+    }
+
+    .counter-one--enhanced .counter-one__logo-chip {
+        font-size: 11px;
+        min-height: 28px;
+        padding: 6px 10px;
+    }
+
+    .counter-one--enhanced .counter-one__proof-badge {
+        font-size: 12px;
+    }
+
+    .counter-one--enhanced .counter-one__testimonial-strip {
+        padding: 10px 12px 12px;
+    }
+
+    .counter-one--enhanced .counter-one__testimonial-text {
+        font-size: 13px;
+    }
+
+    .counter-one--enhanced .counter-one__testimonial-meta {
+        font-size: 11px;
+    }
+
     .process-two__inner li:nth-child(1) {
         margin-top: 0;
     }
@@ -2551,8 +2611,13 @@
     }
 
     .main-slider .item {
-        padding-top: 199px;
-        padding-bottom: 150px;
+        padding-top: 150px;
+        padding-bottom: 30px;
+    }
+
+    .hero-text-slider .item {
+        padding-top: 150px;
+        padding-bottom: 30px;
     }
 
 

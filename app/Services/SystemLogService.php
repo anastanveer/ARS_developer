@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\File;
 
 class SystemLogService
 {
+    public function digestDirectory(): string
+    {
+        return storage_path('app/log-digests');
+    }
+
     public function getLogFiles(): array
     {
         $dir = storage_path('logs');
@@ -27,6 +32,7 @@ class SystemLogService
     {
         $summary = [
             'date' => $date,
+            'generated_at' => now()->toDateTimeString(),
             'total' => 0,
             'by_level' => [],
             'by_channel' => [],
@@ -71,7 +77,7 @@ class SystemLogService
 
     public function writeDigest(array $digest): string
     {
-        $dir = storage_path('app/log-digests');
+        $dir = $this->digestDirectory();
         if (!File::isDirectory($dir)) {
             File::makeDirectory($dir, 0755, true);
         }
@@ -131,6 +137,15 @@ class SystemLogService
             }
         }
 
+        $digestDir = $this->digestDirectory();
+        if (File::isDirectory($digestDir)) {
+            foreach (File::files($digestDir) as $file) {
+                if (preg_match('/daily-(\d{4}-\d{2}-\d{2})\.json$/', $file->getFilename(), $m)) {
+                    $dates[$m[1]] = true;
+                }
+            }
+        }
+
         $result = array_keys($dates);
         rsort($result);
 
@@ -145,6 +160,32 @@ class SystemLogService
         }
 
         return array_slice($result, 0, $days);
+    }
+
+    public function collectDigestMeta(int $limit = 14): array
+    {
+        $dir = $this->digestDirectory();
+        if (!File::isDirectory($dir)) {
+            return [];
+        }
+
+        $meta = collect(File::files($dir))
+            ->filter(fn ($file) => preg_match('/daily-(\d{4}-\d{2}-\d{2})\.json$/', $file->getFilename()))
+            ->map(function ($file) {
+                preg_match('/daily-(\d{4}-\d{2}-\d{2})\.json$/', $file->getFilename(), $m);
+                return [
+                    'date' => $m[1] ?? null,
+                    'file' => $file->getFilename(),
+                    'updated_at' => Carbon::createFromTimestamp($file->getMTime())->toDateTimeString(),
+                ];
+            })
+            ->filter(fn ($item) => !empty($item['date']))
+            ->sortByDesc('date')
+            ->values()
+            ->take($limit)
+            ->all();
+
+        return $meta;
     }
 
     public function parseLine(string $line): ?array
@@ -195,4 +236,3 @@ class SystemLogService
         };
     }
 }
-

@@ -24,6 +24,15 @@
                     @endforeach
                 </select>
             </div>
+            <div>
+                <label for="auto"><b>Auto Refresh</b></label>
+                <select id="auto" name="auto">
+                    <option value="0" @selected($autoRefresh === 0)>Off</option>
+                    <option value="15" @selected($autoRefresh === 15)>15s</option>
+                    <option value="30" @selected($autoRefresh === 30)>30s</option>
+                    <option value="60" @selected($autoRefresh === 60)>60s</option>
+                </select>
+            </div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
                 <button class="btn" type="submit">Load Logs</button>
                 <a class="btn gray" href="{{ route('admin.logs.index', ['date' => $selectedDate, 'limit' => $limit, 'refresh' => 1]) }}">Refresh Now</a>
@@ -31,6 +40,9 @@
         </form>
         <small class="muted" style="display:block;margin-top:10px;">
             Nightly digest cron available via <code>logs:daily-digest</code>. Keep server cron active for Laravel scheduler.
+        </small>
+        <small class="muted" style="display:block;margin-top:6px;">
+            Current digest generated at: <b>{{ $digest['generated_at'] ?? '-' }}</b>
         </small>
     </div>
 
@@ -91,6 +103,32 @@
         </div>
     </div>
 
+    <div class="card" style="margin-bottom:14px;">
+        <h3 style="margin-top:0">Daily Digest Files (Latest)</h3>
+        <table>
+            <thead>
+            <tr>
+                <th style="width:160px;">Date</th>
+                <th>Digest File</th>
+                <th style="width:220px;">Updated At</th>
+            </tr>
+            </thead>
+            <tbody>
+            @forelse($digestMeta as $meta)
+                <tr>
+                    <td>{{ $meta['date'] ?? '-' }}</td>
+                    <td>{{ $meta['file'] ?? '-' }}</td>
+                    <td>{{ $meta['updated_at'] ?? '-' }}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="3">No digest files found yet.</td>
+                </tr>
+            @endforelse
+            </tbody>
+        </table>
+    </div>
+
     <div class="card">
         <h3 style="margin-top:0">Latest Entries ({{ $selectedDate }})</h3>
         <table>
@@ -118,5 +156,14 @@
             </tbody>
         </table>
     </div>
-@endsection
 
+    @if($autoRefresh > 0)
+        <script>
+            setTimeout(function () {
+                const url = new URL(window.location.href);
+                url.searchParams.set('refresh', '1');
+                window.location.href = url.toString();
+            }, {{ $autoRefresh * 1000 }});
+        </script>
+    @endif
+@endsection

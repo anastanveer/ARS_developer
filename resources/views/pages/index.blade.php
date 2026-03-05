@@ -63,11 +63,12 @@
                     <div class="container">
                         <div class="main-slider__content hero-text-slider__content">
                             <div class="main-slider__title-box hero-text-slider__title-box">
-                                <p class="hero-text-slider__eyebrow">UK Focus</p>
-                                <h2 class="main-slider__title">UK Web Development, CRM Systems, and Technical SEO for Growth</h2>
-                                <p class="main-slider__text">Conversion-focused delivery for UK businesses with clean UX, fast performance, and reliable technical foundations.</p>
+                                <p class="hero-text-slider__eyebrow">UK Software Partner</p>
+                                <h2 class="main-slider__title"><span class="hero-title-line-one">We Build <span class="hero-accent-cyan" style="color:#28d7ff;">Custom Software</span></span><span class="hero-title-line-two"> <span style="color:#ffffff;">That</span> <span class="hero-accent-blue" style="color:#1d93ff;">Scales</span> <span style="color:#ffffff;">Your</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Business.</span></span></h2>
+                                <p class="hero-text-slider__proof">500+ projects delivered | UK-based team | 48-hour response time</p>
+                                <p class="main-slider__text">From MVP to enterprise delivery for UK growth-focused teams.</p>
                                 <div class="main-slider__btn hero-text-slider__cta">
-                                    <a href="/contact"><span class="icon-right"></span>Talk to the UK Team</a>
+                                    <a href="/contact"><span class="icon-right"></span>Start Your Project</a>
                                     <a href="/portfolio" class="hero-text-slider__outline-btn"><span class="icon-right"></span>View Case Studies</a>
                                 </div>
                             </div>
@@ -323,48 +324,90 @@
         <!--Why Choose Two End -->
 
         <!--Counter One Start -->
-        <section class="counter-one">
+        <section class="counter-one counter-one--enhanced">
             <div class="counter-one__shape-1 float-bob-x"
                 style="background-image: url(assets/images/shapes/counter-one-shape-1.png);"></div>
             <div class="container">
                 <ul class="list-unstyled counter-one__list">
                     <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
                         <div class="counter-one__single">
+                            <div class="counter-one__stat-icon">
+                                <i class="fas fa-layer-group" aria-hidden="true"></i>
+                            </div>
                             <div class="counter-one__count count-box">
                                 <p class="count-text" data-stop="240" data-speed="1500">00</p>
                                 <span class="counter-one__count-plus">+</span>
                             </div>
                             <p class="counter-one__text">Projects Completed</p>
+                            <p class="counter-one__meta">Shipped websites, ecommerce and custom platforms</p>
+                            <a class="counter-one__stat-link" href="/portfolio">View live case studies</a>
                         </div>
                     </li>
                     <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
                         <div class="counter-one__single">
+                            <div class="counter-one__stat-icon">
+                                <i class="fas fa-award" aria-hidden="true"></i>
+                            </div>
                             <div class="counter-one__count count-box">
                                 <p class="count-text" data-stop="40" data-speed="1500">00</p>
                                 <span class="counter-one__count-plus">+</span>
                             </div>
                             <p class="counter-one__text">Awards Won</p>
+                            <p class="counter-one__meta">Recognition for delivery quality and innovation</p>
                         </div>
                     </li>
                     <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
                         <div class="counter-one__single">
+                            <div class="counter-one__stat-icon">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
                             <div class="counter-one__count count-box">
                                 <p class="count-text" data-stop="780" data-speed="1500">00</p>
                                 <span class="counter-one__count-plus">+</span>
                             </div>
                             <p class="counter-one__text">Positive Reviews</p>
+                            <p class="counter-one__meta">Verified feedback from Google, Clutch and Trustpilot</p>
                         </div>
                     </li>
                     <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="250">
                         <div class="counter-one__single">
+                            <div class="counter-one__stat-icon">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                            </div>
                             <div class="counter-one__count count-box">
                                 <p class="count-text" data-stop="130" data-speed="1500">00</p>
                                 <span class="counter-one__count-plus">+</span>
                             </div>
                             <p class="counter-one__text">Satisfied Clients</p>
+                            <p class="counter-one__meta">UK teams retained through long-term support plans</p>
                         </div>
                     </li>
                 </ul>
+                <div class="counter-one__proof-strip" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="150">
+                    <div class="counter-one__proof-logos">
+                        <a class="counter-one__logo-chip" href="/testimonials">Google Reviews</a>
+                        <a class="counter-one__logo-chip" href="/testimonials">Clutch</a>
+                        <a class="counter-one__logo-chip" href="/testimonials">Trustpilot</a>
+                        <a class="counter-one__logo-chip" href="/portfolio">UK Client Case Studies</a>
+                    </div>
+                    <div class="counter-one__proof-badge">
+                        <img src="assets/images/icon/icon-google.png" alt="Google rating signal" loading="lazy">
+                        <span><strong>25K+</strong> rating signals with verified multi-platform client reviews</span>
+                    </div>
+                </div>
+                <div class="counter-one__testimonial-strip" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+                    <div class="counter-one__testimonial-avatars">
+                        <img src="assets/images/resources/banner-one-satisfied-client-1-1.jpg" alt="Client testimonial avatar"
+                            loading="lazy">
+                        <img src="assets/images/resources/banner-one-satisfied-client-1-2.jpg" alt="Client testimonial avatar"
+                            loading="lazy">
+                        <img src="assets/images/resources/banner-one-satisfied-client-1-3.jpg" alt="Client testimonial avatar"
+                            loading="lazy">
+                    </div>
+                    <p class="counter-one__testimonial-text">“ARS delivered on scope, communication and post-launch support.
+                        The rollout was clean and measurable.”</p>
+                    <span class="counter-one__testimonial-meta">UK Operations Lead, B2B Services Client</span>
+                </div>
             </div>
         </section>
         <!--Counter One End -->

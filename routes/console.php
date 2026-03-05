@@ -33,3 +33,4 @@ Artisan::command('logs:daily-digest {--date=}', function (SystemLogService $serv
 
 Schedule::command('meetings:send-reminders')->hourly();
 Schedule::command('logs:daily-digest')->dailyAt('00:10');
+Schedule::command('logs:daily-digest --date=' . now()->toDateString())->everyFifteenMinutes();

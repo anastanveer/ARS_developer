@@ -561,6 +561,7 @@
 
 <script>
 (function () {
+    var PRICING_SESSION_KEY = 'ars_selected_pricing_plan_v1';
     var planButtons = document.querySelectorAll('.js-plan-select');
     var selectedPlanNode = document.querySelector('[data-selected-plan]');
     var startLinks = document.querySelectorAll('[data-start-link]');
@@ -575,6 +576,36 @@
 
     function safeValue(value) {
         return value == null ? '' : String(value);
+    }
+
+    function saveSelectedPlan() {
+        if (!state.plan) return;
+        try {
+            window.sessionStorage.setItem(PRICING_SESSION_KEY, JSON.stringify({
+                plan: state.plan,
+                billing: state.billing,
+                price: state.planPrice == null ? '' : String(state.planPrice),
+                saved_at: Date.now()
+            }));
+        } catch (e) {
+            // Ignore storage errors and keep flow working.
+        }
+    }
+
+    function loadSelectedPlan() {
+        try {
+            var raw = window.sessionStorage.getItem(PRICING_SESSION_KEY);
+            if (!raw) return;
+            var parsed = JSON.parse(raw);
+            if (!parsed || typeof parsed !== 'object') return;
+
+            state.plan = safeValue(parsed.plan).trim();
+            state.billing = safeValue(parsed.billing).trim();
+            var storedPrice = safeValue(parsed.price).trim();
+            state.planPrice = storedPrice === '' ? null : Number(storedPrice);
+        } catch (e) {
+            // Ignore invalid storage payloads.
+        }
     }
 
     function updateStartLinks() {
@@ -628,6 +659,7 @@
             var priceRaw = safeValue(btn.getAttribute('data-price')).trim();
             state.planPrice = priceRaw === '' ? null : Number(priceRaw);
             setNextStepMessage('Now choose one action: Book Call, Submit Form, or Start Order.', '#173153');
+            saveSelectedPlan();
 
             if (selectedPlanNode) {
                 selectedPlanNode.textContent = state.plan + (state.billing ? ' (' + state.billing.replace(/_/g, ' ') + ')' : '');
@@ -641,7 +673,11 @@
             handleStartLinkGuard(event, link);
         });
     });
-    setNextStepMessage('Select a package, then continue with one action below.', '#173153');
+    loadSelectedPlan();
+    setNextStepMessage(state.plan ? 'Package selected. Continue with one action below.' : 'Select a package, then continue with one action below.', '#173153');
+    if (selectedPlanNode && state.plan) {
+        selectedPlanNode.textContent = state.plan + (state.billing ? ' (' + state.billing.replace(/_/g, ' ') + ')' : '');
+    }
     updateStartLinks();
 })();
 </script>
