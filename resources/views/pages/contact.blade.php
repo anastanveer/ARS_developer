@@ -194,15 +194,14 @@
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6">
-                        <div class="contact-page__right">
+                        <div class="contact-page__right contact-page__right--start">
                             <div class="contact-page__contact-form-title-box">
-                                <div class="contact-page__contact-form-title-icon">
-                                    <img src="assets/images/icon/contact-form-icon-1.png" alt="">
+                                <div class="contact-page__contact-form-title-icon contact-page__contact-form-title-icon--pill">
+                                    <span>Step 1 of 3</span>
                                 </div>
-                                <h3 class="contact-page__contact-form-title">Send Us Message</h3>
+                                <h3 class="contact-page__contact-form-title">Let's Start Your Digital Journey</h3>
                             </div>
-                            <p class="contact-page__contact-form-text">Use this form to effortlessly contact us with any
-                                questions, feedback, or inquiries.</p>
+                            <p class="contact-page__contact-form-text">Choose your path, share the basics, and our team replies quickly with the next clear step.</p>
                             @if($flowContext)
                                 <div class="contact-page__flow-box">
                                     <p class="contact-page__flow-kicker">{{ $flowContext['kicker'] }}</p>
@@ -218,72 +217,74 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="contact-form-validated contact-page__form" action="{{ route('contact.submit') }}"
-                                method="post" novalidate="novalidate">
-                                @csrf
-                                <input type="hidden" name="form_type" value="{{ $prefillFormType }}">
-                                <input type="hidden" name="start_order_payment" value="0" data-order-pay-flag>
-                                <input type="hidden" name="payment_intent" value="{{ $flowIntent }}">
-                                <input type="hidden" name="project_type" value="{{ old('project_type', $flowProjectType) }}">
-                                <input type="hidden" name="selected_plan_price" value="{{ old('selected_plan_price', is_numeric($flowBasePrice) ? (float) $flowBasePrice : '') }}">
-                                <input type="hidden" name="budget_range" value="{{ old('budget_range', $flowContext['budget_hint'] ?? '') }}">
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="contact-page__input-box">
-                                            <div class="contact-page__input-icon">
-                                                <span class="icon-user"></span>
-                                            </div>
-                                            <input type="text" name="name" placeholder="Name" value="{{ old('name') }}" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <div class="contact-page__input-box">
-                                            <div class="contact-page__input-icon">
-                                                <span class="icon-envelope"></span>
-                                            </div>
-                                            <input type="email" name="email" placeholder="Email" value="{{ old('email', request()->query('email')) }}" required="">
-                                        </div>
-                                    </div>
-                                    @if($showActionSelector)
+                            <div class="contact-page__form-shell">
+                                <form class="contact-form-validated contact-page__form" action="{{ route('contact.submit') }}"
+                                    method="post" novalidate="novalidate">
+                                    @csrf
+                                    <input type="hidden" name="form_type" value="{{ $prefillFormType }}">
+                                    <input type="hidden" name="start_order_payment" value="0" data-order-pay-flag>
+                                    <input type="hidden" name="payment_intent" value="{{ $flowIntent }}">
+                                    <input type="hidden" name="project_type" value="{{ old('project_type', $flowProjectType) }}">
+                                    <input type="hidden" name="selected_plan_price" value="{{ old('selected_plan_price', is_numeric($flowBasePrice) ? (float) $flowBasePrice : '') }}">
+                                    <input type="hidden" name="budget_range" value="{{ old('budget_range', $flowContext['budget_hint'] ?? '') }}">
+                                    <div class="row">
                                         <div class="col-xl-12">
                                             <div class="contact-page__input-box">
                                                 <div class="contact-page__input-icon">
-                                                    <span class="icon-credit-card"></span>
+                                                    <span class="icon-user"></span>
                                                 </div>
-                                                <select class="ignore" name="action_mode" data-contact-action data-direct-enabled="1">
-                                                    <option value="message" @selected($prefillActionMode === 'message')>Send message only</option>
-                                                    <option value="pay" @selected($prefillActionMode === 'pay')>Pay now and start order</option>
-                                                </select>
+                                                <input type="text" name="name" placeholder="Your Name" value="{{ old('name') }}" required="">
                                             </div>
                                         </div>
-                                    @else
-                                        <input type="hidden" name="action_mode" value="message">
-                                    @endif
-                                    <div class="col-xl-12">
-                                        <div class="contact-page__input-box">
-                                            <div class="contact-page__input-icon">
-                                                <span class="icon-resume"></span>
+                                        <div class="col-xl-12">
+                                            <div class="contact-page__input-box">
+                                                <div class="contact-page__input-icon">
+                                                    <span class="icon-envelope"></span>
+                                                </div>
+                                                <input type="email" name="email" placeholder="Business Email" value="{{ old('email', request()->query('email')) }}" required="">
                                             </div>
-                                            <input type="text" name="subject" placeholder="Project Type / Subject" value="{{ $prefillSubject }}" required="">
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="contact-page__input-box">
+                                                @if($showActionSelector)
+                                                    <div class="contact-page__input-icon">
+                                                        <span class="icon-credit-card"></span>
+                                                    </div>
+                                                    <select class="ignore" name="action_mode" data-contact-action data-direct-enabled="1">
+                                                        <option value="message" @selected($prefillActionMode === 'message')>Send message only</option>
+                                                        <option value="pay" @selected($prefillActionMode === 'pay')>Pay now and start order</option>
+                                                    </select>
+                                                @else
+                                                    <input type="hidden" name="action_mode" value="message">
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="contact-page__input-box">
+                                                <div class="contact-page__input-icon">
+                                                    <span class="icon-resume"></span>
+                                                </div>
+                                                <input type="text" name="subject" placeholder="Project Type / Subject" value="{{ $prefillSubject }}" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12">
+                                            <div class="contact-page__input-box text-message-box">
+                                                <div class="contact-page__input-icon">
+                                                    <span class="icon-write"></span>
+                                                </div>
+                                                <textarea name="message" placeholder="Share your website URL, target audience, and goal">{{ $prefillMessage }}</textarea>
+                                            </div>
+                                            <div class="contact-page__btn-box">
+                                                <button type="submit" class="thm-btn contact-page__btn" data-primary-submit><span
+                                                        class="icon-right"></span><span data-primary-submit-label>SEND MESSAGE</span></button>
+                                                <p style="margin:10px 0 0;font-size:13px;color:#4b6187;" data-contact-action-hint>
+                                                    {{ $showActionSelector ? 'Choose one action: send message only, or pay now and start order.' : 'Standard enquiry mode. We will review and respond quickly.' }}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-12">
-                                        <div class="contact-page__input-box text-message-box">
-                                            <div class="contact-page__input-icon">
-                                                <span class="icon-write"></span>
-                                            </div>
-                                            <textarea name="message" placeholder="Message">{{ $prefillMessage }}</textarea>
-                                        </div>
-                                        <div class="contact-page__btn-box">
-                                            <button type="submit" class="thm-btn contact-page__btn" data-primary-submit><span
-                                                    class="icon-right"></span><span data-primary-submit-label>SEND MESSAGE</span></button>
-                                            <p style="margin:10px 0 0;font-size:13px;color:#4b6187;" data-contact-action-hint>
-                                                {{ $showActionSelector ? 'Choose one action: send message only, or pay now and start order.' : 'Standard enquiry mode. We will review and respond quickly.' }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                             <div class="result"></div>
                         </div>
                     </div>
