@@ -254,6 +254,58 @@
         display: block;
     }
 
+    .blog-details__share-list {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .blog-details__share-list button,
+    .blog-details__share-list a {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 1px solid #d7e3f7;
+        background: #fff;
+        color: #123561;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all .2s ease;
+        flex: 0 0 46px;
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        outline: none;
+        appearance: none;
+        -webkit-appearance: none;
+        overflow: hidden;
+        vertical-align: middle;
+        text-decoration: none;
+    }
+
+    .blog-details__share-list button:hover,
+    .blog-details__share-list a:hover {
+        background: #0f7fe9;
+        border-color: #0f7fe9;
+        color: #fff;
+    }
+
+    .blog-details__share-list button span,
+    .blog-details__share-list a span {
+        line-height: 1;
+    }
+
+    .blog-details__share-feedback {
+        display: inline-block;
+        margin-left: 10px;
+        color: #0f7fe9;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
     @media (max-width: 767px) {
         .blog-details__img img {
             height: clamp(220px, 52vw, 320px);
@@ -418,11 +470,23 @@
                                     @php
                                         $shareUrl = urlencode(route('blog.show', $post->slug));
                                         $shareText = urlencode($post->title);
+                                        $sharePageUrl = route('blog.show', $post->slug);
                                     @endphp
                                     <a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}" aria-label="Share on LinkedIn" title="Share on LinkedIn"><span class="icon-linkedin"></span></a>
                                     <a target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" aria-label="Share on Facebook" title="Share on Facebook"><span class="icon-facebook"></span></a>
                                     <a target="_blank" rel="noopener" href="https://www.instagram.com/arsdeveloperuk/" aria-label="Open Instagram" title="Open Instagram"><span class="fab fa-instagram"></span></a>
+                                    <button
+                                        type="button"
+                                        class="blog-share-copy"
+                                        data-share-url="{{ $sharePageUrl }}"
+                                        data-share-title="{{ $post->title }}"
+                                        aria-label="Share or copy link"
+                                        title="Share or copy link"
+                                    >
+                                        <span class="fa fa-link"></span>
+                                    </button>
                                 </div>
+                                <span class="blog-details__share-feedback" id="blogShareFeedback" aria-live="polite"></span>
                             </div>
                         </div>
                     </div>
@@ -490,6 +554,44 @@
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('click', async function (event) {
+    var button = event.target.closest('.blog-share-copy');
+    if (!button) {
+        return;
+    }
+
+    var url = button.getAttribute('data-share-url') || window.location.href;
+    var title = button.getAttribute('data-share-title') || document.title;
+    var feedback = document.getElementById('blogShareFeedback');
+
+    try {
+        if (navigator.share) {
+            await navigator.share({ title: title, url: url });
+            if (feedback) {
+                feedback.textContent = 'Shared';
+            }
+            return;
+        }
+
+        await navigator.clipboard.writeText(url);
+        if (feedback) {
+            feedback.textContent = 'Link copied';
+        }
+    } catch (error) {
+        if (feedback) {
+            feedback.textContent = 'Share unavailable';
+        }
+    }
+
+    setTimeout(function () {
+        if (feedback) {
+            feedback.textContent = '';
+        }
+    }, 2200);
+});
+</script>
 
 <section class="newsletter-two">
     <div class="newsletter-two__big-text">Subscribe Newsletter</div>
