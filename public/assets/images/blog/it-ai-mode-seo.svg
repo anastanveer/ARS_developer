@@ -1,0 +1,26 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="400" rx="28" fill="#071127"/>
+<rect x="24" y="24" width="752" height="352" rx="24" fill="url(#bg3)"/>
+<circle cx="612" cy="112" r="80" fill="#0EA5E9" fill-opacity=".18"/>
+<path d="M108 110C108 93.431 121.431 80 138 80H359C375.569 80 389 93.431 389 110V254C389 270.569 375.569 284 359 284H138C121.431 284 108 270.569 108 254V110Z" fill="#0C203E" stroke="#2A74D8"/>
+<rect x="141" y="113" width="212" height="16" rx="8" fill="#8B5CF6"/>
+<rect x="141" y="150" width="120" height="12" rx="6" fill="#B7C9EE"/>
+<rect x="141" y="174" width="163" height="12" rx="6" fill="#B7C9EE" fill-opacity=".75"/>
+<rect x="141" y="198" width="142" height="12" rx="6" fill="#B7C9EE" fill-opacity=".55"/>
+<rect x="445" y="96" width="220" height="160" rx="24" fill="#10284A" stroke="#3A86FF"/>
+<circle cx="497" cy="146" r="28" fill="#143A69"/>
+<path d="M483 146H511M497 132V160" stroke="#5EEAD4" stroke-width="8" stroke-linecap="round"/>
+<rect x="543" y="128" width="89" height="12" rx="6" fill="#D6E6FF"/>
+<rect x="543" y="152" width="70" height="12" rx="6" fill="#7AA5E9"/>
+<rect x="543" y="176" width="82" height="12" rx="6" fill="#7AA5E9" fill-opacity=".7"/>
+<path d="M127 323H663" stroke="#254A86" stroke-width="2"/>
+<text x="76" y="333" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="34" font-weight="700">AI Mode SEO</text>
+<text x="76" y="365" fill="#C6D8F5" font-family="Arial, sans-serif" font-size="24">Create content that wins discovery and clicks</text>
+<defs>
+<linearGradient id="bg3" x1="53" y1="43" x2="740" y2="363" gradientUnits="userSpaceOnUse">
+<stop stop-color="#092245"/>
+<stop offset=".52" stop-color="#151B50"/>
+<stop offset="1" stop-color="#0A4A84"/>
+</linearGradient>
+</defs>
+</svg>

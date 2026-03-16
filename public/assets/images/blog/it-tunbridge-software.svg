@@ -1,0 +1,21 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="400" rx="28" fill="#071329"/>
+<rect x="24" y="24" width="752" height="352" rx="24" fill="url(#bg4)"/>
+<rect x="86" y="88" width="276" height="200" rx="22" fill="#0D2343" stroke="#27559F"/>
+<rect x="118" y="122" width="146" height="16" rx="8" fill="#5EEAD4"/>
+<rect x="118" y="156" width="178" height="12" rx="6" fill="#C7D8F4"/>
+<rect x="118" y="180" width="156" height="12" rx="6" fill="#90ACDE"/>
+<rect x="118" y="204" width="104" height="12" rx="6" fill="#90ACDE" fill-opacity=".7"/>
+<path d="M444 113C444 95.327 458.327 81 476 81H629C646.673 81 661 95.327 661 113V233C661 250.673 646.673 265 629 265H476C458.327 265 444 250.673 444 233V113Z" fill="#10284A" stroke="#3A86FF"/>
+<path d="M491 213L524 182L548 198L609 144" stroke="#A78BFA" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="609" cy="144" r="12" fill="#5EEAD4"/>
+<text x="86" y="330" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="34" font-weight="700">Tunbridge Wells Software</text>
+<text x="86" y="362" fill="#C6D8F5" font-family="Arial, sans-serif" font-size="24">How to choose the right development partner</text>
+<defs>
+<linearGradient id="bg4" x1="60" y1="45" x2="735" y2="360" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0B2348"/>
+<stop offset=".55" stop-color="#131A51"/>
+<stop offset="1" stop-color="#0D4A87"/>
+</linearGradient>
+</defs>
+</svg>

@@ -203,9 +203,86 @@
         line-height: 1.35;
     }
 
+    .sidebar__post-list {
+        max-height: 468px;
+        overflow-y: auto;
+        padding-right: 6px;
+    }
+
+    .sidebar__post-list::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .sidebar__post-list::-webkit-scrollbar-track {
+        background: #edf4ff;
+        border-radius: 999px;
+    }
+
+    .sidebar__post-list::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #127de8 0%, #0d5fb5 100%);
+        border-radius: 999px;
+    }
+
     .sidebar__post-list li {
+        padding-right: 2px;
+    }
+
+    .sidebar__post-list li + li {
+        margin-top: 14px;
+    }
+
+    .sidebar__topic-group {
+        padding: 14px;
+        border: 1px solid #dce7f9;
+        border-radius: 16px;
+        background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+    }
+
+    .sidebar__topic-group--active {
+        border-color: #a8ceff;
+        box-shadow: 0 14px 26px rgba(15, 127, 233, 0.08);
+    }
+
+    .sidebar__topic-group-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .sidebar__topic-group-title {
+        margin: 0;
+        color: #102a4d;
+        font-size: 18px;
+        line-height: 1.25;
+    }
+
+    .sidebar__topic-group-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: rgba(15, 127, 233, 0.1);
+        color: #0f63bd;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .sidebar__topic-posts li {
+        display: flex;
         align-items: flex-start;
         gap: 12px;
+    }
+
+    .sidebar__topic-posts li + li {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #e4eefb;
     }
 
     .sidebar__post-image {
@@ -215,6 +292,18 @@
         height: 72px;
         border-radius: 10px;
         overflow: hidden;
+    }
+
+    .sidebar__post-image-link {
+        display: block;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .sidebar__post-image-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px rgba(16, 42, 77, 0.18);
     }
 
     .sidebar__post-image img {
@@ -236,6 +325,10 @@
     .sidebar__post-content-meta i {
         font-size: 13px;
         line-height: 1;
+    }
+
+    .sidebar__post-content a {
+        display: inline-block;
     }
 
     .sidebar__single.sidebar__guide {
@@ -595,27 +688,43 @@
                     </div>
 
                     <div class="sidebar__single sidebar__post">
-                        <h3 class="sidebar__title">Recent Posts</h3>
+                        <h3 class="sidebar__title">Browse by Topic</h3>
                         <ul class="sidebar__post-list list-unstyled">
-                            @forelse($recentPosts as $recent)
-                                @php
-                                    $recentImage = $recent->featured_image
-                                        ? (str_starts_with($recent->featured_image, 'http') ? $recent->featured_image : asset(ltrim($recent->featured_image, '/')))
-                                        : asset('assets/images/blog/lp-1-1.jpg');
-                                @endphp
+                            @forelse($topicGroups as $group)
                                 <li>
-                                    <div class="sidebar__post-image">
-                                        <img src="{{ $recentImage }}" alt="{{ $recent->title }}">
-                                    </div>
-                                    <div class="sidebar__post-content">
-                                        <h3>
-                                            <span class="sidebar__post-content-meta"><i class="fa fa-calendar-alt"></i>{{ optional($recent->published_at)->format('d M Y') ?: $recent->created_at->format('d M Y') }}</span>
-                                            <a href="{{ route('blog.show', $recent->slug) }}">{{ \Illuminate\Support\Str::limit($recent->title, 50) }}</a>
-                                        </h3>
+                                    <div class="sidebar__topic-group{{ !empty($group['is_current']) ? ' sidebar__topic-group--active' : '' }}">
+                                        <div class="sidebar__topic-group-head">
+                                            <h4 class="sidebar__topic-group-title">{{ $group['category'] }}</h4>
+                                            @if(!empty($group['is_current']))
+                                                <span class="sidebar__topic-group-badge">Current Cluster</span>
+                                            @endif
+                                        </div>
+                                        <ul class="sidebar__topic-posts list-unstyled">
+                                            @foreach($group['posts'] as $recent)
+                                                @php
+                                                    $recentImage = $recent->featured_image
+                                                        ? (str_starts_with($recent->featured_image, 'http') ? $recent->featured_image : asset(ltrim($recent->featured_image, '/')))
+                                                        : asset('assets/images/blog/lp-1-1.jpg');
+                                                @endphp
+                                                <li>
+                                                    <div class="sidebar__post-image">
+                                                        <a class="sidebar__post-image-link" href="{{ route('blog.show', $recent->slug) }}" aria-label="{{ $recent->title }}">
+                                                            <img src="{{ $recentImage }}" alt="{{ $recent->title }}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="sidebar__post-content">
+                                                        <h3>
+                                                            <span class="sidebar__post-content-meta"><i class="fa fa-calendar-alt"></i>{{ optional($recent->published_at)->format('d M Y') ?: $recent->created_at->format('d M Y') }}</span>
+                                                            <a href="{{ route('blog.show', $recent->slug) }}">{{ \Illuminate\Support\Str::limit($recent->title, 50) }}</a>
+                                                        </h3>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
                                 </li>
                             @empty
-                                <li><div class="sidebar__post-content"><h3>No recent posts</h3></div></li>
+                                <li><div class="sidebar__post-content"><h3>No topic groups</h3></div></li>
                             @endforelse
                         </ul>
                     </div>

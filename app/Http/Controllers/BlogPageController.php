@@ -75,8 +75,29 @@ class BlogPageController extends Controller
             ->where('id', '!=', $post->id)
             ->orderByDesc('published_at')
             ->orderByDesc('id')
-            ->limit(4)
+            ->limit(10)
             ->get();
+        $currentCategory = trim((string) ($post->category ?: 'UK Growth'));
+        $topicGroups = BlogPost::query()
+            ->where('is_published', true)
+            ->where('id', '!=', $post->id)
+            ->orderByRaw('CASE WHEN category = ? THEN 0 ELSE 1 END', [$currentCategory])
+            ->orderBy('category')
+            ->orderByDesc('published_at')
+            ->orderByDesc('id')
+            ->get()
+            ->groupBy(function (BlogPost $item) {
+                return trim((string) ($item->category ?: 'UK Growth'));
+            })
+            ->map(function ($items, $category) use ($currentCategory) {
+                return [
+                    'category' => $category,
+                    'is_current' => strcasecmp((string) $category, $currentCategory) === 0,
+                    'posts' => $items->take(4)->values(),
+                ];
+            })
+            ->sortByDesc(static fn (array $group) => $group['is_current'])
+            ->values();
 
         $relatedPosts = $this->buildStrategicRelatedPosts($post);
         $canonicalBase = rtrim((string) (app()->environment('local')
@@ -118,7 +139,7 @@ class BlogPageController extends Controller
         $clusterLinks = $this->buildTopicalClusterLinks($post);
         $tableOfContents = $this->extractTableOfContents((string) $post->content);
 
-        return view('pages.blog-details', compact('post', 'recentPosts', 'relatedPosts', 'seoOverride', 'clusterLinks', 'tableOfContents'));
+        return view('pages.blog-details', compact('post', 'recentPosts', 'topicGroups', 'relatedPosts', 'seoOverride', 'clusterLinks', 'tableOfContents'));
     }
 
     public function detailsLegacy(Request $request): RedirectResponse
@@ -489,9 +510,9 @@ class BlogPageController extends Controller
                 'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm',
             ],
             'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility' => [
-                'uk-seo-growth-system-2026-aeo-geo-eeat-guide',
-                'technical-seo-checklist-for-uk-websites-before-launch',
-                'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+                'answer-engine-optimization-uk-how-service-businesses-structure-content-for-ai-search',
+                'ai-mode-seo-uk-how-service-brands-create-content-that-earns-clicks',
+                'google-search-console-insights-uk-how-to-find-easy-seo-wins-faster',
             ],
             'uk-cyber-security-checklist-for-growing-businesses-in-2026' => [
                 'managed-it-services-uk-what-growing-businesses-should-expect-in-2026',
@@ -517,6 +538,51 @@ class BlogPageController extends Controller
                 'subscription-software-development-uk-how-saas-products-are-planned-priced-and-built',
                 'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner',
                 'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm',
+            ],
+            'answer-engine-optimization-uk-how-service-businesses-structure-content-for-ai-search' => [
+                'ai-mode-seo-uk-how-service-brands-create-content-that-earns-clicks',
+                'google-search-console-insights-uk-how-to-find-easy-seo-wins-faster',
+                'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility',
+            ],
+            'google-search-console-insights-uk-how-to-find-easy-seo-wins-faster' => [
+                'answer-engine-optimization-uk-how-service-businesses-structure-content-for-ai-search',
+                'ai-mode-seo-uk-how-service-brands-create-content-that-earns-clicks',
+                'uk-seo-growth-system-2026-aeo-geo-eeat-guide',
+            ],
+            'ai-mode-seo-uk-how-service-brands-create-content-that-earns-clicks' => [
+                'answer-engine-optimization-uk-how-service-businesses-structure-content-for-ai-search',
+                'google-search-console-insights-uk-how-to-find-easy-seo-wins-faster',
+                'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility',
+            ],
+            'software-development-company-tunbridge-wells-how-to-choose-the-right-partner' => [
+                'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner',
+                'website-development-company-stoke-on-trent-what-businesses-should-expect',
+                'custom-crm-development-cost-uk-what-affects-budget-and-timeline',
+            ],
+            'website-development-company-stoke-on-trent-what-businesses-should-expect' => [
+                'seo-company-stoke-on-trent-for-small-businesses-what-actually-drives-enquiries',
+                'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner',
+                'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+            ],
+            'seo-company-stoke-on-trent-for-small-businesses-what-actually-drives-enquiries' => [
+                'website-development-company-stoke-on-trent-what-businesses-should-expect',
+                'google-search-console-insights-uk-how-to-find-easy-seo-wins-faster',
+                'uk-seo-growth-system-2026-aeo-geo-eeat-guide',
+            ],
+            'saas-mvp-development-uk-what-to-build-first-and-what-to-delay' => [
+                'mvp-development-cost-uk-how-founders-budget-for-version-one',
+                'subscription-software-development-uk-how-saas-products-are-planned-priced-and-built',
+                'custom-crm-development-cost-uk-what-affects-budget-and-timeline',
+            ],
+            'custom-crm-development-cost-uk-what-affects-budget-and-timeline' => [
+                'mvp-development-cost-uk-how-founders-budget-for-version-one',
+                'custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026',
+                'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm',
+            ],
+            'mvp-development-cost-uk-how-founders-budget-for-version-one' => [
+                'saas-mvp-development-uk-what-to-build-first-and-what-to-delay',
+                'subscription-software-development-uk-how-saas-products-are-planned-priced-and-built',
+                'custom-crm-development-cost-uk-what-affects-budget-and-timeline',
             ],
         ];
 

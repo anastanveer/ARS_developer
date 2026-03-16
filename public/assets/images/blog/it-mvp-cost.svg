@@ -1,0 +1,24 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="400" rx="28" fill="#061327"/>
+<rect x="24" y="24" width="752" height="352" rx="24" fill="url(#bg9)"/>
+<circle cx="632" cy="98" r="76" fill="#22D3EE" fill-opacity=".16"/>
+<rect x="94" y="89" width="274" height="194" rx="22" fill="#0B203D" stroke="#2A62BB"/>
+<text x="122" y="146" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="48" font-weight="700">MVP</text>
+<rect x="122" y="174" width="118" height="12" rx="6" fill="#5EEAD4"/>
+<rect x="122" y="198" width="170" height="12" rx="6" fill="#D6E6FF"/>
+<rect x="122" y="222" width="136" height="12" rx="6" fill="#90ACDE"/>
+<rect x="438" y="95" width="222" height="166" rx="24" fill="#10284A" stroke="#3A86FF"/>
+<path d="M474 220V145" stroke="#5EEAD4" stroke-width="12" stroke-linecap="round"/>
+<path d="M522 220V126" stroke="#A78BFA" stroke-width="12" stroke-linecap="round"/>
+<path d="M570 220V168" stroke="#60A5FA" stroke-width="12" stroke-linecap="round"/>
+<path d="M618 220V112" stroke="#F59E0B" stroke-width="12" stroke-linecap="round"/>
+<text x="94" y="330" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="34" font-weight="700">MVP Development Cost UK</text>
+<text x="94" y="362" fill="#C6D8F5" font-family="Arial, sans-serif" font-size="24">How founders budget for version one</text>
+<defs>
+<linearGradient id="bg9" x1="53" y1="42" x2="739" y2="362" gradientUnits="userSpaceOnUse">
+<stop stop-color="#082244"/>
+<stop offset=".52" stop-color="#141A51"/>
+<stop offset="1" stop-color="#0C4A84"/>
+</linearGradient>
+</defs>
+</svg>

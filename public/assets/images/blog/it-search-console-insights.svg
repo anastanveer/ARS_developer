@@ -1,0 +1,27 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="400" rx="28" fill="#061428"/>
+<rect x="24" y="24" width="752" height="352" rx="24" fill="url(#bg2)"/>
+<rect x="72" y="74" width="656" height="236" rx="22" fill="#0B1E39" stroke="#224A94"/>
+<rect x="102" y="102" width="156" height="84" rx="18" fill="#10284A"/>
+<text x="122" y="138" fill="#5EEAD4" font-family="Arial, sans-serif" font-size="26" font-weight="700">244</text>
+<text x="122" y="166" fill="#BED2F6" font-family="Arial, sans-serif" font-size="18">Impressions</text>
+<rect x="282" y="102" width="156" height="84" rx="18" fill="#10284A"/>
+<text x="304" y="138" fill="#A78BFA" font-family="Arial, sans-serif" font-size="26" font-weight="700">28.4</text>
+<text x="304" y="166" fill="#BED2F6" font-family="Arial, sans-serif" font-size="18">Avg Position</text>
+<rect x="462" y="102" width="156" height="84" rx="18" fill="#10284A"/>
+<text x="484" y="138" fill="#60A5FA" font-family="Arial, sans-serif" font-size="26" font-weight="700">12</text>
+<text x="484" y="166" fill="#BED2F6" font-family="Arial, sans-serif" font-size="18">Quick Wins</text>
+<path d="M110 250C144 244 177 221 206 221C237 221 251 254 286 254C327 254 347 190 390 190C423 190 445 220 475 220C514 220 539 158 579 158C611 158 635 183 682 183" stroke="#22D3EE" stroke-width="8" stroke-linecap="round"/>
+<circle cx="286" cy="254" r="9" fill="#A78BFA"/>
+<circle cx="390" cy="190" r="9" fill="#A78BFA"/>
+<circle cx="579" cy="158" r="9" fill="#A78BFA"/>
+<text x="76" y="338" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="34" font-weight="700">Search Console Insights</text>
+<text x="76" y="368" fill="#C6D8F5" font-family="Arial, sans-serif" font-size="24">Find easy SEO wins faster from real impression data</text>
+<defs>
+<linearGradient id="bg2" x1="52" y1="39" x2="742" y2="364" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0C2348"/>
+<stop offset=".62" stop-color="#121A4F"/>
+<stop offset="1" stop-color="#0E4C88"/>
+</linearGradient>
+</defs>
+</svg>
