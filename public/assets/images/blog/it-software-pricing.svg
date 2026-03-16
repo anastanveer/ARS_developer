@@ -1,0 +1,32 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="800" rx="36" fill="#061329"/>
+<rect x="24" y="24" width="1152" height="752" rx="30" fill="url(#bg3)"/>
+<circle cx="1020" cy="168" r="136" fill="#1BCDF3" fill-opacity=".12"/>
+<circle cx="1042" cy="636" r="196" fill="#23D39B" fill-opacity=".1"/>
+<rect x="90" y="116" width="1020" height="568" rx="34" fill="rgba(7,18,37,.52)" stroke="rgba(154,211,255,.22)" stroke-width="2"/>
+<rect x="126" y="170" width="318" height="344" rx="28" fill="#091A38" stroke="rgba(27,205,243,.34)" stroke-width="2"/>
+<rect x="172" y="238" width="208" height="18" rx="9" fill="#EEF7FF"/>
+<rect x="172" y="296" width="164" height="12" rx="6" fill="#1BCDF3"/>
+<rect x="172" y="332" width="188" height="12" rx="6" fill="#A2C6E8"/>
+<rect x="172" y="368" width="144" height="12" rx="6" fill="#A2C6E8"/>
+<text x="172" y="458" fill="#23D39B" font-family="Arial, sans-serif" font-size="66" font-weight="700">GBP</text>
+<text x="172" y="520" fill="#EAF6FF" font-family="Arial, sans-serif" font-size="110" font-weight="700">5k+</text>
+<rect x="496" y="170" width="566" height="160" rx="28" fill="#0A2144" stroke="rgba(35,211,155,.34)" stroke-width="2"/>
+<rect x="548" y="228" width="228" height="18" rx="9" fill="#DDF7FF"/>
+<rect x="548" y="270" width="180" height="12" rx="6" fill="#8FD7FF"/>
+<rect x="496" y="370" width="268" height="206" rx="26" fill="#0F2852"/>
+<rect x="794" y="370" width="268" height="206" rx="26" fill="#0A1936"/>
+<path d="M554 532V470" stroke="#23D39B" stroke-width="18" stroke-linecap="round"/>
+<path d="M606 532V438" stroke="#1BCDF3" stroke-width="18" stroke-linecap="round"/>
+<path d="M658 532V406" stroke="#8ED7FF" stroke-width="18" stroke-linecap="round"/>
+<rect x="844" y="430" width="168" height="24" rx="12" fill="#1BCDF3"/>
+<rect x="844" y="478" width="120" height="14" rx="7" fill="#DDF7FF"/>
+<rect x="844" y="514" width="94" height="14" rx="7" fill="#DDF7FF"/>
+<defs>
+<linearGradient id="bg3" x1="56" y1="44" x2="1144" y2="760" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0C285A"/>
+<stop offset=".48" stop-color="#08172C"/>
+<stop offset="1" stop-color="#07111F"/>
+</linearGradient>
+</defs>
+</svg>

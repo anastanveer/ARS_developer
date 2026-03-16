@@ -211,6 +211,9 @@ class BlogPageController extends Controller
             'ai search' => ['AI Overviews', 'Answer Engine Optimization', 'Search Intent', 'Topical Authority'],
             'cyber security' => ['Cyber Security', 'Phishing Protection', 'Access Control', 'Business Resilience'],
             'managed it' => ['Managed IT Services', 'Business Continuity', 'Vendor Governance', 'Endpoint Standards'],
+            'local seo' => ['Local SEO', 'Software Development', 'Discovery Process', 'Client Proof'],
+            'saas' => ['SaaS Development', 'Recurring Billing', 'Product Onboarding', 'User Permissions'],
+            'software pricing' => ['Software Pricing', 'Project Discovery', 'Milestone Delivery', 'Integration Scope'],
         ];
 
         $entities = $categoryEntities[$category] ?? ['Web Development', 'Technical SEO', 'CRM Systems', 'Conversion Strategy'];
@@ -254,6 +257,18 @@ class BlogPageController extends Controller
             'Business Continuity' => '/services',
             'Vendor Governance' => '/services',
             'Endpoint Standards' => '/services',
+            'Local SEO' => '/contact',
+            'Software Development' => '/software-development',
+            'Discovery Process' => '/contact',
+            'Client Proof' => '/portfolio',
+            'SaaS Development' => '/software-development',
+            'Recurring Billing' => '/services',
+            'Product Onboarding' => '/software-development',
+            'User Permissions' => '/software-development',
+            'Software Pricing' => '/pricing',
+            'Project Discovery' => '/contact',
+            'Milestone Delivery' => '/pricing',
+            'Integration Scope' => '/services',
         ];
 
         $about = collect($entities)->map(static fn ($entity) => [
@@ -342,6 +357,9 @@ class BlogPageController extends Controller
             $citations[] = url('/software-development');
         } elseif ($category === 'digital marketing') {
             $citations[] = url('/digital-marketing');
+        } elseif (in_array($category, ['saas', 'software pricing', 'local seo'], true)) {
+            $citations[] = url('/software-development');
+            $citations[] = url('/contact');
         }
 
         return array_values(array_unique(array_filter(array_map(
@@ -396,6 +414,27 @@ class BlogPageController extends Controller
                 ['label' => 'Full Services Overview', 'url' => '/services'],
                 ['label' => 'Proof-Based Portfolio', 'url' => '/portfolio'],
                 ['label' => 'Get a Custom SEO Plan', 'url' => '/contact'],
+            ],
+            'local seo' => [
+                ['label' => 'Software Development Services', 'url' => '/software-development'],
+                ['label' => 'Project Pricing Guide', 'url' => '/pricing'],
+                ['label' => 'Recent Project Portfolio', 'url' => '/portfolio'],
+                ['label' => 'Full Services Overview', 'url' => '/services'],
+                ['label' => 'Book Discovery Call', 'url' => '/contact'],
+            ],
+            'saas' => [
+                ['label' => 'SaaS and App Development', 'url' => '/software-development'],
+                ['label' => 'Custom Build Pricing', 'url' => '/pricing'],
+                ['label' => 'Portal and App Portfolio', 'url' => '/portfolio'],
+                ['label' => 'Service Delivery Scope', 'url' => '/services'],
+                ['label' => 'Start SaaS Discovery', 'url' => '/contact'],
+            ],
+            'software pricing' => [
+                ['label' => 'Software Project Pricing', 'url' => '/pricing'],
+                ['label' => 'Custom Software Development', 'url' => '/software-development'],
+                ['label' => 'Project Delivery Portfolio', 'url' => '/portfolio'],
+                ['label' => 'Implementation Services', 'url' => '/services'],
+                ['label' => 'Request a Scoped Estimate', 'url' => '/contact'],
             ],
         ];
 
@@ -463,6 +502,21 @@ class BlogPageController extends Controller
                 'uk-cyber-security-checklist-for-growing-businesses-in-2026',
                 'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm',
                 'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+            ],
+            'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner' => [
+                'custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026',
+                'subscription-software-development-uk-how-saas-products-are-planned-priced-and-built',
+                'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm',
+            ],
+            'subscription-software-development-uk-how-saas-products-are-planned-priced-and-built' => [
+                'custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026',
+                'managed-it-services-uk-what-growing-businesses-should-expect-in-2026',
+                'technical-seo-checklist-for-uk-websites-before-launch',
+            ],
+            'custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026' => [
+                'subscription-software-development-uk-how-saas-products-are-planned-priced-and-built',
+                'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner',
+                'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm',
             ],
         ];
 

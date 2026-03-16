@@ -20,6 +20,9 @@ class BlogPostSeeder extends Seeder
             'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility' => 'assets/images/blog/it-ai-visibility.svg',
             'uk-cyber-security-checklist-for-growing-businesses-in-2026' => 'assets/images/blog/it-cyber-security.svg',
             'managed-it-services-uk-what-growing-businesses-should-expect-in-2026' => 'assets/images/blog/it-managed-services.svg',
+            'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner' => 'assets/images/blog/it-local-software.svg',
+            'subscription-software-development-uk-how-saas-products-are-planned-priced-and-built' => 'assets/images/blog/it-saas-subscription.svg',
+            'custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026' => 'assets/images/blog/it-software-pricing.svg',
         ];
 
         $posts = [
@@ -481,6 +484,151 @@ class BlogPostSeeder extends Seeder
                     ],
                 ],
                 'cta' => 'If your business relies on software-heavy workflows, explore our <a href="/services">service stack</a> and <a href="/contact">delivery planning</a>.',
+            ],
+            [
+                'title' => 'Software Development Company Stoke-on-Trent: How to Choose the Right UK Partner',
+                'slug' => 'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner',
+                'category' => 'Local SEO',
+                'excerpt' => 'How Stoke-on-Trent businesses can choose the right software development company using delivery proof, technical scope, communication standards, and long-term support criteria.',
+                'meta_title' => 'Software Development Company Stoke-on-Trent Guide',
+                'meta_description' => 'Find out how to choose a software development company in Stoke-on-Trent with the right technical fit, communication, pricing, and support.',
+                'meta_keywords' => 'software development company stoke on trent, software developers stoke on trent, custom software stoke on trent, uk software company local',
+                'overview' => [
+                    'If you are searching for a software development company in Stoke-on-Trent, the right decision depends on technical scope, local business fit, and the ability to support the project after launch.',
+                    'The best partner is not just a coder. It is a team that understands delivery planning, pricing clarity, communication speed, and the commercial goal behind the software.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What local businesses should look for first',
+                        'list' => [
+                            'Clear discovery process before quoting.',
+                            'Ability to explain the build in plain business language.',
+                            'Examples of CRM, portal, or web app work.',
+                            'Support process after launch, not just build-only delivery.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Questions to ask before choosing a software partner',
+                        'paragraphs' => [
+                            'Ask how they scope requirements, what happens when requirements change, how reporting works during development, and what support is included after go-live.',
+                            'A reliable software partner should also explain expected timeline, milestones, ownership of code and hosting, and how SEO or conversion considerations connect with the build.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How this search intent links to higher-conversion pages',
+                        'paragraphs' => [
+                            'This topic should support your <a href="/software-development">software development service page</a>, <a href="/pricing">pricing page</a>, and <a href="/portfolio">portfolio proof</a>.',
+                            'It also connects well with <a href="/blog/custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026">software pricing guidance</a> and <a href="/blog/why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm">CRM workflow planning</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'Should a local software company also handle strategy and support?',
+                        'a' => 'Yes. Long-term support, discovery, and commercial understanding are often more valuable than coding alone.',
+                    ],
+                    [
+                        'q' => 'Is local presence required for a software project?',
+                        'a' => 'Not always, but local relevance can help trust, communication, and business understanding for service-led UK projects.',
+                    ],
+                ],
+                'cta' => 'If you want a custom plan for your project, review our <a href="/software-development">software services</a> and <a href="/contact">book a discovery call</a>.',
+            ],
+            [
+                'title' => 'Subscription Software Development UK: How SaaS Products Are Planned, Priced and Built',
+                'slug' => 'subscription-software-development-uk-how-saas-products-are-planned-priced-and-built',
+                'category' => 'SaaS',
+                'excerpt' => 'A practical UK guide to subscription software development covering MVP planning, recurring billing logic, role permissions, reporting, and growth-stage product decisions.',
+                'meta_title' => 'Subscription Software Development UK Guide',
+                'meta_description' => 'Learn how subscription software is planned and built in the UK, including SaaS pricing, MVP scope, billing logic, and product growth decisions.',
+                'meta_keywords' => 'subscription software uk, subscription software development uk, saas development uk, recurring billing software uk, saas product development uk',
+                'overview' => [
+                    'Subscription software development in the UK usually starts with one decision: what must the MVP do on day one, and what can wait until revenue validates the model.',
+                    'Strong SaaS delivery combines user roles, recurring billing logic, onboarding flow, reporting, and product decisions that match the business model.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What must be scoped before development starts',
+                        'list' => [
+                            'User types and permission levels.',
+                            'Recurring billing, upgrade, downgrade, and cancellation logic.',
+                            'Core workflow the customer pays for.',
+                            'Metrics and reporting needed by the business.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Why SaaS projects fail when scope is weak',
+                        'paragraphs' => [
+                            'Many subscription platforms fail because teams start with UI ideas instead of pricing logic, user journeys, and retention behaviour.',
+                            'The right build starts with onboarding, billing events, feature gates, and the outcome the customer expects each month.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Best related reads for this topic',
+                        'paragraphs' => [
+                            'This article supports <a href="/blog/custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026">software pricing planning</a>, <a href="/blog/managed-it-services-uk-what-growing-businesses-should-expect-in-2026">managed IT expectations</a>, and <a href="/blog/technical-seo-checklist-for-uk-websites-before-launch">technical launch readiness</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What is the first feature a subscription software product should build?',
+                        'a' => 'Usually the core value workflow, account structure, and billing logic should come before non-essential add-ons.',
+                    ],
+                    [
+                        'q' => 'Should SaaS products be fully built before launch?',
+                        'a' => 'No. A focused MVP with strong retention logic is usually better than an oversized first release.',
+                    ],
+                ],
+                'cta' => 'For build planning, see our <a href="/software-development">software development service</a> and <a href="/pricing">project pricing options</a>.',
+            ],
+            [
+                'title' => 'Custom Software Development Pricing UK: What Businesses Should Budget for in 2026',
+                'slug' => 'custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026',
+                'category' => 'Software Pricing',
+                'excerpt' => 'A UK guide to custom software pricing covering discovery, design, development, integrations, support, and what actually changes project cost.',
+                'meta_title' => 'Custom Software Development Pricing UK Guide',
+                'meta_description' => 'Understand custom software development pricing in the UK, including discovery, integrations, support, team scope, and realistic budgeting.',
+                'meta_keywords' => 'custom software development pricing uk, software development cost uk, custom software uk pricing, web app pricing uk, crm development cost uk',
+                'overview' => [
+                    'Custom software pricing in the UK depends less on a flat hourly number and more on scope complexity, integrations, user roles, reporting needs, and post-launch support.',
+                    'Businesses get better outcomes when pricing is understood through milestones, architecture, and business workflow value rather than vague budget assumptions.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What usually affects price the most',
+                        'list' => [
+                            'How many workflows the system must support.',
+                            'Number of user roles and dashboards.',
+                            'Third-party integrations and billing logic.',
+                            'Design depth, QA scope, and support expectations.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Why cheap software quotes often become expensive',
+                        'paragraphs' => [
+                            'Low quotes often leave out discovery, testing, support, security hardening, or revision cycles. The result is usually scope drift, delays, or a poor-quality system.',
+                            'A better quote explains delivery phases, assumptions, what is included, and what happens when business requirements change.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Where this fits in your buying journey',
+                        'paragraphs' => [
+                            'This page works best alongside <a href="/pricing">service pricing</a>, <a href="/blog/subscription-software-development-uk-how-saas-products-are-planned-priced-and-built">subscription software planning</a>, and <a href="/blog/software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner">how to choose the right partner</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What makes custom software more expensive than a basic website?',
+                        'a' => 'Complex workflows, integrations, user permissions, reporting logic, QA, and post-launch support all increase cost significantly.',
+                    ],
+                    [
+                        'q' => 'Should businesses ask for fixed pricing or milestone pricing?',
+                        'a' => 'Milestone pricing is often safer for custom software because it handles scope clarity better and reduces expectation mismatch.',
+                    ],
+                ],
+                'cta' => 'If you need a realistic project estimate, review our <a href="/pricing">pricing page</a> and <a href="/contact">request a scoped consultation</a>.',
             ],
         ];
 

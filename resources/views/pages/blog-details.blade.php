@@ -239,19 +239,111 @@
     }
 
     .sidebar__single.sidebar__guide {
-        background: linear-gradient(180deg, #f8fbff 0%, #f2f8ff 100%);
+        background:
+            radial-gradient(circle at top right, rgba(15, 127, 233, 0.16), transparent 34%),
+            linear-gradient(180deg, #fbfdff 0%, #f1f7ff 100%);
         border: 1px solid #d8e6fb;
+        border-radius: 18px;
+        box-shadow: 0 18px 38px rgba(16, 42, 77, 0.08);
+        overflow: hidden;
+    }
+
+    .sidebar__guide-head {
+        margin-bottom: 16px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid #dce8f8;
+    }
+
+    .sidebar__guide-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(15, 127, 233, 0.1);
+        color: #0f63bd;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .sidebar__guide-head .sidebar__title {
+        margin-bottom: 6px;
+    }
+
+    .sidebar__guide-text {
+        margin: 0;
+        color: #5f7395;
+        line-height: 1.6;
+        font-size: 15px;
     }
 
     .sidebar__guide-list li + li {
-        margin-top: 10px;
+        margin-top: 12px;
     }
 
     .sidebar__guide-list a {
         color: #123561;
         font-weight: 600;
         line-height: 1.45;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #d9e7fb;
+        box-shadow: 0 10px 24px rgba(17, 53, 97, 0.05);
+        transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
+        text-decoration: none;
+    }
+
+    .sidebar__guide-link-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+    }
+
+    .sidebar__guide-link-index {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #117be8 0%, #34a0ff 100%);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 30px;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .sidebar__guide-link-text {
         display: block;
+    }
+
+    .sidebar__guide-link-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #edf5ff;
+        color: #0f7fe9;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 34px;
+        font-size: 13px;
+    }
+
+    .sidebar__guide-list a:hover {
+        transform: translateY(-2px);
+        border-color: #9cc8ff;
+        box-shadow: 0 16px 28px rgba(17, 53, 97, 0.12);
+        color: #0f63bd;
     }
 
     .blog-details__share-list {
@@ -541,10 +633,22 @@
 
                     @if(!empty($clusterLinks))
                         <div class="sidebar__single sidebar__guide">
-                            <h3 class="sidebar__title">Cluster Guide</h3>
+                            <div class="sidebar__guide-head">
+                                <span class="sidebar__guide-kicker"><i class="fa fa-compass"></i> Topical Path</span>
+                                <h3 class="sidebar__title">Cluster Guide</h3>
+                                <p class="sidebar__guide-text">Use these linked pages to move from article research into services, proof, and project planning.</p>
+                            </div>
                             <ul class="sidebar__guide-list list-unstyled">
-                                @foreach($clusterLinks as $link)
-                                    <li><a href="{{ url($link['url']) }}">{{ $link['label'] }}</a></li>
+                                @foreach($clusterLinks as $index => $link)
+                                    <li>
+                                        <a href="{{ url($link['url']) }}">
+                                            <span class="sidebar__guide-link-label">
+                                                <span class="sidebar__guide-link-index">{{ $index + 1 }}</span>
+                                                <span class="sidebar__guide-link-text">{{ $link['label'] }}</span>
+                                            </span>
+                                            <span class="sidebar__guide-link-icon"><i class="fa fa-arrow-right"></i></span>
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
