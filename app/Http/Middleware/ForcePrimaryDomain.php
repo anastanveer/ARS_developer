@@ -172,7 +172,8 @@ class ForcePrimaryDomain
             $allowed = [];
             $page = (int) ($cleanedQuery['page'] ?? 1);
             if ($page > 1) {
-                $allowed['page'] = $page;
+                // Keep the query value stable so pagination URLs do not loop on string/int redirects.
+                $allowed['page'] = (string) $page;
             }
             $cleanedQuery = $allowed;
         }

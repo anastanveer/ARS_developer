@@ -339,11 +339,12 @@
         border-radius: 18px;
         box-shadow: 0 18px 38px rgba(16, 42, 77, 0.08);
         overflow: hidden;
+        padding: 22px;
     }
 
     .sidebar__guide-head {
-        margin-bottom: 16px;
-        padding-bottom: 14px;
+        margin-bottom: 18px;
+        padding: 4px 4px 18px;
         border-bottom: 1px solid #dce8f8;
     }
 
@@ -394,6 +395,10 @@
         text-decoration: none;
     }
 
+    .sidebar__guide-list {
+        padding: 4px;
+    }
+
     .sidebar__guide-link-label {
         display: flex;
         align-items: center;
@@ -437,6 +442,18 @@
         border-color: #9cc8ff;
         box-shadow: 0 16px 28px rgba(17, 53, 97, 0.12);
         color: #0f63bd;
+    }
+
+    @media (max-width: 767px) {
+        .sidebar__single.sidebar__guide {
+            padding: 18px;
+        }
+
+        .sidebar__guide-head,
+        .sidebar__guide-list {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
 
     .blog-details__share-list {

@@ -89,6 +89,72 @@
             min-width: 100%;
         }
     }
+
+    .blog-list__pagination {
+        width: 100%;
+        margin-top: 26px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .blog-pagination {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 14px 18px;
+        border: 1px solid #d7e6fb;
+        border-radius: 16px;
+        background: linear-gradient(180deg, #f8fbff 0%, #f1f7ff 100%);
+        box-shadow: 0 12px 26px rgba(16, 42, 77, 0.06);
+    }
+
+    .blog-pagination__link,
+    .blog-pagination__current,
+    .blog-pagination__dots {
+        min-width: 42px;
+        height: 42px;
+        padding: 0 14px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1;
+        text-decoration: none;
+    }
+
+    .blog-pagination__link {
+        color: #123561;
+        background: #fff;
+        border: 1px solid #d2e3fb;
+        transition: all .2s ease;
+    }
+
+    .blog-pagination__link:hover {
+        color: #fff;
+        background: #0f7fe9;
+        border-color: #0f7fe9;
+    }
+
+    .blog-pagination__current {
+        color: #fff;
+        background: linear-gradient(135deg, #0f7fe9 0%, #34a0ff 100%);
+        border: 1px solid transparent;
+        box-shadow: 0 12px 22px rgba(15, 127, 233, 0.22);
+    }
+
+    .blog-pagination__dots {
+        color: #6d84a8;
+        background: transparent;
+        min-width: auto;
+        padding: 0 2px;
+    }
+
+    .blog-pagination__nav {
+        min-width: 108px;
+    }
 </style>
 
 <section class="page-header">
@@ -180,7 +246,27 @@
         @if($posts->hasPages())
             <div class="row">
                 <div class="blog-list__pagination">
-                    {{ $posts->links() }}
+                    <nav class="blog-pagination" aria-label="Blog pagination">
+                        @if ($posts->onFirstPage())
+                            <span class="blog-pagination__link blog-pagination__nav" aria-disabled="true">Prev</span>
+                        @else
+                            <a class="blog-pagination__link blog-pagination__nav" href="{{ $posts->previousPageUrl() }}" rel="prev">Prev</a>
+                        @endif
+
+                        @for ($pageNumber = 1; $pageNumber <= $posts->lastPage(); $pageNumber++)
+                            @if ($pageNumber === $posts->currentPage())
+                                <span class="blog-pagination__current" aria-current="page">{{ $pageNumber }}</span>
+                            @else
+                                <a class="blog-pagination__link" href="{{ $posts->url($pageNumber) }}">{{ $pageNumber }}</a>
+                            @endif
+                        @endfor
+
+                        @if ($posts->hasMorePages())
+                            <a class="blog-pagination__link blog-pagination__nav" href="{{ $posts->nextPageUrl() }}" rel="next">Next</a>
+                        @else
+                            <span class="blog-pagination__link blog-pagination__nav" aria-disabled="true">Next</span>
+                        @endif
+                    </nav>
                 </div>
             </div>
         @endif
