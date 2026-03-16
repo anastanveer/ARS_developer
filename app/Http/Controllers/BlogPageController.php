@@ -78,14 +78,7 @@ class BlogPageController extends Controller
             ->limit(4)
             ->get();
 
-        $relatedPosts = BlogPost::query()
-            ->where('is_published', true)
-            ->where('id', '!=', $post->id)
-            ->when($post->category, fn ($q) => $q->where('category', $post->category))
-            ->orderByDesc('published_at')
-            ->orderByDesc('id')
-            ->limit(3)
-            ->get();
+        $relatedPosts = $this->buildStrategicRelatedPosts($post);
         $canonicalBase = rtrim((string) (app()->environment('local')
             ? url('/')
             : (config('regions.regions.uk.base_url') ?: url('/'))), '/');
@@ -123,8 +116,9 @@ class BlogPageController extends Controller
             ],
         ];
         $clusterLinks = $this->buildTopicalClusterLinks($post);
+        $tableOfContents = $this->extractTableOfContents((string) $post->content);
 
-        return view('pages.blog-details', compact('post', 'recentPosts', 'relatedPosts', 'seoOverride', 'clusterLinks'));
+        return view('pages.blog-details', compact('post', 'recentPosts', 'relatedPosts', 'seoOverride', 'clusterLinks', 'tableOfContents'));
     }
 
     public function detailsLegacy(Request $request): RedirectResponse
@@ -214,6 +208,9 @@ class BlogPageController extends Controller
             'seo' => ['Technical SEO', 'Structured Data', 'Crawl Efficiency', 'AI Overviews'],
             'crm' => ['CRM Development', 'Sales Pipeline', 'Workflow Automation', 'Lead Management'],
             'digital marketing' => ['Paid Campaigns', 'Landing Page CRO', 'Attribution Tracking', 'Conversion Reporting'],
+            'ai search' => ['AI Overviews', 'Answer Engine Optimization', 'Search Intent', 'Topical Authority'],
+            'cyber security' => ['Cyber Security', 'Phishing Protection', 'Access Control', 'Business Resilience'],
+            'managed it' => ['Managed IT Services', 'Business Continuity', 'Vendor Governance', 'Endpoint Standards'],
         ];
 
         $entities = $categoryEntities[$category] ?? ['Web Development', 'Technical SEO', 'CRM Systems', 'Conversion Strategy'];
@@ -246,6 +243,17 @@ class BlogPageController extends Controller
             'Conversion Reporting' => '/pricing',
             'CRM Systems' => '/services',
             'Conversion Strategy' => '/pricing',
+            'Answer Engine Optimization' => '/uk-growth-hub',
+            'Search Intent' => '/uk-growth-hub',
+            'Topical Authority' => '/uk-growth-hub',
+            'Cyber Security' => '/services',
+            'Phishing Protection' => '/services',
+            'Access Control' => '/services',
+            'Business Resilience' => '/services',
+            'Managed IT Services' => '/services',
+            'Business Continuity' => '/services',
+            'Vendor Governance' => '/services',
+            'Endpoint Standards' => '/services',
         ];
 
         $about = collect($entities)->map(static fn ($entity) => [
@@ -406,5 +414,95 @@ class BlogPageController extends Controller
             ->unique(static fn (array $link) => trim((string) $link['url']))
             ->values()
             ->all();
+    }
+
+    private function buildStrategicRelatedPosts(BlogPost $post)
+    {
+        $map = [
+            'uk-seo-growth-system-2026-aeo-geo-eeat-guide' => [
+                'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility',
+                'technical-seo-checklist-for-uk-websites-before-launch',
+                'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+            ],
+            'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites' => [
+                'landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries',
+                'uk-seo-growth-system-2026-aeo-geo-eeat-guide',
+                'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm',
+            ],
+            'wordpress-vs-shopify-for-uk-businesses-which-platform-fits-your-growth-stage' => [
+                'technical-seo-checklist-for-uk-websites-before-launch',
+                'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+                'landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries',
+            ],
+            'technical-seo-checklist-for-uk-websites-before-launch' => [
+                'uk-seo-growth-system-2026-aeo-geo-eeat-guide',
+                'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility',
+                'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+            ],
+            'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm' => [
+                'managed-it-services-uk-what-growing-businesses-should-expect-in-2026',
+                'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+                'landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries',
+            ],
+            'landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries' => [
+                'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+                'uk-seo-growth-system-2026-aeo-geo-eeat-guide',
+                'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm',
+            ],
+            'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility' => [
+                'uk-seo-growth-system-2026-aeo-geo-eeat-guide',
+                'technical-seo-checklist-for-uk-websites-before-launch',
+                'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+            ],
+            'uk-cyber-security-checklist-for-growing-businesses-in-2026' => [
+                'managed-it-services-uk-what-growing-businesses-should-expect-in-2026',
+                'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm',
+                'technical-seo-checklist-for-uk-websites-before-launch',
+            ],
+            'managed-it-services-uk-what-growing-businesses-should-expect-in-2026' => [
+                'uk-cyber-security-checklist-for-growing-businesses-in-2026',
+                'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm',
+                'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+            ],
+        ];
+
+        $preferred = $map[$post->slug] ?? [];
+        $preferredPosts = BlogPost::query()
+            ->where('is_published', true)
+            ->whereIn('slug', $preferred)
+            ->get()
+            ->sortBy(fn (BlogPost $item) => array_search($item->slug, $preferred, true))
+            ->values();
+
+        if ($preferredPosts->count() >= 3) {
+            return $preferredPosts->take(3);
+        }
+
+        $fallback = BlogPost::query()
+            ->where('is_published', true)
+            ->where('id', '!=', $post->id)
+            ->whereNotIn('id', $preferredPosts->pluck('id'))
+            ->when($post->category, fn ($q) => $q->where('category', $post->category))
+            ->orderBy('sort_order')
+            ->orderByDesc('published_at')
+            ->limit(3 - $preferredPosts->count())
+            ->get();
+
+        return $preferredPosts->concat($fallback)->take(3)->values();
+    }
+
+    private function extractTableOfContents(string $content): array
+    {
+        preg_match_all('/<h2[^>]*>(.*?)<\/h2>/is', $content, $matches);
+        $headings = collect($matches[1] ?? [])
+            ->map(static fn ($heading) => trim(preg_replace('/\s+/', ' ', strip_tags((string) $heading))))
+            ->filter()
+            ->take(8)
+            ->values();
+
+        return $headings->map(static fn (string $heading) => [
+            'label' => $heading,
+            'id' => Str::slug($heading),
+        ])->all();
     }
 }

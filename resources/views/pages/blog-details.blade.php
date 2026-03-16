@@ -117,6 +117,43 @@
         color: #fff;
     }
 
+    .blog-details__toc,
+    .blog-details__trust-box {
+        margin: 0 0 24px;
+        border: 1px solid #d6e6fb;
+        background: #f8fbff;
+        border-radius: 12px;
+        padding: 18px;
+    }
+
+    .blog-details__toc h3,
+    .blog-details__trust-box h3 {
+        margin: 0 0 10px;
+        color: #102a4d;
+        font-size: 20px;
+    }
+
+    .blog-details__toc ul,
+    .blog-details__trust-list {
+        margin: 0;
+        padding-left: 18px;
+        color: #4f6386;
+    }
+
+    .blog-details__toc li + li,
+    .blog-details__trust-list li + li {
+        margin-top: 8px;
+    }
+
+    .blog-details__toc a {
+        color: #123561;
+        text-decoration: none;
+    }
+
+    .blog-details__toc a:hover {
+        color: #0f7fe9;
+    }
+
     .sidebar__search-form.blog-search-ui {
         position: relative;
         border: 1px solid #d3e2fb;
@@ -199,6 +236,22 @@
     .sidebar__post-content-meta i {
         font-size: 13px;
         line-height: 1;
+    }
+
+    .sidebar__single.sidebar__guide {
+        background: linear-gradient(180deg, #f8fbff 0%, #f2f8ff 100%);
+        border: 1px solid #d8e6fb;
+    }
+
+    .sidebar__guide-list li + li {
+        margin-top: 10px;
+    }
+
+    .sidebar__guide-list a {
+        color: #123561;
+        font-weight: 600;
+        line-height: 1.45;
+        display: block;
     }
 
     @media (max-width: 767px) {
@@ -290,10 +343,41 @@
                             </div>
                         @endif
 
-                        @php $contentHasHtml = $post->content && $post->content !== strip_tags($post->content); @endphp
+                        @if(!empty($tableOfContents))
+                            <div class="blog-details__toc">
+                                <h3>In This Guide</h3>
+                                <ul>
+                                    @foreach($tableOfContents as $item)
+                                        <li><a href="#{{ $item['id'] }}">{{ $item['label'] }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <div class="blog-details__trust-box">
+                            <h3>Why This Article Is Trustworthy</h3>
+                            <ul class="blog-details__trust-list">
+                                <li>Reviewed by the ARS Developer editorial team for UK business relevance.</li>
+                                <li>Structured around buyer-intent SEO, technical delivery, and measurable conversion outcomes.</li>
+                                <li>Connected to related service pages and supporting articles for stronger topic depth.</li>
+                            </ul>
+                        </div>
+
+                        @php
+                            $contentHasHtml = $post->content && $post->content !== strip_tags($post->content);
+                            $renderedContent = (string) $post->content;
+                            if ($contentHasHtml) {
+                                $renderedContent = preg_replace_callback('/<h2([^>]*)>(.*?)<\/h2>/is', static function ($matches) {
+                                    $headingText = trim(preg_replace('/\s+/', ' ', strip_tags((string) ($matches[2] ?? ''))));
+                                    $id = \Illuminate\Support\Str::slug($headingText);
+
+                                    return '<h2' . ($matches[1] ?? '') . ' id="' . e($id) . '">' . ($matches[2] ?? '') . '</h2>';
+                                }, $renderedContent) ?? $renderedContent;
+                            }
+                        @endphp
                         <div class="blog-details__article">
                             @if($contentHasHtml)
-                                {!! $post->content !!}
+                                {!! $renderedContent !!}
                             @else
                                 {!! nl2br(e((string) $post->content)) !!}
                             @endif
@@ -386,6 +470,17 @@
                             <ul class="sidebar__category-list list-unstyled">
                                 @foreach($relatedPosts as $related)
                                     <li><a href="{{ route('blog.show', $related->slug) }}">{{ \Illuminate\Support\Str::limit($related->title, 60) }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if(!empty($clusterLinks))
+                        <div class="sidebar__single sidebar__guide">
+                            <h3 class="sidebar__title">Cluster Guide</h3>
+                            <ul class="sidebar__guide-list list-unstyled">
+                                @foreach($clusterLinks as $link)
+                                    <li><a href="{{ url($link['url']) }}">{{ $link['label'] }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
