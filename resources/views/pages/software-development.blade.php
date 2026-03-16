@@ -1,4 +1,5 @@
 @php
+    $servicePageImage = \App\Support\ServicePageImages::get('software-development');
     $page_title = 'Software Development';
     $seoOverride = [
         'title' => 'Software Development Services UK | ARS Developer Ltd',
@@ -35,7 +36,7 @@
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__left">
                             <div class="services-details__img">
-                                <img src="assets/images/services/services-details-img-6.jpg" alt="Software development services">
+                                <img src="{{ \App\Support\ServicePageImages::toUrl($servicePageImage['image']) }}" alt="{{ $servicePageImage['alt'] }}">
                             </div>
                             <div class="services-details__content">
                                 <h3 class="services-details__title-1">Complete Software Delivery for UK Growth-Focused Businesses</h3>

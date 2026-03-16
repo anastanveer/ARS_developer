@@ -10,6 +10,15 @@ class BlogPostSeeder extends Seeder
 {
     public function run(): void
     {
+        $postImageMap = [
+            'uk-seo-growth-system-2026-aeo-geo-eeat-guide' => 'assets/images/blog/it-seo-growth.svg',
+            'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites' => 'assets/images/blog/it-web-development.svg',
+            'wordpress-vs-shopify-for-uk-businesses-which-platform-fits-your-growth-stage' => 'assets/images/blog/it-ecommerce.svg',
+            'technical-seo-checklist-for-uk-websites-before-launch' => 'assets/images/blog/it-technical-seo.svg',
+            'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm' => 'assets/images/blog/it-crm-automation.svg',
+            'landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries' => 'assets/images/blog/it-digital-marketing.svg',
+        ];
+
         $posts = [
             [
                 'title' => 'UK SEO Growth System 2026: AEO, GEO and EEAT Playbook for Service Businesses',
@@ -81,7 +90,7 @@ class BlogPostSeeder extends Seeder
                     'og_description' => $post['excerpt'],
                     'twitter_title' => $post['title'],
                     'twitter_description' => $post['excerpt'],
-                    'featured_image' => 'assets/images/blog/blog-2-' . (($index % 3) + 1) . '.jpg',
+                    'featured_image' => $postImageMap[$slug] ?? 'assets/images/blog/it-seo-growth.svg',
                     'featured_image_alt' => $post['title'],
                     'sort_order' => $index + 1,
                     'is_published' => true,

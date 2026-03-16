@@ -12,8 +12,9 @@
         <div><label>Publish Date</label><input type="date" name="published_at" value="{{ now()->toDateString() }}"></div>
         <div><label>Sort Order</label><input type="number" name="sort_order" value="0"></div>
 
-        <div><label>Featured Image URL</label><input name="featured_image" placeholder="uploads/blog/x.jpg or full url"></div>
+        <div><label>Featured Image URL</label><input name="featured_image" placeholder="assets/images/blog/it-web-development.svg or uploads/blog/x.jpg"></div>
         <div><label>Or Upload Featured Image</label><input type="file" name="image" accept="image/*"></div>
+        <div class="full"><small class="muted">Leave this empty to use uploaded image. You can also use local paths like <code>assets/images/blog/it-web-development.svg</code> and replace them later from admin.</small></div>
         <div class="full"><label>Image Alt Text</label><input name="featured_image_alt"></div>
 
         <div class="full"><label>Excerpt</label><textarea id="blog_excerpt_create" name="excerpt" rows="4" data-editor="compact"></textarea></div>

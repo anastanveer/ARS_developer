@@ -405,6 +405,7 @@
         <div class="nav-title">Content</div>
         @if(!$isBlogOnlyAdmin)
             <a href="{{ route('admin.portfolios.index') }}" class="{{ request()->routeIs('admin.portfolios.*') ? 'active' : '' }}"><span class="nav-ico">🧩</span><span class="nav-label">Portfolio</span></a>
+            <a href="{{ route('admin.service-page-images.index') }}" class="{{ request()->routeIs('admin.service-page-images.*') ? 'active' : '' }}"><span class="nav-ico">🖼️</span><span class="nav-label">Service Images</span></a>
         @endif
         <a href="{{ route('admin.blog-posts.index') }}" class="{{ request()->routeIs('admin.blog-posts.*') ? 'active' : '' }}"><span class="nav-ico">✍️</span><span class="nav-label">Blog Posts</span></a>
         <a href="{{ route('admin.logs.index') }}" class="{{ request()->routeIs('admin.logs.*') ? 'active' : '' }}"><span class="nav-ico">🧾</span><span class="nav-label">System Logs</span></a>

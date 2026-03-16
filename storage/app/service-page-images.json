@@ -1,0 +1,32 @@
+{
+    "software-development": {
+        "label": "Software Development",
+        "image": "assets/images/services/service-software-development.svg",
+        "alt": "Software development service overview"
+    },
+    "web-design-development": {
+        "label": "Web Design & Development",
+        "image": "assets/images/services/service-web-development.svg",
+        "alt": "Web design and development service overview"
+    },
+    "search-engine-optimization": {
+        "label": "Search Engine Optimization",
+        "image": "assets/images/services/service-seo.svg",
+        "alt": "SEO service overview"
+    },
+    "design-and-branding": {
+        "label": "Design & Branding",
+        "image": "assets/images/services/service-branding.svg",
+        "alt": "Design and branding service overview"
+    },
+    "app-development": {
+        "label": "App Development",
+        "image": "assets/images/services/service-app-development.svg",
+        "alt": "App development service overview"
+    },
+    "digital-marketing": {
+        "label": "Digital Marketing",
+        "image": "assets/images/services/service-digital-marketing.svg",
+        "alt": "Digital marketing service overview"
+    }
+}

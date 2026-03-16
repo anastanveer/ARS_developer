@@ -1,4 +1,5 @@
 @php
+    $servicePageImage = \App\Support\ServicePageImages::get('search-engine-optimization');
     $page_title = 'Search Engine Optimization';
 @endphp
 @include('layouts.header')
@@ -36,7 +37,7 @@
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__left">
                             <div class="services-details__img">
-                                <img src="assets/images/services/services-details-img-4.jpg" alt="">
+                                <img src="{{ \App\Support\ServicePageImages::toUrl($servicePageImage['image']) }}" alt="{{ $servicePageImage['alt'] }}">
                             </div>
                             <div class="services-details__content">
                                 <h3 class="services-details__title-1">SEO, Technical Audit and Performance Optimization

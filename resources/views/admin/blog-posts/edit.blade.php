@@ -14,6 +14,7 @@
 
         <div><label>Featured Image URL</label><input name="featured_image" value="{{ old('featured_image', $blogPost->featured_image) }}"></div>
         <div><label>Or Upload New Image</label><input type="file" name="image" accept="image/*"></div>
+        <div class="full"><small class="muted">You can keep a local placeholder path like <code>assets/images/blog/it-web-development.svg</code> or upload a replacement image here any time.</small></div>
         <div class="full"><label>Image Alt Text</label><input name="featured_image_alt" value="{{ old('featured_image_alt', $blogPost->featured_image_alt) }}"></div>
 
         <div class="full"><label>Excerpt</label><textarea id="blog_excerpt_edit" name="excerpt" rows="4" data-editor="compact">{{ old('excerpt', $blogPost->excerpt) }}</textarea></div>

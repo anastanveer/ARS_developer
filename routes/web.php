@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\ClientReviewController as AdminClientReviewController;
 use App\Http\Controllers\BlogPageController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\ServicePageImageController;
 use App\Http\Controllers\Admin\SystemLogController;
 use App\Http\Controllers\ClientReviewController;
 use App\Http\Controllers\ClientPortalController;
@@ -402,6 +403,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/leads/{lead}/send-email', [LeadEmailController::class, 'send'])->name('leads.send-email');
 
             Route::resource('/portfolios', PortfolioController::class)->except('show');
+            Route::get('/service-page-images', [ServicePageImageController::class, 'index'])->name('service-page-images.index');
+            Route::post('/service-page-images', [ServicePageImageController::class, 'update'])->name('service-page-images.update');
             Route::resource('/coupons', CouponController::class)->except('show');
             Route::get('/analytics', [AnalyticsController::class, 'index'])->name('analytics.index');
             Route::post('/analytics/monthly', [AnalyticsController::class, 'storeMonthlyMetric'])->name('analytics.monthly.store');
