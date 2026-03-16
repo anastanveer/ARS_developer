@@ -5,9 +5,74 @@
         'title' => 'Software Development Services UK | ARS Developer Ltd',
         'description' => 'End-to-end software development for UK businesses: web apps, CRM systems, automation, UI/UX design, QA, deployment, and support.',
         'keywords' => 'software development uk, crm development uk, web app development uk, custom software agency uk',
+        'related_links' => [
+            '/pricing',
+            '/portfolio',
+            '/contact',
+            '/blog/custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026',
+            '/blog/subscription-software-development-uk-how-saas-products-are-planned-priced-and-built',
+            '/blog/custom-crm-development-cost-uk-what-affects-budget-and-timeline',
+            '/blog/saas-mvp-development-uk-what-to-build-first-and-what-to-delay',
+        ],
+        'faq_items' => [
+            [
+                'question' => 'What software projects do UK businesses usually start with first?',
+                'answer' => 'Most UK businesses start with web apps, CRM systems, client portals, or workflow automation that reduces manual operations and improves lead handling.',
+            ],
+            [
+                'question' => 'Can software development work be split into milestones?',
+                'answer' => 'Yes. Milestone delivery is usually safer because discovery, design, build, QA, and launch can be reviewed in stages with clearer budget control.',
+            ],
+            [
+                'question' => 'Do software projects support SEO and conversion goals too?',
+                'answer' => 'Yes. We align software delivery with lead flow, search visibility, and business process outcomes rather than treating development as an isolated technical task.',
+            ],
+        ],
     ];
 @endphp
 @include('layouts.header')
+<style>
+    .service-trust-panel {
+        margin: 26px 0 28px;
+        border: 1px solid #d9e7fb;
+        border-radius: 20px;
+        background: linear-gradient(180deg, #fbfdff 0%, #f3f8ff 100%);
+        padding: 24px;
+        box-shadow: 0 16px 30px rgba(16, 42, 77, 0.06);
+    }
+
+    .service-trust-panel__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 16px;
+    }
+
+    .service-trust-panel__item {
+        padding: 18px;
+        border-radius: 18px;
+        background: #fff;
+        border: 1px solid #dce8fb;
+    }
+
+    .service-trust-panel__item h4 {
+        margin: 0 0 8px;
+        color: #123561;
+        font-size: 18px;
+    }
+
+    .service-trust-panel__item p {
+        margin: 0;
+        color: #5a7091;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 991px) {
+        .service-trust-panel__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
 
         <section class="page-header">
             <div class="page-header__bg" style="background-image: url(assets/images/shapes/page-header-bg-shape.png);"></div>
@@ -99,6 +164,24 @@
                                     UK service businesses, ecommerce brands, and operations-heavy teams that need reliable software delivery without managing multiple vendors.
                                     We align tech decisions with revenue, lead quality, and day-to-day business operations.
                                 </p>
+                                <div class="service-trust-panel">
+                                    <h3 class="services-details__title-2" style="margin-bottom:8px;">Why Teams Trust Our Delivery</h3>
+                                    <p class="services-details__text-2" style="margin-bottom:0;">We reduce project risk before build starts by clarifying scope, milestones, ownership, and the commercial outcome the system needs to support.</p>
+                                    <div class="service-trust-panel__grid">
+                                        <div class="service-trust-panel__item">
+                                            <h4>Discovery Before Build</h4>
+                                            <p>We map users, workflow, and business goals first so scope stays commercially useful.</p>
+                                        </div>
+                                        <div class="service-trust-panel__item">
+                                            <h4>Milestone Visibility</h4>
+                                            <p>Your team gets clear delivery phases, review points, and next-step decisions.</p>
+                                        </div>
+                                        <div class="service-trust-panel__item">
+                                            <h4>Post-Launch Support</h4>
+                                            <p>Launch is not the finish line. We support fixes, updates, and measured improvement.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

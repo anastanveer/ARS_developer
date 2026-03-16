@@ -5,12 +5,6 @@
         'description' => 'Contact ARSDeveloper to discuss website development, custom CRM, ecommerce, and SEO services for UK businesses.',
         'keywords' => 'contact software agency uk, request website quote uk, crm consultation uk, ecommerce development inquiry uk, seo consultation uk',
     ];
-    $trustPillars = [
-        ['title' => 'Fast Response Window', 'text' => 'Most new project enquiries are reviewed within one business day.'],
-        ['title' => 'Requirement Clarity', 'text' => 'We define scope, priorities, and timeline before proposing delivery steps.'],
-        ['title' => 'Transparent Quotation', 'text' => 'Clear package or milestone-based quotes with no hidden surprises.'],
-        ['title' => 'UK Business Workflow', 'text' => 'Communication and planning aligned for UK business expectations.'],
-    ];
     $flowIntent = strtolower(trim((string) request()->query('intent', '')));
     $flowPlanRaw = trim((string) request()->query('plan', ''));
     $flowPlanRaw = (string) preg_replace('/[^a-z0-9\-\_\s]/i', ' ', $flowPlanRaw);
@@ -106,6 +100,191 @@
     $prefillFormType = $flowContext['form_type'] ?? 'contact';
 @endphp
 @include('layouts.header')
+<style>
+    .contact-page__left {
+        margin-top: 28px;
+    }
+
+    .contact-page__left-head {
+        margin: 0 0 20px;
+        max-width: 520px;
+    }
+
+    .contact-page__left .row {
+        --bs-gutter-x: 26px;
+        --bs-gutter-y: 26px;
+    }
+
+    .contact-page__left-title {
+        margin: 0 0 8px;
+        color: #0f2f64;
+        font-size: 30px;
+        line-height: 1.1;
+    }
+
+    .contact-page__left-text {
+        margin: 0;
+        max-width: 430px;
+        color: #5b6f8c;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .contact-page__contact-single {
+        min-height: 100%;
+        padding: 26px 24px 22px;
+        border-color: #dbe7f6;
+        border-radius: 22px;
+        margin-bottom: 0;
+        box-shadow: 0 14px 34px rgba(21, 61, 118, 0.06);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .contact-page__contact-single:hover {
+        transform: translateY(-4px);
+        border-color: #b9d4f7;
+        box-shadow: 0 18px 38px rgba(16, 59, 116, 0.1);
+    }
+
+    .contact-page__contact-single-title {
+        margin-bottom: 10px;
+        color: #103767;
+        font-size: 22px;
+    }
+
+    .contact-page__contact-single p,
+    .contact-page__contact-single p a {
+        color: #5e7290;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .contact-page__contact-icon {
+        width: 68px;
+        height: 68px;
+        border-style: solid;
+        border-color: #d5e5fb;
+        background: linear-gradient(180deg, #ffffff 0%, #f2f7ff 100%);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    }
+
+    .contact-page__contact-icon-shape {
+        width: 24px;
+        height: 24px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(135deg, #4bb7ff 0%, #1f73d1 100%);
+        opacity: 0.9;
+    }
+
+    .contact-page__right--start {
+        overflow: hidden;
+        border-radius: 28px;
+        padding: 32px;
+        background:
+            radial-gradient(circle at top right, rgba(103, 188, 255, 0.18), transparent 28%),
+            linear-gradient(135deg, #0d2f63 0%, #15448c 52%, #206dc9 100%);
+        box-shadow: 0 28px 56px rgba(13, 42, 91, 0.22);
+    }
+
+    .contact-page__contact-form-title-box {
+        gap: 12px;
+    }
+
+    .contact-page__contact-form-title {
+        font-size: 32px;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+    }
+
+    .contact-page__contact-form-text {
+        max-width: 520px;
+        margin-top: 8px;
+        margin-bottom: 14px;
+        color: rgba(239, 246, 255, 0.88);
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .contact-page__trust-strip {
+        margin: 0 0 16px;
+        padding: 12px 16px;
+        border-radius: 16px;
+        border: 1px solid rgba(177, 214, 255, 0.26);
+        background: rgba(5, 24, 58, 0.16);
+    }
+
+    .contact-page__trust-strip h4 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .contact-page__form-shell {
+        padding: 24px;
+        border: 1px solid rgba(215, 231, 251, 0.86);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 18px 34px rgba(10, 43, 97, 0.12);
+    }
+
+    .contact-page__input-box {
+        margin-bottom: 16px;
+    }
+
+    .contact-page__btn-box {
+        margin-top: 6px;
+    }
+
+    @media (max-width: 1199px) {
+        .contact-page__left {
+            margin-top: 0;
+            margin-bottom: 28px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .contact-page__left-title,
+        .contact-page__contact-form-title {
+            font-size: 28px;
+        }
+
+        .contact-page__right--start {
+            padding: 26px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .contact-page__left-head {
+            margin-bottom: 18px;
+        }
+
+        .contact-page__left-title,
+        .contact-page__contact-form-title {
+            font-size: 25px;
+        }
+
+        .contact-page__right--start {
+            padding: 20px 18px;
+            border-radius: 22px;
+        }
+
+        .contact-page__form-shell {
+            padding: 18px;
+            border-radius: 18px;
+        }
+
+        .contact-page__contact-single {
+            padding: 22px 18px 18px;
+        }
+
+        .contact-page__left .row {
+            --bs-gutter-x: 18px;
+            --bs-gutter-y: 18px;
+        }
+    }
+</style>
 
 
 
@@ -129,9 +308,6 @@
             </div>
         </section>
         <!--Page Header End-->
-
-        @include('partials.trust-pillars')
-
         <!--Contact Page Start-->
         <section class="contact-page">
             <div class="container">
@@ -139,6 +315,10 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-6">
                         <div class="contact-page__left">
+                            <div class="contact-page__left-head">
+                                <h3 class="contact-page__left-title">Contact details</h3>
+                                <p class="contact-page__left-text">Use the form or contact us directly through the details below.</p>
+                            </div>
                             <div class="row">
                                 <!--Contact Page Contact Single Start-->
                                 <div class="col-xl-6 col-lg-6 col-md-6">
@@ -173,7 +353,7 @@
                                             <div class="contact-page__contact-icon-shape"></div>
                                         </div>
                                         <h3 class="contact-page__contact-single-title">Live Support</h3>
-                                        <p>Wer are available to live chat. for 24 hours click here</p>
+                                        <p>Use email or direct message to start the conversation. New enquiries are reviewed quickly during business hours.</p>
                                     </div>
                                 </div>
                                 <!--Contact Page Contact Single End-->
@@ -199,9 +379,9 @@
                                 <div class="contact-page__contact-form-title-icon contact-page__contact-form-title-icon--pill">
                                     <span>Step 1 of 3</span>
                                 </div>
-                                <h3 class="contact-page__contact-form-title">Let's Start Your Digital Journey</h3>
+                                <h3 class="contact-page__contact-form-title">Start your project enquiry</h3>
                             </div>
-                            <p class="contact-page__contact-form-text">Choose your path, share the basics, and our team replies quickly with the next clear step.</p>
+                            <p class="contact-page__contact-form-text">Share the basics and we will reply with the next clear step.</p>
                             @if($flowContext)
                                 <div class="contact-page__flow-box">
                                     <p class="contact-page__flow-kicker">{{ $flowContext['kicker'] }}</p>
@@ -217,6 +397,9 @@
                                     </ul>
                                 </div>
                             @endif
+                            <div class="contact-page__trust-strip">
+                                <h4>Clear reply, clear next step, no vague sales follow-up.</h4>
+                            </div>
                             <div class="contact-page__form-shell">
                                 <form class="contact-form-validated contact-page__form" action="{{ route('contact.submit') }}"
                                     method="post" novalidate="novalidate">

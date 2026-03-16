@@ -5,6 +5,14 @@
         'description' => 'ARSDeveloper is a UK software development company helping startups and growing businesses with custom websites, CRM systems, ecommerce development, and technical SEO.',
         'keywords' => 'uk software development company, custom website development uk, crm software uk, ecommerce development uk, technical seo services uk, wordpress development uk',
         'preload_image' => asset('assets/images/resources/main-slider-img-1-1.png'),
+        'related_links' => [
+            '/software-development',
+            '/web-design-development',
+            '/search-engine-optimization',
+            '/portfolio',
+            '/pricing',
+            '/contact',
+        ],
         'faq_items' => [
             [
                 'question' => 'How long does a UK business website usually take?',
@@ -322,6 +330,40 @@
             </div>
         </section>
         <!--Why Choose Two End -->
+
+        <section class="about-two" style="padding-top:0;padding-bottom:24px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-md-6">
+                        <div class="about-two__single-box" style="margin-bottom:20px;">
+                            <div class="about-two__single">
+                                <div class="about-two__single-icon"><span class="fas fa-search"></span></div>
+                                <h3 class="about-two__single-title">Commercial First</h3>
+                                <p class="about-two__single-text">Pages, software flows, and SEO updates are aligned to enquiries and revenue, not just design polish.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6">
+                        <div class="about-two__single-box" style="margin-bottom:20px;">
+                            <div class="about-two__single">
+                                <div class="about-two__single-icon"><span class="fas fa-tasks"></span></div>
+                                <h3 class="about-two__single-title">Clear Milestones</h3>
+                                <p class="about-two__single-text">Clients know what is being delivered, what comes next, and how decisions affect time and scope.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-12">
+                        <div class="about-two__single-box" style="margin-bottom:20px;">
+                            <div class="about-two__single">
+                                <div class="about-two__single-icon"><span class="fas fa-shield-alt"></span></div>
+                                <h3 class="about-two__single-title">Trust Through Proof</h3>
+                                <p class="about-two__single-text">Portfolio, structured delivery, technical hygiene, and low-friction contact paths all work together to build confidence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!--Counter One Start -->
         <section class="counter-one counter-one--enhanced">

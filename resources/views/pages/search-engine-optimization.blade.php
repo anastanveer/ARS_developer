@@ -1,8 +1,78 @@
 @php
     $servicePageImage = \App\Support\ServicePageImages::get('search-engine-optimization');
     $page_title = 'Search Engine Optimization';
+    $seoOverride = [
+        'title' => 'SEO Services for UK Businesses | ARS Developer Ltd',
+        'description' => 'Technical SEO, on-page optimisation, Search Console improvements, and content structure for UK businesses that want stronger rankings and enquiries.',
+        'keywords' => 'seo services uk, technical seo uk, local seo uk, search console optimization uk, on page seo uk',
+        'related_links' => [
+            '/pricing',
+            '/contact',
+            '/uk-growth-hub',
+            '/blog/uk-seo-growth-system-2026-aeo-geo-eeat-guide',
+            '/blog/google-search-console-insights-uk-how-to-find-easy-seo-wins-faster',
+            '/blog/answer-engine-optimization-uk-how-service-businesses-structure-content-for-ai-search',
+            '/blog/seo-company-stoke-on-trent-for-small-businesses-what-actually-drives-enquiries',
+        ],
+        'faq_items' => [
+            [
+                'question' => 'What is the fastest SEO improvement for a UK service website?',
+                'answer' => 'The fastest wins usually come from fixing page intent, metadata, internal links, and technical blockers on URLs already earning impressions.',
+            ],
+            [
+                'question' => 'Do you improve local and national SEO together?',
+                'answer' => 'Yes. We align local-commercial pages, service clusters, and broader topic authority so rankings support real enquiry growth.',
+            ],
+            [
+                'question' => 'Does Search Console data shape the SEO roadmap?',
+                'answer' => 'Yes. We prioritise pages and keywords already showing visibility so updates are driven by real query demand rather than guesswork.',
+            ],
+        ],
+    ];
 @endphp
 @include('layouts.header')
+<style>
+    .service-trust-panel {
+        margin: 28px 0;
+        border: 1px solid #d9e7fb;
+        border-radius: 20px;
+        background: linear-gradient(180deg, #fbfdff 0%, #f3f8ff 100%);
+        padding: 24px;
+        box-shadow: 0 16px 30px rgba(16, 42, 77, 0.06);
+    }
+
+    .service-trust-panel__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 16px;
+    }
+
+    .service-trust-panel__item {
+        padding: 18px;
+        border-radius: 18px;
+        background: #fff;
+        border: 1px solid #dce8fb;
+    }
+
+    .service-trust-panel__item h4 {
+        margin: 0 0 8px;
+        color: #123561;
+        font-size: 18px;
+    }
+
+    .service-trust-panel__item p {
+        margin: 0;
+        color: #5a7091;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 991px) {
+        .service-trust-panel__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
 
 
 
@@ -260,6 +330,24 @@
                                     visibility, and international keyword targeting. Whether you are targeting UK, USA,
                                     Germany, Canada, India, or Pakistan segments, we build content and technical paths
                                     that match each market.</p>
+                                <div class="service-trust-panel">
+                                    <h3 class="services-details__title-2" style="margin-bottom:8px;">What Clients Value Most</h3>
+                                    <p class="services-details__text-2" style="margin-bottom:0;">We focus on pages and fixes that improve commercial visibility first, so SEO work stays tied to enquiries and not just reporting noise.</p>
+                                    <div class="service-trust-panel__grid">
+                                        <div class="service-trust-panel__item">
+                                            <h4>Search Console Led</h4>
+                                            <p>We prioritise opportunities already showing impressions and movement.</p>
+                                        </div>
+                                        <div class="service-trust-panel__item">
+                                            <h4>Commercial Intent Focus</h4>
+                                            <p>Service pages, metadata, and internal links are aligned to lead generation goals.</p>
+                                        </div>
+                                        <div class="service-trust-panel__item">
+                                            <h4>Technical Stability</h4>
+                                            <p>Canonical, schema, crawl, and performance hygiene stay part of the strategy.</p>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="services-details__img-two">
                                     <img src="assets/images/services/services-details-img-2.jpg" alt="">
                                 </div>

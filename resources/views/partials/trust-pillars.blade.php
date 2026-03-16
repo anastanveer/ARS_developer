@@ -1,4 +1,4 @@
-<section class="trust-pillars">
+<section class="trust-pillars {{ $variant ?? '' }}">
     @php
         $items = $trustPillars ?? [
             ['title' => 'UK-Registered Delivery', 'text' => 'Business-first software solutions planned for UK compliance and growth goals.'],

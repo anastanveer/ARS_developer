@@ -1,8 +1,78 @@
 @php
     $servicePageImage = \App\Support\ServicePageImages::get('web-design-development');
     $page_title = 'Web Design Development';
+    $seoOverride = [
+        'title' => 'Web Design and Development UK | ARS Developer Ltd',
+        'description' => 'Conversion-focused web design and development for UK businesses: fast pages, strong UX, SEO-ready structure, and lead-generation flow.',
+        'keywords' => 'web design development uk, website development company uk, conversion focused website uk, business website design uk',
+        'related_links' => [
+            '/pricing',
+            '/portfolio',
+            '/contact',
+            '/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
+            '/blog/website-development-company-stoke-on-trent-what-businesses-should-expect',
+            '/blog/technical-seo-checklist-for-uk-websites-before-launch',
+            '/blog/landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries',
+        ],
+        'faq_items' => [
+            [
+                'question' => 'What makes a business website rank and convert better?',
+                'answer' => 'Clear page structure, fast mobile experience, strong trust sections, focused calls to action, and SEO-ready content usually improve both visibility and enquiries.',
+            ],
+            [
+                'question' => 'Should web design include technical SEO from the start?',
+                'answer' => 'Yes. Heading hierarchy, metadata, internal links, schema-ready structure, and Core Web Vitals are more effective when planned during the build.',
+            ],
+            [
+                'question' => 'Can website development support local SEO too?',
+                'answer' => 'Yes. Location-relevant service pages, internal links, and trust signals help a website perform better for local commercial searches.',
+            ],
+        ],
+    ];
 @endphp
 @include('layouts.header')
+<style>
+    .service-trust-panel {
+        margin: 28px 0;
+        border: 1px solid #d9e7fb;
+        border-radius: 20px;
+        background: linear-gradient(180deg, #fbfdff 0%, #f3f8ff 100%);
+        padding: 24px;
+        box-shadow: 0 16px 30px rgba(16, 42, 77, 0.06);
+    }
+
+    .service-trust-panel__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 16px;
+    }
+
+    .service-trust-panel__item {
+        padding: 18px;
+        border-radius: 18px;
+        background: #fff;
+        border: 1px solid #dce8fb;
+    }
+
+    .service-trust-panel__item h4 {
+        margin: 0 0 8px;
+        color: #123561;
+        font-size: 18px;
+    }
+
+    .service-trust-panel__item p {
+        margin: 0;
+        color: #5a7091;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 991px) {
+        .service-trust-panel__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
 
 
 
@@ -258,6 +328,24 @@
                                 <p class="services-details__text-4">Our web development services suit startups, local UK
                                     businesses, and established brands planning redesigns. We can deliver brochure sites,
                                     service websites, conversion pages, and scalable CMS builds with analytics tracking.</p>
+                                <div class="service-trust-panel">
+                                    <h3 class="services-details__title-2" style="margin-bottom:8px;">How We Reduce Website Project Risk</h3>
+                                    <p class="services-details__text-2" style="margin-bottom:0;">Visitors trust websites that feel clear and credible. Clients trust agencies that make scope, launch, and support easy to understand.</p>
+                                    <div class="service-trust-panel__grid">
+                                        <div class="service-trust-panel__item">
+                                            <h4>Clear Sitemap Planning</h4>
+                                            <p>Page structure, CTA flow, and content priorities are scoped before design decisions.</p>
+                                        </div>
+                                        <div class="service-trust-panel__item">
+                                            <h4>SEO-Ready Build</h4>
+                                            <p>Heading hierarchy, metadata logic, and internal links are built into the delivery process.</p>
+                                        </div>
+                                        <div class="service-trust-panel__item">
+                                            <h4>Admin-Friendly Handover</h4>
+                                            <p>Your team can manage content updates without depending on developers for every small change.</p>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="services-details__img-two">
                                     <img src="assets/images/services/services-details-img-2.jpg" alt="">
                                 </div>
