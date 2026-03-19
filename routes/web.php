@@ -27,6 +27,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MeetingBookingController;
 use App\Http\Controllers\SeoHubController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\PortfolioPageController;
 use App\Http\Controllers\PricingController;
@@ -35,6 +36,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
+Route::get('/sitemaps/{section}.xml', [SitemapController::class, 'section'])
+    ->where('section', 'pages|portfolio|blog')
+    ->name('sitemap.section');
 
 Route::get('/{indexNowKey}.txt', function (string $indexNowKey) {
     $configuredKey = trim((string) config('indexnow.key', ''));
