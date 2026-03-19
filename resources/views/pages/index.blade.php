@@ -1026,40 +1026,51 @@
                                             <div class="section-title-two__tagline-icon-1"></div>
                                             <div class="section-title-two__tagline-icon-2"></div>
                                         </div>
-                                        <span class="section-title-two__tagline">60-Second Estimator</span>
+                                        <span class="section-title-two__tagline">60-second estimator</span>
                                     </div>
-                                    <h2 class="section-title-two__title title-animation">Get your estimated project
-                                        range <span>before booking</span></h2>
+                                    <h2 class="section-title-two__title title-animation">Get a realistic
+                                        project range <span>before you book</span></h2>
                                 </div>
-                                <p class="cost-estimator__text">Share basic details and we will send a realistic budget
-                                    range and delivery timeline to your inbox.</p>
-                                <div class="cost-estimator__instant" id="instant-estimate-panel">
-                                    <h3>Instant Estimate Preview</h3>
-                                    <div class="cost-estimator__instant-grid">
-                                        <div class="cost-estimator__instant-item">
-                                            <span>Estimated Budget</span>
-                                            <strong data-estimate-budget>GBP 2,000 - 5,000</strong>
+                                <p class="cost-estimator__text">Share a few basics and we will send a realistic budget range, delivery timeline, and next-step recommendation to your inbox.</p>
+                                <div class="cost-estimator__instant is-collapsed" id="instant-estimate-panel">
+                                    <button type="button" class="cost-estimator__instant-toggle" aria-expanded="false" aria-controls="instant-estimate-body">
+                                        <span class="cost-estimator__instant-toggle-copy">
+                                            <span class="cost-estimator__instant-eyebrow">Instant estimate preview</span>
+                                            <span class="cost-estimator__instant-summary">Tap to preview your live budget range, timeline, and delivery priority.</span>
+                                        </span>
+                                        <span class="cost-estimator__instant-arrow" aria-hidden="true"></span>
+                                    </button>
+                                    <div class="cost-estimator__instant-body" id="instant-estimate-body" hidden>
+                                        <div class="cost-estimator__instant-grid">
+                                            <div class="cost-estimator__instant-item">
+                                                <span>Estimated Budget</span>
+                                                <strong data-estimate-budget>GBP 2,000 - 5,000</strong>
+                                            </div>
+                                            <div class="cost-estimator__instant-item">
+                                                <span>Expected Timeline</span>
+                                                <strong data-estimate-timeline>2 - 4 weeks</strong>
+                                            </div>
+                                            <div class="cost-estimator__instant-item">
+                                                <span>Delivery Priority</span>
+                                                <strong data-estimate-priority>Balanced speed and quality</strong>
+                                            </div>
                                         </div>
-                                        <div class="cost-estimator__instant-item">
-                                            <span>Expected Timeline</span>
-                                            <strong data-estimate-timeline>2 - 4 weeks</strong>
-                                        </div>
-                                        <div class="cost-estimator__instant-item">
-                                            <span>Delivery Priority</span>
-                                            <strong data-estimate-priority>Balanced speed and quality</strong>
-                                        </div>
+                                        <p class="cost-estimator__instant-note">Preview updates live as soon as you choose project type and budget range.</p>
                                     </div>
-                                    <p class="cost-estimator__instant-note">Estimate updates live when you choose project type and budget range.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-7">
                             <div class="cost-estimator__form-box">
+                                <div class="cost-estimator__form-head">
+                                    <span class="cost-estimator__form-kicker">Quick brief</span>
+                                    <p>Start with the essentials. Add project details when you are ready and we will send a realistic range to your inbox.</p>
+                                </div>
                                 <form class="contact-form-validated" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate" data-ga4-form-name="quick_estimate">
                                     @csrf
                                     <input type="hidden" name="form_type" value="estimator">
                                     <input type="hidden" name="subject" value="Project Estimate Request">
-                                    <div class="row">
+                                    <div class="row cost-estimator__form-grid">
                                         <div class="col-md-6">
                                             <div class="cost-estimator__input">
                                                 <input type="text" name="name" placeholder="Your Name" required>
@@ -1096,9 +1107,10 @@
                                             <div class="cost-estimator__input cost-estimator__input--textarea">
                                                 <textarea name="message" placeholder="Share your required features, timeline, and existing setup..." required></textarea>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-12">
-                                            <button type="submit" class="cost-estimator__btn thm-btn thm-btn-two"><span class="icon-right"></span> Send Estimate Request</button>
+                                            <div class="cost-estimator__form-actions">
+                                                <button type="submit" class="cost-estimator__btn thm-btn thm-btn-two"><span class="icon-right"></span> Send Estimate Request</button>
+                                                <p class="cost-estimator__form-note">Detailed briefs help us send a more accurate budget range and delivery window.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>

@@ -2639,6 +2639,9 @@
     var budgetNode = section.querySelector('[data-estimate-budget]');
     var timelineNode = section.querySelector('[data-estimate-timeline]');
     var priorityNode = section.querySelector('[data-estimate-priority]');
+    var previewPanel = section.querySelector('#instant-estimate-panel');
+    var previewToggle = section.querySelector('.cost-estimator__instant-toggle');
+    var previewBody = section.querySelector('#instant-estimate-body');
 
     if (!projectType || !budgetRange || !budgetNode || !timelineNode || !priorityNode) return;
 
@@ -2674,12 +2677,43 @@
       };
     }
 
+    function openPreview() {
+      if (!previewPanel || !previewToggle || !previewBody || !previewPanel.classList.contains('is-collapsed')) return;
+      previewPanel.classList.remove('is-collapsed');
+      previewBody.hidden = false;
+      previewToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function togglePreview() {
+      if (!previewPanel || !previewToggle || !previewBody) return;
+      var collapsed = previewPanel.classList.contains('is-collapsed');
+      if (collapsed) {
+        openPreview();
+      } else {
+        previewPanel.classList.add('is-collapsed');
+        previewBody.hidden = true;
+        previewToggle.setAttribute('aria-expanded', 'false');
+      }
+    }
+
     function renderEstimate() {
       var result = estimateModel(projectType.value, budgetRange.value);
       budgetNode.textContent = result.budget;
       timelineNode.textContent = result.timeline;
       priorityNode.textContent = result.priority;
     }
+
+    if (previewToggle) {
+      previewToggle.addEventListener('click', togglePreview);
+    }
+
+    ['change', 'focus'].forEach(function (eventName) {
+      [projectType, budgetRange].forEach(function (field) {
+        field.addEventListener(eventName, function () {
+          openPreview();
+        });
+      });
+    });
 
     projectType.addEventListener('change', renderEstimate);
     budgetRange.addEventListener('change', renderEstimate);

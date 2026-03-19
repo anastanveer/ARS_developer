@@ -1695,18 +1695,54 @@
 }
 
 .cost-estimator__inner {
-    background: linear-gradient(180deg, #fff 0%, #f3f8ff 100%);
-    border: 1px solid var(--finris-bdr-color);
-    border-radius: 18px;
-    padding: 30px;
+    background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+    border: 1px solid #d8e6fb;
+    border-radius: 26px;
+    padding: 36px;
+    box-shadow: 0 28px 56px rgba(16, 60, 122, 0.08);
 }
 
 .cost-estimator__content {
     padding-right: 16px;
 }
 
+.cost-estimator .section-title-two__tagline-box {
+    margin-bottom: 14px;
+}
+
+.cost-estimator .section-title-two__tagline {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #1a63bb;
+}
+
+.cost-estimator .section-title-two__title {
+    max-width: 11.6ch;
+    margin: 0 0 18px;
+    font-size: clamp(40px, 4.5vw, 56px);
+    line-height: 1.03;
+    letter-spacing: -0.03em;
+    color: #143a72;
+    text-transform: none;
+    font-weight: 700;
+}
+
+.cost-estimator .section-title-two__title span {
+    color: #268be2;
+}
+
+.cost-estimator .section-title-two__title span::before {
+    opacity: 0.18;
+    transform: scaleY(0.7);
+}
+
 .cost-estimator__text {
-    margin: 12px 0 0;
+    max-width: 31rem;
+    margin: 0 0 24px;
+    font-size: 20px;
+    line-height: 1.75;
+    color: #536b8d;
 }
 
 .meeting-scheduler__timezone {
@@ -1721,84 +1757,92 @@
 }
 
 .cost-estimator__instant {
-    margin-top: 18px;
-    border: 1px solid #d4e4fb;
-    border-radius: 14px;
-    padding: 16px;
-    background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+    margin-top: 22px;
+    border: 1px solid #d8e6fb;
+    border-radius: 22px;
+    padding: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .cost-estimator__instant h3 {
-    margin: 0 0 10px;
-    font-size: 20px;
+    margin: 0 0 14px;
+    font-size: 24px;
+    line-height: 1.2;
     color: #103975;
+    letter-spacing: -0.02em;
 }
 
 .cost-estimator__instant-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 12px;
 }
 
 .cost-estimator__instant-item {
-    border: 1px solid #d7e8ff;
-    border-radius: 10px;
-    background: #fff;
-    padding: 10px 12px;
+    border: 1px solid #dce8fb;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    padding: 14px 16px;
 }
 
 .cost-estimator__instant-item span {
     display: block;
-    color: #5d7090;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 2px;
+    color: #6980a3;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
 }
 
 .cost-estimator__instant-item strong {
     color: #0f3f84;
-    font-size: 16px;
-    line-height: 1.25;
+    font-size: 18px;
+    line-height: 1.4;
 }
 
 .cost-estimator__instant-note {
-    margin: 10px 0 0;
-    font-size: 12px;
+    margin: 14px 0 0;
+    font-size: 13px;
+    line-height: 1.65;
     color: #5c6f8f;
 }
 
 .cost-estimator__form-box {
-    border: 1px solid #d5e4fb;
-    border-radius: 14px;
-    background: #fff;
-    padding: 20px;
+    border: 1px solid #d8e6fb;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    padding: 26px;
+    box-shadow: 0 18px 36px rgba(17, 68, 145, 0.08);
 }
 
 .cost-estimator__input {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .cost-estimator__input input,
 .cost-estimator__input select,
 .cost-estimator__input textarea {
     width: 100%;
-    border: 1px solid #d4e2f8;
-    border-radius: 10px;
+    border: 1px solid #d7e5fa;
+    border-radius: 16px;
     outline: none;
     color: var(--finris-black);
-    background: #fff;
-    font-size: 15px;
+    background: #ffffff;
+    font-size: 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.88);
 }
 
 .cost-estimator__input input,
 .cost-estimator__input select {
-    height: 50px;
-    padding: 0 14px;
+    height: 58px;
+    padding: 0 18px;
 }
 
 .cost-estimator__input textarea {
-    min-height: 110px;
-    padding: 12px 14px;
+    min-height: 146px;
+    padding: 16px 18px;
     resize: vertical;
 }
 
@@ -1841,6 +1885,210 @@
 
 .cost-estimator__btn {
     border: none;
+    min-height: 58px;
+    padding: 0 28px;
+    border-radius: 999px;
+    box-shadow: 0 20px 34px rgba(15, 104, 201, 0.2);
+}
+
+.cost-estimator__inner .row {
+    --bs-gutter-y: 26px;
+    align-items: stretch;
+}
+
+.cost-estimator__content,
+.cost-estimator__form-box {
+    height: 100%;
+}
+
+.cost-estimator__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.cost-estimator .section-title-two__title {
+    max-width: 15.5ch;
+    margin: 0 0 14px;
+    font-size: clamp(30px, 3vw, 40px);
+    line-height: 1.08;
+}
+
+.cost-estimator__text {
+    max-width: 28rem;
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.72;
+}
+
+.cost-estimator__instant {
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.cost-estimator__instant-toggle {
+    width: 100%;
+    border: 0;
+    border-radius: 18px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    text-align: left;
+    background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(244,249,255,0.96) 100%);
+    color: #143a72;
+}
+
+.cost-estimator__instant-toggle-copy {
+    display: grid;
+    gap: 5px;
+}
+
+.cost-estimator__instant-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #17498a;
+}
+
+.cost-estimator__instant-summary {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #56729a;
+}
+
+.cost-estimator__instant-arrow {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid #d7e4f9;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 12px 24px rgba(18, 84, 165, 0.08);
+    transition: transform .25s ease, background-color .25s ease, border-color .25s ease;
+}
+
+.cost-estimator__instant-arrow::before,
+.cost-estimator__instant-arrow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 2px;
+    border-radius: 999px;
+    background: #1c65c1;
+    transform-origin: center;
+}
+
+.cost-estimator__instant-arrow::before {
+    transform: translate(-70%, -50%) rotate(45deg);
+}
+
+.cost-estimator__instant-arrow::after {
+    transform: translate(-30%, -50%) rotate(-45deg);
+}
+
+.cost-estimator__instant-body {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows .3s ease, opacity .25s ease, padding-top .25s ease;
+    opacity: 1;
+    padding-top: 14px;
+}
+
+.cost-estimator__instant-body[hidden] {
+    display: none;
+}
+
+.cost-estimator__instant.is-collapsed .cost-estimator__instant-body {
+    opacity: 0;
+    padding-top: 0;
+}
+
+.cost-estimator__instant:not(.is-collapsed) .cost-estimator__instant-arrow {
+    transform: rotate(180deg);
+    background: linear-gradient(135deg, #ebf4ff, #ffffff);
+    border-color: #bdd8fb;
+}
+
+.cost-estimator__form-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 22px;
+    min-height: 100%;
+    padding: 28px;
+}
+
+.cost-estimator__form-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 2px;
+}
+
+.cost-estimator__form-kicker {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 8px;
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ecf5ff, #ffffff);
+    border: 1px solid #d7e6fb;
+    color: #175aa7;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.cost-estimator__form-head p {
+    margin: 0;
+    max-width: 38ch;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #5c7396;
+}
+
+.cost-estimator__form-grid {
+    row-gap: 0;
+}
+
+
+.cost-estimator__form-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.cost-estimator__form-note {
+    margin: 0;
+    max-width: 34ch;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #6881a4;
+}
+
+@keyframes estimateReveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /*--------------------------------------------------------------
@@ -1938,11 +2186,15 @@
 
     .cost-estimator__content {
         padding-right: 0;
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
 
     .cost-estimator__instant-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .cost-estimator__form-actions {
+        align-items: flex-start;
     }
 }
 
@@ -2049,6 +2301,18 @@
         line-height: 1.1;
     }
 
+    .cost-estimator .section-title-two__title {
+        max-width: none;
+        font-size: 28px;
+        line-height: 1.06;
+        letter-spacing: -0.02em;
+    }
+
+    .cost-estimator .section-title-two__title span {
+        display: block;
+        margin-top: 4px;
+    }
+
     .industry-fit .row,
     .quick-path .row {
         row-gap: 12px;
@@ -2079,21 +2343,57 @@
         padding: 18px;
     }
 
+    .cost-estimator__content {
+        gap: 14px;
+    }
+
+    .cost-estimator__text {
+        margin: 0 0 6px;
+        line-height: 1.62;
+    }
+
+    .cost-estimator__instant {
+        margin-top: 0;
+    }
+
     .cost-estimator__form-box {
-        padding: 14px;
+        padding: 18px;
+        gap: 18px;
+    }
+
+    .cost-estimator__form-head {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cost-estimator__form-head p {
+        max-width: none;
     }
 
     .cost-estimator__instant {
         padding: 12px;
-        margin-top: 14px;
+    }
+
+    .cost-estimator__instant-toggle {
+        padding: 14px 15px;
+        gap: 12px;
+    }
+
+    .cost-estimator__instant-summary {
+        font-size: 14px;
     }
 
     .cost-estimator__instant-grid {
         grid-template-columns: 1fr;
     }
 
-    .cost-estimator__instant h3 {
-        font-size: 18px;
+    .cost-estimator__form-actions {
+        align-items: stretch;
+    }
+
+    .cost-estimator__btn {
+        width: 100%;
+        justify-content: center;
     }
 
     .sticky-quick-actions__item {
