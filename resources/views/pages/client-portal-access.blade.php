@@ -46,7 +46,7 @@
                         </ul>
                     </div>
 
-                    <form id="client-portal-access-form">
+                    <form id="client-portal-access-form" data-ga4-submit-event="portal_access" data-ga4-form-name="client_portal_access">
                         <label for="portal-token" style="display:block;font-weight:700;margin-bottom:8px;">Portal Link or Token</label>
                         <input id="portal-token" type="text" placeholder="Paste full portal link or token" required
                                style="width:100%;height:52px;padding:0 14px;border:1px solid #cddbf4;border-radius:10px;outline:none;">

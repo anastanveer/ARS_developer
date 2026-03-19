@@ -63,7 +63,7 @@
                     </div>
 
                     <h3 style="margin:0 0 10px;">Reschedule Meeting</h3>
-                    <form id="meeting-manage-form" method="post" action="{{ route('meeting.reschedule', ['token' => $lead->meeting_token]) }}" style="margin-bottom:14px;">
+                    <form id="meeting-manage-form" method="post" action="{{ route('meeting.reschedule', ['token' => $lead->meeting_token]) }}" style="margin-bottom:14px;" data-ga4-form-name="meeting_reschedule">
                         @csrf
                         <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;">
                             <div>
@@ -88,7 +88,7 @@
                     </form>
 
                     <div style="display:flex;flex-wrap:wrap;gap:10px;">
-                        <a href="{{ route('meeting.cancel', ['token' => $lead->meeting_token]) }}" class="thm-btn meeting-ghost-btn js-confirm-meeting-cancel">
+                        <a href="{{ route('meeting.cancel', ['token' => $lead->meeting_token]) }}" class="thm-btn meeting-ghost-btn js-confirm-meeting-cancel" data-ga4-event="cancel_meeting_click">
                             <span class="icon-right"></span> Cancel Meeting
                         </a>
                         <a href="{{ route('meeting.confirmation', ['token' => $lead->meeting_token]) }}" class="thm-btn thm-btn-two" style="border:none;">

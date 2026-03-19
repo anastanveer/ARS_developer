@@ -939,6 +939,10 @@
     if (!eventName) return;
     var payload = cleanEventParams(params || {});
     try {
+      if (typeof window.arsTrackGa4Event === 'function') {
+        window.arsTrackGa4Event(eventName, payload);
+        return;
+      }
       if (typeof window.gtag === 'function') {
         window.gtag('event', eventName, payload);
         return;
@@ -967,6 +971,7 @@
       directOrder: directOrder,
       params: cleanEventParams({
         form_type: formType,
+        form_name: form.getAttribute('data-ga4-form-name') || formType,
         project_type: projectType,
         budget_range: budgetRange,
         page_path: window.location.pathname,

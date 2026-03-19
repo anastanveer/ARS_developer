@@ -1339,17 +1339,7 @@
     <meta name="twitter:description" content="{{ $seoTwitterDescription }}" />
     <meta name="twitter:image" content="{{ $seo['twitter_image'] ?? ($seo['og_image'] ?? url('/assets/images/resources/ars-logo-dark.png')) }}" />
     <meta name="theme-color" content="#102A4D" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9CN4PVV3B"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-S9CN4PVV3B');
-    </script>
+    @include('partials.ga4-tracking')
     <script src="https://t.contentsquare.net/uxa/28ccfb7bbc307.js"></script>
     <script type="text/javascript">
         (function(c, l, a, r, i, t, y) {

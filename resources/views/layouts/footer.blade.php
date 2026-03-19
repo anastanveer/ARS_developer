@@ -179,7 +179,7 @@
     <div class="search-popup">
         <div class="color-layer"></div>
         <button class="close-search"><span class="far fa-times fa-fw"></span></button>
-        <form id="search-popup-form" method="get" action="{{ route('search') }}" autocomplete="off">
+        <form id="search-popup-form" method="get" action="{{ route('search') }}" autocomplete="off" data-ga4-submit-event="search" data-ga4-form-name="site_search">
             <div class="form-group">
                 <input type="search" name="q" value="{{ request('q') }}" placeholder="Search Here" required="">
                 <button type="submit"><i class="fas fa-search"></i></button>

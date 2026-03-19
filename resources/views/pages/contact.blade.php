@@ -402,7 +402,7 @@
                             </div>
                             <div class="contact-page__form-shell">
                                 <form class="contact-form-validated contact-page__form" action="{{ route('contact.submit') }}"
-                                    method="post" novalidate="novalidate">
+                                    method="post" novalidate="novalidate" data-ga4-form-name="contact_page">
                                     @csrf
                                     <input type="hidden" name="form_type" value="{{ $prefillFormType }}">
                                     <input type="hidden" name="start_order_payment" value="0" data-order-pay-flag>
@@ -603,7 +603,7 @@
                             <br> inbox. Stay informed</p>
                     </div>
                     <div class="newsletter-two__right">
-                        <form class="newsletter-two__form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post">
+                        <form class="newsletter-two__form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post" data-ga4-form-name="newsletter_contact">
                             @csrf
                             <input type="hidden" name="form_type" value="newsletter">
                             <input type="hidden" name="subject" value="Newsletter Subscription Request">

@@ -133,8 +133,20 @@ class PublicInvoiceController extends Controller
             $status = $this->syncStripeSessionPayment($project, $sessionId, $invoice);
 
             if ($status === 'paid') {
-                return redirect()->route('invoice.public.show', ['token' => $token])
+                $payment = Payment::query()
+                    ->where('project_id', $project->id)
+                    ->where('reference', $sessionId)
+                    ->latest('id')
+                    ->first();
+
+                $redirect = redirect()->route('invoice.public.show', ['token' => $token])
                     ->with('success', 'Payment confirmed. Receipt email has been sent.');
+
+                if ($payment) {
+                    $redirect->with('ga4_flash_event', $this->purchaseFlashEvent($project, $invoice, $payment));
+                }
+
+                return $redirect;
             }
 
             if ($status === 'already_paid') {
@@ -350,6 +362,27 @@ class PublicInvoiceController extends Controller
         }
 
         return $session;
+    }
+
+    private function purchaseFlashEvent(Project $project, Invoice $invoice, Payment $payment): array
+    {
+        return [
+            'name' => 'purchase',
+            'params' => [
+                'transaction_id' => (string) ($payment->reference ?: ('payment_' . $payment->id)),
+                'value' => round((float) $payment->amount, 2),
+                'currency' => (string) ($project->currency ?: 'GBP'),
+                'invoice_id' => $invoice->id,
+                'project_id' => $project->id,
+                'payment_method' => (string) $payment->method,
+                'items' => [[
+                    'item_id' => 'invoice_' . $invoice->id,
+                    'item_name' => 'Invoice ' . $invoice->invoice_number,
+                    'price' => round((float) $payment->amount, 2),
+                    'quantity' => 1,
+                ]],
+            ],
+        ];
     }
 
     private function normalizeInvoicePayload(Project $project, Invoice $invoice, array $payload): array

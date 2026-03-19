@@ -46,7 +46,7 @@ class ClientReviewController extends Controller
         $review->approved_by_admin_user_id = null;
         $review->save();
 
-        return back()->with('success', 'Thanks. Your review has been submitted and is pending approval.');
+        return back()->with('success', 'Thanks. Your review has been submitted and is pending approval.')->with('ga4_flash_event', ['name' => 'submit_review', 'params' => ['review_id' => $review->id, 'project_id' => $review->project_id, 'invoice_id' => $review->invoice_id, 'rating' => (int) $review->rating, 'page_path' => route('review.show', ['token' => $review->review_token]),]]);
     }
 }
 

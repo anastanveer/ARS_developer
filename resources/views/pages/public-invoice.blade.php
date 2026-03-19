@@ -10,6 +10,7 @@
     <meta name="googlebot" content="noindex, nofollow">
     <meta name="bingbot" content="noindex, nofollow">
     <link rel="canonical" href="{{ route('invoice.public.show', ['token' => $invoice->public_token]) }}">
+    @include('partials.ga4-tracking')
     <title>{{ $invoice->invoice_number }} | ARS Developer Invoice</title>
     <style>
         :root{--bg:#ffffff;--paper:#fff;--line:#cfd3dc;--text:#111827;--muted:#4b5563;--brand:#1f63c8}
@@ -160,7 +161,7 @@
             <div class="pay-box" id="payment">
                 <h3>Pay This Invoice</h3>
                 @if($invoice->show_pay_button && $balance > 0)
-                    <form method="post" action="{{ route('invoice.public.pay', ['token' => $invoice->public_token]) }}">
+                    <form method="post" action="{{ route('invoice.public.pay', ['token' => $invoice->public_token]) }}" data-ga4-submit-event="begin_checkout" data-ga4-form-name="public_invoice_payment" data-ga4-value-field="amount" data-ga4-currency="{{ $project->currency }}">
                         @csrf
                         <div class="field">
                             <label>Payment Amount (optional)</label>

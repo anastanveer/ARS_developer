@@ -745,7 +745,7 @@
                         </div>
                         <div class="col-xl-7">
                             <div class="meeting-scheduler__form-box">
-                                <form class="meeting-form-validated meeting-scheduler__form" data-multistep="true" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate">
+                                <form class="meeting-form-validated meeting-scheduler__form" data-multistep="true" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate" data-ga4-form-name="meeting_scheduler">
                                     @csrf
                                     <input type="hidden" name="form_type" value="meeting">
                                     <input type="hidden" name="subject" value="Meeting Booking Request">
@@ -780,8 +780,8 @@
                                             </div>
                                             <div class="col-xl-12">
                                                 <div class="meeting-scheduler__calendar-actions">
-                                                    <a href="#" class="meeting-scheduler__calendar-link meeting-scheduler__calendar-link--google" target="_blank" rel="noopener">Add to Google Calendar</a>
-                                                    <a href="#" class="meeting-scheduler__calendar-link meeting-scheduler__calendar-link--ics">Download .ics (iPhone/Outlook)</a>
+                                                    <a href="#" class="meeting-scheduler__calendar-link meeting-scheduler__calendar-link--google" target="_blank" rel="noopener" data-ga4-event="add_to_calendar" data-ga4-label="google_calendar">Add to Google Calendar</a>
+                                                    <a href="#" class="meeting-scheduler__calendar-link meeting-scheduler__calendar-link--ics" data-ga4-event="add_to_calendar" data-ga4-label="ics_download">Download .ics (iPhone/Outlook)</a>
                                                 </div>
                                                 <div class="meeting-scheduler__step-actions">
                                                     <button type="button" class="meeting-scheduler__btn thm-btn thm-btn-two" data-step-next><span class="icon-right"></span> Continue to Details</button>
@@ -969,7 +969,7 @@
                         </div>
                         <div class="col-xl-6">
                             <div class="audit-lead__form-box">
-                                <form class="contact-form-validated audit-lead__form" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate">
+                                <form class="contact-form-validated audit-lead__form" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate" data-ga4-form-name="free_audit">
                                     @csrf
                                     <input type="hidden" name="form_type" value="audit">
                                     <input type="hidden" name="subject" value="Free Audit Request">
@@ -1078,7 +1078,7 @@
                         </div>
                         <div class="col-xl-7">
                             <div class="cost-estimator__form-box">
-                                <form class="contact-form-validated" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate">
+                                <form class="contact-form-validated" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate" data-ga4-form-name="quick_estimate">
                                     @csrf
                                     <input type="hidden" name="form_type" value="estimator">
                                     <input type="hidden" name="subject" value="Project Estimate Request">
@@ -1391,7 +1391,7 @@
                             <br> inbox. No spam, only useful updates.</p>
                     </div>
                     <div class="newsletter-two__right">
-                        <form class="newsletter-two__form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post">
+                        <form class="newsletter-two__form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post" data-ga4-form-name="newsletter_home">
                             @csrf
                             <input type="hidden" name="form_type" value="newsletter">
                             <input type="hidden" name="subject" value="Newsletter Subscription Request">

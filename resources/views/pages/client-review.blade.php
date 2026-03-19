@@ -6,6 +6,7 @@
     <title>Client Review - {{ $review->project?->title ?: 'ARSDeveloper' }}</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="{{ route('review.show', ['token' => $review->review_token]) }}">
+    @include('partials.ga4-tracking')
     <style>
         body{margin:0;background:#eef4ff;font-family:"DM Sans",Arial,sans-serif;color:#11284a}
         .wrap{max-width:860px;margin:0 auto;padding:26px 16px}
@@ -43,7 +44,7 @@
                 Your review was submitted on {{ optional($review->submitted_at)->format('d M Y H:i') }} and is pending admin approval.
             </div>
         @else
-            <form method="post" action="{{ route('review.submit', $review->review_token) }}" class="grid">
+            <form method="post" action="{{ route('review.submit', $review->review_token) }}" class="grid" data-ga4-form-name="client_review">
                 @csrf
                 <div>
                     <label>Your Name</label>

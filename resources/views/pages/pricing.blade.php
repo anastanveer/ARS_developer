@@ -413,7 +413,7 @@
                                 <p class="pricing-one__start-card-text">Ready to proceed now? Request kickoff invoice and
                                     start your order with secure payment flow.</p>
                                 <a href="/contact?intent=kickoff_payment" class="pricing-one__start-card-btn thm-btn"
-                                    data-start-link="kickoff" data-base-href="/contact?intent=kickoff_payment"><span class="icon-right"></span> Start Order</a>
+                                    data-start-link="kickoff" data-base-href="/contact?intent=kickoff_payment" data-ga4-event="start_order_click"><span class="icon-right"></span> Start Order</a>
                             </div>
                         </div>
                     </div>
@@ -542,7 +542,7 @@
                             <br> inbox. Stay informed</p>
                     </div>
                     <div class="newsletter-two__right">
-                        <form class="newsletter-two__form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post">
+                        <form class="newsletter-two__form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post" data-ga4-form-name="newsletter_pricing">
                             @csrf
                             <input type="hidden" name="form_type" value="newsletter">
                             <input type="hidden" name="subject" value="Newsletter Subscription Request">

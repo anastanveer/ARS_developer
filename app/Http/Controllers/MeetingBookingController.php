@@ -80,7 +80,16 @@ class MeetingBookingController extends Controller
 
         return redirect()
             ->route('meeting.manage', ['token' => $lead->meeting_token])
-            ->with('success', 'Meeting rescheduled successfully.');
+            ->with('success', 'Meeting rescheduled successfully.')
+            ->with('ga4_flash_event', [
+                'name' => 'reschedule_meeting',
+                'params' => [
+                    'meeting_id' => $lead->id,
+                    'meeting_date' => $newDate,
+                    'meeting_slot' => $newSlot,
+                    'page_path' => route('meeting.manage', ['token' => $lead->meeting_token]),
+                ],
+            ]);
     }
 
     public function cancel(string $token): RedirectResponse
@@ -108,7 +117,14 @@ class MeetingBookingController extends Controller
 
         return redirect()
             ->route('meeting.manage', ['token' => $lead->meeting_token])
-            ->with('success', 'Your meeting has been cancelled. You can reschedule anytime from this page.');
+            ->with('success', 'Your meeting has been cancelled. You can reschedule anytime from this page.')
+            ->with('ga4_flash_event', [
+                'name' => 'cancel_meeting',
+                'params' => [
+                    'meeting_id' => $lead->id,
+                    'page_path' => route('meeting.manage', ['token' => $lead->meeting_token]),
+                ],
+            ]);
     }
 
     private function findMeetingLead(string $token): Lead

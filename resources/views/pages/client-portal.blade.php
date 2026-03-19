@@ -6,6 +6,7 @@
     <title>Client Portal - {{ $project->title }}</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="{{ route('client.portal', ['token' => $project->portal_token]) }}">
+    @include('partials.ga4-tracking')
     <style>
         :root{
             --primary:#0f2f6f;
@@ -278,7 +279,7 @@
                         </tbody>
                     </table>
                 </div>
-                <form action="{{ route('client.portal.requirement', $project->portal_token) }}" method="post" class="form-grid">
+                <form action="{{ route('client.portal.requirement', $project->portal_token) }}" method="post" class="form-grid" data-ga4-form-name="client_portal_requirement">
                     @csrf
                     <label class="field-label" for="requirement-title">Requirement Title</label>
                     <input id="requirement-title" name="title" placeholder="Example: Add testimonials section on homepage" required>
@@ -324,7 +325,7 @@
                         </td>
                         <td>
                             @if($remaining > 0)
-                                <form action="{{ route('client.portal.pay', $project->portal_token) }}" method="post" class="pay-grid">
+                                <form action="{{ route('client.portal.pay', $project->portal_token) }}" method="post" class="pay-grid" data-ga4-submit-event="begin_checkout" data-ga4-form-name="client_portal_payment" data-ga4-value-field="amount" data-ga4-currency="{{ $project->currency }}">
                                     @csrf
                                     <input type="hidden" name="invoice_id" value="{{ $invoice->id }}">
                                     <input type="number" step="0.01" min="0.01" max="{{ $remaining }}" name="amount" value="{{ $remaining }}" required aria-label="Payment amount">

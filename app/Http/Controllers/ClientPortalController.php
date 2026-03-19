@@ -47,7 +47,7 @@ class ClientPortalController extends Controller
             'status' => 'open',
         ]);
 
-        return back()->with('success', 'Requirement submitted successfully.');
+        return back()->with('success', 'Requirement submitted successfully.')->with('ga4_flash_event', ['name' => 'submit_requirement', 'params' => ['project_id' => $project->id, 'portal_token' => $project->portal_token, 'page_path' => route('client.portal', ['token' => $project->portal_token]),]]);
     }
 
     public function payInvoice(Request $request, string $token): RedirectResponse
@@ -112,7 +112,8 @@ class ClientPortalController extends Controller
             $this->sendReviewRequestEmail($project, $invoice, $payment);
         }
 
-        return back()->with('success', 'Payment recorded successfully. Receipt email sent.');
+        return back()->with('success', 'Payment recorded successfully. Receipt email sent.')
+            ->with('ga4_flash_event', $this->purchaseFlashEvent($project, $invoice, $payment));
     }
 
     public function handleStripeSuccess(Request $request, string $token): RedirectResponse
@@ -132,8 +133,24 @@ class ClientPortalController extends Controller
             $status = $this->syncStripeSessionPayment($project, $sessionId);
 
             if ($status === 'paid') {
-                return redirect()->route('client.portal', $token)
+                $payment = Payment::query()
+                    ->where('project_id', $project->id)
+                    ->where('reference', $sessionId)
+                    ->latest('id')
+                    ->first();
+
+                $invoice = $payment?->invoice_id
+                    ? Invoice::query()->where('project_id', $project->id)->find($payment->invoice_id)
+                    : null;
+
+                $redirect = redirect()->route('client.portal', $token)
                     ->with('success', 'Payment confirmed via Stripe. Receipt email sent.');
+
+                if ($payment && $invoice) {
+                    $redirect->with('ga4_flash_event', $this->purchaseFlashEvent($project, $invoice, $payment));
+                }
+
+                return $redirect;
             }
 
             if ($status === 'already_paid') {
@@ -267,6 +284,27 @@ class ClientPortalController extends Controller
             'stripe',
             'stripe card',
         ], true);
+    }
+
+    private function purchaseFlashEvent(Project $project, Invoice $invoice, Payment $payment): array
+    {
+        return [
+            'name' => 'purchase',
+            'params' => [
+                'transaction_id' => (string) ($payment->reference ?: ('payment_' . $payment->id)),
+                'value' => round((float) $payment->amount, 2),
+                'currency' => (string) ($project->currency ?: 'GBP'),
+                'invoice_id' => $invoice->id,
+                'project_id' => $project->id,
+                'payment_method' => (string) $payment->method,
+                'items' => [[
+                    'item_id' => 'invoice_' . $invoice->id,
+                    'item_name' => 'Invoice ' . $invoice->invoice_number,
+                    'price' => round((float) $payment->amount, 2),
+                    'quantity' => 1,
+                ]],
+            ],
+        ];
     }
 
     private function hasStripeConfig(): bool
