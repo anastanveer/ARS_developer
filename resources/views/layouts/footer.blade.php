@@ -301,7 +301,7 @@
 
 
     <!-- template js -->
-    <script defer src="{{ asset('assets/js/script.js') }}"></script>
+    <script defer src="{{ asset('assets/js/script.js') }}?v={{ filemtime(public_path('assets/js/script.js')) }}"></script>
     <script>
         (function () {
             var form = document.getElementById('search-popup-form');
