@@ -192,9 +192,13 @@
     }
 
     .contact-page__contact-form-title {
-        font-size: 32px;
-        line-height: 1.08;
-        letter-spacing: -0.02em;
+        font-size: 30px;
+        line-height: 1.18;
+        letter-spacing: 0.01em;
+        font-weight: 700;
+        color: #f7fbff !important;
+        text-wrap: balance;
+        text-shadow: 0 1px 10px rgba(5, 19, 46, 0.12);
     }
 
     .contact-page__contact-form-text {
@@ -247,7 +251,7 @@
     @media (max-width: 991px) {
         .contact-page__left-title,
         .contact-page__contact-form-title {
-            font-size: 28px;
+            font-size: 27px;
         }
 
         .contact-page__right--start {
@@ -262,7 +266,8 @@
 
         .contact-page__left-title,
         .contact-page__contact-form-title {
-            font-size: 25px;
+            font-size: 23px;
+            line-height: 1.22;
         }
 
         .contact-page__right--start {

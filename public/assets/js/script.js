@@ -1093,16 +1093,27 @@
       var style = document.createElement("style");
       style.id = "ars-submit-popup-style";
       style.textContent = "" +
-        ".ars-submit-popup{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(9,22,54,.58);opacity:0;pointer-events:none;transition:opacity .22s ease;}" +
+        ".ars-submit-popup{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(6,18,42,.48);backdrop-filter:blur(14px) saturate(135%);-webkit-backdrop-filter:blur(14px) saturate(135%);opacity:0;pointer-events:none;transition:opacity .24s ease;}" +
         ".ars-submit-popup.is-visible{opacity:1;pointer-events:auto;}" +
-        ".ars-submit-popup__card{width:min(460px,100%);background:#fff;border-radius:18px;padding:24px 22px;box-shadow:0 24px 70px rgba(7,22,59,.35);transform:translateY(10px) scale(.98);transition:transform .24s ease;}" +
+        ".ars-submit-popup__card{position:relative;overflow:hidden;width:min(520px,100%);border-radius:28px;padding:28px 28px 24px;background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(248,251,255,.76));border:1px solid rgba(255,255,255,.55);box-shadow:0 28px 90px rgba(7,22,59,.24);transform:translateY(14px) scale(.96);transition:transform .28s ease,opacity .28s ease;}" +
         ".ars-submit-popup.is-visible .ars-submit-popup__card{transform:translateY(0) scale(1);}" +
-        ".ars-submit-popup__badge{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;margin-bottom:12px;color:#fff;}" +
-        ".ars-submit-popup__badge--success{background:linear-gradient(135deg,#14c8a8,#1381e2);}" +
-        ".ars-submit-popup__badge--error{background:linear-gradient(135deg,#f0647f,#e54761);}" +
-        ".ars-submit-popup__title{margin:0 0 6px;font-size:24px;line-height:1.2;color:#0f2b5a;font-weight:800;}" +
-        ".ars-submit-popup__text{margin:0;font-size:16px;line-height:1.6;color:#35517d;}" +
-        ".ars-submit-popup__close{margin-top:16px;border:0;background:#1f7fd6;color:#fff;padding:11px 16px;border-radius:10px;font-weight:700;cursor:pointer;}";
+        ".ars-submit-popup__glow{position:absolute;inset:auto auto -80px -40px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(76,171,255,.22),transparent 70%);pointer-events:none;}" +
+        ".ars-submit-popup__glow--top{inset:-90px -30px auto auto;background:radial-gradient(circle,rgba(34,215,184,.18),transparent 72%);}" +
+        ".ars-submit-popup__top{display:flex;align-items:flex-start;gap:16px;margin-bottom:14px;}" +
+        ".ars-submit-popup__badge{position:relative;z-index:1;flex:0 0 68px;width:68px;height:68px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;color:#fff;box-shadow:0 16px 34px rgba(19,70,135,.20);}" +
+        ".ars-submit-popup__badge::after{content:'';position:absolute;inset:1px;border-radius:21px;background:linear-gradient(180deg,rgba(255,255,255,.25),rgba(255,255,255,0));pointer-events:none;}" +
+        ".ars-submit-popup__badge--success{background:linear-gradient(135deg,#19d3b0,#1f87e4);}" +
+        ".ars-submit-popup__badge--error{background:linear-gradient(135deg,#ff7d9a,#e54761);}" +
+        ".ars-submit-popup__content{position:relative;z-index:1;flex:1;min-width:0;}" +
+        ".ars-submit-popup__eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(15,43,90,.07);color:#315784;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;}" +
+        ".ars-submit-popup__title{margin:0 0 8px;font-size:32px;line-height:1;color:#102a4d;font-weight:900;letter-spacing:-.03em;}" +
+        ".ars-submit-popup__text{margin:0;font-size:17px;line-height:1.65;color:#3c567d;max-width:36ch;}" +
+        ".ars-submit-popup__actions{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:24px;}" +
+        ".ars-submit-popup__hint{font-size:13px;color:#6281a9;line-height:1.5;}" +
+        ".ars-submit-popup__close{appearance:none;border:0;background:linear-gradient(135deg,#156fd1,#27a4ff);color:#fff;padding:13px 20px;border-radius:14px;font-weight:800;letter-spacing:.02em;cursor:pointer;box-shadow:0 14px 28px rgba(24,104,201,.28);transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease;}" +
+        ".ars-submit-popup__close:hover{transform:translateY(-1px);box-shadow:0 18px 34px rgba(24,104,201,.32);}" +
+        ".ars-submit-popup__close:active{transform:translateY(0);}" +
+        "@media (max-width:640px){.ars-submit-popup{padding:16px;align-items:flex-end;}.ars-submit-popup__card{width:100%;border-radius:24px;padding:22px 18px 18px;}.ars-submit-popup__top{gap:14px;align-items:center;}.ars-submit-popup__badge{flex-basis:58px;width:58px;height:58px;border-radius:18px;font-size:26px;}.ars-submit-popup__badge::after{border-radius:17px;}.ars-submit-popup__eyebrow{font-size:10px;letter-spacing:.12em;}.ars-submit-popup__title{font-size:26px;}.ars-submit-popup__text{font-size:15px;max-width:none;}.ars-submit-popup__actions{flex-direction:column;align-items:stretch;}.ars-submit-popup__close{width:100%;}.ars-submit-popup__hint{text-align:center;}}";
       document.head.appendChild(style);
     }
 
@@ -1110,11 +1121,21 @@
     popup.className = "ars-submit-popup";
     popup.id = popupId;
     popup.innerHTML = '' +
-      '<div class="ars-submit-popup__card" role="alertdialog" aria-live="assertive">' +
+      '<div class="ars-submit-popup__card" role="alertdialog" aria-live="assertive" aria-modal="true">' +
+      '<div class="ars-submit-popup__glow"></div>' +
+      '<div class="ars-submit-popup__glow ars-submit-popup__glow--top"></div>' +
+      '<div class="ars-submit-popup__top">' +
       '<div class="ars-submit-popup__badge ars-submit-popup__badge--' + (type === "success" ? "success" : "error") + '">' + (type === "success" ? "✓" : "!") + "</div>" +
-      '<h4 class="ars-submit-popup__title">' + escapeHtml(title || (type === "success" ? "Success" : "Error")) + "</h4>" +
+      '<div class="ars-submit-popup__content">' +
+      '<div class="ars-submit-popup__eyebrow">' + (type === "success" ? "Request Sent" : "Something Went Wrong") + "</div>" +
+      '<h4 class="ars-submit-popup__title">' + escapeHtml(title || (type === "success" ? "Done" : "Error")) + "</h4>" +
       '<p class="ars-submit-popup__text">' + escapeHtml(message || "") + "</p>" +
-      '<button type="button" class="ars-submit-popup__close">OK</button>' +
+      '</div>' +
+      '</div>' +
+      '<div class="ars-submit-popup__actions">' +
+      '<div class="ars-submit-popup__hint">' + (type === "success" ? "We have received your request and will follow up shortly." : "Please review the form and try again.") + '</div>' +
+      '<button type="button" class="ars-submit-popup__close">Close</button>' +
+      '</div>' +
       "</div>";
 
     document.body.appendChild(popup);
