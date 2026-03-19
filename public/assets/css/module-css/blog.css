@@ -617,17 +617,29 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    font-size: 18px;
-    color: var(--finris-black);
+    min-height: 56px;
+    padding: 0 28px;
+    font-size: 16px;
+    color: #ffffff;
     font-weight: 700;
-    padding: 18px 30px 18px;
-    border: 1px dashed var(--finris-black);
-    border-radius: 50%;
+    line-height: 1;
+    text-decoration: none;
+    background: linear-gradient(135deg, #155fb9 0%, #2086dc 100%);
+    border: 1px solid rgba(20, 102, 194, 0.18);
+    border-radius: 999px;
+    box-shadow: 0 16px 30px rgba(17, 88, 176, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.blog-two__btn-box-two a .icon-right {
+    font-size: 14px;
 }
 
 .blog-two__btn-box-two a:hover {
-    background-color: var(--finris-black);
-    color: var(--finris-white);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 20px 34px rgba(17, 88, 176, 0.28);
+    opacity: 0.96;
 }
 
 

@@ -331,40 +331,6 @@
         </section>
         <!--Why Choose Two End -->
 
-        <section class="about-two" style="padding-top:0;padding-bottom:24px;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-md-6">
-                        <div class="about-two__single-box" style="margin-bottom:20px;">
-                            <div class="about-two__single">
-                                <div class="about-two__single-icon"><span class="fas fa-search"></span></div>
-                                <h3 class="about-two__single-title">Commercial First</h3>
-                                <p class="about-two__single-text">Pages, software flows, and SEO updates are aligned to enquiries and revenue, not just design polish.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="about-two__single-box" style="margin-bottom:20px;">
-                            <div class="about-two__single">
-                                <div class="about-two__single-icon"><span class="fas fa-tasks"></span></div>
-                                <h3 class="about-two__single-title">Clear Milestones</h3>
-                                <p class="about-two__single-text">Clients know what is being delivered, what comes next, and how decisions affect time and scope.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-12">
-                        <div class="about-two__single-box" style="margin-bottom:20px;">
-                            <div class="about-two__single">
-                                <div class="about-two__single-icon"><span class="fas fa-shield-alt"></span></div>
-                                <h3 class="about-two__single-title">Trust Through Proof</h3>
-                                <p class="about-two__single-text">Portfolio, structured delivery, technical hygiene, and low-friction contact paths all work together to build confidence.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!--Counter One Start -->
         <section class="counter-one counter-one--enhanced">
             <div class="counter-one__shape-1 float-bob-x"
@@ -709,39 +675,21 @@
                                             <div class="section-title-two__tagline-icon-1"></div>
                                             <div class="section-title-two__tagline-icon-2"></div>
                                         </div>
-                                        <span class="section-title-two__tagline">Schedule Meeting</span>
+                                        <span class="section-title-two__tagline">Schedule a meeting</span>
                                     </div>
-                                    <h2 class="section-title-two__title title-animation">Book a call and lock your
-                                        <span>project planning slot</span></h2>
+                                    <h2 class="section-title-two__title title-animation">Book a planning call for your
+                                        <span>next project step</span></h2>
                                 </div>
-                                <p class="meeting-scheduler__text">Use our 3-step flow: pick slot, add details, and confirm.
-                                    Booked dates are highlighted so your team can quickly choose the next free time.</p>
-                                <p class="meeting-scheduler__timezone"><span class="icon-check"></span> Slots follow UK office hours. Your selected timezone is saved for confirmation and reminders.</p>
+                                <p class="meeting-scheduler__text">Choose a suitable time, share a few project details, and get an instant confirmation. The flow is quick, clear, and built to remove back-and-forth.</p>
+                                <p class="meeting-scheduler__timezone"><span class="icon-check"></span> Slots follow UK office hours, and your selected timezone is saved for reminders and confirmation.</p>
                                 <ul class="list-unstyled meeting-scheduler__points">
-                                    <li><span class="icon-check"></span> 30-minute discovery meeting</li>
-                                    <li><span class="icon-check"></span> Website, CRM, SEO, Shopify, Wix and branding</li>
-                                    <li><span class="icon-check"></span> Instant confirmation email with one-click reschedule/cancel links</li>
+                                    <li><span class="icon-check"></span> 30-minute discovery call focused on your goals</li>
+                                    <li><span class="icon-check"></span> Website, CRM, SEO, Shopify, Wix, branding, and growth support</li>
+                                    <li><span class="icon-check"></span> Instant confirmation email with simple reschedule or cancel links</li>
                                 </ul>
-                                <p class="meeting-scheduler__micro-note"><span class="icon-check"></span> No signup required. Instant confirmation appears on screen.</p>
+                                <p class="meeting-scheduler__micro-note"><span class="icon-check"></span> No signup required. Confirmation appears on screen as soon as booking is complete.</p>
                             </div>
 
-                            <div class="meeting-calendar">
-                                <h3 class="seo-hidden-heading">Meeting calendar overview</h3>
-                                <div class="meeting-calendar__head">
-                                    <button type="button" class="meeting-calendar__nav meeting-calendar__prev" aria-label="Previous month">&lsaquo;</button>
-                                    <h4 class="meeting-calendar__month">Month Year</h4>
-                                    <button type="button" class="meeting-calendar__nav meeting-calendar__next" aria-label="Next month">&rsaquo;</button>
-                                </div>
-                                <div class="meeting-calendar__weekdays">
-                                    <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-                                </div>
-                                <div class="meeting-calendar__grid"></div>
-                                <div class="meeting-calendar__legend">
-                                    <span><i class="is-available"></i> Available</span>
-                                    <span><i class="is-booked"></i> Booked</span>
-                                    <span><i class="is-selected"></i> Selected</span>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-xl-7">
                             <div class="meeting-scheduler__form-box">
@@ -761,6 +709,35 @@
                                             <div class="meeting-scheduler__quick-dates" data-quick-dates></div>
                                             <p class="meeting-scheduler__slot-status" data-slot-status>Pick a date and we will auto-select the first available slot.</p>
                                             <p class="meeting-scheduler__slot-status"><strong>Selected timezone:</strong> <span data-timezone-label>Europe/London</span></p>
+                                        </div>
+                                        <div class="meeting-scheduler__calendar-panel">
+                                            <button type="button" class="meeting-scheduler__calendar-toggle" data-calendar-toggle aria-expanded="false" aria-controls="meeting-calendar-popover">
+                                                <span class="icon-calendar"></span>
+                                                Open visual calendar
+                                            </button>
+                                            <div class="meeting-scheduler__calendar-popover" id="meeting-calendar-popover" data-calendar-popover hidden>
+                                                <div class="meeting-calendar meeting-calendar--embedded">
+                                                    <div class="meeting-scheduler__calendar-popover-head">
+                                                        <h3>Choose a date visually</h3>
+                                                        <button type="button" class="meeting-scheduler__calendar-close" data-calendar-close aria-label="Close calendar">&times;</button>
+                                                    </div>
+                                                    <h3 class="seo-hidden-heading">Meeting calendar overview</h3>
+                                                    <div class="meeting-calendar__head">
+                                                        <button type="button" class="meeting-calendar__nav meeting-calendar__prev" aria-label="Previous month">&lsaquo;</button>
+                                                        <h4 class="meeting-calendar__month">Month Year</h4>
+                                                        <button type="button" class="meeting-calendar__nav meeting-calendar__next" aria-label="Next month">&rsaquo;</button>
+                                                    </div>
+                                                    <div class="meeting-calendar__weekdays">
+                                                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                                                    </div>
+                                                    <div class="meeting-calendar__grid"></div>
+                                                    <div class="meeting-calendar__legend">
+                                                        <span><i class="is-available"></i> Available</span>
+                                                        <span><i class="is-booked"></i> Booked</span>
+                                                        <span><i class="is-selected"></i> Selected</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">

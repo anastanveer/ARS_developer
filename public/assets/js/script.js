@@ -1429,8 +1429,32 @@
     var quickDateWrap = wrap.querySelector('[data-quick-dates]');
     var slotStatus = wrap.querySelector('[data-slot-status]');
     var timezoneLabel = wrap.querySelector('[data-timezone-label]');
+    var calendarToggle = wrap.querySelector('[data-calendar-toggle]');
+    var calendarPopover = wrap.querySelector('[data-calendar-popover]');
+    var calendarClose = wrap.querySelector('[data-calendar-close]');
 
     if (!monthLabel || !grid || !dateInput) return;
+
+    function openCalendarPopover() {
+      if (!calendarPopover || !calendarToggle) return;
+      calendarPopover.hidden = false;
+      calendarToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeCalendarPopover() {
+      if (!calendarPopover || !calendarToggle) return;
+      calendarPopover.hidden = true;
+      calendarToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleCalendarPopover() {
+      if (!calendarPopover) return;
+      if (calendarPopover.hidden) {
+        openCalendarPopover();
+      } else {
+        closeCalendarPopover();
+      }
+    }
 
     var availabilityUrl = (wrap.dataset.availabilityUrl || '').trim();
     var fullyBookedDates = [];
@@ -1585,6 +1609,7 @@
             updateCalendarLinks();
             renderQuickDates();
           });
+          closeCalendarPopover();
         });
 
         quickDateWrap.appendChild(btn);
@@ -1769,6 +1794,7 @@
             dateInput.value = dateStr;
             renderCalendar(currentYear, currentMonth);
             fetchAvailability(dateStr).then(updateCalendarLinks);
+            closeCalendarPopover();
           });
           grid.appendChild(btn);
         })(d);
@@ -1791,6 +1817,34 @@
         currentYear += 1;
       }
       renderCalendar(currentYear, currentMonth);
+    });
+
+    if (calendarToggle) {
+      calendarToggle.addEventListener('click', function () {
+        toggleCalendarPopover();
+      });
+    }
+
+    if (calendarClose) {
+      calendarClose.addEventListener('click', function () {
+        closeCalendarPopover();
+      });
+    }
+
+    dateInput.addEventListener('focus', function () {
+      openCalendarPopover();
+    });
+
+    dateInput.addEventListener('click', function () {
+      openCalendarPopover();
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!calendarPopover || calendarPopover.hidden) return;
+      if (wrap.contains(event.target) && (calendarPopover.contains(event.target) || (calendarToggle && calendarToggle.contains(event.target)) || event.target === dateInput)) {
+        return;
+      }
+      closeCalendarPopover();
     });
 
     dateInput.addEventListener('change', function () {
