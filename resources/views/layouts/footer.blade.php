@@ -241,6 +241,34 @@
             margin-bottom: 0;
         }
 
+        .result {
+            margin-top: 14px;
+        }
+
+        .contact-success-message,
+        .contact-error-message {
+            margin: 0;
+            padding: 14px 16px;
+            border-radius: 14px;
+            font-size: 15px;
+            line-height: 1.6;
+            font-weight: 600;
+            border: 1px solid transparent;
+            box-shadow: 0 10px 24px rgba(9, 37, 82, 0.12);
+        }
+
+        .contact-success-message {
+            color: #ecfff8;
+            background: linear-gradient(135deg, rgba(16, 122, 96, 0.96), rgba(18, 164, 129, 0.92));
+            border-color: rgba(167, 255, 232, 0.28);
+        }
+
+        .contact-error-message {
+            color: #fff5f7;
+            background: linear-gradient(135deg, rgba(154, 35, 61, 0.96), rgba(224, 80, 114, 0.92));
+            border-color: rgba(255, 198, 211, 0.3);
+        }
+
         .search-popup-result:hover {
             border-color: #22d7b8;
         }
