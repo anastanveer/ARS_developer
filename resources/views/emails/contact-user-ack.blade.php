@@ -10,6 +10,7 @@
     $meetingEvent = (string) ($payload['meeting_event'] ?? 'booked');
     $isMeeting = (($payload['form_type'] ?? '') === 'meeting');
     $isOrder = (($payload['form_type'] ?? '') === 'pricing_order');
+    $isNewsletter = (($payload['form_type'] ?? '') === 'newsletter');
     $primaryHost = trim((string) config('app.primary_domain'));
     $baseUrl = $primaryHost !== ''
         ? ('https://' . preg_replace('#^https?://#', '', $primaryHost))
@@ -51,6 +52,8 @@
                                 @endif
                             @elseif($isOrder)
                                 Order Request Received
+                            @elseif($isNewsletter)
+                                Newsletter Subscription Confirmed
                             @else
                                 Message Received Successfully
                             @endif
@@ -62,6 +65,8 @@
                                 your meeting request is saved and confirmed in our system.
                             @elseif($isOrder)
                                 your order request is in queue for invoice and kickoff setup.
+                            @elseif($isNewsletter)
+                                thanks for subscribing to ARSDeveloper updates. We will send practical SEO, software, and growth insights to your inbox.
                             @else
                                 thank you for contacting ARSDeveloper. Our team will respond shortly.
                             @endif
@@ -71,16 +76,29 @@
 
                 <tr>
                     <td style="padding:0 22px 8px 22px;">
-                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border:1px solid #dce8f8;border-radius:12px;overflow:hidden;background:#f8fbff;">
-                            <tr>
-                                <td style="width:170px;padding:12px 14px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#173153;font-weight:700;vertical-align:top;">Subject</td>
-                                <td style="padding:12px 14px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ $payload['subject'] ?? '-' }}</td>
-                            </tr>
-                            <tr>
-                                <td style="width:170px;padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;color:#173153;font-weight:700;vertical-align:top;">Message</td>
-                                <td style="padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;line-height:1.6;">{!! nl2br(e($payload['message'] ?? '-')) !!}</td>
-                            </tr>
-                        </table>
+                        @if($isNewsletter)
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border:1px solid #dce8f8;border-radius:12px;overflow:hidden;background:#f8fbff;">
+                                <tr>
+                                    <td style="width:170px;padding:12px 14px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#173153;font-weight:700;vertical-align:top;">Email</td>
+                                    <td style="padding:12px 14px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ $payload['email'] ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width:170px;padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;color:#173153;font-weight:700;vertical-align:top;">Subscription</td>
+                                    <td style="padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;line-height:1.6;">ARSDeveloper Updates</td>
+                                </tr>
+                            </table>
+                        @else
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border:1px solid #dce8f8;border-radius:12px;overflow:hidden;background:#f8fbff;">
+                                <tr>
+                                    <td style="width:170px;padding:12px 14px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#173153;font-weight:700;vertical-align:top;">Subject</td>
+                                    <td style="padding:12px 14px;border-bottom:1px solid #e6eef9;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;">{{ $payload['subject'] ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width:170px;padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;color:#173153;font-weight:700;vertical-align:top;">Message</td>
+                                    <td style="padding:12px 14px;font-family:Arial,sans-serif;font-size:14px;color:#2f466c;line-height:1.6;">{!! nl2br(e($payload['message'] ?? '-')) !!}</td>
+                                </tr>
+                            </table>
+                        @endif
                     </td>
                 </tr>
 
