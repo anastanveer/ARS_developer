@@ -31,7 +31,7 @@
                     </tr>
                     <tr>
                         <td style="padding:10px 0 0;font-weight:700;vertical-align:top;">Message</td>
-                        <td style="padding:10px 0 0;line-height:1.7;">{{ $message->body }}</td>
+                        <td style="padding:10px 0 0;line-height:1.7;">{{ $chatMessage->body }}</td>
                     </tr>
                 </table>
 

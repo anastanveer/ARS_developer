@@ -148,10 +148,12 @@ class ChatWidgetController extends Controller
             $attachmentName = $request->file('image')->getClientOriginalName();
         }
 
+        $messageBody = $this->nullableString($request->input('message')) ?? ($attachmentPath ? '[image]' : '');
+
         $message = $conversation->messages()->create([
             'sender_type' => 'visitor',
             'sender_name' => $conversation->name ?: 'Website Visitor',
-            'body' => $this->nullableString($request->input('message')),
+            'body' => $messageBody,
             'channel' => $preferredChannel === 'whatsapp' ? 'whatsapp' : 'chat',
             'attachment_path' => $attachmentPath,
             'attachment_name' => $attachmentName,

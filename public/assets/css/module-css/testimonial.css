@@ -399,89 +399,85 @@
 .testimonial-two__carousel {
     position: relative;
     display: block;
-    padding-left: 167px;
+    padding-left: 0;
 }
 
 .testimonial-two__single {
     position: relative;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    min-height: 100%;
+    padding: 30px 30px 28px;
+    border-radius: 28px;
+    border: 1px solid rgba(27, 86, 163, 0.14);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(246, 249, 255, 0.98) 100%);
+    box-shadow: none;
+}
+
+.testimonial-two__icon-box {
+    position: relative;
+    display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 70px;
+    gap: 14px;
 }
 
-.testimonial-two__img-box {
-    position: relative;
-    display: block;
+.testimonial-two__icon-badge {
+    width: 68px;
+    height: 68px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1d93ff 0%, #2553d2 100%);
+    color: #ffffff;
+    box-shadow: 0 18px 34px rgba(28, 84, 181, 0.24);
 }
 
-.testimonial-two__img-box:before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    bottom: 0;
-    left: 118px;
-    width: 36px;
-    background-color: var(--finris-base);
-    border-radius: 100px;
-    transform: rotate(45deg);
+.testimonial-two__icon-badge span {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
 }
 
-.testimonial-two__img-box:after {
-    content: "";
-    position: absolute;
-    top: 36px;
-    right: 150px;
-    width: 36px;
-    height: 395px;
-    background-color: var(--finris-base);
-    border-radius: 100px;
-    transform: rotate(45deg);
-}
-
-.testimonial-two__img {
-    position: relative;
-    display: block;
-    width: 320px;
+.testimonial-two__icon-ring {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    overflow: hidden;
-    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(29, 147, 255, 0.1);
+    color: #1d93ff;
+    border: 1px solid rgba(29, 147, 255, 0.18);
 }
 
-.testimonial-two__img:before {
-    content: "";
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--finris-primary);
-    border-radius: 50%;
-    z-index: -1;
-}
-
-.testimonial-two__img img {
-    border-radius: 50%;
+.testimonial-two__icon-ring i {
+    font-size: 16px;
 }
 
 .testimonial-two__content {
     position: relative;
     display: block;
-    max-width: 485px;
     width: 100%;
+    max-width: none;
 }
 
 .testimonial-two__client-info {
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px 14px;
 }
 
 .testimonial-two__client-name {
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 34px;
-    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: none;
+    letter-spacing: -0.01em;
 }
 
 .testimonial-two__client-name a {
@@ -495,14 +491,18 @@
 .testimonial-two__client-title {
     position: relative;
     display: block;
-    margin-left: 20px;
+    margin-left: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6b7893;
 }
 
 .testimonial-two__text {
     font-size: 24px;
-    line-height: 34px;
-    margin-top: 17px;
-    margin-bottom: 16px;
+    line-height: 1.5;
+    margin-top: 16px;
+    margin-bottom: 18px;
+    color: #324768;
 }
 
 .testimonial-two__star-rating {
@@ -550,7 +550,7 @@
 
 .testimonial-two__carousel .owl-nav {
     position: absolute;
-    top: -110px;
+    top: -108px;
     right: 0;
     margin: 0 !important;
 }
@@ -609,6 +609,19 @@
 .testimonial-two__carousel.owl-theme .owl-nav .owl-prev:hover {
     background-color: var(--finris-black);
     color: var(--finris-white);
+}
+
+.testimonial-two__carousel .owl-stage {
+    display: flex;
+}
+
+.testimonial-two__carousel .owl-item {
+    display: flex;
+    height: auto;
+}
+
+.testimonial-two__carousel .item {
+    width: 100%;
 }
 
 /*--------------------------------------------------------------

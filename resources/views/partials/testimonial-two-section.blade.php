@@ -72,11 +72,21 @@
         <h3 class="seo-hidden-heading">{{ $testimonialSeoHeading }}</h3>
         <div class="testimonial-two__carousel owl-theme owl-carousel">
             @foreach($testimonialItems as $testimonial)
+                @php
+                    $initials = collect(explode(' ', trim((string) $testimonial['name'])))
+                        ->filter()
+                        ->take(2)
+                        ->map(fn ($part) => strtoupper(substr($part, 0, 1)))
+                        ->implode('');
+                @endphp
                 <div class="item">
                     <div class="testimonial-two__single">
-                        <div class="testimonial-two__img-box">
-                            <div class="testimonial-two__img">
-                                <img src="assets/images/testimonial/testimonial-2-1.png" alt="Client review profile image">
+                        <div class="testimonial-two__icon-box" aria-hidden="true">
+                            <div class="testimonial-two__icon-badge">
+                                <span>{{ $initials !== '' ? $initials : 'UK' }}</span>
+                            </div>
+                            <div class="testimonial-two__icon-ring">
+                                <i class="fas fa-quote-right"></i>
                             </div>
                         </div>
                         <div class="testimonial-two__content">

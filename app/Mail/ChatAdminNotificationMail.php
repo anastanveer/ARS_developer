@@ -32,7 +32,11 @@ class ChatAdminNotificationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.chat-admin'
+            view: 'emails.chat-admin',
+            with: [
+                'conversation' => $this->conversation,
+                'chatMessage' => $this->message,
+            ],
         );
     }
 }

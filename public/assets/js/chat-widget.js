@@ -38,11 +38,59 @@
     var selectedMode = 'chat';
     var idleSessionMs = 60000;
     var manualStartView = false;
+    var imageModal = null;
+    var imageModalImg = null;
 
     function setOpen(isOpen) {
         panel.hidden = !isOpen;
         root.classList.toggle('site-chat--open', isOpen);
         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    function ensureImageModal() {
+        if (imageModal) {
+            return;
+        }
+
+        imageModal = document.createElement('div');
+        imageModal.className = 'site-chat__image-modal';
+        imageModal.hidden = true;
+        imageModal.innerHTML =
+            '<div class="site-chat__image-backdrop" data-chat-image-close></div>' +
+            '<div class="site-chat__image-dialog" role="dialog" aria-modal="true" aria-label="Image preview">' +
+                '<button type="button" class="site-chat__image-close" data-chat-image-close aria-label="Close preview">&times;</button>' +
+                '<img class="site-chat__image-full" alt="Chat image preview">' +
+            '</div>';
+
+        panel.appendChild(imageModal);
+        imageModalImg = imageModal.querySelector('.site-chat__image-full');
+
+        imageModal.addEventListener('click', function (event) {
+            if (event.target.closest('[data-chat-image-close]')) {
+                closeImageModal();
+            }
+        });
+    }
+
+    function openImageModal(src) {
+        ensureImageModal();
+        if (!imageModal || !imageModalImg) {
+            return;
+        }
+        imageModalImg.setAttribute('src', src);
+        imageModal.hidden = false;
+        root.classList.add('site-chat--modal-open');
+    }
+
+    function closeImageModal() {
+        if (!imageModal || imageModal.hidden) {
+            return;
+        }
+        imageModal.hidden = true;
+        root.classList.remove('site-chat--modal-open');
+        if (imageModalImg) {
+            imageModalImg.setAttribute('src', '');
+        }
     }
 
     function stopPolling() {
@@ -136,7 +184,7 @@
             captureBox.hidden = false;
         }
         if (messagesBox) {
-            messagesBox.hidden = !token;
+            messagesBox.hidden = true;
         }
         if (startBox) {
             startBox.hidden = false;
@@ -145,7 +193,7 @@
             flowBox.hidden = true;
         }
         if (composerBox) {
-            composerBox.hidden = !token;
+            composerBox.hidden = true;
         }
         if (backBtn) {
             backBtn.hidden = true;
@@ -153,7 +201,7 @@
         if (introBubble) {
             introBubble.textContent = 'Hi, welcome to ARSDeveloper. Share your question and our team will reply shortly.';
         }
-        helpText.textContent = token ? 'Continue your previous chat below.' : '';
+        helpText.textContent = token ? 'Your previous chat is saved. Choose an option to continue.' : '';
         if (emojiPicker) {
             emojiPicker.hidden = true;
         }
@@ -209,9 +257,14 @@
     function renderMessages(items, conversation) {
         var html = (items || []).map(function (item) {
             var sender = item.sender_type || 'system';
-            var body = item.body ? '<div>' + escapeHtml(item.body).replace(/\n/g, '<br>') + '</div>' : '';
+            var hasAttachment = !!item.attachment_url;
+            var visibleBody = item.body;
+            if (hasAttachment && String(item.body || '').trim() === '[image]') {
+                visibleBody = '';
+            }
+            var body = visibleBody ? '<div>' + escapeHtml(visibleBody).replace(/\n/g, '<br>') + '</div>' : '';
             var attachment = item.attachment_url
-                ? '<img class="site-chat__attachment" src="' + item.attachment_url + '" alt="Uploaded image">'
+                ? '<a class="site-chat__attachment-link" href="' + item.attachment_url + '" target="_blank" rel="noopener noreferrer"><img class="site-chat__attachment" src="' + item.attachment_url + '" alt="Uploaded image"></a>'
                 : '';
             return '<div class="site-chat__bubble site-chat__bubble--' + sender + '">' + body + attachment + '</div>';
         }).join('');
@@ -267,6 +320,7 @@
                 if (data.conversation) {
                     setConversation(data.conversation);
                     renderMessages(data.messages || [], data.conversation || null);
+                    showActiveConversation();
                 } else if (messagesBox) {
                     messagesBox.innerHTML = '';
                     messagesBox.hidden = true;
@@ -288,6 +342,7 @@
                 if (data.conversation) {
                     setConversation(data.conversation);
                     renderMessages(data.messages || [], data.conversation || null);
+                    showActiveConversation();
                 } else if (messagesBox) {
                     messagesBox.innerHTML = '';
                     messagesBox.hidden = true;
@@ -311,17 +366,21 @@
             return;
         }
 
-        if (selectedMode === 'whatsapp' && !phoneInput.value.trim()) {
+        var phoneValue = phoneInput ? phoneInput.value.trim() : '';
+        var nameValue = nameInput ? nameInput.value.trim() : '';
+        var emailValue = emailInput ? emailInput.value.trim() : '';
+
+        if (selectedMode === 'whatsapp' && !phoneValue) {
             helpText.textContent = 'A WhatsApp number is required for WhatsApp replies.';
-            phoneInput.focus();
+            if (phoneInput) { phoneInput.focus(); }
             return;
         }
 
         var payload = new FormData();
         payload.append('token', token);
-        payload.append('name', nameInput.value.trim());
-        payload.append('email', emailInput.value.trim());
-        payload.append('phone', phoneInput.value.trim());
+        payload.append('name', nameValue);
+        payload.append('email', emailValue);
+        payload.append('phone', phoneValue);
         payload.append('message', message);
         payload.append('preferred_channel', selectedMode);
         payload.append('page_url', window.location.pathname);
@@ -463,6 +522,23 @@
             setPreview();
         });
     }
+
+    if (messagesBox) {
+        messagesBox.addEventListener('click', function (event) {
+            var attachmentLink = event.target.closest('.site-chat__attachment-link');
+            if (!attachmentLink) {
+                return;
+            }
+            event.preventDefault();
+            openImageModal(attachmentLink.getAttribute('href'));
+        });
+    }
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            closeImageModal();
+        }
+    });
 
     resizeComposer();
     showStartScreen();

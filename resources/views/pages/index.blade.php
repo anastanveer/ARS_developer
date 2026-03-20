@@ -96,21 +96,19 @@
                                     </ul>
                                     <div class="main-slider__satisfied-client-content">
                                         <div class="main-slider__satisfied-client-count count-box">
-                                            <h3 class="count-text" data-stop="2000" data-speed="1500">00</h3>
-                                            <span class="main-slider__satisfied-client-count-plus">+</span>
+                                            <h3>50+</h3>
                                         </div>
-                                        <p class="main-slider__satisfied-client-count-text">Happy Clients</p>
+                                        <p class="main-slider__satisfied-client-count-text">Projects Launched</p>
                                     </div>
                                 </div>
                                 <div class="main-slider__rating-box">
                                     <div class="main-slider__rating-count count-box">
-                                        <h3 class="count-text" data-stop="25" data-speed="1500">00</h3>
-                                        <span class="main-slider__satisfied-client-count-letter">k</span>
+                                        <h3>5.0</h3>
                                     </div>
                                     <div class="main-slider__rating-content">
-                                        <p class="main-slider__rating-content-sub-title">Positive Rating</p>
+                                        <p class="main-slider__rating-content-sub-title">Client Review Score</p>
                                         <div class="main-slider__rating-content-logo">
-                                            <img src="assets/images/resources/main-slider-rating-content-logo.png" alt="Google rating logo">
+                                            <img src="assets/images/resources/main-slider-rating-content-logo.png" alt="Client review signal">
                                         </div>
                                     </div>
                                 </div>
@@ -251,16 +249,14 @@
                                 </div>
                                 <div class="why-choose-two__review-count-box">
                                     <div class="why-choose-two__review-count count-box">
-                                        <p class="count-text" data-stop="100" data-speed="1500">00</p>
-                                        <span class="why-choose-two__count-letter">k</span>
+                                        <p>Clear</p>
                                     </div>
-                                    <p class="why-choose-two__review-count-text">Reviews</p>
+                                    <p class="why-choose-two__review-count-text">Milestones</p>
                                 </div>
                             </div>
                             <div class="why-choose-two__rating">
                                 <div class="why-choose-two__rating-count count-box">
-                                    <p class="count-text" data-stop="20" data-speed="1500">00</p>
-                                    <span class="why-choose-two__rating-count-letter">m</span>
+                                    <p>Open</p>
                                 </div>
                                 <div class="why-choose-two__rating-content">
                                     <form class="why-choose-two__star-rating">
@@ -271,7 +267,7 @@
                                         <input type="radio" id="1-star" name="rating" value="1">
                                         <label for="1-star" class="star">&#9733;</label>
                                     </form>
-                                    <p class="why-choose-two__rating-text">Average Rating</p>
+                                    <p class="why-choose-two__rating-text">Communication</p>
                                 </div>
                             </div>
                             <div class="why-choose-two__img-box">
@@ -343,11 +339,10 @@
                                 <i class="fas fa-layer-group" aria-hidden="true"></i>
                             </div>
                             <div class="counter-one__count count-box">
-                                <p class="count-text" data-stop="240" data-speed="1500">00</p>
-                                <span class="counter-one__count-plus">+</span>
+                                <p>50+</p>
                             </div>
-                            <p class="counter-one__text">Projects Completed</p>
-                            <p class="counter-one__meta">Shipped websites, ecommerce and custom platforms</p>
+                            <p class="counter-one__text">Project Launches</p>
+                            <p class="counter-one__meta">Websites, ecommerce and custom systems shipped for live business use</p>
                             <a class="counter-one__stat-link" href="/portfolio">View live case studies</a>
                         </div>
                     </li>
@@ -357,11 +352,10 @@
                                 <i class="fas fa-award" aria-hidden="true"></i>
                             </div>
                             <div class="counter-one__count count-box">
-                                <p class="count-text" data-stop="40" data-speed="1500">00</p>
-                                <span class="counter-one__count-plus">+</span>
+                                <p>4-Step</p>
                             </div>
-                            <p class="counter-one__text">Awards Won</p>
-                            <p class="counter-one__meta">Recognition for delivery quality and innovation</p>
+                            <p class="counter-one__text">Delivery Flow</p>
+                            <p class="counter-one__meta">Defined milestones, scope notes, and practical rollout planning</p>
                         </div>
                     </li>
                     <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
@@ -370,11 +364,10 @@
                                 <i class="fas fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="counter-one__count count-box">
-                                <p class="count-text" data-stop="780" data-speed="1500">00</p>
-                                <span class="counter-one__count-plus">+</span>
+                                <p>5-Star</p>
                             </div>
-                            <p class="counter-one__text">Positive Reviews</p>
-                            <p class="counter-one__meta">Verified feedback from Google, Clutch and Trustpilot</p>
+                            <p class="counter-one__text">Review Standard</p>
+                            <p class="counter-one__meta">Public reviews and direct client comments used as trust proof</p>
                         </div>
                     </li>
                     <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="250">
@@ -383,11 +376,10 @@
                                 <i class="fas fa-users" aria-hidden="true"></i>
                             </div>
                             <div class="counter-one__count count-box">
-                                <p class="count-text" data-stop="130" data-speed="1500">00</p>
-                                <span class="counter-one__count-plus">+</span>
+                                <p>Ongoing</p>
                             </div>
-                            <p class="counter-one__text">Satisfied Clients</p>
-                            <p class="counter-one__meta">UK teams retained through long-term support plans</p>
+                            <p class="counter-one__text">Support Plans</p>
+                            <p class="counter-one__meta">Post-launch support, iteration, and continuous improvement work</p>
                         </div>
                     </li>
                 </ul>
@@ -400,7 +392,7 @@
                     </div>
                     <div class="counter-one__proof-badge">
                         <img src="assets/images/icon/icon-google.png" alt="Google rating signal" loading="lazy">
-                        <span><strong>25K+</strong> rating signals with verified multi-platform client reviews</span>
+                        <span><strong>Public review</strong> signals from Google, Clutch, Trustpilot and direct client delivery feedback</span>
                     </div>
                 </div>
                 <div class="counter-one__testimonial-strip" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
@@ -647,10 +639,6 @@
             </div>
         </section>
         <!-- Portfolio Two End -->
-        @include('partials.testimonial-two-section', ['testimonialSeoHeading' => 'Home page client testimonials'])
-
-
-
         @php
             $meetingSlots = config('contact.meeting_slots', []);
             $meetingSlots = is_array($meetingSlots) ? $meetingSlots : [];
@@ -1200,6 +1188,8 @@
         </section>
         @endif
         <!--Blog Two End -->
+
+        @include('partials.testimonial-two-section', ['testimonialSeoHeading' => 'Home page client testimonials'])
 
         <!--Faq One Start -->
         <section class="faq-one faq-one--home">
