@@ -8,6 +8,7 @@
     class="site-chat"
     data-site-chat
     data-bootstrap-url="{{ route('chat.bootstrap') }}"
+    data-profile-url="{{ route('chat.profile') }}"
     data-message-url="{{ route('chat.message') }}"
     data-conversation-url="{{ url('/chat/conversation') }}"
     data-whatsapp-url="https://wa.me/{{ $chatPhoneDigits }}"
@@ -36,6 +37,21 @@
             <div class="site-chat__messages" data-chat-messages></div>
 
             <div class="site-chat__capture" data-chat-capture>
+                <div class="site-chat__prechat" data-chat-prechat hidden>
+                    <div class="site-chat__prechat-copy">
+                        <strong>Tell us a bit about yourself so we can make this personal.</strong>
+                    </div>
+                    <div class="site-chat__fields">
+                        <input type="text" placeholder="Full name" data-chat-name>
+                        <input type="email" placeholder="Business email address" data-chat-email>
+                    </div>
+                    <label class="site-chat__check">
+                        <input type="checkbox" data-chat-newsletter>
+                        <span>Sign up for our newsletter</span>
+                    </label>
+                    <button type="button" class="site-chat__profile-submit" data-chat-profile-submit>Send</button>
+                </div>
+
                 <div class="site-chat__start" data-chat-start>
                     <div class="site-chat__start-copy">
                         <strong>How can we help?</strong>

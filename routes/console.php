@@ -34,3 +34,20 @@ Artisan::command('logs:daily-digest {--date=}', function (SystemLogService $serv
 Schedule::command('meetings:send-reminders')->hourly();
 Schedule::command('logs:daily-digest')->dailyAt('00:10');
 Schedule::command('logs:daily-digest --date=' . now()->toDateString())->everyFifteenMinutes();
+
+
+Artisan::command('whatsapp:test {to?} {message?}', function (\App\Services\WhatsAppService $service) {
+    $to = (string) ($this->argument('to') ?: config('whatsapp.default_recipient'));
+    $message = (string) ($this->argument('message') ?: 'Hello from ARS Developer Ltd website chat system.');
+
+    $result = $service->sendTextMessage($to, $message);
+
+    if ($result['success'] ?? false) {
+        $this->info('WhatsApp message sent successfully.');
+        $this->line('Message ID: ' . ($result['message_id'] ?? '-'));
+        return;
+    }
+
+    $this->error('WhatsApp message failed.');
+    $this->line((string) ($result['error'] ?? 'Unknown error'));
+})->purpose('Send a WhatsApp Cloud API test message');

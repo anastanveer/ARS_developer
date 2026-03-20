@@ -10,8 +10,11 @@
     var panel = root.querySelector('.site-chat__panel');
     var messagesBox = root.querySelector('[data-chat-messages]');
     var captureBox = root.querySelector('[data-chat-capture]');
+    var prechatBox = root.querySelector('[data-chat-prechat]');
     var nameInput = root.querySelector('[data-chat-name]');
     var emailInput = root.querySelector('[data-chat-email]');
+    var newsletterInput = root.querySelector('[data-chat-newsletter]');
+    var profileSubmitBtn = root.querySelector('[data-chat-profile-submit]');
     var phoneInput = root.querySelector('[data-chat-phone]');
     var startBox = root.querySelector('[data-chat-start]');
     var flowBox = root.querySelector('[data-chat-flow]');
@@ -28,6 +31,7 @@
     var previewBox = root.querySelector('[data-chat-preview]');
 
     var bootstrapUrl = root.getAttribute('data-bootstrap-url');
+    var profileUrl = root.getAttribute('data-profile-url');
     var messageUrl = root.getAttribute('data-message-url');
     var conversationBaseUrl = root.getAttribute('data-conversation-url');
     var csrf = document.querySelector('meta[name="csrf-token"]');
@@ -40,6 +44,7 @@
     var manualStartView = false;
     var imageModal = null;
     var imageModalImg = null;
+    var pendingSendAfterProfile = false;
 
     function setOpen(isOpen) {
         panel.hidden = !isOpen;
@@ -104,6 +109,38 @@
         }
     }
 
+    function showPrechatScreen() {
+        manualStartView = false;
+        selectedMode = 'chat';
+        root.classList.remove('site-chat--whatsapp');
+        stopPolling();
+        if (captureBox) {
+            captureBox.hidden = false;
+        }
+        if (prechatBox) {
+            prechatBox.hidden = false;
+        }
+        if (startBox) {
+            startBox.hidden = true;
+        }
+        if (messagesBox) {
+            messagesBox.hidden = true;
+        }
+        if (flowBox) {
+            flowBox.hidden = true;
+        }
+        if (composerBox) {
+            composerBox.hidden = false;
+        }
+        if (backBtn) {
+            backBtn.hidden = false;
+        }
+        if (emojiPicker) {
+            emojiPicker.hidden = true;
+        }
+        helpText.textContent = 'Please confirm your details first.';
+    }
+
     function clearDraftState() {
         selectedFile = null;
         if (messageInput) {
@@ -131,6 +168,9 @@
         manualStartView = false;
         if (captureBox) {
             captureBox.hidden = true;
+        }
+        if (prechatBox) {
+            prechatBox.hidden = true;
         }
         if (startBox) {
             startBox.hidden = true;
@@ -177,11 +217,15 @@
 
     function showStartScreen() {
         manualStartView = !!token;
+        pendingSendAfterProfile = false;
         selectedMode = 'chat';
         root.classList.remove('site-chat--whatsapp');
         stopPolling();
         if (captureBox) {
             captureBox.hidden = false;
+        }
+        if (prechatBox) {
+            prechatBox.hidden = true;
         }
         if (messagesBox) {
             messagesBox.hidden = true;
@@ -324,6 +368,7 @@
                 } else if (messagesBox) {
                     messagesBox.innerHTML = '';
                     messagesBox.hidden = true;
+                    showStartScreen();
                 }
             })
             .catch(function () {});
@@ -363,6 +408,15 @@
         var message = messageInput.value.trim();
         if (!message && !selectedFile) {
             helpText.textContent = 'Please enter a message or upload an image.';
+            return;
+        }
+
+        if (!token) {
+            pendingSendAfterProfile = true;
+            showPrechatScreen();
+            if (nameInput) {
+                nameInput.focus();
+            }
             return;
         }
 
@@ -428,6 +482,75 @@
             });
     }
 
+    function submitProfile() {
+        if (!profileUrl || !nameInput || !emailInput || !profileSubmitBtn) {
+            return;
+        }
+
+        var nameValue = nameInput.value.trim();
+        var emailValue = emailInput.value.trim();
+
+        if (!nameValue) {
+            helpText.textContent = 'Please enter your full name.';
+            nameInput.focus();
+            return;
+        }
+
+        if (!emailValue) {
+            helpText.textContent = 'Please enter your business email.';
+            emailInput.focus();
+            return;
+        }
+
+        var payload = new FormData();
+        payload.append('name', nameValue);
+        payload.append('email', emailValue);
+        payload.append('newsletter_opt_in', newsletterInput && newsletterInput.checked ? '1' : '0');
+        payload.append('page_url', window.location.pathname);
+
+        profileSubmitBtn.disabled = true;
+        helpText.textContent = 'Saving your details...';
+
+        fetch(profileUrl, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': csrf ? csrf.getAttribute('content') : ''
+            },
+            body: payload
+        })
+            .then(function (response) {
+                return response.json().then(function (data) {
+                    if (!response.ok) {
+                        throw new Error(data.message || 'Could not save your details.');
+                    }
+                    return data;
+                });
+            })
+            .then(function (data) {
+                setConversation(data.conversation);
+                renderMessages(data.messages || [], data.conversation || null);
+                showActiveConversation();
+                startPolling();
+                restartInactivityTimer();
+                if (pendingSendAfterProfile) {
+                    pendingSendAfterProfile = false;
+                    sendMessage();
+                    return;
+                }
+                helpText.textContent = 'Your chat is ready. You can send your message now.';
+                if (messageInput) {
+                    messageInput.focus();
+                }
+            })
+            .catch(function (error) {
+                helpText.textContent = error.message || 'Your details could not be saved.';
+            })
+            .finally(function () {
+                profileSubmitBtn.disabled = false;
+            });
+    }
+
     toggle.addEventListener('click', function () {
         setOpen(panel.hidden);
         if (!panel.hidden) {
@@ -441,8 +564,23 @@
 
     if (backBtn) {
         backBtn.addEventListener('click', function () {
-            clearDraftState();
+            if (prechatBox && !prechatBox.hidden) {
+                pendingSendAfterProfile = false;
+            }
             showStartScreen();
+        });
+    }
+
+    if (profileSubmitBtn) {
+        profileSubmitBtn.addEventListener('click', submitProfile);
+    }
+
+    if (emailInput) {
+        emailInput.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                submitProfile();
+            }
         });
     }
 

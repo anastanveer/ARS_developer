@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/chat/bootstrap', [ChatWidgetController::class, 'bootstrap'])->name('chat.bootstrap');
+Route::post('/chat/profile', [ChatWidgetController::class, 'profile'])->name('chat.profile');
 Route::post('/chat/message', [ChatWidgetController::class, 'message'])->name('chat.message');
 Route::get('/chat/conversation/{token}', [ChatWidgetController::class, 'conversation'])->name('chat.conversation');
 Route::get('/whatsapp/webhook', [\App\Http\Controllers\WhatsAppWebhookController::class, 'verify'])->name('whatsapp.webhook.verify');

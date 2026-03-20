@@ -61,6 +61,54 @@ class ChatWidgetController extends Controller
         ]);
     }
 
+    public function profile(Request $request): JsonResponse
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:120'],
+            'email' => ['required', 'email', 'max:180'],
+            'newsletter_opt_in' => ['nullable', 'boolean'],
+            'page_url' => ['nullable', 'string', 'max:500'],
+        ], [
+            'name.required' => 'Please enter your full name.',
+            'email.required' => 'Please enter your business email.',
+            'email.email' => 'Please enter a valid business email.',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors()->first(),
+            ], 422);
+        }
+
+        $conversation = ChatConversation::query()->create([
+            'public_token' => (string) Str::uuid(),
+            'name' => $this->nullableString($request->input('name')),
+            'email' => $this->nullableString($request->input('email')),
+            'newsletter_opt_in' => (bool) $request->boolean('newsletter_opt_in'),
+            'preferred_channel' => 'chat',
+            'status' => 'open',
+            'source_page' => $this->nullableString($request->input('page_url')),
+            'visitor_ip' => $request->ip(),
+            'user_agent' => substr((string) $request->userAgent(), 0, 1000),
+        ]);
+
+        $conversation->messages()->create([
+            'sender_type' => 'system',
+            'sender_name' => config('company.legal_name', 'ARSDeveloper'),
+            'body' => 'Hi, welcome to ARSDeveloper. Share your question and our team will reply shortly.',
+            'channel' => 'chat',
+            'is_read_by_admin' => true,
+            'is_read_by_visitor' => true,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'conversation' => $this->conversationPayload($conversation->fresh('messages')),
+            'messages' => $conversation->fresh('messages')->messages->map(fn (ChatMessage $message) => $this->messagePayload($message))->all(),
+        ]);
+    }
+
     public function message(Request $request): JsonResponse
     {
         $token = trim((string) $request->input('token', ''));
@@ -112,6 +160,7 @@ class ChatWidgetController extends Controller
                 'public_token' => (string) Str::uuid(),
                 'name' => $this->nullableString($request->input('name')),
                 'email' => $this->nullableString($request->input('email')),
+                'newsletter_opt_in' => false,
                 'phone' => $this->normalizePhone($request->input('phone')),
                 'preferred_channel' => $preferredChannel,
                 'status' => 'open',

@@ -14,6 +14,7 @@ class ChatConversation extends Model
         'public_token',
         'name',
         'email',
+        'newsletter_opt_in',
         'phone',
         'preferred_channel',
         'status',
@@ -27,6 +28,7 @@ class ChatConversation extends Model
     ];
 
     protected $casts = [
+        'newsletter_opt_in' => 'boolean',
         'last_visitor_message_at' => 'datetime',
         'last_admin_message_at' => 'datetime',
         'admin_typing_at' => 'datetime',
