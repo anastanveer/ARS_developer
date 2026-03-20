@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @php
         $currentPath = '/' . trim(request()->path(), '/');
         if ($currentPath === '//') {
@@ -548,7 +549,7 @@
         $companyName = (string) config('company.legal_name', 'ARS Developer Ltd');
         $companyBrand = (string) config('company.brand_name', 'ARSDeveloper');
         $companyEmail = (string) config('company.email', 'info@arsdeveloper.co.uk');
-        $companyPhone = (string) config('company.phone', '+44747803428');
+        $companyPhone = (string) config('company.phone', '+447478034328');
         $companyStreetAddress = (string) config('company.street_address', '38 Elm Street');
         $companyPostalCode = (string) config('company.postal_code', 'ST6 2HN');
         $companyLocality = (string) config('company.address_locality', 'Stoke-on-Trent');
@@ -1426,6 +1427,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/module-css/faq.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/module-css/google-map.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/module-css/contact.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/module-css/chat-widget.css') }}?v={{ filemtime(public_path('assets/css/module-css/chat-widget.css')) }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/module-css/page-header.css') }}" />
     @if($isAboutPath)
         <link rel="stylesheet" href="{{ asset('assets/css/module-css/awards.css') }}" />
@@ -1759,7 +1761,7 @@
                                 <i class="icon-phone"></i>
                             </div>
                             <div class="text">
-                                <p><a class="main-menu-two__phone-link" href="tel:+44747803428">+44 747803428</a></p>
+                                <p><a class="main-menu-two__phone-link" href="tel:+447478034328">+44 7478034328</a></p>
                             </div>
                         </li>
                         <li>
@@ -1824,7 +1826,7 @@
                                 </div>
                                 <div class="main-menu-two__call-content">
                                     <p class="main-menu-two__call-sub-title">{{ __('ui.call_anytime') }}</p>
-                                    <p class="main-menu-two__call-number"><a href="tel:+44747803428">+44 747803428</a></p>
+                                    <p class="main-menu-two__call-number"><a href="tel:+447478034328">+44 7478034328</a></p>
                                 </div>
                             </div>
                             <div class="main-menu-two__search-cart-box">

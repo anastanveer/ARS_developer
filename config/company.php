@@ -5,7 +5,7 @@ return [
     'brand_name' => env('COMPANY_BRAND_NAME', 'ARSDeveloper'),
     'website' => env('COMPANY_WEBSITE', env('APP_URL', 'https://arsdeveloper.co.uk')),
     'email' => env('COMPANY_EMAIL', 'info@arsdeveloper.co.uk'),
-    'phone' => env('COMPANY_PHONE', '+44747803428'),
+    'phone' => env('COMPANY_PHONE', '+447478034328'),
     'street_address' => env('COMPANY_STREET_ADDRESS', '38 Elm Street'),
     'postal_code' => env('COMPANY_POSTAL_CODE', 'ST6 2HN'),
     'address_locality' => env('COMPANY_ADDRESS_LOCALITY', 'Stoke-on-Trent'),

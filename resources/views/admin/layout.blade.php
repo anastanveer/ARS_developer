@@ -389,6 +389,7 @@
 
             <div class="nav-title">Leads</div>
             <a href="{{ route('admin.leads.index') }}" class="{{ request()->routeIs('admin.leads.*') ? 'active' : '' }}"><span class="nav-ico">🧲</span><span class="nav-label">Leads & Meetings</span></a>
+            <a href="{{ route('admin.chat.index') }}" class="{{ request()->routeIs('admin.chat.*') ? 'active' : '' }}"><span class="nav-ico">💬</span><span class="nav-label">Website Chat</span></a>
             <a href="{{ route('admin.blocked-contacts.index') }}" class="{{ request()->routeIs('admin.blocked-contacts.*') ? 'active' : '' }}"><span class="nav-ico">🛡️</span><span class="nav-label">Blocked Contacts</span></a>
 
             <div class="nav-title">Sales</div>

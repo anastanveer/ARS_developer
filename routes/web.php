@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AnalyticsController;
 use App\Http\Controllers\Admin\AuditReportController;
 use App\Http\Controllers\Admin\BlockedContactController;
+use App\Http\Controllers\Admin\ChatController as AdminChatController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Admin\ServicePageImageController;
 use App\Http\Controllers\Admin\SystemLogController;
 use App\Http\Controllers\ClientReviewController;
 use App\Http\Controllers\ClientPortalController;
+use App\Http\Controllers\ChatWidgetController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MeetingBookingController;
 use App\Http\Controllers\SeoHubController;
@@ -36,6 +38,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/chat/bootstrap', [ChatWidgetController::class, 'bootstrap'])->name('chat.bootstrap');
+Route::post('/chat/message', [ChatWidgetController::class, 'message'])->name('chat.message');
+Route::get('/chat/conversation/{token}', [ChatWidgetController::class, 'conversation'])->name('chat.conversation');
+Route::get('/whatsapp/webhook', [\App\Http\Controllers\WhatsAppWebhookController::class, 'verify'])->name('whatsapp.webhook.verify');
+Route::post('/whatsapp/webhook', [\App\Http\Controllers\WhatsAppWebhookController::class, 'receive'])->name('whatsapp.webhook.receive');
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
 Route::get('/sitemaps/{section}.xml', [SitemapController::class, 'section'])
@@ -401,6 +408,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::middleware('admin.role:super_admin,advanced_admin')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+            Route::get('/chat', [AdminChatController::class, 'index'])->name('chat.index');
+            Route::post('/chat/{conversation}/reply', [AdminChatController::class, 'reply'])->name('chat.reply');
+            Route::post('/chat/{conversation}/status', [AdminChatController::class, 'status'])->name('chat.status');
+            Route::post('/chat/{conversation}/typing', [AdminChatController::class, 'typing'])->name('chat.typing');
 
             Route::get('/leads', [LeadController::class, 'index'])->name('leads.index');
             Route::get('/leads/{lead}', [LeadController::class, 'show'])->name('leads.show');

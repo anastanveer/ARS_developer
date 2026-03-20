@@ -41,7 +41,7 @@
                                                     <span class="icon-phone"></span>
                                                 </div>
                                                 <div class="text">
-                                                    <p><a href="tel:+44747803428">+44 747803428</a></p>
+                                                    <p><a href="tel:+447478034328">+44 7478034328</a></p>
                                                 </div>
                                             </li>
                                         </ul>
@@ -155,7 +155,7 @@
                 </li>
                 <li>
                     <i class="fas fa-phone"></i>
-                    <a href="tel:+44747803428">+44 747803428</a>
+                    <a href="tel:+447478034328">+44 7478034328</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">
@@ -545,6 +545,8 @@
             });
         });
     </script>
+    @include('partials.chat-widget')
+    <script src="{{ asset('assets/js/chat-widget.js') }}?v={{ filemtime(public_path('assets/js/chat-widget.js')) }}"></script>
 </body>
 
 </html>
