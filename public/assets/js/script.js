@@ -988,22 +988,28 @@
       return null;
     }
 
-    var existing = form.querySelector(".ars-recaptcha-box");
+    if (!form.getAttribute("data-recaptcha-owner")) {
+      form.setAttribute("data-recaptcha-owner", "recaptcha-" + Math.random().toString(36).slice(2, 10));
+    }
+
+    var ownerId = form.getAttribute("data-recaptcha-owner");
+    var existing = form.querySelector(".ars-recaptcha-box") || document.querySelector('.ars-recaptcha-box[data-recaptcha-owner="' + ownerId + '"]');
     if (existing) {
       return existing;
     }
 
     var box = document.createElement("div");
     box.className = "ars-recaptcha-box";
+    box.setAttribute("data-recaptcha-owner", ownerId);
     box.innerHTML = '<div class="g-recaptcha" data-sitekey="' + window.arsRecaptchaSiteKey + '"></div>';
 
-    var resultBox = form.parentNode ? form.parentNode.querySelector(".result") : null;
+    var resultBox = form.querySelector(".result");
     var submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
 
-    if (resultBox && resultBox.parentNode) {
-      resultBox.parentNode.insertBefore(box, resultBox);
-    } else if (submitButton && submitButton.parentNode) {
+    if (submitButton && submitButton.parentNode) {
       submitButton.parentNode.insertBefore(box, submitButton);
+    } else if (resultBox && resultBox.parentNode) {
+      resultBox.parentNode.insertBefore(box, resultBox);
     } else {
       form.appendChild(box);
     }
@@ -1020,8 +1026,13 @@
       ensureRecaptchaBox(form);
     });
 
-    document.querySelectorAll(".ars-recaptcha-box .g-recaptcha").forEach(function (node) {
-      if (node.getAttribute("data-widget-rendered") === "1") {
+    document.querySelectorAll(".ars-recaptcha-box").forEach(function (box) {
+      if (box.getAttribute("data-widget-rendered") === "1") {
+        return;
+      }
+
+      var node = box.querySelector(".g-recaptcha");
+      if (!node) {
         return;
       }
 
@@ -1029,6 +1040,8 @@
         sitekey: window.arsRecaptchaSiteKey
       });
 
+      box.setAttribute("data-widget-rendered", "1");
+      box.setAttribute("data-widget-id", String(widgetId));
       node.setAttribute("data-widget-rendered", "1");
       node.setAttribute("data-widget-id", String(widgetId));
     });
@@ -1044,12 +1057,12 @@
       return;
     }
 
-    var node = form.querySelector(".ars-recaptcha-box .g-recaptcha[data-widget-id]");
-    if (!node) {
+    var box = form.querySelector('.ars-recaptcha-box[data-widget-id]');
+    if (!box) {
       return;
     }
 
-    window.grecaptcha.reset(parseInt(node.getAttribute("data-widget-id"), 10));
+    window.grecaptcha.reset(parseInt(box.getAttribute("data-widget-id"), 10));
   }
 
   function validateRecaptcha(form) {
