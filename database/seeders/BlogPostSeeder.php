@@ -84,6 +84,13 @@ class BlogPostSeeder extends Seeder
                             'This structure helps Google understand topic depth and also gives buyers a clearer path from awareness into implementation.',
                         ],
                     ],
+                    [
+                        'title' => 'What businesses should prioritise in the next 90 days',
+                        'paragraphs' => [
+                            'If rankings are still early, focus first on the pages already earning impressions in Search Console. Tighten titles, improve the first fold, add FAQ support, and strengthen the internal links that point back into your main commercial services.',
+                            'Then publish supporting articles around pricing, delivery expectations, local commercial intent, and implementation questions. That usually creates faster UK ranking movement than trying to publish dozens of disconnected posts at once.',
+                        ],
+                    ],
                 ],
                 'faq' => [
                     [
@@ -95,7 +102,7 @@ class BlogPostSeeder extends Seeder
                         'a' => 'No. AI search still depends heavily on strong SEO foundations, crawlable content, and clear topic authority.',
                     ],
                 ],
-                'cta' => 'Review our <a href="/services">services</a>, <a href="/pricing">pricing options</a>, and <a href="/contact">strategy call process</a> if you want this model implemented properly.',
+                'cta' => 'Review our <a href="/services">services</a>, <a href="/search-engine-optimization">SEO implementation service</a>, <a href="/pricing">pricing options</a>, and <a href="/contact">strategy call process</a> if you want a UK search growth system implemented properly.',
             ],
             [
                 'title' => 'How UK Service Businesses Generate More Leads with Conversion-Focused Websites',
@@ -139,6 +146,13 @@ class BlogPostSeeder extends Seeder
                             'Read this with <a href="/blog/uk-seo-growth-system-2026-aeo-geo-eeat-guide">the full SEO growth system</a>, <a href="/blog/landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries">landing page CRO fixes</a>, and <a href="/blog/ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility">AI search visibility guidance</a>.',
                         ],
                     ],
+                    [
+                        'title' => 'How to turn the website into a stronger sales asset',
+                        'paragraphs' => [
+                            'Treat every key page like a commercial sales layer. The strongest websites explain service scope, proof, next steps, response time, and realistic project fit without making the visitor work hard to find them.',
+                            'That is also why this topic connects directly with <a href="/pricing">pricing guidance</a>, <a href="/contact">project planning</a>, and <a href="/portfolio">delivery proof</a>. Better conversion structure works best when the rest of the buying journey is just as clear.',
+                        ],
+                    ],
                 ],
                 'faq' => [
                     [
@@ -150,7 +164,7 @@ class BlogPostSeeder extends Seeder
                         'a' => 'It should have one primary CTA path per page, with secondary options only where they reduce friction rather than create confusion.',
                     ],
                 ],
-                'cta' => 'See our <a href="/web-design-development">web design and development service</a> and <a href="/portfolio">portfolio examples</a> for practical implementation.',
+                'cta' => 'See our <a href="/web-design-development">web design and development service</a>, <a href="/portfolio">portfolio examples</a>, and <a href="/contact">book a scoped website planning call</a> if you want more qualified UK enquiries.',
             ],
             [
                 'title' => 'WordPress vs Shopify for UK Businesses: Which Platform Fits Your Growth Stage?',
@@ -188,6 +202,13 @@ class BlogPostSeeder extends Seeder
                             'A platform decision should also fit your <a href="/blog/technical-seo-checklist-for-uk-websites-before-launch">technical SEO launch plan</a> and wider <a href="/blog/uk-seo-growth-system-2026-aeo-geo-eeat-guide">search growth roadmap</a>.',
                         ],
                     ],
+                    [
+                        'title' => 'What UK business owners should compare before choosing',
+                        'paragraphs' => [
+                            'Look beyond the platform homepage. Compare editing flexibility, SEO control, speed of launch, checkout friction, plugin or app reliance, and what happens when the business needs custom workflow logic six months later.',
+                            'In many cases, Shopify wins on managed simplicity while WordPress and WooCommerce win on content depth and custom control. The right answer depends on commercial model, not platform hype.',
+                        ],
+                    ],
                 ],
                 'faq' => [
                     [
@@ -199,7 +220,7 @@ class BlogPostSeeder extends Seeder
                         'a' => 'Yes, if hosting, technical maintenance, and plugin control are handled properly.',
                     ],
                 ],
-                'cta' => 'Compare options with our <a href="/services">service scope</a> and <a href="/contact">project planning process</a> before deciding.',
+                'cta' => 'Compare options with our <a href="/services">service scope</a>, <a href="/web-design-development">website development service</a>, and <a href="/contact">project planning process</a> before deciding.',
             ],
             [
                 'title' => 'Technical SEO Checklist for UK Websites Before Launch',
@@ -237,6 +258,13 @@ class BlogPostSeeder extends Seeder
                             'Technical SEO protects the whole content cluster. It supports <a href="/blog/uk-seo-growth-system-2026-aeo-geo-eeat-guide">pillar SEO strategy</a>, <a href="/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites">conversion-focused pages</a>, and <a href="/blog/ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility">AI visibility readiness</a>.',
                         ],
                     ],
+                    [
+                        'title' => 'The commercial risk of weak launch governance',
+                        'paragraphs' => [
+                            'A poor launch affects more than rankings. It can weaken paid campaign performance, break attribution, reduce enquiry flow, and damage trust if high-intent landing pages load slowly or return errors.',
+                            'That is why launch QA should be treated as revenue protection, not only as a technical clean-up task for developers.',
+                        ],
+                    ],
                 ],
                 'faq' => [
                     [
@@ -248,7 +276,7 @@ class BlogPostSeeder extends Seeder
                         'a' => 'Indexing and redirect mistakes are usually the most damaging because they can break rankings across many URLs at once.',
                     ],
                 ],
-                'cta' => 'Use this with our <a href="/search-engine-optimization">SEO service</a> and <a href="/web-design-development">launch-ready web builds</a>.',
+                'cta' => 'Use this with our <a href="/search-engine-optimization">SEO service</a>, <a href="/web-design-development">launch-ready web builds</a>, and <a href="/contact">technical launch planning support</a>.',
             ],
             [
                 'title' => 'Why Growing Teams in the UK Move from Spreadsheets to Custom CRM',
@@ -286,6 +314,13 @@ class BlogPostSeeder extends Seeder
                             'That is why this topic connects directly with <a href="/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites">conversion websites</a>, <a href="/blog/landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries">landing page CRO</a>, and <a href="/blog/managed-it-services-uk-what-growing-businesses-should-expect-in-2026">managed IT maturity</a>.',
                         ],
                     ],
+                    [
+                        'title' => 'Why CRM decisions affect revenue quality',
+                        'paragraphs' => [
+                            'When leads are not tracked properly, follow-up becomes inconsistent and commercial reporting turns unreliable. That makes it harder to understand which channels actually produce profitable work.',
+                            'A custom CRM or structured portal should improve sales response speed, visibility, accountability, and client handover quality. That is where the operational value really becomes obvious.',
+                        ],
+                    ],
                 ],
                 'faq' => [
                     [
@@ -297,7 +332,7 @@ class BlogPostSeeder extends Seeder
                         'a' => 'Lead intake, status tracking, ownership, reminders, and reporting are usually the best first modules.',
                     ],
                 ],
-                'cta' => 'See our <a href="/software-development">software development scope</a> if your team is ready to replace fragile manual processes.',
+                'cta' => 'See our <a href="/software-development">software development scope</a>, <a href="/services">automation-related services</a>, and <a href="/contact">CRM planning call</a> if your team is ready to replace fragile manual processes.',
             ],
             [
                 'title' => 'Landing Page CRO for UK Campaigns: 7 Fixes That Increase Enquiries',
@@ -337,6 +372,13 @@ class BlogPostSeeder extends Seeder
                             'Read this alongside <a href="/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites">conversion-focused websites</a>, <a href="/blog/why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm">CRM workflow planning</a>, and <a href="/blog/uk-seo-growth-system-2026-aeo-geo-eeat-guide">long-term SEO growth strategy</a>.',
                         ],
                     ],
+                    [
+                        'title' => 'What stronger campaign pages should do next',
+                        'paragraphs' => [
+                            'Once the first-page structure is fixed, attention should move to lead handling. Faster response, cleaner qualification, and clear service fit messaging usually improve campaign ROI more than cosmetic testing alone.',
+                            'This is why landing page CRO should be planned with both marketing and sales operations in mind. A better page is most valuable when the follow-up process is just as clean.',
+                        ],
+                    ],
                 ],
                 'faq' => [
                     [
@@ -348,7 +390,7 @@ class BlogPostSeeder extends Seeder
                         'a' => 'Yes. Proof works best when it supports the user at the exact moment they are deciding whether to act.',
                     ],
                 ],
-                'cta' => 'Our <a href="/digital-marketing">digital marketing service</a> combines campaign traffic with landing page improvement and reporting.',
+                'cta' => 'Our <a href="/digital-marketing">digital marketing service</a> combines campaign traffic, landing page improvement, CRM-aware reporting, and <a href="/contact">commercial landing page planning</a>.',
             ],
             [
                 'title' => 'AI Overviews SEO UK: How Service Businesses Win AI Search Visibility in 2026',
@@ -386,6 +428,13 @@ class BlogPostSeeder extends Seeder
                             'That creates a stronger topic graph for both search engines and users moving through the buying journey.',
                         ],
                     ],
+                    [
+                        'title' => 'How AI visibility should support commercial pages',
+                        'paragraphs' => [
+                            'The goal is not just being mentioned in an AI answer. The goal is making the user click through into a page that provides clearer service scope, stronger proof, and a practical next step.',
+                            'That is why AI Overviews SEO should connect tightly to <a href="/services">service pages</a>, <a href="/pricing">pricing context</a>, and <a href="/contact">contact actions</a> rather than existing as an isolated content experiment.',
+                        ],
+                    ],
                 ],
                 'faq' => [
                     [
@@ -397,7 +446,7 @@ class BlogPostSeeder extends Seeder
                         'a' => 'No invented schema should be used. Focus on valid structured data, strong content, and technical eligibility.',
                     ],
                 ],
-                'cta' => 'If you want this done properly, pair <a href="/search-engine-optimization">SEO implementation</a> with <a href="/web-design-development">better page structure</a>.',
+                'cta' => 'If you want this done properly, pair <a href="/search-engine-optimization">SEO implementation</a>, <a href="/web-design-development">better page structure</a>, and <a href="/contact">a scoped AI visibility plan</a>.',
             ],
             [
                 'title' => 'UK Cyber Security Checklist for Growing Businesses in 2026',
@@ -436,6 +485,13 @@ class BlogPostSeeder extends Seeder
                             'Read this with <a href="/blog/managed-it-services-uk-what-growing-businesses-should-expect-in-2026">managed IT expectations</a>, <a href="/blog/why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm">CRM process maturity</a>, and <a href="/blog/technical-seo-checklist-for-uk-websites-before-launch">technical website governance</a>.',
                         ],
                     ],
+                    [
+                        'title' => 'What buyers should verify before committing',
+                        'paragraphs' => [
+                            'Ask who owns hosting, email, MFA, backup testing, incident response, and domain access. Weak answers on these areas usually show a weak operational model behind the scenes.',
+                            'For service-led businesses, stronger cyber hygiene also protects sales continuity, client trust, and delivery quality. That makes it a commercial decision as much as a technical one.',
+                        ],
+                    ],
                 ],
                 'faq' => [
                     [
@@ -447,7 +503,7 @@ class BlogPostSeeder extends Seeder
                         'a' => 'No. It is also a leadership, process, and governance issue because business-critical systems depend on clear ownership and response plans.',
                     ],
                 ],
-                'cta' => 'Our <a href="/software-development">software systems</a> and <a href="/services">digital delivery services</a> can be planned with resilience in mind from the start.',
+                'cta' => 'Our <a href="/software-development">software systems</a>, <a href="/services">digital delivery services</a>, and <a href="/contact">project planning support</a> can be structured with resilience in mind from the start.',
             ],
             [
                 'title' => 'Managed IT Services UK: What Growing Businesses Should Expect in 2026',
@@ -487,6 +543,13 @@ class BlogPostSeeder extends Seeder
                             'This topic links naturally with <a href="/blog/uk-cyber-security-checklist-for-growing-businesses-in-2026">cyber resilience</a>, <a href="/blog/why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm">CRM operations</a>, and <a href="/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites">revenue-generating website systems</a>.',
                         ],
                     ],
+                    [
+                        'title' => 'How managed IT supports revenue and delivery',
+                        'paragraphs' => [
+                            'When IT ownership is clean, the business responds faster, recovers faster, and handles software change with less risk. That has a direct effect on delivery reliability and client confidence.',
+                            'The strongest providers understand infrastructure, operational systems, and commercial dependencies together. That is where managed IT becomes genuinely useful for growth-stage UK companies.',
+                        ],
+                    ],
                 ],
                 'faq' => [
                     [
@@ -498,7 +561,7 @@ class BlogPostSeeder extends Seeder
                         'a' => 'Ownership, SLAs, backup testing, access control, cyber procedures, and how the provider handles your most critical operational systems.',
                     ],
                 ],
-                'cta' => 'If your business relies on software-heavy workflows, explore our <a href="/services">service stack</a> and <a href="/contact">delivery planning</a>.',
+                'cta' => 'If your business relies on software-heavy workflows, explore our <a href="/services">service stack</a>, <a href="/software-development">software delivery scope</a>, and <a href="/contact">delivery planning</a>.',
             ],
             [
                 'title' => 'Software Development Company Stoke-on-Trent: How to Choose the Right UK Partner',
@@ -536,6 +599,13 @@ class BlogPostSeeder extends Seeder
                             'It also connects well with <a href="/blog/custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026">software pricing guidance</a> and <a href="/blog/why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm">CRM workflow planning</a>.',
                         ],
                     ],
+                    [
+                        'title' => 'What usually wins trust faster with local buyers',
+                        'paragraphs' => [
+                            'Buyers usually trust suppliers more quickly when the page shows plain-language discovery steps, practical delivery proof, clear support expectations, and realistic pricing logic.',
+                            'That is why local commercial pages should not stop at location relevance. They should also make it easy to move into a scoped conversation without confusion or doubt.',
+                        ],
+                    ],
                 ],
                 'faq' => [
                     [
@@ -547,7 +617,7 @@ class BlogPostSeeder extends Seeder
                         'a' => 'Not always, but local relevance can help trust, communication, and business understanding for service-led UK projects.',
                     ],
                 ],
-                'cta' => 'If you want a custom plan for your project, review our <a href="/software-development">software services</a> and <a href="/contact">book a discovery call</a>.',
+                'cta' => 'If you want a custom plan for your project, review our <a href="/software-development">software services</a>, <a href="/pricing">pricing guidance</a>, and <a href="/contact">book a discovery call</a>.',
             ],
             [
                 'title' => 'Subscription Software Development UK: How SaaS Products Are Planned, Priced and Built',
@@ -1399,7 +1469,9 @@ class BlogPostSeeder extends Seeder
                     'category' => $post['category'],
                     'author_name' => 'ARS Developer Team',
                     'excerpt' => $post['excerpt'],
-                    'content' => $this->buildContent($post),
+                    'content' => $this->buildContent(array_merge($post, [
+                        'featured_image_for_content' => $postImageMap[$slug] ?? 'assets/images/blog/it-seo-growth.svg',
+                    ])),
                     'meta_title' => $post['meta_title'] ?? $post['title'],
                     'meta_description' => $post['meta_description'] ?? $post['excerpt'],
                     'meta_keywords' => $post['meta_keywords'],
@@ -1433,6 +1505,10 @@ class BlogPostSeeder extends Seeder
             $html .= '<p>' . $paragraph . '</p>';
         }
 
+        if (!empty($post['featured_image_for_content'])) {
+            $html .= $this->buildInlineImageBlock($post['featured_image_for_content'], $post['title'] ?? 'Blog illustration');
+        }
+
         foreach ($post['sections'] ?? [] as $section) {
             $html .= '<h2>' . $section['title'] . '</h2>';
 
@@ -1447,6 +1523,31 @@ class BlogPostSeeder extends Seeder
                 }
                 $html .= '</ul>';
                 $html .= '<p>' . $this->buildSectionSupportParagraph($post, $section) . '</p>';
+            }
+        }
+
+        $strategicSection = $this->buildStrategicDeepDiveSection($post);
+        if (!empty($strategicSection)) {
+            $html .= '<h2>' . $strategicSection['title'] . '</h2>';
+            foreach ($strategicSection['paragraphs'] as $paragraph) {
+                $html .= '<p>' . $paragraph . '</p>';
+            }
+        }
+
+        $decisionSection = $this->buildBuyerDecisionSection($post);
+        if (!empty($decisionSection)) {
+            $html .= '<h2>' . $decisionSection['title'] . '</h2>';
+            if (!empty($decisionSection['paragraphs'])) {
+                foreach ($decisionSection['paragraphs'] as $paragraph) {
+                    $html .= '<p>' . $paragraph . '</p>';
+                }
+            }
+            if (!empty($decisionSection['list'])) {
+                $html .= '<ul>';
+                foreach ($decisionSection['list'] as $item) {
+                    $html .= '<li>' . $item . '</li>';
+                }
+                $html .= '</ul>';
             }
         }
 
@@ -1481,6 +1582,9 @@ class BlogPostSeeder extends Seeder
                 $html .= '<p>' . $item['a'] . '</p>';
             }
         }
+
+        $html .= '<h2>Further Reading</h2>';
+        $html .= '<p>' . $this->buildFurtherReadingParagraph($post) . '</p>';
 
         if (!empty($post['cta'])) {
             $html .= '<h2>Next Step</h2>';
@@ -1517,6 +1621,7 @@ class BlogPostSeeder extends Seeder
         return [
             'If a business is actively researching ' . $topic . ', they usually want clear next steps rather than broad theory. The strongest pages help the reader compare options, understand likely timelines, and see what affects scope, cost, or implementation quality.',
             'This is also why long-form content tends to perform better when it stays commercially focused. Search visibility improves when the article answers related questions thoroughly, but conversions improve when the page also explains proof, process, and realistic outcomes in plain language.',
+            'For UK service brands, the best-performing pages also reduce commercial ambiguity. They show what happens first, what gets quoted, what affects timelines, and where the engagement fits alongside pricing, implementation, and support.',
         ];
     }
 
@@ -1546,19 +1651,254 @@ class BlogPostSeeder extends Seeder
     {
         $topic = $this->extractTopicPhrase($post);
 
-        return [
+        $items = [
             'Define the exact commercial goal behind ' . $topic . ' before expanding delivery scope.',
             'Align the page with related service, pricing, case-study, and FAQ content so Google and buyers can follow the topic clearly.',
             'Use Search Console data, internal linking, and conversion tracking to measure whether the page is attracting useful visibility instead of low-value impressions.',
             'Review the content regularly so it stays relevant, trustworthy, and commercially stronger than generic competitor pages.',
         ];
+
+        $extraItems = [
+            'uk-seo-growth-system-2026-aeo-geo-eeat-guide' => 'Pair the pillar with one pricing article, one implementation article, and one proof-based case study so the cluster covers both research and buying intent.',
+            'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites' => 'Check that your main CTA, trust proof, pricing guidance, and booking flow all work cleanly on mobile before scaling more traffic.',
+            'wordpress-vs-shopify-for-uk-businesses-which-platform-fits-your-growth-stage' => 'Map the platform decision against content depth, SEO control, checkout needs, and internal workflow complexity rather than theme preference alone.',
+            'technical-seo-checklist-for-uk-websites-before-launch' => 'Run a pre-launch crawl, redirect test, metadata review, and Search Console handover checklist before the site is exposed to live traffic.',
+            'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm' => 'Prioritise lead ownership, status visibility, and reminders before expanding the CRM into larger automation or reporting modules.',
+            'landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries' => 'Track qualified enquiry rate and sales acceptance rate after changes so the page is judged on commercial outcome, not vanity conversions alone.',
+            'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility' => 'Optimise the pages already earning impressions first, then expand the cluster with supporting question-led content around the same buyer journey.',
+            'uk-cyber-security-checklist-for-growing-businesses-in-2026' => 'Document ownership of domains, hosting, backups, MFA, and supplier access before treating cyber readiness as complete.',
+            'managed-it-services-uk-what-growing-businesses-should-expect-in-2026' => 'Review who owns recovery, vendor coordination, and application-level support before signing any support retainer.',
+            'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner' => 'Compare proposal clarity, milestone structure, support commitments, and technical ownership before choosing the supplier that looks cheapest on paper.',
+        ];
+
+        $slug = (string) ($post['slug'] ?? '');
+        if (isset($extraItems[$slug])) {
+            $items[] = $extraItems[$slug];
+        }
+
+        return $items;
     }
 
     private function buildClosingParagraph(array $post): string
     {
         $topic = $this->extractTopicPhrase($post);
 
-        return 'If your team is reviewing ' . $topic . ' right now, the safest next step is usually a scoped conversation that covers delivery fit, commercial priorities, and the fastest path to a useful first result. That tends to produce better outcomes than choosing based on vague promises or generic package language.';
+        $slug = (string) ($post['slug'] ?? '');
+
+        $closers = [
+            'uk-seo-growth-system-2026-aeo-geo-eeat-guide' => 'If your team is reviewing ' . $topic . ' right now, the strongest next move is usually a scoped roadmap that ties Search Console data, service-page improvement, internal linking, and AI-search readiness into one measurable plan. That approach tends to move faster than publishing disconnected content without a commercial structure behind it.',
+            'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites' => 'If your team is reviewing ' . $topic . ' right now, the best next step is a conversion-focused review of the pages already attracting traffic. That usually reveals where clarity, trust, and CTA flow can be tightened before more budget is spent on SEO or paid traffic.',
+            'wordpress-vs-shopify-for-uk-businesses-which-platform-fits-your-growth-stage' => 'If your team is weighing platforms, the safest next step is a scoped comparison based on content model, SEO requirements, workflow complexity, and growth-stage priorities. That usually prevents expensive rework later.',
+            'technical-seo-checklist-for-uk-websites-before-launch' => 'If a launch is approaching, the safest next step is a final technical QA pass covering redirects, metadata, crawlability, analytics, and post-launch checks. Small misses here can create outsized ranking losses.',
+            'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm' => 'If your operations are stretching spreadsheets too far, the best next step is mapping the lead, handover, and reporting process before talking about features. That creates a CRM plan that supports revenue instead of adding more admin noise.',
+            'landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries' => 'If campaigns are already running, the strongest next step is a page-by-page conversion review tied to qualified leads, not just click volume. That usually produces faster ROI than broad redesigns.',
+            'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility' => 'If your team wants stronger AI search visibility, the safest next move is improving high-impression commercial pages first, then expanding support content around the same cluster. That usually creates better click-through and trust than trend-led content alone.',
+            'uk-cyber-security-checklist-for-growing-businesses-in-2026' => 'If resilience matters to your commercial workflow, the best next step is a practical review of ownership, recovery readiness, and supplier control. The strongest cyber improvements usually start with governance, not just tooling.',
+            'managed-it-services-uk-what-growing-businesses-should-expect-in-2026' => 'If you are reviewing managed support, the strongest next step is comparing providers on accountability, resilience, and business-critical application support, not just ticket promises. That usually reveals the real operational fit.',
+            'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner' => 'If you are comparing local software partners, the safest next step is a scoped conversation around discovery, milestones, support, and commercial ownership. That tends to filter out weak proposals very quickly.',
+        ];
+
+        return $closers[$slug] ?? 'If your team is reviewing ' . $topic . ' right now, the safest next step is usually a scoped conversation that covers delivery fit, commercial priorities, and the fastest path to a useful first result. That tends to produce better outcomes than choosing based on vague promises or generic package language.';
+    }
+
+    private function buildInlineImageBlock(string $path, string $alt): string
+    {
+        $safePath = e(asset($path));
+        $safeAlt = e($alt);
+
+        return '<figure class="blog-inline-figure" style="margin:32px 0; text-align:center;">'
+            . '<img src="' . $safePath . '" alt="' . $safeAlt . '" style="width:100%; max-width:860px; border-radius:24px; display:block; margin:0 auto;">'
+            . '</figure>';
+    }
+
+    private function buildFurtherReadingParagraph(array $post): string
+    {
+        $slug = (string) ($post['slug'] ?? '');
+
+        $map = [
+            'uk-seo-growth-system-2026-aeo-geo-eeat-guide' => 'Pair this with <a href="/blog/google-search-console-insights-uk-how-to-find-easy-seo-wins-faster">Search Console insight reviews</a>, <a href="/blog/answer-engine-optimization-for-uk-service-pages-how-to-rank-in-chatgpt-google-ai-and-ai-mode">answer engine optimization for service pages</a>, and our <a href="/search-engine-optimization">SEO service</a> if you want a full UK search growth system.',
+            'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites' => 'Continue with <a href="/blog/landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries">landing page CRO fixes</a>, <a href="/blog/ai-website-development-uk-how-service-businesses-build-faster-and-convert-better">AI-assisted website delivery</a>, and our <a href="/web-design-development">website development service</a>.',
+            'wordpress-vs-shopify-for-uk-businesses-which-platform-fits-your-growth-stage' => 'Continue with <a href="/blog/website-development-company-stoke-on-trent-what-businesses-should-expect">website planning guidance</a>, <a href="/pricing">pricing and scope</a>, and our <a href="/services">commercial delivery services</a>.',
+            'technical-seo-checklist-for-uk-websites-before-launch' => 'Continue with <a href="/blog/google-search-console-insights-uk-how-to-find-easy-seo-wins-faster">Search Console monitoring</a>, <a href="/blog/ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility">AI visibility planning</a>, and our <a href="/search-engine-optimization">technical SEO support</a>.',
+            'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm' => 'Continue with <a href="/blog/crm-automation-uk-how-custom-portals-reduce-admin-and-speed-up-sales">CRM automation planning</a>, <a href="/blog/custom-crm-development-cost-uk-what-affects-budget-and-timeline">CRM budgeting</a>, and our <a href="/software-development">custom software service</a>.',
+            'landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries' => 'Continue with <a href="/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites">conversion-focused website strategy</a>, <a href="/blog/why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm">lead-handling workflows</a>, and our <a href="/digital-marketing">digital marketing service</a>.',
+            'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility' => 'Continue with <a href="/blog/ai-seo-services-uk-how-businesses-turn-ai-search-visibility-into-qualified-leads">AI SEO lead strategy</a>, <a href="/blog/llm-seo-uk-how-to-structure-service-pages-for-chatgpt-google-ai-and-answer-engines">LLM SEO page structure</a>, and our <a href="/search-engine-optimization">SEO service</a>.',
+            'uk-cyber-security-checklist-for-growing-businesses-in-2026' => 'Continue with <a href="/blog/managed-it-services-uk-what-growing-businesses-should-expect-in-2026">managed IT planning</a>, <a href="/services">service delivery scope</a>, and our <a href="/contact">project planning process</a> if resilience matters to your workflow.',
+            'managed-it-services-uk-what-growing-businesses-should-expect-in-2026' => 'Continue with <a href="/blog/uk-cyber-security-checklist-for-growing-businesses-in-2026">cyber security planning</a>, <a href="/blog/why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm">CRM operations</a>, and our <a href="/services">delivery services</a>.',
+            'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner' => 'Continue with <a href="/blog/custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026">software pricing guidance</a>, <a href="/portfolio">portfolio proof</a>, and our <a href="/software-development">software development service</a>.',
+        ];
+
+        return $map[$slug] ?? 'Continue with our <a href="/services">services</a>, <a href="/pricing">pricing guidance</a>, and <a href="/contact">contact page</a> if you want a commercial plan built around this topic.';
+    }
+
+    private function buildStrategicDeepDiveSection(array $post): ?array
+    {
+        $slug = (string) ($post['slug'] ?? '');
+
+        $map = [
+            'uk-seo-growth-system-2026-aeo-geo-eeat-guide' => [
+                'title' => 'How to turn this SEO model into a 12-month growth plan',
+                'paragraphs' => [
+                    'A strong UK SEO system usually starts with one commercial pillar, then expands through pricing content, implementation guides, case-study proof, and supporting blogs that answer buying questions in the same cluster. This creates a structure that is easier for Google to interpret and easier for buyers to trust.',
+                    'The best results usually come when service pages, blog content, and contact paths all reinforce the same commercial theme. That means the cluster should link naturally into <a href="/services">services</a>, <a href="/pricing">pricing context</a>, and <a href="/contact">project planning</a> rather than leaving the visitor in a purely informational loop.',
+                ],
+            ],
+            'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites' => [
+                'title' => 'How stronger page structure creates more qualified leads',
+                'paragraphs' => [
+                    'The most effective conversion-focused websites do not just look cleaner. They remove friction across the entire enquiry path. That means faster understanding of the offer, clearer trust signals, easier decision support, and stronger follow-up expectations once the visitor acts.',
+                    'Pages that connect directly into <a href="/portfolio">proof</a>, <a href="/pricing">pricing guidance</a>, and <a href="/contact">a clear next step</a> tend to convert more consistently than pages that ask for trust without showing delivery substance.',
+                ],
+            ],
+            'wordpress-vs-shopify-for-uk-businesses-which-platform-fits-your-growth-stage' => [
+                'title' => 'How the right platform choice reduces future rebuild cost',
+                'paragraphs' => [
+                    'Platform choice has a long tail. It affects content publishing, SEO architecture, internal processes, feature expansion, and the cost of future changes. That is why the strongest decision is the one that fits the commercial model, not the loudest recommendation online.',
+                    'For UK service and ecommerce brands, the decision often becomes clearer when compared against <a href="/web-design-development">website delivery</a>, <a href="/services">service stack fit</a>, and the level of control needed for future content and conversion optimisation.',
+                ],
+            ],
+            'technical-seo-checklist-for-uk-websites-before-launch' => [
+                'title' => 'Why launch-day SEO should be treated like risk management',
+                'paragraphs' => [
+                    'Technical SEO at launch is really a risk-control exercise. The goal is to protect visibility, attribution, page experience, and revenue-critical landing pages before avoidable errors can affect rankings or lead flow.',
+                    'That is why launch preparation should sit close to <a href="/web-design-development">build QA</a>, <a href="/search-engine-optimization">technical SEO</a>, and <a href="/contact">delivery planning</a> rather than being treated as an afterthought once the site is already live.',
+                ],
+            ],
+            'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm' => [
+                'title' => 'How CRM maturity improves sales and delivery at the same time',
+                'paragraphs' => [
+                    'When CRM workflows are structured properly, the business gains more than cleaner reporting. It usually improves response times, handovers, quoting visibility, client communication, and the ability to see which channels actually produce commercial value.',
+                    'This is why CRM planning should be tied to <a href="/software-development">software delivery</a>, <a href="/pricing">budget expectations</a>, and <a href="/contact">process discovery</a> rather than being treated as a standalone admin tool project.',
+                ],
+            ],
+            'landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries' => [
+                'title' => 'How CRO should connect with revenue quality',
+                'paragraphs' => [
+                    'The best-performing landing pages are built for qualified lead quality, not just form completions. They make fit clearer, objections smaller, and next steps more credible for the right buyer.',
+                    'That usually means connecting the page to <a href="/pricing">pricing expectations</a>, <a href="/portfolio">delivery proof</a>, and <a href="/contact">fast follow-up paths</a> so the user understands what happens after they enquire.',
+                ],
+            ],
+            'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility' => [
+                'title' => 'How AI visibility should support commercial growth',
+                'paragraphs' => [
+                    'AI visibility matters most when it drives the user into a stronger destination page. The click becomes more valuable when the next page clearly explains service fit, process, proof, and the next action without forcing more research.',
+                    'That is why AI-search work should reinforce <a href="/search-engine-optimization">SEO execution</a>, <a href="/services">service clarity</a>, and <a href="/contact">conversion paths</a> rather than exist as a disconnected content experiment.',
+                ],
+            ],
+            'uk-cyber-security-checklist-for-growing-businesses-in-2026' => [
+                'title' => 'How cyber readiness protects operational growth',
+                'paragraphs' => [
+                    'Cyber resilience is now closely tied to delivery continuity, lead handling, payment systems, and team productivity. In practical terms, weak cyber governance creates commercial drag even before a major incident happens.',
+                    'That is why stronger controls often need to sit beside <a href="/services">service delivery planning</a>, <a href="/software-development">system ownership</a>, and <a href="/contact">supplier review</a> rather than inside a purely technical checklist.',
+                ],
+            ],
+            'managed-it-services-uk-what-growing-businesses-should-expect-in-2026' => [
+                'title' => 'What stronger managed support looks like in practice',
+                'paragraphs' => [
+                    'Good managed support should reduce decision fatigue. It should give leaders clearer ownership, better visibility on risk, and confidence that business-critical systems can be maintained without constant reactive firefighting.',
+                    'That usually becomes most useful when it supports <a href="/software-development">software-led workflows</a>, <a href="/services">commercial operations</a>, and <a href="/contact">future project planning</a> in one joined-up support model.',
+                ],
+            ],
+            'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner' => [
+                'title' => 'How to compare software suppliers more effectively',
+                'paragraphs' => [
+                    'The fastest way to compare suppliers is to look at commercial clarity, not just technical jargon. Strong suppliers can usually explain discovery, delivery structure, budget logic, support model, and project ownership in language the buyer can actually use.',
+                    'That is why local commercial intent pages should link directly into <a href="/pricing">pricing guidance</a>, <a href="/portfolio">work examples</a>, and <a href="/contact">discovery calls</a> rather than relying on vague credibility signals alone.',
+                ],
+            ],
+        ];
+
+        return $map[$slug] ?? null;
+    }
+
+    private function buildBuyerDecisionSection(array $post): ?array
+    {
+        $slug = (string) ($post['slug'] ?? '');
+
+        $map = [
+            'uk-seo-growth-system-2026-aeo-geo-eeat-guide' => [
+                'title' => 'Questions decision-makers should ask before investing further',
+                'list' => [
+                    'Which service pages already earn impressions and deserve deeper optimisation first?',
+                    'Where are buyers dropping out before reaching pricing, booking, or contact actions?',
+                    'Which supporting articles should pass more internal authority into the main commercial pages?',
+                ],
+            ],
+            'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites' => [
+                'title' => 'Questions to ask before redesigning or rebuilding',
+                'list' => [
+                    'Which pages already attract the most commercial traffic?',
+                    'Where do users hesitate before booking, enquiring, or requesting pricing?',
+                    'What trust proof is missing near the main CTA on desktop and mobile?',
+                ],
+            ],
+            'wordpress-vs-shopify-for-uk-businesses-which-platform-fits-your-growth-stage' => [
+                'title' => 'Questions to ask before committing to one platform',
+                'list' => [
+                    'Will content depth or catalog simplicity matter more over the next 12 months?',
+                    'How much custom workflow logic does the business expect to add later?',
+                    'Which platform better supports your SEO, reporting, and internal process model?',
+                ],
+            ],
+            'technical-seo-checklist-for-uk-websites-before-launch' => [
+                'title' => 'Questions to ask before the launch is signed off',
+                'list' => [
+                    'Have redirects, canonicals, sitemaps, and analytics all been tested manually?',
+                    'Do the highest-value landing pages load fast and show the correct metadata?',
+                    'Is there a post-launch review plan for Search Console, crawl errors, and conversion tracking?',
+                ],
+            ],
+            'why-growing-teams-in-the-uk-move-from-spreadsheets-to-custom-crm' => [
+                'title' => 'Questions to ask before building the first CRM phase',
+                'list' => [
+                    'Which lead and delivery workflows are costing the team the most time today?',
+                    'Which dashboards, reminders, or ownership rules would improve response quality fastest?',
+                    'How should the CRM connect with website leads, quoting, invoicing, and project delivery?',
+                ],
+            ],
+            'landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries' => [
+                'title' => 'Questions to ask before changing the campaign page',
+                'list' => [
+                    'Does the first fold match the exact promise made in the ad or keyword?',
+                    'Is the form collecting only what is needed at this stage?',
+                    'Can the user see proof, next steps, and likely response time without scrolling too far?',
+                ],
+            ],
+            'ai-overviews-seo-uk-how-service-businesses-win-ai-search-visibility' => [
+                'title' => 'Questions to ask before expanding AI-search content',
+                'list' => [
+                    'Which existing pages already have enough authority to improve first?',
+                    'Do your service pages provide extractable answers and strong follow-up click reasons?',
+                    'Where should AI-search articles link into pricing, proof, and contact flows?',
+                ],
+            ],
+            'uk-cyber-security-checklist-for-growing-businesses-in-2026' => [
+                'title' => 'Questions leadership should ask right now',
+                'list' => [
+                    'Who owns domain, hosting, email, MFA, and backup testing?',
+                    'What happens operationally if a key account or system is compromised tomorrow?',
+                    'Which suppliers would the team contact first during a real incident?',
+                ],
+            ],
+            'managed-it-services-uk-what-growing-businesses-should-expect-in-2026' => [
+                'title' => 'Questions to ask before signing a managed support contract',
+                'list' => [
+                    'Who owns infrastructure, application support, and incident coordination?',
+                    'How are backups, monitoring, and recovery testing actually handled?',
+                    'Will the provider support the software and workflow systems that affect revenue?',
+                ],
+            ],
+            'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner' => [
+                'title' => 'Questions to ask in the first supplier conversation',
+                'list' => [
+                    'How is discovery handled before final scope and pricing are agreed?',
+                    'What happens if the requirements evolve during delivery?',
+                    'What support, maintenance, and ownership will remain after launch?',
+                ],
+            ],
+        ];
+
+        return $map[$slug] ?? null;
     }
 
     private function extractTopicPhrase(array $post): string
