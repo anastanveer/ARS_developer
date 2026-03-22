@@ -1,5 +1,17 @@
 @php
-    $page_title = 'Blog';
+    $page_title = 'AI SEO Blog | UK Software Development, AEO, GEO and Growth Insights';
+    $seoOverride = [
+        'title' => 'AI SEO Blog UK | AEO, GEO, AI Search and Software Growth Insights',
+        'description' => 'Read AI SEO, AEO, GEO, technical SEO, software growth, CRM, ecommerce, and conversion insights for UK businesses building search visibility and lead generation.',
+        'keywords' => 'ai seo blog uk, aeo blog uk, geo seo uk, answer engine optimization uk, technical seo blog uk, software growth blog uk, ecommerce seo uk',
+        'related_links' => [
+            '/services',
+            '/search-engine-optimization',
+            '/software-development',
+            '/pricing',
+            '/contact',
+        ],
+    ];
 @endphp
 @include('layouts.header')
 <style>
@@ -164,11 +176,11 @@
     </div>
     <div class="container">
         <div class="page-header__inner">
-            <h1>Our <span>Blogs</span></h1><div class="thm-breadcrumb__inner">
+            <h1>AI SEO, AEO and <span>Growth Blogs</span></h1><div class="thm-breadcrumb__inner">
                 <ul class="thm-breadcrumb list-unstyled">
                     <li><i class="icon-home"></i><a href="{{ url('/') }}">Home</a></li>
                     <li><span></span></li>
-                    <li>Our Blogs</li>
+                    <li>AI SEO and Growth Blogs</li>
                 </ul>
             </div>
         </div>
@@ -180,7 +192,7 @@
         <div class="row blog-search-row">
             <div class="col-xl-9 col-lg-10">
                 <form method="get" action="{{ route('blog.index') }}" class="blog-search-form">
-                    <input type="text" name="q" value="{{ $query }}" class="blog-search-input" placeholder="Search blog by SEO, CRM, WordPress, ecommerce...">
+                    <input type="text" name="q" value="{{ $query }}" class="blog-search-input" placeholder="Search blog by AI SEO, AEO, GEO, CRM, SaaS, ecommerce...">
                     <button type="submit" class="thm-btn"><span class="icon-right"></span> Search</button>
                     @if($query !== '')
                         <a href="{{ route('blog.index') }}" class="thm-btn thm-btn-two">Reset</a>
@@ -190,8 +202,8 @@
         </div>
 
         <div class="blog-cluster-banner">
-            <h2>Start with the UK SEO Growth Hub</h2>
-            <p>Read the pillar guide first, then go deeper into supporting posts for AEO, GEO, EEAT, technical SEO, and conversion-focused implementation.</p>
+            <h2>Start with the UK AI SEO Growth Hub</h2>
+            <p>Read the pillar guide first, then go deeper into supporting posts for AI SEO, AEO, GEO, EEAT, technical SEO, and conversion-focused implementation.</p>
             <a href="{{ route('seo.hub') }}" class="thm-btn thm-btn-two"><span class="icon-right"></span>Open Pillar Guide</a>
         </div>
 

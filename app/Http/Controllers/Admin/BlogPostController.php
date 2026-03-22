@@ -19,9 +19,9 @@ class BlogPostController extends Controller
     public function index(): View
     {
         $posts = BlogPost::query()
-            ->orderByRaw('CASE WHEN sort_order = 0 THEN 1 ELSE 0 END')
-            ->orderBy('sort_order')
+            ->orderByRaw('CASE WHEN sort_order = 0 THEN 0 ELSE 1 END')
             ->orderByDesc('published_at')
+            ->orderBy('sort_order')
             ->orderByDesc('id')
             ->paginate(20);
 

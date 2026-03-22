@@ -1,5 +1,31 @@
 @php
     $page_title = 'UK SEO Growth Hub';
+    $seoOverride = [
+        'title' => 'UK AI SEO Growth Hub | AEO, GEO, EEAT and Buyer-Intent Strategy',
+        'description' => 'Explore ARSDeveloper's UK AI SEO Growth Hub covering AEO, GEO, EEAT, Search Console insights, entity SEO, and buyer-intent content strategy for stronger enquiries.',
+        'keywords' => 'uk ai seo growth hub, uk seo growth hub, ai seo uk, aeo uk, geo seo uk, eeat strategy uk, answer engine optimization uk, buyer intent seo uk',
+        'related_links' => [
+            '/search-engine-optimization',
+            '/services',
+            '/pricing',
+            '/portfolio',
+            '/contact',
+        ],
+        'faq_items' => [
+            [
+                'question' => 'What does AI SEO mean for a UK service business?',
+                'answer' => 'AI SEO means structuring pages, answers, proof, and internal links so your business can perform better in Google search, AI overviews, and answer engines.',
+            ],
+            [
+                'question' => 'How should buyer-intent SEO content be organised?',
+                'answer' => 'Use pillar pages for broad service themes, then publish supporting pricing, migration, comparison, and implementation pages around real buying questions.',
+            ],
+            [
+                'question' => 'Can Search Console insights be used to improve rankings faster?',
+                'answer' => 'Yes. Queries and pages that already earn impressions often give the fastest SEO wins when titles, headings, internal links, and content intent are improved.',
+            ],
+        ],
+    ];
 @endphp
 @include('layouts.header')
 
@@ -115,7 +141,7 @@
 <section class="seo-hub">
     <div class="container">
         <div class="seo-hub__panel seo-hub__qa">
-            <h2 class="section-title-two__title">AEO + GEO + EEAT Playbook for UK Buyer-Intent Growth</h2>
+            <h2 class="section-title-two__title">AI SEO, AEO + GEO Playbook for UK Buyer-Intent Growth</h2>
 
             <h3>What is the fastest way to make content AI Overview ready?</h3>
             <p>Start every important section with a direct answer in plain English, then expand with proof, examples, and internal links to service pages and case studies.</p>
@@ -130,6 +156,7 @@
                 <li>Question-first headings with concise answer blocks for featured snippets.</li>
                 <li>Entity-consistent schema for Organization, LocalBusiness, Article, and FAQ.</li>
                 <li>Buyer-intent internal links from insights to pricing, service, and contact pages.</li>
+                <li>Entity-aligned service pages built for Google search, AI overviews, and answer engines.</li>
                 <li>CWV-safe delivery: optimized images, stable layout dimensions, and reduced JS blocking.</li>
             </ul>
 
@@ -137,6 +164,7 @@
                 <a href="/services" class="seo-hub__chip">UK Software Services</a>
                 <a href="/pricing" class="seo-hub__chip">Pricing & Plans</a>
                 <a href="/portfolio" class="seo-hub__chip">Case Studies</a>
+                <a href="/blog" class="seo-hub__chip">AI SEO Articles</a>
                 <a href="/contact" class="seo-hub__chip">Book Strategy Call</a>
             </div>
         </div>

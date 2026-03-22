@@ -983,7 +983,93 @@
     };
   }
 
+  function ensureRecaptchaBox(form) {
+    if (!window.arsRecaptchaEnabled || !window.arsRecaptchaSiteKey) {
+      return null;
+    }
+
+    var existing = form.querySelector(".ars-recaptcha-box");
+    if (existing) {
+      return existing;
+    }
+
+    var box = document.createElement("div");
+    box.className = "ars-recaptcha-box";
+    box.innerHTML = '<div class="g-recaptcha" data-sitekey="' + window.arsRecaptchaSiteKey + '"></div>';
+
+    var resultBox = form.parentNode ? form.parentNode.querySelector(".result") : null;
+    var submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+
+    if (resultBox && resultBox.parentNode) {
+      resultBox.parentNode.insertBefore(box, resultBox);
+    } else if (submitButton && submitButton.parentNode) {
+      submitButton.parentNode.insertBefore(box, submitButton);
+    } else {
+      form.appendChild(box);
+    }
+
+    return box;
+  }
+
+  function renderRecaptchaWidgets() {
+    if (!window.arsRecaptchaEnabled || !window.grecaptcha || !window.grecaptcha.render) {
+      return;
+    }
+
+    document.querySelectorAll(".contact-form-validated, .newsletter-form-validated, .meeting-form-validated").forEach(function (form) {
+      ensureRecaptchaBox(form);
+    });
+
+    document.querySelectorAll(".ars-recaptcha-box .g-recaptcha").forEach(function (node) {
+      if (node.getAttribute("data-widget-rendered") === "1") {
+        return;
+      }
+
+      var widgetId = window.grecaptcha.render(node, {
+        sitekey: window.arsRecaptchaSiteKey
+      });
+
+      node.setAttribute("data-widget-rendered", "1");
+      node.setAttribute("data-widget-id", String(widgetId));
+    });
+  }
+
+  function getRecaptchaToken(form) {
+    var field = form.querySelector('textarea[name="g-recaptcha-response"]');
+    return field && field.value ? field.value.trim() : "";
+  }
+
+  function resetRecaptcha(form) {
+    if (!window.grecaptcha) {
+      return;
+    }
+
+    var node = form.querySelector(".ars-recaptcha-box .g-recaptcha[data-widget-id]");
+    if (!node) {
+      return;
+    }
+
+    window.grecaptcha.reset(parseInt(node.getAttribute("data-widget-id"), 10));
+  }
+
+  function validateRecaptcha(form) {
+    if (!window.arsRecaptchaEnabled) {
+      return true;
+    }
+
+    if (!getRecaptchaToken(form)) {
+      showSubmissionPopup("error", "Verification Required", "Please complete the Google reCAPTCHA check.");
+      return false;
+    }
+
+    return true;
+  }
+
   function submitAjaxForm(form) {
+    if (!validateRecaptcha(form)) {
+      return false;
+    }
+
     $.ajax({
       url: $(form).attr("action"),
       type: "POST",
@@ -1011,6 +1097,7 @@
         }
         showSubmissionPopup("success", "Done", message);
         form.reset();
+        resetRecaptcha(form);
         if (response && response.redirect_url) {
           setTimeout(function () {
             window.location.href = response.redirect_url;
@@ -1026,6 +1113,7 @@
           $(form).parent().find(".result").html('<p class="contact-error-message">' + escapeHtml(message) + "</p>");
         }
         showSubmissionPopup("error", "Not Sent", message);
+        resetRecaptcha(form);
       }
     });
   }
@@ -1071,6 +1159,16 @@
         }
       });
     });
+  }
+
+  renderRecaptchaWidgets();
+  if (window.arsRecaptchaEnabled) {
+    var recaptchaReady = setInterval(function () {
+      if (window.grecaptcha && window.grecaptcha.render) {
+        clearInterval(recaptchaReady);
+        renderRecaptchaWidgets();
+      }
+    }, 300);
   }
 
   function escapeHtml(value) {
@@ -1302,6 +1400,9 @@
         showStep(2);
         return;
       }
+      if (!validateRecaptcha(form)) {
+        return;
+      }
 
       updateReview();
       setResult('', '');
@@ -1343,6 +1444,7 @@
           setResult('success', (response && response.message) ? response.message : 'Meeting booked successfully.');
           showSubmissionPopup('success', 'Booking Confirmed', (response && response.message) ? response.message : 'Meeting booked successfully.');
           form.reset();
+          resetRecaptcha(form);
           showStep(1);
           if (submitBtn) {
             submitBtn.disabled = false;
@@ -1356,6 +1458,7 @@
           }
           setResult('error', message);
           showSubmissionPopup('error', 'Booking Failed', message);
+          resetRecaptcha(form);
           if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.innerHTML = submitLabel;

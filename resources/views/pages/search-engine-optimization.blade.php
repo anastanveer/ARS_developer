@@ -2,12 +2,13 @@
     $servicePageImage = \App\Support\ServicePageImages::get('search-engine-optimization');
     $page_title = 'Search Engine Optimization';
     $seoOverride = [
-        'title' => 'SEO Services for UK Businesses | ARS Developer Ltd',
-        'description' => 'Technical SEO, on-page optimisation, Search Console improvements, and content structure for UK businesses that want stronger rankings and enquiries.',
-        'keywords' => 'seo services uk, technical seo uk, local seo uk, search console optimization uk, on page seo uk',
+        'title' => 'SEO Services UK | Technical SEO, AI Search Visibility, AEO and Growth Support',
+        'description' => 'SEO services for UK businesses focused on technical SEO, on-page optimisation, AI search visibility, answer engine optimisation, Search Console improvements, and ranking growth that drives qualified enquiries.',
+        'keywords' => 'seo services uk, ai seo services uk, answer engine optimization uk, aeo services uk, technical seo services uk, search engine optimization uk, local seo uk, search console optimization uk, on page seo uk',
         'related_links' => [
             '/pricing',
             '/contact',
+            '/seo-hub',
             '/uk-growth-hub',
             '/blog/uk-seo-growth-system-2026-aeo-geo-eeat-guide',
             '/blog/google-search-console-insights-uk-how-to-find-easy-seo-wins-faster',
@@ -16,8 +17,8 @@
         ],
         'faq_items' => [
             [
-                'question' => 'What is the fastest SEO improvement for a UK service website?',
-                'answer' => 'The fastest wins usually come from fixing page intent, metadata, internal links, and technical blockers on URLs already earning impressions.',
+                'question' => 'What is usually the fastest SEO or AI search improvement for a UK service website?',
+                'answer' => 'The fastest wins usually come from fixing page intent, metadata, internal links, and technical blockers on URLs that are already earning impressions.',
             ],
             [
                 'question' => 'Do you improve local and national SEO together?',
@@ -110,17 +111,11 @@
                                 <img src="{{ \App\Support\ServicePageImages::toUrl($servicePageImage['image']) }}" alt="{{ $servicePageImage['alt'] }}">
                             </div>
                             <div class="services-details__content">
-                                <h3 class="services-details__title-1">SEO, Technical Audit and Performance Optimization
-                                    for Long-Term Organic Growth</h3>
+                                <h3 class="services-details__title-1">SEO and AI Search Services for UK Businesses That Need More Qualified Organic Leads</h3>
                                 <div class="services-details__shape-1"></div>
-                                <p class="services-details__text-1">Our SEO service is built for businesses that want
-                                    stable rankings and qualified organic enquiries. We audit technical foundations,
-                                    improve site structure, and align content with real keyword intent to increase
-                                    visibility in competitive markets.</p>
-                                <h3 class="services-details__title-2">SEO Service Framework</h3>
-                                <p class="services-details__text-2">We combine technical SEO, on-page optimization, and
-                                    content planning into a clear monthly workflow. Every action is prioritized by impact,
-                                    so your team sees measurable progress in rankings, clicks, and conversions.</p>
+                                <p class="services-details__text-1">Our SEO service is built for UK businesses that want stronger rankings, better click-through rates, more qualified enquiries, and stronger AI search visibility. We audit technical foundations, improve site structure, and align content with real keyword demand to increase visibility in competitive search results and answer engines.</p>
+                                <h3 class="services-details__title-2">SEO Delivery Framework</h3>
+                                <p class="services-details__text-2">We combine technical SEO, on-page optimisation, Search Console analysis, answer engine optimisation, AI search entity alignment, and content planning into a clear monthly workflow. Every action is prioritised by impact so your team sees measurable progress in rankings, clicks, AI search visibility, and enquiries.</p>
                                 <div class="services-details__points-box">
                                     <ul class="services-details__points-list list-unstyled">
                                         <li>
@@ -262,7 +257,7 @@
                                                             <!--Skill Box-->
                                                             <div class="progress-box">
                                                                 <div class="inner count-box">
-                                                                    <div class="text">Ranking Opportunity Coverage</div>
+                                                                    <div class="text">Ranking and AEO Coverage</div>
                                                                     <div class="bar">
                                                                         <div class="bar-innner">
                                                                             <div class="skill-percent">

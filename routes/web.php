@@ -16,8 +16,10 @@ use App\Http\Controllers\Admin\FinanceController;
 use App\Http\Controllers\Admin\InvoiceController as AdminInvoiceController;
 use App\Http\Controllers\Admin\OperationsController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Admin\BlogCommentController as AdminBlogCommentController;
 use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\ClientReviewController as AdminClientReviewController;
+use App\Http\Controllers\BlogCommentController;
 use App\Http\Controllers\BlogPageController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServicePageImageController;
@@ -177,6 +179,7 @@ Route::get('/blog', [BlogPageController::class, 'index'])->name('blog.index');
 Route::redirect('/blog-list', '/blog', 301);
 Route::get('/blog-details', [BlogPageController::class, 'detailsLegacy']);
 Route::get('/blog/{slug}', [BlogPageController::class, 'show'])->name('blog.show');
+Route::post('/blog/{slug}/comments', [BlogCommentController::class, 'store'])->name('blog.comments.store');
 Route::get('/uk-growth-hub', [SeoHubController::class, 'index'])->name('seo.hub');
 Route::get('/search/suggest', [SearchController::class, 'suggest'])->name('search.suggest');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
@@ -479,6 +482,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::middleware('admin.role:super_admin,advanced_admin,blog_seo_admin')->group(function () {
             Route::resource('/blog-posts', BlogPostController::class)->except('show');
+            Route::get('/blog-comments', [AdminBlogCommentController::class, 'index'])->name('blog-comments.index');
+            Route::post('/blog-comments/{comment}/approve', [AdminBlogCommentController::class, 'approve'])->name('blog-comments.approve');
+            Route::post('/blog-comments/{comment}/unapprove', [AdminBlogCommentController::class, 'unapprove'])->name('blog-comments.unapprove');
+            Route::delete('/blog-comments/{comment}', [AdminBlogCommentController::class, 'destroy'])->name('blog-comments.destroy');
             Route::get('/logs', [SystemLogController::class, 'index'])->name('logs.index');
         });
     });

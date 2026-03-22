@@ -1,9 +1,23 @@
 @php
     $page_title = 'Contact';
     $seoOverride = [
-        'title' => 'Contact UK Software Agency for Website, CRM and SEO Projects',
-        'description' => 'Contact ARSDeveloper to discuss website development, custom CRM, ecommerce, and SEO services for UK businesses.',
-        'keywords' => 'contact software agency uk, request website quote uk, crm consultation uk, ecommerce development inquiry uk, seo consultation uk',
+        'title' => 'Contact a UK Software Development Company | AI Websites, CRM and SEO Projects',
+        'description' => 'Contact ARSDeveloper to discuss AI-ready website development, custom CRM, ecommerce, workflow automation, and SEO projects for UK businesses.',
+        'keywords' => 'contact software development company uk, ai website consultation uk, request website quote uk, crm consultation uk, workflow automation consultation uk, ecommerce development inquiry uk, seo consultation uk',
+        'faq_items' => [
+            [
+                'question' => 'How do I contact ARSDeveloper about a software project?',
+                'answer' => 'You can use the contact form, book a planning meeting, or start a direct chat to discuss AI-ready websites, CRM systems, ecommerce, workflow automation, or SEO work.',
+            ],
+            [
+                'question' => 'Can I request pricing before booking a call?',
+                'answer' => 'Yes. You can submit your requirements and budget range first, and our team can respond with next-step guidance before a call.',
+            ],
+            [
+                'question' => 'Do you work with UK businesses only?',
+                'answer' => 'We primarily position our delivery for UK businesses, but we also support international teams where the project fit is clear.',
+            ],
+        ],
     ];
     $flowIntent = strtolower(trim((string) request()->query('intent', '')));
     $flowPlanRaw = trim((string) request()->query('plan', ''));

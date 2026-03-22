@@ -13,7 +13,7 @@
 ## NAP consistency standard
 - Name: ARS Developer Ltd
 - Address: 38 Elm Street, ST6 2HN, Stoke-on-Trent, United Kingdom
-- Phone: +44 747803428
+- Phone: +44 7478034328
 - Website: https://arsdeveloper.co.uk
 - Email: info@arsdeveloper.co.uk
 
@@ -28,4 +28,3 @@ Use exact NAP format in all citations to avoid entity fragmentation.
 ## Ongoing maintenance
 - Monthly audit for duplicates and outdated profiles.
 - Quarterly refresh: services, photos, and business updates.
-

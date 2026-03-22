@@ -41,7 +41,7 @@ class PaymentFlowTest extends TestCase
             'form_type' => 'pricing_order',
             'name' => 'Anas Tanveer',
             'email' => 'anas@example.com',
-            'phone' => '+44747803428',
+            'phone' => '+447478034328',
             'company' => 'ARS Developer Ltd',
             'project_type' => 'Ecommerce Scale (Subscription) - GBP 999.00 | Coupon FIRST20 Applied',
             'message' => 'Please start immediately with kickoff plan.',

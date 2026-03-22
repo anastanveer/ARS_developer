@@ -445,6 +445,31 @@
     }
 
     @media (max-width: 767px) {
+        .blog-details__author-copy,
+        .blog-details__comment-form-row,
+        .blog-details__comment-form-row--triple {
+            grid-template-columns: 1fr;
+        }
+
+        .blog-details__author-box,
+        .blog-details__comments {
+            padding: 20px 16px;
+        }
+
+        .blog-details__author-title,
+        .blog-details__comments-title {
+            font-size: 24px;
+        }
+
+        .blog-details__comment-form .btn {
+            width: 100%;
+            justify-self: stretch;
+        }
+
+        .blog-details__comment-form textarea {
+            min-height: 160px;
+        }
+
         .sidebar__single.sidebar__guide {
             padding: 18px;
         }
@@ -509,10 +534,265 @@
     }
 
     @media (max-width: 767px) {
+        .blog-details__author-copy,
+        .blog-details__comment-form-row,
+        .blog-details__comment-form-row--triple {
+            grid-template-columns: 1fr;
+        }
+
+        .blog-details__author-box,
+        .blog-details__comments {
+            padding: 20px 16px;
+        }
+
+        .blog-details__author-title,
+        .blog-details__comments-title {
+            font-size: 24px;
+        }
+
+        .blog-details__comment-form .btn {
+            width: 100%;
+            justify-self: stretch;
+        }
+
+        .blog-details__comment-form textarea {
+            min-height: 160px;
+        }
+
         .blog-details__img img {
             height: clamp(220px, 52vw, 320px);
         }
     }
+    .blog-details__author-box,
+    .blog-details__comments {
+        margin: 28px 0 0;
+        border: 1px solid #d6e6fb;
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 18px 45px rgba(16, 42, 77, 0.06);
+    }
+
+    .blog-details__author-head,
+    .blog-details__comments-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: flex-start;
+        margin-bottom: 18px;
+    }
+
+    .blog-details__author-kicker,
+    .blog-details__comments-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: #0f7fe9;
+        margin-bottom: 10px;
+    }
+
+    .blog-details__author-title,
+    .blog-details__comments-title {
+        margin: 0;
+        color: #102a4d;
+        font-size: 30px;
+        line-height: 1.15;
+    }
+
+    .blog-details__author-copy {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: 18px;
+        align-items: start;
+    }
+
+    .blog-details__author-avatar {
+        width: 92px;
+        height: 92px;
+        border-radius: 22px;
+        background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+        border: 1px solid #d6e6fb;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+    }
+
+    .blog-details__author-avatar img {
+        width: 62px;
+        height: 62px;
+        object-fit: contain;
+    }
+
+    .blog-details__author-role {
+        margin: 0 0 10px;
+        color: #0f7fe9;
+        font-weight: 700;
+    }
+
+    .blog-details__author-summary {
+        margin: 0 0 12px;
+        color: #4f6386;
+    }
+
+    .blog-details__author-points {
+        margin: 0;
+        padding-left: 18px;
+        color: #4f6386;
+    }
+
+    .blog-details__author-points li + li {
+        margin-top: 8px;
+    }
+
+    .blog-details__comments-note {
+        margin: 6px 0 0;
+        color: #6f84a6;
+        font-size: 14px;
+    }
+
+    .blog-details__comment-list {
+        display: grid;
+        gap: 18px;
+        margin: 0 0 24px;
+    }
+
+    .blog-details__comment-item {
+        border: 1px solid #deebff;
+        background: linear-gradient(180deg, #fbfdff 0%, #f5f9ff 100%);
+        border-radius: 16px;
+        padding: 18px;
+    }
+
+    .blog-details__comment-meta {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+
+    .blog-details__comment-meta strong {
+        color: #102a4d;
+    }
+
+    .blog-details__comment-meta span,
+    .blog-details__comment-meta a {
+        color: #6f84a6;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .blog-details__comment-body {
+        color: #4f6386;
+        margin: 0;
+        white-space: pre-line;
+        line-height: 1.8;
+    }
+
+    .blog-details__comment-form {
+        display: grid;
+        gap: 16px;
+    }
+
+    .blog-details__comment-form-row {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .blog-details__comment-form-row--triple {
+        grid-template-columns: 1.1fr 1.1fr .8fr;
+    }
+
+    .blog-details__comment-form label {
+        display: block;
+        margin-bottom: 8px;
+        color: #123561;
+        font-weight: 700;
+    }
+
+    .blog-details__comment-form input,
+    .blog-details__comment-form textarea {
+        width: 100%;
+        border: 1px solid #d3e2fb;
+        border-radius: 14px;
+        background: #fff;
+        color: #123561;
+        padding: 15px 16px;
+        font-size: 15px;
+    }
+
+    .blog-details__comment-form textarea {
+        min-height: 180px;
+        resize: vertical;
+    }
+
+    .blog-details__captcha-box {
+        border: 1px solid #d6e6fb;
+        background: #f8fbff;
+        border-radius: 14px;
+        padding: 16px;
+    }
+
+    .blog-details__captcha-box p {
+        margin: 0 0 10px;
+        color: #4f6386;
+    }
+
+    .blog-details__checkbox {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #4f6386;
+        font-weight: 500;
+    }
+
+    .blog-details__checkbox input {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+    }
+
+    .blog-details__comment-form .btn {
+        justify-self: start;
+        border: 0;
+        border-radius: 999px;
+        padding: 14px 26px;
+        background: linear-gradient(135deg, #0f63b8 0%, #268be2 100%);
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .blog-details__form-alert {
+        border-radius: 14px;
+        padding: 14px 16px;
+        font-weight: 600;
+    }
+
+    .blog-details__form-alert--success {
+        background: #eefbf3;
+        border: 1px solid #b8e5c7;
+        color: #166534;
+    }
+
+    .blog-details__form-alert--error {
+        background: #fff2f2;
+        border: 1px solid #f3c4c4;
+        color: #9f1d1d;
+    }
+
+    .blog-details__honeypot {
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
 </style>
 
 <section class="page-header">
@@ -656,6 +936,106 @@
                                 @endforeach
                             </div>
                         </div>
+
+
+                        <section class="blog-details__author-box" aria-labelledby="blogAuthorTitle">
+                            <div class="blog-details__author-head">
+                                <div>
+                                    <span class="blog-details__author-kicker"><i class="fa fa-building"></i> About ARS Developer Ltd</span>
+                                    <h3 class="blog-details__author-title" id="blogAuthorTitle">{{ $authorProfile['title'] }}</h3>
+                                </div>
+                            </div>
+                            <div class="blog-details__author-copy">
+                                <div class="blog-details__author-avatar">
+                                    <img src="{{ $authorProfile['image'] }}" alt="{{ $authorProfile['title'] }} logo">
+                                </div>
+                                <div>
+                                    <p class="blog-details__author-role">{{ $authorProfile['role'] }}</p>
+                                    <p class="blog-details__author-summary">{{ $authorProfile['summary'] }}</p>
+                                    <ul class="blog-details__author-points">
+                                        @foreach($authorProfile['points'] as $point)
+                                            <li>{{ $point }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="blog-details__comments" id="blog-comments" aria-labelledby="blogCommentsTitle">
+                            <div class="blog-details__comments-head">
+                                <div>
+                                    <span class="blog-details__comments-kicker"><i class="fa fa-comments"></i> Project Comments</span>
+                                    <h3 class="blog-details__comments-title" id="blogCommentsTitle">Leave a Comment</h3>
+                                    <p class="blog-details__comments-note">Ask a practical question, share a project insight, or add a useful note. Every comment is reviewed before it appears publicly.</p>
+                                </div>
+                            </div>
+
+                            @if(session('comment_success'))
+                                <div class="blog-details__form-alert blog-details__form-alert--success">{{ session('comment_success') }}</div>
+                            @endif
+
+                            @if($approvedComments->isNotEmpty())
+                                <div class="blog-details__comment-list">
+                                    @foreach($approvedComments as $comment)
+                                        <article class="blog-details__comment-item">
+                                            <div class="blog-details__comment-meta">
+                                                <strong>{{ $comment->full_name }}</strong>
+                                                <span>{{ $comment->created_at?->format('d M Y') }}</span>
+                                                @if($comment->website)
+                                                    <a href="{{ $comment->website }}" target="_blank" rel="nofollow noopener">Website</a>
+                                                @endif
+                                            </div>
+                                            <p class="blog-details__comment-body">{{ $comment->comment }}</p>
+                                        </article>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            @if($errors->hasBag('default') && $errors->any())
+                                <div class="blog-details__form-alert blog-details__form-alert--error">
+                                    Please fix the highlighted fields and submit again.
+                                </div>
+                            @endif
+
+                            <form method="post" action="{{ route('blog.comments.store', ['slug' => $post->slug]) }}#blog-comments" class="blog-details__comment-form">
+                                @csrf
+                                <input class="blog-details__honeypot" type="text" name="company_name" tabindex="-1" autocomplete="off">
+
+                                <div>
+                                    <label for="blog_comment_comment">Your Comment</label>
+                                    <textarea id="blog_comment_comment" name="comment" placeholder="Share your question, feedback, or project insight..." required>{{ old('comment') }}</textarea>
+                                    @error('comment')<small style="color:#b42318">{{ $message }}</small>@enderror
+                                </div>
+
+                                <div class="blog-details__comment-form-row blog-details__comment-form-row--triple">
+                                    <div>
+                                        <label for="blog_comment_full_name">Full Name</label>
+                                        <input id="blog_comment_full_name" type="text" name="full_name" value="{{ old('full_name') }}" placeholder="Your full name" required>
+                                        @error('full_name')<small style="color:#b42318">{{ $message }}</small>@enderror
+                                    </div>
+                                    <div>
+                                        <label for="blog_comment_email">Business Email</label>
+                                        <input id="blog_comment_email" type="email" name="email" value="{{ old('email') }}" placeholder="name@company.co.uk" required>
+                                        @error('email')<small style="color:#b42318">{{ $message }}</small>@enderror
+                                    </div>
+                                    <div>
+                                        <label for="blog_comment_website">Website (Optional)</label>
+                                        <input id="blog_comment_website" type="text" name="website" value="{{ old('website') }}" placeholder="arsdeveloper.co.uk">
+                                        @error('website')<small style="color:#b42318">{{ $message }}</small>@enderror
+                                    </div>
+                                </div>
+
+                                @include('partials.recaptcha')
+
+                                <label class="blog-details__checkbox" for="blog_comment_newsletter_opt_in">
+                                    <input id="blog_comment_newsletter_opt_in" type="checkbox" name="newsletter_opt_in" value="1" {{ old('newsletter_opt_in') ? 'checked' : '' }}>
+                                    <span>Send me occasional UK software, SEO, and growth updates.</span>
+                                </label>
+
+                                <button class="btn" type="submit">Submit for Review</button>
+                            </form>
+                        </section>
+
 
                         <div class="blog-details__tag-and-share" style="margin-top:30px;">
                             <div class="blog-details__tag">

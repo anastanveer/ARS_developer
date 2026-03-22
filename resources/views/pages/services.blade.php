@@ -1,9 +1,39 @@
 @php
     $page_title = 'Services';
     $seoOverride = [
-        'title' => 'UK Software Services: Web Development, CRM, SEO and Ecommerce',
-        'description' => 'Explore UK software services by ARSDeveloper including website development, CRM systems, ecommerce implementation, SEO, and growth-focused support.',
-        'keywords' => 'software services uk, web development services uk, crm development uk, ecommerce developers uk, technical seo uk',
+        'title' => 'Software Development Services UK | AI Websites, CRM, Automation and SEO Growth',
+        'description' => 'Explore UK software development services for AI-ready websites, CRM systems, ecommerce, workflow automation, technical SEO, and answer-engine-ready growth support built to generate more enquiries.',
+        'keywords' => 'software development services uk, ai software development services uk, custom software development services uk, ai website development uk, crm automation uk, workflow automation uk, answer engine optimisation uk, technical seo uk',
+        'related_links' => [
+            '/software-development',
+            '/web-design-development',
+            '/search-engine-optimization',
+            '/pricing',
+            '/seo-hub',
+            '/contact',
+        ],
+        'faq_items' => [
+            [
+                'question' => 'What software development services do you provide for UK businesses?',
+                'answer' => 'We provide AI-ready business website development, custom CRM systems, ecommerce builds, AI workflow automation, technical SEO, and post-launch support.',
+            ],
+            [
+                'question' => 'Do you build custom CRM and internal tools?',
+                'answer' => 'Yes. We build CRM portals, admin dashboards, AI-assisted workflow automations, chatbot-ready integrations, and internal business tools based on your team process.',
+            ],
+            [
+                'question' => 'Can you add AI automation or chatbot features to existing systems?',
+                'answer' => 'Yes. We can extend existing websites, CRM systems, and web apps with AI-assisted support flows, lead qualification steps, and operational automations where they make commercial sense.',
+            ],
+            [
+                'question' => 'Can one agency handle website, SEO, and software delivery together?',
+                'answer' => 'Yes. We handle design, development, SEO foundations, analytics, and support under one delivery workflow so projects stay aligned.',
+            ],
+            [
+                'question' => 'Do you support existing websites as well as new builds?',
+                'answer' => 'Yes. We support rebuilds, optimization work, technical fixes, CRO updates, and ongoing improvement retainers for existing sites.',
+            ],
+        ],
     ];
 @endphp
 @include('layouts.header')
@@ -19,7 +49,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h1>Our <span>Services</span></h1><div class="thm-breadcrumb__inner">
+                    <h1>Software <span>Services</span></h1><div class="thm-breadcrumb__inner">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><i class="icon-home"></i><a href="/">Home</a></li>
                             <li><span></span></li>
@@ -45,7 +75,7 @@
                         </div>
                         <span class="section-title__tagline">Our Services</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Web, CRM and software services <br>
+                    <h2 class="section-title__title title-animation">Software development services, AI-ready websites, CRM systems, and automation
                         for <span>UK business growth</span></h2>
                 </div>
                 <div class="row">
@@ -59,7 +89,7 @@
                                     <img src="assets/images/icon/services-two-icon-3.png" alt="">
                                 </div>
                                 <h3 class="services-one__title"><a href="/software-development">Software Development
-                                        <br> & CRM Systems</a></h3>
+                                        <br> & AI Automation</a></h3>
                             </div>
                             <div class="services-one__more-details">
                                 <a href="/software-development"> <i class="icon-right"></i> More Details</a>
@@ -76,7 +106,7 @@
                                 <div class="services-one__icon">
                                     <img src="assets/images/icon/services-two-icon-2.png" alt="">
                                 </div>
-                                <h3 class="services-one__title"><a href="/web-design-development">Website Design &
+                                <h3 class="services-one__title"><a href="/web-design-development">Website Design, AI-Ready UX &
                                         <br> Development</a></h3>
                             </div>
                             <div class="services-one__more-details">
@@ -113,7 +143,7 @@
                                 <div class="services-one__icon">
                                     <img src="assets/images/icon/web-design.png" alt="">
                                 </div>
-                                <h3 class="services-one__title"><a href="/search-engine-optimization">SEO Technical Audit
+                                <h3 class="services-one__title"><a href="/search-engine-optimization">SEO, AEO Strategy
                                         <br> & Performance</a></h3>
                             </div>
                             <div class="services-one__more-details">
@@ -149,8 +179,8 @@
                                 <div class="services-one__icon">
                                     <img src="assets/images/icon/user-reaserach.png" alt="">
                                 </div>
-                                <h3 class="services-one__title"><a href="/app-development">UI/UX Product Flows &
-                                        <br> Web App Interfaces</a></h3>
+                                <h3 class="services-one__title"><a href="/app-development">UI/UX Product Flows,
+                                        <br> Web Apps & AI Workflows</a></h3>
                             </div>
                             <div class="services-one__more-details">
                                 <a href="/app-development"> <i class="icon-right"></i> More Details</a>
@@ -167,7 +197,7 @@
                                 <div class="services-one__icon">
                                     <img src="assets/images/icon/services-two-icon-3.png" alt="">
                                 </div>
-                                <h3 class="services-one__title"><a href="/services#full-service-delivery">Content Strategy
+                                <h3 class="services-one__title"><a href="/services#full-service-delivery">AI Content Systems
                                         <br> & Conversion Copy</a></h3>
                             </div>
                             <div class="services-one__more-details">
@@ -191,14 +221,14 @@
                         </div>
                         <span class="section-title__tagline">Complete Delivery Coverage</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Everything your business needs in <span>one software partner</span></h2>
+                    <h2 class="section-title__title title-animation">Everything your business needs in <span>one AI-ready delivery partner</span></h2>
                 </div>
                 <div class="row">
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__content">
                             <p class="services-details__text-1">
-                                We handle planning, design, development, growth, and support under one coordinated workflow.
-                                This keeps your project faster, cleaner, and easier to scale without juggling multiple agencies.
+                                We handle planning, design, development, SEO structure, AI workflow automation, and support under one coordinated workflow.
+                                This keeps your project faster, cleaner, easier to scale, and better aligned with commercial search intent without juggling multiple agencies.
                             </p>
                             <div class="services-details__points-box">
                                 <ul class="services-details__points-list list-unstyled">
@@ -281,14 +311,11 @@
                                     </div>
                                     <span class="section-title-two__tagline">Why Choose Us</span>
                                 </div>
-                                <h2 class="section-title-two__title title-animation">Why you should To choose OUR <br>
-                                    Service for your
-                                    <span>business</span> </h2>
+                                <h2 class="section-title-two__title title-animation">Why UK businesses choose our
+                                    <span>software delivery</span> </h2>
                             </div>
-                            <p class="why-choose-three__text-1">Our services stand out because we are committed to
-                                delivering exceptional quality and value tailored to your unique needs.</p>
-                            <p class="why-choose-three__text-2">We combine industry-leading expertise with innovative
-                                solutions to address your challenges effectively and efficiently.</p>
+                            <p class="why-choose-three__text-1">We keep delivery practical with clear scope, commercial priorities, and milestone-based execution from planning through launch.</p>
+                            <p class="why-choose-three__text-2">That means fewer handoff problems, clearer accountability, and one workflow across software, website, SEO, and support work.</p>
                             <div class="why-choose-three__points-box">
                                 <div class="row">
                                     <!--Why Choose Three Single Start -->

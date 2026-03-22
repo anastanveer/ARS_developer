@@ -1,6 +1,28 @@
 @php
     $servicePageImage = \App\Support\ServicePageImages::get('digital-marketing');
     $page_title = 'Digital Marketing';
+    $seoOverride = [
+        'title' => 'AI Marketing Services UK | SEO, PPC, CRO, AEO and Demand Generation',
+        'description' => 'Digital marketing services for UK businesses including SEO, PPC, CRO, AI-assisted content workflows, answer engine optimisation, lead generation reporting, and clearer demand capture across search channels.',
+        'keywords' => 'ai marketing services uk, ai seo services uk, digital marketing services uk, ppc agency uk, answer engine optimisation uk, conversion rate optimisation uk, lead generation agency uk',
+        'related_links' => [
+            '/search-engine-optimization',
+            '/services',
+            '/seo-hub',
+            '/pricing',
+            '/contact',
+        ],
+        'faq_items' => [
+            [
+                'question' => 'Do you combine SEO and paid media in one UK marketing plan?',
+                'answer' => 'Yes. We combine SEO, paid campaigns, CRO, and reporting so your traffic, lead quality, and budget decisions stay aligned.',
+            ],
+            [
+                'question' => 'Can AI workflows improve campaign execution without making the content sound robotic?',
+                'answer' => 'Yes. We use AI-assisted workflows for research, content operations, and reporting support while keeping strategy, messaging, and quality control human-led.',
+            ],
+        ],
+    ];
 @endphp
 @include('layouts.header')
 
@@ -41,15 +63,14 @@
                             </div>
                             <div class="services-details__content">
                                 <h3 class="services-details__title-1">Digital Marketing Services for Lead Generation,
-                                    Brand Growth and Measurable ROI</h3>
+                                    Search Visibility and Measurable ROI</h3>
                                 <div class="services-details__shape-1"></div>
                                 <p class="services-details__text-1">We build digital marketing campaigns that bring
                                     qualified traffic, improve conversion rates, and increase recurring revenue. From UK
                                     local campaigns to international growth funnels, our team combines SEO, paid ads,
-                                    retargeting, and creative strategy into one performance system.</p>
+                                    retargeting, AI-assisted content workflows, and creative strategy into one performance system.</p>
                                 <h3 class="services-details__title-2">Core Delivery Areas</h3>
-                                <p class="services-details__text-2">Every campaign starts with keyword intent mapping,
-                                    audience segmentation, and conversion tracking setup. We then execute channel-specific
+                                <p class="services-details__text-2">Every campaign starts with keyword intent mapping, audience segmentation, answer engine search visibility checks, AI-assisted content workflow planning, and conversion tracking setup. We then execute channel-specific
                                     campaigns with weekly optimization so budget is spent on what actually drives leads and
                                     sales.</p>
                                 <div class="services-details__points-box">
@@ -84,7 +105,7 @@
                                             <div class="icon">
                                                 <span class="icon-check"></span>
                                             </div>
-                                            <p>Performance dashboards with CPL and ROAS tracking</p>
+                                            <p>Performance dashboards with CPL, ROAS and AI-assisted reporting</p>
                                         </li>
                                         <li>
                                             <div class="icon">

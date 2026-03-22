@@ -1,13 +1,13 @@
 @php
     $page_title = 'FAQ';
     $seoOverride = [
-        'title' => 'FAQ for UK Web Development, CRM and SEO Services',
-        'description' => 'Answers to common UK client questions on website delivery, CRM systems, ecommerce, SEO, timelines, support, and project workflow.',
-        'keywords' => 'uk website faq, crm faq uk, ecommerce development faq, seo services faq uk',
+        'title' => 'FAQ for UK Web Development, AI-Ready CRM and SEO Services',
+        'description' => 'Answers to common UK client questions on website delivery, AI-ready CRM systems, ecommerce, workflow automation, SEO, timelines, support, and project workflow.',
+        'keywords' => 'uk website faq, ai website faq uk, crm faq uk, workflow automation faq uk, ecommerce development faq, seo services faq uk',
         'faq_items' => [
             [
-                'question' => 'What type of projects can ARSDeveloper handle?',
-                'answer' => 'We handle business websites, ecommerce stores, CRM and portal systems, landing pages, technical SEO, and growth-focused support plans.',
+                'question' => 'What type of projects can ARSDeveloper handle for UK businesses?',
+                'answer' => 'We handle business websites, ecommerce stores, AI-ready CRM and portal systems, landing pages, workflow automation, technical SEO, and growth-focused support plans.',
             ],
             [
                 'question' => 'How quickly can we start after approving the proposal?',
@@ -18,8 +18,8 @@
                 'answer' => 'Yes. We use URL mapping, 301 redirects, canonical control, and crawl/index monitoring to protect search visibility during migration.',
             ],
             [
-                'question' => 'Will I get a client portal to track project progress?',
-                'answer' => 'Yes. Portal access can include milestones, timeline updates, invoices, payments, and requirement tracking.',
+                'question' => 'Can ARSDeveloper build internal portals, dashboards, or AI-assisted workflows?',
+                'answer' => 'Yes. We can build internal portals, dashboards, milestone tracking, invoice flows, requirement tracking, and AI-assisted workflow automations for service teams.',
             ],
             [
                 'question' => 'Do you provide maintenance after project delivery?',

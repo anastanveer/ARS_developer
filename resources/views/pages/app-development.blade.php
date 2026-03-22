@@ -1,6 +1,28 @@
 @php
     $servicePageImage = \App\Support\ServicePageImages::get('app-development');
     $page_title = 'App Development';
+    $seoOverride = [
+        'title' => 'Web App Development UK | Portals, Dashboards, Automation and AI Workflow Tools',
+        'description' => 'Web app development for UK businesses including portals, dashboards, automation tools, AI workflow features, secure integrations, and scalable product delivery for operations-heavy teams.',
+        'keywords' => 'web app development uk, portal development uk, dashboard development uk, ai workflow tools uk, business app development uk, crm portal uk, workflow automation uk',
+        'related_links' => [
+            '/software-development',
+            '/services',
+            '/seo-hub',
+            '/pricing',
+            '/contact',
+        ],
+        'faq_items' => [
+            [
+                'question' => 'What kind of business apps do you build for UK teams?',
+                'answer' => 'We build portals, dashboards, workflow systems, internal tools, and customer-facing web apps that support operations, reporting, and service delivery.',
+            ],
+            [
+                'question' => 'Can app development projects include AI-assisted workflow features?',
+                'answer' => 'Yes. We can add AI-assisted data handling, support flows, lead routing, and operational automation where it improves the user journey or team efficiency.',
+            ],
+        ],
+    ];
 @endphp
 @include('layouts.header')
 
@@ -41,16 +63,16 @@
                             </div>
                             <div class="services-details__content">
                                 <h3 class="services-details__title-1">UI/UX and App Development Services for Scalable
-                                    Digital Products</h3>
+                                    Digital Products and Operational Automation</h3>
                                 <div class="services-details__shape-1"></div>
                                 <p class="services-details__text-1">We design and develop user-centric web applications,
-                                    client portals, and business tools that simplify operations and improve user adoption.
+                                    client portals, business tools, and AI-assisted workflow systems that simplify operations and improve user adoption.
                                     Our delivery approach combines UX thinking, technical execution, and measurable
                                     business outcomes.</p>
                                 <h3 class="services-details__title-2">App and UX Delivery Scope</h3>
                                 <p class="services-details__text-2">From concept and wireframes to build and deployment,
                                     we create products that are easy to use, secure to operate, and simple to scale. We
-                                    focus on usability, workflow clarity, and integration with your real business process.</p>
+                                    focus on usability, workflow clarity, operational automation, and integration with your real business process.</p>
                                 <div class="services-details__points-box">
                                     <ul class="services-details__points-list list-unstyled">
                                         <li>
@@ -77,13 +99,13 @@
                                             <div class="icon">
                                                 <span class="icon-check"></span>
                                             </div>
-                                            <p>Backend logic, API integration and automation</p>
+                                            <p>Backend logic, API integration, AI workflow automation and admin tooling</p>
                                         </li>
                                         <li>
                                             <div class="icon">
                                                 <span class="icon-check"></span>
                                             </div>
-                                            <p>Role-based dashboards and workflow controls</p>
+                                            <p>Role-based dashboards, workflow controls and chatbot-ready support flows</p>
                                         </li>
                                         <li>
                                             <div class="icon">

@@ -1,15 +1,15 @@
 @php
     $page_title = 'About';
     $seoOverride = [
-        'title' => 'About ARSDeveloper UK Team for Web, CRM and SEO Delivery',
-        'description' => 'Meet ARSDeveloper UK, delivering business websites, CRM systems, and SEO growth with transparent scope, practical timelines, and reliable post-launch support.',
-        'keywords' => 'about arsdeveloper uk, uk web development team, crm development partner uk, seo delivery team uk, software agency stoke-on-trent',
+        'title' => 'About Our UK Software Development Team | AI-Ready Websites, CRM and SEO Delivery',
+        'description' => 'Meet the UK software development team behind ARSDeveloper, delivering AI-ready business websites, CRM systems, ecommerce builds, automation support, and SEO-ready growth delivery.',
+        'keywords' => 'about our uk software development team, ai website development uk, uk software development company, crm development partner uk, ecommerce development team uk, seo delivery team uk, workflow automation uk',
         'type' => 'AboutPage',
         'preload_image' => asset('assets/images/resources/about-three-img-1.jpg'),
         'faq_items' => [
             [
                 'question' => 'What does ARSDeveloper actually deliver for UK businesses?',
-                'answer' => 'We deliver conversion-focused websites, CRM workflows, and SEO-ready technical foundations with practical implementation support.',
+                'answer' => 'We deliver conversion-focused AI-ready websites, CRM workflows, workflow automation, and SEO-ready technical foundations with practical implementation support.',
             ],
             [
                 'question' => 'Can ARSDeveloper improve an existing website instead of rebuilding everything?',
@@ -403,10 +403,10 @@
                                 </div>
                                 <div class="about-three__experience-box">
                                     <div class="about-three__count count-box">
-                                        <h3 class="count-text" data-stop="25" data-speed="2000">00</h3>
+                                        <h3 class="count-text" data-stop="5" data-speed="2000">00</h3>
                                     </div>
-                                    <p class="about-three__count-text">Years of
-                                        <br> Experience</p>
+                                    <p class="about-three__count-text">Years in
+                                        <br> Web Delivery</p>
                                 </div>
                                 <div class="about-three__video-link">
                                     <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
@@ -498,16 +498,16 @@
                     </div>
                     <div class="about-proof__layout">
                         <div class="about-proof__lead">
-                            <p class="about-proof__lead-text">Most agencies deliver a design. We deliver a business-ready system. Our process is built around commercial goals, technical quality, and practical operations your team can run after launch.</p>
-                            <p class="about-proof__lead-text">From discovery to deployment, every milestone is validated for clarity, speed, SEO readiness, and conversion intent. This is why UK clients stay with us beyond launch.</p>
+                            <p class="about-proof__lead-text">Most agencies stop at design delivery. We focus on the wider system: business goals, conversion flow, technical quality, and practical day-to-day usability after launch.</p>
+                            <p class="about-proof__lead-text">From discovery to deployment, every milestone is checked for clarity, speed, SEO readiness, and operational fit. That is why clients keep working with us after the first release.</p>
                             <div class="about-proof__metrics">
                                 <div class="about-proof__metric">
-                                    <h3>2017+</h3>
-                                    <p>Continuous web delivery experience</p>
+                                    <h3>UK</h3>
+                                    <p>Business-focused delivery across websites, CRM, ecommerce, and support work</p>
                                 </div>
                                 <div class="about-proof__metric">
-                                    <h3>1000+</h3>
-                                    <p>Client projects and implementation cycles</p>
+                                    <h3>Direct</h3>
+                                    <p>Founder-led planning, scope ownership, and practical communication</p>
                                 </div>
                             </div>
                         </div>
@@ -612,8 +612,8 @@
                         </article>
                     </div>
                     <div class="about-lifecycle__cta">
-                        <a href="/contact" class="thm-btn"><span class="icon-right"></span> Book your free consultation</a>
-                        <a href="/pricing" class="thm-btn thm-btn-two"><span class="icon-right"></span> Get a quote in minutes</a>
+                        <a href="/contact" class="thm-btn"><span class="icon-right"></span> Book a project call</a>
+                        <a href="/pricing" class="thm-btn thm-btn-two"><span class="icon-right"></span> Review pricing options</a>
                     </div>
                 </div>
             </div>
@@ -711,7 +711,7 @@
                                             <h3 class="count-text" data-stop="12" data-speed="2000">00</h3>
                                             <span>+</span>
                                         </div>
-                                        <p class="awards-one__count-text">Live Projects Delivered</p>
+                                        <p class="awards-one__count-text">Current UK delivery focus</p>
                                     </div>
                                     <div class="awards-one__shape-1"></div>
                                     <div class="awards-one__shape-2"></div>

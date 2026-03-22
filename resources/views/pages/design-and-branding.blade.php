@@ -1,6 +1,28 @@
 @php
     $servicePageImage = \App\Support\ServicePageImages::get('design-and-branding');
     $page_title = 'Design And Branding';
+    $seoOverride = [
+        'title' => 'Brand Design Services UK | Website Messaging, Offers and AI-Ready Brand Systems',
+        'description' => 'Brand design services for UK businesses including identity systems, conversion-focused website direction, campaign messaging, offer clarity, and AI-ready content design foundations.',
+        'keywords' => 'brand design services uk, website branding uk, conversion design uk, ai-ready brand systems uk, landing page design uk, campaign messaging uk, offer positioning uk',
+        'related_links' => [
+            '/web-design-development',
+            '/services',
+            '/seo-hub',
+            '/pricing',
+            '/contact',
+        ],
+        'faq_items' => [
+            [
+                'question' => 'Why does branding matter for website conversion and SEO?',
+                'answer' => 'A clear brand system improves trust, content consistency, and page clarity, which supports stronger conversion-focused websites and more consistent search visibility.',
+            ],
+            [
+                'question' => 'Can branding work support AI-assisted content and campaign systems?',
+                'answer' => 'Yes. Strong brand systems make it easier to scale landing pages, content workflows, and AI-assisted campaign operations without losing message consistency.',
+            ],
+        ],
+    ];
 @endphp
 @include('layouts.header')
 
@@ -41,16 +63,15 @@
                             </div>
                             <div class="services-details__content">
                                 <h3 class="services-details__title-1">Product Design and Branding Services for Clear Market
-                                    Positioning</h3>
+                                    Positioning and Stronger Conversion</h3>
                                 <div class="services-details__shape-1"></div>
                                 <p class="services-details__text-1">We help businesses build a strong and consistent brand
                                     identity that customers trust. Our product design and branding services align your
-                                    visuals, messaging, and user experience so your offer stands out in competitive
-                                    markets.</p>
+                                    visuals, messaging, user experience, and AI-ready content systems so your offer stands out in competitive markets.</p>
                                 <h3 class="services-details__title-2">Brand and Design Capabilities</h3>
                                 <p class="services-details__text-2">From discovery workshops to visual system delivery,
                                     we create practical brand assets your team can apply across website, social, sales,
-                                    and advertising channels without inconsistency.</p>
+                                    advertising channels, and AI-assisted content workflows without inconsistency.</p>
                                 <div class="services-details__points-box">
                                     <ul class="services-details__points-list list-unstyled">
                                         <li>
@@ -83,7 +104,7 @@
                                             <div class="icon">
                                                 <span class="icon-check"></span>
                                             </div>
-                                            <p>Creative asset kits for ads, social and web</p>
+                                            <p>Creative asset kits for ads, social, web and AI-assisted content workflows</p>
                                         </li>
                                         <li>
                                             <div class="icon">

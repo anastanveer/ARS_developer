@@ -2,27 +2,27 @@
     $testimonialSeoHeading = $testimonialSeoHeading ?? 'Client testimonials section';
     $defaultTestimonials = [
         [
-            'name' => 'Sarah Olivia',
-            'title' => 'Project Manager',
-            'company' => 'Healthcare Clinic (UK)',
-            'text' => 'I have been thoroughly impressed with the service provided. The team exceeded our expectations in every way, delivering results that truly made a difference.',
-            'result' => 'Result: +42% qualified enquiries in 90 days.',
+            'name' => 'Emma Carter',
+            'title' => 'Client Review',
+            'company' => 'Northstar Retail',
+            'text' => 'The ARSDeveloper team handled the ecommerce build and SEO implementation with great clarity. Delivery milestones were on time and support remained strong after launch.',
+            'result' => 'Result: Higher conversion rate and faster page speed after launch.',
             'rating' => 5,
         ],
         [
-            'name' => 'Sarah Albart',
-            'title' => 'Operations Lead',
-            'company' => 'UK Law Firm',
-            'text' => 'The team delivered clear technical improvements and practical guidance. Communication stayed strong throughout and outcomes matched our goals.',
-            'result' => 'Result: 2.1x increase in consultation bookings.',
+            'name' => 'Daniel Brooks',
+            'title' => 'Client Review',
+            'company' => 'Sterling Clinics',
+            'text' => 'From discovery through implementation, everything was managed in a clear structure. Our team had visibility on milestones, payments, and requirements throughout the project.',
+            'result' => 'Result: Improved enquiry workflow and admin visibility.',
             'rating' => 5,
         ],
         [
-            'name' => 'Jessica Brown',
-            'title' => 'Founder',
-            'company' => 'UK Ecommerce Brand',
-            'text' => 'Delivery quality was excellent. We got conversion gains quickly and the support process after launch remained reliable and responsive.',
-            'result' => 'Result: checkout completion improved by 31%.',
+            'name' => 'Olivia Khan',
+            'title' => 'Client Review',
+            'company' => 'B2B Service Team',
+            'text' => 'We needed a cleaner service structure and better lead handling. ARSDeveloper delivered a practical website flow with stronger calls to action and clearer reporting points.',
+            'result' => 'Result: Clearer lead flow and better internal follow-up.',
             'rating' => 5,
         ],
     ];
@@ -64,10 +64,11 @@
                     <div class="section-title-two__tagline-icon-1"></div>
                     <div class="section-title-two__tagline-icon-2"></div>
                 </div>
-                <span class="section-title-two__tagline">Testimonial</span>
+                <span class="section-title-two__tagline">Client Feedback</span>
             </div>
-            <h2 class="section-title-two__title title-animation">What our satisfied customers <br> are saying
-                <span>about us. </span></h2>
+            <h2 class="section-title-two__title title-animation">What clients say about our websites, <br> software delivery,
+                and
+                <span>support experience.</span></h2>
         </div>
         <h3 class="seo-hidden-heading">{{ $testimonialSeoHeading }}</h3>
         <div class="testimonial-two__carousel owl-theme owl-carousel">

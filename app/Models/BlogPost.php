@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BlogPost extends Model
 {
@@ -38,4 +39,10 @@ class BlogPost extends Model
         'is_published' => 'boolean',
         'published_at' => 'datetime',
     ];
+
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(BlogComment::class)->latest();
+    }
 }

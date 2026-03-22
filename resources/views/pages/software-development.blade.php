@@ -2,12 +2,13 @@
     $servicePageImage = \App\Support\ServicePageImages::get('software-development');
     $page_title = 'Software Development';
     $seoOverride = [
-        'title' => 'Software Development Services UK | ARS Developer Ltd',
-        'description' => 'End-to-end software development for UK businesses: web apps, CRM systems, automation, UI/UX design, QA, deployment, and support.',
-        'keywords' => 'software development uk, crm development uk, web app development uk, custom software agency uk',
+        'title' => 'Custom Software Development UK | CRM, Portals, Automation and Web Apps',
+        'description' => 'Custom software development for UK businesses including CRM systems, client portals, web apps, workflow automation, AI-ready operational tools, QA, deployment, and ongoing support.',
+        'keywords' => 'custom software development uk, software development company uk, crm development uk, client portal development uk, web app development uk, workflow automation uk, ai software development uk',
         'related_links' => [
             '/pricing',
             '/portfolio',
+            '/seo-hub',
             '/contact',
             '/blog/custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026',
             '/blog/subscription-software-development-uk-how-saas-products-are-planned-priced-and-built',
@@ -16,16 +17,16 @@
         ],
         'faq_items' => [
             [
-                'question' => 'What software projects do UK businesses usually start with first?',
-                'answer' => 'Most UK businesses start with web apps, CRM systems, client portals, or workflow automation that reduces manual operations and improves lead handling.',
+                'question' => 'What custom software projects do UK businesses usually start with first?',
+                'answer' => 'Most UK businesses start with CRM systems, client portals, internal dashboards, or workflow automation that reduces manual operations, improves lead handling, and prepares teams for AI-assisted workflows.',
             ],
             [
                 'question' => 'Can software development work be split into milestones?',
                 'answer' => 'Yes. Milestone delivery is usually safer because discovery, design, build, QA, and launch can be reviewed in stages with clearer budget control.',
             ],
             [
-                'question' => 'Do software projects support SEO and conversion goals too?',
-                'answer' => 'Yes. We align software delivery with lead flow, search visibility, and business process outcomes rather than treating development as an isolated technical task.',
+                'question' => 'Can custom software development support SEO and conversion goals too?',
+                'answer' => 'Yes. We align software delivery with lead flow, search visibility, and business process outcomes instead of treating development as an isolated technical task.',
             ],
         ],
     ];
@@ -104,17 +105,17 @@
                                 <img src="{{ \App\Support\ServicePageImages::toUrl($servicePageImage['image']) }}" alt="{{ $servicePageImage['alt'] }}">
                             </div>
                             <div class="services-details__content">
-                                <h3 class="services-details__title-1">Complete Software Delivery for UK Growth-Focused Businesses</h3>
+                                <h3 class="services-details__title-1">Custom Software Development for UK Businesses That Need Better Systems</h3>
                                 <div class="services-details__shape-1"></div>
                                 <p class="services-details__text-1">
-                                    We build complete digital systems under one roof: custom websites, CRM portals, client dashboards, business automation,
-                                    UI/UX design, and SEO-ready technical foundations. Your team gets one delivery partner, one plan, and one accountable workflow.
+                                    We build custom software systems for UK businesses that need cleaner operations, stronger lead handling, better delivery visibility, and AI-ready internal workflows.
+                                    That includes CRM platforms, client portals, internal dashboards, workflow automation, and SEO-ready web applications under one accountable plan.
                                 </p>
 
-                                <h3 class="services-details__title-2">What We Deliver</h3>
+                                <h3 class="services-details__title-2">What Our Software Delivery Usually Includes</h3>
                                 <p class="services-details__text-2">
-                                    Every project starts with requirements mapping, then moves into interface design, development, QA, deployment, and post-launch support.
-                                    This helps you launch faster while keeping long-term performance, security, and scalability in place.
+                                    Every project starts with requirements mapping and delivery planning, then moves through interface design, development, QA, deployment, and post-launch support.
+                                    This keeps the build practical, commercially focused, and easier to manage as your business grows.
                                 </p>
 
                                 <div class="services-details__points-box">

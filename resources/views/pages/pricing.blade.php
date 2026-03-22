@@ -1,9 +1,34 @@
 @php
     $page_title = 'Pricing';
     $seoOverride = [
-        'title' => 'UK Software Pricing: Monthly Support and Requirement-Based Packages',
-        'description' => 'Compare UK software pricing packages for websites, CRM systems, ecommerce stores, and SEO support with transparent monthly and one-time options.',
-        'keywords' => 'software pricing uk, website package uk, crm project cost uk, ecommerce development cost uk, seo monthly support uk',
+        'title' => 'Software Development Pricing UK | AI Websites, CRM, Ecommerce and SEO Costs',
+        'description' => 'Compare UK software development pricing for AI-ready business websites, CRM systems, ecommerce projects, workflow automation, and SEO support with clear monthly and one-time options.',
+        'keywords' => 'software development pricing uk, ai website development cost uk, crm development cost uk, workflow automation pricing uk, ecommerce development cost uk, seo monthly support uk',
+        'related_links' => [
+            '/services',
+            '/software-development',
+            '/web-design-development',
+            '/portfolio',
+            '/contact',
+        ],
+        'faq_items' => [
+            [
+                'question' => 'How much does a business website cost in the UK?',
+                'answer' => 'Business website costs vary by scope, but most builds are priced based on page count, integrations, content needs, and launch support.',
+            ],
+            [
+                'question' => 'How is custom CRM pricing usually calculated?',
+                'answer' => 'CRM and automation pricing is usually based on workflow complexity, user roles, integrations, reporting requirements, AI features, and deployment phases.',
+            ],
+            [
+                'question' => 'Do you offer monthly support after launch?',
+                'answer' => 'Yes. We offer monthly support plans for updates, technical SEO, conversion improvements, bug fixes, and delivery continuity.',
+            ],
+            [
+                'question' => 'Can I start with a call before choosing a package?',
+                'answer' => 'Yes. You can book a planning call first, then confirm scope, timeline, and delivery path before paying.',
+            ],
+        ],
     ];
 @endphp
 @include('layouts.header')
@@ -17,7 +42,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h1>Our <span>Pricing</span></h1><div class="thm-breadcrumb__inner">
+                    <h1>Project <span>Pricing</span></h1><div class="thm-breadcrumb__inner">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><i class="icon-home"></i><a href="/">Home</a></li>
                             <li><span></span></li>
@@ -46,8 +71,8 @@
                         </div>
                         <span class="section-title__tagline">Pricing & Plan</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Choose from <span>subscription plans</span> or
-                        requirement-based delivery.</h2>
+                    <h2 class="section-title__title title-animation">Choose from <span>monthly support</span> or
+                        requirement-based project delivery.</h2>
                 </div>
 
                 <div class="pricing-one__switch-toggle">
@@ -440,8 +465,8 @@
                                     </div>
                                     <span class="section-title-two__tagline">Pricing FAQs</span>
                                 </div>
-                                <h2 class="section-title-two__title title-animation">Questions About <br>
-                                    <span>Packages & Payments</span></h2>
+                                <h2 class="section-title-two__title title-animation">Questions clients ask about
+                                    <span>packages and payments</span></h2>
                             </div>
                             <p class="faq-one__text">Clear answers on subscription plans, one-time builds, scope control,
                                 and billing process so business decisions stay simple.</p>

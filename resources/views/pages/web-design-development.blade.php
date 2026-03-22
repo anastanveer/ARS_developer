@@ -2,12 +2,13 @@
     $servicePageImage = \App\Support\ServicePageImages::get('web-design-development');
     $page_title = 'Web Design Development';
     $seoOverride = [
-        'title' => 'Web Design and Development UK | ARS Developer Ltd',
-        'description' => 'Conversion-focused web design and development for UK businesses: fast pages, strong UX, SEO-ready structure, and lead-generation flow.',
-        'keywords' => 'web design development uk, website development company uk, conversion focused website uk, business website design uk',
+        'title' => 'Website Design and Development UK | AI-Ready Business Websites That Convert',
+        'description' => 'Website design and development for UK businesses with AI-ready layouts, fast performance, stronger trust signals, answer-engine-friendly structure, and lead generation focused UX.',
+        'keywords' => 'website design and development uk, ai website development uk, website development company uk, business website design uk, conversion focused website uk, answer engine optimization website uk, web design agency uk, lead generation website uk',
         'related_links' => [
             '/pricing',
             '/portfolio',
+            '/seo-hub',
             '/contact',
             '/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites',
             '/blog/website-development-company-stoke-on-trent-what-businesses-should-expect',
@@ -16,12 +17,12 @@
         ],
         'faq_items' => [
             [
-                'question' => 'What makes a business website rank and convert better?',
+                'question' => 'What helps a business website rank and convert better?',
                 'answer' => 'Clear page structure, fast mobile experience, strong trust sections, focused calls to action, and SEO-ready content usually improve both visibility and enquiries.',
             ],
             [
                 'question' => 'Should web design include technical SEO from the start?',
-                'answer' => 'Yes. Heading hierarchy, metadata, internal links, schema-ready structure, and Core Web Vitals are more effective when planned during the build.',
+                'answer' => 'Yes. Heading hierarchy, metadata, internal links, schema-ready structure, answer-first sections, and Core Web Vitals are more effective when planned during the build.',
             ],
             [
                 'question' => 'Can website development support local SEO too?',
@@ -110,16 +111,11 @@
                                 <img src="{{ \App\Support\ServicePageImages::toUrl($servicePageImage['image']) }}" alt="{{ $servicePageImage['alt'] }}">
                             </div>
                             <div class="services-details__content">
-                                <h3 class="services-details__title-1">Web Design and Development Services for High-Converting
-                                    Business Websites</h3>
+                                <h3 class="services-details__title-1">AI-Ready Website Design and Development for Businesses That Need More Enquiries</h3>
                                 <div class="services-details__shape-1"></div>
-                                <p class="services-details__text-1">We design and develop fast, scalable websites built
-                                    around your business goals. From brochure websites to conversion-focused lead funnels,
-                                    every build is structured for SEO, usability, and long-term maintainability.</p>
-                                <h3 class="services-details__title-2">Core Development Capabilities</h3>
-                                <p class="services-details__text-2">Our process covers strategy, UX wireframing, UI
-                                    design, frontend development, CMS integration, QA, and launch support. This gives your
-                                    team a reliable website foundation that is easy to manage and ready for growth.</p>
+                                <p class="services-details__text-1">We design and develop fast, scalable AI-ready business websites built around enquiry generation, trust, and search visibility. From brochure sites to conversion-focused lead funnels, every build is structured for SEO, usability, answer-engine clarity, and long-term maintainability for UK commercial searches.</p>
+                                <h3 class="services-details__title-2">Core Website Delivery Capabilities</h3>
+                                <p class="services-details__text-2">Our process covers strategy, UX wireframing, UI design, frontend development, CMS integration, QA, launch support, and search-ready information architecture. That gives your team a reliable website foundation that is easier to manage, easier to scale, and better aligned with commercial intent.</p>
                                 <div class="services-details__points-box">
                                     <ul class="services-details__points-list list-unstyled">
                                         <li>

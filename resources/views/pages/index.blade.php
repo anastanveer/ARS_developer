@@ -1,9 +1,9 @@
 @php
     $page_title = 'Home';
     $seoOverride = [
-        'title' => 'UK Software Development Company for Websites, CRM and SEO',
-        'description' => 'ARSDeveloper is a UK software development company helping startups and growing businesses with custom websites, CRM systems, ecommerce development, and technical SEO.',
-        'keywords' => 'uk software development company, custom website development uk, crm software uk, ecommerce development uk, technical seo services uk, wordpress development uk',
+        'title' => 'UK Software Development Company | AI-Ready Websites, CRM and SEO',
+        'description' => 'ARSDeveloper is a UK software development company helping businesses with AI-ready websites, CRM systems, ecommerce development, workflow automation, and technical SEO for stronger enquiries.',
+        'keywords' => 'uk software development company, ai website development uk, custom software development uk, crm software uk, workflow automation uk, ecommerce development uk, ai seo services uk, technical seo services uk',
         'preload_image' => asset('assets/images/resources/main-slider-img-1-1.png'),
         'related_links' => [
             '/software-development',
@@ -31,8 +31,8 @@
                 'answer' => 'Yes. We deliver Shopify and WooCommerce builds with conversion-ready product architecture, checkout flow, and analytics tracking.',
             ],
             [
-                'question' => 'Will you write structure for better conversion?',
-                'answer' => 'Yes. We design page flow, trust sections, and call-to-action structure to improve lead quality and conversion intent.',
+                'question' => 'Can you build AI-ready website structure for better conversion and visibility?',
+                'answer' => 'Yes. We design page flow, trust sections, answer-first sections, and call-to-action structure to improve lead quality, AI search visibility, and conversion intent.',
             ],
             [
                 'question' => 'How quickly can rankings improve?',
@@ -43,7 +43,7 @@
 @endphp
 @include('layouts.header')
 
-<h1 class="seo-hidden-heading">UK Software Agency for Web Development, CRM Systems, and SEO Services</h1>
+<h1 class="seo-hidden-heading">UK software agency for AI-ready web development, CRM systems, automation, and SEO services</h1>
 
 
 
@@ -73,11 +73,11 @@
                             <div class="main-slider__title-box hero-text-slider__title-box">
                                 <p class="hero-text-slider__eyebrow">UK Software Partner</p>
                                 <h2 class="main-slider__title"><span class="hero-title-line-one">We Build <span class="hero-accent-cyan" style="color:#28d7ff;">Custom Software</span></span><span class="hero-title-line-two"> <span style="color:#ffffff;">That</span> <span class="hero-accent-blue" style="color:#1d93ff;">Scales</span> <span style="color:#ffffff;">Your</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Business.</span></span></h2>
-                                <p class="hero-text-slider__proof">500+ projects delivered | UK-based team | 48-hour response time</p>
-                                <p class="main-slider__text">From MVP to enterprise delivery for UK growth-focused teams.</p>
+                                <p class="hero-text-slider__proof">UK delivery partner | AI-ready websites, CRM, ecommerce and automation | clear milestones and support</p>
+                                <p class="main-slider__text">We build AI-ready business websites, CRM systems, ecommerce stores, workflow automation, and technical SEO foundations for UK companies that need practical delivery and measurable growth.</p>
                                 <div class="main-slider__btn hero-text-slider__cta">
-                                    <a href="/contact"><span class="icon-right"></span>Start Your Project</a>
-                                    <a href="/portfolio" class="hero-text-slider__outline-btn"><span class="icon-right"></span>View Case Studies</a>
+                                    <a href="/contact"><span class="icon-right"></span>Book a Project Call</a>
+                                    <a href="/portfolio" class="hero-text-slider__outline-btn"><span class="icon-right"></span>See Recent Work</a>
                                 </div>
                             </div>
                             <div class="main-slider__satisfied-client-and-rating-box hero-text-slider__stats">
@@ -98,19 +98,19 @@
                                         <div class="main-slider__satisfied-client-count count-box">
                                             <h3>50+</h3>
                                         </div>
-                                        <p class="main-slider__satisfied-client-count-text">Projects Launched</p>
+                                        <p class="main-slider__satisfied-client-count-text">Launches and rebuilds</p>
                                     </div>
                                 </div>
                                 <div class="main-slider__rating-box">
-                                    <div class="main-slider__rating-count count-box">
-                                        <h3>5.0</h3>
-                                    </div>
-                                    <div class="main-slider__rating-content">
-                                        <p class="main-slider__rating-content-sub-title">Client Review Score</p>
-                                        <div class="main-slider__rating-content-logo">
-                                            <img src="assets/images/resources/main-slider-rating-content-logo.png" alt="Client review signal">
+                                        <div class="main-slider__rating-count count-box">
+                                            <h3>UK</h3>
                                         </div>
-                                    </div>
+                                        <div class="main-slider__rating-content">
+                                            <p class="main-slider__rating-content-sub-title">Delivery and support focus</p>
+                                            <div class="main-slider__rating-content-logo">
+                                                <img src="assets/images/resources/main-slider-rating-content-logo.png" alt="UK delivery support signal">
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -295,8 +295,8 @@
                                 <h2 class="section-title-two__title title-animation">Why UK businesses choose us for
                                     <span>software delivery</span></h2>
                             </div>
-                            <p class="why-choose-two__text">From brochure websites to custom CRM platforms, we align
-                                product decisions with your commercial goals, reporting needs, and growth targets.</p>
+                                <p class="why-choose-two__text">From brochure websites to custom CRM platforms, we align
+                                delivery decisions with your sales process, reporting requirements, SEO goals, and operational priorities.</p>
                             <h3 class="seo-hidden-heading">Why choose us key points</h3>
                             <ul class="list-unstyled why-choose-two__points">
                                 <li>
@@ -342,7 +342,7 @@
                                 <p>50+</p>
                             </div>
                             <p class="counter-one__text">Project Launches</p>
-                            <p class="counter-one__meta">Websites, ecommerce and custom systems shipped for live business use</p>
+                            <p class="counter-one__meta">Business websites, ecommerce builds, and custom systems shipped for live operations</p>
                             <a class="counter-one__stat-link" href="/portfolio">View live case studies</a>
                         </div>
                     </li>
@@ -355,7 +355,7 @@
                                 <p>4-Step</p>
                             </div>
                             <p class="counter-one__text">Delivery Flow</p>
-                            <p class="counter-one__meta">Defined milestones, scope notes, and practical rollout planning</p>
+                            <p class="counter-one__meta">Defined milestones, scope control, and practical rollout planning</p>
                         </div>
                     </li>
                     <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
@@ -364,10 +364,10 @@
                                 <i class="fas fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="counter-one__count count-box">
-                                <p>5-Star</p>
+                                <p>Review</p>
                             </div>
-                            <p class="counter-one__text">Review Standard</p>
-                            <p class="counter-one__meta">Public reviews and direct client comments used as trust proof</p>
+                            <p class="counter-one__text">Trust Signals</p>
+                            <p class="counter-one__meta">Public reviews, case studies, and direct client feedback used as proof</p>
                         </div>
                     </li>
                     <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="250">
@@ -376,10 +376,10 @@
                                 <i class="fas fa-users" aria-hidden="true"></i>
                             </div>
                             <div class="counter-one__count count-box">
-                                <p>Ongoing</p>
+                            <p>Ongoing</p>
                             </div>
                             <p class="counter-one__text">Support Plans</p>
-                            <p class="counter-one__meta">Post-launch support, iteration, and continuous improvement work</p>
+                            <p class="counter-one__meta">Post-launch support, iteration, and ongoing improvement work</p>
                         </div>
                     </li>
                 </ul>
@@ -392,7 +392,7 @@
                     </div>
                     <div class="counter-one__proof-badge">
                         <img src="assets/images/icon/icon-google.png" alt="Google rating signal" loading="lazy">
-                        <span><strong>Public review</strong> signals from Google, Clutch, Trustpilot and direct client delivery feedback</span>
+                        <span><strong>Public proof</strong> from reviews, project work, and delivery feedback across UK client engagements</span>
                     </div>
                 </div>
                 <div class="counter-one__testimonial-strip" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
@@ -404,9 +404,8 @@
                         <img src="assets/images/resources/banner-one-satisfied-client-1-3.jpg" alt="Client testimonial avatar"
                             loading="lazy">
                     </div>
-                    <p class="counter-one__testimonial-text">“ARS delivered on scope, communication and post-launch support.
-                        The rollout was clean and measurable.”</p>
-                    <span class="counter-one__testimonial-meta">UK Operations Lead, B2B Services Client</span>
+                    <p class="counter-one__testimonial-text">“ARS delivered with clear milestones, direct communication, and dependable post-launch support. The rollout stayed practical from planning through launch.”</p>
+                    <span class="counter-one__testimonial-meta">Operations Lead, UK B2B Services Client</span>
                 </div>
             </div>
         </section>
@@ -556,9 +555,9 @@
                         </div>
                         <span class="section-title-two__tagline">Portfolio</span>
                     </div>
-                    <h2 class="section-title-two__title title-animation">We successfully delivered the optimal <br>
-                        solution for our
-                        <span>client's case study.</span></h2>
+                    <h2 class="section-title-two__title title-animation">Recent web, CRM and software delivery work <br>
+                        for
+                        <span>UK businesses.</span></h2>
                 </div>
 
                 <div class="swiper-container">
@@ -1139,8 +1138,9 @@
                         </div>
                         <span class="section-title-two__tagline">Articles</span>
                     </div>
-                    <h2 class="section-title-two__title title-animation">Latest insights for
-                        <span>UK businesses.</span></h2>
+                    <h2 class="section-title-two__title title-animation">Guides on software delivery, SEO growth, <br>
+                        and
+                        <span>commercial website decisions.</span></h2>
                 </div>
                 <div class="blog-two__carousel owl-theme owl-carousel" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
                     @foreach($homeBlogPosts as $post)
@@ -1206,8 +1206,8 @@
                                     </div>
                                     <span class="section-title-two__tagline">Popular FAQs</span>
                                 </div>
-                                <h2 class="section-title-two__title title-animation">What New Clients <br>
-                                    <span>Usually Ask First</span></h2>
+                                <h2 class="section-title-two__title title-animation">Questions clients ask before choosing a
+                                    <span>software development partner</span></h2>
                             </div>
                             <p class="faq-one__text">Key business questions answered clearly before starting website,
                                 ecommerce, CRM, or SEO work.</p>

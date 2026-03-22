@@ -3,6 +3,25 @@
 
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @if(config('recaptcha.enabled') && filled(config('recaptcha.site_key')))
+        <script>
+            window.arsRecaptchaEnabled = true;
+            window.arsRecaptchaSiteKey = @json(config('recaptcha.site_key'));
+        </script>
+        <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+        <style>
+            .ars-recaptcha-box {
+                margin-top: 18px;
+            }
+
+            .ars-recaptcha-box__error {
+                display: block;
+                margin-top: 8px;
+                color: #b42318;
+                font-size: 13px;
+            }
+        </style>
+    @endif
     @php
         $currentPath = '/' . trim(request()->path(), '/');
         if ($currentPath === '//') {
@@ -212,9 +231,9 @@
                 'type' => 'FAQPage',
             ],
             '/blog.php' => [
-                'title' => 'Blog - UK Web Development and SEO Insights',
-                'description' => 'Practical insights on software development, WordPress, SEO, CRM systems, and digital growth in the UK.',
-                'keywords' => 'web development blog UK, SEO blog UK, CRM blog UK, WordPress tips UK',
+                'title' => 'AI SEO Blog | UK Software Development, AEO, GEO and Growth Insights',
+                'description' => 'Practical AI SEO, software development, CRM, answer engine optimization, and growth insights for UK businesses.',
+                'keywords' => 'ai seo blog uk, aeo blog uk, geo seo uk, software development blog uk, crm blog uk, answer engine optimization uk',
                 'type' => 'Blog',
             ],
             '/uk-growth-hub' => [

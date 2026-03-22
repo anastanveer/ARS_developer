@@ -32,6 +32,12 @@ class BlogPostSeeder extends Seeder
             'saas-mvp-development-uk-what-to-build-first-and-what-to-delay' => 'assets/images/blog/it-saas-mvp.svg',
             'custom-crm-development-cost-uk-what-affects-budget-and-timeline' => 'assets/images/blog/it-crm-cost.svg',
             'mvp-development-cost-uk-how-founders-budget-for-version-one' => 'assets/images/blog/it-mvp-cost.svg',
+            'ai-seo-services-uk-how-businesses-turn-ai-search-visibility-into-qualified-leads' => 'assets/images/blog/it-ai-visibility.svg',
+            'llm-seo-uk-how-to-structure-service-pages-for-chatgpt-google-ai-and-answer-engines' => 'assets/images/blog/it-aeo-uk.svg',
+            'programmatic-seo-uk-when-service-businesses-should-and-should-not-scale-location-pages' => 'assets/images/blog/it-search-console-insights.svg',
+            'ai-website-development-uk-how-service-businesses-build-faster-and-convert-better' => 'assets/images/blog/it-web-development.svg',
+            'answer-engine-optimization-for-uk-service-pages-how-to-rank-in-chatgpt-google-ai-and-ai-mode' => 'assets/images/blog/it-aeo-uk.svg',
+            'crm-automation-uk-how-custom-portals-reduce-admin-and-speed-up-sales' => 'assets/images/blog/it-crm-automation.svg',
         ];
 
         $posts = [
@@ -1078,6 +1084,308 @@ class BlogPostSeeder extends Seeder
                 ],
                 'cta' => 'For version-one planning, explore our <a href="/software-development">software development service</a> and <a href="/contact">book a founder discovery call</a>.',
             ],
+
+            [
+                'title' => 'AI SEO Services UK: How Businesses Turn AI Search Visibility into Qualified Leads',
+                'slug' => 'ai-seo-services-uk-how-businesses-turn-ai-search-visibility-into-qualified-leads',
+                'category' => 'AI Search',
+                'excerpt' => 'How UK businesses can turn AI search visibility into qualified leads with stronger service pages, answer engine structure, and conversion-focused SEO.',
+                'meta_title' => 'AI SEO Services UK for Qualified Leads',
+                'meta_description' => 'Learn how AI SEO services in the UK should improve search visibility, answer engine reach, and qualified lead generation rather than vanity traffic.',
+                'meta_keywords' => 'ai seo services uk, ai search optimization uk, answer engine optimization services uk, ai visibility uk, qualified leads seo uk',
+                'overview' => [
+                    'AI SEO only matters when visibility turns into commercial traffic and qualified leads. UK businesses need service pages that answer buyer questions clearly and support AI retrieval, not just keyword impressions.',
+                    'The strongest AI search strategy combines semantic structure, proof-led service content, and clear conversion paths so visibility can turn into booked calls, enquiries, and revenue.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'Why AI SEO services should focus on lead quality, not vanity reach',
+                        'paragraphs' => [
+                            'Many businesses chase AI visibility without measuring whether the resulting search exposure reaches qualified buyers. That creates activity without commercial return.',
+                            'AI SEO works best when service pages, case studies, and supporting content are all aligned around real buying questions and stronger conversion intent.',
+                        ],
+                    ],
+                    [
+                        'title' => 'What UK service businesses should improve first',
+                        'list' => [
+                            'Clarify the main service promise in the hero and first fold.',
+                            'Add proof sections, delivery scope, and trust indicators on key commercial pages.',
+                            'Structure FAQ, headings, and internal links so answer engines can understand the topic clearly.',
+                            'Connect blog support articles back to the main conversion pages.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Where AI SEO fits into a wider growth system',
+                        'paragraphs' => [
+                            'AI search visibility performs better when paired with <a href="/blog/llm-seo-uk-how-to-structure-service-pages-for-chatgpt-google-ai-and-answer-engines">LLM SEO page structure</a>, <a href="/blog/uk-seo-growth-system-2026-aeo-geo-eeat-guide">pillar SEO architecture</a>, and <a href="/blog/programmatic-seo-uk-when-service-businesses-should-and-should-not-scale-location-pages">controlled location page scaling</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What is the difference between AI SEO and normal SEO?',
+                        'a' => 'AI SEO extends strong SEO foundations by making pages easier for AI systems and answer engines to interpret, cite, and surface during research journeys.',
+                    ],
+                    [
+                        'q' => 'Can AI SEO generate qualified leads for UK service businesses?',
+                        'a' => 'Yes, if the site has strong service pages, trust content, and conversion-focused paths instead of generic informational copy alone.',
+                    ],
+                ],
+                'cta' => 'If you want AI search visibility tied to real leads, review our <a href="/search-engine-optimization">SEO service</a> and <a href="/contact">book a strategy call</a>.',
+                'published_at' => now()->subDays(1),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'LLM SEO UK: How to Structure Service Pages for ChatGPT, Google AI and Answer Engines',
+                'slug' => 'llm-seo-uk-how-to-structure-service-pages-for-chatgpt-google-ai-and-answer-engines',
+                'category' => 'AI Search',
+                'excerpt' => 'A practical UK guide to structuring service pages for ChatGPT, Google AI, and answer engines with better semantic SEO, trust signals, and conversion paths.',
+                'meta_title' => 'LLM SEO UK for Service Pages and AI Search',
+                'meta_description' => 'See how UK service businesses structure pages for ChatGPT, Google AI, and answer engines with stronger semantic SEO, internal links, and trust signals.',
+                'meta_keywords' => 'llm seo uk, semantic seo uk, ai service page seo, chatgpt seo uk, answer engine service pages uk',
+                'overview' => [
+                    'LLM SEO helps service businesses structure pages so ChatGPT, Google AI, and answer engines can understand relevance, trust, and topical depth more clearly.',
+                    'The best service pages combine semantic structure, compact answers, proof, and internal links so they work for both human buyers and AI-assisted search journeys.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'How service pages should be structured for AI search',
+                        'list' => [
+                            'Use one direct H1 aligned to the core buyer intent.',
+                            'Answer the primary question quickly near the top of the page.',
+                            'Support claims with delivery proof, FAQs, and process clarity.',
+                            'Link to related services, pricing, and case-study content naturally.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Why semantic SEO matters more now',
+                        'paragraphs' => [
+                            'AI systems extract meaning from structure, entity clarity, and topical relationships. Service pages that are vague, repetitive, or overly salesy are harder to trust and cite.',
+                            'Semantic clarity improves when headings, internal links, and FAQ content reflect the language buyers actually use during evaluation.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Recommended supporting content',
+                        'paragraphs' => [
+                            'Pair this page structure with <a href="/blog/ai-seo-services-uk-how-businesses-turn-ai-search-visibility-into-qualified-leads">AI SEO lead strategy</a>, <a href="/blog/answer-engine-optimization-uk-how-service-businesses-structure-content-for-ai-search">answer engine optimisation guidance</a>, and <a href="/blog/ai-mode-seo-uk-how-service-brands-create-content-that-earns-clicks">AI mode content planning</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What makes a service page strong for ChatGPT and Google AI?',
+                        'a' => 'Strong pages use clear topic framing, factual delivery detail, FAQ structure, and internal links that connect the page to related commercial and proof content.',
+                    ],
+                    [
+                        'q' => 'Should LLM SEO replace normal on-page SEO?',
+                        'a' => 'No. LLM SEO works best as an extension of good on-page SEO, technical SEO, and trust-building content rather than a separate replacement.',
+                    ],
+                ],
+                'cta' => 'For AI-ready service page structure, see our <a href="/services">service capabilities</a> and <a href="/pricing">pricing guidance</a>.',
+                'published_at' => now()->subDays(2),
+                'sort_order' => 0,
+            ],
+
+            [
+                'title' => 'AI Website Development UK: How Service Businesses Build Faster and Convert Better',
+                'slug' => 'ai-website-development-uk-how-service-businesses-build-faster-and-convert-better',
+                'category' => 'AI Web Development',
+                'excerpt' => 'How UK businesses use AI-assisted website development, better planning, and conversion structure to launch faster without weakening trust or lead quality.',
+                'meta_title' => 'AI Website Development UK | Faster Builds, Better Conversion',
+                'meta_description' => 'Learn how AI website development in the UK helps service businesses launch faster, improve structure, and turn more visits into qualified enquiries.',
+                'meta_keywords' => 'ai website development uk, ai web design uk, conversion website development uk, lead generation website uk',
+                'overview' => [
+                    'AI website development works best when it improves planning speed, content workflows, and testing without replacing strategic UX, clear offers, or conversion structure.',
+                    'For UK service businesses, the commercial win usually comes from faster page production, cleaner messaging, and better enquiry flow rather than generic AI gimmicks.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'Where AI actually helps website delivery',
+                        'list' => [
+                            'Speeds up wireframe and content draft preparation.',
+                            'Helps structure FAQs, service sections, and support content faster.',
+                            'Improves variant testing for CTA wording and landing page blocks.',
+                            'Supports internal teams with faster asset preparation and review loops.',
+                        ],
+                    ],
+                    [
+                        'title' => 'What still needs human commercial judgement',
+                        'paragraphs' => [
+                            'Offer clarity, positioning, buyer objections, pricing logic, and trust signals still need human-led decision making. That is what separates a generic AI page from a page that actually converts.',
+                            'The strongest approach combines AI-assisted production with strong UX, SEO structure, and conversion-focused delivery planning.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How this supports SEO and lead generation',
+                        'paragraphs' => [
+                            'AI-assisted production helps businesses publish faster, but rankings improve when pages also align with <a href="/blog/llm-seo-uk-how-to-structure-service-pages-for-chatgpt-google-ai-and-answer-engines">LLM SEO structure</a>, <a href="/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites">conversion-focused website planning</a>, and <a href="/blog/technical-seo-checklist-for-uk-websites-before-launch">technical launch quality</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'Does AI website development mean low-quality pages?',
+                        'a' => 'Not if AI is used to support workflow speed while structure, UX, SEO, and trust decisions remain commercially guided.',
+                    ],
+                    [
+                        'q' => 'Can AI help website launches happen faster?',
+                        'a' => 'Yes. It often helps with content preparation, page variants, and process speed, but launch quality still depends on strong implementation.',
+                    ],
+                ],
+                'cta' => 'Explore our <a href="/web-design-development">website design and development service</a> if you want faster delivery without sacrificing enquiry quality.',
+                'published_at' => now(),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Answer Engine Optimization for UK Service Pages: How to Rank in ChatGPT, Google AI and AI Mode',
+                'slug' => 'answer-engine-optimization-for-uk-service-pages-how-to-rank-in-chatgpt-google-ai-and-ai-mode',
+                'category' => 'AEO',
+                'excerpt' => 'A practical UK guide to answer engine optimisation for service pages that need visibility in ChatGPT, Google AI Overviews, and AI Mode results.',
+                'meta_title' => 'Answer Engine Optimization UK | Rank in ChatGPT and Google AI',
+                'meta_description' => 'See how UK service pages should be structured for answer engine optimisation, AI Overviews, ChatGPT visibility, and stronger buyer-intent SEO.',
+                'meta_keywords' => 'answer engine optimization uk, aeo uk, chatgpt seo uk, google ai overviews seo uk, ai mode seo uk',
+                'overview' => [
+                    'Answer engine optimisation is not a separate website trick. It is the practice of structuring service pages so AI systems can understand, quote, and trust the content more easily.',
+                    'For UK service businesses, that means stronger headings, clearer answers, cleaner service scope, and better entity-aligned internal linking.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What answer engines need from service pages',
+                        'list' => [
+                            'Direct answers near the top of the page.',
+                            'Clear service scope with simple supporting language.',
+                            'FAQ sections that reflect real buyer questions.',
+                            'Internal links to proof, pricing, and related specialist content.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Why generic AI copy usually fails',
+                        'paragraphs' => [
+                            'Pages filled with vague AI wording often lack commercial clarity and trust signals. AI systems can surface content, but buyers still need confidence in who is delivering the work and what outcomes to expect.',
+                            'AEO works best when supported by strong EEAT, buyer-intent messaging, and pages designed around real service demand rather than keyword stuffing.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Cluster pages that strengthen this topic',
+                        'paragraphs' => [
+                            'Use this with <a href="/blog/ai-seo-services-uk-how-businesses-turn-ai-search-visibility-into-qualified-leads">AI SEO strategy</a>, <a href="/blog/llm-seo-uk-how-to-structure-service-pages-for-chatgpt-google-ai-and-answer-engines">LLM service page structure</a>, and <a href="/blog/google-search-console-insights-uk-how-to-find-easy-seo-wins-faster">Search Console insight reviews</a> to build a stronger AI-ready content system.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'Is answer engine optimisation different from SEO?',
+                        'a' => 'It builds on SEO. The same technical and content foundations still matter, but pages must also be easier for AI systems to interpret and summarise.',
+                    ],
+                    [
+                        'q' => 'Do service pages need FAQs for AEO?',
+                        'a' => 'In most cases yes, because FAQs help address explicit buyer questions in a structured, extractable way.',
+                    ],
+                ],
+                'cta' => 'See our <a href="/search-engine-optimization">SEO service</a> if you want service pages structured for both Google rankings and answer engines.',
+                'published_at' => now()->subHours(6),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'CRM Automation UK: How Custom Portals Reduce Admin and Speed Up Sales',
+                'slug' => 'crm-automation-uk-how-custom-portals-reduce-admin-and-speed-up-sales',
+                'category' => 'CRM Automation',
+                'excerpt' => 'How UK businesses use CRM automation and custom portals to reduce admin, speed up sales handling, and improve operational visibility.',
+                'meta_title' => 'CRM Automation UK | Custom Portals That Reduce Admin',
+                'meta_description' => 'Learn how CRM automation in the UK helps businesses reduce admin work, improve handover speed, and turn enquiry workflows into cleaner sales operations.',
+                'meta_keywords' => 'crm automation uk, custom portal development uk, workflow automation uk, sales automation uk, custom crm uk',
+                'overview' => [
+                    'CRM automation creates the most value when it reduces manual follow-up, keeps pipeline ownership clear, and gives teams one place to manage progress.',
+                    'For many UK businesses, custom portals become the layer that turns enquiries, project updates, documents, and approvals into one usable workflow.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'Where businesses usually feel the friction first',
+                        'list' => [
+                            'Leads sit in inboxes with no clear ownership.',
+                            'Sales and delivery teams work from different systems.',
+                            'Follow-up reminders depend on memory rather than automation.',
+                            'Clients ask for updates manually because there is no portal view.',
+                        ],
+                    ],
+                    [
+                        'title' => 'What a strong automation rollout should include',
+                        'paragraphs' => [
+                            'Start with lead intake, assignment, status changes, reminders, and milestone visibility. Those areas usually create the fastest business return.',
+                            'After that, add client portal access, document steps, invoice updates, and reporting so the system improves both client experience and internal control.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How CRM automation supports growth and SEO',
+                        'paragraphs' => [
+                            'CRM automation supports faster response times and clearer commercial operations, which improves how leads from <a href="/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites">conversion-focused websites</a>, <a href="/blog/landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries">landing pages</a>, and <a href="/blog/ai-website-development-uk-how-service-businesses-build-faster-and-convert-better">AI-assisted builds</a> are actually handled.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What is the first CRM automation to build?',
+                        'a' => 'Lead capture, assignment, status updates, and reminders usually deliver the fastest operational return.',
+                    ],
+                    [
+                        'q' => 'When does a client portal become worth building?',
+                        'a' => 'Usually when updates, approvals, invoices, or service requests are happening repeatedly and manually across email threads.',
+                    ],
+                ],
+                'cta' => 'Review our <a href="/software-development">custom software development service</a> if your team needs CRM automation or a client portal that fits your workflow properly.',
+                'published_at' => now()->subHours(12),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Programmatic SEO UK: When Service Businesses Should and Should Not Scale Location Pages',
+                'slug' => 'programmatic-seo-uk-when-service-businesses-should-and-should-not-scale-location-pages',
+                'category' => 'SEO',
+                'excerpt' => 'When UK service businesses should use programmatic SEO for location pages, and how to avoid thin content, duplication, and trust problems.',
+                'meta_title' => 'Programmatic SEO UK for Location Pages',
+                'meta_description' => 'Learn when UK service businesses should use programmatic SEO for location pages, and how to avoid thin-content risks that hurt trust and rankings.',
+                'meta_keywords' => 'programmatic seo uk, location pages seo uk, local seo service pages uk, scaled landing pages uk, thin content seo uk',
+                'overview' => [
+                    'Programmatic SEO can help service businesses scale location coverage, but only when each page still offers distinct value, trustworthy local relevance, and commercial clarity.',
+                    'Poorly executed location scaling often creates duplication, weak trust, and thin-content problems that limit rankings instead of improving them.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'When programmatic SEO helps',
+                        'list' => [
+                            'You have a clear service template that still allows unique local context.',
+                            'Each location page can reference real relevance, sectors, or delivery fit.',
+                            'Internal links and service architecture are already strong.',
+                            'The pages support real buyer intent rather than just keyword expansion.',
+                        ],
+                    ],
+                    [
+                        'title' => 'When it becomes risky',
+                        'paragraphs' => [
+                            'Scaling dozens of near-identical pages with swapped city names usually damages trust and makes it harder for Google to treat the site as genuinely helpful.',
+                            'The safest approach is to scale only where there is a genuine content reason, local commercial intent, and enough supporting proof to make the page useful.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How this connects with broader SEO',
+                        'paragraphs' => [
+                            'Programmatic location pages work better when supported by <a href="/blog/llm-seo-uk-how-to-structure-service-pages-for-chatgpt-google-ai-and-answer-engines">semantic service page structure</a>, <a href="/blog/google-search-console-insights-uk-how-to-find-easy-seo-wins-faster">Search Console validation</a>, and <a href="/blog/uk-seo-growth-system-2026-aeo-geo-eeat-guide">strong pillar SEO planning</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'Should every service business create location pages?',
+                        'a' => 'No. Location pages help only when there is meaningful local intent and enough unique value to justify the page.',
+                    ],
+                    [
+                        'q' => 'What is the biggest programmatic SEO mistake?',
+                        'a' => 'Publishing large batches of low-difference pages with weak local proof and no real buyer value is the most common mistake.',
+                    ],
+                ],
+                'cta' => 'If you want safe location growth, review our <a href="/search-engine-optimization">SEO services</a> and <a href="/contact">speak with our team</a> before scaling.',
+                'published_at' => now()->subDays(3),
+                'sort_order' => 0,
+            ],
         ];
 
         foreach ($posts as $index => $post) {
@@ -1102,9 +1410,9 @@ class BlogPostSeeder extends Seeder
                     'twitter_description' => $post['meta_description'] ?? $post['excerpt'],
                     'featured_image' => $postImageMap[$slug] ?? 'assets/images/blog/it-seo-growth.svg',
                     'featured_image_alt' => $post['title'],
-                    'sort_order' => $index + 1,
+                    'sort_order' => $post['sort_order'] ?? ($index + 1),
                     'is_published' => true,
-                    'published_at' => now()->subDays(($index + 1) * 4),
+                    'published_at' => $post['published_at'] ?? now()->subDays(($index + 1) * 4),
                 ]
             );
         }
@@ -1121,6 +1429,10 @@ class BlogPostSeeder extends Seeder
             }
         }
 
+        foreach ($this->buildCommercialContext($post) as $paragraph) {
+            $html .= '<p>' . $paragraph . '</p>';
+        }
+
         foreach ($post['sections'] ?? [] as $section) {
             $html .= '<h2>' . $section['title'] . '</h2>';
 
@@ -1134,8 +1446,33 @@ class BlogPostSeeder extends Seeder
                     $html .= '<li>' . $item . '</li>';
                 }
                 $html .= '</ul>';
+                $html .= '<p>' . $this->buildSectionSupportParagraph($post, $section) . '</p>';
             }
         }
+
+        $html .= '<h2>Who this is for</h2>';
+        $html .= '<ul>';
+        foreach ($this->buildAudienceBullets($post) as $item) {
+            $html .= '<li>' . $item . '</li>';
+        }
+        $html .= '</ul>';
+
+        $html .= '<h2>Common mistakes to avoid</h2>';
+        foreach ($this->buildCommonMistakes($post) as $paragraph) {
+            $html .= '<p>' . $paragraph . '</p>';
+        }
+
+        $html .= '<h2>What this means in practice</h2>';
+        foreach ($this->buildPracticalTakeaways($post) as $paragraph) {
+            $html .= '<p>' . $paragraph . '</p>';
+        }
+
+        $html .= '<h2>Implementation checklist</h2>';
+        $html .= '<ul>';
+        foreach ($this->buildImplementationChecklist($post) as $item) {
+            $html .= '<li>' . $item . '</li>';
+        }
+        $html .= '</ul>';
 
         if (!empty($post['faq'])) {
             $html .= '<h2>Frequently Asked Questions</h2>';
@@ -1148,8 +1485,90 @@ class BlogPostSeeder extends Seeder
         if (!empty($post['cta'])) {
             $html .= '<h2>Next Step</h2>';
             $html .= '<p>' . $post['cta'] . '</p>';
+            $html .= '<p>' . $this->buildClosingParagraph($post) . '</p>';
         }
 
         return $html;
+    }
+
+    private function buildCommercialContext(array $post): array
+    {
+        $category = strtolower((string) ($post['category'] ?? 'service growth'));
+        $topic = $this->extractTopicPhrase($post);
+
+        return [
+            'For UK buyers comparing suppliers, the strongest content usually explains commercial outcomes, project expectations, and how the service connects with trust, delivery clarity, and measurable growth. This is where ' . $topic . ' becomes more useful than generic marketing copy.',
+            'In practical terms, a strong ' . $category . ' article should help a reader understand what good looks like, what mistakes to avoid, and what questions to ask before spending budget. That type of clarity tends to improve both engagement quality and search relevance over time.',
+        ];
+    }
+
+    private function buildSectionSupportParagraph(array $post, array $section): string
+    {
+        $topic = $this->extractTopicPhrase($post);
+        $sectionTitle = strtolower((string) ($section['title'] ?? 'delivery planning'));
+
+        return 'Taken together, these points show how ' . $topic . ' should support better decision-making, cleaner delivery planning, and stronger buyer confidence around ' . $sectionTitle . '. When the page explains this clearly, it becomes more useful for both search engines and commercial readers.';
+    }
+
+    private function buildPracticalTakeaways(array $post): array
+    {
+        $topic = $this->extractTopicPhrase($post);
+
+        return [
+            'If a business is actively researching ' . $topic . ', they usually want clear next steps rather than broad theory. The strongest pages help the reader compare options, understand likely timelines, and see what affects scope, cost, or implementation quality.',
+            'This is also why long-form content tends to perform better when it stays commercially focused. Search visibility improves when the article answers related questions thoroughly, but conversions improve when the page also explains proof, process, and realistic outcomes in plain language.',
+        ];
+    }
+
+    private function buildAudienceBullets(array $post): array
+    {
+        $topic = $this->extractTopicPhrase($post);
+        $category = strtolower((string) ($post['category'] ?? 'service delivery'));
+
+        return [
+            'UK businesses comparing suppliers for ' . $topic . ' and looking for a commercially credible next step.',
+            'Internal teams that need clearer expectations around budget, delivery scope, workflow quality, or search performance.',
+            'Decision-makers reviewing ' . $category . ' options and trying to reduce risk before committing to a project or retainer.',
+        ];
+    }
+
+    private function buildCommonMistakes(array $post): array
+    {
+        $topic = $this->extractTopicPhrase($post);
+
+        return [
+            'A common mistake is treating ' . $topic . ' like a checklist exercise instead of a commercial decision. That usually leads to vague scope, weak implementation detail, and pages that look acceptable but do not create enough trust or conversion momentum.',
+            'Another mistake is focusing only on surface-level SEO phrases without connecting the page to proof, FAQs, pricing logic, service scope, and internal links. Search engines increasingly reward stronger context, while real buyers still expect clarity before they enquire.',
+        ];
+    }
+
+    private function buildImplementationChecklist(array $post): array
+    {
+        $topic = $this->extractTopicPhrase($post);
+
+        return [
+            'Define the exact commercial goal behind ' . $topic . ' before expanding delivery scope.',
+            'Align the page with related service, pricing, case-study, and FAQ content so Google and buyers can follow the topic clearly.',
+            'Use Search Console data, internal linking, and conversion tracking to measure whether the page is attracting useful visibility instead of low-value impressions.',
+            'Review the content regularly so it stays relevant, trustworthy, and commercially stronger than generic competitor pages.',
+        ];
+    }
+
+    private function buildClosingParagraph(array $post): string
+    {
+        $topic = $this->extractTopicPhrase($post);
+
+        return 'If your team is reviewing ' . $topic . ' right now, the safest next step is usually a scoped conversation that covers delivery fit, commercial priorities, and the fastest path to a useful first result. That tends to produce better outcomes than choosing based on vague promises or generic package language.';
+    }
+
+    private function extractTopicPhrase(array $post): string
+    {
+        $keywords = array_values(array_filter(array_map('trim', explode(',', (string) ($post['meta_keywords'] ?? '')))));
+
+        if (!empty($keywords)) {
+            return strtolower($keywords[0]);
+        }
+
+        return strtolower((string) ($post['title'] ?? 'your service topic'));
     }
 }

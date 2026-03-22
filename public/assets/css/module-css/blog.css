@@ -351,6 +351,8 @@
     overflow: hidden;
     border-radius: 8px;
     z-index: 1;
+    aspect-ratio: 16 / 9;
+    background: #0d1b3b;
 }
 
 .blog-two__img::before {
@@ -373,6 +375,9 @@
 
 .blog-two__img img {
     width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
     border-radius: 8px;
     transform: scale(1.0);
     transition: all 1500ms ease;

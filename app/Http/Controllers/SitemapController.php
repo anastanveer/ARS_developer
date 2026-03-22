@@ -113,9 +113,9 @@ class SitemapController extends Controller
     {
         $publishedPosts = BlogPost::query()
             ->where('is_published', true)
-            ->orderByRaw('CASE WHEN sort_order = 0 THEN 1 ELSE 0 END')
-            ->orderBy('sort_order')
+            ->orderByRaw('CASE WHEN sort_order = 0 THEN 0 ELSE 1 END')
             ->orderByDesc('published_at')
+            ->orderBy('sort_order')
             ->orderByDesc('id')
             ->get();
 

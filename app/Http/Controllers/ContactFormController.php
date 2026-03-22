@@ -11,6 +11,7 @@ use App\Models\CouponRedemption;
 use App\Models\Invoice;
 use App\Models\Lead;
 use App\Models\Project;
+use App\Services\RecaptchaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,7 @@ class ContactFormController extends Controller
 {
     private array $tableColumnsCache = [];
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, RecaptchaService $recaptcha)
     {
         $payload = $this->normalizePayload($request);
         $meetingSlots = $this->meetingSlots();
@@ -57,6 +58,16 @@ class ContactFormController extends Controller
 
         if ($validator->fails()) {
             return $this->errorResponse($validator->errors()->first(), $expectsJson);
+        }
+
+        $verification = $recaptcha->verify((string) $request->input('g-recaptcha-response'), $request->ip());
+
+        if (!$verification['success']) {
+            return $this->errorResponse(
+                $verification['message'] ?? 'Please complete the Google reCAPTCHA check.',
+                $expectsJson,
+                422
+            );
         }
 
         if ($this->isBlockedContact($payload['email'], $payload['ip'])) {

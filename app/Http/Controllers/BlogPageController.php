@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogComment;
 use App\Models\BlogPost;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -30,21 +31,21 @@ class BlogPageController extends Controller
                         ->orWhere('category', 'like', '%' . $query . '%');
                 });
             })
-            ->orderByRaw('CASE WHEN sort_order = 0 THEN 1 ELSE 0 END')
-            ->orderBy('sort_order')
+            ->orderByRaw('CASE WHEN sort_order = 0 THEN 0 ELSE 1 END')
             ->orderByDesc('published_at')
+            ->orderBy('sort_order')
             ->orderByDesc('id')
             ->paginate(12)
             ->withQueryString();
 
         $seoOverride = [
-            'title' => $query !== '' ? ('Search: ' . $querySeo . ' - Blog') : 'Blog - UK Web Development and SEO Insights',
+            'title' => $query !== '' ? ('Search: ' . $querySeo . ' - Blog') : 'AI SEO Blog | UK Software Development, AEO, GEO and Growth Insights',
             'description' => $query !== ''
-                ? ('Search results for "' . $query . '" in ARSDeveloper blog articles about web development, CRM, and SEO.')
-                : 'Practical insights on software development, WordPress, SEO, CRM systems, and digital growth in the UK.',
+                ? ('Search results for "' . $query . '" in ARSDeveloper blog articles about AI SEO, software development, CRM, and growth strategy.')
+                : 'Practical AI SEO, software development, CRM, answer engine optimization, and growth insights for UK businesses.',
             'keywords' => $query !== ''
-                ? ($query . ', uk software blog, web development insights, seo tips')
-                : 'web development blog UK, SEO blog UK, CRM blog UK, WordPress tips UK',
+                ? ($query . ', ai seo blog uk, software development insights uk, answer engine optimization blog')
+                : 'ai seo blog uk, aeo blog uk, geo seo uk, software development blog uk, crm blog uk, answer engine optimization uk',
             'type' => 'Blog',
             'robots' => $query !== '' ? 'noindex, follow' : 'index, follow',
             'canonical' => $query === '' && $page > 1
@@ -138,8 +139,20 @@ class BlogPageController extends Controller
         ];
         $clusterLinks = $this->buildTopicalClusterLinks($post);
         $tableOfContents = $this->extractTableOfContents((string) $post->content);
+        $approvedComments = $post->comments()->approved()->latest()->get();
+        $authorProfile = [
+            'title' => 'About ARS Developer Ltd',
+            'role' => 'UK Software, CRM and Search Growth Delivery Partner',
+            'image' => asset('assets/images/resources/uk.png'),
+            'summary' => 'ARS Developer Ltd helps UK businesses build clearer websites, stronger CRM workflows, better ecommerce journeys, and practical SEO systems that support enquiries, conversions, and long-term growth.',
+            'points' => [
+                'Founder-led project delivery with clear scope, timelines, and launch planning.',
+                'Focused on software builds, business websites, CRM systems, ecommerce flows, and technical SEO.',
+                'Built for UK service teams that want qualified leads, cleaner operations, and dependable post-launch support.',
+            ],
+        ];
 
-        return view('pages.blog-details', compact('post', 'recentPosts', 'topicGroups', 'relatedPosts', 'seoOverride', 'clusterLinks', 'tableOfContents'));
+        return view('pages.blog-details', compact('post', 'recentPosts', 'topicGroups', 'relatedPosts', 'seoOverride', 'clusterLinks', 'tableOfContents', 'approvedComments', 'authorProfile'));
     }
 
     public function detailsLegacy(Request $request): RedirectResponse
@@ -152,9 +165,9 @@ class BlogPageController extends Controller
 
         $first = BlogPost::query()
             ->where('is_published', true)
-            ->orderByRaw('CASE WHEN sort_order = 0 THEN 1 ELSE 0 END')
-            ->orderBy('sort_order')
+            ->orderByRaw('CASE WHEN sort_order = 0 THEN 0 ELSE 1 END')
             ->orderByDesc('published_at')
+            ->orderBy('sort_order')
             ->first();
 
         if ($first) {
@@ -625,4 +638,5 @@ class BlogPageController extends Controller
             'id' => Str::slug($heading),
         ])->all();
     }
+
 }
