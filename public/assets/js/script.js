@@ -1005,8 +1005,11 @@
 
     var resultBox = form.querySelector(".result");
     var submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+    var isNewsletterForm = form.classList.contains("newsletter-form-validated");
 
-    if (submitButton && submitButton.parentNode) {
+    if (isNewsletterForm && form.parentNode) {
+      form.parentNode.insertBefore(box, form.nextSibling);
+    } else if (submitButton && submitButton.parentNode) {
       submitButton.parentNode.insertBefore(box, submitButton);
     } else if (resultBox && resultBox.parentNode) {
       resultBox.parentNode.insertBefore(box, resultBox);
