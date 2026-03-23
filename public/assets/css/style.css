@@ -2962,7 +2962,7 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .hero-text-slider__title-box {
     margin: 0 auto;
-    max-width: 920px;
+    max-width: 1080px;
     padding: 0 16px;
     align-items: center;
 }
@@ -2980,7 +2980,7 @@ body.megamenu-popup-active .mobile-nav__content {
     font-size: clamp(46px, 4.9vw, 56px);
     line-height: 1.12;
     margin-bottom: 16px;
-    max-width: 920px;
+    max-width: 1040px;
     margin-left: auto;
     margin-right: auto;
     color: #ffffff;
@@ -3001,14 +3001,14 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .hero-text-slider__proof {
     margin: 0 0 8px;
-    max-width: 620px;
+    max-width: 760px;
     color: rgba(255, 255, 255, 0.88);
     font-size: 12px;
     line-height: 1.35;
 }
 
 .hero-text-slider__title-box .main-slider__text {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 0 24px;
     color: rgba(255, 255, 255, 0.96);
     font-size: 18px;
