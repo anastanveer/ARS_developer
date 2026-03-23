@@ -634,7 +634,7 @@
                         </div>
                         <h2 class="section-title-two__title title-animation">Who runs ARS Developer Ltd and how we deliver projects</h2>
                     </div>
-                    <p>ARS Developer Ltd is a UK-registered software and web development company focused on business websites, ecommerce delivery, CRM systems, and growth support for companies across the UK market.</p>
+                    <p>ARS Developer Ltd is a UK-registered software and web development company helping businesses improve lead generation, delivery systems, and commercial visibility through websites, ecommerce, CRM, and practical SEO support.</p>
                     <h3 class="seo-hidden-heading">Company legal identity, leadership, and delivery ownership details</h3>
                     <div class="about-company-profile__meta">
                         <div class="about-company-profile__meta-item">
@@ -651,23 +651,23 @@
                         </div>
                     </div>
                     <ul class="about-company-profile__list">
-                        <li>Transparent scope and timeline before build starts.</li>
-                        <li>Structured milestone updates and practical weekly progress communication.</li>
-                        <li>Technical quality checks for speed, SEO-readiness, and security basics.</li>
-                        <li>Handover documentation and ongoing support options after launch.</li>
+                        <li>Clear scope, delivery phases, and commercial priorities before build starts.</li>
+                        <li>Structured milestone updates with practical communication throughout delivery.</li>
+                        <li>Technical checks for speed, SEO-readiness, tracking, and security basics.</li>
+                        <li>Handover notes, support options, and next-step recommendations after launch.</li>
                     </ul>
                     <div class="about-company-profile__qa">
                         <article class="about-company-profile__qa-item">
                             <h3>How quickly can we start a UK project?</h3>
-                            <p>After a short discovery call, most projects move into scope and milestone planning within one business week.</p>
+                            <p>After a short discovery call, most projects move into scope review and milestone planning within one business week.</p>
                         </article>
                         <article class="about-company-profile__qa-item">
                             <h3>Can you work with an existing site or CRM?</h3>
-                            <p>Yes. We improve existing systems through focused updates across <a href="/services">services</a>, performance, and conversion flow.</p>
+                            <p>Yes. We improve existing systems through focused updates across <a href="/services">services</a>, performance, conversion flow, and technical SEO support.</p>
                         </article>
                         <article class="about-company-profile__qa-item">
                             <h3>What support comes after launch?</h3>
-                            <p>We provide structured support plans, optimization reviews, and growth actions. You can review options on <a href="/pricing">pricing</a> or <a href="/contact">contact us</a> directly.</p>
+                            <p>We provide structured support plans, optimization reviews, and growth actions after launch. You can review options on <a href="/pricing">pricing</a> or <a href="/contact">contact us</a> directly.</p>
                         </article>
                     </div>
                     <div class="about-company-profile__actions">

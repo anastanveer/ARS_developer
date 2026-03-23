@@ -1,5 +1,17 @@
 @php
     $page_title = 'Portfolio';
+    $seoOverride = [
+        'title' => 'UK Software Development Portfolio | Websites, CRM, Ecommerce and SEO Case Studies',
+        'description' => 'Review ARS Developer case studies across UK websites, CRM systems, ecommerce builds, landing pages, and search-led growth projects with practical delivery notes and live proof where available.',
+        'keywords' => 'software development portfolio uk, website case studies uk, crm development case study uk, ecommerce portfolio uk, seo case studies uk, landing page case studies uk',
+        'related_links' => [
+            '/services',
+            '/software-development',
+            '/web-design-development',
+            '/pricing',
+            '/contact',
+        ],
+    ];
 
     $normaliseCategory = static function (?string $value): string {
         $raw = trim((string) $value);
@@ -136,7 +148,10 @@
                 </div>
                 <span class="section-title__tagline">Our Portfolio</span>
             </div>
-            <h2 class="section-title__title title-animation">Explore our case studies and live projects.</h2>
+            <h2 class="section-title__title title-animation">Explore UK case studies, live builds, and commercially focused project delivery.</h2>
+            <p class="services-details__text-1" style="max-width: 860px; margin: 18px auto 0;">
+                Review websites, CRM systems, ecommerce work, landing pages, and custom software projects delivered with practical milestones, measurable outcomes, and launch-ready support.
+            </p>
         </div>
 
         @if($flatItems->isNotEmpty())

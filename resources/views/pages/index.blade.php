@@ -73,11 +73,11 @@
                             <div class="main-slider__title-box hero-text-slider__title-box">
                                 <p class="hero-text-slider__eyebrow">UK Software Partner</p>
                                 <h2 class="main-slider__title"><span class="hero-title-line-one">We Build <span class="hero-accent-cyan" style="color:#28d7ff;">Custom Software</span></span><span class="hero-title-line-two"> <span style="color:#ffffff;">That</span> <span class="hero-accent-blue" style="color:#1d93ff;">Scales</span> <span style="color:#ffffff;">Your</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Business.</span></span></h2>
-                                <p class="hero-text-slider__proof">UK delivery partner | AI-ready websites, CRM, ecommerce and automation | clear milestones and support</p>
-                                <p class="main-slider__text">We build AI-ready business websites, CRM systems, ecommerce stores, workflow automation, and technical SEO foundations for UK companies that need practical delivery and measurable growth.</p>
+                                <p class="hero-text-slider__proof">UK software delivery for service businesses | websites, CRM, ecommerce and SEO with clear milestones</p>
+                                <p class="main-slider__text">We help UK businesses launch conversion-focused websites, custom CRM systems, ecommerce builds, workflow automation, and technical SEO improvements with practical project planning and direct support.</p>
                                 <div class="main-slider__btn hero-text-slider__cta">
-                                    <a href="/contact"><span class="icon-right"></span>Book a Project Call</a>
-                                    <a href="/portfolio" class="hero-text-slider__outline-btn"><span class="icon-right"></span>See Recent Work</a>
+                                    <a href="/contact"><span class="icon-right"></span>Talk Through Your Project</a>
+                                    <a href="/portfolio" class="hero-text-slider__outline-btn"><span class="icon-right"></span>See UK Case Studies</a>
                                 </div>
                             </div>
                             <div class="main-slider__satisfied-client-and-rating-box hero-text-slider__stats">
@@ -106,9 +106,9 @@
                                             <h3>UK</h3>
                                         </div>
                                         <div class="main-slider__rating-content">
-                                            <p class="main-slider__rating-content-sub-title">Delivery and support focus</p>
+                                            <p class="main-slider__rating-content-sub-title">Commercial build and support focus</p>
                                             <div class="main-slider__rating-content-logo">
-                                                <img src="assets/images/resources/main-slider-rating-content-logo.png" alt="UK delivery support signal">
+                                                <img src="assets/images/resources/main-slider-rating-content-logo.png" alt="Google">
                                             </div>
                                         </div>
                                 </div>

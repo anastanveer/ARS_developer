@@ -893,7 +893,7 @@
                             <ul class="blog-details__trust-list">
                                 <li>Reviewed by the ARS Developer editorial team for UK business relevance.</li>
                                 <li>Structured around buyer-intent SEO, technical delivery, and measurable conversion outcomes.</li>
-                                <li>Connected to related service pages and supporting articles for stronger topic depth.</li>
+                                <li>Connected to related service pages, pricing guidance, and supporting articles for stronger topic depth.</li>
                             </ul>
                         </div>
 
@@ -919,6 +919,7 @@
 
                         <div class="blog-details__cluster-links">
                             <h3>Next Step Resources</h3>
+                            <p style="margin:0 0 14px; color:#4f6386;">Move from research into action with the most relevant service, proof, pricing, and project planning pages for this topic.</p>
                             <div class="blog-details__cluster-links-list">
                                 @php
                                     $resourceLinks = !empty($clusterLinks) && is_array($clusterLinks)
@@ -952,6 +953,7 @@
                                 <div>
                                     <p class="blog-details__author-role">{{ $authorProfile['role'] }}</p>
                                     <p class="blog-details__author-summary">{{ $authorProfile['summary'] }}</p>
+                                    <p class="blog-details__author-summary">ARS Developer Ltd supports UK businesses with websites, software systems, CRM workflows, SEO implementation, and conversion-focused growth support. Our content is written to help decision-makers compare options clearly and move toward practical next steps with more confidence.</p>
                                     <ul class="blog-details__author-points">
                                         @foreach($authorProfile['points'] as $point)
                                             <li>{{ $point }}</li>

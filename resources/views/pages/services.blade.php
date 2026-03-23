@@ -77,6 +77,9 @@
                     </div>
                     <h2 class="section-title__title title-animation">Software development services, AI-ready websites, CRM systems, and automation
                         for <span>UK business growth</span></h2>
+                    <p class="services-details__text-1" style="max-width: 860px; margin: 18px auto 0;">
+                        Explore the full service stack behind stronger enquiries, clearer delivery, and measurable growth. We combine website development, software systems, CRM workflows, SEO foundations, and post-launch support so UK teams can move faster with one accountable partner.
+                    </p>
                 </div>
                 <div class="row">
                     <!--Services One Single Start -->
@@ -403,21 +406,19 @@
                                             <div class="cta-three__title-tagline-icon-1"></div>
                                             <div class="cta-three__title-tagline-icon-2"></div>
                                         </div>
-                                        <span class="cta-three__title-tagline">Start A Projects</span>
+                                        <span class="cta-three__title-tagline">Start A Project</span>
                                     </div>
-                                    <h2 class="cta-three__title">Have a projects Idea?
-                                        lets Start Talk</h2>
+                                    <h2 class="cta-three__title">Need a clearer software,
+                                        website, or SEO delivery plan?</h2>
                                 </div>
-                                <p class="cta-three__text">Let’s start a conversation and explore how we can <br>
-                                    transform
-                                    your vision into reality.</p>
+                                <p class="cta-three__text">Share your goals, scope, or current blockers and we will outline a realistic next step, delivery direction, and commercial recommendation for your UK project.</p>
                                 <div class="cta-three__user">
                                     <div class="cta-three__user-img">
                                         <img src="assets/images/resources/cta-three-user-img-1.jpg" alt="">
                                     </div>
                                     <div class="cta-three__user-content">
-                                        <p class="cta-three__user-name">Thomas Alison</p>
-                                        <span class="cta-three__user-sub-title">Projects Manager</span>
+                                        <p class="cta-three__user-name">ARS Delivery Team</p>
+                                        <span class="cta-three__user-sub-title">Scope, build, SEO and support guidance</span>
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,18 @@
 @php
     $page_title = 'Portfolio Details';
+    $seoOverride = [
+        'title' => ($portfolio->title ?: 'Project') . ' | UK Software Development Case Study',
+        'description' => \Illuminate\Support\Str::limit(strip_tags((string) ($portfolio->excerpt ?: $portfolio->description ?: 'UK software, website, SEO, and ecommerce case study with delivery details and practical business outcomes.')), 160),
+        'keywords' => 'software development case study uk, website project case study uk, crm project delivery uk, ecommerce case study uk, seo case study uk, portfolio details uk',
+        'related_links' => array_values(array_filter([
+            '/portfolio',
+            '/services',
+            '/software-development',
+            '/web-design-development',
+            '/pricing',
+            $portfolio->project_url ?: null,
+        ])),
+    ];
     $summaryText = $portfolio->excerpt ?: 'This project was delivered for a UK business with a practical implementation plan, measurable milestones, and commercial outcomes.';
     $description = $portfolio->description ?: 'Project details will be updated soon.';
     $clientWebsite = $portfolio->project_url ?: null;
@@ -287,6 +300,15 @@
                                 <h3 class="portfolio-details__title-4">Implementation Notes</h3>
                                 <p class="portfolio-details__text-5">{{ $caseNarrative['implementation_text'] }}</p>
 
+                                <div class="blog-details__trust-box" style="margin-top: 26px;">
+                                    <h3>Why This Case Study Matters</h3>
+                                    <ul class="blog-details__trust-list">
+                                        <li>This delivery is documented as a practical example of how planning, execution, and conversion thinking come together in a real UK project workflow.</li>
+                                        <li>The focus is not just visuals. The case study highlights delivery scope, implementation choices, and outcomes that matter to commercial teams making platform or supplier decisions.</li>
+                                        <li>If you are comparing agencies, freelancers, or in-house build options, this page shows the level of clarity, support, and measurable thinking we aim to bring to every project.</li>
+                                    </ul>
+                                </div>
+
                                 <div class="portfolio-details__points-box">
                                     <ul class="portfolio-details__points-list list-unstyled">
                                         @foreach(($caseNarrative['notes_left'] ?? []) as $item)
@@ -369,9 +391,12 @@
                     </div>
                     <div class="cta-one__inner-content">
                         <div class="cta-one__shape-bg" style="background-image: url({{ asset('assets/images/shapes/cta-one-shape-bg.png') }});"></div>
-                        <h3 class="cta-one__title">Need a similar project for your UK business?</h3>
+                        <h3 class="cta-one__title">Need a similar result for your UK business?</h3>
+                        <p style="color:#d7e8ff; max-width:640px; margin:14px 0 0;">
+                            Use this case study as a starting point. We can scope a similar website, CRM, ecommerce, or SEO-led build around your goals, budget range, and rollout timeline.
+                        </p>
                         <div class="cta-one__btn">
-                            <a href="/contact">Get Started <span class=" icon-right-arrow-1"></span></a>
+                            <a href="/contact">Start Your Project <span class=" icon-right-arrow-1"></span></a>
                         </div>
                     </div>
                 </div>

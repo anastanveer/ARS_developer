@@ -292,6 +292,12 @@
             font-size: 14px;
             padding: 8px 4px;
         }
+
+        @media (max-width: 991px) {
+            .sticky-quick-actions {
+                display: none !important;
+            }
+        }
     </style>
 
     <script defer src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
