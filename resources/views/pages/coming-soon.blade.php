@@ -21,21 +21,10 @@
                     <div class="text">
                         <p>
                             Website is under construction. We'll be here soon with new<br>
-                            awesome site, subscribe to be notified.
+                            awesome site, we'll be here soon with a new and improved site.
                         </p>
                     </div>
-                    <div class="coming-soon-page__subscribe-box">
-                        <form class="subscribe-form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="form_type" value="newsletter">
-                            <input type="hidden" name="subject" value="Coming Soon Subscription Request">
-                            <input type="hidden" name="message" value="Please add me to ARSDeveloper updates from coming soon page.">
-                            <input name="email" placeholder="Enter your email address" type="email" required>
-                            <button type="submit" class="thm-btn coming-soon-page__btn"><span
-                                    class="icon-right"></span> Send Message</button>
-                        </form>
-                        <div class="result"></div>
-                    </div>
+
                 </div>
             </div>
         </section>

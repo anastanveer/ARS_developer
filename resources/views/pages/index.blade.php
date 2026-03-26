@@ -987,7 +987,13 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-12">
-                                            <button type="submit" class="audit-lead__btn thm-btn thm-btn-two"><span class="icon-right"></span> Send Free Audit Request</button>
+                                            <div class="cost-estimator__form-actions">
+                                                <button type="submit" class="audit-lead__btn thm-btn thm-btn-two"><span class="icon-right"></span> Send Free Audit Request</button>
+                                                <div class="form-privacy-note" aria-label="Privacy protected">
+                                                    <span class="form-privacy-note__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></span>
+                                                    <span>Your privacy is protected</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -1096,6 +1102,10 @@
                                             </div>
                                             <div class="cost-estimator__form-actions">
                                                 <button type="submit" class="cost-estimator__btn thm-btn thm-btn-two"><span class="icon-right"></span> Send Estimate Request</button>
+                                                <div class="form-privacy-note" aria-label="Privacy protected">
+                                                    <span class="form-privacy-note__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></span>
+                                                    <span>Your privacy is protected</span>
+                                                </div>
                                                 <p class="cost-estimator__form-note">Detailed briefs help us send a more accurate budget range and delivery window.</p>
                                             </div>
                                         </div>
@@ -1347,45 +1357,15 @@
                     <div class="cta-one__inner-content">
                         <div class="cta-one__shape-bg"
                             style="background-image: url(assets/images/shapes/cta-one-shape-bg.png);"></div>
-                        <h3 class="cta-one__title">Start your journey with our <br> exceptional services.</h3>
+                        <h3 class="cta-one__title">Ready to plan your <br> next digital project?</h3>
                         <div class="cta-one__btn">
-                            <a href="/contact">Get Started <span class=" icon-right-arrow-1"></span></a>
+                            <a href="/contact">Talk About Your Project <span class=" icon-right-arrow-1"></span></a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!--CTA One End -->
-
-        <!--Newsletter Two Start -->
-        <section class="newsletter-two">
-            <div class="newsletter-two__big-text">
-                Subscribe Newsletter
-            </div>
-            <div class="container">
-                <div class="newsletter-two__inner">
-                    <div class="newsletter-two__left">
-                        <h2 class="newsletter-two__title">Subscribe Newsletter</h2>
-                        <p class="newsletter-two__text">Get practical UK SEO and software growth insights in your
-                            <br> inbox. No spam, only useful updates.</p>
-                    </div>
-                    <div class="newsletter-two__right">
-                        <form class="newsletter-two__form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post" data-ga4-form-name="newsletter_home">
-                            @csrf
-                            <input type="hidden" name="form_type" value="newsletter">
-                            <input type="hidden" name="subject" value="Newsletter Subscription Request">
-                            <input type="hidden" name="message" value="Please add me to ARSDeveloper updates.">
-                            <div class="newsletter-two__input">
-                                <input type="email" name="email" placeholder="Enter Your Email" required>
-                            </div>
-                            <button type="submit" class="newsletter-two__btn">Subscribe</button>
-                        </form>
-                        <div class="result"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Newsletter Two End -->
 
 
 

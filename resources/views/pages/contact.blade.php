@@ -479,7 +479,11 @@
                                             <div class="contact-page__btn-box">
                                                 <button type="submit" class="thm-btn contact-page__btn" data-primary-submit><span
                                                         class="icon-right"></span><span data-primary-submit-label>SEND MESSAGE</span></button>
-                                                <p style="margin:10px 0 0;font-size:13px;color:#4b6187;" data-contact-action-hint>
+                                                <div class="form-privacy-note" aria-label="Privacy protected">
+                                                    <span class="form-privacy-note__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></span>
+                                                    <span>Your privacy is protected</span>
+                                                </div>
+                                                <p class="contact-page__action-hint" data-contact-action-hint>
                                                     {{ $showActionSelector ? 'Choose one action: send message only, or pay now and start order.' : 'Standard enquiry mode. We will review and respond quickly.' }}
                                                 </p>
                                             </div>
@@ -609,36 +613,6 @@
             </div>
         </section>
         <!--Faq One End -->
-
-
-        <!--Newsletter Two Start -->
-        <section class="newsletter-two">
-            <div class="newsletter-two__big-text">Subscribe Newsletter</div>
-            <div class="container">
-                <div class="newsletter-two__inner">
-                    <div class="newsletter-two__left">
-                        <h2 class="newsletter-two__title">Subscribe Newsletter</h2>
-                        <p class="newsletter-two__text">Get the latest SEO tips and software insights straight to your
-                            <br> inbox. Stay informed</p>
-                    </div>
-                    <div class="newsletter-two__right">
-                        <form class="newsletter-two__form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post" data-ga4-form-name="newsletter_contact">
-                            @csrf
-                            <input type="hidden" name="form_type" value="newsletter">
-                            <input type="hidden" name="subject" value="Newsletter Subscription Request">
-                            <input type="hidden" name="message" value="Please add me to ARSDeveloper updates.">
-                            <div class="newsletter-two__input">
-                                <input type="email" name="email" placeholder="Enter Your Email" required>
-                            </div>
-                            <button type="submit" class="newsletter-two__btn">Subscribe</button>
-                        </form>
-                        <div class="result"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Newsletter Two End -->
-
         <script>
             (function () {
                 var PRICING_SESSION_KEY = 'ars_selected_pricing_plan_v1';

@@ -298,67 +298,11 @@
                                     <a href="#">Ui Design</a>
                                 </div>
                             </div>
-                            <div class="sidebar__single sidebar__subscribe">
-                                <div class="sidebar__title-box">
-                                    <div class="sidebar__title-icon">
-                                        <img src="assets/images/icon/sidebar-title-icon.png" alt="">
-                                    </div>
-                                    <h3 class="sidebar__title">Search </h3>
-                                </div>
-                                <p class="sidebar__subscribe-text">Search blogs to discover a vast world of online
-                                    content
-                                    on countless topics.</p>
-                                <form action="{{ route('contact.submit') }}" method="post" class="sidebar__subscribe-form newsletter-form-validated">
-                                    @csrf
-                                    <input type="hidden" name="form_type" value="newsletter">
-                                    <input type="hidden" name="subject" value="Blog Sidebar Subscription Request">
-                                    <input type="hidden" name="message" value="Please add me to ARSDeveloper blog updates.">
-                                    <div class="sidebar__subscribe-email">
-                                        <div class="sidebar__subscribe-email-icon">
-                                            <span class="far fa-envelope"></span>
-                                        </div>
-                                        <input type="email" name="email" placeholder="Enter Your Email" required>
-                                    </div>
-                                    <button type="submit" class="thm-btn sidebar__subscribe-btn">SUBSCIBRE NOW<i
-                                            class="icon-right"></i></button>
-                                </form>
-                                <div class="result"></div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!--Blog List End-->
-
-        <!--Newsletter Two Start -->
-        <section class="newsletter-two">
-            <div class="newsletter-two__big-text">
-                Subscribe Newsletter
-            </div>
-            <div class="container">
-                <div class="newsletter-two__inner">
-                    <div class="newsletter-two__left">
-                        <h2 class="newsletter-two__title">Subscribe Newsletter</h2>
-                        <p class="newsletter-two__text">Get the latest SEO tips and software insights straight to your
-                            <br> inbox. Stay informed</p>
-                    </div>
-                    <div class="newsletter-two__right">
-                        <form class="newsletter-two__form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="form_type" value="newsletter">
-                            <input type="hidden" name="subject" value="Newsletter Subscription Request">
-                            <input type="hidden" name="message" value="Please add me to ARSDeveloper updates.">
-                            <div class="newsletter-two__input">
-                                <input type="email" name="email" placeholder="Enter Your Email" required>
-                            </div>
-                            <button type="submit" class="newsletter-two__btn">Subscribe</button>
-                        </form>
-                        <div class="result"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Newsletter Two End -->
-
 @include('layouts.footer')

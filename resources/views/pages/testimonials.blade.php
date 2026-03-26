@@ -249,34 +249,5 @@
         </section>
         <!-- Testimonial Page End -->
 
-        <!--Newsletter Two Start -->
-        <section class="newsletter-two">
-            <div class="newsletter-two__big-text">Subscribe Newsletter</div>
-            <div class="container">
-                <div class="newsletter-two__inner">
-                    <div class="newsletter-two__left">
-                        <h2 class="newsletter-two__title">Subscribe Newsletter</h2>
-                        <p class="newsletter-two__text">Get the latest SEO tips and software insights straight to your
-                            <br> inbox. Stay informed</p>
-                    </div>
-                    <div class="newsletter-two__right">
-                        <form class="newsletter-two__form newsletter-form-validated" action="{{ route('contact.submit') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="form_type" value="newsletter">
-                            <input type="hidden" name="subject" value="Newsletter Subscription Request">
-                            <input type="hidden" name="message" value="Please add me to ARSDeveloper updates.">
-                            <div class="newsletter-two__input">
-                                <input type="email" name="email" placeholder="Enter Your Email" required>
-                            </div>
-                            <button type="submit" class="newsletter-two__btn">Subscribe</button>
-                        </form>
-                        <div class="result"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Newsletter Two End -->
-
-
 
 @include('layouts.footer')
