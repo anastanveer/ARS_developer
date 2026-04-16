@@ -6,6 +6,13 @@
   var saveDataEnabled = !!(navigator.connection && navigator.connection.saveData);
   var lowEndDevice = !!(navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
   var lowPowerMode = isMobileDevice || prefersReducedMotion || saveDataEnabled || lowEndDevice;
+  var runWhenIdle = window.requestIdleCallback
+    ? function (callback, timeout) {
+        window.requestIdleCallback(callback, { timeout: timeout || 1200 });
+      }
+    : function (callback, timeout) {
+        window.setTimeout(callback, timeout || 200);
+      };
 
 
   if (typeof Swiper !== "undefined" && document.querySelector(".swiper")) {
@@ -84,13 +91,15 @@
 
   // AOS Animation
   if ($("[data-aos]").length) {
-    AOS.init({
-      duration: '1200',
-      disable: lowPowerMode,
-      easing: 'ease',
-      mirror: !lowPowerMode,
-      once: lowPowerMode
-    });
+    runWhenIdle(function () {
+      AOS.init({
+        duration: '1200',
+        disable: lowPowerMode,
+        easing: 'ease',
+        mirror: !lowPowerMode,
+        once: lowPowerMode
+      });
+    }, 1500);
   }
 
 
@@ -2217,13 +2226,15 @@
 
 
   if ($(".wow").length && !lowPowerMode) {
-    var wow = new WOW({
-      boxClass: "wow", // animated element css class (default is wow)
-      animateClass: "animated", // animation css class (default is animated)
-      mobile: false, // keep lightweight behavior on smaller devices
-      live: true // act on asynchronously loaded content (default is true)
-    });
-    wow.init();
+    runWhenIdle(function () {
+      var wow = new WOW({
+        boxClass: "wow",
+        animateClass: "animated",
+        mobile: false,
+        live: true
+      });
+      wow.init();
+    }, 1800);
   }
 
 
@@ -2462,7 +2473,9 @@
     });
   }
   if (typeof ScrollTrigger !== "undefined" && typeof SplitText !== "undefined" && typeof gsap !== "undefined" && !lowPowerMode) {
-    ScrollTrigger.addEventListener("refresh", title_animation);
+    runWhenIdle(function () {
+      ScrollTrigger.addEventListener("refresh", title_animation);
+    }, 2200);
   }
 
 
@@ -2478,7 +2491,9 @@
     projectMasonaryLayout();
     fullHeight();
     if (!lowPowerMode) {
-      title_animation();
+      runWhenIdle(function () {
+        title_animation();
+      }, 2200);
     }
     priceFilter();
 

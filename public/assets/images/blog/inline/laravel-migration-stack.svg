@@ -1,0 +1,36 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="bgC" x1="88" y1="60" x2="1088" y2="658" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0A1A34"/>
+<stop offset="1" stop-color="#112A54"/>
+</linearGradient>
+<linearGradient id="arrowC" x1="438" y1="0" x2="766" y2="0" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2F7BFF"/>
+<stop offset="1" stop-color="#1DE0C5"/>
+</linearGradient>
+</defs>
+<rect width="1200" height="720" rx="32" fill="#071427"/>
+<circle cx="1016" cy="608" r="184" fill="#1DE0C5" fill-opacity=".06"/>
+<rect x="56" y="56" width="1088" height="608" rx="30" fill="url(#bgC)"/>
+<rect x="94" y="94" width="1012" height="532" rx="28" fill="#0D1D39"/>
+<rect x="132" y="134" width="306" height="438" rx="26" fill="#112C5C" stroke="#245BA7"/>
+<rect x="762" y="134" width="306" height="438" rx="26" fill="#112C5C" stroke="#245BA7"/>
+<rect x="478" y="214" width="244" height="278" rx="28" fill="#123168" stroke="#2A63B2"/>
+<rect x="172" y="176" width="118" height="16" rx="8" fill="#D9E7FF"/>
+<rect x="802" y="176" width="118" height="16" rx="8" fill="#D9E7FF"/>
+<rect x="206" y="246" width="176" height="12" rx="6" fill="#5873A2"/>
+<rect x="206" y="272" width="150" height="12" rx="6" fill="#5873A2"/>
+<rect x="206" y="298" width="126" height="12" rx="6" fill="#5873A2"/>
+<rect x="836" y="246" width="176" height="12" rx="6" fill="#5873A2"/>
+<rect x="836" y="272" width="150" height="12" rx="6" fill="#5873A2"/>
+<rect x="836" y="298" width="126" height="12" rx="6" fill="#5873A2"/>
+<path d="M438 352H478" stroke="url(#arrowC)" stroke-width="12" stroke-linecap="round"/>
+<path d="M722 352H762" stroke="url(#arrowC)" stroke-width="12" stroke-linecap="round"/>
+<circle cx="600" cy="352" r="68" fill="#2F7BFF" fill-opacity=".12"/>
+<circle cx="600" cy="352" r="32" fill="#123168" stroke="#1DE0C5" stroke-width="6"/>
+<path d="M584 352L596 364L619 340" stroke="#1DE0C5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="184" y="486" width="168" height="18" rx="9" fill="#7A6DFF"/>
+<rect x="814" y="486" width="168" height="18" rx="9" fill="#1DE0C5"/>
+<rect x="532" y="432" width="136" height="16" rx="8" fill="#D9E7FF"/>
+<rect x="534" y="462" width="108" height="12" rx="6" fill="#5B80BB"/>
+</svg>

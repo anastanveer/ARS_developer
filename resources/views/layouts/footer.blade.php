@@ -302,15 +302,7 @@
 
     <script defer src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
     <script defer src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/jquery.ajaxchimp.min.js') }}"></script>
     <script defer src="{{ asset('assets/js/jquery.appear.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/swiper.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/jquery.validate.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/wow.js') }}"></script>
-    <script defer src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
-    <script defer src="{{ asset('assets/js/aos.js') }}"></script>
     @php
         $footerPath = '/' . trim(request()->path(), '/');
         if ($footerPath === '//') {
@@ -318,7 +310,32 @@
         }
         $isGalleryFooterPath = in_array($footerPath, ['/gallery', '/gallery.php'], true);
         $isComingSoonFooterPath = in_array($footerPath, ['/coming-soon', '/coming-soon.php'], true);
+        $isHomeFooterPath = in_array($footerPath, ['/', '/index.php'], true);
+        $isAboutFooterPath = in_array($footerPath, ['/about', '/about.php'], true);
+        $isContactFooterPath = in_array($footerPath, ['/contact', '/contact.php'], true);
+        $isClientPortalFooterPath = in_array($footerPath, ['/client-portal', '/client-portal.php'], true);
+        $isClientReviewFooterPath = in_array($footerPath, ['/client-review', '/client-review.php'], true);
+        $isMeetingManageFooterPath = in_array($footerPath, ['/meeting-manage', '/meeting-manage.php'], true);
+        $needsSwiperScript = $isHomeFooterPath;
+        $needsPopupScript = $isAboutFooterPath || $isGalleryFooterPath;
+        $needsValidationScript = $isHomeFooterPath || $isContactFooterPath || $isClientReviewFooterPath || $isMeetingManageFooterPath;
+        $needsNiceSelectScript = $isHomeFooterPath || $isContactFooterPath || $isClientPortalFooterPath || $isClientReviewFooterPath || $isMeetingManageFooterPath;
     @endphp
+    @if($needsSwiperScript)
+        <script defer src="{{ asset('assets/js/swiper.min.js') }}"></script>
+    @endif
+    @if($needsPopupScript)
+        <script defer src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+    @endif
+    @if($needsValidationScript)
+        <script defer src="{{ asset('assets/js/jquery.validate.min.js') }}"></script>
+    @endif
+    <script defer src="{{ asset('assets/js/wow.js') }}"></script>
+    <script defer src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+    @if($needsNiceSelectScript)
+        <script defer src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
+    @endif
+    <script defer src="{{ asset('assets/js/aos.js') }}"></script>
     @if($isGalleryFooterPath)
         <script defer src="{{ asset('assets/js/isotope.js') }}"></script>
     @endif
@@ -541,6 +558,30 @@
                 if (isHeroImage && !img.hasAttribute('fetchpriority')) {
                     img.setAttribute('fetchpriority', 'high');
                 }
+
+                var shouldSmoothLoad = Boolean(
+                    img.closest('.main-slider') ||
+                    img.closest('.services-one') ||
+                    img.closest('.portfolio') ||
+                    img.closest('.portfolio-details') ||
+                    img.closest('.blog') ||
+                    img.closest('.blog-details') ||
+                    img.closest('.site-footer') ||
+                    img.closest('.about')
+                );
+
+                if (shouldSmoothLoad && !img.complete) {
+                    img.classList.add('ars-media-loading');
+                    img.addEventListener('load', function () {
+                        img.classList.remove('ars-media-loading');
+                        img.classList.add('ars-media-ready');
+                    }, { once: true });
+                    img.addEventListener('error', function () {
+                        img.classList.remove('ars-media-loading');
+                    }, { once: true });
+                } else if (shouldSmoothLoad) {
+                    img.classList.add('ars-media-ready');
+                }
             });
 
             var frames = document.querySelectorAll('iframe');
@@ -552,7 +593,38 @@
         });
     </script>
     @include('partials.chat-widget')
-    <script src="{{ asset('assets/js/chat-widget.js') }}?v={{ filemtime(public_path('assets/js/chat-widget.js')) }}"></script>
+    <script>
+        (function () {
+            var chatSrc = @json(asset('assets/js/chat-widget.js') . '?v=' . filemtime(public_path('assets/js/chat-widget.js')));
+            var loaded = false;
+
+            function loadChatWidget() {
+                if (loaded) {
+                    return;
+                }
+
+                loaded = true;
+                var script = document.createElement('script');
+                script.src = chatSrc;
+                script.defer = true;
+                document.body.appendChild(script);
+            }
+
+            ['pointerdown', 'keydown', 'touchstart'].forEach(function (eventName) {
+                window.addEventListener(eventName, loadChatWidget, { once: true, passive: true });
+            });
+
+            if ('requestIdleCallback' in window) {
+                window.addEventListener('load', function () {
+                    requestIdleCallback(loadChatWidget, { timeout: 5000 });
+                }, { once: true });
+            } else {
+                window.addEventListener('load', function () {
+                    setTimeout(loadChatWidget, 3200);
+                }, { once: true });
+            }
+        })();
+    </script>
 </body>
 
 </html>

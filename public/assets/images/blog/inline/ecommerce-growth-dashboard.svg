@@ -1,0 +1,17 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="720" rx="32" fill="#07192E"/>
+<rect x="64" y="64" width="1072" height="592" rx="30" fill="#0E2347"/>
+<rect x="118" y="118" width="964" height="484" rx="24" fill="#112B56"/>
+<rect x="158" y="162" width="450" height="390" rx="24" fill="#123160" stroke="#255CA9"/>
+<rect x="640" y="162" width="402" height="170" rx="24" fill="#123160" stroke="#255CA9"/>
+<rect x="640" y="364" width="190" height="188" rx="24" fill="#123160" stroke="#255CA9"/>
+<rect x="852" y="364" width="190" height="188" rx="24" fill="#123160" stroke="#255CA9"/>
+<rect x="196" y="200" width="170" height="16" rx="8" fill="#D9E7FF"/>
+<polyline points="196,440 276,398 340,412 418,344 510,300 570,320" stroke="#1ED7B8" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="682" y="202" width="148" height="16" rx="8" fill="#D9E7FF"/>
+<rect x="682" y="238" width="110" height="14" rx="7" fill="#2F7BFF"/>
+<rect x="678" y="408" width="112" height="14" rx="7" fill="#D9E7FF"/>
+<rect x="890" y="408" width="112" height="14" rx="7" fill="#D9E7FF"/>
+<rect x="678" y="444" width="98" height="16" rx="8" fill="#1ED7B8"/>
+<rect x="890" y="444" width="98" height="16" rx="8" fill="#7A6DFF"/>
+</svg>

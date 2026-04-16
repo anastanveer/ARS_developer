@@ -1,6 +1,60 @@
 @php
     $page_title = $post->title;
     $readMinutes = max(2, (int) ceil(str_word_count(strip_tags((string) $post->content)) / 220));
+    $liveBlogSlugs = \App\Models\BlogPost::query()->live()->pluck('slug')->flip();
+    $inlineBlogGalleryMap = [
+        'hire-a-laravel-developer-in-the-uk-freelancer-agency-or-in-house' => [
+            ['src' => 'assets/images/blog/inline/laravel-team-uk.svg', 'alt' => 'Laravel hiring options for UK business teams', 'caption' => 'Delivery models for UK Laravel projects'],
+            ['src' => 'assets/images/blog/inline/laravel-delivery-roadmap.svg', 'alt' => 'Laravel project roadmap and milestone planning', 'caption' => 'Roadmap clarity before build starts'],
+            ['src' => 'assets/images/blog/inline/laravel-migration-stack.svg', 'alt' => 'Modern Laravel stack and support planning', 'caption' => 'Support, stack, and maintainability planning'],
+        ],
+        'laravel-development-agency-uk-what-good-delivery-looks-like-before-you-sign' => [
+            ['src' => 'assets/images/blog/inline/laravel-team-uk.svg', 'alt' => 'Laravel agency team workflow for UK delivery', 'caption' => 'Agency delivery structure and accountability'],
+            ['src' => 'assets/images/blog/inline/laravel-delivery-roadmap.svg', 'alt' => 'Laravel delivery roadmap with milestones and QA', 'caption' => 'Milestones, QA, and launch control'],
+            ['src' => 'assets/images/blog/inline/laravel-migration-stack.svg', 'alt' => 'Laravel support stack and deployment planning', 'caption' => 'Support and deployment planning before sign-off'],
+        ],
+        'laravel-migration-services-uk-when-to-refactor-rebuild-or-replace-legacy-php' => [
+            ['src' => 'assets/images/blog/inline/laravel-migration-stack.svg', 'alt' => 'Legacy PHP to Laravel migration plan for UK systems', 'caption' => 'Legacy migration mapped into modern Laravel delivery'],
+            ['src' => 'assets/images/blog/inline/laravel-delivery-roadmap.svg', 'alt' => 'Laravel migration roadmap and milestone control', 'caption' => 'Migration milestones with lower delivery risk'],
+            ['src' => 'assets/images/blog/inline/laravel-team-uk.svg', 'alt' => 'Laravel migration support team for UK businesses', 'caption' => 'Business continuity and support during rebuilds'],
+        ],
+        'custom-web-application-development-uk-what-businesses-should-build-first' => [
+            ['src' => 'assets/images/blog/inline/software-discovery-board.svg', 'alt' => 'Custom web app discovery board for UK businesses', 'caption' => 'Discovery-led feature prioritisation'],
+            ['src' => 'assets/images/blog/inline/software-architecture-panel.svg', 'alt' => 'Custom web application module planning and architecture', 'caption' => 'Modules, users, and workflow architecture'],
+            ['src' => 'assets/images/blog/inline/software-workflow-dashboard.svg', 'alt' => 'Custom software workflow dashboard for business operations', 'caption' => 'Operational workflows shaped around business needs'],
+        ],
+        'custom-software-development-uk-discovery-scope-and-budget-without-guesswork' => [
+            ['src' => 'assets/images/blog/inline/software-discovery-board.svg', 'alt' => 'Custom software discovery process for UK companies', 'caption' => 'Discovery that reduces scope drift and budget waste'],
+            ['src' => 'assets/images/blog/inline/software-architecture-panel.svg', 'alt' => 'Software architecture planning for custom development projects', 'caption' => 'Architecture choices before development investment'],
+            ['src' => 'assets/images/blog/inline/software-workflow-dashboard.svg', 'alt' => 'Custom software workflow and reporting dashboard', 'caption' => 'Scope, reporting, and workflow visibility'],
+        ],
+        'hire-a-full-stack-developer-uk-what-to-check-before-you-commit' => [
+            ['src' => 'assets/images/blog/inline/software-architecture-panel.svg', 'alt' => 'Full stack system layers for UK web projects', 'caption' => 'Frontend, backend, and data-layer fit'],
+            ['src' => 'assets/images/blog/inline/software-workflow-dashboard.svg', 'alt' => 'Full stack delivery workflow and deployment visibility', 'caption' => 'Delivery workflow and stack ownership'],
+            ['src' => 'assets/images/blog/inline/software-discovery-board.svg', 'alt' => 'Technical scoping and full stack discovery planning', 'caption' => 'Technical scoping before commitment'],
+        ],
+        'website-development-cost-uk-in-2026-what-small-businesses-should-budget-for' => [
+            ['src' => 'assets/images/blog/inline/website-cost-planning.svg', 'alt' => 'Website cost planning dashboard for UK businesses', 'caption' => 'Scope and budget planning for a cleaner quote path'],
+            ['src' => 'assets/images/blog/inline/website-conversion-layout.svg', 'alt' => 'Business website layout focused on trust and enquiries', 'caption' => 'Conversion-focused structure affects overall project cost'],
+            ['src' => 'assets/images/blog/inline/website-redesign-review.svg', 'alt' => 'Website review and redesign planning for UK projects', 'caption' => 'Redesign decisions, technical debt, and hidden work'],
+        ],
+        'small-business-website-development-uk-features-that-actually-generate-enquiries' => [
+            ['src' => 'assets/images/blog/inline/website-conversion-layout.svg', 'alt' => 'Small business website sections that help generate enquiries', 'caption' => 'Lead-focused layout for small business websites'],
+            ['src' => 'assets/images/blog/inline/website-cost-planning.svg', 'alt' => 'Website planning blocks for small business scope and content', 'caption' => 'Choosing the right scope when budget is tight'],
+            ['src' => 'assets/images/blog/inline/website-redesign-review.svg', 'alt' => 'Business website review panel for small business improvements', 'caption' => 'Trust, UX, and contact-path improvements'],
+        ],
+        'business-website-redesign-uk-9-signs-your-current-site-is-costing-you-leads' => [
+            ['src' => 'assets/images/blog/inline/website-redesign-review.svg', 'alt' => 'Business website redesign review for UK lead generation', 'caption' => 'Reviewing what is blocking enquiries and trust'],
+            ['src' => 'assets/images/blog/inline/website-conversion-layout.svg', 'alt' => 'Modern website conversion layout for business redesign projects', 'caption' => 'What a stronger post-redesign structure looks like'],
+            ['src' => 'assets/images/blog/inline/website-cost-planning.svg', 'alt' => 'Website redesign budget and scope planning for UK companies', 'caption' => 'Planning redesign scope before committing budget'],
+        ],
+        'ecommerce-website-development-uk-what-makes-a-store-ready-for-growth' => [
+            ['src' => 'assets/images/blog/inline/ecommerce-growth-dashboard.svg', 'alt' => 'Ecommerce growth dashboard for a UK online store', 'caption' => 'Visibility into store growth, orders, and performance'],
+            ['src' => 'assets/images/blog/inline/ecommerce-checkout-flow.svg', 'alt' => 'Ecommerce checkout flow and conversion planning', 'caption' => 'Checkout clarity and conversion flow improvement'],
+            ['src' => 'assets/images/blog/inline/ecommerce-ops-integration.svg', 'alt' => 'Ecommerce operations integration for fulfilment and CRM', 'caption' => 'Inventory, CRM, and fulfilment readiness before scale'],
+        ],
+    ];
+    $inlineGallery = $inlineBlogGalleryMap[$post->slug] ?? [];
 @endphp
 @include('layouts.header')
 <style>
@@ -54,6 +108,14 @@
         text-underline-offset: 2px;
     }
 
+    .blog-details__pending-link {
+        color: #4f6386;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px dashed #c8d9f4;
+        cursor: default;
+    }
+
     .blog-details__img {
         border-radius: 18px;
         overflow: hidden;
@@ -65,6 +127,56 @@
         object-fit: cover;
         object-position: center;
         display: block;
+    }
+
+    .blog-details__inline-gallery {
+        margin: 28px 0 34px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, .9fr);
+        gap: 18px;
+    }
+
+    .blog-details__inline-card {
+        margin: 0;
+        position: relative;
+        border: 1px solid #173865;
+        border-radius: 18px;
+        overflow: hidden;
+        background: linear-gradient(180deg, #0a1a33 0%, #10274d 100%);
+        box-shadow: 0 18px 36px rgba(19, 53, 107, 0.12);
+    }
+
+    .blog-details__inline-card img {
+        width: 100%;
+        height: 250px;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+        background: #0e2244;
+    }
+
+    .blog-details__inline-caption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 22px 18px 18px;
+        color: #f6fbff;
+        font-weight: 600;
+        line-height: 1.45;
+        font-size: 15px;
+        background: linear-gradient(180deg, rgba(7, 19, 38, 0) 0%, rgba(7, 19, 38, .84) 42%, rgba(7, 19, 38, .95) 100%);
+        min-height: 96px;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .blog-details__inline-card:first-child {
+        grid-row: span 2;
+    }
+
+    .blog-details__inline-card:first-child img {
+        height: 520px;
     }
 
     .blog-details__eeat {
@@ -229,6 +341,21 @@
 
     .sidebar__post-list li + li {
         margin-top: 14px;
+    }
+
+    @media (max-width: 991px) {
+        .blog-details__inline-gallery {
+            grid-template-columns: 1fr;
+        }
+
+        .blog-details__inline-card:first-child {
+            grid-row: auto;
+        }
+
+        .blog-details__inline-card:first-child img,
+        .blog-details__inline-card img {
+            height: 260px;
+        }
     }
 
     .sidebar__topic-group {
@@ -907,8 +1034,29 @@
 
                                     return '<h2' . ($matches[1] ?? '') . ' id="' . e($id) . '">' . ($matches[2] ?? '') . '</h2>';
                                 }, $renderedContent) ?? $renderedContent;
+
+                                $renderedContent = preg_replace_callback('/<a([^>]*?)href="\/blog\/([^"#?]+)"([^>]*)>(.*?)<\/a>/is', static function ($matches) use ($liveBlogSlugs) {
+                                    $slug = trim((string) ($matches[2] ?? ''));
+                                    $label = $matches[4] ?? '';
+
+                                    if ($slug !== '' && isset($liveBlogSlugs[$slug])) {
+                                        return $matches[0];
+                                    }
+
+                                    return '<span class="blog-details__pending-link" title="This article is scheduled and not live yet">' . $label . '</span>';
+                                }, $renderedContent) ?? $renderedContent;
                             }
                         @endphp
+                        @if(!empty($inlineGallery))
+                            <div class="blog-details__inline-gallery">
+                                @foreach($inlineGallery as $visual)
+                                    <figure class="blog-details__inline-card">
+                                        <img src="{{ asset($visual['src']) }}" alt="{{ $visual['alt'] }}" loading="lazy">
+                                        <figcaption class="blog-details__inline-caption">{{ $visual['caption'] }}</figcaption>
+                                    </figure>
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="blog-details__article">
                             @if($contentHasHtml)
                                 {!! $renderedContent !!}

@@ -33,6 +33,14 @@
         $isComingSoonPath = in_array($currentPath, ['/coming-soon', '/coming-soon.php'], true);
         $isErrorPath = in_array($currentPath, ['/404', '/404.php'], true);
         $isAboutPath = in_array($currentPath, ['/about', '/about.php'], true);
+        $isContactPath = in_array($currentPath, ['/contact', '/contact.php'], true);
+        $isClientPortalPath = in_array($currentPath, ['/client-portal', '/client-portal.php'], true);
+        $isClientReviewPath = in_array($currentPath, ['/client-review', '/client-review.php'], true);
+        $isMeetingManagePath = in_array($currentPath, ['/meeting-manage', '/meeting-manage.php'], true);
+        $needsSwiperAssets = $isHomePath;
+        $needsPopupAssets = $isAboutPath || $isGalleryPath;
+        $needsNiceSelectAssets = $isHomePath || $isContactPath || $isClientPortalPath || $isClientReviewPath || $isMeetingManagePath;
+        $needsValidationAssets = $isHomePath || $isContactPath || $isClientReviewPath || $isMeetingManagePath;
 
         $regionConfig = config('regions.regions', []);
         $selectedRegionKey = 'uk';
@@ -1360,18 +1368,45 @@
     <meta name="twitter:image" content="{{ $seo['twitter_image'] ?? ($seo['og_image'] ?? url('/assets/images/resources/ars-logo-dark.png')) }}" />
     <meta name="theme-color" content="#102A4D" />
     @include('partials.ga4-tracking')
-    <script src="https://t.contentsquare.net/uxa/28ccfb7bbc307.js"></script>
     <script type="text/javascript">
-        (function(c, l, a, r, i, t, y) {
-            c[a] = c[a] || function() {
-                (c[a].q = c[a].q || []).push(arguments);
-            };
-            t = l.createElement(r);
-            t.async = 1;
-            t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0];
-            y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "vlqqrnt61k");
+        (function () {
+            function loadScript(src) {
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = src;
+                document.head.appendChild(script);
+            }
+
+            function loadAnalyticsVendors() {
+                if (window.__arsAnalyticsVendorsLoaded) {
+                    return;
+                }
+
+                window.__arsAnalyticsVendorsLoaded = true;
+                loadScript('https://t.contentsquare.net/uxa/28ccfb7bbc307.js');
+
+                (function(c, l, a, r, i, t, y) {
+                    c[a] = c[a] || function() {
+                        (c[a].q = c[a].q || []).push(arguments);
+                    };
+                    t = l.createElement(r);
+                    t.async = 1;
+                    t.src = "https://www.clarity.ms/tag/" + i;
+                    y = l.getElementsByTagName(r)[0];
+                    y.parentNode.insertBefore(t, y);
+                })(window, document, "clarity", "script", "vlqqrnt61k");
+            }
+
+            if ('requestIdleCallback' in window) {
+                window.addEventListener('load', function () {
+                    requestIdleCallback(loadAnalyticsVendors, { timeout: 4000 });
+                }, { once: true });
+            } else {
+                window.addEventListener('load', function () {
+                    setTimeout(loadAnalyticsVendors, 2500);
+                }, { once: true });
+            }
+        })();
     </script>
     <script type="application/ld+json">
         {!! json_encode(['@' . 'context' => 'https://schema.org', '@' . 'graph' => $schemaGraph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
@@ -1407,15 +1442,20 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/custom-animate.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}" />
+    @if($needsSwiperAssets)
+        <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}" />
+    @endif
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome-all.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/jarallax.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/jquery.magnific-popup.css') }}" />
+    @if($needsPopupAssets)
+        <link rel="stylesheet" href="{{ asset('assets/css/jquery.magnific-popup.css') }}" />
+    @endif
     <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.css') }}" />
+    @if($needsNiceSelectAssets)
+        <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}" />
+    @endif
     <link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}" />
 
 
@@ -1464,6 +1504,19 @@
         /* Fallback so page never stays blank if JS fails before preloader close */
         .js-preloader {
             animation: preloader-fallback-hide 0s linear 1.2s forwards;
+        }
+
+        .ars-media-loading {
+            filter: blur(12px);
+            transform: scale(1.02);
+            opacity: .72;
+            transition: filter .45s ease, transform .45s ease, opacity .45s ease;
+        }
+
+        .ars-media-ready {
+            filter: blur(0);
+            transform: scale(1);
+            opacity: 1;
         }
 
         @keyframes preloader-fallback-hide {
