@@ -1621,10 +1621,11 @@
                 display: block;
             }
 
-            .main-menu-two__top-inner {
-                flex-wrap: nowrap;
-                padding: 8px 20px;
-            }
+        .main-menu-two__top-inner {
+            flex-wrap: nowrap;
+            padding: 8px 20px;
+            min-height: 52px;
+        }
 
             .main-menu-two__contact-list {
                 min-width: 0;
@@ -1691,15 +1692,66 @@
         .main-slider__content {
             max-width: 52%;
             padding-right: 46px;
+            min-height: 380px;
         }
 
         .main-slider__title {
             font-size: 74px;
             line-height: 0.98em;
+            min-height: 150px;
         }
 
         .main-slider__text {
             max-width: 720px;
+            min-height: 92px;
+        }
+
+        .hero-text-slider__title-box {
+            min-height: 320px;
+        }
+
+        .hero-text-slider__proof {
+            min-height: 27px;
+        }
+
+        .hero-text-slider__cta {
+            min-height: 70px;
+        }
+
+        .hero-text-slider__stats {
+            min-height: 86px;
+        }
+
+        .main-slider__satisfied-client-img {
+            width: 52px;
+            height: 52px;
+            flex: 0 0 52px;
+        }
+
+        .main-slider__satisfied-client-img img,
+        .main-menu-two__logo img,
+        .stricky-header .main-menu-two__logo img {
+            height: auto;
+        }
+
+        body.is-home .sticky-quick-actions {
+            contain: layout paint;
+        }
+
+        @supports (content-visibility: auto) {
+            body.is-home .portfolio-two,
+            body.is-home .meeting-scheduler,
+            body.is-home .client-portal-discovery,
+            body.is-home .lead-forms-tabs,
+            body.is-home .audit-lead,
+            body.is-home .cost-estimator,
+            body.is-home .blog-two,
+            body.is-home .testimonial-two,
+            body.is-home .faq-one--home,
+            body.is-home .cta-one {
+                content-visibility: auto;
+                contain-intrinsic-size: 1000px;
+            }
         }
 
         .main-slider .main-slider__img-box {
@@ -1757,6 +1809,11 @@
 
             .main-slider__title {
                 font-size: 64px;
+                min-height: 132px;
+            }
+
+            .hero-text-slider__title-box {
+                min-height: 294px;
             }
             .main-slider .main-slider__img-box {
                 right: 260px !important;
@@ -1769,10 +1826,16 @@
             .main-slider__content {
                 max-width: 58%;
                 padding-right: 28px;
+                min-height: 350px;
             }
 
             .main-slider__title {
                 font-size: 54px;
+                min-height: 116px;
+            }
+
+            .hero-text-slider__title-box {
+                min-height: 270px;
             }
 
             .main-slider .main-slider__img-box {
@@ -1790,6 +1853,7 @@
         @media (max-width: 991px) {
             .main-slider__content {
                 max-width: 100%;
+                min-height: auto;
             }
 
             .main-slider__img-box {
@@ -1798,27 +1862,38 @@
 
             .main-slider__title {
                 font-size: 46px;
+                min-height: auto;
+            }
+
+            .main-slider__text,
+            .hero-text-slider__title-box,
+            .hero-text-slider__proof,
+            .hero-text-slider__cta,
+            .hero-text-slider__stats {
+                min-height: auto;
             }
         }
 
     </style>
 </head>
 
-<body class="custom-cursor{{ $isHomePath ? ' is-home' : '' }}">
+<body class="{{ $isHomePath ? 'is-home' : 'custom-cursor' }}">
+
+    @unless($isHomePath)
+        <div class="custom-cursor__cursor"></div>
+        <div class="custom-cursor__cursor-two"></div>
+    @endunless
 
 
-
-    <div class="custom-cursor__cursor"></div>
-    <div class="custom-cursor__cursor-two"></div>
-
-
-    <!--Start Preloader-->
-    <div class="loader js-preloader">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <!--End Preloader-->
+    @unless($isHomePath)
+        <!--Start Preloader-->
+        <div class="loader js-preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <!--End Preloader-->
+    @endunless
 
 
 

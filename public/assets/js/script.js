@@ -14,45 +14,93 @@
         window.setTimeout(callback, timeout || 200);
       };
 
+  function initWhenVisible(selector, callback, rootMargin) {
+    var nodes = document.querySelectorAll(selector);
+    if (!nodes.length) {
+      return;
+    }
+
+    var margin = rootMargin || "280px 0px";
+
+    function runFor(node) {
+      if (!node || node.dataset.arsInitDone === "1") {
+        return;
+      }
+
+      node.dataset.arsInitDone = "1";
+      callback(node);
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      nodes.forEach(runFor);
+      return;
+    }
+
+    nodes.forEach(function (node) {
+      if (node.getBoundingClientRect().top <= (window.innerHeight || document.documentElement.clientHeight) + 140) {
+        runFor(node);
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries, currentObserver) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            runFor(node);
+            currentObserver.unobserve(node);
+          }
+        });
+      }, {
+        rootMargin: margin
+      });
+
+      observer.observe(node);
+    });
+  }
+
 
   if (typeof Swiper !== "undefined" && document.querySelector(".swiper")) {
     var isMobilePortfolio = isMobileDevice;
 
-    new Swiper(".swiper", {
-      effect: isMobilePortfolio ? "slide" : "coverflow",
-      grabCursor: true,
-      centeredSlides: !isMobilePortfolio,
-      slidesPerView: 1,
-      coverflowEffect: {
-        rotate: 0,
-        stretch: 0,
-        depth: 100,
-        modifier: 4,
-        slideShadows: true
-      },
-      loop: true,
-      // Navigation arrows
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-      keyboard: {
-        enabled: true
-      },
-      mousewheel: {
-        thresholdDelta: 70
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 1.5
-        },
-        992: {
-          slidesPerView: 2.5
-        },
-        1290: {
-          slidesPerView: 3
-        }
+    initWhenVisible(".swiper", function (node) {
+      if (node.swiper) {
+        return;
       }
+
+      new Swiper(node, {
+        effect: isMobilePortfolio ? "slide" : "coverflow",
+        grabCursor: true,
+        centeredSlides: !isMobilePortfolio,
+        slidesPerView: 1,
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 4,
+          slideShadows: true
+        },
+        loop: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        keyboard: {
+          enabled: true
+        },
+        mousewheel: {
+          thresholdDelta: 70
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 1.5
+          },
+          992: {
+            slidesPerView: 2.5
+          },
+          1290: {
+            slidesPerView: 3
+          }
+        }
+      });
     });
   }
 
@@ -255,7 +303,7 @@
 
 
   //Main Slider 
-  if ($(".main-slider__carousel").length) {
+  if ($(".main-slider__carousel").length && $(".main-slider__carousel .item").length > 1) {
     $(".main-slider__carousel").owlCarousel({
       loop: false,
       animateOut: "fadeOut",
@@ -302,7 +350,8 @@
 
   //Brand One Carousel
   if ($(".brand-one__carousel").length) {
-    $(".brand-one__carousel").owlCarousel({
+    initWhenVisible(".brand-one__carousel", function (node) {
+      $(node).owlCarousel({
       loop: true,
       margin: 30,
       nav: false,
@@ -335,6 +384,7 @@
         },
       },
     });
+    });
   }
 
 
@@ -345,7 +395,8 @@
 
   //Portfolio One Carousel
   if ($(".portfolio-one__carousel").length) {
-    $(".portfolio-one__carousel").owlCarousel({
+    initWhenVisible(".portfolio-one__carousel", function (node) {
+      $(node).owlCarousel({
       loop: true,
       margin: 0,
       nav: true,
@@ -375,13 +426,15 @@
         },
       },
     });
+    });
   }
 
 
 
   //Testimonial One Carousel
   if ($(".testimonial-one__carousel").length) {
-    $(".testimonial-one__carousel").owlCarousel({
+    initWhenVisible(".testimonial-one__carousel", function (node) {
+      $(node).owlCarousel({
       loop: true,
       margin: 30,
       nav: true,
@@ -411,6 +464,7 @@
         },
       },
     });
+    });
   }
 
 
@@ -418,7 +472,8 @@
 
   //Blog One Carousel
   if ($(".blog-one__carousel").length) {
-    $(".blog-one__carousel").owlCarousel({
+    initWhenVisible(".blog-one__carousel", function (node) {
+      $(node).owlCarousel({
       loop: true,
       margin: 30,
       nav: true,
@@ -448,6 +503,7 @@
         },
       },
     });
+    });
   }
 
 
@@ -455,7 +511,8 @@
 
   //Team One Carousel
   if ($(".team-one__carousel").length) {
-    $(".team-one__carousel").owlCarousel({
+    initWhenVisible(".team-one__carousel", function (node) {
+      $(node).owlCarousel({
       loop: true,
       margin: 30,
       nav: true,
@@ -484,6 +541,7 @@
           items: 4,
         },
       },
+    });
     });
   }
 
@@ -493,7 +551,8 @@
 
   //Testimonial Two Carousel
   if ($(".testimonial-two__carousel").length) {
-    $(".testimonial-two__carousel").owlCarousel({
+    initWhenVisible(".testimonial-two__carousel", function (node) {
+      $(node).owlCarousel({
       loop: true,
       margin: 30,
       nav: true,
@@ -522,6 +581,7 @@
           items: 2,
         },
       },
+    });
     });
   }
 
@@ -532,7 +592,8 @@
 
   //Portfolio Two Carousel
   if ($(".portfolio-two__carousel").length) {
-    $(".portfolio-two__carousel").owlCarousel({
+    initWhenVisible(".portfolio-two__carousel", function (node) {
+      $(node).owlCarousel({
       loop: true,
       margin: 30,
       nav: false,
@@ -562,6 +623,7 @@
         },
       },
     });
+    });
   }
 
 
@@ -570,7 +632,8 @@
 
   //Blog Two Carousel
   if ($(".blog-two__carousel").length) {
-    $(".blog-two__carousel").owlCarousel({
+    initWhenVisible(".blog-two__carousel", function (node) {
+      $(node).owlCarousel({
       loop: true,
       margin: 30,
       nav: false,
@@ -599,6 +662,7 @@
           items: 3,
         },
       },
+    });
     });
   }
 

@@ -66,7 +66,7 @@
             <div class="main-slider__shape-4 rotate-me">
                 <img src="assets/images/shapes/main-slider-shape-4.png" alt="">
             </div>
-            <div class="main-slider__carousel owl-carousel owl-theme">
+            <div class="main-slider__carousel hero-text-slider__carousel-static">
                 <div class="item">
                     <div class="container">
                         <div class="main-slider__content hero-text-slider__content">
@@ -85,12 +85,12 @@
                                     <ul class="list-unstyled main-slider__satisfied-client-list">
                                         <li>
                                             <div class="main-slider__satisfied-client-img">
-                                                <img src="assets/images/resources/main-slider-satisfied-client-1-1.jpg" alt="Happy client profile">
+                                                <img src="assets/images/resources/main-slider-satisfied-client-1-1.jpg" alt="Happy client profile" width="52" height="52">
                                             </div>
                                         </li>
                                         <li>
                                             <div class="main-slider__satisfied-client-img">
-                                                <img src="assets/images/resources/main-slider-satisfied-client-1-2.jpg" alt="Client success profile">
+                                                <img src="assets/images/resources/main-slider-satisfied-client-1-2.jpg" alt="Client success profile" width="52" height="52">
                                             </div>
                                         </li>
                                     </ul>
