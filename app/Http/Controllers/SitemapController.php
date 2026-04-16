@@ -112,7 +112,7 @@ class SitemapController extends Controller
     private function blogEntries(): Collection
     {
         $publishedPosts = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->orderByRaw('CASE WHEN sort_order = 0 THEN 0 ELSE 1 END')
             ->orderByDesc('published_at')
             ->orderBy('sort_order')

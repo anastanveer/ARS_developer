@@ -9,7 +9,11 @@
         <div><label>Slug (optional)</label><input name="slug"></div>
         <div><label>Category</label><input name="category" placeholder="SEO, CRM, Web Development"></div>
         <div><label>Author Name</label><input name="author_name" value="ARS Developer Team"></div>
-        <div><label>Publish Date</label><input type="date" name="published_at" value="{{ now()->toDateString() }}"></div>
+        <div>
+            <label>Publish Date & Time (UK)</label>
+            <input type="datetime-local" name="published_at" value="{{ old('published_at', $ukNow->format('Y-m-d\TH:i')) }}">
+            <small class="muted">Uses Europe/London timezone. Future time + published checked = auto scheduled.</small>
+        </div>
         <div><label>Sort Order</label><input type="number" name="sort_order" value="0"></div>
 
         <div><label>Featured Image URL</label><input name="featured_image" placeholder="assets/images/blog/it-web-development.svg or uploads/blog/x.jpg"></div>
@@ -35,7 +39,7 @@
         <div><label>OG Image URL</label><input name="og_image"></div>
         <div><label>Twitter Image URL</label><input name="twitter_image"></div>
 
-        <div class="full"><label><input type="checkbox" name="is_published" value="1" checked style="width:auto"> Published</label></div>
+        <div class="full"><label><input type="checkbox" name="is_published" value="1" checked style="width:auto"> Ready To Publish / Schedule</label></div>
 
         <div class="full preview-box">
             <strong>Live SEO Preview</strong>

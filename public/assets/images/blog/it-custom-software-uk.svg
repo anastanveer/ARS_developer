@@ -1,0 +1,33 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="800" rx="36" fill="#061421"/>
+<rect x="24" y="24" width="1152" height="752" rx="30" fill="url(#bg)"/>
+<rect x="88" y="112" width="1024" height="576" rx="34" fill="rgba(7,22,44,.72)" stroke="rgba(146,203,255,.22)" stroke-width="2"/>
+<rect x="130" y="156" width="356" height="488" rx="28" fill="#091B39" stroke="rgba(26,205,243,.26)" stroke-width="2"/>
+<rect x="524" y="156" width="542" height="210" rx="28" fill="#091B39" stroke="rgba(34,211,154,.22)" stroke-width="2"/>
+<rect x="524" y="396" width="260" height="248" rx="28" fill="#0A2144"/>
+<rect x="806" y="396" width="260" height="248" rx="28" fill="#0D274F"/>
+<rect x="172" y="204" width="180" height="16" rx="8" fill="#EEF7FF"/>
+<rect x="172" y="242" width="210" height="12" rx="6" fill="#1ACDF3"/>
+<rect x="172" y="296" width="270" height="270" rx="24" fill="#071523"/>
+<rect x="204" y="330" width="206" height="40" rx="20" fill="#0F7FE9"/>
+<rect x="204" y="396" width="96" height="96" rx="20" fill="#22D39A"/>
+<rect x="320" y="396" width="90" height="18" rx="9" fill="#EEF7FF"/>
+<rect x="320" y="430" width="68" height="12" rx="6" fill="#9DBBDD"/>
+<rect x="564" y="202" width="162" height="16" rx="8" fill="#EEF7FF"/>
+<rect x="564" y="240" width="226" height="12" rx="6" fill="#22D39A"/>
+<rect x="564" y="294" width="460" height="22" rx="11" fill="#0B1730"/>
+<rect x="564" y="456" width="180" height="18" rx="9" fill="#EEF7FF"/>
+<path d="M566 560H742" stroke="rgba(157,187,221,.24)" stroke-width="2"/>
+<rect x="566" y="532" width="42" height="28" rx="8" fill="#22D39A"/>
+<rect x="624" y="514" width="42" height="46" rx="8" fill="#1ACDF3"/>
+<rect x="682" y="494" width="42" height="66" rx="8" fill="#8ED7FF"/>
+<rect x="848" y="456" width="176" height="18" rx="9" fill="#EEF7FF"/>
+<path d="M848 540L896 500L944 518L1004 468" stroke="#1ACDF3" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<linearGradient id="bg" x1="54" y1="56" x2="1144" y2="758" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0C295E"/>
+<stop offset=".48" stop-color="#09192E"/>
+<stop offset="1" stop-color="#07111C"/>
+</linearGradient>
+</defs>
+</svg>

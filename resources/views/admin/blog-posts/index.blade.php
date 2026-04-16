@@ -8,7 +8,7 @@
 
 <div class="card">
     <table>
-        <thead><tr><th>#</th><th>Title</th><th>Category</th><th>Published Date</th><th>Status</th><th>Action</th></tr></thead>
+        <thead><tr><th>#</th><th>Title</th><th>Category</th><th>Publish Time (UK)</th><th>Status</th><th>Action</th></tr></thead>
         <tbody>
         @forelse($posts as $item)
             <tr>
@@ -18,8 +18,16 @@
                     <div class="muted" style="font-size:12px">/{{ $item->slug }}</div>
                 </td>
                 <td>{{ $item->category ?: '-' }}</td>
-                <td>{{ optional($item->published_at)->format('d M Y') ?: '-' }}</td>
-                <td>{{ $item->is_published ? 'Published' : 'Draft' }}</td>
+                <td>{{ optional($item->published_at)->timezone('Europe/London')->format('d M Y, h:i A') ?: '-' }}</td>
+                <td>
+                    @if(!$item->is_published)
+                        Draft
+                    @elseif($item->isScheduled())
+                        Scheduled
+                    @else
+                        Published
+                    @endif
+                </td>
                 <td>
                     <a class="btn" href="{{ route('admin.blog-posts.edit', $item) }}">Edit</a>
                     <form class="inline" method="post" action="{{ route('admin.blog-posts.destroy', $item) }}" onsubmit="return confirm('Delete this blog post?')">
@@ -33,6 +41,6 @@
         @endforelse
         </tbody>
     </table>
-    <div style="margin-top:12px">{{ $posts->links() }}</div>
+    <div style="margin-top:12px">{{ $posts->onEachSide(1)->links('vendor.pagination.admin') }}</div>
 </div>
 @endsection

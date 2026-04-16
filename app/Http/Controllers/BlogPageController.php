@@ -21,7 +21,7 @@ class BlogPageController extends Controller
             : (config('regions.regions.uk.base_url') ?: url('/'))), '/');
 
         $posts = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->when($query !== '', function ($q) use ($query) {
                 $q->where(function ($nested) use ($query) {
                     $nested->where('title', 'like', '%' . $query . '%')
@@ -67,12 +67,12 @@ class BlogPageController extends Controller
     public function show(string $slug): View
     {
         $post = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->where('slug', $slug)
             ->firstOrFail();
 
         $recentPosts = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->where('id', '!=', $post->id)
             ->orderByDesc('published_at')
             ->orderByDesc('id')
@@ -80,7 +80,7 @@ class BlogPageController extends Controller
             ->get();
         $currentCategory = trim((string) ($post->category ?: 'UK Growth'));
         $topicGroups = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->where('id', '!=', $post->id)
             ->orderByRaw('CASE WHEN category = ? THEN 0 ELSE 1 END', [$currentCategory])
             ->orderBy('category')
@@ -164,7 +164,7 @@ class BlogPageController extends Controller
         }
 
         $first = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->orderByRaw('CASE WHEN sort_order = 0 THEN 0 ELSE 1 END')
             ->orderByDesc('published_at')
             ->orderBy('sort_order')
@@ -601,7 +601,7 @@ class BlogPageController extends Controller
 
         $preferred = $map[$post->slug] ?? [];
         $preferredPosts = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->whereIn('slug', $preferred)
             ->get()
             ->sortBy(fn (BlogPost $item) => array_search($item->slug, $preferred, true))
@@ -612,7 +612,7 @@ class BlogPageController extends Controller
         }
 
         $fallback = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->where('id', '!=', $post->id)
             ->whereNotIn('id', $preferredPosts->pluck('id'))
             ->when($post->category, fn ($q) => $q->where('category', $post->category))

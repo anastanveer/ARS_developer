@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
 use App\Services\IndexNowService;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -30,7 +31,9 @@ class BlogPostController extends Controller
 
     public function create(): View
     {
-        return view('admin/blog-posts/create');
+        return view('admin/blog-posts/create', [
+            'ukNow' => now('Europe/London'),
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
@@ -49,7 +52,9 @@ class BlogPostController extends Controller
 
     public function edit(BlogPost $blogPost): View
     {
-        return view('admin/blog-posts/edit', compact('blogPost'));
+        return view('admin/blog-posts/edit', compact('blogPost') + [
+            'ukNow' => now('Europe/London'),
+        ]);
     }
 
     public function update(Request $request, BlogPost $blogPost): RedirectResponse
@@ -114,7 +119,9 @@ class BlogPostController extends Controller
         $data['is_published'] = $request->boolean('is_published');
         $data['sort_order'] = $data['sort_order'] ?? 0;
         $data['author_name'] = $data['author_name'] ?: 'ARS Developer Team';
-        $data['published_at'] = $data['published_at'] ?: now();
+        $data['published_at'] = !empty($data['published_at'])
+            ? Carbon::parse((string) $data['published_at'], 'Europe/London')->utc()
+            : now();
         $data['meta_title'] = $data['meta_title'] ?: $data['title'];
         $data['meta_description'] = $data['meta_description'] ?: Str::limit(strip_tags((string) ($data['excerpt'] ?: $data['content'])), 160, '');
 
@@ -163,7 +170,7 @@ class BlogPostController extends Controller
 
     private function submitIndexNowForBlog(BlogPost $blogPost, string $reason): void
     {
-        if (!$blogPost->is_published || trim((string) $blogPost->slug) === '') {
+        if (!$blogPost->isLivePublicly() || trim((string) $blogPost->slug) === '') {
             return;
         }
 

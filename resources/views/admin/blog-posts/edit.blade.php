@@ -9,7 +9,11 @@
         <div><label>Slug</label><input name="slug" value="{{ old('slug', $blogPost->slug) }}"></div>
         <div><label>Category</label><input name="category" value="{{ old('category', $blogPost->category) }}"></div>
         <div><label>Author Name</label><input name="author_name" value="{{ old('author_name', $blogPost->author_name) }}"></div>
-        <div><label>Publish Date</label><input type="date" name="published_at" value="{{ old('published_at', optional($blogPost->published_at)->toDateString()) }}"></div>
+        <div>
+            <label>Publish Date & Time (UK)</label>
+            <input type="datetime-local" name="published_at" value="{{ old('published_at', optional($blogPost->published_at)->timezone('Europe/London')->format('Y-m-d\TH:i')) }}">
+            <small class="muted">Uses Europe/London timezone. Future time + published checked = auto scheduled.</small>
+        </div>
         <div><label>Sort Order</label><input type="number" name="sort_order" value="{{ old('sort_order', $blogPost->sort_order) }}"></div>
 
         <div><label>Featured Image URL</label><input name="featured_image" value="{{ old('featured_image', $blogPost->featured_image) }}"></div>
@@ -35,7 +39,7 @@
         <div><label>OG Image URL</label><input name="og_image" value="{{ old('og_image', $blogPost->og_image) }}"></div>
         <div><label>Twitter Image URL</label><input name="twitter_image" value="{{ old('twitter_image', $blogPost->twitter_image) }}"></div>
 
-        <div class="full"><label><input type="checkbox" name="is_published" value="1" @checked(old('is_published', $blogPost->is_published)) style="width:auto"> Published</label></div>
+        <div class="full"><label><input type="checkbox" name="is_published" value="1" @checked(old('is_published', $blogPost->is_published)) style="width:auto"> Ready To Publish / Schedule</label></div>
 
         <div class="full preview-box">
             <strong>Live SEO Preview</strong>

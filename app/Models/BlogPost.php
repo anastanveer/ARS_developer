@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -40,6 +41,28 @@ class BlogPost extends Model
         'published_at' => 'datetime',
     ];
 
+    public function scopeLive(Builder $query): Builder
+    {
+        return $query
+            ->where('is_published', true)
+            ->where(function (Builder $nested) {
+                $nested->whereNull('published_at')
+                    ->orWhere('published_at', '<=', now());
+            });
+    }
+
+    public function isScheduled(): bool
+    {
+        return (bool) $this->is_published
+            && $this->published_at !== null
+            && $this->published_at->isFuture();
+    }
+
+    public function isLivePublicly(): bool
+    {
+        return (bool) $this->is_published
+            && ($this->published_at === null || $this->published_at->lte(now()));
+    }
 
     public function comments(): HasMany
     {

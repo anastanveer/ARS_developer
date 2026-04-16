@@ -1123,7 +1123,7 @@
         <!--Blog Two Start -->
         @php
             $homeBlogPosts = \App\Models\BlogPost::query()
-                ->where('is_published', true)
+                ->live()
                 ->orderByRaw('CASE WHEN sort_order = 0 THEN 1 ELSE 0 END')
                 ->orderBy('sort_order')
                 ->orderByDesc('published_at')

@@ -14,7 +14,7 @@ class BlogCommentController extends Controller
     public function store(Request $request, string $slug, RecaptchaService $recaptcha): RedirectResponse
     {
         $post = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->where('slug', $slug)
             ->firstOrFail();
 

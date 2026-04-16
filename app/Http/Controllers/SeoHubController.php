@@ -23,12 +23,12 @@ class SeoHubController extends Controller
         ];
 
         $pillarPost = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->where('slug', $pillarSlug)
             ->first();
 
         $supportPosts = BlogPost::query()
-            ->where('is_published', true)
+            ->live()
             ->whereIn('slug', $clusterSlugs)
             ->when($pillarPost, fn ($q) => $q->where('id', '!=', $pillarPost->id))
             ->get()
@@ -40,7 +40,7 @@ class SeoHubController extends Controller
 
         if ($supportPosts->count() < 5) {
             $fallbackPosts = BlogPost::query()
-                ->where('is_published', true)
+                ->live()
                 ->when($pillarPost, fn ($q) => $q->where('id', '!=', $pillarPost->id))
                 ->whereNotIn('slug', $supportPosts->pluck('slug')->all())
                 ->orderByRaw('CASE WHEN sort_order = 0 THEN 1 ELSE 0 END')

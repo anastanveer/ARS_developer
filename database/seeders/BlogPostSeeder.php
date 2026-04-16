@@ -32,6 +32,16 @@ class BlogPostSeeder extends Seeder
             'saas-mvp-development-uk-what-to-build-first-and-what-to-delay' => 'assets/images/blog/it-saas-mvp.svg',
             'custom-crm-development-cost-uk-what-affects-budget-and-timeline' => 'assets/images/blog/it-crm-cost.svg',
             'mvp-development-cost-uk-how-founders-budget-for-version-one' => 'assets/images/blog/it-mvp-cost.svg',
+            'hire-a-laravel-developer-in-the-uk-freelancer-agency-or-in-house' => 'assets/images/blog/it-laravel-hiring.svg',
+            'laravel-development-agency-uk-what-good-delivery-looks-like-before-you-sign' => 'assets/images/blog/it-laravel-agency.svg',
+            'custom-web-application-development-uk-what-businesses-should-build-first' => 'assets/images/blog/it-web-app-uk.svg',
+            'website-development-cost-uk-in-2026-what-small-businesses-should-budget-for' => 'assets/images/blog/it-website-cost-uk.svg',
+            'small-business-website-development-uk-features-that-actually-generate-enquiries' => 'assets/images/blog/it-small-business-web.svg',
+            'ecommerce-website-development-uk-what-makes-a-store-ready-for-growth' => 'assets/images/blog/it-ecommerce-growth-uk.svg',
+            'business-website-redesign-uk-9-signs-your-current-site-is-costing-you-leads' => 'assets/images/blog/it-website-redesign-uk.svg',
+            'hire-a-full-stack-developer-uk-what-to-check-before-you-commit' => 'assets/images/blog/it-full-stack-hire.svg',
+            'custom-software-development-uk-discovery-scope-and-budget-without-guesswork' => 'assets/images/blog/it-custom-software-uk.svg',
+            'laravel-migration-services-uk-when-to-refactor-rebuild-or-replace-legacy-php' => 'assets/images/blog/it-laravel-migration.svg',
             'ai-seo-services-uk-how-businesses-turn-ai-search-visibility-into-qualified-leads' => 'assets/images/blog/it-ai-visibility.svg',
             'llm-seo-uk-how-to-structure-service-pages-for-chatgpt-google-ai-and-answer-engines' => 'assets/images/blog/it-aeo-uk.svg',
             'programmatic-seo-uk-when-service-businesses-should-and-should-not-scale-location-pages' => 'assets/images/blog/it-search-console-insights.svg',
@@ -39,6 +49,14 @@ class BlogPostSeeder extends Seeder
             'answer-engine-optimization-for-uk-service-pages-how-to-rank-in-chatgpt-google-ai-and-ai-mode' => 'assets/images/blog/it-aeo-uk.svg',
             'crm-automation-uk-how-custom-portals-reduce-admin-and-speed-up-sales' => 'assets/images/blog/it-crm-automation.svg',
         ];
+
+        $ukSchedule = static function (int $dayOffset, int $hour, int $minute) {
+            return now('Europe/London')
+                ->startOfDay()
+                ->addDays($dayOffset)
+                ->setTime($hour, $minute)
+                ->utc();
+        };
 
         $posts = [
             [
@@ -1154,6 +1172,520 @@ class BlogPostSeeder extends Seeder
                 ],
                 'cta' => 'For version-one planning, explore our <a href="/software-development">software development service</a> and <a href="/contact">book a founder discovery call</a>.',
             ],
+            [
+                'title' => 'Hire a Laravel Developer in the UK: Freelancer, Agency, or In-House?',
+                'slug' => 'hire-a-laravel-developer-in-the-uk-freelancer-agency-or-in-house',
+                'category' => 'Laravel',
+                'excerpt' => 'A UK buyer guide to choosing between a Laravel freelancer, agency, or in-house hire based on delivery risk, support, and project complexity.',
+                'meta_title' => 'Hire a Laravel Developer UK: Freelancer vs Agency',
+                'meta_description' => 'Compare freelancer, agency, and in-house Laravel hiring in the UK. Learn cost, support, delivery risk, and which option fits your project.',
+                'meta_keywords' => 'hire laravel developer uk, laravel developer uk, laravel agency uk, laravel freelance developer uk, uk laravel development',
+                'overview' => [
+                    'Hiring Laravel support in the UK is rarely just a cost decision. The right choice depends on delivery accountability, project complexity, support expectations, and how much business risk sits behind the system.',
+                    'For commercial websites, portals, CRMs, and custom applications, the strongest decision usually comes from matching the engagement model to scope clarity, release pressure, and long-term maintenance needs.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'Why UK buyers compare freelancer, agency, and in-house options differently',
+                        'paragraphs' => [
+                            'A freelancer can work well for small isolated tasks, but commercial systems usually need more than code output alone. Buyers often need planning, QA, deployment safety, and a clear support path after launch.',
+                            'That is why a Laravel hiring decision should be linked to business continuity, team communication, and post-launch ownership instead of day-rate comparisons only.',
+                        ],
+                    ],
+                    [
+                        'title' => 'When each hiring model usually works best',
+                        'list' => [
+                            'Choose a freelancer for focused bug fixes, small feature additions, or lightweight support with low coordination overhead.',
+                            'Choose an agency when delivery quality, release planning, QA, and continuity matter as much as coding speed.',
+                            'Choose an in-house hire when Laravel is a core ongoing operational capability and internal product velocity is a strategic need.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Questions to ask before committing budget',
+                        'paragraphs' => [
+                            'Ask how discovery, estimates, QA, handover, and support are handled. If the answers are vague, the project risk usually increases later during delivery.',
+                            'Use this article with <a href="/blog/laravel-development-agency-uk-what-good-delivery-looks-like-before-you-sign">Laravel agency evaluation</a>, <a href="/blog/custom-software-development-uk-discovery-scope-and-budget-without-guesswork">custom software discovery planning</a>, and <a href="/pricing">our pricing guidance</a> before choosing a delivery route.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'Is a Laravel freelancer cheaper than an agency in the UK?',
+                        'a' => 'The day rate may be lower, but the total project cost can rise if QA, release management, or support gaps create rework later.',
+                    ],
+                    [
+                        'q' => 'When is an agency the safer choice for Laravel work?',
+                        'a' => 'An agency is usually safer when the project affects leads, operations, payments, client access, or other business-critical workflows.',
+                    ],
+                ],
+                'cta' => 'If you need a dependable Laravel delivery path, review our <a href="/software-development">software development service</a> and <a href="/contact">request a scoped project discussion</a>.',
+                'published_at' => $ukSchedule(0, 9, 20),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Laravel Development Agency UK: What Good Delivery Looks Like Before You Sign',
+                'slug' => 'laravel-development-agency-uk-what-good-delivery-looks-like-before-you-sign',
+                'category' => 'Laravel',
+                'excerpt' => 'What a good Laravel development agency in the UK should show before you sign: delivery process, QA, support, technical ownership, and commercial clarity.',
+                'meta_title' => 'Laravel Development Agency UK: Delivery Checklist',
+                'meta_description' => 'See what a strong Laravel development agency in the UK should show before you sign, from scoping and QA to support and release planning.',
+                'meta_keywords' => 'laravel development agency uk, laravel agency uk, laravel web development uk, hire laravel agency uk, laravel project delivery uk',
+                'overview' => [
+                    'A Laravel agency should not only promise clean code. It should show how scope, milestones, testing, deployment, and support will be handled before the project starts.',
+                    'For UK buyers, the strongest agencies reduce ambiguity early and make delivery feel safer long before the first sprint begins.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What commercial buyers should expect from a Laravel agency',
+                        'list' => [
+                            'Clear scoping method before development starts.',
+                            'Defined QA and release process rather than ad hoc testing.',
+                            'Named support route for post-launch fixes and iteration.',
+                            'Technical recommendations that match the business use case, not just the agency stack preference.',
+                        ],
+                    ],
+                    [
+                        'title' => 'What good delivery looks like before code starts',
+                        'paragraphs' => [
+                            'A strong agency explains how discovery is handled, what will be documented, how changes are controlled, and what happens when integration or data complexity appears.',
+                            'That kind of clarity often matters more than polished sales language because it reduces hidden cost and expectation gaps later in the project.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How to compare agencies without guessing',
+                        'paragraphs' => [
+                            'Use structured questions about milestones, escalation, handover, hosting support, release control, and ownership of deliverables. Agencies that answer clearly are usually safer to work with.',
+                            'This also connects with <a href="/blog/hire-a-laravel-developer-in-the-uk-freelancer-agency-or-in-house">Laravel hiring comparisons</a>, <a href="/blog/laravel-migration-services-uk-when-to-refactor-rebuild-or-replace-legacy-php">migration planning</a>, and <a href="/portfolio">portfolio proof</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What should a Laravel agency include in the proposal stage?',
+                        'a' => 'A strong proposal stage usually covers scope, assumptions, milestones, support boundaries, change handling, and release expectations.',
+                    ],
+                    [
+                        'q' => 'Do Laravel agencies handle support after launch?',
+                        'a' => 'Good agencies do, but the support model should be clearly defined before signing so there is no uncertainty later.',
+                    ],
+                ],
+                'cta' => 'If you want a Laravel project handled with clear milestones and support, see our <a href="/services">service scope</a> and <a href="/contact">speak with our team</a>.',
+                'published_at' => $ukSchedule(1, 10, 10),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Custom Web Application Development UK: What Businesses Should Build First',
+                'slug' => 'custom-web-application-development-uk-what-businesses-should-build-first',
+                'category' => 'Web Applications',
+                'excerpt' => 'A practical UK guide to deciding what a custom web application should include first, what can wait, and how to reduce cost without weakening delivery value.',
+                'meta_title' => 'Custom Web Application Development UK Guide',
+                'meta_description' => 'Planning a bespoke web application in the UK? Learn which features to build first, what to delay, and how to scope a web app safely.',
+                'meta_keywords' => 'custom web application development uk, bespoke web application uk, web app development company uk, custom web app uk, business web application uk',
+                'overview' => [
+                    'Custom web applications create the most value when version one focuses on the workflows that affect delivery, customer experience, or operational speed first.',
+                    'Businesses usually waste budget when they try to build every idea into the first release instead of defining the one process that must work best from day one.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What usually belongs in version one',
+                        'list' => [
+                            'User login, roles, and the core workflow the business depends on.',
+                            'Admin visibility for the team managing day-to-day operations.',
+                            'Essential integrations only where they remove manual work or risk.',
+                            'Reporting limited to what decisions actually need to be made in phase one.',
+                        ],
+                    ],
+                    [
+                        'title' => 'What should usually wait for later phases',
+                        'paragraphs' => [
+                            'Edge-case automation, advanced analytics, deep custom settings, and lower-priority dashboards often make more sense once the main workflow proves valuable.',
+                            'Delaying these features protects budget and usually leads to a cleaner application architecture because the team learns from real usage first.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How to scope a web application more safely',
+                        'paragraphs' => [
+                            'Start with user roles, workflow stages, bottlenecks, and handover points. If those are clear, the application scope becomes much easier to estimate and phase.',
+                            'This works well with <a href="/blog/custom-software-development-uk-discovery-scope-and-budget-without-guesswork">custom software discovery</a>, <a href="/blog/saas-mvp-development-uk-what-to-build-first-and-what-to-delay">MVP planning</a>, and <a href="/software-development">our software delivery service</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'Should a custom web application include every department in phase one?',
+                        'a' => 'Usually no. The strongest phase one focuses on the workflow with the clearest operational or revenue impact first.',
+                    ],
+                    [
+                        'q' => 'What is the biggest web app scoping mistake?',
+                        'a' => 'Trying to solve too many processes in the first release usually increases cost and slows delivery without improving early return.',
+                    ],
+                ],
+                'cta' => 'If you need a custom application planned properly, review our <a href="/software-development">software development service</a> and <a href="/contact">request a discovery session</a>.',
+                'published_at' => $ukSchedule(2, 9, 40),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Website Development Cost UK in 2026: What Small Businesses Should Budget For',
+                'slug' => 'website-development-cost-uk-in-2026-what-small-businesses-should-budget-for',
+                'category' => 'Web Development',
+                'excerpt' => 'A practical 2026 guide to website development cost in the UK for small businesses, including brochure sites, lead-generation builds, redesigns, and ecommerce scope.',
+                'meta_title' => 'Website Development Cost UK 2026: Budget Guide',
+                'meta_description' => 'Understand website development cost in the UK for small businesses in 2026, including brochure sites, lead-generation builds, redesigns, and ecommerce.',
+                'meta_keywords' => 'website development cost uk, website cost uk 2026, small business website development cost uk, business website pricing uk, website quote uk',
+                'overview' => [
+                    'Website development cost in the UK depends less on page count alone and more on conversion needs, integrations, SEO readiness, and how much strategic work must happen before design starts.',
+                    'Small businesses budget more safely when they understand what affects scope, where cheap quotes create risk, and what features genuinely improve lead generation.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What changes website cost most',
+                        'list' => [
+                            'Whether the site is brochure-led, lead-generation focused, ecommerce, or custom workflow driven.',
+                            'The level of copy, conversion planning, and design strategy needed before build.',
+                            'Technical SEO, speed optimisation, and content structure requirements.',
+                            'Forms, CRM integrations, quote workflows, portal access, or post-launch support.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Why the cheapest quote often costs more later',
+                        'paragraphs' => [
+                            'Low quotes often exclude the work that actually makes a site perform, such as planning, messaging, QA, SEO structure, and launch quality. That usually turns into rework rather than savings.',
+                            'A better buying approach is to compare what each quote includes, what is assumed, and what happens after launch rather than focusing on the top-line price only.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How to budget more realistically in 2026',
+                        'paragraphs' => [
+                            'Decide whether the site needs simple visibility, stronger enquiries, ecommerce growth, or operational workflow support. The clearer that outcome is, the safer the budget becomes.',
+                            'Use this with <a href="/pricing">our pricing page</a>, <a href="/blog/business-website-redesign-uk-9-signs-your-current-site-is-costing-you-leads">redesign decision signals</a>, and <a href="/blog/small-business-website-development-uk-features-that-actually-generate-enquiries">small business website features</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What usually makes a website quote increase?',
+                        'a' => 'Conversion planning, integrations, ecommerce logic, custom workflows, and post-launch support usually increase scope more than simple page count.',
+                    ],
+                    [
+                        'q' => 'Should small businesses buy the cheapest website package available?',
+                        'a' => 'Only if the objective is minimal presence. If lead generation matters, the cheapest route often becomes the most expensive later.',
+                    ],
+                ],
+                'cta' => 'If you want a realistic project budget, review our <a href="/pricing">pricing guidance</a> and <a href="/contact">request a tailored quote</a>.',
+                'published_at' => $ukSchedule(3, 10, 15),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Small Business Website Development UK: Features That Actually Generate Enquiries',
+                'slug' => 'small-business-website-development-uk-features-that-actually-generate-enquiries',
+                'category' => 'Web Development',
+                'excerpt' => 'The website features that matter most for UK small businesses that want more enquiries, better trust, and clearer conversion paths instead of just a modern look.',
+                'meta_title' => 'Small Business Website Development UK: Lead Features',
+                'meta_description' => 'Learn which website features actually help UK small businesses generate enquiries, build trust, and improve conversion performance.',
+                'meta_keywords' => 'small business website development uk, small business web design uk, lead generation website uk, business website development uk, enquiry website uk',
+                'overview' => [
+                    'Many small business websites look acceptable but still underperform because they do not answer buyer questions quickly or guide visitors towards a clear next step.',
+                    'The strongest small business websites are built around trust, message clarity, and conversion flow rather than decoration alone.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What enquiry-focused websites usually include',
+                        'list' => [
+                            'A clear service promise above the fold.',
+                            'Trust elements close to the main contact action.',
+                            'Simple quote or contact paths with minimal friction.',
+                            'Service sections written around buyer questions, not vague marketing language.',
+                        ],
+                    ],
+                    [
+                        'title' => 'What small businesses should prioritise first',
+                        'paragraphs' => [
+                            'If budget is limited, focus on the homepage, core service pages, trust sections, and contact flow before spending heavily on lower-impact extras.',
+                            'Those areas usually create the first measurable lift in enquiry quality because they influence whether the visitor believes the business is credible enough to contact.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How this supports rankings as well as conversions',
+                        'paragraphs' => [
+                            'Websites that explain services clearly, answer common questions, and link readers into relevant support pages often perform better for both organic search and conversion outcomes.',
+                            'This aligns naturally with <a href="/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites">conversion-focused website structure</a>, <a href="/blog/technical-seo-checklist-for-uk-websites-before-launch">technical SEO launch planning</a>, and <a href="/web-design-development">our web development service</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What is the most important website feature for small businesses?',
+                        'a' => 'The clearest value usually comes from a strong first screen, trust cues, and a simple next-step action rather than many extra sections.',
+                    ],
+                    [
+                        'q' => 'Should small business websites include long forms?',
+                        'a' => 'Only if the sales process truly needs them. In most cases, shorter forms reduce friction and improve enquiry volume.',
+                    ],
+                ],
+                'cta' => 'For a website built to generate enquiries, see our <a href="/web-design-development">website development service</a> and <a href="/contact">start a project conversation</a>.',
+                'published_at' => $ukSchedule(4, 9, 25),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Ecommerce Website Development UK: What Makes a Store Ready for Growth',
+                'slug' => 'ecommerce-website-development-uk-what-makes-a-store-ready-for-growth',
+                'category' => 'Ecommerce',
+                'excerpt' => 'A UK ecommerce growth guide covering platform fit, conversion readiness, technical setup, and operational decisions before investing in a serious store build.',
+                'meta_title' => 'Ecommerce Website Development UK: Growth Checklist',
+                'meta_description' => 'Learn what makes an ecommerce website ready for growth in the UK, from platform fit and conversion flow to SEO and operations.',
+                'meta_keywords' => 'ecommerce website development uk, ecommerce development uk, online store development uk, ecommerce web design uk, shopify development uk',
+                'overview' => [
+                    'A store becomes growth-ready when platform choice, product architecture, conversion flow, and operations are aligned before launch, not patched together afterward.',
+                    'UK ecommerce businesses usually get better results when build decisions support content, checkout confidence, order operations, and future promotional flexibility from the start.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What growth-ready ecommerce development should cover',
+                        'list' => [
+                            'Platform choice based on content, operational complexity, and custom workflow needs.',
+                            'Category and product structure that supports search visibility and user navigation.',
+                            'Checkout trust, payment clarity, and mobile-first UX.',
+                            'Post-purchase, fulfilment, and promotional workflows that the team can manage efficiently.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Why operational detail matters as much as design',
+                        'paragraphs' => [
+                            'Many store rebuilds underperform because the design looks better but the team still struggles with fulfilment, catalogue updates, promotions, or content management after launch.',
+                            'The most effective ecommerce development considers the store team, the buyer journey, and the SEO structure at the same time.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How to compare store build options safely',
+                        'paragraphs' => [
+                            'Compare stores based on conversion goals, content depth, integrations, operational control, and long-term maintainability, not theme appearance alone.',
+                            'Use this with <a href="/blog/wordpress-vs-shopify-for-uk-businesses-which-platform-fits-your-growth-stage">WordPress vs Shopify comparison</a>, <a href="/blog/website-development-cost-uk-in-2026-what-small-businesses-should-budget-for">website budget planning</a>, and <a href="/web-design-development">our ecommerce delivery support</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What is the biggest ecommerce build mistake?',
+                        'a' => 'Choosing a platform or build scope based only on design preference without considering operations, SEO, and future scale is a common mistake.',
+                    ],
+                    [
+                        'q' => 'Should ecommerce planning include SEO before launch?',
+                        'a' => 'Yes. Content architecture, technical setup, and category structure should all be considered before launch to avoid costly rework.',
+                    ],
+                ],
+                'cta' => 'If you need a store built for growth rather than just launch, review our <a href="/web-design-development">website development service</a> and <a href="/contact">request an ecommerce review</a>.',
+                'published_at' => $ukSchedule(5, 10, 20),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Business Website Redesign UK: 9 Signs Your Current Site Is Costing You Leads',
+                'slug' => 'business-website-redesign-uk-9-signs-your-current-site-is-costing-you-leads',
+                'category' => 'Web Development',
+                'excerpt' => 'A practical redesign guide for UK businesses that want to know when a website rebuild is justified and when the current site is quietly losing leads.',
+                'meta_title' => 'Business Website Redesign UK: 9 Lead-Loss Signs',
+                'meta_description' => 'See the signs your current business website is costing you leads in the UK and learn when a redesign is worth the investment.',
+                'meta_keywords' => 'business website redesign uk, website redesign uk, business website refresh uk, redesign website for leads uk, website rebuild uk',
+                'overview' => [
+                    'A redesign should not be driven by boredom or design trends alone. It should happen when the current website is limiting trust, rankings, or the ability to turn traffic into enquiries.',
+                    'For many UK businesses, the strongest redesign decision is based on lead loss, message clarity, user friction, and outdated conversion structure.',
+                ],
+                'sections' => [
+                    [
+                        'title' => '9 signs the current website is underperforming',
+                        'list' => [
+                            'The first screen does not explain the offer clearly.',
+                            'The site looks dated compared with credible competitors.',
+                            'Forms are hard to find or generate poor-quality enquiries.',
+                            'Service pages are thin and fail to answer buyer questions.',
+                            'The mobile experience feels weak or slow.',
+                            'The site no longer reflects the real business positioning.',
+                            'Internal teams avoid sending prospects to the website.',
+                            'SEO improvements are hard because the structure is outdated.',
+                            'The site creates confusion instead of momentum in sales conversations.',
+                        ],
+                    ],
+                    [
+                        'title' => 'When a redesign is better than patching',
+                        'paragraphs' => [
+                            'If the site has outdated structure, weak messaging, poor conversion flow, and technical limitations at the same time, redesign usually gives a better return than endless patching.',
+                            'However, if only one or two issues exist, targeted optimisation may still be enough. The decision should come from performance friction, not aesthetic frustration alone.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How to protect SEO during a redesign',
+                        'paragraphs' => [
+                            'Keep key URLs stable where possible, preserve strong metadata, map redirects carefully, and treat launch QA as a core part of the project instead of an afterthought.',
+                            'This aligns with <a href="/blog/technical-seo-checklist-for-uk-websites-before-launch">technical launch SEO</a>, <a href="/blog/website-development-cost-uk-in-2026-what-small-businesses-should-budget-for">website budget planning</a>, and <a href="/portfolio">portfolio-driven redesign examples</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'Should a redesign always change every page?',
+                        'a' => 'Not always. A redesign can still preserve high-performing pages or content blocks if they continue to support trust and rankings well.',
+                    ],
+                    [
+                        'q' => 'What is the biggest redesign risk?',
+                        'a' => 'Launching without proper redirect, metadata, and conversion checks is one of the biggest risks because it can hurt both rankings and lead flow.',
+                    ],
+                ],
+                'cta' => 'If you suspect your site is underperforming, explore our <a href="/web-design-development">website redesign service</a> and <a href="/contact">request a review</a>.',
+                'published_at' => $ukSchedule(6, 9, 35),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Hire a Full Stack Developer UK: What to Check Before You Commit',
+                'slug' => 'hire-a-full-stack-developer-uk-what-to-check-before-you-commit',
+                'category' => 'Hiring',
+                'excerpt' => 'A UK buyer guide to evaluating full stack developers based on delivery fit, communication, stack suitability, and long-term support rather than surface-level CV claims.',
+                'meta_title' => 'Hire Full Stack Developer UK: Buyer Checklist',
+                'meta_description' => 'Use this UK buyer checklist before hiring a full stack developer. Compare stack fit, delivery quality, communication, and support expectations.',
+                'meta_keywords' => 'hire full stack developer uk, full stack developer uk, hire web developer uk, full stack agency uk, uk full stack development',
+                'overview' => [
+                    'Hiring a full stack developer should reduce project risk, not introduce more uncertainty. The most important checks usually relate to delivery fit, communication, and the ability to work across the real stack the project needs.',
+                    'For UK businesses, a strong hiring decision is less about labels and more about whether the developer can support planning, implementation, QA, and sensible handover.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What commercial buyers should validate first',
+                        'list' => [
+                            'Whether the developer has experience in the actual stack and workflow your project uses.',
+                            'How requirements, blockers, and changes are communicated.',
+                            'Whether the developer can support deployment, QA, and post-launch fixes.',
+                            'How the project stays documented if the work expands later.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Why stack fit is not enough on its own',
+                        'paragraphs' => [
+                            'A technically capable developer can still be the wrong fit if the communication style, release process, or support model is weak. Commercial projects need more than isolated coding ability.',
+                            'This is especially true for business-critical websites, custom applications, and systems that affect enquiries or operations daily.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How to reduce hiring risk before kickoff',
+                        'paragraphs' => [
+                            'Use a short scoping phase, define deliverables clearly, and make sure support expectations are agreed before any major build work begins.',
+                            'That works well with <a href="/blog/hire-a-laravel-developer-in-the-uk-freelancer-agency-or-in-house">Laravel hiring decisions</a>, <a href="/blog/laravel-development-agency-uk-what-good-delivery-looks-like-before-you-sign">agency evaluation</a>, and <a href="/contact">our project planning process</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What does full stack actually mean in a business project?',
+                        'a' => 'It should mean the person or team can work across frontend, backend, data handling, and deployment needs relevant to the project, not just claim broad familiarity.',
+                    ],
+                    [
+                        'q' => 'Should businesses hire a full stack freelancer or agency?',
+                        'a' => 'That depends on project risk, continuity needs, and the amount of QA and support required after launch.',
+                    ],
+                ],
+                'cta' => 'If you need a dependable development partner, review our <a href="/software-development">software service</a> and <a href="/contact">talk through your project requirements</a>.',
+                'published_at' => $ukSchedule(7, 10, 05),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Custom Software Development UK: Discovery, Scope, and Budget Without Guesswork',
+                'slug' => 'custom-software-development-uk-discovery-scope-and-budget-without-guesswork',
+                'category' => 'Software Strategy',
+                'excerpt' => 'How UK businesses should approach custom software discovery, scope, and budgeting so projects start with more clarity and fewer expensive surprises.',
+                'meta_title' => 'Custom Software Development UK: Scope and Budget',
+                'meta_description' => 'Planning custom software in the UK? Learn how discovery, scoping, integrations, and milestones affect budget, delivery time, and project risk.',
+                'meta_keywords' => 'custom software development uk, bespoke software development uk, software development company uk, custom software project uk, software discovery uk',
+                'overview' => [
+                    'Custom software projects perform better when discovery turns business needs into a clear delivery plan before teams discuss timelines too confidently.',
+                    'The strongest software planning process reduces ambiguity around workflows, integrations, permissions, reporting, and launch expectations so the budget is grounded in reality.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'What good software discovery should produce',
+                        'list' => [
+                            'A clear summary of the problem the software is solving.',
+                            'Defined user roles, workflows, and approval or handover points.',
+                            'Known integrations, dependencies, and operational constraints.',
+                            'A phased delivery view that protects budget and learning.',
+                        ],
+                    ],
+                    [
+                        'title' => 'Why scope uncertainty becomes expensive later',
+                        'paragraphs' => [
+                            'When core assumptions are not agreed early, software projects often expand in a reactive way that creates friction in delivery and budget control.',
+                            'This is why commercial software planning should be treated as a business discovery exercise, not just a technical specification task.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How to budget custom software more safely',
+                        'paragraphs' => [
+                            'Use milestone-based planning, define version-one priorities clearly, and identify what the software must prove or improve first. That usually gives better delivery control.',
+                            'Pair this with <a href="/blog/custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026">software pricing guidance</a>, <a href="/blog/custom-web-application-development-uk-what-businesses-should-build-first">web application prioritisation</a>, and <a href="/pricing">our pricing process</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'What is the main goal of software discovery?',
+                        'a' => 'The goal is to reduce uncertainty by clarifying business needs, workflows, scope assumptions, and the safest first delivery path.',
+                    ],
+                    [
+                        'q' => 'Should every custom software project use milestones?',
+                        'a' => 'In most cases yes, because milestones give better control over scope, approvals, and delivery expectations.',
+                    ],
+                ],
+                'cta' => 'If you want software scope defined properly before build starts, see our <a href="/software-development">software development service</a> and <a href="/contact">book a discovery call</a>.',
+                'published_at' => $ukSchedule(8, 9, 30),
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Laravel Migration Services UK: When to Refactor, Rebuild, or Replace Legacy PHP',
+                'slug' => 'laravel-migration-services-uk-when-to-refactor-rebuild-or-replace-legacy-php',
+                'category' => 'Laravel',
+                'excerpt' => 'A practical UK guide to deciding when a legacy PHP system should be refactored, rebuilt in Laravel, or replaced entirely based on business risk and delivery value.',
+                'meta_title' => 'Laravel Migration Services UK: Refactor or Rebuild',
+                'meta_description' => 'Learn when a UK business should refactor, rebuild, or replace a legacy PHP system with Laravel, and how to reduce migration risk.',
+                'meta_keywords' => 'laravel migration services uk, legacy php migration uk, laravel migration uk, php rebuild services uk, migrate php to laravel uk',
+                'overview' => [
+                    'Legacy PHP systems become expensive when change is slow, integrations feel fragile, and teams lose confidence in updates. Laravel migration is often valuable when the system risk becomes operational, not just technical.',
+                    'The safest decision usually comes from understanding whether the current system should be stabilised, rebuilt gradually, or replaced more directly with a cleaner application approach.',
+                ],
+                'sections' => [
+                    [
+                        'title' => 'When legacy PHP becomes a business risk',
+                        'list' => [
+                            'Small changes take too long because the codebase is hard to trust.',
+                            'New integrations are avoided because the system feels fragile.',
+                            'Security, performance, or support risk keeps increasing over time.',
+                            'The team depends on outdated workflows that limit growth or visibility.',
+                        ],
+                    ],
+                    [
+                        'title' => 'How to choose between refactor, rebuild, and replace',
+                        'paragraphs' => [
+                            'Refactor when the application still has a usable structure and the business needs gradual risk reduction. Rebuild when the workflows remain valuable but the system architecture is holding the business back. Replace when the underlying process or product model has already changed significantly.',
+                            'The correct route depends on data complexity, integration pressure, release risk, and how much downtime or disruption the business can tolerate.',
+                        ],
+                    ],
+                    [
+                        'title' => 'What a safer migration roadmap should include',
+                        'paragraphs' => [
+                            'Map core workflows, decide which modules move first, protect data quality, and define what must stay stable during migration. Migration success comes from planning, not framework preference alone.',
+                            'This article works best with <a href="/blog/laravel-development-agency-uk-what-good-delivery-looks-like-before-you-sign">Laravel delivery evaluation</a>, <a href="/blog/custom-software-development-uk-discovery-scope-and-budget-without-guesswork">custom software discovery</a>, and <a href="/software-development">our software migration support</a>.',
+                        ],
+                    ],
+                ],
+                'faq' => [
+                    [
+                        'q' => 'Should every old PHP system be rebuilt in Laravel?',
+                        'a' => 'No. Some systems are better stabilised or partially refactored first. The right choice depends on workflow value, technical debt, and business risk.',
+                    ],
+                    [
+                        'q' => 'What is the biggest migration mistake?',
+                        'a' => 'Starting migration without a clear plan for data, dependencies, and operational continuity is one of the biggest causes of expensive rework.',
+                    ],
+                ],
+                'cta' => 'If you need a legacy system reviewed safely, see our <a href="/software-development">software development service</a> and <a href="/contact">request a migration review</a>.',
+                'published_at' => $ukSchedule(9, 10, 15),
+                'sort_order' => 0,
+            ],
 
             [
                 'title' => 'AI SEO Services UK: How Businesses Turn AI Search Visibility into Qualified Leads',
@@ -1202,7 +1734,7 @@ class BlogPostSeeder extends Seeder
                     ],
                 ],
                 'cta' => 'If you want AI search visibility tied to real leads, review our <a href="/search-engine-optimization">SEO service</a> and <a href="/contact">book a strategy call</a>.',
-                'published_at' => now()->subDays(1),
+                'published_at' => $ukSchedule(-1, 10, 10),
                 'sort_order' => 0,
             ],
             [
@@ -1252,7 +1784,7 @@ class BlogPostSeeder extends Seeder
                     ],
                 ],
                 'cta' => 'For AI-ready service page structure, see our <a href="/services">service capabilities</a> and <a href="/pricing">pricing guidance</a>.',
-                'published_at' => now()->subDays(2),
+                'published_at' => $ukSchedule(-2, 9, 35),
                 'sort_order' => 0,
             ],
 
@@ -1303,7 +1835,7 @@ class BlogPostSeeder extends Seeder
                     ],
                 ],
                 'cta' => 'Explore our <a href="/web-design-development">website design and development service</a> if you want faster delivery without sacrificing enquiry quality.',
-                'published_at' => now(),
+                'published_at' => $ukSchedule(0, 8, 55),
                 'sort_order' => 0,
             ],
             [
@@ -1353,7 +1885,7 @@ class BlogPostSeeder extends Seeder
                     ],
                 ],
                 'cta' => 'See our <a href="/search-engine-optimization">SEO service</a> if you want service pages structured for both Google rankings and answer engines.',
-                'published_at' => now()->subHours(6),
+                'published_at' => $ukSchedule(-3, 10, 20),
                 'sort_order' => 0,
             ],
             [
@@ -1403,7 +1935,7 @@ class BlogPostSeeder extends Seeder
                     ],
                 ],
                 'cta' => 'Review our <a href="/software-development">custom software development service</a> if your team needs CRM automation or a client portal that fits your workflow properly.',
-                'published_at' => now()->subHours(12),
+                'published_at' => $ukSchedule(-4, 9, 25),
                 'sort_order' => 0,
             ],
             [
@@ -1453,7 +1985,7 @@ class BlogPostSeeder extends Seeder
                     ],
                 ],
                 'cta' => 'If you want safe location growth, review our <a href="/search-engine-optimization">SEO services</a> and <a href="/contact">speak with our team</a> before scaling.',
-                'published_at' => now()->subDays(3),
+                'published_at' => $ukSchedule(-5, 10, 05),
                 'sort_order' => 0,
             ],
         ];

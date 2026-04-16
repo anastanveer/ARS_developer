@@ -1,0 +1,31 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="800" rx="36" fill="#061420"/>
+<rect x="24" y="24" width="1152" height="752" rx="30" fill="url(#bg)"/>
+<rect x="92" y="116" width="1016" height="568" rx="34" fill="rgba(7,22,44,.72)" stroke="rgba(146,203,255,.22)" stroke-width="2"/>
+<rect x="136" y="164" width="928" height="150" rx="28" fill="#091B39" stroke="rgba(26,205,243,.26)" stroke-width="2"/>
+<rect x="136" y="348" width="928" height="96" rx="24" fill="#0A2144"/>
+<rect x="136" y="478" width="928" height="158" rx="28" fill="#091B39" stroke="rgba(34,211,154,.22)" stroke-width="2"/>
+<rect x="180" y="206" width="160" height="16" rx="8" fill="#EEF7FF"/>
+<rect x="180" y="244" width="198" height="12" rx="6" fill="#1ACDF3"/>
+<rect x="180" y="382" width="164" height="18" rx="9" fill="#EEF7FF"/>
+<rect x="392" y="382" width="164" height="18" rx="9" fill="#EEF7FF"/>
+<rect x="604" y="382" width="164" height="18" rx="9" fill="#EEF7FF"/>
+<rect x="816" y="382" width="164" height="18" rx="9" fill="#EEF7FF"/>
+<text x="198" y="412" fill="#7FD3FF" font-family="Arial, sans-serif" font-size="20" font-weight="700">Frontend</text>
+<text x="415" y="412" fill="#7FD3FF" font-family="Arial, sans-serif" font-size="20" font-weight="700">Backend</text>
+<text x="628" y="412" fill="#7FD3FF" font-family="Arial, sans-serif" font-size="20" font-weight="700">Database</text>
+<text x="843" y="412" fill="#7FD3FF" font-family="Arial, sans-serif" font-size="20" font-weight="700">DevOps</text>
+<path d="M222 556H976" stroke="rgba(157,187,221,.24)" stroke-width="2"/>
+<rect x="240" y="518" width="102" height="38" rx="19" fill="#0F7FE9"/>
+<rect x="390" y="502" width="102" height="54" rx="20" fill="#22D39A"/>
+<rect x="540" y="486" width="102" height="70" rx="20" fill="#1ACDF3"/>
+<rect x="690" y="466" width="102" height="90" rx="20" fill="#8ED7FF"/>
+<rect x="840" y="438" width="102" height="118" rx="20" fill="#22D39A"/>
+<defs>
+<linearGradient id="bg" x1="54" y1="56" x2="1144" y2="758" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0C295E"/>
+<stop offset=".48" stop-color="#09192E"/>
+<stop offset="1" stop-color="#07111D"/>
+</linearGradient>
+</defs>
+</svg>
