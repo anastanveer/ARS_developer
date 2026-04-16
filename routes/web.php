@@ -482,6 +482,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::middleware('admin.role:super_admin,advanced_admin,blog_seo_admin')->group(function () {
             Route::resource('/blog-posts', BlogPostController::class)->except('show');
+            Route::post('/blog-posts/{blogPost}/quick-status', [BlogPostController::class, 'quickStatus'])->name('blog-posts.quick-status');
             Route::get('/blog-comments', [AdminBlogCommentController::class, 'index'])->name('blog-comments.index');
             Route::post('/blog-comments/{comment}/approve', [AdminBlogCommentController::class, 'approve'])->name('blog-comments.approve');
             Route::post('/blog-comments/{comment}/unapprove', [AdminBlogCommentController::class, 'unapprove'])->name('blog-comments.unapprove');

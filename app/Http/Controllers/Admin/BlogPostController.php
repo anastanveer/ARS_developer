@@ -87,6 +87,53 @@ class BlogPostController extends Controller
         return redirect()->route('admin.blog-posts.index')->with('success', 'Blog post deleted.');
     }
 
+    public function quickStatus(Request $request, BlogPost $blogPost): RedirectResponse
+    {
+        $data = $request->validate([
+            'quick_status' => ['required', 'in:draft,scheduled,published'],
+            'published_at' => ['nullable', 'date'],
+        ]);
+
+        $wasPublished = (bool) $blogPost->is_published;
+
+        if ($data['quick_status'] === 'draft') {
+            $blogPost->update([
+                'is_published' => false,
+            ]);
+
+            return redirect()->route('admin.blog-posts.index')->with('success', 'Blog moved to draft.');
+        }
+
+        $publishAt = !empty($data['published_at'])
+            ? Carbon::parse((string) $data['published_at'], 'Europe/London')->utc()
+            : $blogPost->published_at;
+
+        if (!$publishAt) {
+            $publishAt = now();
+        }
+
+        if ($data['quick_status'] === 'published') {
+            $publishAt = now();
+        }
+
+        $blogPost->update([
+            'is_published' => true,
+            'published_at' => $publishAt,
+        ]);
+
+        if ($blogPost->isLivePublicly() && !$wasPublished) {
+            $this->submitIndexNowForBlog($blogPost, 'blog_post_published');
+        }
+
+        $message = match ($data['quick_status']) {
+            'published' => 'Blog published now.',
+            'scheduled' => 'Blog schedule updated.',
+            default => 'Blog updated.',
+        };
+
+        return redirect()->route('admin.blog-posts.index')->with('success', $message);
+    }
+
     private function validateData(Request $request): array
     {
         $data = $request->validate([
