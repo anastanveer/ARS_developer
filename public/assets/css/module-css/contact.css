@@ -1685,7 +1685,7 @@
     border-radius: 999px;
     background: #ffffff;
     padding: 8px;
-    box-shadow: 0 10px 24px rgba(16, 57, 117, 0.08);
+    box-shadow: none;
 }
 
 .lead-forms-tabs__btn {
@@ -1911,6 +1911,144 @@
     background-repeat: no-repeat;
     background-size: 15px 15px;
     background-position: right 14px center;
+}
+
+.meeting-scheduler__input .nice-select,
+.audit-lead__input .nice-select,
+.cost-estimator__input .nice-select {
+    width: 100%;
+    height: 58px;
+    line-height: 56px;
+    float: none;
+    border: 1px solid #d7e5fa;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 10px 24px rgba(20, 76, 148, 0.06);
+    color: #18365d;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    padding: 0 54px 0 18px;
+    transition: border-color .22s ease, box-shadow .22s ease, background-color .22s ease, transform .22s ease;
+}
+
+.audit-lead__input .nice-select {
+    height: 52px;
+    line-height: 50px;
+    border-radius: 12px;
+    border-color: #dbe7f7;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), 0 8px 20px rgba(13, 68, 135, 0.05);
+}
+
+.meeting-scheduler__input .nice-select:hover,
+.audit-lead__input .nice-select:hover,
+.cost-estimator__input .nice-select:hover {
+    border-color: #9ec3f6;
+    background: linear-gradient(180deg, #ffffff 0%, #f4f9ff 100%);
+}
+
+.meeting-scheduler__input .nice-select:focus,
+.meeting-scheduler__input .nice-select.open,
+.audit-lead__input .nice-select:focus,
+.audit-lead__input .nice-select.open,
+.cost-estimator__input .nice-select:focus,
+.cost-estimator__input .nice-select.open {
+    border-color: #7eb2f3;
+    box-shadow: 0 0 0 4px rgba(32, 129, 219, 0.12), 0 16px 32px rgba(15, 87, 173, 0.10);
+}
+
+.meeting-scheduler__input .nice-select:after,
+.audit-lead__input .nice-select:after,
+.cost-estimator__input .nice-select:after {
+    width: 10px;
+    height: 10px;
+    right: 20px;
+    margin-top: -6px;
+    border-bottom: 2px solid #4f79af;
+    border-right: 2px solid #4f79af;
+}
+
+.meeting-scheduler__input .nice-select .current,
+.audit-lead__input .nice-select .current,
+.cost-estimator__input .nice-select .current {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #36557f;
+}
+
+.meeting-scheduler__input .nice-select.open .current,
+.audit-lead__input .nice-select.open .current,
+.cost-estimator__input .nice-select.open .current {
+    color: #173a69;
+}
+
+.meeting-scheduler__input .nice-select .list,
+.audit-lead__input .nice-select .list,
+.cost-estimator__input .nice-select .list {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 8px;
+    border-radius: 18px;
+    border: 1px solid rgba(182, 208, 243, 0.95);
+    background: linear-gradient(180deg, #ffffff 0%, #f6faff 100%);
+    box-shadow: 0 26px 48px rgba(10, 44, 96, 0.16);
+    max-height: 260px;
+    overflow-y: auto;
+    z-index: 30;
+}
+
+.meeting-scheduler__input .nice-select .list::-webkit-scrollbar,
+.audit-lead__input .nice-select .list::-webkit-scrollbar,
+.cost-estimator__input .nice-select .list::-webkit-scrollbar {
+    width: 7px;
+}
+
+.meeting-scheduler__input .nice-select .list::-webkit-scrollbar-thumb,
+.audit-lead__input .nice-select .list::-webkit-scrollbar-thumb,
+.cost-estimator__input .nice-select .list::-webkit-scrollbar-thumb {
+    background: rgba(88, 133, 193, 0.45);
+    border-radius: 999px;
+}
+
+.meeting-scheduler__input .nice-select .option,
+.audit-lead__input .nice-select .option,
+.cost-estimator__input .nice-select .option {
+    min-height: 46px;
+    line-height: 1.35;
+    padding: 12px 14px;
+    margin-bottom: 4px;
+    border-radius: 12px;
+    color: #234168;
+    font-weight: 600;
+    white-space: normal;
+}
+
+.meeting-scheduler__input .nice-select .option:last-child,
+.audit-lead__input .nice-select .option:last-child,
+.cost-estimator__input .nice-select .option:last-child {
+    margin-bottom: 0;
+}
+
+.meeting-scheduler__input .nice-select .option:hover,
+.meeting-scheduler__input .nice-select .option.focus,
+.meeting-scheduler__input .nice-select .option.selected.focus,
+.audit-lead__input .nice-select .option:hover,
+.audit-lead__input .nice-select .option.focus,
+.audit-lead__input .nice-select .option.selected.focus,
+.cost-estimator__input .nice-select .option:hover,
+.cost-estimator__input .nice-select .option.focus,
+.cost-estimator__input .nice-select .option.selected.focus {
+    background: rgba(40, 127, 225, 0.08);
+    color: #0f4fa1;
+}
+
+.meeting-scheduler__input .nice-select .option.selected,
+.audit-lead__input .nice-select .option.selected,
+.cost-estimator__input .nice-select .option.selected {
+    background: linear-gradient(135deg, #0f63b8 0%, #2894ef 100%);
+    color: #ffffff;
+    font-weight: 700;
 }
 
 .meeting-scheduler__input select option,
