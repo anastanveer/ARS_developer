@@ -2,7 +2,7 @@
     $page_title = 'UK SEO Growth Hub';
     $seoOverride = [
         'title' => 'UK AI SEO Growth Hub | AEO, GEO, EEAT and Buyer-Intent Strategy',
-        'description' => 'Explore ARSDeveloper's UK AI SEO Growth Hub covering AEO, GEO, EEAT, Search Console insights, entity SEO, and buyer-intent content strategy for stronger enquiries.',
+        'description' => 'Explore ARSDeveloper UK AI SEO Growth Hub covering AEO, GEO, EEAT, Search Console insights, entity SEO, and buyer-intent content strategy for stronger enquiries.',
         'keywords' => 'uk ai seo growth hub, uk seo growth hub, ai seo uk, aeo uk, geo seo uk, eeat strategy uk, answer engine optimization uk, buyer intent seo uk',
         'related_links' => [
             '/search-engine-optimization',
@@ -201,4 +201,3 @@
 </section>
 
 @include('layouts.footer')
-
