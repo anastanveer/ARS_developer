@@ -2,8 +2,8 @@
     $servicePageImage = \App\Support\ServicePageImages::get('search-engine-optimization');
     $page_title = 'Search Engine Optimization';
     $seoOverride = [
-        'title' => 'SEO Services UK | Technical SEO, AI Search Visibility, AEO and Growth Support',
-        'description' => 'SEO services for UK businesses focused on technical SEO, on-page optimisation, AI search visibility, answer engine optimisation, Search Console improvements, and ranking growth that drives qualified enquiries.',
+        'title' => 'SEO Services UK | Trusted Technical SEO and AI Search Growth',
+        'description' => 'UK-based SEO services focused on technical SEO, AI search visibility, scalable solutions, and secure systems that help businesses earn stronger rankings and enquiries.',
         'keywords' => 'seo services uk, ai seo services uk, answer engine optimization uk, aeo services uk, technical seo services uk, search engine optimization uk, local seo uk, search console optimization uk, on page seo uk',
         'related_links' => [
             '/pricing',
@@ -111,11 +111,11 @@
                                 <img src="{{ \App\Support\ServicePageImages::toUrl($servicePageImage['image']) }}" alt="{{ $servicePageImage['alt'] }}">
                             </div>
                             <div class="services-details__content">
-                                <h3 class="services-details__title-1">SEO and AI Search Services for UK Businesses That Need More Qualified Organic Leads</h3>
+                                <h3 class="services-details__title-1">UK-Based SEO and AI Search Services for Businesses That Need More Qualified Organic Leads</h3>
                                 <div class="services-details__shape-1"></div>
-                                <p class="services-details__text-1">Our SEO service is built for UK businesses that want stronger rankings, better click-through rates, more qualified enquiries, and stronger AI search visibility. We audit technical foundations, improve site structure, and align content with real keyword demand to increase visibility in competitive search results and answer engines.</p>
-                                <h3 class="services-details__title-2">SEO Delivery Framework</h3>
-                                <p class="services-details__text-2">We combine technical SEO, on-page optimisation, Search Console analysis, answer engine optimisation, AI search entity alignment, and content planning into a clear monthly workflow. Every action is prioritised by impact so your team sees measurable progress in rankings, clicks, AI search visibility, and enquiries.</p>
+                                <p class="services-details__text-1">Our SEO service is built for UK businesses that want stronger rankings, better click-through rates, more qualified enquiries, and stronger AI search visibility. We audit technical foundations, improve site structure, and align content with real keyword demand to increase visibility in competitive search results while supporting trusted, scalable growth.</p>
+                                <h3 class="services-details__title-2">Our SEO Delivery Framework for UK Ranking Growth</h3>
+                                <p class="services-details__text-2">We combine technical SEO, on-page optimisation, Search Console analysis, answer engine optimisation, AI search entity alignment, and content planning into a clear monthly workflow. Every action is prioritised by business impact so UK businesses see measurable progress in rankings, clicks, AI search visibility, and qualified enquiries.</p>
                                 <div class="services-details__points-box">
                                     <ul class="services-details__points-list list-unstyled">
                                         <li>
@@ -198,11 +198,11 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6">
                                             <div class="services-details__progress-left">
-                                                <h3 class="services-details__progress-left-title">SEO Impact Indicators</h3>
+                                                <h3 class="services-details__progress-left-title">SEO Performance Indicators That Support Commercial Growth</h3>
                                                 <p class="services-details__progress-left-text">Our audits focus on the
-                                                    highest-impact fixes first, then move into sustained content and
-                                                    authority improvement. This approach helps avoid ranking volatility and
-                                                    supports long-term search visibility.</p>
+                                                    highest-impact fixes first, then move into sustained content,
+                                                    entity authority, and internal linking improvement. This approach helps reduce ranking volatility and
+                                                    supports long-term search visibility for UK-based businesses.</p>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6">
@@ -326,7 +326,7 @@
                                     Germany, Canada, India, or Pakistan segments, we build content and technical paths
                                     that match each market.</p>
                                 <div class="service-trust-panel">
-                                    <h3 class="services-details__title-2" style="margin-bottom:8px;">What Clients Value Most</h3>
+                                    <h3 class="services-details__title-2" style="margin-bottom:8px;">What UK Businesses Value Most in SEO Delivery</h3>
                                     <p class="services-details__text-2" style="margin-bottom:0;">We focus on pages and fixes that improve commercial visibility first, so SEO work stays tied to enquiries and not just reporting noise.</p>
                                     <div class="service-trust-panel__grid">
                                         <div class="service-trust-panel__item">
@@ -346,7 +346,7 @@
                                 <div class="services-details__img-two">
                                     <img src="assets/images/services/services-details-img-2.jpg" alt="">
                                 </div>
-                                <h3 class="services-details__title-4">Request an SEO Audit:</h3>
+                                <h3 class="services-details__title-4">Request a Growth-Focused SEO Review:</h3>
                                 <p class="services-details__text-5">Send your website URL and top services. We will
                                     deliver an actionable audit summary covering technical blockers, keyword opportunities,
                                     and a priority roadmap for the next 90 days.</p>
@@ -397,7 +397,7 @@
                                 </ul>
                             </div>
                             <div class="services-details__contact-box">
-                                <h3>Contact Us</h3>
+                                <h3>Plan Your SEO Growth Strategy</h3>
                                 <span></span>
                                 <p class="services-details__contact-text">Need a technical SEO and speed audit for your
                                     website? Message us and get a clear action plan.</p>
@@ -428,7 +428,7 @@
                             style="background-image: url(assets/images/shapes/cta-one-shape-bg.png);"></div>
                         <h3 class="cta-one__title">Start your journey with our <br> exceptional services.</h3>
                         <div class="cta-one__btn">
-                            <a href="/contact">Get Started <span class=" icon-right-arrow-1"></span></a>
+                            <a href="/contact">Book an SEO Strategy Call <span class=" icon-right-arrow-1"></span></a>
                         </div>
                     </div>
                 </div>

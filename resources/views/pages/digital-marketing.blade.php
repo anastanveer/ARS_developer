@@ -2,8 +2,8 @@
     $servicePageImage = \App\Support\ServicePageImages::get('digital-marketing');
     $page_title = 'Digital Marketing';
     $seoOverride = [
-        'title' => 'AI Marketing Services UK | SEO, PPC, CRO, AEO and Demand Generation',
-        'description' => 'Digital marketing services for UK businesses including SEO, PPC, CRO, AI-assisted content workflows, answer engine optimisation, lead generation reporting, and clearer demand capture across search channels.',
+        'title' => 'Digital Agency UK | SEO, Paid Growth and Conversion-Focused Marketing',
+        'description' => 'UK-based digital agency services combining SEO, paid campaigns, CRO, scalable solutions, and trusted reporting to help businesses generate better-qualified leads.',
         'keywords' => 'ai marketing services uk, ai seo services uk, digital marketing services uk, ppc agency uk, answer engine optimisation uk, conversion rate optimisation uk, lead generation agency uk',
         'related_links' => [
             '/search-engine-optimization',
@@ -62,17 +62,17 @@
                                 <img src="{{ \App\Support\ServicePageImages::toUrl($servicePageImage['image']) }}" alt="{{ $servicePageImage['alt'] }}">
                             </div>
                             <div class="services-details__content">
-                                <h3 class="services-details__title-1">Digital Marketing Services for Lead Generation,
+                                <h3 class="services-details__title-1">UK Digital Marketing Services for Lead Generation,
                                     Search Visibility and Measurable ROI</h3>
                                 <div class="services-details__shape-1"></div>
                                 <p class="services-details__text-1">We build digital marketing campaigns that bring
                                     qualified traffic, improve conversion rates, and increase recurring revenue. From UK
-                                    local campaigns to international growth funnels, our team combines SEO, paid ads,
+                                    local campaigns to wider growth funnels, our digital agency UK team combines SEO, paid ads,
                                     retargeting, AI-assisted content workflows, and creative strategy into one performance system.</p>
-                                <h3 class="services-details__title-2">Core Delivery Areas</h3>
+                                <h3 class="services-details__title-2">Core Digital Marketing Delivery Areas for UK Growth</h3>
                                 <p class="services-details__text-2">Every campaign starts with keyword intent mapping, audience segmentation, answer engine search visibility checks, AI-assisted content workflow planning, and conversion tracking setup. We then execute channel-specific
-                                    campaigns with weekly optimization so budget is spent on what actually drives leads and
-                                    sales.</p>
+                                    campaigns with weekly optimisation so budget is focused on what actually drives leads,
+                                    sales, and stronger commercial outcomes.</p>
                                 <div class="services-details__points-box">
                                     <ul class="services-details__points-list list-unstyled">
                                         <li>
@@ -236,7 +236,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3 class="services-details__title-3">Why Businesses Choose Our Marketing Team</h3>
+                                <h3 class="services-details__title-3">Why UK Businesses Choose Our Digital Marketing Team</h3>
                                 <p class="services-details__text-3">You get strategy, execution, and reporting in one
                                     place. We remove guesswork with clear campaign milestones, transparent analytics, and
                                     practical actions your team can understand and scale.</p>
@@ -285,7 +285,7 @@
                                 <div class="services-details__img-two">
                                     <img src="assets/images/services/services-details-img-2.jpg" alt="">
                                 </div>
-                                <h3 class="services-details__title-4">Get Started with a Growth Audit:</h3>
+                                <h3 class="services-details__title-4">Start with a Revenue-Focused Growth Audit:</h3>
                                 <p class="services-details__text-5">Share your current channels, budget range and target
                                     market. We will return a practical 90-day roadmap covering campaign setup, expected
                                     milestones, and the KPIs we will track from day one.</p>
@@ -336,7 +336,7 @@
                                 </ul>
                             </div>
                             <div class="services-details__contact-box">
-                                <h3>Contact Us</h3>
+                                <h3>Talk Through Your Growth Targets</h3>
                                 <span></span>
                                 <p class="services-details__contact-text">Need a campaign plan for your market? Send your
                                     goals and we will recommend the right SEO + ads mix.</p>
@@ -367,7 +367,7 @@
                             style="background-image: url(assets/images/shapes/cta-one-shape-bg.png);"></div>
                         <h3 class="cta-one__title">Start your journey with our <br> exceptional services.</h3>
                         <div class="cta-one__btn">
-                            <a href="/contact">Get Started <span class=" icon-right-arrow-1"></span></a>
+                            <a href="/contact">Book a Growth Planning Call <span class=" icon-right-arrow-1"></span></a>
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,8 @@
     $servicePageImage = \App\Support\ServicePageImages::get('web-design-development');
     $page_title = 'Web Design Development';
     $seoOverride = [
-        'title' => 'Website Design and Development UK | AI-Ready Business Websites That Convert',
-        'description' => 'Website design and development for UK businesses with AI-ready layouts, fast performance, stronger trust signals, answer-engine-friendly structure, and lead generation focused UX.',
+        'title' => 'Website Design and Development UK | Trusted, Scalable Business Websites',
+        'description' => 'UK-based website design and development with scalable solutions, strong trust signals, SEO-ready structure, and secure systems built to support lead generation.',
         'keywords' => 'website design and development uk, ai website development uk, website development company uk, business website design uk, conversion focused website uk, answer engine optimization website uk, web design agency uk, lead generation website uk',
         'related_links' => [
             '/pricing',
@@ -111,11 +111,11 @@
                                 <img src="{{ \App\Support\ServicePageImages::toUrl($servicePageImage['image']) }}" alt="{{ $servicePageImage['alt'] }}">
                             </div>
                             <div class="services-details__content">
-                                <h3 class="services-details__title-1">AI-Ready Website Design and Development for Businesses That Need More Enquiries</h3>
+                                <h3 class="services-details__title-1">UK-Based Website Design and Development for Businesses That Need More Enquiries</h3>
                                 <div class="services-details__shape-1"></div>
-                                <p class="services-details__text-1">We design and develop fast, scalable AI-ready business websites built around enquiry generation, trust, and search visibility. From brochure sites to conversion-focused lead funnels, every build is structured for SEO, usability, answer-engine clarity, and long-term maintainability for UK commercial searches.</p>
-                                <h3 class="services-details__title-2">Core Website Delivery Capabilities</h3>
-                                <p class="services-details__text-2">Our process covers strategy, UX wireframing, UI design, frontend development, CMS integration, QA, launch support, and search-ready information architecture. That gives your team a reliable website foundation that is easier to manage, easier to scale, and better aligned with commercial intent.</p>
+                                <p class="services-details__text-1">We design and develop fast, scalable business websites for companies that need stronger enquiry generation, trust, and search visibility. From brochure sites to conversion-focused lead funnels, every build is structured for SEO, usability, and long-term maintainability, giving businesses a web development company UK partner focused on commercial outcomes.</p>
+                                <h3 class="services-details__title-2">Core Website Delivery Capabilities for UK Business Growth</h3>
+                                <p class="services-details__text-2">Our process covers strategy, UX wireframing, UI design, frontend development, CMS integration, QA, launch support, and search-ready information architecture. That gives your team a reliable website foundation that is easier to manage, easier to scale, and better aligned with commercial intent, trust, and long-term growth.</p>
                                 <div class="services-details__points-box">
                                     <ul class="services-details__points-list list-unstyled">
                                         <li>
@@ -198,11 +198,11 @@
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6">
                                             <div class="services-details__progress-left">
-                                                <h3 class="services-details__progress-left-title">Website Quality Metrics</h3>
+                                                <h3 class="services-details__progress-left-title">Website Quality Standards That Support Better Business Outcomes</h3>
                                                 <p class="services-details__progress-left-text">Our builds balance visual
-                                                    quality with performance, so your pages load quickly and convert better.
-                                                    We prioritize UX clarity, trust elements, and SEO-ready structure to
-                                                    support sustainable lead growth.</p>
+                                                    quality with performance so pages load quickly, build trust, and convert more effectively.
+                                                    We prioritise UX clarity, strong trust signals, and SEO-ready structure to
+                                                    support sustainable lead growth for UK businesses.</p>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-lg-6">
@@ -325,7 +325,7 @@
                                     businesses, and established brands planning redesigns. We can deliver brochure sites,
                                     service websites, conversion pages, and scalable CMS builds with analytics tracking.</p>
                                 <div class="service-trust-panel">
-                                    <h3 class="services-details__title-2" style="margin-bottom:8px;">How We Reduce Website Project Risk</h3>
+                                    <h3 class="services-details__title-2" style="margin-bottom:8px;">How We Reduce Risk on UK Website Projects</h3>
                                     <p class="services-details__text-2" style="margin-bottom:0;">Visitors trust websites that feel clear and credible. Clients trust agencies that make scope, launch, and support easy to understand.</p>
                                     <div class="service-trust-panel__grid">
                                         <div class="service-trust-panel__item">
@@ -396,7 +396,7 @@
                                 </ul>
                             </div>
                             <div class="services-details__contact-box">
-                                <h3>Contact Us</h3>
+                                <h3>Plan Your Website Delivery</h3>
                                 <span></span>
                                 <p class="services-details__contact-text">Need a modern website with strong SEO structure?
                                     Send your requirements and we will suggest the right build plan.</p>
@@ -427,7 +427,7 @@
                             style="background-image: url(assets/images/shapes/cta-one-shape-bg.png);"></div>
                         <h3 class="cta-one__title">Start your journey with our <br> exceptional services.</h3>
                         <div class="cta-one__btn">
-                            <a href="/contact">Get Started <span class=" icon-right-arrow-1"></span></a>
+                            <a href="/contact">Discuss Your Website Project <span class=" icon-right-arrow-1"></span></a>
                         </div>
                     </div>
                 </div>

@@ -38,6 +38,26 @@
                 'question' => 'How quickly can rankings improve?',
                 'answer' => 'Initial improvements are often visible in 6 to 12 weeks when technical fixes and search-intent content are aligned.',
             ],
+            [
+                'question' => 'Who is ARSDeveloper?',
+                'answer' => 'ARSDeveloper is a UK-based software agency that delivers business websites, custom CRM systems, ecommerce builds, workflow automation, and technical SEO support.',
+            ],
+            [
+                'question' => 'What does a software agency in the UK do?',
+                'answer' => 'A software agency plans, designs, builds, and supports digital systems such as websites, web applications, CRM platforms, and operational tools for businesses.',
+            ],
+            [
+                'question' => 'How do you choose a reliable web development company in the UK?',
+                'answer' => 'Look for clear scope planning, technical capability, delivery milestones, post-launch support, and evidence of commercial project experience.',
+            ],
+            [
+                'question' => 'Can ARSDeveloper build custom CRM systems for UK businesses?',
+                'answer' => 'Yes. ARSDeveloper builds custom CRM systems, portals, and internal tools that improve lead handling, reporting, and operational efficiency.',
+            ],
+            [
+                'question' => 'Do you provide support after launch?',
+                'answer' => 'Yes. Ongoing support covers fixes, updates, performance improvements, and future development after the initial launch.',
+            ],
         ],
     ];
 @endphp
@@ -76,8 +96,8 @@
                                 <p class="hero-text-slider__proof">UK software delivery for service businesses | websites, CRM, ecommerce and SEO with clear milestones</p>
                                 <p class="main-slider__text">We help UK businesses launch conversion-focused websites, custom CRM systems, ecommerce builds, workflow automation, and technical SEO improvements with practical project planning and direct support.</p>
                                 <div class="main-slider__btn hero-text-slider__cta">
-                                    <a href="/contact"><span class="icon-right"></span>Talk Through Your Project</a>
-                                    <a href="/portfolio" class="hero-text-slider__outline-btn"><span class="icon-right"></span>See UK Case Studies</a>
+                                    <a href="/contact"><span class="icon-right"></span>Discuss Your Project Scope</a>
+                                    <a href="/portfolio" class="hero-text-slider__outline-btn"><span class="icon-right"></span>Review Proven Results</a>
                                 </div>
                             </div>
                             <div class="main-slider__satisfied-client-and-rating-box hero-text-slider__stats">
@@ -886,7 +906,7 @@
             <div class="container">
                 <div class="lead-forms-tabs__intro sec-title-animation animation-style1">
                     <h3 class="lead-forms-tabs__title title-animation">Tell us what you need</h3>
-                    <p class="lead-forms-tabs__label">Choose one option below to continue</p>
+                    <p class="lead-forms-tabs__label">Choose the fastest route to clear scope, pricing, and next steps</p>
                 </div>
                 <div class="lead-forms-tabs__nav" role="tablist" aria-label="Lead Forms" aria-orientation="horizontal">
                     <button type="button" id="lead-tab-audit" role="tab" aria-controls="free-audit-section" tabindex="0" class="lead-forms-tabs__btn is-active" data-lead-tab="audit" aria-selected="true">
@@ -988,7 +1008,7 @@
                                         </div>
                                         <div class="col-xl-12">
                                             <div class="cost-estimator__form-actions">
-                                                <button type="submit" class="audit-lead__btn thm-btn thm-btn-two"><span class="icon-right"></span> Send Free Audit Request</button>
+                                                <button type="submit" class="audit-lead__btn thm-btn thm-btn-two"><span class="icon-right"></span> Request Your Free Growth Audit</button>
                                                 <div class="form-privacy-note" aria-label="Privacy protected">
                                                     <span class="form-privacy-note__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></span>
                                                     <span>Your privacy is protected</span>
@@ -1101,7 +1121,7 @@
                                                 <textarea name="message" placeholder="Share your required features, timeline, and existing setup..." required></textarea>
                                             </div>
                                             <div class="cost-estimator__form-actions">
-                                                <button type="submit" class="cost-estimator__btn thm-btn thm-btn-two"><span class="icon-right"></span> Send Estimate Request</button>
+                                                <button type="submit" class="cost-estimator__btn thm-btn thm-btn-two"><span class="icon-right"></span> Get Your Project Estimate</button>
                                                 <div class="form-privacy-note" aria-label="Privacy protected">
                                                     <span class="form-privacy-note__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></span>
                                                     <span>Your privacy is protected</span>
@@ -1124,9 +1144,9 @@
         @php
             $homeBlogPosts = \App\Models\BlogPost::query()
                 ->live()
-                ->orderByRaw('CASE WHEN sort_order = 0 THEN 1 ELSE 0 END')
-                ->orderBy('sort_order')
+                ->orderByRaw('COALESCE(published_at, created_at) DESC')
                 ->orderByDesc('published_at')
+                ->orderByDesc('created_at')
                 ->orderByDesc('id')
                 ->limit(8)
                 ->get();
@@ -1182,7 +1202,7 @@
                                     </div>
                                     <div class="blog-two__read-more">
                                         <div class="blog-two__read-more-line"></div>
-                                        <a href="{{ route('blog.show', $post->slug) }}" class="blog-two__read-more-text">Read More</a>
+                                        <a href="{{ route('blog.show', $post->slug) }}" class="blog-two__read-more-text">Read the Full Guide</a>
                                     </div>
                                 </div>
                             </div>
@@ -1191,7 +1211,7 @@
                 </div>
                 <div class="blog-two__bottom">
                     <div class="blog-two__btn-box-two">
-                        <a href="{{ route('blog.index') }}">View More <span class="icon-right"></span> </a>
+                        <a href="{{ route('blog.index') }}">Explore More UK Guides <span class="icon-right"></span> </a>
                     </div>
                 </div>
             </div>
@@ -1234,6 +1254,7 @@
                                 <button type="button" class="faq-intent__chip" data-faq-intent="seo">SEO</button>
                                 <button type="button" class="faq-intent__chip" data-faq-intent="crm">CRM</button>
                                 <button type="button" class="faq-intent__chip" data-faq-intent="ecommerce">Ecommerce</button>
+                                <button type="button" class="faq-intent__chip" data-faq-intent="agency">Agency</button>
                             </div>
                             <div class="accrodion-grp faq-one-accrodion is-active" data-faq-panel="website" data-grp-name="home-faq-website">
                                 <div class="accrodion active">
@@ -1339,10 +1360,47 @@
                                     <div class="accrodion-content"><div class="inner"><p>Yes. We configure event tracking and reporting so campaign decisions are based on measurable store data.</p></div></div>
                                 </div>
                             </div>
+                            <div class="accrodion-grp faq-one-accrodion" data-faq-panel="agency" data-grp-name="home-faq-agency" style="display:none;">
+                                <div class="accrodion active">
+                                    <div class="accrodion-title">
+                                        <h4>Who is ARSDeveloper?</h4>
+                                    </div>
+                                    <div class="accrodion-content"><div class="inner"><p>ARSDeveloper is a UK-based software agency providing websites, ecommerce builds, custom CRM systems, web applications, workflow automation, and technical SEO support for businesses.</p></div></div>
+                                </div>
+                                <div class="accrodion">
+                                    <div class="accrodion-title">
+                                        <h4>What does a software agency do?</h4>
+                                    </div>
+                                    <div class="accrodion-content"><div class="inner"><p>A software agency plans, designs, develops, launches, and supports digital systems such as websites, portals, CRM tools, ecommerce stores, and internal business software.</p></div></div>
+                                </div>
+                                <div class="accrodion">
+                                    <div class="accrodion-title">
+                                        <h4>How do you choose a reliable web development company in the UK?</h4>
+                                    </div>
+                                    <div class="accrodion-content"><div class="inner"><p>Choose a team with clear scope planning, technical capability, defined milestones, commercial project experience, and ongoing support after launch.</p></div></div>
+                                </div>
+                                <div class="accrodion">
+                                    <div class="accrodion-title">
+                                        <h4>Can a UK software agency build custom CRM systems?</h4>
+                                    </div>
+                                    <div class="accrodion-content"><div class="inner"><p>Yes. A UK software agency can build custom CRM systems, lead workflows, dashboards, and reporting tools tailored to sales, service, and operations teams.</p></div></div>
+                                </div>
+                                <div class="accrodion">
+                                    <div class="accrodion-title">
+                                        <h4>What services does ARSDeveloper provide?</h4>
+                                    </div>
+                                    <div class="accrodion-content"><div class="inner"><p>ARSDeveloper provides web development, ecommerce development, custom software development, custom CRM UK builds, workflow automation, and technical SEO support.</p></div></div>
+                                </div>
+                                <div class="accrodion">
+                                    <div class="accrodion-title">
+                                        <h4>Do you support projects after launch?</h4>
+                                    </div>
+                                    <div class="accrodion-content"><div class="inner"><p>Yes. Post-launch support covers updates, fixes, performance improvements, content support, and future delivery planning as the business grows.</p></div></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
         <!--Faq One End -->
 

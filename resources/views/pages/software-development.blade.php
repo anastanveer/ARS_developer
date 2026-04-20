@@ -2,8 +2,8 @@
     $servicePageImage = \App\Support\ServicePageImages::get('software-development');
     $page_title = 'Software Development';
     $seoOverride = [
-        'title' => 'Custom Software Development UK | CRM, Portals, Automation and Web Apps',
-        'description' => 'Custom software development for UK businesses including CRM systems, client portals, web apps, workflow automation, AI-ready operational tools, QA, deployment, and ongoing support.',
+        'title' => 'Custom Software Development UK | Scalable CRM, Portals and Secure Systems',
+        'description' => 'UK-based custom software development for businesses needing scalable solutions, secure systems, custom CRM UK builds, portals, automation, and reliable delivery support.',
         'keywords' => 'custom software development uk, software development company uk, crm development uk, client portal development uk, web app development uk, workflow automation uk, ai software development uk',
         'related_links' => [
             '/pricing',
@@ -105,17 +105,17 @@
                                 <img src="{{ \App\Support\ServicePageImages::toUrl($servicePageImage['image']) }}" alt="{{ $servicePageImage['alt'] }}">
                             </div>
                             <div class="services-details__content">
-                                <h3 class="services-details__title-1">Custom Software Development for UK Businesses That Need Better Systems</h3>
+                                <h3 class="services-details__title-1">Custom Software Development UK for Businesses That Need Scalable, Better-Connected Systems</h3>
                                 <div class="services-details__shape-1"></div>
                                 <p class="services-details__text-1">
-                                    We build custom software systems for UK businesses that need cleaner operations, stronger lead handling, better delivery visibility, and AI-ready internal workflows.
-                                    That includes CRM platforms, client portals, internal dashboards, workflow automation, and SEO-ready web applications under one accountable plan.
+                                    We deliver custom software development in the UK for businesses that need cleaner operations, stronger lead handling, better delivery visibility, and scalable solutions built for long-term growth.
+                                    That includes custom CRM UK platforms, client portals, internal dashboards, workflow automation, and secure systems delivered under one accountable plan.
                                 </p>
 
-                                <h3 class="services-details__title-2">What Our Software Delivery Usually Includes</h3>
+                                <h3 class="services-details__title-2">What Our UK-Based Software Delivery Process Includes</h3>
                                 <p class="services-details__text-2">
                                     Every project starts with requirements mapping and delivery planning, then moves through interface design, development, QA, deployment, and post-launch support.
-                                    This keeps the build practical, commercially focused, and easier to manage as your business grows.
+                                    This gives UK businesses a practical delivery path, clearer commercial control, and scalable solutions that are easier to manage as operations grow.
                                 </p>
 
                                 <div class="services-details__points-box">
@@ -160,14 +160,14 @@
                                     </div>
                                 </div>
 
-                                <h3 class="services-details__title-2">Ideal For</h3>
+                                <h3 class="services-details__title-2">Best Fit for UK Businesses</h3>
                                 <p class="services-details__text-5">
-                                    UK service businesses, ecommerce brands, and operations-heavy teams that need reliable software delivery without managing multiple vendors.
-                                    We align tech decisions with revenue, lead quality, and day-to-day business operations.
+                                    Ideal for UK service businesses, ecommerce brands, and operations-heavy teams that need a trusted software development UK partner without managing multiple vendors.
+                                    We align technical decisions with revenue, lead quality, internal efficiency, and secure systems that support day-to-day operations.
                                 </p>
                                 <div class="service-trust-panel">
-                                    <h3 class="services-details__title-2" style="margin-bottom:8px;">Why Teams Trust Our Delivery</h3>
-                                    <p class="services-details__text-2" style="margin-bottom:0;">We reduce project risk before build starts by clarifying scope, milestones, ownership, and the commercial outcome the system needs to support.</p>
+                                    <h3 class="services-details__title-2" style="margin-bottom:8px;">Why UK Businesses Trust Our Software Delivery</h3>
+                                    <p class="services-details__text-2" style="margin-bottom:0;">We reduce project risk before build starts by clarifying scope, milestones, ownership, and the commercial outcome the system needs to support, so UK businesses get scalable solutions with clearer delivery accountability.</p>
                                     <div class="service-trust-panel__grid">
                                         <div class="service-trust-panel__item">
                                             <h4>Discovery Before Build</h4>
@@ -200,13 +200,13 @@
                                 </ul>
                             </div>
                             <div class="services-details__contact-box">
-                                <h3>Start Project</h3>
+                                <h3>Ready to Scope Your Project?</h3>
                                 <span></span>
                                 <p class="services-details__contact-text">
-                                    Share your requirements once. We will suggest the best build path, timeline, and delivery model for your business goals.
+                                    Share your requirements once and get a clear delivery recommendation, realistic timeline, and the right build path for your commercial goals.
                                 </p>
                                 <div class="services-details__contact-btn-box">
-                                    <a href="/contact" class="services-details__contact-btn thm-btn"><i class="icon-right"></i>Send Requirements</a>
+                                    <a href="/contact" class="services-details__contact-btn thm-btn"><i class="icon-right"></i>Request a Delivery Plan</a>
                                 </div>
                             </div>
                         </div>
@@ -223,9 +223,9 @@
                     </div>
                     <div class="cta-one__inner-content">
                         <div class="cta-one__shape-bg" style="background-image: url(assets/images/shapes/cta-one-shape-bg.png);"></div>
-                        <h3 class="cta-one__title">Start your journey with our <br> exceptional services.</h3>
+                        <h3 class="cta-one__title">Start with a delivery team focused on <br> outcomes, support, and long-term value.</h3>
                         <div class="cta-one__btn">
-                            <a href="/contact">Book a Project Call <span class="icon-right-arrow-1"></span></a>
+                            <a href="/contact">Book a Project Planning Call <span class="icon-right-arrow-1"></span></a>
                         </div>
                     </div>
                 </div>

@@ -371,8 +371,8 @@
                                             <span class="icon-live-chat"></span>
                                             <div class="contact-page__contact-icon-shape"></div>
                                         </div>
-                                        <h3 class="contact-page__contact-single-title">Live Support</h3>
-                                        <p>Use live chat, email, or direct message to start the conversation. New project enquiries are reviewed quickly during working hours.</p>
+                                        <h3 class="contact-page__contact-single-title">Project Support</h3>
+                                        <p>Use live chat, email, or direct message to start the conversation. New project enquiries are reviewed promptly with a clear next step during working hours.</p>
                                     </div>
                                 </div>
                                 <!--Contact Page Contact Single End-->
@@ -398,9 +398,9 @@
                                 <div class="contact-page__contact-form-title-icon contact-page__contact-form-title-icon--pill">
                                     <span>Step 1 of 3</span>
                                 </div>
-                                <h3 class="contact-page__contact-form-title">Start your website, CRM, or SEO enquiry</h3>
+                                <h3 class="contact-page__contact-form-title">Start Your Website, CRM, or SEO Project Discussion</h3>
                             </div>
-                            <p class="contact-page__contact-form-text">Share the basics and we will reply with realistic scope guidance, the next clear step, and the right delivery path.</p>
+                            <p class="contact-page__contact-form-text">Share the essentials and we will respond with realistic scope guidance, the right delivery path, and a practical next step for your team.</p>
                             @if($flowContext)
                                 <div class="contact-page__flow-box">
                                     <p class="contact-page__flow-kicker">{{ $flowContext['kicker'] }}</p>
@@ -417,7 +417,7 @@
                                 </div>
                             @endif
                             <div class="contact-page__trust-strip">
-                                <h4>Clear reply, realistic scope guidance, and a direct next step.</h4>
+                                <h4>Clear response, practical scope guidance, and dependable delivery support from the start.</h4>
                             </div>
                             <div class="contact-page__form-shell">
                                 <form class="contact-form-validated contact-page__form" action="{{ route('contact.submit') }}"
