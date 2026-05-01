@@ -89,6 +89,35 @@
         font-size: 17px;
     }
 
+    .blog-details__content-image {
+        margin: 32px 0 38px;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #ffffff;
+        border: 1px solid #d9e4f2;
+        box-shadow: 0 16px 34px rgba(16, 42, 77, .10);
+    }
+
+    .blog-details__content-image img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .blog-details__content-image figcaption {
+        margin: 0;
+        padding: 12px 18px 14px;
+        color: #4f6386;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: 600;
+        background: #f8fbff;
+        border-top: 1px solid #d9e4f2;
+    }
+
     .blog-details__article h2,
     .blog-details__article h3 {
         color: #102a4d;

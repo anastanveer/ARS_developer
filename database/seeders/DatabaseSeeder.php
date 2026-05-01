@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(BlogPostSeeder::class);
+        $this->call(SeoBlogPost2026Seeder::class);
         $this->call(AdminUserSeeder::class);
 
         User::firstOrCreate(
