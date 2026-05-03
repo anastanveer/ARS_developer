@@ -73,6 +73,132 @@
             grid-template-columns: 1fr;
         }
     }
+
+    /* --- 2026 Advanced SEO Content Blocks --- */
+    .seo-problem-block {
+        margin: 28px 0;
+        padding: 26px 28px;
+        background: linear-gradient(135deg, #fff8f8 0%, #fff 100%);
+        border-left: 4px solid #e03737;
+        border-radius: 0 14px 14px 0;
+        box-shadow: 0 4px 18px rgba(224,55,55,0.06);
+    }
+    .seo-problem-block__title {
+        color: #1a2940;
+        font-size: 19px;
+        font-weight: 700;
+        margin: 0 0 12px;
+    }
+    .seo-problem-block__lead { color: #3a5270; margin-bottom: 14px; line-height: 1.75; }
+    .seo-problem-block__list { padding: 0; list-style: none; margin: 0; }
+    .seo-problem-block__list li {
+        padding: 11px 0 11px 22px;
+        position: relative;
+        border-bottom: 1px solid #f5e8e8;
+        color: #3a5270;
+        line-height: 1.75;
+    }
+    .seo-problem-block__list li:last-child { border-bottom: none; }
+    .seo-problem-block__list li::before { content: "→"; position: absolute; left: 0; color: #e03737; font-weight: 700; }
+    .seo-aeo-block {
+        margin: 28px 0;
+        padding: 26px 28px;
+        background: linear-gradient(135deg, #f0f7ff 0%, #fff 100%);
+        border-left: 4px solid #1d6bf3;
+        border-radius: 0 14px 14px 0;
+        box-shadow: 0 4px 18px rgba(29,107,243,0.06);
+    }
+    .seo-aeo-block__title { color: #0f2749; font-size: 19px; font-weight: 700; margin: 0 0 12px; }
+    .seo-aeo-block__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+    .seo-aeo-block__item { padding: 16px; background: #fff; border: 1px solid #d0e4fb; border-radius: 10px; }
+    .seo-aeo-block__item strong { display: block; color: #0f2749; margin-bottom: 6px; font-size: 15px; }
+    .seo-aeo-block__item p { margin: 0; color: #4a6585; font-size: 14px; line-height: 1.65; }
+    .seo-process-block {
+        margin: 28px 0;
+        padding: 26px 28px;
+        background: #f8fbff;
+        border: 1px solid #d0e4fb;
+        border-radius: 14px;
+    }
+    .seo-process-block__title { color: #0f2749; font-size: 19px; font-weight: 700; margin: 0 0 18px; }
+    .seo-process-block ol { padding: 0; counter-reset: seo-steps; list-style: none; margin: 0; }
+    .seo-process-block ol li {
+        counter-increment: seo-steps;
+        padding: 14px 14px 14px 56px;
+        position: relative;
+        border-bottom: 1px solid #e4eefb;
+        color: #3a5270;
+        line-height: 1.75;
+    }
+    .seo-process-block ol li:last-child { border-bottom: none; }
+    .seo-process-block ol li::before {
+        content: counter(seo-steps);
+        position: absolute; left: 12px; top: 12px;
+        width: 30px; height: 30px;
+        background: #1d6bf3; color: #fff;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 13px; font-weight: 700;
+    }
+    .seo-process-block ol li strong { color: #0f2749; }
+    .seo-audit-cta {
+        margin: 28px 0;
+        padding: 34px 32px;
+        background: linear-gradient(135deg, #0f2749 0%, #1652b8 100%);
+        border-radius: 20px;
+        text-align: center;
+    }
+    .seo-audit-cta__eyebrow {
+        display: inline-block; padding: 5px 14px;
+        background: rgba(255,255,255,0.15);
+        color: #a8d4ff; font-size: 13px;
+        border-radius: 20px; margin-bottom: 14px; font-weight: 600;
+    }
+    .seo-audit-cta h3 { color: #fff; font-size: 22px; margin: 0 0 12px; }
+    .seo-audit-cta p { color: rgba(255,255,255,0.82); margin: 0 0 22px; line-height: 1.75; }
+    .seo-audit-cta__list {
+        display: flex; flex-wrap: wrap; gap: 10px;
+        justify-content: center; margin: 0 0 22px; padding: 0; list-style: none;
+    }
+    .seo-audit-cta__list li {
+        padding: 6px 14px;
+        background: rgba(255,255,255,0.12);
+        color: #e0f0ff;
+        border-radius: 20px; font-size: 13px;
+    }
+    .seo-audit-cta__btn {
+        display: inline-block; padding: 14px 34px;
+        background: #fff; color: #0f2749;
+        font-weight: 700; border-radius: 8px;
+        text-decoration: none; font-size: 15px;
+        transition: background 0.2s, color 0.2s;
+        margin-right: 12px;
+    }
+    .seo-audit-cta__btn:hover { background: #d6e8ff; color: #0f2749; text-decoration: none; }
+    .seo-audit-cta__note { display: block; margin-top: 12px; color: rgba(255,255,255,0.55); font-size: 13px; }
+    .seo-topical-links {
+        margin: 24px 0;
+        padding: 22px 24px;
+        background: #f8fbff;
+        border: 1px solid #d0e4fb;
+        border-radius: 14px;
+    }
+    .seo-topical-links__title { color: #0f2749; font-size: 15px; font-weight: 700; margin: 0 0 14px; }
+    .seo-topical-links ul {
+        list-style: none; padding: 0; margin: 0;
+        display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    .seo-topical-links ul li a {
+        color: #1d6bf3; text-decoration: none; font-size: 14px;
+        display: flex; align-items: flex-start; gap: 6px; line-height: 1.5;
+    }
+    .seo-topical-links ul li a::before { content: "→"; flex-shrink: 0; }
+    .seo-topical-links ul li a:hover { color: #0a4ab5; text-decoration: underline; }
+    @media (max-width: 767px) {
+        .seo-aeo-block__grid,
+        .seo-topical-links ul { grid-template-columns: 1fr; }
+        .seo-audit-cta { padding: 24px 18px; }
+    }
 </style>
 
 
@@ -114,6 +240,18 @@
                                 <h3 class="services-details__title-1">UK-Based SEO and AI Search Services for Businesses That Need More Qualified Organic Leads</h3>
                                 <div class="services-details__shape-1"></div>
                                 <p class="services-details__text-1">Our SEO service is built for UK businesses that want stronger rankings, better click-through rates, more qualified enquiries, and stronger AI search visibility. We audit technical foundations, improve site structure, and align content with real keyword demand to increase visibility in competitive search results while supporting trusted, scalable growth.</p>
+                                <!-- PROBLEM BLOCK: AEO passage-indexable, featured snippet target -->
+                                <div class="seo-problem-block">
+                                    <h3 class="seo-problem-block__title">Why Most UK Service Websites Earn Impressions But Not Enquiries</h3>
+                                    <p class="seo-problem-block__lead">Most UK service businesses see Google impressions rising in Search Console but qualified enquiries staying flat. The gap between visibility and revenue usually comes from three specific, fixable problems:</p>
+                                    <ul class="seo-problem-block__list">
+                                        <li><strong>Intent mismatch:</strong> Service pages target keywords, not the real questions buyers type. Google and AI engines (Perplexity, ChatGPT, Gemini, AI Overviews) now prioritise pages that directly answer buyer questions — not pages that repeat the service name across headings.</li>
+                                        <li><strong>Technical blockers:</strong> Crawl errors, poor Core Web Vitals, weak canonicalization, and orphaned service pages quietly prevent Google from understanding your site structure. These rarely show error messages but consistently suppress rankings on your most commercial URLs.</li>
+                                        <li><strong>Thin authority signals:</strong> Google's 2026 quality standards use EEAT — Experience, Expertise, Authoritativeness, Trustworthiness — to compare competing pages. Without proof signals (specific project outcomes, credentials, entity coverage), service pages rank below agencies that demonstrate real delivery evidence.</li>
+                                        <li><strong>Poor internal linking:</strong> When your most valuable service pages are not linked contextually from relevant content, Google crawls them infrequently and assigns lower importance — even when the content quality is strong.</li>
+                                    </ul>
+                                </div>
+
                                 <h3 class="services-details__title-2">Our SEO Delivery Framework for UK Ranking Growth</h3>
                                 <p class="services-details__text-2">We combine technical SEO, on-page optimisation, Search Console analysis, answer engine optimisation, AI search entity alignment, and content planning into a clear monthly workflow. Every action is prioritised by business impact so UK businesses see measurable progress in rankings, clicks, AI search visibility, and qualified enquiries.</p>
                                 <div class="services-details__points-box">
@@ -279,6 +417,44 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- AEO / GEO BLOCK: AI search optimization, entity-rich, passage-rankable -->
+                                <div class="seo-aeo-block">
+                                    <h3 class="seo-aeo-block__title">What AI Search Engines Check in 2026 (AEO and GEO)</h3>
+                                    <p style="color:#3a5270;line-height:1.75;margin-bottom:14px;">Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO) are the two disciplines that now sit alongside traditional Google SEO. AEO structures content so Google AI Overviews, Bing Copilot, and AI answer engines cite your website as the authoritative source. GEO ensures that when ChatGPT, Perplexity, Claude, or Gemini answer UK business queries, your agency appears as a credible referenced source.</p>
+                                    <div class="seo-aeo-block__grid">
+                                        <div class="seo-aeo-block__item">
+                                            <strong>AEO — Answer Engine Optimization</strong>
+                                            <p>Structure content with direct answer paragraphs, FAQ schema, and entity-rich headings so Google AI Overviews extract and cite your pages as the definitive answer for UK service queries.</p>
+                                        </div>
+                                        <div class="seo-aeo-block__item">
+                                            <strong>GEO — Generative Engine Optimization</strong>
+                                            <p>Build brand entity signals, authoritative citations, and consistent structured data so LLMs (ChatGPT, Gemini, Perplexity) recognise and reference ARSDeveloper as a trusted UK software and SEO agency.</p>
+                                        </div>
+                                        <div class="seo-aeo-block__item">
+                                            <strong>EEAT Authority Signals</strong>
+                                            <p>Experience and Expertise signals — specific delivery outcomes, industry credentials, team expertise, and verifiable proof — that elevate page quality scores above generic competitor content.</p>
+                                        </div>
+                                        <div class="seo-aeo-block__item">
+                                            <strong>Topical Authority Clusters</strong>
+                                            <p>Pillar pages connected to supporting blog posts, sector pages, and internal resources so Google understands your agency holds genuine depth of knowledge across your service areas.</p>
+                                        </div>
+                                    </div>
+                                    <p style="margin:14px 0 0;color:#4a6585;font-size:14px;">We implement AEO and GEO alongside traditional technical SEO so your visibility expands across both classic search and AI-assisted discovery. Read the full guide on our <a href="/uk-growth-hub" style="color:#1d6bf3;">UK SEO Growth Hub</a>.</p>
+                                </div>
+
+                                <!-- PROCESS BLOCK: Numbered steps = featured snippet target -->
+                                <div class="seo-process-block">
+                                    <h3 class="seo-process-block__title">How We Improve UK SEO Rankings — 6-Step Delivery Process</h3>
+                                    <ol>
+                                        <li><strong>Technical Audit:</strong> Full crawl to identify indexation blockers, Core Web Vitals failures, canonical errors, duplicate content issues, and internal link gaps that silently limit rankings.</li>
+                                        <li><strong>Search Console Analysis:</strong> Identify pages already earning impressions but not converting to clicks — these have the highest quick-win potential and get prioritised first.</li>
+                                        <li><strong>Buyer Intent Mapping:</strong> Map every service page to the real questions UK buyers type into Google, AI search tools, and voice assistants — not just keyword volume data.</li>
+                                        <li><strong>On-Page and AEO Upgrades:</strong> Rewrite titles, meta descriptions, headings, and body content to match search intent, answer-first structure, and AI citation patterns. Add FAQ schema, structured data, and entity coverage.</li>
+                                        <li><strong>Internal Linking and Authority Architecture:</strong> Connect service pages, blog posts, sector pages, and the <a href="/uk-growth-hub">UK Growth Hub</a> with contextual anchors so topical authority builds across the whole site.</li>
+                                        <li><strong>Monthly Reporting and Iteration:</strong> Track ranking movement, click-through rate improvement, and qualified enquiry growth. Every month produces a prioritised action plan based on real Search Console movement.</li>
+                                    </ol>
+                                </div>
+
                                 <h3 class="services-details__title-3">Why Our SEO Strategy Works</h3>
                                 <p class="services-details__text-3">We treat SEO as a business growth system, not only a
                                     rankings exercise. Technical foundations, content architecture, and conversion intent
@@ -346,10 +522,36 @@
                                 <div class="services-details__img-two">
                                     <img src="assets/images/services/services-details-img-2.jpg" alt="">
                                 </div>
-                                <h3 class="services-details__title-4">Request a Growth-Focused SEO Review:</h3>
-                                <p class="services-details__text-5">Send your website URL and top services. We will
-                                    deliver an actionable audit summary covering technical blockers, keyword opportunities,
-                                    and a priority roadmap for the next 90 days.</p>
+
+                                <!-- TOPICAL CLUSTER LINKS: Contextual internal links for authority signals -->
+                                <div class="seo-topical-links">
+                                    <p class="seo-topical-links__title">Related SEO Guides and UK Growth Resources</p>
+                                    <ul>
+                                        <li><a href="/uk-growth-hub">UK SEO Growth System 2026 — AEO, GEO and EEAT Full Playbook</a></li>
+                                        <li><a href="/blog/answer-engine-optimization-uk-how-service-businesses-structure-content-for-ai-search">How UK Businesses Structure Content for AI Search (AEO Guide)</a></li>
+                                        <li><a href="/blog/google-search-console-insights-uk-how-to-find-easy-seo-wins-faster">Find Easy SEO Wins Faster Using Search Console Data</a></li>
+                                        <li><a href="/blog/seo-company-stoke-on-trent-for-small-businesses-what-actually-drives-enquiries">What Actually Drives SEO Enquiries for UK Small Businesses</a></li>
+                                        <li><a href="/sectors/healthcare">Healthcare Website SEO — Clinics and Private Practices UK</a></li>
+                                        <li><a href="/sectors/law-firms">Law Firm SEO — Solicitors and Legal Services UK</a></li>
+                                        <li><a href="/sectors/ecommerce">Ecommerce SEO — Shopify and WooCommerce UK</a></li>
+                                        <li><a href="/pricing">SEO Service Pricing — UK Packages and Delivery Tiers</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- FREE AUDIT CTA: High-conversion, specific offer -->
+                                <div class="seo-audit-cta">
+                                    <span class="seo-audit-cta__eyebrow">Free Website Audit — No Obligation</span>
+                                    <h3>Get a Prioritised SEO Action Plan for Your UK Website</h3>
+                                    <p>Send your website URL and top 3 services. We will analyse your technical foundations, Search Console data, keyword positions, content gaps, and AI search visibility — then return a prioritised action plan covering what to fix first, what to improve, and what will move rankings fastest.</p>
+                                    <ul class="seo-audit-cta__list">
+                                        <li>Technical SEO audit</li>
+                                        <li>Search Console gap analysis</li>
+                                        <li>Content intent review</li>
+                                        <li>90-day priority roadmap</li>
+                                    </ul>
+                                    <a href="/contact" class="seo-audit-cta__btn">Request Your Free SEO Audit</a>
+                                    <span class="seo-audit-cta__note">Delivered within 2–3 business days. No sales calls required.</span>
+                                </div>
                             </div>
                         </div>
                     </div>

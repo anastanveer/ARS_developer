@@ -65,6 +65,17 @@
                                 <h3 class="services-details__title-1">UI/UX and App Development Services for Scalable
                                     Digital Products and Operational Automation</h3>
                                 <div class="services-details__shape-1"></div>
+                                <!-- PROBLEM BLOCK -->
+                                <div class="seo-problem-block" style="margin:0 0 24px;padding:24px 26px;background:linear-gradient(135deg,#fff8f8 0%,#fff 100%);border-left:4px solid #e03737;border-radius:0 14px 14px 0;">
+                                    <h3 style="color:#1a2940;font-size:19px;font-weight:700;margin:0 0 12px;">Why UK Business App Projects Stall — and What Actually Makes Them Succeed</h3>
+                                    <p style="color:#3a5270;margin-bottom:14px;line-height:1.75;">Most UK business app projects take longer and cost more than planned for predictable reasons. Understanding them before your project starts is the most valuable investment you can make:</p>
+                                    <ul style="padding:0;list-style:none;margin:0;">
+                                        <li style="padding:11px 0 11px 22px;position:relative;border-bottom:1px solid #f5e8e8;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>Building features before validating use cases:</strong> The most common cause of wasted budget in app development is building functionality that teams or customers don't actually use. Discovery-led scoping prevents this by mapping real user workflows before any code is written.</li>
+                                        <li style="padding:11px 0 11px 22px;position:relative;border-bottom:1px solid #f5e8e8;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>Underestimating backend complexity:</strong> Front-end interfaces are the visible part of an app — but it is the backend logic, data relationships, API integrations, and role permissions that determine whether the system actually works at scale.</li>
+                                        <li style="padding:11px 0 11px 22px;position:relative;border-bottom:1px solid #f5e8e8;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>No adoption plan:</strong> An app that your team doesn't understand or trust will be abandoned. UI clarity, onboarding flows, and admin control panels are not optional extras — they are what determines whether the investment gets used.</li>
+                                        <li style="padding:11px 0 11px 22px;position:relative;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>Choosing a development partner based on price alone:</strong> The cheapest quote almost always comes from teams that skip discovery, compress QA, and hand over systems without documentation or post-launch support. The true cost emerges in maintenance, rework, and missed business outcomes.</li>
+                                    </ul>
+                                </div>
                                 <p class="services-details__text-1">We design and develop user-centric web applications,
                                     client portals, business tools, and AI-assisted workflow systems that simplify operations and improve user adoption.
                                     Our delivery approach combines UX thinking, technical execution, and measurable
@@ -284,10 +295,28 @@
                                 <div class="services-details__img-two">
                                     <img src="assets/images/services/services-details-img-2.jpg" alt="">
                                 </div>
-                                <h3 class="services-details__title-4">Start Your Product Roadmap:</h3>
-                                <p class="services-details__text-5">Share your business workflow and must-have features.
-                                    We will break delivery into clear phases with timeline, milestones, and launch-ready
-                                    priorities.</p>
+
+                                <!-- TOPICAL LINKS -->
+                                <div style="margin:24px 0;padding:22px 24px;background:#f8fbff;border:1px solid #d0e4fb;border-radius:14px;">
+                                    <p style="color:#0f2749;font-size:15px;font-weight:700;margin:0 0 14px;">Related App and Portal Development Resources</p>
+                                    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                                        <li><a href="/software-development" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>Custom Software Development UK — CRM, Portals and Systems</a></li>
+                                        <li><a href="/blog/saas-mvp-development-uk-what-to-build-first-and-what-to-delay" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>SaaS MVP Development UK — What to Build First</a></li>
+                                        <li><a href="/sectors/b2b" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>B2B App and Portal Development UK</a></li>
+                                        <li><a href="/blog/subscription-software-development-uk-how-saas-products-are-planned-priced-and-built" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>How SaaS Products Are Planned and Built in the UK</a></li>
+                                        <li><a href="/portfolio" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>App Development Portfolio — UK Delivery Examples</a></li>
+                                        <li><a href="/pricing" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>App Development Pricing — UK Project Packages</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- FREE AUDIT CTA -->
+                                <div style="margin:28px 0;padding:34px 32px;background:linear-gradient(135deg,#0f2749 0%,#1652b8 100%);border-radius:20px;text-align:center;">
+                                    <span style="display:inline-block;padding:5px 14px;background:rgba(255,255,255,0.15);color:#a8d4ff;font-size:13px;border-radius:20px;margin-bottom:14px;font-weight:600;">Free Project Scoping — No Obligation</span>
+                                    <h3 style="color:#fff;font-size:22px;margin:0 0 12px;">Get a Free Scoping Plan for Your UK App or Portal Project</h3>
+                                    <p style="color:rgba(255,255,255,0.82);margin:0 0 22px;line-height:1.75;">Share your business workflow, the user roles involved, and the core problem you need to solve. We will return a free delivery recommendation covering feature prioritisation, milestone breakdown, and realistic timeline — before any commitment.</p>
+                                    <a href="/contact" style="display:inline-block;padding:14px 34px;background:#fff;color:#0f2749;font-weight:700;border-radius:8px;text-decoration:none;font-size:15px;">Request Your Free Scoping Plan</a>
+                                    <span style="display:block;margin-top:12px;color:rgba(255,255,255,0.55);font-size:13px;">Response within 1 business day. No sales pressure.</span>
+                                </div>
                             </div>
                         </div>
                     </div>

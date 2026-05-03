@@ -73,6 +73,38 @@
             grid-template-columns: 1fr;
         }
     }
+
+    /* --- 2026 Advanced SEO Blocks --- */
+    .seo-problem-block { margin:28px 0; padding:26px 28px; background:linear-gradient(135deg,#fff8f8 0%,#fff 100%); border-left:4px solid #e03737; border-radius:0 14px 14px 0; box-shadow:0 4px 18px rgba(224,55,55,0.06); }
+    .seo-problem-block__title { color:#1a2940; font-size:19px; font-weight:700; margin:0 0 12px; }
+    .seo-problem-block__lead { color:#3a5270; margin-bottom:14px; line-height:1.75; }
+    .seo-problem-block__list { padding:0; list-style:none; margin:0; }
+    .seo-problem-block__list li { padding:11px 0 11px 22px; position:relative; border-bottom:1px solid #f5e8e8; color:#3a5270; line-height:1.75; }
+    .seo-problem-block__list li:last-child { border-bottom:none; }
+    .seo-problem-block__list li::before { content:"→"; position:absolute; left:0; color:#e03737; font-weight:700; }
+    .seo-process-block { margin:28px 0; padding:26px 28px; background:#f8fbff; border:1px solid #d0e4fb; border-radius:14px; }
+    .seo-process-block__title { color:#0f2749; font-size:19px; font-weight:700; margin:0 0 18px; }
+    .seo-process-block ol { padding:0; counter-reset:seo-steps; list-style:none; margin:0; }
+    .seo-process-block ol li { counter-increment:seo-steps; padding:14px 14px 14px 56px; position:relative; border-bottom:1px solid #e4eefb; color:#3a5270; line-height:1.75; }
+    .seo-process-block ol li:last-child { border-bottom:none; }
+    .seo-process-block ol li::before { content:counter(seo-steps); position:absolute; left:12px; top:12px; width:30px; height:30px; background:#1d6bf3; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; }
+    .seo-process-block ol li strong { color:#0f2749; }
+    .seo-audit-cta { margin:28px 0; padding:34px 32px; background:linear-gradient(135deg,#0f2749 0%,#1652b8 100%); border-radius:20px; text-align:center; }
+    .seo-audit-cta__eyebrow { display:inline-block; padding:5px 14px; background:rgba(255,255,255,0.15); color:#a8d4ff; font-size:13px; border-radius:20px; margin-bottom:14px; font-weight:600; }
+    .seo-audit-cta h3 { color:#fff; font-size:22px; margin:0 0 12px; }
+    .seo-audit-cta p { color:rgba(255,255,255,0.82); margin:0 0 22px; line-height:1.75; }
+    .seo-audit-cta__list { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:0 0 22px; padding:0; list-style:none; }
+    .seo-audit-cta__list li { padding:6px 14px; background:rgba(255,255,255,0.12); color:#e0f0ff; border-radius:20px; font-size:13px; }
+    .seo-audit-cta__btn { display:inline-block; padding:14px 34px; background:#fff; color:#0f2749; font-weight:700; border-radius:8px; text-decoration:none; font-size:15px; transition:background 0.2s,color 0.2s; }
+    .seo-audit-cta__btn:hover { background:#d6e8ff; color:#0f2749; text-decoration:none; }
+    .seo-audit-cta__note { display:block; margin-top:12px; color:rgba(255,255,255,0.55); font-size:13px; }
+    .seo-topical-links { margin:24px 0; padding:22px 24px; background:#f8fbff; border:1px solid #d0e4fb; border-radius:14px; }
+    .seo-topical-links__title { color:#0f2749; font-size:15px; font-weight:700; margin:0 0 14px; }
+    .seo-topical-links ul { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .seo-topical-links ul li a { color:#1d6bf3; text-decoration:none; font-size:14px; display:flex; align-items:flex-start; gap:6px; line-height:1.5; }
+    .seo-topical-links ul li a::before { content:"→"; flex-shrink:0; }
+    .seo-topical-links ul li a:hover { color:#0a4ab5; text-decoration:underline; }
+    @media (max-width:767px) { .seo-topical-links ul { grid-template-columns:1fr; } .seo-audit-cta { padding:24px 18px; } }
 </style>
 
 
@@ -114,6 +146,18 @@
                                 <h3 class="services-details__title-1">UK-Based Website Design and Development for Businesses That Need More Enquiries</h3>
                                 <div class="services-details__shape-1"></div>
                                 <p class="services-details__text-1">We design and develop fast, scalable business websites for companies that need stronger enquiry generation, trust, and search visibility. From brochure sites to conversion-focused lead funnels, every build is structured for SEO, usability, and long-term maintainability, giving businesses a web development company UK partner focused on commercial outcomes.</p>
+                                <!-- PROBLEM BLOCK -->
+                                <div class="seo-problem-block">
+                                    <h3 class="seo-problem-block__title">Why UK Business Websites Fail to Generate Enquiries — Even With Good Traffic</h3>
+                                    <p class="seo-problem-block__lead">Most UK businesses invest in a new website and see visitors arrive — but qualified enquiries don't follow. The gap between traffic and leads almost always comes from the same four structural problems:</p>
+                                    <ul class="seo-problem-block__list">
+                                        <li><strong>No conversion architecture:</strong> Pages are designed to look professional, not to guide visitors toward a specific action. Without a clear hierarchy from landing to contact, most visitors leave without enquiring.</li>
+                                        <li><strong>Weak trust signals:</strong> UK buyers in 2026 evaluate three things before contacting any agency — social proof, specific delivery evidence, and clear scope communication. Websites that skip these lose enquiries to competitors that include them.</li>
+                                        <li><strong>Slow mobile performance:</strong> Google's Core Web Vitals scoring directly affects search rankings. A website that loads slowly on mobile loses both visitors and rankings — especially on commercial service queries where competitors are faster.</li>
+                                        <li><strong>SEO built as an afterthought:</strong> When heading structure, metadata, internal links, and schema are added after the build is finished, they are never as effective as when they are planned into the architecture from the start.</li>
+                                    </ul>
+                                </div>
+
                                 <h3 class="services-details__title-2">Core Website Delivery Capabilities for UK Business Growth</h3>
                                 <p class="services-details__text-2">Our process covers strategy, UX wireframing, UI design, frontend development, CMS integration, QA, launch support, and search-ready information architecture. That gives your team a reliable website foundation that is easier to manage, easier to scale, and better aligned with commercial intent, trust, and long-term growth.</p>
                                 <div class="services-details__points-box">
@@ -279,6 +323,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- PROCESS BLOCK: 2026 build standards, featured snippet target -->
+                                <div class="seo-process-block">
+                                    <h3 class="seo-process-block__title">How We Build UK Business Websites That Rank and Convert in 2026</h3>
+                                    <ol>
+                                        <li><strong>Discovery and Scope Planning:</strong> We map your target audience, buyer journey, service priorities, and conversion goals before any design work starts. This prevents scope drift and ensures every page has a clear commercial purpose.</li>
+                                        <li><strong>SEO-First Information Architecture:</strong> Sitemap, URL structure, heading hierarchy, and internal linking are planned with search intent in mind. Pages are structured so Google and AI engines understand what each URL covers and how it connects to the rest of the site.</li>
+                                        <li><strong>Conversion-Focused Design:</strong> UI design is built around trust signals, clear calls to action, credibility blocks, and frictionless enquiry paths — not just visual aesthetics. We follow <a href="/sectors/healthcare">healthcare</a>, <a href="/sectors/law-firms">legal</a>, and <a href="/sectors/ecommerce">ecommerce</a> sector conversion patterns specific to UK buyers.</li>
+                                        <li><strong>Performance-Optimised Build:</strong> Code quality, image loading, caching, and Core Web Vitals pass rates are built in from development — not patched on after launch. This directly supports both rankings and user experience.</li>
+                                        <li><strong>Schema and Structured Data:</strong> Organisation schema, service schema, BreadcrumbList, FAQ schema, and LocalBusiness markup are implemented so Google and AI search tools understand your entity, location, and service coverage.</li>
+                                        <li><strong>Launch QA, Handover and Support:</strong> Pre-launch testing covers forms, speed, mobile rendering, analytics setup, and Search Console verification. Post-launch support ensures the site performs from day one without requiring developer dependency for routine updates.</li>
+                                    </ol>
+                                </div>
+
                                 <h3 class="services-details__title-3">Why Choose ARSDeveloper for Web Development</h3>
                                 <p class="services-details__text-3">You receive business-led design decisions, clean code
                                     delivery, and launch support in one engagement. We focus on conversion outcomes, not
@@ -345,10 +402,36 @@
                                 <div class="services-details__img-two">
                                     <img src="assets/images/services/services-details-img-2.jpg" alt="">
                                 </div>
-                                <h3 class="services-details__title-4">Start Your Web Project:</h3>
-                                <p class="services-details__text-5">Share your goals, target audience, and preferred
-                                    timeline. We will propose the right scope, sitemap, and build phases so your launch is
-                                    clear, fast, and low risk.</p>
+
+                                <!-- TOPICAL CLUSTER LINKS -->
+                                <div class="seo-topical-links">
+                                    <p class="seo-topical-links__title">Related Web Development Guides and UK Resources</p>
+                                    <ul>
+                                        <li><a href="/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites">How UK Service Businesses Generate More Leads With Better Websites</a></li>
+                                        <li><a href="/blog/technical-seo-checklist-for-uk-websites-before-launch">Technical SEO Checklist for UK Websites Before Launch</a></li>
+                                        <li><a href="/blog/landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries">7 Landing Page Fixes That Increase UK Enquiries</a></li>
+                                        <li><a href="/blog/website-development-company-stoke-on-trent-what-businesses-should-expect">What UK Businesses Should Expect From a Web Development Company</a></li>
+                                        <li><a href="/search-engine-optimization">SEO Services — Rank Your New Website in UK Search</a></li>
+                                        <li><a href="/portfolio">Web Development Portfolio — UK Project Examples</a></li>
+                                        <li><a href="/sectors/ecommerce">Ecommerce Website Development UK — Shopify and WooCommerce</a></li>
+                                        <li><a href="/pricing">Website Development Pricing — UK Project Packages</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- FREE AUDIT CTA -->
+                                <div class="seo-audit-cta">
+                                    <span class="seo-audit-cta__eyebrow">Free Website Review — No Obligation</span>
+                                    <h3>Get a Free Website Audit for Your UK Business</h3>
+                                    <p>Share your current website URL and top 3 business goals. We will review your conversion architecture, technical SEO foundations, page speed, mobile performance, and trust signals — then return a clear action plan covering what to fix, improve, and prioritise before your next launch or redesign.</p>
+                                    <ul class="seo-audit-cta__list">
+                                        <li>Conversion architecture review</li>
+                                        <li>Core Web Vitals check</li>
+                                        <li>Mobile performance audit</li>
+                                        <li>SEO structure analysis</li>
+                                    </ul>
+                                    <a href="/contact" class="seo-audit-cta__btn">Request Your Free Website Audit</a>
+                                    <span class="seo-audit-cta__note">Delivered within 2–3 business days. No obligation to proceed.</span>
+                                </div>
                             </div>
                         </div>
                     </div>

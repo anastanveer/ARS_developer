@@ -65,6 +65,17 @@
                                 <h3 class="services-details__title-1">Product Design and Branding Services for Clear Market
                                     Positioning and Stronger Conversion</h3>
                                 <div class="services-details__shape-1"></div>
+                                <!-- PROBLEM BLOCK -->
+                                <div style="margin:0 0 24px;padding:24px 26px;background:linear-gradient(135deg,#fff8f8 0%,#fff 100%);border-left:4px solid #e03737;border-radius:0 14px 14px 0;box-shadow:0 4px 18px rgba(224,55,55,0.06);">
+                                    <h3 style="color:#1a2940;font-size:19px;font-weight:700;margin:0 0 12px;">Why Weak Branding Costs UK Businesses More Than They Realise</h3>
+                                    <p style="color:#3a5270;margin-bottom:14px;line-height:1.75;">A business with a weak or inconsistent brand spends more on marketing to get the same result as a competitor with a clear, trusted brand identity. The compounding costs are often invisible until they are measured:</p>
+                                    <ul style="padding:0;list-style:none;margin:0;">
+                                        <li style="padding:11px 0 11px 22px;position:relative;border-bottom:1px solid #f5e8e8;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>Lower conversion rates on the same traffic:</strong> When a website visitor can't quickly understand what a business does, who it's for, and why it's trustworthy, they leave. Brand clarity — not just visual design — directly determines whether visitors become enquiries.</li>
+                                        <li style="padding:11px 0 11px 22px;position:relative;border-bottom:1px solid #f5e8e8;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>Inconsistent messaging across channels:</strong> When a website, LinkedIn profile, email signature, and proposals all say something slightly different about what you offer, buyers lose confidence. Brand systems solve this by giving every team member one clear, consistent way to describe the business.</li>
+                                        <li style="padding:11px 0 11px 22px;position:relative;border-bottom:1px solid #f5e8e8;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>SEO and AI search invisibility:</strong> Google and AI search engines use brand entity signals — consistent name, description, category, and visual identity across the web — as authority signals. A business with a fragmented or undefined brand is harder for Google to understand and harder for AI tools to cite as a trusted source.</li>
+                                        <li style="padding:11px 0 11px 22px;position:relative;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>Design rework without a system:</strong> Without a documented brand system, every new webpage, ad, or document becomes a redesign project. This costs time and produces inconsistent outputs that slowly undermine brand credibility across all channels.</li>
+                                    </ul>
+                                </div>
                                 <p class="services-details__text-1">We help businesses build a strong and consistent brand
                                     identity that customers trust. Our product design and branding services align your
                                     visuals, messaging, user experience, and AI-ready content systems so your offer stands out in competitive markets.</p>
@@ -283,10 +294,28 @@
                                 <div class="services-details__img-two">
                                     <img src="assets/images/services/services-details-img-2.jpg" alt="">
                                 </div>
-                                <h3 class="services-details__title-4">Start with a Brand Discovery Session:</h3>
-                                <p class="services-details__text-5">Share your audience, positioning goals and current
-                                    assets. We will define the right scope for brand strategy, visual identity, and design
-                                    rollout priorities.</p>
+
+                                <!-- TOPICAL LINKS -->
+                                <div style="margin:24px 0;padding:22px 24px;background:#f8fbff;border:1px solid #d0e4fb;border-radius:14px;">
+                                    <p style="color:#0f2749;font-size:15px;font-weight:700;margin:0 0 14px;">Related Brand Design and UK Business Resources</p>
+                                    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                                        <li><a href="/web-design-development" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>Website Design and Development UK — SEO-Ready Builds</a></li>
+                                        <li><a href="/blog/how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>How UK Businesses Generate More Leads With Better Websites</a></li>
+                                        <li><a href="/digital-marketing" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>Digital Marketing UK — Campaigns That Use Your Brand System</a></li>
+                                        <li><a href="/search-engine-optimization" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>SEO Services UK — Brand Entity Signals and Authority</a></li>
+                                        <li><a href="/portfolio" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>Brand and Design Portfolio — UK Project Examples</a></li>
+                                        <li><a href="/pricing" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>Brand Design Pricing — UK Project Packages</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- FREE AUDIT CTA -->
+                                <div style="margin:28px 0;padding:34px 32px;background:linear-gradient(135deg,#0f2749 0%,#1652b8 100%);border-radius:20px;text-align:center;">
+                                    <span style="display:inline-block;padding:5px 14px;background:rgba(255,255,255,0.15);color:#a8d4ff;font-size:13px;border-radius:20px;margin-bottom:14px;font-weight:600;">Free Brand Review — No Obligation</span>
+                                    <h3 style="color:#fff;font-size:22px;margin:0 0 12px;">Get a Free Brand and Messaging Audit for Your UK Business</h3>
+                                    <p style="color:rgba(255,255,255,0.82);margin:0 0 22px;line-height:1.75;">Share your current website, logo, and how you currently describe your business to new clients. We will review your brand clarity, visual consistency, messaging strength, and conversion signals — then return practical recommendations on what to improve first.</p>
+                                    <a href="/contact" style="display:inline-block;padding:14px 34px;background:#fff;color:#0f2749;font-weight:700;border-radius:8px;text-decoration:none;font-size:15px;">Request Your Free Brand Audit</a>
+                                    <span style="display:block;margin-top:12px;color:rgba(255,255,255,0.55);font-size:13px;">Delivered within 2–3 business days. No commitment required.</span>
+                                </div>
                             </div>
                         </div>
                     </div>

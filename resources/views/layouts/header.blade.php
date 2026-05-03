@@ -96,9 +96,9 @@
                 'type' => 'AboutPage',
             ],
             '/services.php' => [
-                'title' => 'Software Development Services in UK',
-                'description' => 'UK software services for web development, CRM systems, app development, WordPress builds, and SEO growth.',
-                'keywords' => 'software development services uk, website development services uk, crm development services uk, wordpress development services uk, ecommerce website development uk, shopify development uk, wix development uk, seo services uk',
+                'title' => 'UK Software and Web Services — Websites, CRM and SEO',
+                'description' => 'UK software agency delivering conversion-focused websites, custom CRM systems, SEO growth, and app development. Problem-solving service delivery with milestone accountability.',
+                'keywords' => 'software development services uk, website development services uk, crm development services uk, wordpress development services uk, ecommerce website development uk, shopify development uk, seo agency uk, digital marketing uk',
                 'type' => 'Service',
                 'faq_items' => [
                     [
@@ -116,33 +116,33 @@
                 ],
             ],
             '/digital-marketing.php' => [
-                'title' => 'Digital Marketing Services UK',
-                'description' => 'Digital marketing and PPC services for UK businesses focused on visibility, leads, and conversion growth.',
-                'keywords' => 'digital marketing agency uk, lead generation services uk, seo marketing uk, ppc management uk, social media marketing uk, conversion rate optimization uk',
+                'title' => 'Digital Marketing UK — Lead Generation and Paid Campaigns',
+                'description' => 'UK digital marketing combining SEO, paid campaigns, landing page CRO, and AI search visibility. Stop wasting budget on traffic that does not convert.',
+                'keywords' => 'digital marketing agency uk, lead generation services uk, ppc management uk, google ads agency uk, conversion rate optimisation uk, aeo marketing uk, ai search marketing uk',
                 'type' => 'Service',
             ],
             '/web-design-development.php' => [
-                'title' => 'Web Design and Development UK',
-                'description' => 'Web design and development for UK businesses focused on speed, UX, and lead conversion.',
-                'keywords' => 'web design agency uk, website development company uk, small business website uk, corporate website development uk, responsive website design uk, custom php development uk',
+                'title' => 'Web Design and Development UK — Conversion-Ready Builds',
+                'description' => 'Website design and development for UK businesses that need enquiries, not just traffic. SEO-first architecture, Core Web Vitals performance, and conversion-focused UX.',
+                'keywords' => 'web design agency uk, website development company uk, conversion focused website uk, seo website development uk, core web vitals uk, responsive website design uk, lead generation website uk',
                 'type' => 'Service',
             ],
             '/search-engine-optimization.php' => [
-                'title' => 'SEO Services for UK Businesses',
-                'description' => 'Technical and on-page SEO services to improve UK rankings, organic traffic, and qualified leads.',
-                'keywords' => 'seo services uk, local seo uk, technical seo agency uk, on page seo uk, ecommerce seo uk, seo consultant uk, google rankings uk',
+                'title' => 'SEO Services UK — AEO, GEO and Technical SEO Growth',
+                'description' => 'UK SEO services solving rankings, AI search visibility, and qualified leads. Technical audit, buyer intent mapping, AEO, and monthly Search Console reporting.',
+                'keywords' => 'seo services uk, aeo services uk, answer engine optimisation uk, ai seo uk, technical seo agency uk, google ai overview optimisation uk, local seo uk, search console optimisation uk',
                 'type' => 'Service',
             ],
             '/design-and-branding.php' => [
-                'title' => 'Design and Branding Services UK',
-                'description' => 'Brand identity and UI/UX design services that help UK businesses stand out and grow online.',
-                'keywords' => 'branding agency uk, ui ux design services uk, brand identity design uk, logo and visual branding uk, startup branding uk',
+                'title' => 'Brand Design UK — Identity, Messaging and Conversion Systems',
+                'description' => 'Brand design for UK businesses that improves conversion rates, clarifies messaging, and builds AI-search entity signals. Stop losing enquiries to clearer competitors.',
+                'keywords' => 'branding agency uk, brand identity design uk, conversion design uk, ai brand entity signals uk, website messaging uk, offer positioning uk, ui ux design uk',
                 'type' => 'Service',
             ],
             '/app-development.php' => [
-                'title' => 'App Development Services UK',
-                'description' => 'Mobile and web app development for UK businesses building scalable products and workflows.',
-                'keywords' => 'app development company uk, mobile app development uk, web app development uk, custom saas development uk, mvp development uk',
+                'title' => 'Web App Development UK — Portals, Dashboards and Workflow Tools',
+                'description' => 'UK web app development for portals, dashboards, AI-assisted workflows, and business automation. Discovery-led scoping. Milestone delivery. Post-launch support.',
+                'keywords' => 'web app development uk, portal development uk, dashboard development uk, workflow automation uk, business app development uk, saas development uk, crm portal uk',
                 'type' => 'Service',
             ],
             '/software-development.php' => [
@@ -227,15 +227,15 @@
                 'type' => 'ImageGallery',
             ],
             '/faq.php' => [
-                'title' => 'FAQ for UK Web Development, CRM and SEO Services',
-                'description' => 'Find answers to common questions about website development, CRM software, SEO, and project delivery.',
-                'keywords' => 'software agency FAQ UK, web development questions UK, CRM development FAQ',
+                'title' => 'FAQ — UK Web, Software, SEO and CRM Questions Answered',
+                'description' => 'Answers to real UK business questions on SEO, AEO, website delivery, custom software, CRM builds, app development, project timelines, and how to get a free audit.',
+                'keywords' => 'software agency faq uk, web development questions uk, crm faq uk, seo faq uk, aeo faq uk, project delivery faq uk, free audit uk',
                 'type' => 'FAQPage',
             ],
             '/faq' => [
-                'title' => 'FAQ for UK Web Development, CRM and SEO Services',
-                'description' => 'Find answers to common questions about website development, CRM software, SEO, and project delivery.',
-                'keywords' => 'software agency FAQ UK, web development questions UK, CRM development FAQ',
+                'title' => 'FAQ — UK Web, Software, SEO and CRM Questions Answered',
+                'description' => 'Answers to real UK business questions on SEO, AEO, website delivery, custom software, CRM builds, app development, project timelines, and how to get a free audit.',
+                'keywords' => 'software agency faq uk, web development questions uk, crm faq uk, seo faq uk, aeo faq uk, project delivery faq uk, free audit uk',
                 'type' => 'FAQPage',
             ],
             '/blog.php' => [
@@ -278,9 +278,9 @@
                 'robots' => 'noindex, follow',
             ],
             '/contact.php' => [
-                'title' => 'Contact ARSDeveloper UK Software Agency',
-                'description' => 'Contact ARSDeveloper for web development, CRM software, WordPress projects, and SEO services.',
-                'keywords' => 'hire web developers uk, contact software development company uk, request website quote uk, crm consultation uk',
+                'title' => 'Contact ARSDeveloper — Free Audit and Project Enquiries',
+                'description' => 'Contact ARSDeveloper for a free website audit, software scoping, SEO consultation, or CRM project. Response within 1 business day. No obligation.',
+                'keywords' => 'contact arsdeveloper uk, free website audit uk, seo audit uk, software project enquiry uk, web development quote uk, crm consultation uk, free seo review uk',
                 'type' => 'ContactPage',
                 'faq_items' => [
                     [
@@ -1296,6 +1296,106 @@
             }
 
             $schemaGraph[] = $articleSchema;
+        }
+
+        // --- HowTo Schema for Service Pages (2026 AEO signal) ---
+        $howToMap = [
+            '/search-engine-optimization' => [
+                'name' => 'How to Improve UK SEO Rankings in 6 Steps',
+                'description' => 'A structured 6-step SEO delivery process for UK service businesses targeting stronger rankings, better click-through rates, and qualified commercial enquiries.',
+                'totalTime' => 'P90D',
+                'steps' => [
+                    ['name' => 'Technical SEO Audit', 'text' => 'Crawl the full site to identify indexation blockers, Core Web Vitals failures, canonical errors, and internal link gaps that suppress rankings on commercial service URLs.'],
+                    ['name' => 'Search Console Analysis', 'text' => 'Identify pages already earning Google impressions but not converting them to clicks. These pages have the highest quick-win potential and are prioritised first.'],
+                    ['name' => 'Buyer Intent Mapping', 'text' => 'Map every service page to the real questions UK buyers type into Google, AI search tools, and voice assistants — not just keyword volume data.'],
+                    ['name' => 'On-Page and AEO Upgrades', 'text' => 'Rewrite titles, meta descriptions, headings, and body content to match search intent, answer-first structure, and AI citation patterns. Add FAQ schema, structured data, and entity coverage.'],
+                    ['name' => 'Internal Linking and Authority Architecture', 'text' => 'Connect service pages, blog posts, sector pages, and the UK Growth Hub with contextual anchors so topical authority builds across the whole site.'],
+                    ['name' => 'Monthly Reporting and Iteration', 'text' => 'Track ranking movement, click-through rate improvement, and qualified enquiry growth. Every month produces a prioritised action plan based on real Search Console movement.'],
+                ],
+            ],
+            '/web-design-development' => [
+                'name' => 'How to Build a UK Business Website That Ranks and Converts',
+                'description' => 'A 6-stage website development process for UK businesses that combines SEO-first architecture, conversion-focused design, and performance-optimised build delivery.',
+                'totalTime' => 'P42D',
+                'steps' => [
+                    ['name' => 'Discovery and Scope Planning', 'text' => 'Map target audience, buyer journey, service priorities, and conversion goals before any design work starts to prevent scope drift.'],
+                    ['name' => 'SEO-First Information Architecture', 'text' => 'Plan sitemap, URL structure, heading hierarchy, and internal linking with search intent so Google and AI engines understand every page.'],
+                    ['name' => 'Conversion-Focused Design', 'text' => 'Build UI around trust signals, clear calls to action, credibility blocks, and frictionless enquiry paths aligned to UK buyer behaviour.'],
+                    ['name' => 'Performance-Optimised Build', 'text' => 'Implement code quality, image loading, caching, and Core Web Vitals compliance from development — not patched after launch.'],
+                    ['name' => 'Schema and Structured Data', 'text' => 'Implement Organisation, Service, BreadcrumbList, FAQ, and LocalBusiness markup so Google and AI search tools understand your entity and service coverage.'],
+                    ['name' => 'Launch QA, Handover and Support', 'text' => 'Pre-launch testing covers forms, speed, mobile rendering, analytics setup, and Search Console verification for a stable launch from day one.'],
+                ],
+            ],
+            '/software-development' => [
+                'name' => 'How to Deliver Custom Software for UK Businesses in 5 Stages',
+                'description' => 'A milestone-based custom software delivery process for UK businesses that reduces project risk, prevents scope overruns, and ensures post-launch usability.',
+                'totalTime' => 'P60D',
+                'steps' => [
+                    ['name' => 'Requirements Discovery', 'text' => 'Map business workflow, user roles, integration requirements, and commercial goals before any technical decisions are made.'],
+                    ['name' => 'Architecture and Scope Definition', 'text' => 'Define database structure, API integrations, user journeys, and admin controls in a documented scope reviewed and approved before development starts.'],
+                    ['name' => 'Milestone-Based Build', 'text' => 'Break development into reviewable phases where each milestone produces working functionality the client can test and approve.'],
+                    ['name' => 'QA, Testing, and Handover', 'text' => 'Full testing covers user flows, edge cases, performance under load, and security. Documentation and admin access delivered for team self-management.'],
+                    ['name' => 'Post-Launch Support and Scaling', 'text' => 'Provide support windows for fixes, feature additions, and performance improvements with transparent monthly pricing.'],
+                ],
+            ],
+            '/digital-marketing' => [
+                'name' => 'How to Build a Revenue-Focused Digital Marketing Campaign for UK Businesses',
+                'description' => 'A structured digital marketing delivery approach for UK businesses that aligns paid campaigns, SEO, and conversion tracking to qualified lead generation.',
+                'totalTime' => 'P30D',
+                'steps' => [
+                    ['name' => 'Channel Audit and Intent Mapping', 'text' => 'Identify which channels your UK buyers use at each stage of their decision journey and map campaign structure to commercial intent.'],
+                    ['name' => 'Conversion Infrastructure Setup', 'text' => 'Build dedicated landing pages with specific offers, clear trust signals, and single calls to action matched to ad intent before traffic is sent.'],
+                    ['name' => 'Campaign Launch and Tracking', 'text' => 'Launch campaigns with CPL, ROAS, and revenue-per-lead tracking from day one so optimisation decisions are data-driven not guesswork.'],
+                    ['name' => 'Weekly Optimisation', 'text' => 'Tune targeting, messaging, and bids weekly to reduce cost per qualified lead and improve sales-ready opportunities.'],
+                    ['name' => 'Monthly Growth Review', 'text' => 'Review channel performance, lead quality, and ROI with a next-step action plan and updated priorities for the following month.'],
+                ],
+            ],
+        ];
+
+        $currentHowTo = $howToMap[$currentPathKey] ?? null;
+        if ($currentHowTo !== null) {
+            $howToSteps = [];
+            foreach ($currentHowTo['steps'] as $stepIndex => $step) {
+                $howToSteps[] = [
+                    '@type' => 'HowToStep',
+                    'position' => $stepIndex + 1,
+                    'name' => $step['name'],
+                    'text' => $step['text'],
+                ];
+            }
+            $schemaGraph[] = [
+                '@context' => 'https://schema.org',
+                '@type' => 'HowTo',
+                '@id' => $canonicalUrl . '#howto',
+                'name' => $currentHowTo['name'],
+                'description' => $currentHowTo['description'],
+                'totalTime' => $currentHowTo['totalTime'],
+                'inLanguage' => $schemaLanguage,
+                'author' => ['@id' => $siteRootUrl . '#organization'],
+                'step' => $howToSteps,
+            ];
+        }
+
+        // --- SpeakableSpecification for service and pillar pages (voice search + AI search) ---
+        $speakablePageTypes = [
+            '/search-engine-optimization', '/web-design-development', '/software-development',
+            '/app-development', '/digital-marketing', '/design-and-branding',
+            '/uk-growth-hub', '/faq', '/about', '/',
+        ];
+        if (in_array($currentPathKey, $speakablePageTypes, true)) {
+            $schemaGraph[4]['speakable'] = [
+                '@type' => 'SpeakableSpecification',
+                'cssSelector' => [
+                    '.services-details__title-1',
+                    '.services-details__text-1',
+                    '.seo-problem-block__title',
+                    '.seo-process-block__title',
+                    '.hero-text-slider__title-box',
+                    '.page-header__inner h1',
+                    'h1.seo-hidden-heading',
+                    'h2.seo-hidden-heading',
+                ],
+            ];
         }
 
         $metaAuthor = trim((string) (

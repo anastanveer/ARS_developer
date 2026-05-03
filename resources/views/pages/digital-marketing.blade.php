@@ -65,6 +65,17 @@
                                 <h3 class="services-details__title-1">UK Digital Marketing Services for Lead Generation,
                                     Search Visibility and Measurable ROI</h3>
                                 <div class="services-details__shape-1"></div>
+                                <!-- PROBLEM BLOCK -->
+                                <div style="margin:0 0 24px;padding:24px 26px;background:linear-gradient(135deg,#fff8f8 0%,#fff 100%);border-left:4px solid #e03737;border-radius:0 14px 14px 0;box-shadow:0 4px 18px rgba(224,55,55,0.06);">
+                                    <h3 style="color:#1a2940;font-size:19px;font-weight:700;margin:0 0 12px;">Why Most UK Marketing Budgets Generate Traffic But Not Qualified Leads</h3>
+                                    <p style="color:#3a5270;margin-bottom:14px;line-height:1.75;">Running paid campaigns without the right foundations is the single most common way UK businesses waste their marketing budget. The same problems show up consistently:</p>
+                                    <ul style="padding:0;list-style:none;margin:0;">
+                                        <li style="padding:11px 0 11px 22px;position:relative;border-bottom:1px solid #f5e8e8;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>Traffic without conversion infrastructure:</strong> Sending paid traffic to a homepage or a generic service page wastes up to 80% of budget. UK campaigns that convert use dedicated landing pages with specific offers, clear trust signals, and a single call to action matched to the ad intent.</li>
+                                        <li style="padding:11px 0 11px 22px;position:relative;border-bottom:1px solid #f5e8e8;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>Vanity metrics instead of commercial KPIs:</strong> Impressions, reach, and clicks are easy to report but hard to connect to revenue. Without cost-per-lead (CPL) and revenue-per-lead tracking set up from campaign launch, optimization decisions are guesswork rather than data-driven.</li>
+                                        <li style="padding:11px 0 11px 22px;position:relative;border-bottom:1px solid #f5e8e8;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>SEO and paid campaigns running independently:</strong> When organic search and paid advertising target different keywords, different audiences, and different messages, both perform below potential. Aligning both channels against the same high-value commercial queries significantly improves overall return.</li>
+                                        <li style="padding:11px 0 11px 22px;position:relative;color:#3a5270;line-height:1.75;"><span style="position:absolute;left:0;color:#e03737;font-weight:700;">→</span><strong>No AI search visibility strategy:</strong> In 2026, a significant share of UK business queries are answered by AI tools (Google AI Overviews, ChatGPT, Perplexity) before the user clicks anything. Businesses without <a href="/search-engine-optimization" style="color:#1d6bf3;">AEO-optimised content</a> are invisible in this growing discovery channel.</li>
+                                    </ul>
+                                </div>
                                 <p class="services-details__text-1">We build digital marketing campaigns that bring
                                     qualified traffic, improve conversion rates, and increase recurring revenue. From UK
                                     local campaigns to wider growth funnels, our digital agency UK team combines SEO, paid ads,
@@ -285,10 +296,34 @@
                                 <div class="services-details__img-two">
                                     <img src="assets/images/services/services-details-img-2.jpg" alt="">
                                 </div>
-                                <h3 class="services-details__title-4">Start with a Revenue-Focused Growth Audit:</h3>
-                                <p class="services-details__text-5">Share your current channels, budget range and target
-                                    market. We will return a practical 90-day roadmap covering campaign setup, expected
-                                    milestones, and the KPIs we will track from day one.</p>
+
+                                <!-- TOPICAL LINKS -->
+                                <div style="margin:24px 0;padding:22px 24px;background:#f8fbff;border:1px solid #d0e4fb;border-radius:14px;">
+                                    <p style="color:#0f2749;font-size:15px;font-weight:700;margin:0 0 14px;">Related Digital Marketing Guides and UK Resources</p>
+                                    <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                                        <li><a href="/search-engine-optimization" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>SEO Services UK — Organic Search Growth Alongside Paid</a></li>
+                                        <li><a href="/blog/landing-page-cro-for-uk-campaigns-7-fixes-that-increase-enquiries" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>7 Landing Page Fixes That Increase UK Paid Campaign Enquiries</a></li>
+                                        <li><a href="/uk-growth-hub" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>UK SEO Growth Hub — AEO and GEO Strategy for 2026</a></li>
+                                        <li><a href="/sectors/ecommerce" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>Ecommerce Marketing UK — Shopify and WooCommerce Campaigns</a></li>
+                                        <li><a href="/sectors/b2b" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>B2B Lead Generation UK — Marketing for Service Businesses</a></li>
+                                        <li><a href="/pricing" style="color:#1d6bf3;text-decoration:none;font-size:14px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;"><span>→</span>Digital Marketing Pricing — UK Campaign Packages</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- FREE AUDIT CTA -->
+                                <div style="margin:28px 0;padding:34px 32px;background:linear-gradient(135deg,#0f2749 0%,#1652b8 100%);border-radius:20px;text-align:center;">
+                                    <span style="display:inline-block;padding:5px 14px;background:rgba(255,255,255,0.15);color:#a8d4ff;font-size:13px;border-radius:20px;margin-bottom:14px;font-weight:600;">Free Growth Audit — No Obligation</span>
+                                    <h3 style="color:#fff;font-size:22px;margin:0 0 12px;">Get a Free 90-Day Marketing Roadmap for Your UK Business</h3>
+                                    <p style="color:rgba(255,255,255,0.82);margin:0 0 22px;line-height:1.75;">Share your current channels, monthly budget range, and target audience. We will return a practical 90-day roadmap covering the right channel mix, campaign setup priorities, tracking requirements, and the KPIs that connect marketing spend to qualified lead growth.</p>
+                                    <ul style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 22px;padding:0;list-style:none;">
+                                        <li style="padding:6px 14px;background:rgba(255,255,255,0.12);color:#e0f0ff;border-radius:20px;font-size:13px;">Channel audit</li>
+                                        <li style="padding:6px 14px;background:rgba(255,255,255,0.12);color:#e0f0ff;border-radius:20px;font-size:13px;">CPL benchmarks</li>
+                                        <li style="padding:6px 14px;background:rgba(255,255,255,0.12);color:#e0f0ff;border-radius:20px;font-size:13px;">Landing page review</li>
+                                        <li style="padding:6px 14px;background:rgba(255,255,255,0.12);color:#e0f0ff;border-radius:20px;font-size:13px;">90-day action plan</li>
+                                    </ul>
+                                    <a href="/contact" style="display:inline-block;padding:14px 34px;background:#fff;color:#0f2749;font-weight:700;border-radius:8px;text-decoration:none;font-size:15px;">Request Your Free Growth Audit</a>
+                                    <span style="display:block;margin-top:12px;color:rgba(255,255,255,0.55);font-size:13px;">Delivered within 2–3 business days. No obligation to proceed.</span>
+                                </div>
                             </div>
                         </div>
                     </div>
