@@ -37,7 +37,7 @@
             </div>
             <div class="container">
                 <div class="page-header__inner">
-                    <h1>App <span>Development</span></h1><div class="thm-breadcrumb__inner">
+                    <h1>App Development for UK Businesses — <span>Built to Launch, Designed to Grow</span></h1><div class="thm-breadcrumb__inner">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><i class="icon-home"></i><a href="/">Home</a></li>
                             <li><span></span></li>

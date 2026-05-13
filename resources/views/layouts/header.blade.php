@@ -1424,6 +1424,8 @@
     <meta name="googlebot" content="{{ $resolvedRobots }}" />
     <meta name="bingbot" content="{{ $resolvedRobots }}" />
     <link rel="canonical" href="{{ $canonicalUrl }}" />
+    <link rel="alternate" hreflang="en-GB" href="{{ $canonicalUrl }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ $canonicalUrl }}" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ $siteRootUrl }}/sitemap.xml" />
     <link rel="home" href="{{ $siteRootUrl }}/" />
     @if ($currentPathKey !== '/')
