@@ -1968,6 +1968,9 @@
             }
         }
 
+    /* Fix WOW.js black flash — WOW sets visibility:hidden before trigger */
+    .wow { visibility: visible !important; }
+    [data-aos] { pointer-events: auto !important; }
     </style>
 </head>
 
@@ -2056,7 +2059,6 @@
                                 <li><a href="/services">{{ __('ui.services') }}</a></li>
                                 <li><a href="/pricing">{{ __('ui.pricing') }}</a></li>
                                 <li><a href="/blog">{{ __('ui.blog') }}</a></li>
-                                <li><a href="{{ route('client.portal.access') }}">Client Portal</a></li>
                                 <li><a href="/contact">{{ __('ui.contact') }}</a></li>
                             </ul>
                         </div>

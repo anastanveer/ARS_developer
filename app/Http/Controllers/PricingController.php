@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PricingOrderAdminMail;
+use App\Mail\PricingOrderClientMail;
 use App\Models\Coupon;
 use App\Models\CouponRedemption;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 
@@ -47,6 +50,40 @@ class PricingController extends Controller
         return view('pages.pricing', [
             'liveCoupons' => $this->formatLiveCoupons($liveCoupons),
         ]);
+    }
+
+    public function submitOrder(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'name'    => ['required', 'string', 'max:100'],
+            'email'   => ['required', 'email', 'max:180'],
+            'phone'   => ['nullable', 'string', 'max:30'],
+            'plan'    => ['required', 'string', 'max:120'],
+            'billing' => ['nullable', 'string', 'max:40'],
+            'price'   => ['nullable', 'numeric', 'min:0'],
+            'message' => ['nullable', 'string', 'max:1000'],
+        ]);
+
+        $payload = [
+            'name'    => trim($data['name']),
+            'email'   => trim($data['email']),
+            'phone'   => trim($data['phone'] ?? ''),
+            'plan'    => trim($data['plan']),
+            'billing' => $data['billing'] ?? '',
+            'price'   => $data['price'] ?? null,
+            'message' => trim($data['message'] ?? ''),
+        ];
+
+        $adminEmail = config('mail.from.address', env('ADMIN_PANEL_EMAIL', 'info@arsdeveloper.co.uk'));
+
+        try {
+            Mail::to($adminEmail)->send(new PricingOrderAdminMail($payload));
+            Mail::to($payload['email'])->send(new PricingOrderClientMail($payload));
+        } catch (\Throwable $e) {
+            return response()->json(['ok' => false, 'message' => 'Mail sending failed. Please try again or contact us directly.'], 500);
+        }
+
+        return response()->json(['ok' => true, 'message' => 'Order request received. Check your email — we\'ll send your invoice within 1 business day.']);
     }
 
     public function previewCoupon(Request $request): JsonResponse

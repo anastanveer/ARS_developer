@@ -67,7 +67,6 @@
                                             <li><a href="/pricing">{{ __('ui.pricing') }}</a></li>
                                             <li><a href="/blog">{{ __('ui.blog') }}</a></li>
                                             <li><a href="/uk-growth-hub">UK SEO Growth Hub</a></li>
-                                            <li><a href="{{ route('client.portal.access') }}">Client Portal</a></li>
                                             <li><a href="/contact">{{ __('ui.contact') }}</a></li>
                                         </ul>
                                     </div>
@@ -197,9 +196,9 @@
     </a>
 
     <div class="sticky-quick-actions" aria-label="Quick contact actions">
-        <a href="{{ route('client.portal.access') }}" class="sticky-quick-actions__item">
-            <i class="fas fa-user-shield" aria-hidden="true"></i>
-            <span>Client Access</span>
+        <a href="/pricing#pricing-start-flow" class="sticky-quick-actions__item">
+            <i class="fas fa-file-invoice" aria-hidden="true"></i>
+            <span>Get Invoice</span>
         </a>
         <a href="/#book-meeting" class="sticky-quick-actions__item">
             <i class="fas fa-phone" aria-hidden="true"></i>

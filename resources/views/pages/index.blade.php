@@ -67,7 +67,43 @@
 
 <h1 class="seo-hidden-heading">ARS Developer — UK software development company in Stoke-on-Trent building AI-ready websites, custom CRM systems, Laravel applications, and SEO services for UK businesses</h1>
 
-
+{{-- Announcement / Trust Ticker Bar --}}
+<div style="background:#173153;overflow:hidden;padding:10px 0;position:relative;">
+    <div style="display:flex;align-items:center;white-space:nowrap;animation:ars-ticker 28s linear infinite;">
+        @foreach([
+            ['fas fa-shield-alt','#22c55e','UK Ltd Company · Co. No: 17039150'],
+            ['fas fa-star','#f59e0b','5.0★ Rated by UK Clients'],
+            ['fas fa-layer-group','#38bdf8','50+ Projects Delivered'],
+            ['fas fa-user-check','#a78bfa','Founder-Direct · No Middlemen'],
+            ['fas fa-lock','#34d399','No Payment Until You Approve'],
+            ['fas fa-map-marker-alt','#fb923c','Based in Stoke-on-Trent, UK'],
+            ['fas fa-clock','#60a5fa','Invoice Within 1 Business Day'],
+            ['fas fa-check-circle','#22c55e','UK Registered · England &amp; Wales'],
+        ] as $t)
+        <span style="display:inline-flex;align-items:center;gap:8px;margin-right:48px;font-size:13px;color:#e2e8f0;font-family:Arial,sans-serif;font-weight:500;">
+            <i class="{{ $t[0] }}" style="color:{{ $t[1] }};font-size:12px;flex-shrink:0;"></i>
+            {!! $t[2] !!}
+        </span>
+        @endforeach
+        @foreach([
+            ['fas fa-shield-alt','#22c55e','UK Ltd Company · Co. No: 17039150'],
+            ['fas fa-star','#f59e0b','5.0★ Rated by UK Clients'],
+            ['fas fa-layer-group','#38bdf8','50+ Projects Delivered'],
+            ['fas fa-user-check','#a78bfa','Founder-Direct · No Middlemen'],
+        ] as $t)
+        <span style="display:inline-flex;align-items:center;gap:8px;margin-right:48px;font-size:13px;color:#e2e8f0;font-family:Arial,sans-serif;font-weight:500;">
+            <i class="{{ $t[0] }}" style="color:{{ $t[1] }};font-size:12px;flex-shrink:0;"></i>
+            {!! $t[2] !!}
+        </span>
+        @endforeach
+    </div>
+</div>
+<style>
+@keyframes ars-ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+</style>
 
         <section class="main-slider hero-text-slider">
             <div class="main-slider__shape-bg-2"
@@ -125,12 +161,22 @@
                                 </div>
                                 <div class="main-slider__rating-box">
                                         <div class="main-slider__rating-count count-box">
-                                            <h3>UK</h3>
+                                            <h3>5.0</h3>
                                         </div>
                                         <div class="main-slider__rating-content">
-                                            <p class="main-slider__rating-content-sub-title">Commercial build and support focus</p>
-                                            <div class="main-slider__rating-content-logo">
-                                                <img src="assets/images/resources/main-slider-rating-content-logo.png" alt="Google">
+                                            <div style="display:flex;gap:2px;margin-bottom:4px;">
+                                                <i class="fas fa-star" style="color:#f59e0b;font-size:12px;"></i>
+                                                <i class="fas fa-star" style="color:#f59e0b;font-size:12px;"></i>
+                                                <i class="fas fa-star" style="color:#f59e0b;font-size:12px;"></i>
+                                                <i class="fas fa-star" style="color:#f59e0b;font-size:12px;"></i>
+                                                <i class="fas fa-star" style="color:#f59e0b;font-size:12px;"></i>
+                                            </div>
+                                            <p class="main-slider__rating-content-sub-title">Client-rated UK delivery</p>
+                                            <div class="main-slider__rating-content-logo" style="display:flex;align-items:center;gap:6px;">
+                                                <div style="width:24px;height:24px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.4);flex-shrink:0;">
+                                                    <img src="{{ asset('assets/images/my/anas.png') }}" alt="Anas Tanveer" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+                                                </div>
+                                                <span style="font-size:11px;color:rgba(255,255,255,.75);font-family:Arial,sans-serif;">Founder-led</span>
                                             </div>
                                         </div>
                                 </div>
@@ -386,10 +432,10 @@
                                 <i class="fas fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="counter-one__count count-box">
-                                <p>Review</p>
+                                <p>5.0★</p>
                             </div>
-                            <p class="counter-one__text">Trust Signals</p>
-                            <p class="counter-one__meta">Public reviews, case studies, and direct client feedback used as proof</p>
+                            <p class="counter-one__text">Client Rating</p>
+                            <p class="counter-one__meta">Rated 5 stars across UK client projects for communication, delivery, and results</p>
                         </div>
                     </li>
                     <li data-aos="fade-up" data-aos-duration="1200" data-aos-delay="250">
@@ -405,16 +451,76 @@
                         </div>
                     </li>
                 </ul>
-                <div class="counter-one__proof-strip" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="150">
-                    <div class="counter-one__proof-logos">
-                        <a class="counter-one__logo-chip" href="/testimonials">Google Reviews</a>
-                        <a class="counter-one__logo-chip" href="/testimonials">Clutch</a>
-                        <a class="counter-one__logo-chip" href="/testimonials">Trustpilot</a>
-                        <a class="counter-one__logo-chip" href="/portfolio">UK Client Case Studies</a>
+                <!-- Trust badge strip -->
+                <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="150" style="margin-top:40px;padding-top:32px;border-top:1px solid #e8edf5;">
+                    <p style="text-align:center;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin:0 0 20px;font-family:Arial,sans-serif;">Trusted &amp; reviewed by UK business clients</p>
+                    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+                        {{-- Google Stars badge --}}
+                        <a href="/testimonials" style="display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px 20px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+                            <svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"/><path fill="#34A853" d="M6.3 14.7l7 5.1C15.1 16.1 19.2 13 24 13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2c-7.6 0-14.2 4.5-17.7 11.1-.4.8-.7 1.7-1 2.6z" opacity=".8"/><path fill="#FBBC05" d="M24 46c5.9 0 10.9-1.9 14.6-5.2l-6.7-5.6C29.9 36.8 27.1 38 24 38c-5.9 0-10.9-4-12.7-9.5l-7 5.4C7.9 41.2 15.4 46 24 46z" opacity=".8"/><path fill="#EA4335" d="M44.5 20H24v8.5h11.8c-.6 2.3-1.9 4.3-3.6 5.8l6.7 5.6C43.2 36.3 46 30.6 46 24c0-1.3-.2-2.7-.5-4z" opacity=".8"/></svg>
+                            <div>
+                                <div style="display:flex;gap:2px;margin-bottom:2px;">
+                                    <i class="fas fa-star" style="color:#f59e0b;font-size:11px;"></i>
+                                    <i class="fas fa-star" style="color:#f59e0b;font-size:11px;"></i>
+                                    <i class="fas fa-star" style="color:#f59e0b;font-size:11px;"></i>
+                                    <i class="fas fa-star" style="color:#f59e0b;font-size:11px;"></i>
+                                    <i class="fas fa-star" style="color:#f59e0b;font-size:11px;"></i>
+                                </div>
+                                <span style="font-size:12px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;">Google Reviews</span>
+                            </div>
+                        </a>
+                        {{-- UK Registered badge --}}
+                        <div style="display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px 20px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+                            <div style="width:36px;height:36px;background:#173153;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fas fa-shield-alt" style="color:#fff;font-size:14px;"></i>
+                            </div>
+                            <div>
+                                <p style="margin:0;font-size:12px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;">UK Ltd Company</p>
+                                <p style="margin:0;font-size:11px;color:#64748b;font-family:Arial,sans-serif;">Co. No: 17039150 · England &amp; Wales</p>
+                            </div>
+                        </div>
+                        {{-- Founder-led badge --}}
+                        <div style="display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px 20px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+                            <div style="width:36px;height:36px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid #1d93ff;">
+                                <img src="{{ asset('assets/images/my/anas.png') }}" alt="Anas Tanveer founder" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+                            </div>
+                            <div>
+                                <p style="margin:0;font-size:12px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;">Founder-Led Delivery</p>
+                                <p style="margin:0;font-size:11px;color:#64748b;font-family:Arial,sans-serif;">Direct access · No middlemen</p>
+                            </div>
+                        </div>
+                        {{-- No payment guarantee --}}
+                        <div style="display:inline-flex;align-items:center;gap:10px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px 20px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+                            <div style="width:36px;height:36px;background:#22c55e;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fas fa-lock" style="color:#fff;font-size:13px;"></i>
+                            </div>
+                            <div>
+                                <p style="margin:0;font-size:12px;font-weight:700;color:#166534;font-family:Arial,sans-serif;">Risk-Free Start</p>
+                                <p style="margin:0;font-size:11px;color:#16a34a;font-family:Arial,sans-serif;">No payment until you approve</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="counter-one__proof-badge">
-                        <img src="assets/images/icon/icon-google.png" alt="Google rating signal" loading="lazy">
-                        <span><strong>Public proof</strong> from reviews, project work, and delivery feedback across UK client engagements</span>
+                </div>
+
+                {{-- Tech stack strip --}}
+                <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200" style="margin-top:36px;padding-top:28px;border-top:1px solid #f1f5f9;">
+                    <p style="text-align:center;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin:0 0 18px;font-family:Arial,sans-serif;">Technologies &amp; platforms we build with</p>
+                    <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+                        @foreach([
+                            ['Laravel','#FF2D20','fab fa-laravel'],
+                            ['WordPress','#21759B','fab fa-wordpress'],
+                            ['Shopify','#96BF48','fab fa-shopify'],
+                            ['PHP','#777BB4','fab fa-php'],
+                            ['JavaScript','#F7DF1E','fab fa-js-square'],
+                            ['MySQL','#4479A1','fas fa-database'],
+                            ['Linux / VPS','#FCC624','fab fa-linux'],
+                            ['Google SEO','#4285F4','fab fa-google'],
+                        ] as $tech)
+                        <div style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #e8edf5;border-radius:8px;padding:7px 13px;box-shadow:0 1px 4px rgba(0,0,0,.05);">
+                            <i class="{{ $tech[2] }}" style="color:{{ $tech[1] }};font-size:14px;"></i>
+                            <span style="font-size:12px;font-weight:600;color:#475569;font-family:Arial,sans-serif;">{{ $tech[0] }}</span>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="counter-one__testimonial-strip" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
@@ -470,6 +576,45 @@
         </section>
         <!-- Results Strip End -->
         --}}
+
+        <!-- Outcomes Strip Start -->
+        <section style="padding:56px 0;background:#f8fafc;">
+            <div class="container">
+                <div style="text-align:center;margin-bottom:36px;">
+                    <div style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #bfdbfe;border-radius:100px;padding:6px 18px;margin-bottom:12px;">
+                        <i class="fas fa-chart-line" style="color:#1d93ff;font-size:12px;"></i>
+                        <span style="font-size:12px;font-weight:700;color:#1d4ed8;letter-spacing:.6px;text-transform:uppercase;font-family:Arial,sans-serif;">Real Delivery Outcomes</span>
+                    </div>
+                    <p style="font-size:22px;font-weight:700;color:#0f1e35;margin:0;font-family:Arial,sans-serif;">What UK clients typically get after working with us</p>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+                    @foreach([
+                        ['90+','PageSpeed Score','from <40 to 90+ after full technical optimisation','fas fa-tachometer-alt','#1d93ff'],
+                        ['2–6 wks','Delivery Window','from scoping call to live website — websites, ecom, CRM builds','fas fa-calendar-check','#8b5cf6'],
+                        ['50+','Projects Live','business websites, custom CRM, ecommerce stores, and web apps','fas fa-layer-group','#22c55e'],
+                        ['1 day','Invoice Turnaround','request a package and receive a formal invoice within 1 business day','fas fa-file-invoice','#f59e0b'],
+                    ] as $o)
+                    <div style="background:#fff;border:1px solid #e8edf5;border-radius:16px;padding:24px 22px;box-shadow:0 2px 12px rgba(0,0,0,.05);text-align:center;">
+                        <div style="width:48px;height:48px;background:{{ $o[4] }}18;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
+                            <i class="{{ $o[2] }}" style="color:{{ $o[4] }};font-size:18px;"></i>
+                        </div>
+                        <p style="margin:0 0 4px;font-size:28px;font-weight:800;color:#0f1e35;font-family:Arial,sans-serif;line-height:1;">{{ $o[0] }}</p>
+                        <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;">{{ $o[1] }}</p>
+                        <p style="margin:0;font-size:12px;color:#64748b;font-family:Arial,sans-serif;line-height:1.5;">{{ $o[3] }}</p>
+                    </div>
+                    @endforeach
+                </div>
+                <style>
+                @media(max-width:768px){
+                    .ars-outcomes-grid { grid-template-columns: 1fr 1fr !important; }
+                }
+                @media(max-width:480px){
+                    .ars-outcomes-grid { grid-template-columns: 1fr !important; }
+                }
+                </style>
+            </div>
+        </section>
+        <!-- Outcomes Strip End -->
 
         <!--Process Two Start -->
         <section class="process-two">
@@ -556,6 +701,43 @@
             </div>
         </section>
         <!--Process Two End -->
+
+        {{-- Inline client quote band --}}
+        <div style="background:linear-gradient(135deg,#0d1f38 0%,#173153 100%);padding:52px 0;overflow:hidden;position:relative;">
+            <div style="position:absolute;top:-60px;right:-60px;width:280px;height:280px;background:rgba(29,147,255,.06);border-radius:50%;pointer-events:none;"></div>
+            <div style="position:absolute;bottom:-80px;left:10%;width:200px;height:200px;background:rgba(40,215,255,.04);border-radius:50%;pointer-events:none;"></div>
+            <div class="container" style="position:relative;z-index:1;">
+                <div style="max-width:780px;margin:0 auto;text-align:center;">
+                    <div style="display:flex;gap:4px;justify-content:center;margin-bottom:20px;">
+                        <i class="fas fa-star" style="color:#f59e0b;font-size:16px;"></i>
+                        <i class="fas fa-star" style="color:#f59e0b;font-size:16px;"></i>
+                        <i class="fas fa-star" style="color:#f59e0b;font-size:16px;"></i>
+                        <i class="fas fa-star" style="color:#f59e0b;font-size:16px;"></i>
+                        <i class="fas fa-star" style="color:#f59e0b;font-size:16px;"></i>
+                    </div>
+                    <p style="font-size:20px;font-style:italic;color:#e2e8f0;line-height:1.7;margin:0 0 24px;font-family:Georgia,serif;">"ARS Developer delivered our full website and CRM integration on time with clear milestones. Direct communication throughout — no account managers, no delays. Exactly what a growing UK business needs."</p>
+                    <div style="display:flex;align-items:center;justify-content:center;gap:14px;">
+                        <div style="display:flex;gap:-6px;">
+                            <img src="{{ asset('assets/images/resources/banner-one-satisfied-client-1-1.jpg') }}" alt="UK client" style="width:40px;height:40px;border-radius:50%;border:2px solid #1d93ff;object-fit:cover;">
+                            <img src="{{ asset('assets/images/resources/banner-one-satisfied-client-1-2.jpg') }}" alt="UK client" style="width:40px;height:40px;border-radius:50%;border:2px solid #1d93ff;object-fit:cover;margin-left:-10px;">
+                            <img src="{{ asset('assets/images/resources/banner-one-satisfied-client-1-3.jpg') }}" alt="UK client" style="width:40px;height:40px;border-radius:50%;border:2px solid #1d93ff;object-fit:cover;margin-left:-10px;">
+                        </div>
+                        <div style="text-align:left;">
+                            <p style="margin:0;font-size:13px;font-weight:700;color:#fff;font-family:Arial,sans-serif;">Operations Director</p>
+                            <p style="margin:0;font-size:12px;color:#7fb3e0;font-family:Arial,sans-serif;">UK B2B Services Company · 50+ projects delivered</p>
+                        </div>
+                    </div>
+                    <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                        <a href="/testimonials" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#e2e8f0;text-decoration:none;padding:10px 22px;border-radius:9px;font-size:13px;font-weight:600;font-family:Arial,sans-serif;">
+                            <i class="fas fa-quote-right" style="font-size:12px;"></i> Read More Reviews
+                        </a>
+                        <a href="/portfolio" style="display:inline-flex;align-items:center;gap:8px;background:#1d93ff;color:#fff;text-decoration:none;padding:10px 22px;border-radius:9px;font-size:13px;font-weight:700;font-family:Arial,sans-serif;box-shadow:0 4px 16px rgba(29,147,255,.3);">
+                            <i class="fas fa-briefcase" style="font-size:12px;"></i> View Our Work
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         @php
             $homePortfolioItems = \App\Models\Portfolio::query()
@@ -1427,6 +1609,76 @@
         </section>
         <!--CTA One End -->
 
+        {{-- Final Trust + CTA Section --}}
+        <section style="padding:72px 0;background:#f0f6ff;">
+            <div class="container">
+                <div style="max-width:860px;margin:0 auto;text-align:center;margin-bottom:44px;">
+                    <div style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #bfdbfe;border-radius:100px;padding:6px 18px;margin-bottom:16px;">
+                        <span style="width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse-green 2s infinite;"></span>
+                        <span style="font-size:12px;font-weight:700;color:#1d4ed8;letter-spacing:.6px;text-transform:uppercase;font-family:Arial,sans-serif;">Now accepting new UK projects</span>
+                    </div>
+                    <p style="font-size:32px;font-weight:800;color:#0f1e35;line-height:1.25;margin:0 0 14px;font-family:Arial,sans-serif;">Your UK project, delivered with <span style="color:#1d93ff;">direct accountability</span></p>
+                    <p style="font-size:16px;color:#475569;margin:0;font-family:Arial,sans-serif;max-width:580px;margin-left:auto;margin-right:auto;line-height:1.7;">No account managers. No handoffs. Direct founder access from day one — scope, build, and support all in one place.</p>
+                </div>
 
+                {{-- 3-path options --}}
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:44px;max-width:900px;margin-left:auto;margin-right:auto;">
+                    <div style="background:#fff;border:2px solid #e2e8f0;border-radius:18px;padding:28px 24px;text-align:center;transition:border-color .2s;"
+                        onmouseover="this.style.borderColor='#1d93ff';" onmouseout="this.style.borderColor='#e2e8f0';">
+                        <div style="width:52px;height:52px;background:#eef5ff;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                            <i class="fas fa-clipboard-check" style="color:#1d93ff;font-size:20px;"></i>
+                        </div>
+                        <p style="margin:0 0 6px;font-size:16px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;">Free Growth Audit</p>
+                        <p style="margin:0 0 18px;font-size:13px;color:#64748b;font-family:Arial,sans-serif;line-height:1.5;">Get a free SEO, UX, and conversion action plan in 24 hours</p>
+                        <a href="#free-audit" style="display:inline-block;background:#eef5ff;color:#1d93ff;text-decoration:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;font-family:Arial,sans-serif;">Request Audit →</a>
+                    </div>
+                    <div style="background:linear-gradient(135deg,#173153,#1a3d6e);border:2px solid #1d93ff;border-radius:18px;padding:28px 24px;text-align:center;box-shadow:0 8px 32px rgba(29,147,255,.2);">
+                        <div style="width:52px;height:52px;background:rgba(255,255,255,.12);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                            <i class="fas fa-file-invoice" style="color:#38bdf8;font-size:20px;"></i>
+                        </div>
+                        <p style="margin:0 0 6px;font-size:16px;font-weight:700;color:#fff;font-family:Arial,sans-serif;">Request Invoice</p>
+                        <p style="margin:0 0 18px;font-size:13px;color:#93c5fd;font-family:Arial,sans-serif;line-height:1.5;">Choose a package and get your formal invoice within 1 business day</p>
+                        <a href="/pricing#pricing-start-flow" style="display:inline-block;background:#1d93ff;color:#fff;text-decoration:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;font-family:Arial,sans-serif;box-shadow:0 4px 14px rgba(29,147,255,.4);">Choose Package →</a>
+                        <p style="margin:8px 0 0;font-size:11px;color:#7fb3e0;font-family:Arial,sans-serif;">★ Most popular</p>
+                    </div>
+                    <div style="background:#fff;border:2px solid #e2e8f0;border-radius:18px;padding:28px 24px;text-align:center;transition:border-color .2s;"
+                        onmouseover="this.style.borderColor='#8b5cf6';" onmouseout="this.style.borderColor='#e2e8f0';">
+                        <div style="width:52px;height:52px;background:#f5f3ff;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                            <i class="fas fa-phone-alt" style="color:#8b5cf6;font-size:20px;"></i>
+                        </div>
+                        <p style="margin:0 0 6px;font-size:16px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;">Book a Call</p>
+                        <p style="margin:0 0 18px;font-size:13px;color:#64748b;font-family:Arial,sans-serif;line-height:1.5;">30-min discovery call. No commitment — just clear scope guidance</p>
+                        <a href="#book-meeting" style="display:inline-block;background:#f5f3ff;color:#8b5cf6;text-decoration:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;font-family:Arial,sans-serif;">Book Free Call →</a>
+                    </div>
+                </div>
+
+                {{-- Bottom trust row --}}
+                <div style="display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;padding-top:28px;border-top:1px solid #dbeafe;">
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <div style="width:34px;height:34px;border-radius:50%;overflow:hidden;border:2px solid #1d93ff;">
+                            <img src="{{ asset('assets/images/my/anas.png') }}" alt="Anas Tanveer" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+                        </div>
+                        <span style="font-size:13px;color:#475569;font-family:Arial,sans-serif;"><strong style="color:#0f1e35;">Anas Tanveer</strong> · Founder, ARS Developer Ltd</span>
+                    </div>
+                    <div style="width:1px;height:28px;background:#dbeafe;display:none;" class="trust-sep"></div>
+                    @foreach(['No payment until you approve','UK Ltd · Co. No: 17039150','Reply within 1 business day'] as $t)
+                    <div style="display:flex;align-items:center;gap:6px;">
+                        <i class="fas fa-check-circle" style="color:#22c55e;font-size:13px;"></i>
+                        <span style="font-size:13px;color:#475569;font-family:Arial,sans-serif;">{{ $t }}</span>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        <style>
+        @keyframes pulse-green {
+            0%,100%{opacity:1;transform:scale(1);}
+            50%{opacity:.6;transform:scale(1.2);}
+        }
+        @media(max-width:768px){
+            .ars-final-cta-grid{grid-template-columns:1fr !important;}
+        }
+        </style>
+        {{-- End Final Trust + CTA Section --}}
 
 @include('layouts.footer')

@@ -400,50 +400,143 @@
                     </div>
                 </div>
 
-                <div class="pricing-one__start-flow" id="pricing-start-flow">
-                    <div class="pricing-one__start-flow-head">
-                        <span class="pricing-one__start-flow-tag">How To Start</span>
-                        <h3 class="pricing-one__start-flow-title">Choose your start action</h3>
-                        <p class="pricing-one__start-flow-text">Selected package info is forwarded automatically.</p>
-                        <p class="pricing-one__start-flow-selected">Selected package:
-                            <strong data-selected-plan>Not selected yet</strong>
+                <style>
+                #pof-name::placeholder,
+                #pof-email::placeholder,
+                #pof-phone::placeholder,
+                #pof-message::placeholder {
+                    color: #b8c4d0;
+                    opacity: 1;
+                }
+                </style>
+
+                <!-- Order Form -->
+                <div id="pricing-start-flow" style="margin-top:72px;padding:0 0 8px;">
+
+                    {{-- Section header --}}
+                    <div style="text-align:center;margin-bottom:44px;">
+                        <div style="display:inline-flex;align-items:center;gap:8px;background:#eef5ff;border:1px solid #bfdbfe;border-radius:100px;padding:7px 20px;margin-bottom:18px;">
+                            <i class="fas fa-file-invoice" style="color:#1d93ff;font-size:12px;"></i>
+                            <span style="font-size:12px;font-weight:700;color:#1d4ed8;letter-spacing:.8px;text-transform:uppercase;font-family:Arial,sans-serif;">Request Your Invoice</span>
+                        </div>
+                        <div style="font-size:26px;font-weight:700;color:#0f1e35;margin:0 0 10px;line-height:1.35;font-family:Arial,sans-serif;text-transform:none;letter-spacing:normal;">
+                            Selected: <span id="pof-plan-display" style="color:#1d93ff;">choose a package above ↑</span>
+                        </div>
+                        <p style="font-size:15px;color:#64748b;margin:0;max-width:460px;margin-left:auto;margin-right:auto;font-family:Arial,sans-serif;">
+                            Fill in your details — we'll send your invoice within <strong style="color:#0f1e35;">1 business day</strong>. No payment until you approve.
                         </p>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="500ms">
-                            <div class="pricing-one__start-card">
-                                <div class="pricing-one__start-card-icon"><span class="far fa-calendar-check"></span></div>
-                                <h4 class="pricing-one__start-card-title">Book Meeting First</h4>
-                                <p class="pricing-one__start-card-text">Best when you want to discuss scope and timeline
-                                    before approving the project start.</p>
-                                <a href="/#book-meeting" class="pricing-one__start-card-btn thm-btn thm-btn-two"
-                                    data-start-link="meeting" data-base-href="/#book-meeting"><span class="icon-right"></span>
-                                    Book Planning Call</a>
+
+                    <div style="max-width:660px;margin:0 auto;">
+
+                        {{-- Success state --}}
+                        <div id="pof-success" style="display:none;text-align:center;padding:56px 32px;background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);border-radius:20px;border:1px solid #86efac;box-shadow:0 4px 24px rgba(34,197,94,.12);">
+                            <div style="width:76px;height:76px;background:linear-gradient(135deg,#16a34a,#22c55e);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;box-shadow:0 8px 24px rgba(34,197,94,.3);">
+                                <i class="fas fa-check" style="color:#fff;font-size:30px;"></i>
+                            </div>
+                            <p style="color:#14532d;margin:0 0 8px;font-size:22px;font-weight:700;font-family:Arial,sans-serif;">Request sent successfully!</p>
+                            <p style="color:#166534;margin:0 0 6px;font-size:15px;font-family:Arial,sans-serif;">Check your inbox — your order confirmation is on its way.</p>
+                            <p style="color:#166534;margin:0;font-size:13px;opacity:.8;font-family:Arial,sans-serif;">Invoice within 1 business day. Questions? <a href="mailto:info@arsdeveloper.co.uk" style="color:#166534;font-weight:700;">info@arsdeveloper.co.uk</a></p>
+                        </div>
+
+                        {{-- Form card --}}
+                        <div id="pof-form-wrap" style="background:#fff;border-radius:20px;box-shadow:0 12px 56px rgba(15,30,53,.12),0 2px 12px rgba(15,30,53,.06);border:1px solid #e8edf5;overflow:hidden;">
+
+                            {{-- Gradient top bar --}}
+                            <div style="height:4px;background:linear-gradient(90deg,#173153 0%,#1d6faf 40%,#1d93ff 70%,#38bdf8 100%);"></div>
+
+                            <div style="padding:36px 40px 40px;">
+
+                                {{-- Selected plan badge (hidden until plan chosen) --}}
+                                <div id="pof-summary" style="display:none;border-radius:12px;padding:14px 18px;margin-bottom:28px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;">
+                                    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                                        <div style="width:38px;height:38px;background:linear-gradient(135deg,#1d6faf,#1d93ff);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(29,147,255,.3);">
+                                            <i class="fas fa-tag" style="color:#fff;font-size:13px;"></i>
+                                        </div>
+                                        <div style="flex:1;min-width:0;">
+                                            <p style="margin:0 0 2px;font-size:10px;color:#3b82f6;font-weight:700;text-transform:uppercase;letter-spacing:.7px;font-family:Arial,sans-serif;">Package Selected</p>
+                                            <p style="margin:0;font-size:15px;color:#1e3a5f;font-weight:700;font-family:Arial,sans-serif;" id="pof-summary-text"></p>
+                                        </div>
+                                        <span style="background:#173153;color:#fff;border-radius:100px;font-size:10px;font-weight:700;padding:4px 12px;letter-spacing:.5px;white-space:nowrap;font-family:Arial,sans-serif;">READY ✓</span>
+                                    </div>
+                                </div>
+
+                                <form id="pricing-order-form" novalidate>
+                                    @csrf
+                                    <input type="hidden" id="pof-plan" name="plan" value="">
+                                    <input type="hidden" id="pof-billing" name="billing" value="">
+                                    <input type="hidden" id="pof-price" name="price" value="">
+
+                                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
+                                        <div>
+                                            <label style="display:block;font-size:11px;color:#475569;margin-bottom:7px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-family:Arial,sans-serif;">Full Name <span style="color:#ef4444;">*</span></label>
+                                            <input type="text" name="name" id="pof-name" required placeholder="John Smith"
+                                                style="width:100%;padding:13px 15px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;color:#0f1e35;background:#f8fafc;outline:none;box-sizing:border-box;font-family:Arial,sans-serif;"
+                                                onfocus="this.style.borderColor='#1d93ff';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(29,147,255,.1)';"
+                                                onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none';">
+                                        </div>
+                                        <div>
+                                            <label style="display:block;font-size:11px;color:#475569;margin-bottom:7px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-family:Arial,sans-serif;">Email Address <span style="color:#ef4444;">*</span></label>
+                                            <input type="email" name="email" id="pof-email" required placeholder="you@company.com"
+                                                style="width:100%;padding:13px 15px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;color:#0f1e35;background:#f8fafc;outline:none;box-sizing:border-box;font-family:Arial,sans-serif;"
+                                                onfocus="this.style.borderColor='#1d93ff';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(29,147,255,.1)';"
+                                                onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none';">
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom:18px;">
+                                        <label style="display:block;font-size:11px;color:#475569;margin-bottom:7px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-family:Arial,sans-serif;">Phone &nbsp;<span style="color:#94a3b8;font-weight:500;text-transform:none;letter-spacing:0;font-size:11px;">(optional)</span></label>
+                                        <input type="tel" name="phone" id="pof-phone" placeholder="+44 7700 000000"
+                                            style="width:100%;padding:13px 15px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;color:#0f1e35;background:#f8fafc;outline:none;box-sizing:border-box;font-family:Arial,sans-serif;"
+                                            onfocus="this.style.borderColor='#1d93ff';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(29,147,255,.1)';"
+                                            onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none';">
+                                    </div>
+
+                                    <div style="margin-bottom:24px;">
+                                        <label style="display:block;font-size:11px;color:#475569;margin-bottom:7px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-family:Arial,sans-serif;">Project Notes &nbsp;<span style="color:#94a3b8;font-weight:500;text-transform:none;letter-spacing:0;font-size:11px;">(optional)</span></label>
+                                        <textarea name="message" id="pof-message" rows="3" placeholder="Brief description of your project, timeline, or any questions..."
+                                            style="width:100%;padding:13px 15px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;color:#0f1e35;background:#f8fafc;outline:none;resize:vertical;box-sizing:border-box;font-family:Arial,sans-serif;"
+                                            onfocus="this.style.borderColor='#1d93ff';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(29,147,255,.1)';"
+                                            onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none';"></textarea>
+                                    </div>
+
+                                    {{-- Error box: starts hidden, JS sets display:flex when needed --}}
+                                    <div id="pof-error" style="display:none;align-items:center;gap:10px;background:#fef2f2;border:1.5px solid #fecaca;border-radius:10px;padding:13px 16px;color:#b91c1c;font-size:13px;margin-bottom:18px;font-family:Arial,sans-serif;">
+                                        <i class="fas fa-exclamation-circle" style="color:#ef4444;flex-shrink:0;font-size:15px;"></i>
+                                        <span id="pof-error-text"></span>
+                                    </div>
+
+                                    <button type="submit" id="pof-submit"
+                                        style="width:100%;background:linear-gradient(135deg,#173153 0%,#1a3d6e 100%);color:#fff;border:none;padding:16px 32px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:.3px;box-shadow:0 6px 24px rgba(23,49,83,.3);display:flex;align-items:center;justify-content:center;gap:10px;font-family:Arial,sans-serif;">
+                                        <i class="fas fa-paper-plane" style="font-size:13px;" id="pof-icon"></i>
+                                        <span id="pof-submit-text">Request Invoice by Email</span>
+                                    </button>
+                                </form>
+
+                                {{-- Trust signals --}}
+                                <div style="display:flex;gap:24px;margin-top:22px;padding-top:22px;border-top:1px solid #f1f5f9;flex-wrap:wrap;justify-content:center;">
+                                    <div style="display:flex;align-items:center;gap:6px;">
+                                        <i class="fas fa-shield-alt" style="color:#22c55e;font-size:12px;"></i>
+                                        <span style="font-size:12px;color:#64748b;font-weight:500;font-family:Arial,sans-serif;">No payment until you approve</span>
+                                    </div>
+                                    <div style="display:flex;align-items:center;gap:6px;">
+                                        <i class="fas fa-clock" style="color:#3b82f6;font-size:12px;"></i>
+                                        <span style="font-size:12px;color:#64748b;font-weight:500;font-family:Arial,sans-serif;">Invoice within 1 business day</span>
+                                    </div>
+                                    <div style="display:flex;align-items:center;gap:6px;">
+                                        <i class="fas fa-lock" style="color:#8b5cf6;font-size:12px;"></i>
+                                        <span style="font-size:12px;color:#64748b;font-weight:500;font-family:Arial,sans-serif;">Secure &amp; confidential</span>
+                                    </div>
+                                </div>
+
+                                <p style="text-align:center;margin:16px 0 0;font-size:13px;color:#94a3b8;font-family:Arial,sans-serif;">
+                                    Prefer to talk first?
+                                    <a href="/contact" style="color:#1d93ff;font-weight:600;text-decoration:none;">Book a free call →</a>
+                                </p>
+
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="500ms">
-                            <div class="pricing-one__start-card">
-                                <div class="pricing-one__start-card-icon"><span class="far fa-file-alt"></span></div>
-                                <h4 class="pricing-one__start-card-title">Submit Requirements</h4>
-                                <p class="pricing-one__start-card-text">Share features, goals, and deadline. We reply with
-                                    clear plan and timeline in one business day.</p>
-                                <a href="/contact?intent=requirements" class="pricing-one__start-card-btn thm-btn thm-btn-two"
-                                    data-start-link="requirements" data-base-href="/contact?intent=requirements"><span class="icon-right"></span> Submit Form</a>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="500ms">
-                            <div class="pricing-one__start-card">
-                                <div class="pricing-one__start-card-icon"><span class="far fa-credit-card"></span></div>
-                                <h4 class="pricing-one__start-card-title">Start Order</h4>
-                                <p class="pricing-one__start-card-text">Ready to proceed now? Request kickoff invoice and
-                                    start your order with secure payment flow.</p>
-                                <a href="/contact?intent=kickoff_payment" class="pricing-one__start-card-btn thm-btn"
-                                    data-start-link="kickoff" data-base-href="/contact?intent=kickoff_payment" data-ga4-event="start_order_click"><span class="icon-right"></span> Start Order</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pricing-one__start-flow-head" style="margin-top:10px;">
-                        <p id="pricingStartStepMessage" class="pricing-one__start-flow-text" style="margin-top:8px;color:#173153;"></p>
+
                     </div>
                 </div>
             </div>
@@ -557,124 +650,130 @@
         <!--Faq One End -->
 <script>
 (function () {
-    var PRICING_SESSION_KEY = 'ars_selected_pricing_plan_v1';
-    var planButtons = document.querySelectorAll('.js-plan-select');
-    var selectedPlanNode = document.querySelector('[data-selected-plan]');
-    var startLinks = document.querySelectorAll('[data-start-link]');
-    var startStepMessage = document.getElementById('pricingStartStepMessage');
-    var startFlow = document.getElementById('pricing-start-flow');
+    var planButtons   = document.querySelectorAll('.js-plan-select');
+    var planDisplay   = document.getElementById('pof-plan-display');
+    var inpPlan       = document.getElementById('pof-plan');
+    var inpBilling    = document.getElementById('pof-billing');
+    var inpPrice      = document.getElementById('pof-price');
+    var summary       = document.getElementById('pof-summary');
+    var summaryText   = document.getElementById('pof-summary-text');
+    var form          = document.getElementById('pricing-order-form');
+    var submitBtn     = document.getElementById('pof-submit');
+    var submitTxt     = document.getElementById('pof-submit-text');
+    var errorBox      = document.getElementById('pof-error');
+    var errorText     = document.getElementById('pof-error-text');
+    var successBox    = document.getElementById('pof-success');
+    var formWrap      = document.getElementById('pof-form-wrap');
+    var startFlow     = document.getElementById('pricing-start-flow');
 
-    var state = {
-        plan: '',
-        billing: '',
-        planPrice: null
-    };
-
-    function safeValue(value) {
-        return value == null ? '' : String(value);
+    function val(el) {
+        return el ? el.value.trim() : '';
     }
 
-    function saveSelectedPlan() {
-        if (!state.plan) return;
-        try {
-            window.sessionStorage.setItem(PRICING_SESSION_KEY, JSON.stringify({
-                plan: state.plan,
-                billing: state.billing,
-                price: state.planPrice == null ? '' : String(state.planPrice),
-                saved_at: Date.now()
-            }));
-        } catch (e) {
-            // Ignore storage errors and keep flow working.
-        }
+    function showError(msg) {
+        if (!errorBox) return;
+        if (errorText) errorText.textContent = msg;
+        errorBox.style.display = 'flex';
+        errorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    function loadSelectedPlan() {
-        try {
-            var raw = window.sessionStorage.getItem(PRICING_SESSION_KEY);
-            if (!raw) return;
-            var parsed = JSON.parse(raw);
-            if (!parsed || typeof parsed !== 'object') return;
-
-            state.plan = safeValue(parsed.plan).trim();
-            state.billing = safeValue(parsed.billing).trim();
-            var storedPrice = safeValue(parsed.price).trim();
-            state.planPrice = storedPrice === '' ? null : Number(storedPrice);
-        } catch (e) {
-            // Ignore invalid storage payloads.
-        }
+    function hideError() {
+        if (errorBox) { errorBox.style.display = 'none'; }
+        if (errorText) errorText.textContent = '';
     }
 
-    function updateStartLinks() {
-        startLinks.forEach(function (link) {
-            var baseHref = link.getAttribute('data-base-href') || link.getAttribute('href') || '/contact';
-            var url;
-            try {
-                url = new URL(baseHref, window.location.origin);
-            } catch (e) {
-                return;
-            }
-
-            if (state.plan) url.searchParams.set('plan', state.plan);
-            if (state.billing) url.searchParams.set('billing', state.billing);
-            if (state.planPrice != null) url.searchParams.set('price', String(state.planPrice));
-
-            link.setAttribute('href', url.pathname + url.search + url.hash);
-        });
+    function setLoading(loading) {
+        if (!submitBtn || !submitTxt) return;
+        submitBtn.disabled = loading;
+        submitTxt.textContent = loading ? 'Sending…' : 'Request Invoice by Email';
+        submitBtn.style.opacity = loading ? '0.7' : '1';
     }
 
-    function setNextStepMessage(message, color) {
-        if (startStepMessage) {
-            startStepMessage.textContent = message || '';
-            startStepMessage.style.color = color || '#173153';
-        }
-    }
-
-    function handleStartLinkGuard(event, link) {
-        var mode = safeValue(link.getAttribute('data-start-link')).toLowerCase();
-        if (mode !== 'kickoff') {
-            return;
-        }
-
-        var hasFixedPrice = typeof state.planPrice === 'number' && isFinite(state.planPrice) && state.planPrice > 0;
-        if (hasFixedPrice) {
-            return;
-        }
-
-        event.preventDefault();
-        setNextStepMessage('Direct pay needs a fixed package. For custom scope, use Submit Form or Book Planning Call.', '#a66a00');
-
-        if (startFlow) {
-            startFlow.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }
-
+    /* Plan button click: populate hidden fields + update UI */
     planButtons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            state.plan = safeValue(btn.getAttribute('data-plan'));
-            state.billing = safeValue(btn.getAttribute('data-billing'));
-            var priceRaw = safeValue(btn.getAttribute('data-price')).trim();
-            state.planPrice = priceRaw === '' ? null : Number(priceRaw);
-            setNextStepMessage('Now choose one action: Book Call, Submit Form, or Start Order.', '#173153');
-            saveSelectedPlan();
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
 
-            if (selectedPlanNode) {
-                selectedPlanNode.textContent = state.plan + (state.billing ? ' (' + state.billing.replace(/_/g, ' ') + ')' : '');
+            var plan    = btn.getAttribute('data-plan')    || '';
+            var billing = btn.getAttribute('data-billing') || '';
+            var price   = btn.getAttribute('data-price')   || '';
+
+            if (inpPlan)    inpPlan.value    = plan;
+            if (inpBilling) inpBilling.value = billing;
+            if (inpPrice)   inpPrice.value   = price;
+
+            if (planDisplay) {
+                planDisplay.textContent = plan + (billing ? ' — ' + billing.replace(/_/g, ' ') : '');
             }
-            updateStartLinks();
+
+            if (summary && summaryText) {
+                var label = plan;
+                if (billing) label += ' (' + billing.replace(/_/g, ' ') + ')';
+                if (price && Number(price) > 0) label += ' — GBP ' + Number(price).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                summaryText.textContent = label;
+                summary.style.display = 'block';
+            }
+
+            hideError();
+
+            if (startFlow) {
+                startFlow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     });
 
-    startLinks.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-            handleStartLinkGuard(event, link);
+    /* Form submit: AJAX POST */
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            hideError();
+
+            var name  = val(document.getElementById('pof-name'));
+            var email = val(document.getElementById('pof-email'));
+            var plan  = val(inpPlan);
+
+            if (!name)  { showError('Please enter your full name.'); return; }
+            if (!email) { showError('Please enter a valid email address.'); return; }
+            if (!plan)  { showError('Please select a package above before submitting.'); return; }
+
+            var fd = new FormData(form);
+            var csrf = document.querySelector('input[name="_token"]');
+            var headers = { 'Accept': 'application/json' };
+            if (csrf) headers['X-CSRF-TOKEN'] = csrf.value;
+
+            setLoading(true);
+
+            fetch('/pricing/order', {
+                method: 'POST',
+                headers: headers,
+                body: fd
+            })
+            .then(function (res) {
+                return res.json().then(function (data) {
+                    return { status: res.status, data: data };
+                });
+            })
+            .then(function (result) {
+                setLoading(false);
+                if (result.data && result.data.ok) {
+                    if (formWrap) formWrap.style.display = 'none';
+                    if (successBox) {
+                        successBox.style.display = 'block';
+                        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                } else {
+                    var msg = (result.data && result.data.message)
+                        ? result.data.message
+                        : 'Something went wrong. Please try again or email us directly at info@arsdeveloper.co.uk';
+                    showError(msg);
+                }
+            })
+            .catch(function () {
+                setLoading(false);
+                showError('Network error. Please check your connection and try again, or contact us directly.');
+            });
         });
-    });
-    loadSelectedPlan();
-    setNextStepMessage(state.plan ? 'Package selected. Continue with one action below.' : 'Select a package, then continue with one action below.', '#173153');
-    if (selectedPlanNode && state.plan) {
-        selectedPlanNode.textContent = state.plan + (state.billing ? ' (' + state.billing.replace(/_/g, ' ') + ')' : '');
     }
-    updateStartLinks();
 })();
 </script>
 

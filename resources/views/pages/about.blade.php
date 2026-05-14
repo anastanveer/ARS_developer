@@ -443,12 +443,12 @@
                                 solutions, and performance SEO campaigns for UK companies that need measurable growth.</p>
                             <div class="about-three__client-and-text-box">
                                 <div class="about-three__client-box">
-                                    <div class="about-three__client-img">
-                                        <img src="assets/images/favicons/favicon.png" alt="ARSDeveloper Team" width="60" height="60" loading="lazy">
+                                    <div class="about-three__client-img" style="border-radius:50%;overflow:hidden;border:2px solid #1d93ff;">
+                                        <img src="{{ asset('assets/images/my/anas.png') }}" alt="Anas Tanveer — Founder ARS Developer" width="60" height="60" loading="lazy" style="object-fit:cover;object-position:center top;">
                                     </div>
                                     <div class="about-three__client-content">
-                                        <h3>ARSDeveloper Team</h3>
-                                        <p>Software & Growth Specialists</p>
+                                        <h3>Anas Tanveer</h3>
+                                        <p>Founder &amp; Lead Developer</p>
                                     </div>
                                 </div>
                                 <p class="about-three__client-text">We combine strategy, design, development, and
@@ -482,6 +482,70 @@
             </div>
         </section>
         <!--About Three End-->
+
+        <!-- Founder Bio Start -->
+        <section style="padding:48px 0 16px;">
+            <div class="container">
+                <div style="background:linear-gradient(135deg,#0d1f38 0%,#173153 60%,#1a3d6e 100%);border-radius:24px;padding:48px 44px;display:flex;gap:44px;align-items:center;flex-wrap:wrap;position:relative;overflow:hidden;">
+                    <div style="position:absolute;top:-40px;right:-40px;width:220px;height:220px;background:rgba(29,147,255,.07);border-radius:50%;pointer-events:none;"></div>
+                    <div style="position:absolute;bottom:-50px;left:38%;width:160px;height:160px;background:rgba(40,215,255,.05);border-radius:50%;pointer-events:none;"></div>
+
+                    {{-- Photo --}}
+                    <div style="flex-shrink:0;position:relative;z-index:1;">
+                        <div style="width:164px;height:164px;border-radius:50%;border:4px solid #1d93ff;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.4);">
+                            <img src="{{ asset('assets/images/my/anas.png') }}" alt="Anas Tanveer — Founder, ARS Developer Ltd" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+                        </div>
+                        <div style="position:absolute;bottom:8px;right:8px;width:26px;height:26px;background:#22c55e;border-radius:50%;border:3px solid #173153;box-shadow:0 2px 8px rgba(34,197,94,.5);"></div>
+                    </div>
+
+                    {{-- Bio --}}
+                    <div style="flex:1;min-width:260px;position:relative;z-index:1;">
+                        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(29,147,255,.15);border:1px solid rgba(29,147,255,.35);border-radius:100px;padding:5px 16px;margin-bottom:14px;">
+                            <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
+                            <span style="font-size:12px;color:#93c5fd;font-weight:700;letter-spacing:.6px;font-family:Arial,sans-serif;text-transform:uppercase;">Founder · ARS Developer Ltd</span>
+                        </div>
+                        <p style="margin:0 0 4px;font-size:30px;font-weight:700;color:#fff;font-family:Arial,sans-serif;line-height:1.2;">Anas Tanveer</p>
+                        <p style="margin:0 0 16px;font-size:13px;color:#7fb3e0;font-family:Arial,sans-serif;">Lead Developer &amp; Director · Stoke-on-Trent, UK &nbsp;·&nbsp; Co. No: 17039150</p>
+                        <p style="margin:0;font-size:15px;color:#cbd5e1;line-height:1.75;max-width:520px;font-family:Arial,sans-serif;">
+                            I started ARS Developer to give UK businesses a direct, accountable software partner — no account managers, no handoffs. Every website, CRM, and SEO project is planned, built, and supported by me personally, with clear milestones and practical communication throughout.
+                        </p>
+                        <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;">
+                            <a href="https://linkedin.com/company/arsdeveloperuk" target="_blank" rel="noopener"
+                                style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#e2e8f0;text-decoration:none;padding:9px 18px;border-radius:9px;font-size:13px;font-weight:600;font-family:Arial,sans-serif;transition:background .2s;"
+                                onmouseover="this.style.background='rgba(255,255,255,.15)';" onmouseout="this.style.background='rgba(255,255,255,.08)';">
+                                <i class="fab fa-linkedin" style="color:#60a5fa;font-size:15px;"></i> LinkedIn
+                            </a>
+                            <a href="https://www.instagram.com/arsdeveloperuk/" target="_blank" rel="noopener"
+                                style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#e2e8f0;text-decoration:none;padding:9px 18px;border-radius:9px;font-size:13px;font-weight:600;font-family:Arial,sans-serif;"
+                                onmouseover="this.style.background='rgba(255,255,255,.15)';" onmouseout="this.style.background='rgba(255,255,255,.08)';">
+                                <i class="fab fa-instagram" style="color:#f472b6;font-size:15px;"></i> Instagram
+                            </a>
+                            <a href="/contact"
+                                style="display:inline-flex;align-items:center;gap:8px;background:#1d93ff;color:#fff;text-decoration:none;padding:9px 22px;border-radius:9px;font-size:13px;font-weight:700;font-family:Arial,sans-serif;box-shadow:0 4px 16px rgba(29,147,255,.35);"
+                                onmouseover="this.style.background='#1a80e0';" onmouseout="this.style.background='#1d93ff';">
+                                <i class="fas fa-envelope" style="font-size:12px;"></i> Work with me
+                            </a>
+                        </div>
+                    </div>
+
+                    {{-- Stats --}}
+                    <div style="display:flex;flex-direction:column;gap:14px;position:relative;z-index:1;flex-shrink:0;">
+                        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:20px 24px;text-align:center;min-width:120px;">
+                            <p style="margin:0;font-size:30px;font-weight:700;color:#fff;font-family:Arial,sans-serif;line-height:1;">50+</p>
+                            <p style="margin:5px 0 0;font-size:12px;color:#93c5fd;font-family:Arial,sans-serif;">Projects Delivered</p>
+                        </div>
+                        <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:20px 24px;text-align:center;">
+                            <p style="margin:0;font-size:30px;font-weight:700;color:#fff;font-family:Arial,sans-serif;line-height:1;">5+</p>
+                            <p style="margin:5px 0 0;font-size:12px;color:#93c5fd;font-family:Arial,sans-serif;">Years Experience</p>
+                        </div>
+                        <div style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);border-radius:16px;padding:20px 24px;text-align:center;">
+                            <p style="margin:0;font-size:14px;font-weight:700;color:#86efac;font-family:Arial,sans-serif;line-height:1.3;">UK Registered<br>Ltd Company</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Founder Bio End -->
 
         <section class="about-proof">
             <div class="container">
@@ -620,6 +684,23 @@
         </section>
 
 
+
+        <!-- Mid-page CTA -->
+        <section style="padding:0 0 48px;">
+            <div class="container">
+                <div style="background:linear-gradient(135deg,#eef6ff 0%,#e0eeff 100%);border:1px solid #bfdbfe;border-radius:20px;padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+                    <div>
+                        <p style="margin:0 0 6px;font-size:11px;font-weight:700;color:#3b82f6;text-transform:uppercase;letter-spacing:.7px;font-family:Arial,sans-serif;">Ready to start?</p>
+                        <p style="margin:0;font-size:22px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;line-height:1.3;">Let's talk about your project. No commitment, no pressure.</p>
+                    </div>
+                    <div style="display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap;">
+                        <a href="/contact" class="thm-btn"><span class="icon-right"></span> Book a free call</a>
+                        <a href="/pricing" class="thm-btn thm-btn-two"><span class="icon-right"></span> See pricing</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Mid-page CTA End -->
 
         <section class="about-company-profile">
             <div class="container">

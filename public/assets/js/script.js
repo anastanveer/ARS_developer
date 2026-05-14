@@ -141,11 +141,12 @@
   if ($("[data-aos]").length) {
     runWhenIdle(function () {
       AOS.init({
-        duration: '1200',
+        duration: '800',
         disable: lowPowerMode,
-        easing: 'ease',
-        mirror: !lowPowerMode,
-        once: lowPowerMode
+        easing: 'ease-out',
+        mirror: false,
+        once: true,
+        offset: 60
       });
     }, 1500);
   }

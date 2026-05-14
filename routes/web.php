@@ -170,6 +170,7 @@ Route::view('/testimonials', 'pages.testimonials');
 Route::view('/testimonial-carousel', 'pages.testimonial-carousel');
 Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
 Route::post('/pricing/coupon-preview', [PricingController::class, 'previewCoupon'])->name('pricing.coupon.preview');
+Route::post('/pricing/order', [PricingController::class, 'submitOrder'])->name('pricing.order');
 Route::view('/gallery', 'pages.gallery');
 Route::view('/faq', 'pages.faq');
 Route::view('/404', 'pages.404');
