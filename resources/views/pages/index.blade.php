@@ -67,43 +67,6 @@
 
 <h1 class="seo-hidden-heading">ARS Developer — UK software development company in Stoke-on-Trent building AI-ready websites, custom CRM systems, Laravel applications, and SEO services for UK businesses</h1>
 
-{{-- Announcement / Trust Ticker Bar --}}
-<div style="background:#173153;overflow:hidden;padding:10px 0;position:relative;">
-    <div style="display:flex;align-items:center;white-space:nowrap;animation:ars-ticker 28s linear infinite;">
-        @foreach([
-            ['fas fa-shield-alt','#22c55e','UK Ltd Company · Co. No: 17039150'],
-            ['fas fa-star','#f59e0b','5.0★ Rated by UK Clients'],
-            ['fas fa-layer-group','#38bdf8','50+ Projects Delivered'],
-            ['fas fa-user-check','#a78bfa','Founder-Direct · No Middlemen'],
-            ['fas fa-lock','#34d399','No Payment Until You Approve'],
-            ['fas fa-map-marker-alt','#fb923c','Based in Stoke-on-Trent, UK'],
-            ['fas fa-clock','#60a5fa','Invoice Within 1 Business Day'],
-            ['fas fa-check-circle','#22c55e','UK Registered · England &amp; Wales'],
-        ] as $t)
-        <span style="display:inline-flex;align-items:center;gap:8px;margin-right:48px;font-size:13px;color:#e2e8f0;font-family:Arial,sans-serif;font-weight:500;">
-            <i class="{{ $t[0] }}" style="color:{{ $t[1] }};font-size:12px;flex-shrink:0;"></i>
-            {!! $t[2] !!}
-        </span>
-        @endforeach
-        @foreach([
-            ['fas fa-shield-alt','#22c55e','UK Ltd Company · Co. No: 17039150'],
-            ['fas fa-star','#f59e0b','5.0★ Rated by UK Clients'],
-            ['fas fa-layer-group','#38bdf8','50+ Projects Delivered'],
-            ['fas fa-user-check','#a78bfa','Founder-Direct · No Middlemen'],
-        ] as $t)
-        <span style="display:inline-flex;align-items:center;gap:8px;margin-right:48px;font-size:13px;color:#e2e8f0;font-family:Arial,sans-serif;font-weight:500;">
-            <i class="{{ $t[0] }}" style="color:{{ $t[1] }};font-size:12px;flex-shrink:0;"></i>
-            {!! $t[2] !!}
-        </span>
-        @endforeach
-    </div>
-</div>
-<style>
-@keyframes ars-ticker {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-</style>
 
         <section class="main-slider hero-text-slider">
             <div class="main-slider__shape-bg-2"

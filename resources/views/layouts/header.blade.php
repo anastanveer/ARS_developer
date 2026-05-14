@@ -2026,7 +2026,39 @@
                             </div>
                         </li>
                     </ul>
+                    @if($isHomePath)
+                    <div class="ars-top-ticker" style="flex:1;overflow:hidden;min-width:0;margin:0 24px;">
+                        <div class="ars-top-ticker__inner" style="display:flex;align-items:center;white-space:nowrap;animation:ars-top-ticker 32s linear infinite;">
+                            @foreach([
+                                ['fas fa-shield-alt','#22c55e','UK Ltd · Co. No: 17039150'],
+                                ['fas fa-star','#f59e0b','5.0★ Rated by UK Clients'],
+                                ['fas fa-layer-group','#38bdf8','50+ Projects Delivered'],
+                                ['fas fa-user-check','#a78bfa','Founder-Direct · No Middlemen'],
+                                ['fas fa-lock','#34d399','No Payment Until Approved'],
+                                ['fas fa-map-marker-alt','#fb923c','Based in Stoke-on-Trent, UK'],
+                                ['fas fa-file-invoice','#60a5fa','Invoice in 1 Business Day'],
+                                ['fas fa-check-circle','#22c55e','UK Registered · England &amp; Wales'],
+                                ['fas fa-shield-alt','#22c55e','UK Ltd · Co. No: 17039150'],
+                                ['fas fa-star','#f59e0b','5.0★ Rated by UK Clients'],
+                                ['fas fa-layer-group','#38bdf8','50+ Projects Delivered'],
+                                ['fas fa-user-check','#a78bfa','Founder-Direct · No Middlemen'],
+                            ] as $ti)
+                            <span style="display:inline-flex;align-items:center;gap:7px;margin-right:36px;font-size:12px;color:#cbd5e1;font-family:Arial,sans-serif;font-weight:500;">
+                                <i class="{{ $ti[0] }}" style="color:{{ $ti[1] }};font-size:11px;flex-shrink:0;" aria-hidden="true"></i>
+                                {!! $ti[2] !!}
+                            </span>
+                            @endforeach
+                        </div>
+                    </div>
+                    <style>
+                    @keyframes ars-top-ticker {
+                        0%   { transform: translateX(0); }
+                        100% { transform: translateX(-50%); }
+                    }
+                    </style>
+                    @else
                     <p class="main-menu-two__top-welcome-text">{{ __('ui.welcome_uk') }}</p>
+                    @endif
                     <div class="main-menu-two__top-right">
                         <div class="main-menu-two__top-time">
                             <div class="main-menu-two__top-time-icon">
