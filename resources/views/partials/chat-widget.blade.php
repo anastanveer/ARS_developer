@@ -32,7 +32,10 @@
                 <div class="ars-bot__head">
                     <div class="ars-bot__ear ars-bot__ear--l"></div>
                     <div class="ars-bot__ear ars-bot__ear--r"></div>
-                    <div class="ars-bot__visor"><div class="ars-bot__visor-scan"></div></div>
+                    <div class="ars-bot__eyes">
+                        <div class="ars-bot__eye ars-bot__eye--l"><div class="ars-bot__pupil"></div></div>
+                        <div class="ars-bot__eye ars-bot__eye--r"><div class="ars-bot__pupil"></div></div>
+                    </div>
                     <div class="ars-bot__mouth"></div>
                 </div>
                 <div class="ars-bot__neck"></div>

@@ -46211,8 +46211,10 @@ Product Details
 .ars-bot__ear{position:absolute;width:5px;height:11px;background:linear-gradient(to right,#aabcdc,#ddeaff);border-radius:3px;top:50%;transform:translateY(-50%);box-shadow:inset 1px 0 2px rgba(255,255,255,.8)}
 .ars-bot__ear--l{left:-6px}
 .ars-bot__ear--r{right:-6px}
-.ars-bot__visor{width:28px;height:8px;background:linear-gradient(90deg,rgba(0,229,255,.2) 0%,#00e5ff 25%,#00ffdd 50%,#00e5ff 75%,rgba(0,229,255,.2) 100%);border-radius:4px;position:relative;overflow:hidden;box-shadow:0 0 10px #00e5ff,0 0 22px rgba(0,229,255,.55),inset 0 1px 2px rgba(255,255,255,.5)}
-.ars-bot__visor-scan{position:absolute;top:0;bottom:0;left:-8px;width:8px;background:rgba(255,255,255,.75);border-radius:50%;animation:bot-visor-scan 1.8s ease-in-out infinite}
+.ars-bot__eyes{display:flex;gap:8px}
+.ars-bot__eye{width:11px;height:11px;background:radial-gradient(circle at 32% 28%,#aaeeff 0%,#00ccff 35%,#0070e0 70%,#003aaa 100%);border-radius:50%;position:relative;overflow:hidden;animation:bot-blink 3.5s ease-in-out infinite;box-shadow:0 0 7px rgba(0,200,255,.8),inset 0 -1px 2px rgba(0,0,0,.2)}
+.ars-bot__eye--r{animation-delay:.12s}
+.ars-bot__pupil{position:absolute;top:2px;left:2px;width:4px;height:4px;background:rgba(255,255,255,.95);border-radius:50%}
 .ars-bot__mouth{width:16px;height:5px;border:2px solid #0a30a8;border-top:none;border-radius:0 0 8px 8px}
 .ars-bot__neck{width:10px;height:5px;background:linear-gradient(to bottom,#8090c0,#5060a0);border-radius:2px}
 .ars-bot__body{width:34px;height:24px;background:linear-gradient(140deg,#1e3080 0%,#121e60 50%,#090e40 100%);border-radius:8px 8px 7px 7px;position:relative;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 4px rgba(100,150,255,.45),inset -3px -2px 6px rgba(0,0,30,.5),0 5px 14px rgba(0,0,0,.28);overflow:visible}
