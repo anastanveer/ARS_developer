@@ -18,7 +18,7 @@
 @include('layouts.header')
 
 <!-- Page Banner Start -->
-<section class="page-header" style="background:linear-gradient(135deg,#0d1f38,#173153);padding:140px 0 56px;margin-top:0;">
+<section class="page-header" style="background:linear-gradient(135deg,#0d1f38,#173153);padding:200px 0 64px;">
     <div class="container">
         <div style="text-align:center;">
             <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:6px 18px;margin-bottom:16px;">
