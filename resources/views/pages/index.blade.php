@@ -1368,7 +1368,7 @@
                     <div style="background:#fff;border:2px solid #e2e8f0;border-radius:18px;padding:28px 24px;text-align:center;transition:border-color .2s;"
                         onmouseover="this.style.borderColor='#8b5cf6';" onmouseout="this.style.borderColor='#e2e8f0';">
                         <div style="width:52px;height:52px;background:#f5f3ff;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-                            <i class="fas fa-phone-alt" style="color:#8b5cf6;font-size:20px;"></i>
+                            <i class="fas fa-calendar-alt" style="color:#8b5cf6;font-size:20px;"></i>
                         </div>
                         <p style="margin:0 0 6px;font-size:16px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;">Book a Call</p>
                         <p style="margin:0 0 18px;font-size:13px;color:#64748b;font-family:Arial,sans-serif;line-height:1.5;">30-min discovery call. No commitment — just clear scope guidance</p>
