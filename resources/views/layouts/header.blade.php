@@ -60,19 +60,31 @@
 
         $seoPages = [
             '/' => [
-                'title' => 'UK Software Agency for Web, CRM and WordPress Development',
-                'description' => 'ARSDeveloper helps UK businesses with custom websites, CRM software, WordPress development, SEO, and digital growth strategies.',
-                'keywords' => 'web development agency uk, custom software company uk, crm development uk, wordpress agency uk, shopify developers uk, wix website experts uk, seo services uk, business automation uk',
+                'title' => 'UK Software Development Company | Web, CRM & SEO — ARS Developer Stoke-on-Trent',
+                'description' => 'ARS Developer is a UK software development company in Stoke-on-Trent delivering custom websites, CRM systems, SEO growth, and AI-ready digital solutions for UK businesses.',
+                'keywords' => 'uk software development company, web development agency uk, software development company stoke on trent, custom software company uk, crm development uk, seo agency uk, laravel development uk, wordpress agency uk, shopify developers uk, ai web development uk, software agency staffordshire',
                 'type' => 'WebPage',
                 'preload_image' => asset('assets/images/resources/main-slider-img-1-1.png'),
                 'faq_items' => [
+                    [
+                        'question' => 'What does ARS Developer do?',
+                        'answer' => 'ARS Developer is a UK software development company based in Stoke-on-Trent, Staffordshire. We build custom websites, CRM systems, Laravel applications, and deliver technical SEO and AI search optimisation for UK businesses.',
+                    ],
                     [
                         'question' => 'How fast can a UK business website project start?',
                         'answer' => 'Most website and CRM projects can start within one to five business days after scope confirmation and onboarding.',
                     ],
                     [
                         'question' => 'Do you provide both development and SEO support?',
-                        'answer' => 'Yes. We provide web delivery, CRM implementation, technical SEO, and monthly growth support in one execution flow.',
+                        'answer' => 'Yes. We provide web delivery, CRM implementation, technical SEO, AEO, GEO, and monthly growth support in one execution flow.',
+                    ],
+                    [
+                        'question' => 'Which UK cities and regions do you serve?',
+                        'answer' => 'We work with UK businesses across Stoke-on-Trent, Staffordshire, Manchester, Birmingham, London, and nationwide. All projects are delivered remotely with full UK timezone support.',
+                    ],
+                    [
+                        'question' => 'Can ARS Developer help my business rank on ChatGPT and Google AI?',
+                        'answer' => 'Yes. We implement AEO (Answer Engine Optimisation) and GEO (Generative Engine Optimisation) as standard on all content and service pages, structuring answers so they are cited by ChatGPT, Google AI Overviews, and Perplexity.',
                     ],
                 ],
             ],
@@ -786,9 +798,19 @@
                     'addressCountry' => $companyCountryCode,
                 ],
                 'areaServed' => [
-                    '@type' => 'Country',
-                    'name' => $companyCountryName,
+                    ['@type' => 'Country', 'name' => $companyCountryName],
+                    ['@type' => 'City', 'name' => 'Stoke-on-Trent'],
+                    ['@type' => 'AdministrativeArea', 'name' => 'Staffordshire'],
+                    ['@type' => 'City', 'name' => 'Manchester'],
+                    ['@type' => 'City', 'name' => 'Birmingham'],
+                    ['@type' => 'City', 'name' => 'London'],
                 ],
+                'geo' => [
+                    '@type' => 'GeoCoordinates',
+                    'latitude' => '53.0027',
+                    'longitude' => '-2.1794',
+                ],
+                'hasMap' => 'https://maps.google.com/?q=Stoke-on-Trent,Staffordshire,UK',
                 'parentOrganization' => ['@id' => $siteRootUrl . '#organization'],
             ],
             [

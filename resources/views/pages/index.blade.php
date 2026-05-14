@@ -1,9 +1,9 @@
 @php
     $page_title = 'Home';
     $seoOverride = [
-        'title' => 'UK Software Development Company | AI-Ready Websites, CRM and SEO',
-        'description' => 'ARSDeveloper is a UK software development company helping businesses with AI-ready websites, CRM systems, ecommerce development, workflow automation, and technical SEO for stronger enquiries.',
-        'keywords' => 'uk software development company, ai website development uk, custom software development uk, crm software uk, workflow automation uk, ecommerce development uk, ai seo services uk, technical seo services uk',
+        'title' => 'UK Software Development Company Stoke-on-Trent | AI Websites, CRM & SEO — ARS Developer',
+        'description' => 'ARS Developer is a UK software development company based in Stoke-on-Trent, Staffordshire. We build AI-ready websites, custom CRM systems, Laravel applications, ecommerce stores, and deliver technical SEO that generates qualified enquiries for UK businesses.',
+        'keywords' => 'uk software development company, software development company stoke on trent, software development staffordshire, ai website development uk, custom software development uk, crm software uk, laravel development company uk, workflow automation uk, ecommerce development uk, ai seo services uk, technical seo services uk, web development agency stoke on trent',
         'preload_image' => asset('assets/images/resources/main-slider-img-1-1.png'),
         'related_links' => [
             '/software-development',
@@ -40,7 +40,7 @@
             ],
             [
                 'question' => 'Who is ARSDeveloper?',
-                'answer' => 'ARSDeveloper is a UK-based software agency that delivers business websites, custom CRM systems, ecommerce builds, workflow automation, and technical SEO support.',
+                'answer' => 'ARS Developer is a UK software development company based in Stoke-on-Trent, Staffordshire. Founded by Anas Tanveer, we deliver business websites, custom CRM systems, Laravel applications, ecommerce builds, workflow automation, and technical SEO for UK businesses.',
             ],
             [
                 'question' => 'What does a software agency in the UK do?',
@@ -63,7 +63,7 @@
 @endphp
 @include('layouts.header')
 
-<h1 class="seo-hidden-heading">UK software agency for AI-ready web development, CRM systems, automation, and SEO services</h1>
+<h1 class="seo-hidden-heading">ARS Developer — UK software development company in Stoke-on-Trent building AI-ready websites, custom CRM systems, Laravel applications, and SEO services for UK businesses</h1>
 
 
 
