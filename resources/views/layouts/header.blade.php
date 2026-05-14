@@ -100,12 +100,16 @@
                 'description' => 'Meet ARSDeveloper UK, delivering business websites, CRM systems, and SEO growth with transparent scope and practical project ownership.',
                 'keywords' => 'about arsdeveloper uk, uk web development team, crm development partner uk, seo delivery team uk, software agency stoke-on-trent',
                 'type' => 'AboutPage',
+                'og_image' => url('/assets/images/resources/about-one-img-1.jpg'),
+                'og_image_alt' => 'ARS Developer UK software development team',
             ],
             '/about' => [
                 'title' => 'About ARSDeveloper UK Team for Web, CRM and SEO Delivery',
                 'description' => 'Meet ARSDeveloper UK, delivering business websites, CRM systems, and SEO growth with transparent scope and practical project ownership.',
                 'keywords' => 'about arsdeveloper uk, uk web development team, crm development partner uk, seo delivery team uk, software agency stoke-on-trent',
                 'type' => 'AboutPage',
+                'og_image' => url('/assets/images/resources/about-one-img-1.jpg'),
+                'og_image_alt' => 'ARS Developer UK software development team',
             ],
             '/services.php' => [
                 'title' => 'UK Software and Web Services — Websites, CRM and SEO',
@@ -132,36 +136,48 @@
                 'description' => 'UK digital marketing combining SEO, paid campaigns, landing page CRO, and AI search visibility. Stop wasting budget on traffic that does not convert.',
                 'keywords' => 'digital marketing agency uk, lead generation services uk, ppc management uk, google ads agency uk, conversion rate optimisation uk, aeo marketing uk, ai search marketing uk',
                 'type' => 'Service',
+                'og_image' => url('/assets/images/services/services-details-img-4.jpg'),
+                'og_image_alt' => 'Digital marketing services for UK businesses — ARS Developer',
             ],
             '/web-design-development.php' => [
                 'title' => 'Web Design and Development UK — Conversion-Ready Builds',
                 'description' => 'Website design and development for UK businesses that need enquiries, not just traffic. SEO-first architecture, Core Web Vitals performance, and conversion-focused UX.',
                 'keywords' => 'web design agency uk, website development company uk, conversion focused website uk, seo website development uk, core web vitals uk, responsive website design uk, lead generation website uk',
                 'type' => 'Service',
+                'og_image' => url('/assets/images/services/services-details-img-2.jpg'),
+                'og_image_alt' => 'Web design and development services for UK businesses — ARS Developer',
             ],
             '/search-engine-optimization.php' => [
                 'title' => 'SEO Services UK — AEO, GEO and Technical SEO Growth',
                 'description' => 'UK SEO services solving rankings, AI search visibility, and qualified leads. Technical audit, buyer intent mapping, AEO, and monthly Search Console reporting.',
                 'keywords' => 'seo services uk, aeo services uk, answer engine optimisation uk, ai seo uk, technical seo agency uk, google ai overview optimisation uk, local seo uk, search console optimisation uk',
                 'type' => 'Service',
+                'og_image' => url('/assets/images/services/services-details-img-1.jpg'),
+                'og_image_alt' => 'SEO services for UK businesses — ARS Developer',
             ],
             '/design-and-branding.php' => [
                 'title' => 'Brand Design UK — Identity, Messaging and Conversion Systems',
                 'description' => 'Brand design for UK businesses that improves conversion rates, clarifies messaging, and builds AI-search entity signals. Stop losing enquiries to clearer competitors.',
                 'keywords' => 'branding agency uk, brand identity design uk, conversion design uk, ai brand entity signals uk, website messaging uk, offer positioning uk, ui ux design uk',
                 'type' => 'Service',
+                'og_image' => url('/assets/images/services/services-details-img-6.jpg'),
+                'og_image_alt' => 'Brand design services for UK businesses — ARS Developer',
             ],
             '/app-development.php' => [
                 'title' => 'Web App Development UK — Portals, Dashboards and Workflow Tools',
                 'description' => 'UK web app development for portals, dashboards, AI-assisted workflows, and business automation. Discovery-led scoping. Milestone delivery. Post-launch support.',
                 'keywords' => 'web app development uk, portal development uk, dashboard development uk, workflow automation uk, business app development uk, saas development uk, crm portal uk',
                 'type' => 'Service',
+                'og_image' => url('/assets/images/services/services-details-img-5.jpg'),
+                'og_image_alt' => 'App and portal development for UK businesses — ARS Developer',
             ],
             '/software-development.php' => [
                 'title' => 'Custom Software Development Company UK',
                 'description' => 'Custom software development for UK businesses that need secure workflows, integrations, and scalable delivery systems.',
                 'keywords' => 'custom software development uk, software development company uk, bespoke software uk, business automation software uk, enterprise software developers uk',
                 'type' => 'Service',
+                'og_image' => url('/assets/images/services/services-details-img-3.jpg'),
+                'og_image_alt' => 'Custom software development for UK businesses — ARS Developer',
                 'faq_items' => [
                     [
                         'question' => 'What type of custom software projects do you build in the UK?',
@@ -178,18 +194,24 @@
                 'description' => 'Custom software development for UK businesses that need secure workflows, integrations, and scalable delivery systems.',
                 'keywords' => 'custom software development uk, software development company uk, bespoke software uk, business automation software uk, enterprise software developers uk',
                 'type' => 'Service',
+                'og_image' => url('/assets/images/services/services-details-img-3.jpg'),
+                'og_image_alt' => 'Custom software development for UK businesses — ARS Developer',
             ],
             '/portfolio.php' => [
                 'title' => 'Portfolio of UK Web Development, CRM and SEO Projects',
                 'description' => 'View portfolio projects delivered by ARSDeveloper across website development, CRM, SEO, and software solutions.',
                 'keywords' => 'software development portfolio uk, web development case studies uk, ecommerce project portfolio uk, crm implementation case study uk',
                 'type' => 'CollectionPage',
+                'og_image' => url('/assets/images/resources/why-choose-one-img-1.jpg'),
+                'og_image_alt' => 'ARS Developer UK portfolio — web development and software projects',
             ],
             '/portfolio' => [
                 'title' => 'Portfolio of UK Web Development, CRM and SEO Projects',
                 'description' => 'View portfolio projects delivered by ARSDeveloper across website development, CRM, SEO, and software solutions.',
                 'keywords' => 'software development portfolio uk, web development case studies uk, ecommerce project portfolio uk, crm implementation case study uk',
                 'type' => 'CollectionPage',
+                'og_image' => url('/assets/images/resources/why-choose-one-img-1.jpg'),
+                'og_image_alt' => 'ARS Developer UK portfolio — web development and software projects',
             ],
             '/portfolio-details.php' => [
                 'title' => 'Project Details - ARSDeveloper Portfolio',
@@ -243,10 +265,14 @@
                 'description' => 'Answers to real UK business questions on SEO, AEO, website delivery, custom software, CRM builds, app development, project timelines, and how to get a free audit.',
                 'keywords' => 'software agency faq uk, web development questions uk, crm faq uk, seo faq uk, aeo faq uk, project delivery faq uk, free audit uk',
                 'type' => 'FAQPage',
+                'og_image' => url('/assets/images/resources/banner-two-img-1.png'),
+                'og_image_alt' => 'ARS Developer UK FAQ — web development and SEO questions answered',
             ],
             '/faq' => [
                 'title' => 'FAQ — UK Web, Software, SEO and CRM Questions Answered',
                 'description' => 'Answers to real UK business questions on SEO, AEO, website delivery, custom software, CRM builds, app development, project timelines, and how to get a free audit.',
+                'og_image' => url('/assets/images/resources/banner-two-img-1.png'),
+                'og_image_alt' => 'ARS Developer UK FAQ — web development and SEO questions answered',
                 'keywords' => 'software agency faq uk, web development questions uk, crm faq uk, seo faq uk, aeo faq uk, project delivery faq uk, free audit uk',
                 'type' => 'FAQPage',
             ],
@@ -1563,67 +1589,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/custom-animate.css') }}" />
-    @if($needsSwiperAssets)
-        <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}" />
-    @endif
-    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome-all.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/jarallax.css') }}" />
-    @if($needsPopupAssets)
-        <link rel="stylesheet" href="{{ asset('assets/css/jquery.magnific-popup.css') }}" />
-    @endif
-    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}" />
-    @if($needsNiceSelectAssets)
-        <link rel="stylesheet" href="{{ asset('assets/css/nice-select.css') }}" />
-    @endif
-    <link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}" />
-
-
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/slider.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/footer.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/brand.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/services.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/about.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/why-choose.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/process.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/portfolio.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/testimonial.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/pricing.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/blog.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/newsletter.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/cta.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/counter.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/shop.css') }}" />
-    @if($isComingSoonPath)
-        <link rel="stylesheet" href="{{ asset('assets/css/module-css/coming-soon.css') }}" />
-    @endif
-    @if($isErrorPath)
-        <link rel="stylesheet" href="{{ asset('assets/css/module-css/error.css') }}" />
-    @endif
-    @if($isGalleryPath)
-        <link rel="stylesheet" href="{{ asset('assets/css/module-css/gallery.css') }}" />
-    @endif
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/faq.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/google-map.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/contact.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/chat-widget.css') }}?v={{ filemtime(public_path('assets/css/module-css/chat-widget.css')) }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/module-css/page-header.css') }}" />
-    @if($isAboutPath)
-        <link rel="stylesheet" href="{{ asset('assets/css/module-css/awards.css') }}" />
-    @endif
-
-    <!-- template styles -->
-    <link rel="preload" href="{{ asset('assets/css/style.css') }}" as="style">
-    <link rel="preload" href="{{ asset('assets/css/responsive.css') }}" as="style">
+    <link rel="preload" href="{{ asset('assets/css/bundle.css') }}" as="style">
     @if($isHomePath)
-        <link rel="preload" href="{{ asset('assets/images/resources/main-slider-img-1-1.png') }}" as="image" fetchpriority="high">
+        <link rel="preload" href="{{ asset('assets/images/resources/banner-one-img-1.png') }}" as="image" fetchpriority="high">
     @endif
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/bundle.css') }}?v={{ filemtime(public_path('assets/css/bundle.css')) }}" />
     <style>
         /* Fallback so page never stays blank if JS fails before preloader close */
         .js-preloader {

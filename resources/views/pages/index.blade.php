@@ -4,7 +4,9 @@
         'title' => 'UK Software Development Company Stoke-on-Trent | AI Websites, CRM & SEO — ARS Developer',
         'description' => 'ARS Developer is a UK software development company based in Stoke-on-Trent, Staffordshire. We build AI-ready websites, custom CRM systems, Laravel applications, ecommerce stores, and deliver technical SEO that generates qualified enquiries for UK businesses.',
         'keywords' => 'uk software development company, software development company stoke on trent, software development staffordshire, ai website development uk, custom software development uk, crm software uk, laravel development company uk, workflow automation uk, ecommerce development uk, ai seo services uk, technical seo services uk, web development agency stoke on trent',
-        'preload_image' => asset('assets/images/resources/main-slider-img-1-1.png'),
+        'preload_image' => asset('assets/images/resources/banner-one-img-1.png'),
+        'og_image' => url('/assets/images/resources/banner-one-img-1.png'),
+        'og_image_alt' => 'ARS Developer — UK software development company Stoke-on-Trent',
         'related_links' => [
             '/software-development',
             '/web-design-development',
