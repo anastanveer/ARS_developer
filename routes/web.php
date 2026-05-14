@@ -186,6 +186,7 @@ Route::get('/search/suggest', [SearchController::class, 'suggest'])->name('searc
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 Route::view('/contact', 'pages.contact');
+Route::view('/book', 'pages.book')->name('book.call');
 Route::view('/client-portal-access', 'pages.client-portal-access')->name('client.portal.access');
 Route::post('/contact-submit', ContactFormController::class)->name('contact.submit');
 Route::get('/meeting-availability', [ContactFormController::class, 'availability'])->name('meeting.availability');
