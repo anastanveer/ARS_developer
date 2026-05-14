@@ -596,11 +596,11 @@
                     ] as $o)
                     <div style="background:#fff;border:1px solid #e8edf5;border-radius:16px;padding:24px 22px;box-shadow:0 2px 12px rgba(0,0,0,.05);text-align:center;">
                         <div style="width:48px;height:48px;background:{{ $o[4] }}18;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
-                            <i class="{{ $o[2] }}" style="color:{{ $o[4] }};font-size:18px;"></i>
+                            <i class="{{ $o[3] }}" style="color:{{ $o[4] }};font-size:18px;" aria-hidden="true"></i>
                         </div>
                         <p style="margin:0 0 4px;font-size:28px;font-weight:800;color:#0f1e35;font-family:Arial,sans-serif;line-height:1;">{{ $o[0] }}</p>
                         <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;">{{ $o[1] }}</p>
-                        <p style="margin:0;font-size:12px;color:#64748b;font-family:Arial,sans-serif;line-height:1.5;">{{ $o[3] }}</p>
+                        <p style="margin:0;font-size:12px;color:#64748b;font-family:Arial,sans-serif;line-height:1.5;">{{ $o[2] }}</p>
                     </div>
                     @endforeach
                 </div>
