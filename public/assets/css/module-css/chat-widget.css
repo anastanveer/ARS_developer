@@ -1,9 +1,137 @@
+/* ── Robot chat button animations ─────────────────────────────── */
+@keyframes ars-robot-walkin {
+    0%   { transform: translateX(120px) rotate(8deg); opacity: 0; }
+    60%  { transform: translateX(-6px)  rotate(-2deg); opacity: 1; }
+    80%  { transform: translateX(4px)   rotate(1deg); }
+    100% { transform: translateX(0)     rotate(0deg); }
+}
+@keyframes ars-robot-float {
+    0%,100% { transform: translateY(0)    rotate(-1.5deg); }
+    50%     { transform: translateY(-7px) rotate(1.5deg); }
+}
+@keyframes ars-robot-pulse-ring {
+    0%   { transform: scale(1);   opacity: .55; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+@keyframes ars-robot-antenna {
+    0%,100% { transform: scale(1);   }
+    50%     { transform: scale(1.5); }
+}
+@keyframes ars-robot-blink {
+    0%,88%,100% { ry: 4; }
+    93%         { ry: .5; }
+}
+@keyframes ars-robot-arm-l {
+    0%,100% { transform: rotate(0deg);    transform-origin: 5px 37px; }
+    50%     { transform: rotate(-18deg);  transform-origin: 5px 37px; }
+}
+@keyframes ars-robot-arm-r {
+    0%,100% { transform: rotate(0deg);   transform-origin: 39px 37px; }
+    50%     { transform: rotate(18deg);  transform-origin: 39px 37px; }
+}
+@keyframes ars-robot-chest {
+    0%,100% { opacity:1; }
+    50%     { opacity:.3; }
+}
+@keyframes ars-bubble-show {
+    0%,40%,100% { opacity: 0; transform: translateX(0) scale(.8); }
+    50%,85%     { opacity: 1; transform: translateX(-8px) scale(1); }
+}
+
 .site-chat {
     position: fixed;
     right: 22px;
     bottom: 22px;
     z-index: 120;
 }
+
+/* wrapper holds pulse rings + bubble + button */
+.ars-chat-robot-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Pulse rings */
+.ars-chat-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: rgba(29,147,255,.35);
+    pointer-events: none;
+    animation: ars-robot-pulse-ring 2.4s ease-out infinite;
+}
+.ars-chat-pulse--2 {
+    animation-delay: 1.2s;
+}
+
+/* Speech bubble */
+.ars-chat-bubble {
+    position: absolute;
+    right: calc(100% + 12px);
+    bottom: 50%;
+    transform: translateX(0) translateY(50%) scale(.8);
+    background: #fff;
+    color: #0f1e35;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Arial, sans-serif;
+    white-space: nowrap;
+    padding: 8px 14px;
+    border-radius: 20px 20px 4px 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.14);
+    pointer-events: none;
+    opacity: 0;
+    animation: ars-bubble-show 6s ease-in-out infinite;
+    animation-delay: 3s;
+}
+.ars-chat-bubble::after {
+    content: '';
+    position: absolute;
+    right: -7px;
+    bottom: 2px;
+    border: 7px solid transparent;
+    border-left-color: #fff;
+    border-right-width: 0;
+}
+
+/* The actual button — robot themed */
+.ars-chat-robot-btn {
+    animation:
+        ars-robot-walkin .9s cubic-bezier(.34,1.56,.64,1) both,
+        ars-robot-float  3.2s ease-in-out 1s infinite;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+/* Robot SVG wrapper */
+.ars-robot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Individual part animations */
+.ars-robot__antenna-tip {
+    animation: ars-robot-antenna 1.6s ease-in-out infinite;
+    transform-origin: 22px 2px;
+}
+.ars-robot__eye--l,
+.ars-robot__eye--r {
+    animation: ars-robot-blink 4s ease-in-out infinite;
+}
+.ars-robot__eye--r { animation-delay: .1s; }
+
+.ars-robot__arm--l { animation: ars-robot-arm-l 1.8s ease-in-out infinite; }
+.ars-robot__arm--r { animation: ars-robot-arm-r 1.8s ease-in-out infinite .9s; }
+
+.ars-robot__chest { animation: ars-robot-chest 1.4s ease-in-out infinite; }
+
+/* hide pulse + bubble when chat is open */
+.site-chat--open .ars-chat-pulse,
+.site-chat--open .ars-chat-bubble { display: none; }
 
 .site-chat__toggle {
     border: 0;

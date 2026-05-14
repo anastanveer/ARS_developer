@@ -13,10 +13,47 @@
     data-conversation-url="{{ url('/chat/conversation') }}"
     data-whatsapp-url="https://wa.me/{{ $chatPhoneDigits }}"
 >
-    <button type="button" class="site-chat__toggle" data-chat-toggle aria-expanded="false" aria-controls="site-chat-panel">
-        <span class="site-chat__toggle-icon"><i class="fas fa-comments"></i></span>
-        <span class="site-chat__toggle-label">Live Chat</span>
-    </button>
+    {{-- Animated robot chat button --}}
+    <div class="ars-chat-robot-wrap">
+        {{-- Pulsing rings --}}
+        <span class="ars-chat-pulse ars-chat-pulse--1" aria-hidden="true"></span>
+        <span class="ars-chat-pulse ars-chat-pulse--2" aria-hidden="true"></span>
+
+        {{-- Speech bubble tooltip --}}
+        <span class="ars-chat-bubble" aria-hidden="true">Need help? 👋</span>
+
+        <button type="button" class="site-chat__toggle ars-chat-robot-btn" data-chat-toggle aria-expanded="false" aria-controls="site-chat-panel">
+            {{-- Robot SVG --}}
+            <span class="ars-robot" aria-hidden="true">
+                <svg viewBox="0 0 44 52" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+                    {{-- Antenna --}}
+                    <line class="ars-robot__antenna-stem" x1="22" y1="10" x2="22" y2="3" stroke="rgba(255,255,255,.8)" stroke-width="2" stroke-linecap="round"/>
+                    <circle class="ars-robot__antenna-tip" cx="22" cy="2" r="2.5" fill="#38bdf8"/>
+                    {{-- Head --}}
+                    <rect class="ars-robot__head" x="7" y="10" width="30" height="22" rx="7" fill="rgba(255,255,255,.95)"/>
+                    {{-- Eyes --}}
+                    <ellipse class="ars-robot__eye ars-robot__eye--l" cx="16" cy="20" rx="4" ry="4" fill="#1d93ff"/>
+                    <ellipse class="ars-robot__eye ars-robot__eye--r" cx="28" cy="20" rx="4" ry="4" fill="#1d93ff"/>
+                    {{-- Eye shine --}}
+                    <circle cx="17.5" cy="18.5" r="1.2" fill="#fff" opacity=".85"/>
+                    <circle cx="29.5" cy="18.5" r="1.2" fill="#fff" opacity=".85"/>
+                    {{-- Smile --}}
+                    <path class="ars-robot__mouth" d="M14 27 Q22 32 30 27" stroke="#1d4ed8" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    {{-- Neck --}}
+                    <rect x="19" y="32" width="6" height="4" rx="2" fill="rgba(255,255,255,.6)"/>
+                    {{-- Body --}}
+                    <rect class="ars-robot__body" x="9" y="36" width="26" height="14" rx="6" fill="rgba(255,255,255,.8)"/>
+                    {{-- Chest button --}}
+                    <circle class="ars-robot__chest" cx="22" cy="43" r="3" fill="#38bdf8"/>
+                    <circle cx="22" cy="43" r="1.2" fill="#fff" opacity=".8"/>
+                    {{-- Arms --}}
+                    <rect class="ars-robot__arm ars-robot__arm--l" x="2" y="37" width="7" height="10" rx="3.5" fill="rgba(255,255,255,.7)"/>
+                    <rect class="ars-robot__arm ars-robot__arm--r" x="35" y="37" width="7" height="10" rx="3.5" fill="rgba(255,255,255,.7)"/>
+                </svg>
+            </span>
+            <span class="site-chat__toggle-label">Live Chat</span>
+        </button>
+    </div>
 
     <div class="site-chat__panel" id="site-chat-panel" hidden>
         <div class="site-chat__head">
