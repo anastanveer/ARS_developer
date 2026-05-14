@@ -465,27 +465,6 @@
                     </div>
                 </div>
 
-                {{-- Tech stack strip --}}
-                <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200" style="margin-top:36px;padding-top:28px;border-top:1px solid #f1f5f9;">
-                    <p style="text-align:center;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin:0 0 18px;font-family:Arial,sans-serif;">Technologies &amp; platforms we build with</p>
-                    <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
-                        @foreach([
-                            ['Laravel','#FF2D20','fab fa-laravel'],
-                            ['WordPress','#21759B','fab fa-wordpress'],
-                            ['Shopify','#96BF48','fab fa-shopify'],
-                            ['PHP','#777BB4','fab fa-php'],
-                            ['JavaScript','#F7DF1E','fab fa-js-square'],
-                            ['MySQL','#4479A1','fas fa-database'],
-                            ['Linux / VPS','#FCC624','fab fa-linux'],
-                            ['Google SEO','#4285F4','fab fa-google'],
-                        ] as $tech)
-                        <div style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #e8edf5;border-radius:8px;padding:7px 13px;box-shadow:0 1px 4px rgba(0,0,0,.05);">
-                            <i class="{{ $tech[2] }}" style="color:{{ $tech[1] }};font-size:14px;"></i>
-                            <span style="font-size:12px;font-weight:600;color:#475569;font-family:Arial,sans-serif;">{{ $tech[0] }}</span>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
                 <div class="counter-one__testimonial-strip" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
                     <div class="counter-one__testimonial-avatars">
                         <img src="assets/images/resources/banner-one-satisfied-client-1-1.jpg" alt="Client testimonial avatar"
@@ -540,44 +519,6 @@
         <!-- Results Strip End -->
         --}}
 
-        <!-- Outcomes Strip Start -->
-        <section style="padding:56px 0;background:#f8fafc;">
-            <div class="container">
-                <div style="text-align:center;margin-bottom:36px;">
-                    <div style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #bfdbfe;border-radius:100px;padding:6px 18px;margin-bottom:12px;">
-                        <i class="fas fa-chart-line" style="color:#1d93ff;font-size:12px;"></i>
-                        <span style="font-size:12px;font-weight:700;color:#1d4ed8;letter-spacing:.6px;text-transform:uppercase;font-family:Arial,sans-serif;">Real Delivery Outcomes</span>
-                    </div>
-                    <p style="font-size:22px;font-weight:700;color:#0f1e35;margin:0;font-family:Arial,sans-serif;">What UK clients typically get after working with us</p>
-                </div>
-                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
-                    @foreach([
-                        ['90+','PageSpeed Score','from <40 to 90+ after full technical optimisation','fas fa-tachometer-alt','#1d93ff'],
-                        ['2–6 wks','Delivery Window','from scoping call to live website — websites, ecom, CRM builds','fas fa-calendar-check','#8b5cf6'],
-                        ['50+','Projects Live','business websites, custom CRM, ecommerce stores, and web apps','fas fa-layer-group','#22c55e'],
-                        ['1 day','Invoice Turnaround','request a package and receive a formal invoice within 1 business day','fas fa-file-invoice','#f59e0b'],
-                    ] as $o)
-                    <div style="background:#fff;border:1px solid #e8edf5;border-radius:16px;padding:24px 22px;box-shadow:0 2px 12px rgba(0,0,0,.05);text-align:center;">
-                        <div style="width:48px;height:48px;background:{{ $o[4] }}18;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;">
-                            <i class="{{ $o[3] }}" style="color:{{ $o[4] }};font-size:18px;" aria-hidden="true"></i>
-                        </div>
-                        <p style="margin:0 0 4px;font-size:28px;font-weight:800;color:#0f1e35;font-family:Arial,sans-serif;line-height:1;">{{ $o[0] }}</p>
-                        <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;">{{ $o[1] }}</p>
-                        <p style="margin:0;font-size:12px;color:#64748b;font-family:Arial,sans-serif;line-height:1.5;">{{ $o[2] }}</p>
-                    </div>
-                    @endforeach
-                </div>
-                <style>
-                @media(max-width:768px){
-                    .ars-outcomes-grid { grid-template-columns: 1fr 1fr !important; }
-                }
-                @media(max-width:480px){
-                    .ars-outcomes-grid { grid-template-columns: 1fr !important; }
-                }
-                </style>
-            </div>
-        </section>
-        <!-- Outcomes Strip End -->
 
         <!--Process Two Start -->
         <section class="process-two">
@@ -805,270 +746,38 @@
             </div>
         </section>
         <!-- Portfolio Two End -->
-        @php
-            $meetingSlots = config('contact.meeting_slots', []);
-            $meetingSlots = is_array($meetingSlots) ? $meetingSlots : [];
-            $meetingSlots = array_values(array_filter(array_map(fn ($slot) => trim((string) $slot), $meetingSlots)));
-            $timezoneOptions = config('contact.timezone_options', []);
-            $timezoneOptions = is_array($timezoneOptions) ? $timezoneOptions : [];
-            $timezoneOptions = array_values(array_filter(array_map(fn ($tz) => trim((string) $tz), $timezoneOptions)));
-            if (!in_array('Europe/London', $timezoneOptions, true)) {
-                $timezoneOptions[] = 'Europe/London';
-            }
-        @endphp
-        <!-- Meeting Scheduler Start -->
-        <section class="meeting-scheduler" id="book-meeting" data-availability-url="{{ route('meeting.availability') }}">
+        <!-- Book a Call Start -->
+        <section id="book-meeting" style="padding:64px 0;background:#0d1f38;">
             <div class="container">
-                <div class="meeting-scheduler__inner">
-                    <div class="row">
-                        <div class="col-xl-5">
-                            <div class="meeting-scheduler__content">
-                                <div class="section-title-two text-left sec-title-animation animation-style2">
-                                    <div class="section-title-two__tagline-box">
-                                        <div class="section-title-two__tagline-icon-box">
-                                            <div class="section-title-two__tagline-icon-1"></div>
-                                            <div class="section-title-two__tagline-icon-2"></div>
-                                        </div>
-                                        <span class="section-title-two__tagline">Schedule a meeting</span>
-                                    </div>
-                                    <h2 class="section-title-two__title title-animation">Book a planning call for your
-                                        <span>next project step</span></h2>
-                                </div>
-                                <p class="meeting-scheduler__text">Choose a suitable time, share a few project details, and get an instant confirmation. The flow is quick, clear, and built to remove back-and-forth.</p>
-                                <p class="meeting-scheduler__timezone"><span class="icon-check"></span> Slots follow UK office hours, and your selected timezone is saved for reminders and confirmation.</p>
-                                <ul class="list-unstyled meeting-scheduler__points">
-                                    <li><span class="icon-check"></span> 30-minute discovery call focused on your goals</li>
-                                    <li><span class="icon-check"></span> Website, CRM, SEO, Shopify, Wix, branding, and growth support</li>
-                                    <li><span class="icon-check"></span> Instant confirmation email with simple reschedule or cancel links</li>
-                                </ul>
-                                <p class="meeting-scheduler__micro-note"><span class="icon-check"></span> No signup required. Confirmation appears on screen as soon as booking is complete.</p>
-                            </div>
-
-                        </div>
-                        <div class="col-xl-7">
-                            <div class="meeting-scheduler__form-box">
-                                <form class="meeting-form-validated meeting-scheduler__form" data-multistep="true" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate" data-ga4-form-name="meeting_scheduler">
-                                    @csrf
-                                    <input type="hidden" name="form_type" value="meeting">
-                                    <input type="hidden" name="subject" value="Meeting Booking Request">
-                                    <div class="meeting-scheduler__steps">
-                                        <button type="button" class="meeting-scheduler__step-tab is-active" data-step-nav="1"><span>1</span> Pick Slot</button>
-                                        <button type="button" class="meeting-scheduler__step-tab" data-step-nav="2"><span>2</span> Your Details</button>
-                                        <button type="button" class="meeting-scheduler__step-tab" data-step-nav="3"><span>3</span> Confirm</button>
-                                    </div>
-
-                                    <div class="meeting-scheduler__step-pane is-active" data-booking-step="1">
-                                        <div class="meeting-scheduler__fast-lane">
-                                            <p class="meeting-scheduler__fast-title"><span class="icon-check"></span> Fast booking: usually under 45 seconds</p>
-                                            <div class="meeting-scheduler__quick-dates" data-quick-dates></div>
-                                            <p class="meeting-scheduler__slot-status" data-slot-status>Pick a date and we will auto-select the first available slot.</p>
-                                            <p class="meeting-scheduler__slot-status"><strong>Selected timezone:</strong> <span data-timezone-label>Europe/London</span></p>
-                                        </div>
-                                        <div class="meeting-scheduler__calendar-panel">
-                                            <button type="button" class="meeting-scheduler__calendar-toggle" data-calendar-toggle aria-expanded="false" aria-controls="meeting-calendar-popover">
-                                                <span class="icon-calendar"></span>
-                                                Open visual calendar
-                                            </button>
-                                            <div class="meeting-scheduler__calendar-popover" id="meeting-calendar-popover" data-calendar-popover hidden>
-                                                <div class="meeting-calendar meeting-calendar--embedded">
-                                                    <div class="meeting-scheduler__calendar-popover-head">
-                                                        <h3>Choose a date visually</h3>
-                                                        <button type="button" class="meeting-scheduler__calendar-close" data-calendar-close aria-label="Close calendar">&times;</button>
-                                                    </div>
-                                                    <h3 class="seo-hidden-heading">Meeting calendar overview</h3>
-                                                    <div class="meeting-calendar__head">
-                                                        <button type="button" class="meeting-calendar__nav meeting-calendar__prev" aria-label="Previous month">&lsaquo;</button>
-                                                        <h4 class="meeting-calendar__month">Month Year</h4>
-                                                        <button type="button" class="meeting-calendar__nav meeting-calendar__next" aria-label="Next month">&rsaquo;</button>
-                                                    </div>
-                                                    <div class="meeting-calendar__weekdays">
-                                                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-                                                    </div>
-                                                    <div class="meeting-calendar__grid"></div>
-                                                    <div class="meeting-calendar__legend">
-                                                        <span><i class="is-available"></i> Available</span>
-                                                        <span><i class="is-booked"></i> Booked</span>
-                                                        <span><i class="is-selected"></i> Selected</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="meeting-scheduler__input">
-                                                    <input type="date" name="meeting_date" min="{{ now()->toDateString() }}" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="meeting-scheduler__input">
-                                                    <select name="meeting_slot" required>
-                                                        <option value="">Select Time Slot</option>
-                                                        @foreach($meetingSlots as $slot)
-                                                            <option value="{{ $slot }}">{{ $slot }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <div class="meeting-scheduler__calendar-actions">
-                                                    <a href="#" class="meeting-scheduler__calendar-link meeting-scheduler__calendar-link--google" target="_blank" rel="noopener" data-ga4-event="add_to_calendar" data-ga4-label="google_calendar">Add to Google Calendar</a>
-                                                    <a href="#" class="meeting-scheduler__calendar-link meeting-scheduler__calendar-link--ics" data-ga4-event="add_to_calendar" data-ga4-label="ics_download">Download .ics (iPhone/Outlook)</a>
-                                                </div>
-                                                <div class="meeting-scheduler__step-actions">
-                                                    <button type="button" class="meeting-scheduler__btn thm-btn thm-btn-two" data-step-next><span class="icon-right"></span> Continue to Details</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="meeting-scheduler__step-pane" data-booking-step="2">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="meeting-scheduler__input">
-                                                    <input type="text" name="name" placeholder="Full Name" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="meeting-scheduler__input">
-                                                    <input type="email" name="email" placeholder="Business Email" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="meeting-scheduler__input">
-                                                    <input type="text" name="phone" placeholder="Phone / WhatsApp" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="meeting-scheduler__input">
-                                                    <select name="project_type" required>
-                                                        <option value="">Project Type</option>
-                                                        <option value="Business Website">Business Website</option>
-                                                        <option value="Ecommerce Website (Shopify/WooCommerce)">Ecommerce Website (Shopify/WooCommerce)</option>
-                                                        <option value="Wix Website">Wix Website</option>
-                                                        <option value="CRM / Custom Software">CRM / Custom Software</option>
-                                                        <option value="SEO / Growth Marketing">SEO / Growth Marketing</option>
-                                                        <option value="Graphic Design + Branding">Graphic Design + Branding</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="meeting-scheduler__input">
-                                                    <select name="meeting_timezone" required>
-                                                        @foreach($timezoneOptions as $tz)
-                                                            <option value="{{ $tz }}" @selected($tz === 'Europe/London')>{{ $tz }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="meeting-scheduler__input">
-                                                    <select name="budget_range">
-                                                        <option value="">Budget Range (Optional)</option>
-                                                        <option value="GBP 1k - 3k">GBP 1k - 3k</option>
-                                                        <option value="GBP 3k - 6k">GBP 3k - 6k</option>
-                                                        <option value="GBP 6k - 12k">GBP 6k - 12k</option>
-                                                        <option value="GBP 12k+">GBP 12k+</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <div class="meeting-scheduler__input meeting-scheduler__input--textarea">
-                                                    <textarea name="message" placeholder="Optional: short note about your project"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <div class="meeting-scheduler__step-actions">
-                                                    <button type="button" class="meeting-scheduler__btn meeting-scheduler__btn--ghost" data-step-prev>Back</button>
-                                                    <button type="button" class="meeting-scheduler__btn thm-btn thm-btn-two" data-step-next><span class="icon-right"></span> Review Booking</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="meeting-scheduler__step-pane" data-booking-step="3">
-                                        <div class="meeting-scheduler__review">
-                                            <h4>Confirm your booking details</h4>
-                                            <div class="meeting-scheduler__review-grid">
-                                                <div><span>Date</span><strong data-review="meeting_date">-</strong></div>
-                                                <div><span>Time Slot</span><strong data-review="meeting_slot">-</strong></div>
-                                                <div><span>Name</span><strong data-review="name">-</strong></div>
-                                                <div><span>Email</span><strong data-review="email">-</strong></div>
-                                                <div><span>Phone</span><strong data-review="phone">-</strong></div>
-                                                <div><span>Project Type</span><strong data-review="project_type">-</strong></div>
-                                                <div><span>Budget</span><strong data-review="budget_range">-</strong></div>
-                                                <div><span>Message</span><strong data-review="message">-</strong></div>
-                                            </div>
-                                            <p class="meeting-scheduler__review-note">After booking, you will instantly get confirmation with reschedule/cancel links.</p>
-                                        </div>
-                                        <div class="meeting-scheduler__step-actions">
-                                            <button type="button" class="meeting-scheduler__btn meeting-scheduler__btn--ghost" data-step-prev>Back</button>
-                                            <button type="submit" class="meeting-scheduler__btn thm-btn thm-btn-two"><span class="icon-right"></span> Confirm Booking</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="result"></div>
-                                <div class="meeting-scheduler__next-box">
-                                    <h4>What happens next?</h4>
-                                    <ul class="list-unstyled">
-                                        <li><span class="icon-check"></span> Your slot is confirmed instantly on screen.</li>
-                                        <li><span class="icon-check"></span> Confirmation email arrives with manage/cancel links.</li>
-                                        <li><span class="icon-check"></span> We review your goals and come prepared with relevant UK web/IT recommendations.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                <div style="max-width:680px;margin:0 auto;text-align:center;">
+                    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:6px 18px;margin-bottom:20px;">
+                        <i class="fas fa-calendar-check" style="color:#38bdf8;font-size:12px;" aria-hidden="true"></i>
+                        <span style="font-size:12px;font-weight:700;color:#93c5fd;letter-spacing:.6px;text-transform:uppercase;font-family:Arial,sans-serif;">Free Discovery Call</span>
+                    </div>
+                    <h2 style="font-size:32px;font-weight:800;color:#fff;line-height:1.25;margin:0 0 14px;font-family:Arial,sans-serif;">Got a project in mind?<br>Let's talk — no commitment.</h2>
+                    <p style="font-size:16px;color:#94a3b8;margin:0 0 36px;font-family:Arial,sans-serif;line-height:1.7;">30-minute call. We'll review your goals, ask the right questions, and give you a clear direction — whether you hire us or not.</p>
+                    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+                        <a href="/contact" class="thm-btn" style="background:linear-gradient(135deg,#1d93ff,#1d4ed8);border:none;padding:14px 36px;font-size:15px;font-weight:700;border-radius:50px;">
+                            <i class="fas fa-phone-alt" style="margin-right:8px;" aria-hidden="true"></i> Book a Free Call
+                        </a>
+                        <a href="mailto:info@arsdeveloper.co.uk" style="display:inline-flex;align-items:center;gap:8px;color:#93c5fd;font-size:14px;font-weight:600;font-family:Arial,sans-serif;text-decoration:none;">
+                            <i class="fas fa-envelope" aria-hidden="true"></i> info@arsdeveloper.co.uk
+                        </a>
+                    </div>
+                    <div style="display:flex;align-items:center;justify-content:center;gap:28px;margin-top:28px;flex-wrap:wrap;">
+                        @foreach(['No signup required','UK office hours','Instant email confirmation'] as $pt)
+                        <span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#64748b;font-family:Arial,sans-serif;">
+                            <i class="fas fa-check-circle" style="color:#22c55e;font-size:12px;" aria-hidden="true"></i> {{ $pt }}
+                        </span>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Meeting Scheduler End -->
-
-        {{-- Client portal promo hidden from home to keep flow focused on new leads
-        <!-- Client Portal Discovery Start -->
-        <section class="client-portal-discovery">
-            <div class="container">
-                <div class="client-portal-discovery__inner">
-                    <div class="client-portal-discovery__content">
-                        <p class="client-portal-discovery__tag">Existing Client?</p>
-                        <h3>Track your project anytime from one secure dashboard</h3>
-                        <p>View timeline, milestones, invoices, payment status, and submit requirements without waiting on email threads.</p>
-                        <ul class="list-unstyled client-portal-discovery__points">
-                            <li><span class="icon-check"></span> Live timeline and milestone visibility</li>
-                            <li><span class="icon-check"></span> Invoice balance and payment tracking</li>
-                            <li><span class="icon-check"></span> Quick requirement submission to our team</li>
-                        </ul>
-                    </div>
-                    <div class="client-portal-discovery__cta">
-                        <a href="{{ route('client.portal.access') }}" class="thm-btn thm-btn-two"><span class="icon-right"></span> Open Client Portal</a>
-                        <a href="/contact" class="thm-btn client-portal-discovery__btn-outline">Need Access Help</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Client Portal Discovery End -->
-        --}}
-
-        <!-- Lead Forms Tabs Start -->
-        <section class="lead-forms-tabs" id="free-audit">
-            <div class="container">
-                <div class="lead-forms-tabs__intro sec-title-animation animation-style1">
-                    <h3 class="lead-forms-tabs__title title-animation">Tell us what you need</h3>
-                    <p class="lead-forms-tabs__label">Choose the fastest route to clear scope, pricing, and next steps</p>
-                </div>
-                <div class="lead-forms-tabs__nav" role="tablist" aria-label="Lead Forms" aria-orientation="horizontal">
-                    <button type="button" id="lead-tab-audit" role="tab" aria-controls="free-audit-section" tabindex="0" class="lead-forms-tabs__btn is-active" data-lead-tab="audit" aria-selected="true">
-                        Free Audit
-                    </button>
-                    <button type="button" id="lead-tab-estimate" role="tab" aria-controls="estimate-section" tabindex="-1" class="lead-forms-tabs__btn" data-lead-tab="estimate" aria-selected="false">
-                        Quick Estimate
-                    </button>
-                </div>
-            </div>
-        </section>
-        <!-- Lead Forms Tabs End -->
+        <!-- Book a Call End -->
 
         <!-- Audit Lead Section Start -->
-        <section class="audit-lead lead-forms-section is-active" id="free-audit-section" role="tabpanel" aria-labelledby="lead-tab-audit" aria-hidden="false" tabindex="0" data-lead-panel="audit">
+        <section class="audit-lead" id="free-audit">
             <div class="container">
                 <div class="audit-lead__inner">
                     <div class="row">
@@ -1173,119 +882,6 @@
         </section>
         <!-- Audit Lead Section End -->
 
-        <!-- Cost Estimator Start -->
-        <section class="cost-estimator lead-forms-section" id="estimate-section" role="tabpanel" aria-labelledby="lead-tab-estimate" aria-hidden="true" tabindex="-1" data-lead-panel="estimate">
-            <div class="container">
-                <div class="cost-estimator__inner">
-                    <div class="row">
-                        <div class="col-xl-5">
-                            <div class="cost-estimator__content">
-                                <div class="section-title-two text-left sec-title-animation animation-style2">
-                                    <div class="section-title-two__tagline-box">
-                                        <div class="section-title-two__tagline-icon-box">
-                                            <div class="section-title-two__tagline-icon-1"></div>
-                                            <div class="section-title-two__tagline-icon-2"></div>
-                                        </div>
-                                        <span class="section-title-two__tagline">60-second estimator</span>
-                                    </div>
-                                    <h2 class="section-title-two__title title-animation">Get a realistic
-                                        project range <span>before you book</span></h2>
-                                </div>
-                                <p class="cost-estimator__text">Share a few basics and we will send a realistic budget range, delivery timeline, and next-step recommendation to your inbox.</p>
-                                <div class="cost-estimator__instant is-collapsed" id="instant-estimate-panel">
-                                    <button type="button" class="cost-estimator__instant-toggle" aria-expanded="false" aria-controls="instant-estimate-body">
-                                        <span class="cost-estimator__instant-toggle-copy">
-                                            <span class="cost-estimator__instant-eyebrow">Instant estimate preview</span>
-                                            <span class="cost-estimator__instant-summary">Tap to preview your live budget range, timeline, and delivery priority.</span>
-                                        </span>
-                                        <span class="cost-estimator__instant-arrow" aria-hidden="true"></span>
-                                    </button>
-                                    <div class="cost-estimator__instant-body" id="instant-estimate-body" hidden>
-                                        <div class="cost-estimator__instant-grid">
-                                            <div class="cost-estimator__instant-item">
-                                                <span>Estimated Budget</span>
-                                                <strong data-estimate-budget>GBP 2,000 - 5,000</strong>
-                                            </div>
-                                            <div class="cost-estimator__instant-item">
-                                                <span>Expected Timeline</span>
-                                                <strong data-estimate-timeline>2 - 4 weeks</strong>
-                                            </div>
-                                            <div class="cost-estimator__instant-item">
-                                                <span>Delivery Priority</span>
-                                                <strong data-estimate-priority>Balanced speed and quality</strong>
-                                            </div>
-                                        </div>
-                                        <p class="cost-estimator__instant-note">Preview updates live as soon as you choose project type and budget range.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-7">
-                            <div class="cost-estimator__form-box">
-                                <div class="cost-estimator__form-head">
-                                    <span class="cost-estimator__form-kicker">Quick brief</span>
-                                    <p>Start with the essentials. Add project details when you are ready and we will send a realistic range to your inbox.</p>
-                                </div>
-                                <form class="contact-form-validated" action="{{ route('contact.submit') }}" method="post" novalidate="novalidate" data-ga4-form-name="quick_estimate">
-                                    @csrf
-                                    <input type="hidden" name="form_type" value="estimator">
-                                    <input type="hidden" name="subject" value="Project Estimate Request">
-                                    <div class="row cost-estimator__form-grid">
-                                        <div class="col-md-6">
-                                            <div class="cost-estimator__input">
-                                                <input type="text" name="name" placeholder="Your Name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="cost-estimator__input">
-                                                <input type="email" name="email" placeholder="Business Email" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="cost-estimator__input">
-                                                <select name="project_type">
-                                                    <option value="">Project Type</option>
-                                                    <option value="Business Website">Business Website</option>
-                                                    <option value="Ecommerce Website">Ecommerce Website</option>
-                                                    <option value="CRM / Portal">CRM / Portal</option>
-                                                    <option value="SEO Growth">SEO Growth</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="cost-estimator__input">
-                                                <select name="budget_range">
-                                                    <option value="">Expected Budget</option>
-                                                    <option value="GBP 2k - 5k">GBP 2k - 5k</option>
-                                                    <option value="GBP 5k - 10k">GBP 5k - 10k</option>
-                                                    <option value="GBP 10k - 20k">GBP 10k - 20k</option>
-                                                    <option value="GBP 20k+">GBP 20k+</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-12">
-                                            <div class="cost-estimator__input cost-estimator__input--textarea">
-                                                <textarea name="message" placeholder="Share your required features, timeline, and existing setup..." required></textarea>
-                                            </div>
-                                            <div class="cost-estimator__form-actions">
-                                                <button type="submit" class="cost-estimator__btn thm-btn thm-btn-two"><span class="icon-right"></span> Get Your Project Estimate</button>
-                                                <div class="form-privacy-note" aria-label="Privacy protected">
-                                                    <span class="form-privacy-note__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></span>
-                                                    <span>Your privacy is protected</span>
-                                                </div>
-                                                <p class="cost-estimator__form-note">Detailed briefs help us send a more accurate budget range and delivery window.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="result"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Cost Estimator End -->
 
         <!--Blog Two Start -->
         @php
@@ -1552,25 +1148,6 @@
         <!--Faq One End -->
 
 
-        <!--CTA One Start -->
-        <section class="cta-one cta-two">
-            <div class="container">
-                <div class="cta-one__inner">
-                    <div class="cta-one__img">
-                        <img src="assets/images/resources/cta-one-img-1.png" alt="">
-                    </div>
-                    <div class="cta-one__inner-content">
-                        <div class="cta-one__shape-bg"
-                            style="background-image: url(assets/images/shapes/cta-one-shape-bg.png);"></div>
-                        <h3 class="cta-one__title">Ready to plan your <br> next digital project?</h3>
-                        <div class="cta-one__btn">
-                            <a href="/contact">Talk About Your Project <span class=" icon-right-arrow-1"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--CTA One End -->
 
         {{-- Final Trust + CTA Section --}}
         <section style="padding:72px 0;background:#f0f6ff;">
