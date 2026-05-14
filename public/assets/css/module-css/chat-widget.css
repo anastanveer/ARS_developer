@@ -1,137 +1,207 @@
-/* ── Robot chat button animations ─────────────────────────────── */
-@keyframes ars-robot-walkin {
-    0%   { transform: translateX(120px) rotate(8deg); opacity: 0; }
-    60%  { transform: translateX(-6px)  rotate(-2deg); opacity: 1; }
-    80%  { transform: translateX(4px)   rotate(1deg); }
-    100% { transform: translateX(0)     rotate(0deg); }
-}
-@keyframes ars-robot-float {
-    0%,100% { transform: translateY(0)    rotate(-1.5deg); }
-    50%     { transform: translateY(-7px) rotate(1.5deg); }
-}
-@keyframes ars-robot-pulse-ring {
-    0%   { transform: scale(1);   opacity: .55; }
-    100% { transform: scale(2.2); opacity: 0; }
-}
-@keyframes ars-robot-antenna {
-    0%,100% { transform: scale(1);   }
-    50%     { transform: scale(1.5); }
-}
-@keyframes ars-robot-blink {
-    0%,88%,100% { ry: 4; }
-    93%         { ry: .5; }
-}
-@keyframes ars-robot-arm-l {
-    0%,100% { transform: rotate(0deg);    transform-origin: 5px 37px; }
-    50%     { transform: rotate(-18deg);  transform-origin: 5px 37px; }
-}
-@keyframes ars-robot-arm-r {
-    0%,100% { transform: rotate(0deg);   transform-origin: 39px 37px; }
-    50%     { transform: rotate(18deg);  transform-origin: 39px 37px; }
-}
-@keyframes ars-robot-chest {
-    0%,100% { opacity:1; }
-    50%     { opacity:.3; }
-}
-@keyframes ars-bubble-show {
-    0%,40%,100% { opacity: 0; transform: translateX(0) scale(.8); }
-    50%,85%     { opacity: 1; transform: translateX(-8px) scale(1); }
-}
+/* ═══════════════════════════════════════════════════════════════
+   ARS CUTE ROBOT CHAT BUTTON  — 20 animation states
+   ═══════════════════════════════════════════════════════════════ */
 
-.site-chat {
-    position: fixed;
-    right: 22px;
-    bottom: 22px;
-    z-index: 120;
-}
+/* ── Keyframes ─────────────────────────────────────────────── */
+@keyframes bot-walkin   { 0%{transform:translateX(130px) rotate(10deg);opacity:0} 65%{transform:translateX(-8px) rotate(-3deg);opacity:1} 82%{transform:translateX(5px) rotate(2deg)} 100%{transform:none} }
+@keyframes bot-pulse    { 0%{transform:scale(1);opacity:.5} 100%{transform:scale(2.4);opacity:0} }
+@keyframes bot-antenna  { 0%,100%{transform:scale(1) translateY(0)} 50%{transform:scale(1.6) translateY(-2px)} }
+@keyframes bot-chest    { 0%,100%{opacity:1;box-shadow:0 0 6px #38bdf8} 50%{opacity:.25;box-shadow:none} }
+@keyframes bot-shadow   { 0%,100%{transform:scaleX(1);opacity:.3} 50%{transform:scaleX(.5);opacity:.1} }
+@keyframes bot-blink    { 0%,85%,100%{transform:scaleY(1)} 92%{transform:scaleY(.08)} }
+@keyframes bot-zzz      { 0%{opacity:0;transform:translate(0,0) scale(.5)} 30%{opacity:1} 100%{opacity:0;transform:translate(12px,-18px) scale(1.2)} }
 
-/* wrapper holds pulse rings + bubble + button */
-.ars-chat-robot-wrap {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-}
+/* idle — gentle float */
+@keyframes s-idle  { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-6px) rotate(1deg)} }
+/* walk — body rock + legs */
+@keyframes s-walk-body { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-4px) rotate(2deg)} }
+@keyframes s-walk-leg-l{ 0%,100%{transform:rotate(-22deg)} 50%{transform:rotate(22deg)} }
+@keyframes s-walk-leg-r{ 0%,100%{transform:rotate(22deg)} 50%{transform:rotate(-22deg)} }
+@keyframes s-walk-arm-l{ 0%,100%{transform:rotate(18deg)} 50%{transform:rotate(-18deg)} }
+@keyframes s-walk-arm-r{ 0%,100%{transform:rotate(-18deg)} 50%{transform:rotate(18deg)} }
+/* jump */
+@keyframes s-jump  { 0%,100%{transform:translateY(0) scaleY(1)} 15%{transform:translateY(0) scaleY(.8)} 45%{transform:translateY(-20px) scaleY(1.1)} 75%{transform:translateY(3px) scaleY(.85)} }
+@keyframes s-jump-legs{ 0%,100%{transform:rotate(0)} 45%{transform:rotate(35deg)} }
+/* wave */
+@keyframes s-wave-arm  { 0%,100%{transform:rotate(-100deg) translateY(-6px)} 50%{transform:rotate(-160deg) translateY(-10px)} }
+/* dance */
+@keyframes s-dance-body{ 0%,100%{transform:translateX(-5px) rotate(-6deg)} 50%{transform:translateX(5px) rotate(6deg)} }
+@keyframes s-dance-al  { 0%,100%{transform:rotate(-50deg)} 50%{transform:rotate(10deg)} }
+@keyframes s-dance-ar  { 0%,100%{transform:rotate(50deg)} 50%{transform:rotate(-10deg)} }
+/* spin */
+@keyframes s-spin  { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+/* excited — rapid small bounces + flailing arms */
+@keyframes s-excited   { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-8px) scale(1.06)} }
+@keyframes s-flail-l   { 0%,100%{transform:rotate(-70deg)} 50%{transform:rotate(70deg)} }
+@keyframes s-flail-r   { 0%,100%{transform:rotate(70deg)} 50%{transform:rotate(-70deg)} }
+/* celebrate — arms up + jump */
+@keyframes s-cel-body  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+@keyframes s-cel-arm-l { 0%,100%{transform:rotate(-145deg)} 50%{transform:rotate(-165deg)} }
+@keyframes s-cel-arm-r { 0%,100%{transform:rotate(145deg)} 50%{transform:rotate(165deg)} }
+/* flip — somersault */
+@keyframes s-flip  { 0%{transform:translateY(0) rotate(0deg)} 35%{transform:translateY(-22px) rotate(180deg)} 70%{transform:translateY(3px) rotate(360deg)} 100%{transform:translateY(0) rotate(360deg)} }
+/* think — head tilt */
+@keyframes s-think-body{ 0%,100%{transform:rotate(-6deg) translateX(-3px)} 50%{transform:rotate(0deg) translateX(0)} }
+@keyframes s-think-ar  { 0%,100%{transform:rotate(-65deg) translateY(-8px)} }
+/* stretch */
+@keyframes s-stretch-b { 0%{transform:scaleY(1)} 30%{transform:scaleY(1.18) translateY(-5px)} 65%{transform:scaleY(.88) translateY(4px)} 100%{transform:scaleY(1)} }
+@keyframes s-stretch-al{ 0%,100%{transform:rotate(0)} 30%{transform:rotate(-95deg)} }
+@keyframes s-stretch-ar{ 0%,100%{transform:rotate(0)} 30%{transform:rotate(95deg)} }
+/* bow */
+@keyframes s-bow-body  { 0%,55%,100%{transform:rotate(0deg)} 30%{transform:rotate(32deg) translateY(5px)} }
+/* look around */
+@keyframes s-look-head { 0%,100%{transform:rotate(0deg)} 25%{transform:rotate(-18deg)} 75%{transform:rotate(18deg)} }
+/* disco — color flash + bounce */
+@keyframes s-disco-body{ 0%{transform:translateY(0) rotate(-5deg);filter:hue-rotate(0deg)} 33%{transform:translateY(-7px) rotate(5deg);filter:hue-rotate(130deg)} 66%{transform:translateY(0) rotate(-5deg);filter:hue-rotate(260deg)} 100%{transform:translateY(0) rotate(-5deg);filter:hue-rotate(360deg)} }
+/* power-up — vibrate + glow */
+@keyframes s-power { 0%,100%{transform:translateX(0) scale(1)} 25%{transform:translateX(-2px) scale(1.04)} 75%{transform:translateX(2px) scale(1.04)} }
+/* sleep — sway */
+@keyframes s-sleep-body{ 0%,100%{transform:rotate(-9deg)} 50%{transform:rotate(9deg)} }
+/* point — arm out */
+@keyframes s-point-ar  { 0%,100%{transform:rotate(90deg) translateX(4px)} }
+/* shrink — scale pulse */
+@keyframes s-shrink    { 0%,100%{transform:scale(1)} 50%{transform:scale(.82)} }
+
+/* ── Wrapper ────────────────────────────────────────────────── */
+.site-chat { position:fixed; right:22px; bottom:22px; z-index:120; }
+
+.ars-chat-robot-wrap { position:relative; display:inline-flex; align-items:center; }
 
 /* Pulse rings */
-.ars-chat-pulse {
-    position: absolute;
-    inset: 0;
-    border-radius: 999px;
-    background: rgba(29,147,255,.35);
-    pointer-events: none;
-    animation: ars-robot-pulse-ring 2.4s ease-out infinite;
-}
-.ars-chat-pulse--2 {
-    animation-delay: 1.2s;
-}
+.ars-chat-pulse { position:absolute; inset:0; border-radius:999px; background:rgba(29,147,255,.38); pointer-events:none; animation:bot-pulse 2.6s ease-out infinite; }
+.ars-chat-pulse--2 { animation-delay:1.3s; }
 
 /* Speech bubble */
 .ars-chat-bubble {
-    position: absolute;
-    right: calc(100% + 12px);
-    bottom: 50%;
-    transform: translateX(0) translateY(50%) scale(.8);
-    background: #fff;
-    color: #0f1e35;
-    font-size: 13px;
-    font-weight: 600;
-    font-family: Arial, sans-serif;
-    white-space: nowrap;
-    padding: 8px 14px;
-    border-radius: 20px 20px 4px 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,.14);
-    pointer-events: none;
-    opacity: 0;
-    animation: ars-bubble-show 6s ease-in-out infinite;
-    animation-delay: 3s;
+    position:absolute; right:calc(100% + 14px); bottom:50%;
+    transform:translateY(50%) translateX(6px) scale(.85);
+    background:#fff; color:#0f1e35; font-size:13px; font-weight:700;
+    font-family:Arial,sans-serif; white-space:nowrap;
+    padding:9px 16px; border-radius:22px 22px 4px 22px;
+    box-shadow:0 6px 24px rgba(0,0,0,.16);
+    pointer-events:none; opacity:0;
+    transition:opacity .3s, transform .3s;
 }
-.ars-chat-bubble::after {
-    content: '';
-    position: absolute;
-    right: -7px;
-    bottom: 2px;
-    border: 7px solid transparent;
-    border-left-color: #fff;
-    border-right-width: 0;
-}
+.ars-chat-bubble::after { content:''; position:absolute; right:-8px; bottom:3px; border:8px solid transparent; border-left-color:#fff; border-right-width:0; }
+.ars-chat-bubble.ars-bubble-vis { opacity:1; transform:translateY(50%) translateX(0) scale(1); }
 
-/* The actual button — robot themed */
+/* Button */
 .ars-chat-robot-btn {
-    animation:
-        ars-robot-walkin .9s cubic-bezier(.34,1.56,.64,1) both,
-        ars-robot-float  3.2s ease-in-out 1s infinite;
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
+    animation: bot-walkin .9s cubic-bezier(.34,1.56,.64,1) both;
+    cursor:pointer; position:relative; z-index:1; overflow:visible;
+    min-height:64px; padding:0 18px 0 10px;
 }
 
-/* Robot SVG wrapper */
-.ars-robot {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+/* ── Robot structure ────────────────────────────────────────── */
+.ars-bot {
+    width:42px; display:flex; flex-direction:column; align-items:center;
+    position:relative; flex-shrink:0; margin-right:4px;
 }
 
-/* Individual part animations */
-.ars-robot__antenna-tip {
-    animation: ars-robot-antenna 1.6s ease-in-out infinite;
-    transform-origin: 22px 2px;
-}
-.ars-robot__eye--l,
-.ars-robot__eye--r {
-    animation: ars-robot-blink 4s ease-in-out infinite;
-}
-.ars-robot__eye--r { animation-delay: .1s; }
+/* Antenna */
+.ars-bot__antenna { display:flex; flex-direction:column; align-items:center; }
+.ars-bot__antenna-stem { width:2px; height:7px; background:rgba(255,255,255,.75); border-radius:1px; }
+.ars-bot__antenna-ball { width:8px; height:8px; border-radius:50%; background:#38bdf8; box-shadow:0 0 8px #38bdf8; margin-top:-1px; animation:bot-antenna 1.4s ease-in-out infinite; }
 
-.ars-robot__arm--l { animation: ars-robot-arm-l 1.8s ease-in-out infinite; }
-.ars-robot__arm--r { animation: ars-robot-arm-r 1.8s ease-in-out infinite .9s; }
+/* Head */
+.ars-bot__head { width:36px; height:26px; background:rgba(255,255,255,.96); border-radius:8px; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; padding:3px 0; margin-top:1px; }
+.ars-bot__ear { position:absolute; width:5px; height:9px; background:rgba(255,255,255,.85); border-radius:3px; top:50%; transform:translateY(-50%); }
+.ars-bot__ear--l { left:-6px; }
+.ars-bot__ear--r { right:-6px; }
+.ars-bot__eyes { display:flex; gap:7px; }
+.ars-bot__eye { width:9px; height:9px; background:#1d93ff; border-radius:50%; position:relative; overflow:hidden; animation:bot-blink 3.5s ease-in-out infinite; }
+.ars-bot__eye--r { animation-delay:.12s; }
+.ars-bot__pupil { position:absolute; top:2px; left:2px; width:3px; height:3px; background:#fff; border-radius:50%; }
+.ars-bot__mouth { width:16px; height:5px; border:2px solid #1d4ed8; border-top:none; border-radius:0 0 8px 8px; }
 
-.ars-robot__chest { animation: ars-robot-chest 1.4s ease-in-out infinite; }
+/* Neck */
+.ars-bot__neck { width:8px; height:4px; background:rgba(255,255,255,.55); border-radius:2px; }
 
-/* hide pulse + bubble when chat is open */
+/* Body */
+.ars-bot__body { width:32px; height:20px; background:rgba(255,255,255,.88); border-radius:7px; position:relative; display:flex; align-items:center; justify-content:center; }
+.ars-bot__arm { position:absolute; width:8px; height:16px; background:rgba(255,255,255,.8); border-radius:4px; top:1px; transform-origin:top center; }
+.ars-bot__arm--l { left:-10px; }
+.ars-bot__arm--r { right:-10px; }
+.ars-bot__chest-light { width:9px; height:9px; border-radius:50%; background:#38bdf8; box-shadow:0 0 7px #38bdf8; animation:bot-chest 1.3s ease-in-out infinite; }
+
+/* Legs */
+.ars-bot__legs { display:flex; gap:6px; margin-top:2px; }
+.ars-bot__leg { width:10px; height:13px; background:rgba(255,255,255,.8); border-radius:3px 3px 5px 5px; transform-origin:top center; }
+
+/* Shadow */
+.ars-bot__shadow { width:28px; height:5px; background:rgba(0,0,0,.18); border-radius:50%; margin-top:2px; animation:bot-shadow 2s ease-in-out infinite; }
+
+/* ZZZ */
+.ars-bot__zzz { display:none; position:absolute; top:-6px; right:-4px; font-size:11px; font-weight:800; color:#38bdf8; line-height:1; pointer-events:none; }
+.ars-bot__zzz span { display:inline-block; }
+.ars-bot__zzz span:nth-child(1) { animation:bot-zzz 2s ease-in-out .5s infinite; }
+.ars-bot__zzz span:nth-child(2) { animation:bot-zzz 2s ease-in-out 1s  infinite; }
+
+/* ── State classes applied by JS ────────────────────────────── */
+.ars-bot.s-idle  { animation:s-idle 2.6s ease-in-out infinite; }
+
+.ars-bot.s-walk  { animation:s-walk-body .5s ease-in-out infinite; }
+.ars-bot.s-walk .ars-bot__leg--l { animation:s-walk-leg-l .5s ease-in-out infinite; }
+.ars-bot.s-walk .ars-bot__leg--r { animation:s-walk-leg-r .5s ease-in-out infinite; }
+.ars-bot.s-walk .ars-bot__arm--l { animation:s-walk-arm-l .5s ease-in-out infinite; }
+.ars-bot.s-walk .ars-bot__arm--r { animation:s-walk-arm-r .5s ease-in-out infinite; }
+
+.ars-bot.s-jump  { animation:s-jump .65s cubic-bezier(.5,2,.5,.8) infinite; }
+.ars-bot.s-jump .ars-bot__leg--l,
+.ars-bot.s-jump .ars-bot__leg--r { animation:s-jump-legs .65s ease-in-out infinite; }
+
+.ars-bot.s-wave  { animation:s-idle 2s ease-in-out infinite; }
+.ars-bot.s-wave .ars-bot__arm--r { animation:s-wave-arm .45s ease-in-out infinite; }
+
+.ars-bot.s-dance { animation:s-dance-body .4s ease-in-out infinite; }
+.ars-bot.s-dance .ars-bot__arm--l { animation:s-dance-al .4s ease-in-out infinite; }
+.ars-bot.s-dance .ars-bot__arm--r { animation:s-dance-ar .4s ease-in-out infinite; }
+.ars-bot.s-dance .ars-bot__leg--l { animation:s-walk-leg-l .4s ease-in-out infinite; }
+.ars-bot.s-dance .ars-bot__leg--r { animation:s-walk-leg-r .4s ease-in-out infinite; }
+
+.ars-bot.s-spin  { animation:s-spin .9s linear infinite; }
+
+.ars-bot.s-excited { animation:s-excited .22s ease-in-out infinite; }
+.ars-bot.s-excited .ars-bot__arm--l { animation:s-flail-l .18s ease-in-out infinite; }
+.ars-bot.s-excited .ars-bot__arm--r { animation:s-flail-r .18s ease-in-out infinite .09s; }
+
+.ars-bot.s-celebrate { animation:s-cel-body .55s ease-in-out infinite; }
+.ars-bot.s-celebrate .ars-bot__arm--l { animation:s-cel-arm-l .55s ease-in-out infinite; }
+.ars-bot.s-celebrate .ars-bot__arm--r { animation:s-cel-arm-r .55s ease-in-out infinite; }
+
+.ars-bot.s-flip  { animation:s-flip 1.1s cubic-bezier(.5,2,.5,.8) infinite; }
+
+.ars-bot.s-think { animation:s-think-body 2s ease-in-out infinite; }
+.ars-bot.s-think .ars-bot__arm--r { animation:s-think-ar 2s ease-in-out infinite; }
+
+.ars-bot.s-stretch { animation:s-stretch-b 1.6s ease-in-out infinite; }
+.ars-bot.s-stretch .ars-bot__arm--l { animation:s-stretch-al 1.6s ease-in-out infinite; }
+.ars-bot.s-stretch .ars-bot__arm--r { animation:s-stretch-ar 1.6s ease-in-out infinite; }
+
+.ars-bot.s-bow .ars-bot__head { animation:s-bow-body 2.2s ease-in-out infinite; transform-origin:bottom center; }
+
+.ars-bot.s-look { animation:s-idle 3s ease-in-out infinite; }
+.ars-bot.s-look .ars-bot__head { animation:s-look-head 2.2s ease-in-out infinite; }
+
+.ars-bot.s-disco { animation:s-disco-body .4s ease-in-out infinite; }
+.ars-bot.s-disco .ars-bot__leg--l { animation:s-walk-leg-l .4s ease-in-out infinite; }
+.ars-bot.s-disco .ars-bot__leg--r { animation:s-walk-leg-r .4s ease-in-out infinite; }
+
+.ars-bot.s-power { animation:s-power .15s ease-in-out infinite; }
+.ars-bot.s-power .ars-bot__head,
+.ars-bot.s-power .ars-bot__body { box-shadow:0 0 14px rgba(56,189,248,.9); }
+
+.ars-bot.s-sleep { animation:s-sleep-body 2.8s ease-in-out infinite; }
+.ars-bot.s-sleep .ars-bot__zzz { display:block; }
+
+.ars-bot.s-point { animation:s-idle 2s ease-in-out infinite; }
+.ars-bot.s-point .ars-bot__arm--r { animation:s-point-ar 2s ease-in-out infinite; }
+
+.ars-bot.s-shrink { animation:s-shrink 1.2s ease-in-out infinite; }
+
+/* hide decorations when chat open */
 .site-chat--open .ars-chat-pulse,
-.site-chat--open .ars-chat-bubble { display: none; }
+.site-chat--open .ars-chat-bubble { display:none; }
 
 .site-chat__toggle {
     border: 0;

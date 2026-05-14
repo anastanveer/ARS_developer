@@ -13,47 +13,105 @@
     data-conversation-url="{{ url('/chat/conversation') }}"
     data-whatsapp-url="https://wa.me/{{ $chatPhoneDigits }}"
 >
-    {{-- Animated robot chat button --}}
+    {{-- Advanced animated robot chat button --}}
     <div class="ars-chat-robot-wrap">
-        {{-- Pulsing rings --}}
         <span class="ars-chat-pulse ars-chat-pulse--1" aria-hidden="true"></span>
         <span class="ars-chat-pulse ars-chat-pulse--2" aria-hidden="true"></span>
 
-        {{-- Speech bubble tooltip --}}
-        <span class="ars-chat-bubble" aria-hidden="true">Need help? 👋</span>
+        {{-- Speech bubble (JS updates text) --}}
+        <div class="ars-chat-bubble" id="ars-bot-bubble" aria-hidden="true">Need help? 👋</div>
 
         <button type="button" class="site-chat__toggle ars-chat-robot-btn" data-chat-toggle aria-expanded="false" aria-controls="site-chat-panel">
-            {{-- Robot SVG --}}
-            <span class="ars-robot" aria-hidden="true">
-                <svg viewBox="0 0 44 52" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
-                    {{-- Antenna --}}
-                    <line class="ars-robot__antenna-stem" x1="22" y1="10" x2="22" y2="3" stroke="rgba(255,255,255,.8)" stroke-width="2" stroke-linecap="round"/>
-                    <circle class="ars-robot__antenna-tip" cx="22" cy="2" r="2.5" fill="#38bdf8"/>
-                    {{-- Head --}}
-                    <rect class="ars-robot__head" x="7" y="10" width="30" height="22" rx="7" fill="rgba(255,255,255,.95)"/>
-                    {{-- Eyes --}}
-                    <ellipse class="ars-robot__eye ars-robot__eye--l" cx="16" cy="20" rx="4" ry="4" fill="#1d93ff"/>
-                    <ellipse class="ars-robot__eye ars-robot__eye--r" cx="28" cy="20" rx="4" ry="4" fill="#1d93ff"/>
-                    {{-- Eye shine --}}
-                    <circle cx="17.5" cy="18.5" r="1.2" fill="#fff" opacity=".85"/>
-                    <circle cx="29.5" cy="18.5" r="1.2" fill="#fff" opacity=".85"/>
-                    {{-- Smile --}}
-                    <path class="ars-robot__mouth" d="M14 27 Q22 32 30 27" stroke="#1d4ed8" stroke-width="2" fill="none" stroke-linecap="round"/>
-                    {{-- Neck --}}
-                    <rect x="19" y="32" width="6" height="4" rx="2" fill="rgba(255,255,255,.6)"/>
-                    {{-- Body --}}
-                    <rect class="ars-robot__body" x="9" y="36" width="26" height="14" rx="6" fill="rgba(255,255,255,.8)"/>
-                    {{-- Chest button --}}
-                    <circle class="ars-robot__chest" cx="22" cy="43" r="3" fill="#38bdf8"/>
-                    <circle cx="22" cy="43" r="1.2" fill="#fff" opacity=".8"/>
-                    {{-- Arms --}}
-                    <rect class="ars-robot__arm ars-robot__arm--l" x="2" y="37" width="7" height="10" rx="3.5" fill="rgba(255,255,255,.7)"/>
-                    <rect class="ars-robot__arm ars-robot__arm--r" x="35" y="37" width="7" height="10" rx="3.5" fill="rgba(255,255,255,.7)"/>
-                </svg>
-            </span>
+
+            {{-- Robot character (div-based for per-part CSS animation) --}}
+            <div class="ars-bot" id="ars-bot-char" aria-hidden="true">
+                <div class="ars-bot__antenna">
+                    <div class="ars-bot__antenna-stem"></div>
+                    <div class="ars-bot__antenna-ball"></div>
+                </div>
+                <div class="ars-bot__head">
+                    <div class="ars-bot__ear ars-bot__ear--l"></div>
+                    <div class="ars-bot__ear ars-bot__ear--r"></div>
+                    <div class="ars-bot__eyes">
+                        <div class="ars-bot__eye ars-bot__eye--l"><div class="ars-bot__pupil"></div></div>
+                        <div class="ars-bot__eye ars-bot__eye--r"><div class="ars-bot__pupil"></div></div>
+                    </div>
+                    <div class="ars-bot__mouth"></div>
+                </div>
+                <div class="ars-bot__neck"></div>
+                <div class="ars-bot__body">
+                    <div class="ars-bot__arm ars-bot__arm--l"></div>
+                    <div class="ars-bot__arm ars-bot__arm--r"></div>
+                    <div class="ars-bot__chest-light"></div>
+                </div>
+                <div class="ars-bot__legs">
+                    <div class="ars-bot__leg ars-bot__leg--l"></div>
+                    <div class="ars-bot__leg ars-bot__leg--r"></div>
+                </div>
+                <div class="ars-bot__shadow"></div>
+                <div class="ars-bot__zzz" id="ars-bot-zzz" aria-hidden="true">z<span>z</span><span>z</span></div>
+            </div>
+
             <span class="site-chat__toggle-label">Live Chat</span>
         </button>
     </div>
+
+    <script>
+    (function(){
+        var bot    = document.getElementById('ars-bot-char');
+        var bubble = document.getElementById('ars-bot-bubble');
+        var zzz    = document.getElementById('ars-bot-zzz');
+        if (!bot) return;
+
+        var states = [
+            { cls:'s-idle',      msg:'Hi there! 👋',             dur:3000 },
+            { cls:'s-walk',      msg:'Need help? 😊',             dur:2800 },
+            { cls:'s-jump',      msg:'Ask me anything!',           dur:2200 },
+            { cls:'s-wave',      msg:"Let's chat! 💬",             dur:2800 },
+            { cls:'s-dance',     msg:'Free consult → 🎉',          dur:2200 },
+            { cls:'s-spin',      msg:'Quick question?',             dur:1800 },
+            { cls:'s-excited',   msg:"I'm ready! 🚀",              dur:1800 },
+            { cls:'s-celebrate', msg:'50+ UK projects! ⭐',        dur:2400 },
+            { cls:'s-flip',      msg:'Wheee! 🔄',                  dur:2000 },
+            { cls:'s-think',     msg:'Hmm... 🤔',                  dur:2800 },
+            { cls:'s-stretch',   msg:'Anytime, I\'m here!',        dur:2500 },
+            { cls:'s-bow',       msg:'At your service! 🎩',        dur:3000 },
+            { cls:'s-look',      msg:'Looking for something?',     dur:2800 },
+            { cls:'s-disco',     msg:'🎵 Let\'s goo!',             dur:1800 },
+            { cls:'s-power',     msg:'Power up! ⚡',               dur:1800 },
+            { cls:'s-sleep',     msg:'ZZZ... 💤',                  dur:3000 },
+            { cls:'s-walk',      msg:'I\'m back! 😄',              dur:2000 },
+            { cls:'s-point',     msg:'Talk to the founder!',       dur:2800 },
+            { cls:'s-shrink',    msg:'Pssst... free audit!',       dur:2400 },
+            { cls:'s-idle',      msg:'Chat with us! 💙',           dur:3000 },
+        ];
+
+        var allCls = states.map(function(s){return s.cls;});
+        var idx = 0, bubTimer;
+
+        function next() {
+            allCls.forEach(function(c){ bot.classList.remove(c); });
+            var st = states[idx];
+            bot.classList.add(st.cls);
+
+            if (zzz) zzz.style.display = st.cls === 's-sleep' ? 'block' : 'none';
+
+            if (bubble) {
+                bubble.textContent = st.msg;
+                bubble.classList.add('ars-bubble-vis');
+                clearTimeout(bubTimer);
+                bubTimer = setTimeout(function(){
+                    bubble.classList.remove('ars-bubble-vis');
+                }, Math.min(st.dur - 500, 2200));
+            }
+            idx = (idx + 1) % states.length;
+            setTimeout(next, st.dur);
+        }
+
+        bot.classList.add('s-idle');
+        setTimeout(next, 2000);
+    })();
+    </script>
 
     <div class="site-chat__panel" id="site-chat-panel" hidden>
         <div class="site-chat__head">
