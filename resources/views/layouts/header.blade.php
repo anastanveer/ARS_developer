@@ -675,6 +675,49 @@
             '/portfolio-details' => ['/portfolio', '/services', '/pricing', '/contact'],
             '/testimonials' => ['/portfolio', '/services', '/contact'],
             '/gallery' => ['/portfolio', '/services', '/contact'],
+            // UK platform service pages
+            '/laravel-developer-uk'       => ['/laravel-developer-london', '/php-developer-uk', '/crm-development-uk', '/app-development', '/services', '/contact', '/pricing', '/portfolio'],
+            '/wordpress-developer-uk'     => ['/wordpress-developer-london', '/shopify-developer-uk', '/web-design-development', '/services', '/contact', '/pricing', '/portfolio'],
+            '/shopify-developer-uk'       => ['/shopify-developer-london', '/ecommerce-developer-uk', '/wordpress-developer-uk', '/services', '/contact', '/pricing'],
+            '/php-developer-uk'           => ['/laravel-developer-uk', '/php-developer-london', '/software-development', '/services', '/contact'],
+            '/react-developer-uk'         => ['/nextjs-developer-uk', '/react-developer-london', '/app-development', '/services', '/contact'],
+            '/nextjs-developer-uk'        => ['/react-developer-uk', '/react-developer-london', '/laravel-developer-uk', '/services', '/contact'],
+            '/crm-development-uk'         => ['/laravel-developer-uk', '/software-development', '/app-development', '/services', '/contact', '/pricing'],
+            '/ecommerce-developer-uk'     => ['/shopify-developer-uk', '/wordpress-developer-uk', '/web-design-development', '/search-engine-optimization', '/services', '/contact'],
+            // London combos
+            '/laravel-developer-london'   => ['/laravel-developer-uk', '/php-developer-london', '/react-developer-london', '/web-developer-london', '/services', '/contact'],
+            '/wordpress-developer-london' => ['/wordpress-developer-uk', '/shopify-developer-london', '/web-developer-london', '/services', '/contact'],
+            '/shopify-developer-london'   => ['/shopify-developer-uk', '/ecommerce-developer-uk', '/web-developer-london', '/services', '/contact'],
+            '/react-developer-london'     => ['/react-developer-uk', '/nextjs-developer-uk', '/laravel-developer-london', '/web-developer-london', '/services', '/contact'],
+            '/php-developer-london'       => ['/php-developer-uk', '/laravel-developer-london', '/laravel-developer-uk', '/web-developer-london', '/services', '/contact'],
+            // UK city pages
+            '/web-developer-london'       => ['/laravel-developer-london', '/wordpress-developer-london', '/shopify-developer-london', '/react-developer-london', '/php-developer-london', '/services', '/contact', '/portfolio'],
+            '/web-developer-manchester'   => ['/laravel-developer-uk', '/wordpress-developer-uk', '/web-developer-london', '/services', '/contact', '/portfolio'],
+            '/web-developer-birmingham'   => ['/laravel-developer-uk', '/wordpress-developer-uk', '/web-developer-london', '/services', '/contact', '/portfolio'],
+            '/web-developer-stoke-on-trent' => ['/laravel-developer-uk', '/wordpress-developer-uk', '/services', '/contact', '/portfolio'],
+            '/web-developer-leeds'        => ['/web-developer-manchester', '/web-developer-sheffield', '/laravel-developer-uk', '/wordpress-developer-uk', '/services', '/contact'],
+            '/web-developer-sheffield'    => ['/web-developer-leeds', '/web-developer-manchester', '/laravel-developer-uk', '/wordpress-developer-uk', '/services', '/contact'],
+            '/web-developer-bristol'      => ['/web-developer-london', '/react-developer-uk', '/laravel-developer-uk', '/shopify-developer-uk', '/services', '/contact'],
+            '/web-developer-glasgow'      => ['/web-developer-edinburgh', '/laravel-developer-uk', '/wordpress-developer-uk', '/services', '/contact'],
+            '/web-developer-edinburgh'    => ['/web-developer-glasgow', '/laravel-developer-uk', '/wordpress-developer-uk', '/services', '/contact'],
+            // High-volume generic UK + new tech stack pages
+            '/web-developer-uk'           => ['/laravel-developer-uk', '/wordpress-developer-uk', '/react-developer-uk', '/nextjs-developer-uk', '/shopify-developer-uk', '/web-developer-london', '/web-developer-manchester', '/web-developer-birmingham', '/services', '/contact', '/portfolio'],
+            '/nextjs-developer-london'    => ['/nextjs-developer-uk', '/react-developer-london', '/react-developer-uk', '/laravel-developer-london', '/web-developer-london', '/services', '/contact'],
+            '/typescript-developer-uk'    => ['/react-developer-uk', '/nextjs-developer-uk', '/node-developer-uk', '/app-development', '/services', '/contact'],
+            '/vue-developer-uk'           => ['/react-developer-uk', '/nextjs-developer-uk', '/node-developer-uk', '/app-development', '/services', '/contact'],
+            '/node-developer-uk'          => ['/laravel-developer-uk', '/react-developer-uk', '/typescript-developer-uk', '/software-development', '/services', '/contact'],
+            // Additional UK city pages
+            '/web-developer-liverpool'    => ['/web-developer-manchester', '/web-developer-uk', '/laravel-developer-uk', '/wordpress-developer-uk', '/services', '/contact', '/portfolio'],
+            '/web-developer-cardiff'      => ['/web-developer-bristol', '/web-developer-uk', '/wordpress-developer-uk', '/laravel-developer-uk', '/services', '/contact', '/portfolio'],
+            '/web-developer-nottingham'   => ['/web-developer-leicester', '/web-developer-birmingham', '/laravel-developer-uk', '/wordpress-developer-uk', '/services', '/contact'],
+            '/web-developer-newcastle'    => ['/web-developer-leeds', '/web-developer-sheffield', '/web-developer-uk', '/laravel-developer-uk', '/services', '/contact'],
+            '/web-developer-leicester'    => ['/web-developer-nottingham', '/web-developer-coventry', '/web-developer-birmingham', '/laravel-developer-uk', '/services', '/contact'],
+            '/web-developer-coventry'     => ['/web-developer-birmingham', '/web-developer-leicester', '/web-developer-uk', '/laravel-developer-uk', '/services', '/contact'],
+            // London tech stack combos
+            '/vue-developer-london'       => ['/vue-developer-uk', '/react-developer-london', '/nextjs-developer-london', '/web-developer-london', '/services', '/contact'],
+            '/node-developer-london'      => ['/node-developer-uk', '/react-developer-london', '/typescript-developer-london', '/laravel-developer-london', '/services', '/contact'],
+            '/typescript-developer-london' => ['/typescript-developer-uk', '/react-developer-london', '/node-developer-london', '/nextjs-developer-london', '/services', '/contact'],
+            '/crm-developer-london'       => ['/crm-development-uk', '/laravel-developer-london', '/laravel-developer-uk', '/web-developer-london', '/services', '/contact'],
         ];
 
         $cornerstoneLinks = ['/services', '/portfolio', '/pricing', '/blog', '/uk-growth-hub', '/contact', '/about', '/sectors/healthcare', '/sectors/law-firms', '/sectors/ecommerce', '/sectors/b2b'];
@@ -694,6 +737,49 @@
             '/sectors/law-firms' => ['Law Firm Website Design', 'Legal Service SEO', 'Solicitor Lead Generation', 'Consultation Funnels'],
             '/sectors/ecommerce' => ['Shopify Development UK', 'WooCommerce Growth', 'Ecommerce SEO', 'Checkout Conversion'],
             '/sectors/b2b' => ['B2B Website Development', 'CRM Workflow Automation', 'Lead Pipeline Visibility', 'Operational Dashboards'],
+            // UK platform service pages
+            '/laravel-developer-uk'       => ['Laravel Development', 'PHP Web Applications', 'REST API Development', 'UK GDPR Compliance', 'SaaS Platform Development'],
+            '/wordpress-developer-uk'     => ['WordPress Development', 'WooCommerce UK', 'Gutenberg Block Themes', 'UK GDPR Cookie Consent', 'Core Web Vitals'],
+            '/shopify-developer-uk'       => ['Shopify Development', 'UK VAT Three-Tier', 'Post-Brexit Shopify Markets', 'Klarna UK', 'Shopify 2.0'],
+            '/php-developer-uk'           => ['PHP Development', 'PHP 8.3', 'Laravel PHP', 'Legacy PHP Migration', 'API Development'],
+            '/react-developer-uk'         => ['React Development', 'React Dashboards', 'Single Page Applications', 'Next.js UK', 'TypeScript React'],
+            '/nextjs-developer-uk'        => ['Next.js Development', 'App Router', 'Server Side Rendering', 'Headless CMS', 'React Server Components'],
+            '/crm-development-uk'         => ['CRM Development', 'Custom CRM', 'GoCardless UK', 'Stripe UK', 'UK GDPR CRM'],
+            '/ecommerce-developer-uk'     => ['Ecommerce Development', 'Shopify UK', 'WooCommerce UK', 'UK VAT Ecommerce', 'BNPL Integration'],
+            // London combos
+            '/laravel-developer-london'   => ['Laravel Development London', 'London Fintech PHP', 'Laravel SaaS London', 'PHP Developer London'],
+            '/wordpress-developer-london' => ['WordPress Development London', 'WooCommerce London', 'London Website Design'],
+            '/shopify-developer-london'   => ['Shopify Development London', 'London Ecommerce', 'Shopify 2.0 London'],
+            '/react-developer-london'     => ['React Development London', 'London SaaS Frontend', 'Next.js London', 'Fintech Dashboard London'],
+            '/php-developer-london'       => ['PHP Development London', 'Laravel London', 'Legacy PHP Migration London'],
+            // UK city pages
+            '/web-developer-london'       => ['Web Development London', 'London Website Design', 'London SEO', 'London Software Agency'],
+            '/web-developer-manchester'   => ['Web Development Manchester', 'Manchester Website Design', 'Manchester SEO', 'Northern Powerhouse Digital'],
+            '/web-developer-birmingham'   => ['Web Development Birmingham', 'Birmingham Website Design', 'Birmingham SEO', 'West Midlands Digital'],
+            '/web-developer-stoke-on-trent' => ['Web Development Stoke-on-Trent', 'Staffordshire Website Design', 'ARS Developer Stoke'],
+            '/web-developer-leeds'        => ['Web Development Leeds', 'Leeds Website Design', 'Leeds SEO', 'Yorkshire Digital Agency'],
+            '/web-developer-sheffield'    => ['Web Development Sheffield', 'Sheffield Website Design', 'Sheffield SEO', 'South Yorkshire Digital'],
+            '/web-developer-bristol'      => ['Web Development Bristol', 'Bristol Website Design', 'Silicon Gorge', 'Southwest UK Digital'],
+            '/web-developer-glasgow'      => ['Web Development Glasgow', 'Glasgow Website Design', 'Scottish Digital Agency', 'Glasgow SEO'],
+            '/web-developer-edinburgh'    => ['Web Development Edinburgh', 'Edinburgh Website Design', 'Edinburgh SEO', 'Scottish Capital Digital'],
+            // Additional UK city pages
+            '/web-developer-liverpool'    => ['Web Development Liverpool', 'Liverpool Website Design', 'Liverpool SEO', 'Merseyside Digital Agency'],
+            '/web-developer-cardiff'      => ['Web Development Cardiff', 'Cardiff Website Design', 'Welsh Web Developer', 'Bilingual Welsh English Website'],
+            '/web-developer-nottingham'   => ['Web Development Nottingham', 'Nottingham Website Design', 'East Midlands Web Developer', 'Nottingham SEO'],
+            '/web-developer-newcastle'    => ['Web Development Newcastle', 'Newcastle Website Design', 'Northeast England Web Developer', 'Tyne and Wear Digital'],
+            '/web-developer-leicester'    => ['Web Development Leicester', 'Leicester Website Design', 'Leicestershire Web Developer', 'East Midlands Digital'],
+            '/web-developer-coventry'     => ['Web Development Coventry', 'Coventry Website Design', 'West Midlands Web Developer', 'Coventry SEO'],
+            // London tech stack combos
+            '/vue-developer-london'       => ['Vue.js Development London', 'London Vue 3 Composition API', 'Nuxt.js London', 'London SaaS Frontend Vue'],
+            '/node-developer-london'      => ['Node.js Development London', 'London Express API', 'London Microservices Node.js', 'Fintech Node.js London'],
+            '/typescript-developer-london' => ['TypeScript Development London', 'London TypeScript Strict Mode', 'TypeScript React London', 'London SaaS TypeScript'],
+            '/crm-developer-london'       => ['CRM Development London', 'Custom CRM London', 'London Client Portal', 'Bespoke CRM System London'],
+            // High-volume generic UK + new tech stack pages
+            '/web-developer-uk'           => ['Web Development UK', 'UK Website Developer', 'UK Web Agency', 'UK GDPR Web Development', 'Core Web Vitals UK'],
+            '/nextjs-developer-london'    => ['Next.js Development London', 'London React Framework', 'App Router London', 'Headless CMS London', 'London SSR Developer'],
+            '/typescript-developer-uk'    => ['TypeScript Development UK', 'TypeScript React', 'TypeScript Node.js', 'Typed JavaScript UK', 'TypeScript API Development'],
+            '/vue-developer-uk'           => ['Vue.js Development UK', 'Vue 3 Composition API', 'Nuxt.js UK', 'Vue Dashboards UK', 'Progressive Web Apps Vue'],
+            '/node-developer-uk'          => ['Node.js Development UK', 'Express.js UK', 'REST API Node.js', 'Server-Side JavaScript UK', 'Node.js Microservices'],
         ];
 
         $serviceSchemaCatalog = [
@@ -733,6 +819,105 @@
                 'path' => '/design-and-branding',
                 'type' => 'Brand Strategy and UX Design',
             ],
+            // ── New UK service pages ─────────────────────────────────
+            'laravel-developer-uk' => [
+                'name' => 'Laravel Developer UK — Custom Applications and APIs',
+                'description' => 'Custom Laravel web applications, REST APIs, CRM systems, and SaaS platforms for UK businesses. UK GDPR compliant. GBP milestone contracts.',
+                'path' => '/laravel-developer-uk',
+                'type' => 'Laravel Development',
+            ],
+            'wordpress-developer-uk' => [
+                'name' => 'WordPress Developer UK — Custom Themes and WooCommerce',
+                'description' => 'Custom WordPress sites, Gutenberg block themes, WooCommerce with UK VAT, and ICO-compliant cookie consent for UK businesses.',
+                'path' => '/wordpress-developer-uk',
+                'type' => 'WordPress Development',
+            ],
+            'shopify-developer-uk' => [
+                'name' => 'Shopify Developer UK — Custom Themes and UK VAT',
+                'description' => 'Shopify 2.0 custom themes, UK VAT three-tier, post-Brexit Shopify Markets, and Klarna UK integration for UK ecommerce brands.',
+                'path' => '/shopify-developer-uk',
+                'type' => 'Shopify Development',
+            ],
+            'php-developer-uk' => [
+                'name' => 'PHP Developer UK — PHP 8.3 and Laravel',
+                'description' => 'PHP 8.3 and Laravel development for UK businesses — legacy migration, REST APIs, and UK GDPR compliant system architecture.',
+                'path' => '/php-developer-uk',
+                'type' => 'PHP Development',
+            ],
+            'react-developer-uk' => [
+                'name' => 'React Developer UK — SPAs, Dashboards and Next.js',
+                'description' => 'React and Next.js web applications for UK businesses — client dashboards, SaaS frontends, and API-connected single-page applications.',
+                'path' => '/react-developer-uk',
+                'type' => 'React Development',
+            ],
+            'nextjs-developer-uk' => [
+                'name' => 'Next.js Developer UK — App Router and SSR',
+                'description' => 'Next.js 15 app router development with React Server Components, streaming SSR, and headless CMS integration for UK businesses.',
+                'path' => '/nextjs-developer-uk',
+                'type' => 'Next.js Development',
+            ],
+            'crm-development-uk' => [
+                'name' => 'CRM Development UK — Custom Business CRM Systems',
+                'description' => 'Custom CRM systems for UK businesses built on Laravel — client portals, billing integration, UK GDPR compliance, and milestone contracts.',
+                'path' => '/crm-development-uk',
+                'type' => 'CRM Development',
+            ],
+            'ecommerce-developer-uk' => [
+                'name' => 'Ecommerce Developer UK — Shopify, WooCommerce and Custom',
+                'description' => 'UK ecommerce development across Shopify, WooCommerce, and custom Laravel — UK VAT, post-Brexit EU markets, and BNPL integration.',
+                'path' => '/ecommerce-developer-uk',
+                'type' => 'Ecommerce Development',
+            ],
+            // ── New tech stack pages ─────────────────────────────────
+            'web-developer-uk' => [
+                'name' => 'Web Developer UK — Custom Websites, Web Apps & SEO',
+                'description' => 'UK web developer delivering custom websites, Laravel web applications, CRM systems, and local SEO for businesses across England, Scotland, and Wales.',
+                'path' => '/web-developer-uk',
+                'type' => 'Web Development',
+            ],
+            'typescript-developer-uk' => [
+                'name' => 'TypeScript Developer UK — Typed Frontend and API Development',
+                'description' => 'TypeScript development for UK businesses — typed React frontends, Node.js APIs, and full-stack TypeScript applications with strict type safety.',
+                'path' => '/typescript-developer-uk',
+                'type' => 'TypeScript Development',
+            ],
+            'vue-developer-uk' => [
+                'name' => 'Vue.js Developer UK — Vue 3 and Nuxt.js Applications',
+                'description' => 'Vue 3 and Nuxt.js development for UK businesses — dashboards, SPAs, progressive web apps, and headless CMS frontends.',
+                'path' => '/vue-developer-uk',
+                'type' => 'Vue.js Development',
+            ],
+            'node-developer-uk' => [
+                'name' => 'Node.js Developer UK — APIs, Microservices and Server-Side JS',
+                'description' => 'Node.js development for UK businesses — REST APIs, Express.js backends, real-time applications, and microservices architecture.',
+                'path' => '/node-developer-uk',
+                'type' => 'Node.js Development',
+            ],
+            // ── London tech stack combos ──────────────────────────────────
+            'vue-developer-london' => [
+                'name' => 'Vue Developer London — Vue 3, Nuxt.js & London SaaS',
+                'description' => 'Vue 3 and Nuxt.js development for London businesses — Composition API, TypeScript strict mode, and Laravel API integration.',
+                'path' => '/vue-developer-london',
+                'type' => 'Vue.js Development',
+            ],
+            'node-developer-london' => [
+                'name' => 'Node.js Developer London — APIs, Microservices & Real-Time',
+                'description' => 'Node.js REST APIs, microservices, and real-time WebSocket systems for London fintech and SaaS businesses.',
+                'path' => '/node-developer-london',
+                'type' => 'Node.js Development',
+            ],
+            'typescript-developer-london' => [
+                'name' => 'TypeScript Developer London — Type-Safe React, Node.js & SaaS',
+                'description' => 'TypeScript strict mode development for London SaaS, fintech, and React/Node.js applications.',
+                'path' => '/typescript-developer-london',
+                'type' => 'TypeScript Development',
+            ],
+            'crm-developer-london' => [
+                'name' => 'CRM Developer London — Custom CRM Systems & Business Portals',
+                'description' => 'Custom Laravel CRM systems, client portals, and GoCardless/Stripe billing integration for London businesses.',
+                'path' => '/crm-developer-london',
+                'type' => 'CRM Development',
+            ],
         ];
 
         $servicePageMap = [
@@ -747,6 +932,47 @@
             '/sectors/law-firms' => ['web-design-development', 'search-engine-optimization'],
             '/sectors/ecommerce' => ['web-design-development', 'digital-marketing', 'search-engine-optimization'],
             '/sectors/b2b' => ['software-development', 'app-development', 'search-engine-optimization'],
+            // UK service page map entries
+            '/laravel-developer-uk'       => ['laravel-developer-uk', 'php-developer-uk'],
+            '/wordpress-developer-uk'     => ['wordpress-developer-uk', 'web-design-development'],
+            '/shopify-developer-uk'       => ['shopify-developer-uk', 'ecommerce-developer-uk'],
+            '/php-developer-uk'           => ['php-developer-uk', 'laravel-developer-uk'],
+            '/react-developer-uk'         => ['react-developer-uk', 'nextjs-developer-uk'],
+            '/nextjs-developer-uk'        => ['nextjs-developer-uk', 'react-developer-uk'],
+            '/crm-development-uk'         => ['crm-development-uk', 'software-development'],
+            '/ecommerce-developer-uk'     => ['ecommerce-developer-uk', 'shopify-developer-uk'],
+            '/laravel-developer-london'   => ['laravel-developer-uk', 'php-developer-uk'],
+            '/wordpress-developer-london' => ['wordpress-developer-uk', 'web-design-development'],
+            '/shopify-developer-london'   => ['shopify-developer-uk', 'ecommerce-developer-uk'],
+            '/react-developer-london'     => ['react-developer-uk', 'nextjs-developer-uk'],
+            '/php-developer-london'       => ['php-developer-uk', 'laravel-developer-uk'],
+            '/web-developer-london'       => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-manchester'   => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-birmingham'   => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-stoke-on-trent' => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-leeds'        => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-sheffield'    => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-bristol'      => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-glasgow'      => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-edinburgh'    => ['web-design-development', 'search-engine-optimization'],
+            // High-volume generic UK + new tech stack pages
+            '/web-developer-uk'           => ['web-developer-uk', 'web-design-development', 'search-engine-optimization'],
+            '/nextjs-developer-london'    => ['nextjs-developer-uk', 'react-developer-uk'],
+            '/typescript-developer-uk'    => ['typescript-developer-uk', 'react-developer-uk'],
+            '/vue-developer-uk'           => ['vue-developer-uk', 'react-developer-uk'],
+            '/node-developer-uk'          => ['node-developer-uk', 'software-development'],
+            // Additional UK city pages
+            '/web-developer-liverpool'    => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-cardiff'      => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-nottingham'   => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-newcastle'    => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-leicester'    => ['web-design-development', 'search-engine-optimization'],
+            '/web-developer-coventry'     => ['web-design-development', 'search-engine-optimization'],
+            // London tech stack combos
+            '/vue-developer-london'       => ['vue-developer-uk', 'react-developer-uk'],
+            '/node-developer-london'      => ['node-developer-uk', 'software-development'],
+            '/typescript-developer-london' => ['typescript-developer-uk', 'react-developer-uk'],
+            '/crm-developer-london'       => ['crm-development-uk', 'laravel-developer-uk'],
         ];
 
         $schemaGraph = [
@@ -862,6 +1088,34 @@
 
         $schemaGraph[0]['legalName'] = $companyName;
         $schemaGraph[0]['description'] = 'UK software agency for web development, CRM systems, SEO implementation, and conversion-focused delivery.';
+        $schemaGraph[0]['slogan'] = 'Milestone-Based UK Web Development You Can Hold To Account';
+        $schemaGraph[0]['numberOfEmployees'] = ['@type' => 'QuantitativeValue', 'minValue' => 1, 'maxValue' => 10];
+        $schemaGraph[0]['identifier'] = [
+            ['@type' => 'PropertyValue', 'name' => 'Companies House', 'value' => '17039150', 'url' => 'https://find-and-update.company-information.service.gov.uk/company/17039150'],
+        ];
+        $schemaGraph[0]['knowsLanguage'] = [['@type' => 'Language', 'name' => 'English', 'alternateName' => 'en']];
+        $schemaGraph[0]['paymentAccepted'] = ['Bank Transfer', 'Stripe', 'GoCardless'];
+        $schemaGraph[0]['currenciesAccepted'] = 'GBP';
+
+        // makesOffer — all 22 service pages + core service pages for strong entity signal
+        $schemaGraph[0]['makesOffer'] = array_values(array_map(
+            static fn (string $key, array $s) => [
+                '@type'       => 'Offer',
+                '@id'         => $siteRootUrl . $s['path'] . '#offer',
+                'name'        => $s['name'],
+                'description' => $s['description'],
+                'url'         => $siteRootUrl . $s['path'],
+                'priceCurrency' => 'GBP',
+                'itemOffered' => [
+                    '@type'       => 'Service',
+                    'name'        => $s['name'],
+                    'serviceType' => $s['type'],
+                    'areaServed'  => 'United Kingdom',
+                ],
+            ],
+            array_keys($serviceSchemaCatalog),
+            $serviceSchemaCatalog
+        ));
         $schemaGraph[0]['logo'] = [
             '@type' => 'ImageObject',
             'url' => url('/assets/images/resources/ars-logo-dark.png'),
@@ -1081,6 +1335,12 @@
             $schemaGraph[4]['significantLink'] = $significantLinks;
         }
 
+        // Speakable — mark description for Google Assistant + AI Overview citations
+        $schemaGraph[4]['speakable'] = [
+            '@type'       => 'SpeakableSpecification',
+            'cssSelector' => ['.svc-hero__title', '.svc-hero__desc', 'h1', '.sector-hero__title', '.sector-hero__summary'],
+        ];
+
         $activeServiceKeys = $servicePageMap[$currentPathKey] ?? [];
         if (!empty($activeServiceKeys)) {
             $serviceNodes = [];
@@ -1166,6 +1426,47 @@
             'refund-policy' => 'Refund Policy',
             'service-disclaimer' => 'Service Disclaimer',
             'search' => 'Search',
+            // UK service pages — proper breadcrumb labels
+            'laravel-developer-uk'        => 'Laravel Developer UK',
+            'wordpress-developer-uk'      => 'WordPress Developer UK',
+            'shopify-developer-uk'        => 'Shopify Developer UK',
+            'php-developer-uk'            => 'PHP Developer UK',
+            'react-developer-uk'          => 'React Developer UK',
+            'nextjs-developer-uk'         => 'Next.js Developer UK',
+            'crm-development-uk'          => 'CRM Development UK',
+            'ecommerce-developer-uk'      => 'Ecommerce Developer UK',
+            'laravel-developer-london'    => 'Laravel Developer London',
+            'wordpress-developer-london'  => 'WordPress Developer London',
+            'shopify-developer-london'    => 'Shopify Developer London',
+            'react-developer-london'      => 'React Developer London',
+            'php-developer-london'        => 'PHP Developer London',
+            'web-developer-london'        => 'Web Developer London',
+            'web-developer-manchester'    => 'Web Developer Manchester',
+            'web-developer-birmingham'    => 'Web Developer Birmingham',
+            'web-developer-stoke-on-trent' => 'Web Developer Stoke-on-Trent',
+            'web-developer-leeds'         => 'Web Developer Leeds',
+            'web-developer-sheffield'     => 'Web Developer Sheffield',
+            'web-developer-bristol'       => 'Web Developer Bristol',
+            'web-developer-glasgow'       => 'Web Developer Glasgow',
+            'web-developer-edinburgh'     => 'Web Developer Edinburgh',
+            // High-volume generic UK + new tech stack pages
+            'web-developer-uk'              => 'Web Developer UK',
+            'nextjs-developer-london'       => 'Next.js Developer London',
+            'typescript-developer-uk'       => 'TypeScript Developer UK',
+            'vue-developer-uk'              => 'Vue.js Developer UK',
+            'node-developer-uk'             => 'Node.js Developer UK',
+            // Additional UK city pages
+            'web-developer-liverpool'       => 'Web Developer Liverpool',
+            'web-developer-cardiff'         => 'Web Developer Cardiff',
+            'web-developer-nottingham'      => 'Web Developer Nottingham',
+            'web-developer-newcastle'       => 'Web Developer Newcastle',
+            'web-developer-leicester'       => 'Web Developer Leicester',
+            'web-developer-coventry'        => 'Web Developer Coventry',
+            // London tech stack combos
+            'vue-developer-london'          => 'Vue.js Developer London',
+            'node-developer-london'         => 'Node.js Developer London',
+            'typescript-developer-london'   => 'TypeScript Developer London',
+            'crm-developer-london'          => 'CRM Developer London',
         ];
 
         $breadcrumbItems = [
@@ -1488,10 +1789,40 @@
         <link rel="preload" as="image" href="{{ $seo['preload_image'] }}" fetchpriority="high">
     @endif
     <meta name="language" content="{{ $currentHreflang }}" />
-    <meta name="geo.region" content="GB-STS" />
-    <meta name="geo.placename" content="Stoke-on-Trent" />
-    <meta name="geo.position" content="53.0027;-2.1794" />
-    <meta name="ICBM" content="53.0027, -2.1794" />
+    @php
+        $geoPageMap = [
+            '/web-developer-london'        => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/laravel-developer-london'    => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/wordpress-developer-london'  => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/shopify-developer-london'    => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/react-developer-london'      => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/php-developer-london'        => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/nextjs-developer-london'     => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/vue-developer-london'        => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/node-developer-london'       => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/typescript-developer-london' => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/crm-developer-london'        => ['region' => 'GB-LND', 'placename' => 'London',               'lat' => '51.5074', 'lng' => '-0.1278'],
+            '/web-developer-manchester'    => ['region' => 'GB-ENG', 'placename' => 'Manchester',           'lat' => '53.4808', 'lng' => '-2.2426'],
+            '/web-developer-birmingham'    => ['region' => 'GB-ENG', 'placename' => 'Birmingham',           'lat' => '52.4862', 'lng' => '-1.8904'],
+            '/web-developer-leeds'         => ['region' => 'GB-ENG', 'placename' => 'Leeds',                'lat' => '53.8008', 'lng' => '-1.5491'],
+            '/web-developer-sheffield'     => ['region' => 'GB-ENG', 'placename' => 'Sheffield',            'lat' => '53.3811', 'lng' => '-1.4701'],
+            '/web-developer-bristol'       => ['region' => 'GB-ENG', 'placename' => 'Bristol',              'lat' => '51.4545', 'lng' => '-2.5879'],
+            '/web-developer-glasgow'       => ['region' => 'GB-SCT', 'placename' => 'Glasgow',              'lat' => '55.8642', 'lng' => '-4.2518'],
+            '/web-developer-edinburgh'     => ['region' => 'GB-SCT', 'placename' => 'Edinburgh',            'lat' => '55.9533', 'lng' => '-3.1883'],
+            '/web-developer-liverpool'     => ['region' => 'GB-ENG', 'placename' => 'Liverpool',            'lat' => '53.4084', 'lng' => '-2.9916'],
+            '/web-developer-cardiff'       => ['region' => 'GB-WLS', 'placename' => 'Cardiff',              'lat' => '51.4816', 'lng' => '-3.1791'],
+            '/web-developer-nottingham'    => ['region' => 'GB-ENG', 'placename' => 'Nottingham',           'lat' => '52.9548', 'lng' => '-1.1581'],
+            '/web-developer-newcastle'     => ['region' => 'GB-ENG', 'placename' => 'Newcastle upon Tyne',  'lat' => '54.9783', 'lng' => '-1.6178'],
+            '/web-developer-leicester'     => ['region' => 'GB-ENG', 'placename' => 'Leicester',            'lat' => '52.6369', 'lng' => '-1.1398'],
+            '/web-developer-coventry'      => ['region' => 'GB-ENG', 'placename' => 'Coventry',             'lat' => '52.4068', 'lng' => '-1.5197'],
+            '/web-developer-stoke-on-trent' => ['region' => 'GB-STS', 'placename' => 'Stoke-on-Trent',     'lat' => '53.0027', 'lng' => '-2.1794'],
+        ];
+        $geoMeta = $geoPageMap[$currentPathKey] ?? ['region' => 'GB-STS', 'placename' => 'Stoke-on-Trent', 'lat' => '53.0027', 'lng' => '-2.1794'];
+    @endphp
+    <meta name="geo.region" content="{{ $geoMeta['region'] }}" />
+    <meta name="geo.placename" content="{{ $geoMeta['placename'] }}" />
+    <meta name="geo.position" content="{{ $geoMeta['lat'] }};{{ $geoMeta['lng'] }}" />
+    <meta name="ICBM" content="{{ $geoMeta['lat'] }}, {{ $geoMeta['lng'] }}" />
     <meta property="og:locale" content="{{ $currentOgLocale }}" />
     <meta property="og:type" content="{{ strtolower($seoType) === 'article' ? 'article' : 'website' }}" />
     <meta property="og:title" content="{{ $seoOgTitle }}" />

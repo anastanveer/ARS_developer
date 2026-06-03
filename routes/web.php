@@ -163,6 +163,45 @@ Route::get('/sectors/{sector}', function (string $sector) {
     ]);
 })->name('sectors.show');
 
+Route::get('/{slug}', function (string $slug) {
+    $pages = config('seo_service_pages');
+    if (!isset($pages[$slug])) {
+        abort(404);
+    }
+    $page = $pages[$slug];
+    $canonicalBase = rtrim((string) (app()->environment('local')
+        ? url('/')
+        : config('regions.regions.uk.base_url', url('/'))), '/');
+
+    // AggregateRating from approved reviews
+    $approvedReviews = \App\Models\ClientReview::query()->where('is_approved', true)->get();
+    $reviewCount     = $approvedReviews->count();
+    $avgRating       = $reviewCount > 0
+        ? round((float) $approvedReviews->avg('rating'), 1)
+        : null;
+
+    $seoOverride = [
+        'title'            => $page['meta_title'],
+        'description'      => $page['meta_desc'],
+        'keywords'         => $page['keywords'],
+        'canonical'        => $canonicalBase . '/' . $slug,
+        'type'             => $page['type'] ?? 'Service',
+        'faq_items'        => array_map(
+            static fn (array $f) => ['question' => $f['q'], 'answer' => $f['a']],
+            $page['faqs'] ?? []
+        ),
+        'related_links'    => array_map(
+            static fn (array $r) => $r['href'],
+            $page['related'] ?? []
+        ),
+        'aggregate_rating' => $avgRating !== null ? [
+            'rating' => $avgRating,
+            'count'  => $reviewCount,
+        ] : null,
+    ];
+    return view('pages.seo-service-page', compact('page', 'seoOverride'));
+})->where('slug', implode('|', array_keys(config('seo_service_pages', []))))->name('seo.service.page');
+
 Route::get('/portfolio', [PortfolioPageController::class, 'index']);
 Route::get('/portfolio-details', [PortfolioPageController::class, 'details'])->name('portfolio.details');
 Route::get('/portfolio-details/{slug}', [PortfolioPageController::class, 'details'])->name('portfolio.show');
