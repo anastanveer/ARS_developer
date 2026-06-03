@@ -2,9 +2,9 @@
     $servicePageImage = \App\Support\ServicePageImages::get('software-development');
     $page_title = 'Software Development';
     $seoOverride = [
-        'title' => 'Custom Software Development UK | Scalable CRM, Portals and Secure Systems',
-        'description' => 'UK-based custom software development for businesses needing scalable solutions, secure systems, custom CRM UK builds, portals, automation, and reliable delivery support.',
-        'keywords' => 'custom software development uk, software development company uk, crm development uk, client portal development uk, web app development uk, workflow automation uk, ai software development uk',
+        'title' => 'Custom Software Development Company UK | CRM, Portals & Web Apps',
+        'description' => 'Custom software development company serving UK businesses in Stoke-on-Trent, Staffordshire & nationwide. CRM systems, client portals, web apps & automation. Get a free quote.',
+        'keywords' => 'custom software development company uk, software development company stoke on trent, software development company staffordshire, custom software development uk, crm development uk, client portal development uk, bespoke software development uk, web app development uk, software development company uk',
         'related_links' => [
             '/pricing',
             '/portfolio',

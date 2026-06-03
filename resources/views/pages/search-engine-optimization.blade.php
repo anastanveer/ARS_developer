@@ -2,9 +2,9 @@
     $servicePageImage = \App\Support\ServicePageImages::get('search-engine-optimization');
     $page_title = 'Search Engine Optimization';
     $seoOverride = [
-        'title' => 'SEO Services UK | Trusted Technical SEO and AI Search Growth',
-        'description' => 'UK-based SEO services focused on technical SEO, AI search visibility, scalable solutions, and secure systems that help businesses earn stronger rankings and enquiries.',
-        'keywords' => 'seo services uk, ai seo services uk, answer engine optimization uk, aeo services uk, technical seo services uk, search engine optimization uk, local seo uk, search console optimization uk, on page seo uk',
+        'title' => 'Search Engine Optimisation Services UK | Technical SEO & AI Search',
+        'description' => 'Search engine optimisation services for UK businesses. Technical SEO, local SEO, AI search visibility & content strategy. Ranked results, more enquiries. Free SEO audit.',
+        'keywords' => 'search engine optimisation services uk, search engine optimisation uk, seo services uk, technical seo services uk, local seo services uk, seo company uk, ai seo services uk, answer engine optimisation uk, seo agency uk, google rankings uk',
         'related_links' => [
             '/pricing',
             '/contact',

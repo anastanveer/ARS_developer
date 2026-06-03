@@ -1,9 +1,9 @@
 @php
     $page_title = 'Home';
     $seoOverride = [
-        'title' => 'UK Software Development Company Stoke-on-Trent | AI Websites, CRM & SEO — ARS Developer',
-        'description' => 'ARS Developer is a UK software development company based in Stoke-on-Trent, Staffordshire. We build AI-ready websites, custom CRM systems, Laravel applications, ecommerce stores, and deliver technical SEO that generates qualified enquiries for UK businesses.',
-        'keywords' => 'uk software development company, software development company stoke on trent, software development staffordshire, ai website development uk, custom software development uk, crm software uk, laravel development company uk, workflow automation uk, ecommerce development uk, ai seo services uk, technical seo services uk, web development agency stoke on trent',
+        'title' => 'Software Development Company Stoke-on-Trent | ARS Developer UK',
+        'description' => 'ARS Developer — software development company in Stoke-on-Trent, Staffordshire. Custom websites, Laravel apps, CRM systems, ecommerce & SEO. Free consultation. UK registered.',
+        'keywords' => 'software development company stoke on trent, software development company staffordshire, uk software development company, web development company stoke on trent, laravel development company uk, custom software development uk, crm software uk, seo services stoke on trent, web design staffordshire, software development agency uk',
         'preload_image' => asset('assets/images/resources/banner-one-img-1.png'),
         'og_image' => url('/assets/images/resources/banner-one-img-1.png'),
         'og_image_alt' => 'ARS Developer — UK software development company Stoke-on-Trent',
