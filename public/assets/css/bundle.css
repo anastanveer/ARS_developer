@@ -55529,3 +55529,14 @@ body.is-home .section-title-two {
         border-radius: 12px;
     }
 }
+
+/* =============================================================
+   GSAP Animation Enhancements — module-css/gsap-animations.css
+   ============================================================= */
+.main-slider__title{perspective:900px}
+.hero-title-line-one,.hero-title-line-two{display:block;transform-origin:0% 50%;will-change:transform,opacity}
+.process-two__single{will-change:transform;transform-style:preserve-3d;transition:box-shadow .3s ease}
+.process-two__single:hover{box-shadow:0 20px 60px rgba(0,0,0,.18)}
+.why-choose-two__img{will-change:transform;overflow:hidden}
+.main-slider__shape-1,.main-slider__shape-2,.main-slider__shape-3,.main-slider__shape-4{will-change:transform}
+@media(max-width:767px){.hero-title-line-one,.hero-title-line-two{will-change:auto}.process-two__single{will-change:auto;transform-style:flat}}

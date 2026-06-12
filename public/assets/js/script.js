@@ -2545,6 +2545,143 @@
 
 
 
+  /*--------------------------------------------------------------
+    heroAnimation — entrance sequence for hero section
+  --------------------------------------------------------------*/
+  function heroAnimation() {
+    if (lowPowerMode) return;
+    if (typeof gsap === "undefined") return;
+    var heroSection = document.querySelector(".main-slider");
+    if (!heroSection) return;
+
+    var eyebrow  = heroSection.querySelector(".hero-text-slider__eyebrow");
+    var lineOne  = heroSection.querySelector(".hero-title-line-one");
+    var lineTwo  = heroSection.querySelector(".hero-title-line-two");
+    var proof    = heroSection.querySelector(".hero-text-slider__proof");
+    var body     = heroSection.querySelector(".main-slider__text");
+    var btns     = heroSection.querySelectorAll(".hero-text-slider__cta a");
+    var stats    = heroSection.querySelector(".hero-text-slider__stats");
+
+    var tl = gsap.timeline({ delay: 0.15, defaults: { ease: "power3.out" } });
+
+    if (eyebrow) {
+      tl.from(eyebrow, { y: -22, opacity: 0, duration: 0.55 });
+    }
+    if (lineOne) {
+      tl.from(lineOne, { y: 48, opacity: 0, rotateX: -18, duration: 0.72 }, eyebrow ? "-=0.25" : "0");
+    }
+    if (lineTwo) {
+      tl.from(lineTwo, { y: 48, opacity: 0, rotateX: -18, duration: 0.72 }, "-=0.45");
+    }
+    if (proof) {
+      tl.from(proof, { y: 22, opacity: 0, duration: 0.5 }, "-=0.35");
+    }
+    if (body) {
+      tl.from(body, { y: 22, opacity: 0, duration: 0.5 }, "-=0.35");
+    }
+    if (btns && btns.length) {
+      tl.from(btns, { scale: 0.88, opacity: 0, duration: 0.42, stagger: 0.12, ease: "back.out(1.5)" }, "-=0.3");
+    }
+    if (stats) {
+      tl.from(stats, { y: 24, opacity: 0, duration: 0.5 }, "-=0.25");
+    }
+  }
+
+
+  /*--------------------------------------------------------------
+    heroParallax — scroll-linked depth on hero shapes + why-choose img
+  --------------------------------------------------------------*/
+  function heroParallax() {
+    if (lowPowerMode) return;
+    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
+    var shapeDefs = [
+      { sel: ".main-slider__shape-bg-2",  yPct:  12 },
+      { sel: ".main-slider__shape-1",     yPct: -20 },
+      { sel: ".main-slider__shape-2",     yPct:  28 },
+      { sel: ".main-slider__shape-3",     yPct: -14 },
+      { sel: ".main-slider__shape-4",     yPct:  22 }
+    ];
+
+    shapeDefs.forEach(function (def) {
+      var el = document.querySelector(def.sel);
+      if (!el) return;
+      gsap.to(el, {
+        yPercent: def.yPct,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".main-slider",
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.2
+        }
+      });
+    });
+
+    var whyImg = document.querySelector(".why-choose-two__img");
+    if (whyImg) {
+      gsap.to(whyImg, {
+        yPercent: -8,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".why-choose-two",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.5
+        }
+      });
+    }
+  }
+
+
+  /*--------------------------------------------------------------
+    processCardEntrance — 3D stagger on .process-two__single
+  --------------------------------------------------------------*/
+  function processCardEntrance() {
+    if (lowPowerMode) return;
+    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+    var cards = document.querySelectorAll(".process-two__single");
+    if (!cards.length) return;
+
+    gsap.fromTo(cards,
+      { y: 60, opacity: 0, rotateX: -22, transformPerspective: 900, transformOrigin: "50% 100%" },
+      {
+        y: 0, opacity: 1, rotateX: 0,
+        stagger: 0.14,
+        duration: 0.85,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".process-two",
+          start: "top 82%"
+        }
+      }
+    );
+  }
+
+
+  /*--------------------------------------------------------------
+    cardTilt3D — live mouse-tracking 3D tilt on process cards
+  --------------------------------------------------------------*/
+  function cardTilt3D() {
+    if (lowPowerMode) return;
+    if (typeof gsap === "undefined") return;
+    var cards = document.querySelectorAll(".process-two__single");
+    cards.forEach(function (card) {
+      var setter = gsap.quickSetter(card, "css");
+      card.addEventListener("mousemove", function (e) {
+        var rect = card.getBoundingClientRect();
+        var cx = rect.left + rect.width  / 2;
+        var cy = rect.top  + rect.height / 2;
+        var rx = ((e.clientY - cy) / (rect.height / 2)) * -7;
+        var ry = ((e.clientX - cx) / (rect.width  / 2)) *  7;
+        setter({ rotateX: rx, rotateY: ry, transformPerspective: 700 });
+      });
+      card.addEventListener("mouseleave", function () {
+        gsap.to(card, { rotateX: 0, rotateY: 0, transformPerspective: 700, duration: 0.55, ease: "power2.out" });
+      });
+    });
+  }
+
 
 
 
@@ -2559,6 +2696,14 @@
       runWhenIdle(function () {
         title_animation();
       }, 2200);
+    }
+    if (!lowPowerMode && typeof gsap !== "undefined") {
+      heroAnimation();
+      runWhenIdle(function () {
+        heroParallax();
+        processCardEntrance();
+        cardTilt3D();
+      }, 800);
     }
     priceFilter();
 
