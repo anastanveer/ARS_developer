@@ -1083,6 +1083,8 @@
 
         $foundingDate = trim((string) config('company.incorporation_date', ''));
         if ($foundingDate !== '') {
+            // schema.org foundingDate must be ISO 8601 (YYYY-MM-DD), not a human-readable string.
+            try { $foundingDate = \Illuminate\Support\Carbon::parse($foundingDate)->toDateString(); } catch (\Throwable $e) {}
             $schemaGraph[0]['foundingDate'] = $foundingDate;
         }
 
