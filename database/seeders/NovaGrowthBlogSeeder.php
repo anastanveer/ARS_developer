@@ -135,7 +135,125 @@ class NovaGrowthBlogSeeder extends Seeder
                 'canonical_url' => 'https://arsdeveloper.co.uk/blog/shopify-custom-theme-development-revenue-leaks',
                 'sort_order' => 0,
             ],
+            [
+                'title' => 'Shopify Revenue Leaks: The 7-Point Audit Every UK Store Should Run in 2026',
+                'slug' => 'shopify-revenue-leaks-7-point-audit-uk-store-2026',
+                'category' => 'Shopify',
+                'author_name' => 'ARS Developer',
+                'excerpt' => 'A practical seven-point Shopify audit for UK stores: speed, checkout friction, abandoned carts, product clarity, search, SEO and support speed.',
+                'content' => $this->shopifyRevenueAuditContent(),
+                'featured_image' => 'assets/images/blog/growth-2026/shopify-revenue-leaks-7-point-audit-uk-store-2026.png',
+                'featured_image_alt' => 'Seven point Shopify revenue leak audit checklist for UK stores',
+                'is_published' => true,
+                'published_at' => '2026-07-13 12:00:00',
+                'meta_title' => 'Shopify Revenue Leaks: 7-Point UK Store Audit',
+                'meta_description' => 'Run this 7-point Shopify revenue leak audit for UK stores covering speed, checkout friction, abandoned carts, CRO, technical SEO and support speed.',
+                'meta_keywords' => 'shopify revenue leak audit, shopify cro checklist, shopify speed optimization uk, shopify abandoned cart recovery, shopify seo audit 2026',
+                'og_title' => 'Shopify Revenue Leaks: The 7-Point Audit',
+                'og_description' => 'A practical UK Shopify audit to find the hidden friction costing your store orders.',
+                'og_image' => 'assets/images/blog/growth-2026/shopify-revenue-leaks-7-point-audit-uk-store-2026.png',
+                'twitter_title' => 'Shopify Revenue Leaks: 7-Point Audit',
+                'twitter_description' => 'Speed, checkout, carts, product pages, search, SEO and support: the Shopify leaks to check first.',
+                'twitter_image' => 'assets/images/blog/growth-2026/shopify-revenue-leaks-7-point-audit-uk-store-2026.png',
+                'canonical_url' => 'https://arsdeveloper.co.uk/blog/shopify-revenue-leaks-7-point-audit-uk-store-2026',
+                'sort_order' => 0,
+            ],
+            [
+                'title' => 'Laravel Performance: The 7 Bottlenecks Costing You Orders (and How to Fix Each)',
+                'slug' => 'laravel-performance-7-bottlenecks-costing-orders',
+                'category' => 'Laravel',
+                'author_name' => 'ARS Developer',
+                'excerpt' => 'A proof-based Laravel performance guide covering the seven bottlenecks that hurt ecommerce revenue and how to fix each one.',
+                'content' => $this->laravelPerformanceBottlenecksContent(),
+                'featured_image' => 'assets/images/blog/growth-2026/laravel-performance-7-bottlenecks-costing-orders.png',
+                'featured_image_alt' => 'Laravel performance profiler showing seven bottlenecks costing orders',
+                'is_published' => true,
+                'published_at' => '2026-07-16 12:00:00',
+                'meta_title' => 'Laravel Performance: 7 Bottlenecks Costing Orders',
+                'meta_description' => 'A practical, proof-based guide to seven Laravel performance bottlenecks that hurt ecommerce revenue, from N+1 queries to queues and cache gaps.',
+                'meta_keywords' => 'Laravel performance, Laravel optimization, Laravel N+1 query, Laravel slow query, Laravel caching Redis, Laravel queue jobs, Laravel ecommerce performance',
+                'og_title' => 'Laravel Performance: 7 Bottlenecks Costing Orders',
+                'og_description' => 'The bottlenecks behind slow Laravel ecommerce apps, and the fixes that recover speed and revenue.',
+                'og_image' => 'assets/images/blog/growth-2026/laravel-performance-7-bottlenecks-costing-orders.png',
+                'twitter_title' => 'Laravel Performance: 7 Bottlenecks',
+                'twitter_description' => 'Profile first, fix the real bottleneck, then measure the revenue impact.',
+                'twitter_image' => 'assets/images/blog/growth-2026/laravel-performance-7-bottlenecks-costing-orders.png',
+                'canonical_url' => 'https://arsdeveloper.co.uk/blog/laravel-performance-7-bottlenecks-costing-orders',
+                'sort_order' => 0,
+            ],
         ];
+    }
+
+    private function shopifyRevenueAuditContent(): string
+    {
+        return <<<'HTML'
+<p>If your Shopify store gets traffic but the revenue feels stuck, the problem usually is not demand. It is leakage: paid-for visitors who never convert because of friction you cannot see from the dashboard. This is a practical, no-fluff audit you can run today.</p>
+
+<h2>1. Mobile speed</h2>
+<p>Test your store on a real phone on 4G. If the product page takes more than about three seconds, you are losing sales at the door. Check image sizes, unused apps, render-blocking scripts and theme bloat.</p>
+
+<h2>2. Checkout friction</h2>
+<p>Count the steps and fields between Add to Cart and Order Placed. Every extra field, forced account creation or late shipping reveal raises abandonment. Display Klarna or Clearpay clearly for UK buyers who expect it.</p>
+
+<h2>3. Abandoned cart recovery</h2>
+<p>Do you follow up within the first hour? Email plus WhatsApp or SMS inside 60 minutes usually recovers more than a single next-day email.</p>
+
+<h2>4. Product page clarity</h2>
+<p>Price, delivery time, returns and trust signals should be visible early. Confusion is friction; friction is lost revenue.</p>
+
+<h2>5. On-site search and navigation</h2>
+<p>Visitors who search convert at much higher rates if search actually works. Test your top ten queries and check whether the right products appear.</p>
+
+<h2>6. Technical SEO</h2>
+<p>Missing meta titles, slow Core Web Vitals and unindexed collection pages cost you free traffic. Check Search Console for coverage errors and high-value pages with low impressions.</p>
+
+<h2>7. Support response speed</h2>
+<p>How long until a pre-purchase question gets answered? If it is hours, an AI assistant that answers instantly can rescue carts that would otherwise vanish.</p>
+
+<h2>Turn the audit into pounds</h2>
+<p>Rank each leak by estimated revenue impact, not by how easy it is to fix. The fastest win is rarely the biggest one. That ranking is exactly what our Shopify Revenue Leak Audit produces: measured, prioritised and explained in plain English by a UK team.</p>
+
+<p>Run the seven points yourself, or have us run them for you. Either way, you will know the number you are leaving on the table and which fix pays back first.</p>
+
+<p><a href="https://arsdeveloper.co.uk/contact">Book a done-for-you Shopify Revenue Leak Audit</a>. We will rank the fixes, show the real numbers and avoid locking you into a retainer you do not need.</p>
+HTML;
+    }
+
+    private function laravelPerformanceBottlenecksContent(): string
+    {
+        return <<<'HTML'
+<p>Slow software does not announce itself. There is no error, no alert, just a checkout that feels sluggish and a conversion rate that quietly underperforms.</p>
+
+<p>We are a Stoke-on-Trent software agency, and most “we need a bigger server” requests we get turn out to be one of seven fixable Laravel bottlenecks. Here is each one, with the fix and the kind of numbers we measure.</p>
+
+<h2>1. N+1 queries: the silent multiplier</h2>
+<p>An N+1 issue happens when one database query becomes hundreds because the app loads related records inside a loop. Use Laravel Debugbar, Telescope or query logs to spot it, then eager-load the relationships that the page actually needs. A page doing 240 queries can often drop to fewer than ten.</p>
+
+<h2>2. Missing database indexes</h2>
+<p>If your orders, users or products tables are growing, missing indexes turn simple filters into table scans. Use slow-query logs and <code>EXPLAIN</code> to find the pressure points. Index foreign keys and the columns used in common <code>WHERE</code>, <code>JOIN</code> and <code>ORDER BY</code> clauses.</p>
+
+<h2>3. Blocking third-party calls</h2>
+<p>Payment checks, shipping APIs, CRM syncs and webhooks should not block a customer-facing request unless the user genuinely needs the answer immediately. Move the non-critical work into queued jobs and give the customer a fast response first.</p>
+
+<h2>4. Cache gaps</h2>
+<p>Laravel gives you route, config and view caching, but many apps still rerun expensive query work on every visit. Cache stable data with sensible TTLs, and use Redis when the workload deserves it.</p>
+
+<h2>5. Queue misuse</h2>
+<p>Email, image processing, imports, exports and webhook retries belong in jobs. The queue still needs worker sizing, retries and monitoring. A queue that is always behind is just a hidden performance problem.</p>
+
+<h2>6. Frontend asset bloat</h2>
+<p>Laravel performance is not only PHP. Heavy JavaScript, unused CSS and uncompressed media damage Core Web Vitals. Keep Vite builds lean, defer non-critical JavaScript and compress images before they hit production.</p>
+
+<h2>7. Slow application boot</h2>
+<p>Production should use config caching, route caching, opcache and careful service provider loading. Slow boot makes every request pay a tax before your code does useful work.</p>
+
+<h2>Profile before you upgrade hosting</h2>
+<p>Performance is an architecture discipline, not a hosting upgrade. Profile first, fix the bottleneck, measure the result, then decide whether infrastructure is still the constraint.</p>
+
+<p><a href="https://arsdeveloper.co.uk/contact">Book a fixed-scope Laravel performance audit</a>. We will report exactly what is slowing you down and what each fix is worth.</p>
+
+<p>Shopify or freelance development work? View the portfolio at <a href="https://anastanveer.com" target="_blank" rel="noopener">anastanveer.com</a>.</p>
+HTML;
     }
 
     private function laravelSlowContent(): string
