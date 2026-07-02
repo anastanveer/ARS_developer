@@ -106,6 +106,8 @@
                                 .main-slider__btn.hero-text-slider__cta{display:flex!important;flex-direction:row!important;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:18px;margin:26px auto 6px!important;width:auto!important;max-width:none!important}
                                 .main-slider__btn.hero-text-slider__cta a{margin:0!important;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;transition:transform .18s ease, box-shadow .18s ease}
                                 .main-slider__btn.hero-text-slider__cta a:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(0,48,120,.45)}
+                                /* proof/trust lines: always centered */
+                                .hero-text-slider__title-box .hero-text-slider__proof{display:block;width:100%;max-width:920px;margin-left:auto!important;margin-right:auto!important;text-align:center!important}
                                 /* trust line + space before stats */
                                 .hero-text-slider__title-box>.hero-text-slider__proof:last-child{margin-top:14px;margin-bottom:30px;opacity:.85;letter-spacing:.02em}
                                 .hero-text-slider__stats{margin-top:12px}
