@@ -91,6 +91,12 @@
                             <div class="main-slider__title-box hero-text-slider__title-box">
                                 <p class="hero-text-slider__eyebrow">UK Software Partner</p>
                                 <h1 class="main-slider__title"><span class="hero-title-line-one"><span style="color:#ffffff;">Custom</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Software Development</span></span><span class="hero-title-line-two"> <span class="hero-accent-blue" style="color:#1d93ff;">Company</span> <span style="color:#ffffff;">in</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Stoke-on-Trent</span></span></h1>
+                                <style>
+                                /* keep the longer keyworded hero H1 fully visible on all screens (no clipping) */
+                                .hero-text-slider__title-box .main-slider__title{font-size:clamp(28px,4.6vw,52px)!important;line-height:1.14!important;white-space:normal!important;overflow-wrap:break-word;word-break:normal;text-transform:none!important;max-width:100%!important}
+                                .hero-text-slider__title-box .main-slider__title .hero-title-line-one,.hero-text-slider__title-box .main-slider__title .hero-title-line-two{display:block!important;white-space:normal!important}
+                                @media(max-width:600px){.hero-text-slider__title-box .main-slider__title{font-size:clamp(23px,7vw,32px)!important}}
+                                </style>
                                 <p class="hero-text-slider__proof" style="font-size:15px;font-weight:600;color:#ffffff;">We Build Custom Software That Scales Your Business.</p>
                                 <p class="hero-text-slider__proof">UK software delivery for service businesses | websites, CRM, ecommerce and SEO with clear milestones</p>
                                 <p class="main-slider__text">We help UK businesses launch conversion-focused websites, custom CRM systems, ecommerce builds, workflow automation, and technical SEO improvements with practical project planning and direct support.</p>
