@@ -92,10 +92,20 @@
                                 <p class="hero-text-slider__eyebrow">UK Software Partner</p>
                                 <h1 class="main-slider__title"><span class="hero-title-line-one"><span style="color:#ffffff;">Custom</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Software Development</span></span><span class="hero-title-line-two"> <span class="hero-accent-blue" style="color:#1d93ff;">Company</span> <span style="color:#ffffff;">in</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Stoke-on-Trent</span></span></h1>
                                 <style>
-                                /* Big, bold, impactful hero H1 that also stays fully visible (clean 2 lines, no clipping) */
-                                .hero-text-slider__title-box .main-slider__title{font-size:clamp(34px,5.7vw,68px)!important;line-height:1.07!important;font-weight:800!important;white-space:normal!important;overflow-wrap:break-word;word-break:normal;text-transform:none!important;letter-spacing:-0.02em!important;max-width:100%!important}
-                                .hero-text-slider__title-box .main-slider__title .hero-title-line-one,.hero-text-slider__title-box .main-slider__title .hero-title-line-two{display:block!important;white-space:normal!important}
-                                @media(max-width:600px){.hero-text-slider__title-box .main-slider__title{font-size:clamp(26px,7.6vw,40px)!important}}
+                                /* Hero: wider content, big impactful H1 on 2 clean lines, both CTAs in one row */
+                                .hero-text-slider__title-box{max-width:1340px!important;width:100%!important;padding-left:16px;padding-right:16px}
+                                .hero-text-slider .auto-container,.hero-text-slider .container{max-width:1340px!important}
+                                .hero-text-slider__title-box .main-slider__title{font-size:clamp(30px,5vw,62px)!important;line-height:1.08!important;font-weight:800!important;text-transform:none!important;letter-spacing:-0.02em!important;max-width:100%!important;margin-left:auto;margin-right:auto}
+                                .hero-text-slider__title-box .main-slider__title .hero-title-line-one,.hero-text-slider__title-box .main-slider__title .hero-title-line-two{display:block!important;white-space:nowrap!important}
+                                .hero-text-slider__title-box .main-slider__text{max-width:860px;margin-left:auto;margin-right:auto}
+                                .hero-text-slider__cta{display:flex!important;flex-direction:row!important;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px}
+                                .hero-text-slider__cta a{margin:0!important;white-space:nowrap}
+                                @media(max-width:820px){
+                                  .hero-text-slider__title-box .main-slider__title{font-size:clamp(24px,6.4vw,40px)!important}
+                                  .hero-text-slider__title-box .main-slider__title .hero-title-line-one,.hero-text-slider__title-box .main-slider__title .hero-title-line-two{white-space:normal!important}
+                                  .hero-text-slider__cta{flex-direction:column!important}
+                                  .hero-text-slider__cta a{width:100%;max-width:360px}
+                                }
                                 </style>
                                 <p class="hero-text-slider__proof" style="font-size:15px;font-weight:600;color:#ffffff;">We Build Custom Software That Scales Your Business.</p>
                                 <p class="hero-text-slider__proof">UK software delivery for service businesses | websites, CRM, ecommerce and SEO with clear milestones</p>
