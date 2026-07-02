@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="pricing-one__btn-box">
                                         <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
-                                            data-plan="Website Care" data-billing="subscription" data-price="225"><span class="icon-right"></span> Choose Package</a>
+                                            data-plan="Website Care" data-billing="subscription" data-price="225"><span class="icon-right"></span> Request This Package</a>
                                     </div>
                                     <div class="pricing-one__shape-1"></div>
                                     <div class="pricing-one__shape-2"></div>
@@ -144,7 +144,7 @@
                                     </div>
                                     <div class="pricing-one__btn-box">
                                         <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
-                                            data-plan="Business Growth" data-billing="subscription" data-price="535"><span class="icon-right"></span> Choose Package</a>
+                                            data-plan="Business Growth" data-billing="subscription" data-price="535"><span class="icon-right"></span> Request This Package</a>
                                     </div>
                                     <div class="pricing-one__shape-1"></div>
                                     <div class="pricing-one__shape-2"></div>
@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="pricing-one__btn-box">
                                         <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
-                                            data-plan="Ecommerce Scale" data-billing="subscription" data-price="999"><span class="icon-right"></span> Choose Package</a>
+                                            data-plan="Ecommerce Scale" data-billing="subscription" data-price="999"><span class="icon-right"></span> Request This Package</a>
                                     </div>
                                     <div class="pricing-one__shape-1"></div>
                                     <div class="pricing-one__shape-2"></div>
@@ -221,7 +221,7 @@
                                     </div>
                                     <div class="pricing-one__btn-box">
                                         <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
-                                            data-plan="Business Website Build" data-billing="one_time" data-price="1490"><span class="icon-right"></span> Choose Package</a>
+                                            data-plan="Business Website Build" data-billing="one_time" data-price="1490"><span class="icon-right"></span> Request This Package</a>
                                     </div>
                                     <div class="pricing-one__shape-1"></div>
                                     <div class="pricing-one__shape-2"></div>
@@ -247,7 +247,7 @@
                                     </div>
                                     <div class="pricing-one__btn-box">
                                         <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
-                                            data-plan="Ecommerce Store Build" data-billing="one_time" data-price="2690"><span class="icon-right"></span> Choose Package</a>
+                                            data-plan="Ecommerce Store Build" data-billing="one_time" data-price="2690"><span class="icon-right"></span> Request This Package</a>
                                     </div>
                                     <div class="pricing-one__shape-1"></div>
                                     <div class="pricing-one__shape-2"></div>
@@ -273,7 +273,7 @@
                                     </div>
                                     <div class="pricing-one__btn-box">
                                         <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
-                                            data-plan="Software or CRM Build" data-billing="one_time" data-price="4900"><span class="icon-right"></span> Choose Package</a>
+                                            data-plan="Software or CRM Build" data-billing="one_time" data-price="4900"><span class="icon-right"></span> Request This Package</a>
                                     </div>
                                     <div class="pricing-one__shape-1"></div>
                                     <div class="pricing-one__shape-2"></div>
@@ -322,7 +322,7 @@
                                     </div>
                                     <div class="pricing-one__btn-box">
                                         <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
-                                            data-plan="Hourly Essential (10h block)" data-billing="hourly" data-price="650"><span class="icon-right"></span> Choose Package</a>
+                                            data-plan="Hourly Essential (10h block)" data-billing="hourly" data-price="650"><span class="icon-right"></span> Request This Package</a>
                                     </div>
                                     <div class="pricing-one__shape-1"></div>
                                     <div class="pricing-one__shape-2"></div>
@@ -346,7 +346,7 @@
                                     </div>
                                     <div class="pricing-one__btn-box">
                                         <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
-                                            data-plan="Hourly Growth (20h block)" data-billing="hourly" data-price="1500"><span class="icon-right"></span> Choose Package</a>
+                                            data-plan="Hourly Growth (20h block)" data-billing="hourly" data-price="1500"><span class="icon-right"></span> Request This Package</a>
                                     </div>
                                     <div class="pricing-one__shape-1"></div>
                                     <div class="pricing-one__shape-2"></div>
@@ -370,7 +370,7 @@
                                     </div>
                                     <div class="pricing-one__btn-box">
                                         <a href="#pricing-start-flow" class="pricing-one__btn thm-btn js-plan-select"
-                                            data-plan="Hourly Scale (40h block)" data-billing="hourly" data-price="3400"><span class="icon-right"></span> Choose Package</a>
+                                            data-plan="Hourly Scale (40h block)" data-billing="hourly" data-price="3400"><span class="icon-right"></span> Request This Package</a>
                                     </div>
                                     <div class="pricing-one__shape-1"></div>
                                     <div class="pricing-one__shape-2"></div>

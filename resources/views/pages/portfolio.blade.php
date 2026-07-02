@@ -1,7 +1,7 @@
 @php
     $page_title = 'Portfolio';
     $seoOverride = [
-        'title' => 'UK Software Development Portfolio | Websites, CRM, Ecommerce and SEO Case Studies',
+        'title' => 'Web & Software Case Studies | ARS Developer, Stoke-on-Trent',
         'description' => 'Review ARS Developer case studies across UK websites, CRM systems, ecommerce builds, landing pages, and search-led growth projects with practical delivery notes and live proof where available.',
         'keywords' => 'software development portfolio uk, website case studies uk, crm development case study uk, ecommerce portfolio uk, seo case studies uk, landing page case studies uk',
         'related_links' => [

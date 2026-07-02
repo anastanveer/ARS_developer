@@ -23,7 +23,7 @@ return [
         'COMPANY_ACTS_NOTICE',
         'A Private Limited Company incorporated under the Companies Act 2006.'
     ),
-    'opening_hours' => env('COMPANY_OPENING_HOURS', 'Mo-Fr 09:00-17:00'),
+    'opening_hours' => env('COMPANY_OPENING_HOURS', 'Mo-Fr 09:00-18:00'),
     'same_as' => array_values(array_filter(array_map(
         static fn ($value) => trim((string) $value),
         explode(',', (string) env(

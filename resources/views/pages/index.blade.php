@@ -1,7 +1,7 @@
 @php
     $page_title = 'Home';
     $seoOverride = [
-        'title' => 'Software Development Company Stoke-on-Trent | ARS Developer UK',
+        'title' => 'Software Development Company Stoke-on-Trent | ARS Developer',
         'description' => 'ARS Developer — software development company in Stoke-on-Trent, Staffordshire. Custom websites, Laravel apps, CRM systems, ecommerce & SEO. Free consultation. UK registered.',
         'keywords' => 'software development company stoke on trent, software development company staffordshire, uk software development company, web development company stoke on trent, laravel development company uk, custom software development uk, crm software uk, seo services stoke on trent, web design staffordshire, software development agency uk',
         'preload_image' => asset('assets/images/resources/banner-one-img-1.png'),
@@ -65,9 +65,6 @@
 @endphp
 @include('layouts.header')
 
-<h1 class="seo-hidden-heading">ARS Developer — UK software development company in Stoke-on-Trent building AI-ready websites, custom CRM systems, Laravel applications, and SEO services for UK businesses</h1>
-
-
         <section class="main-slider hero-text-slider">
             <div class="main-slider__shape-bg-2"
                 style="background-image: url(assets/images/shapes/main-slider-shape-bg-2.png);"></div>
@@ -93,13 +90,15 @@
                         <div class="main-slider__content hero-text-slider__content">
                             <div class="main-slider__title-box hero-text-slider__title-box">
                                 <p class="hero-text-slider__eyebrow">UK Software Partner</p>
-                                <h2 class="main-slider__title"><span class="hero-title-line-one">We Build <span class="hero-accent-cyan" style="color:#28d7ff;">Custom Software</span></span><span class="hero-title-line-two"> <span style="color:#ffffff;">That</span> <span class="hero-accent-blue" style="color:#1d93ff;">Scales</span> <span style="color:#ffffff;">Your</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Business.</span></span></h2>
+                                <h1 class="main-slider__title"><span class="hero-title-line-one"><span style="color:#ffffff;">Custom</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Software Development</span></span><span class="hero-title-line-two"> <span class="hero-accent-blue" style="color:#1d93ff;">Company</span> <span style="color:#ffffff;">in</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Stoke-on-Trent</span></span></h1>
+                                <p class="hero-text-slider__proof" style="font-size:15px;font-weight:600;color:#ffffff;">We Build Custom Software That Scales Your Business.</p>
                                 <p class="hero-text-slider__proof">UK software delivery for service businesses | websites, CRM, ecommerce and SEO with clear milestones</p>
                                 <p class="main-slider__text">We help UK businesses launch conversion-focused websites, custom CRM systems, ecommerce builds, workflow automation, and technical SEO improvements with practical project planning and direct support.</p>
                                 <div class="main-slider__btn hero-text-slider__cta">
-                                    <a href="/contact"><span class="icon-right"></span>Discuss Your Project Scope</a>
-                                    <a href="/portfolio" class="hero-text-slider__outline-btn"><span class="icon-right"></span>Review Proven Results</a>
+                                    <a href="#free-audit"><span class="icon-right"></span>Get Your Free Growth Audit</a>
+                                    <a href="/book" class="hero-text-slider__outline-btn"><span class="icon-right"></span>Book a Free 30-min Call</a>
                                 </div>
+                                <p class="hero-text-slider__proof">Response within 1 working day · No payment until you approve</p>
                             </div>
                             <div class="main-slider__satisfied-client-and-rating-box hero-text-slider__stats">
                                 <div class="main-slider__satisfied-client-box">

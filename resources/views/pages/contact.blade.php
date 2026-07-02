@@ -384,8 +384,7 @@
                                             <div class="contact-page__contact-icon-shape"></div>
                                         </div>
                                         <h3 class="contact-page__contact-single-title">Working Hour</h3>
-                                        <p>10:00 AM - 6:00 PM
-                                            <br> Monday - Friday </p>
+                                        <p>Mon – Fri: 09:00 – 18:00</p>
                                     </div>
                                 </div>
                                 <!--Contact Page Contact Single End-->
@@ -396,7 +395,7 @@
                         <div class="contact-page__right contact-page__right--start">
                             <div class="contact-page__contact-form-title-box">
                                 <div class="contact-page__contact-form-title-icon contact-page__contact-form-title-icon--pill">
-                                    <span>Step 1 of 3</span>
+                                    <span>Step 1 of 3 · 30 seconds — tell us what you need</span>
                                 </div>
                                 <h3 class="contact-page__contact-form-title">Start Your Website, CRM, or SEO Project Discussion</h3>
                             </div>
@@ -486,6 +485,7 @@
                                                 <p class="contact-page__action-hint" data-contact-action-hint>
                                                     {{ $showActionSelector ? 'Choose one action: send message only, or pay now and start order.' : 'Standard enquiry mode. We will review and respond quickly.' }}
                                                 </p>
+                                                <p class="contact-page__action-hint">Most business inquiries receive a response within one working day.</p>
                                             </div>
                                         </div>
                                     </div>

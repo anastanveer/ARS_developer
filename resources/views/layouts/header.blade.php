@@ -620,7 +620,7 @@
         $companyLocality = (string) config('company.address_locality', 'Stoke-on-Trent');
         $companyCountryCode = (string) config('company.address_country', 'GB');
         $companyCountryName = (string) config('company.country_name', 'United Kingdom');
-        $companyOpeningHours = (string) config('company.opening_hours', 'Mo-Fr 09:00-17:00');
+        $companyOpeningHours = (string) config('company.opening_hours', 'Mo-Fr 09:00-18:00');
         $entityTopics = array_values(array_filter(array_map(
             static fn ($item) => trim((string) $item),
             (array) config('company.entity_topics', [])
@@ -1150,11 +1150,14 @@
                 '@type' => 'OpeningHoursSpecification',
                 'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
                 'opens' => '09:00',
-                'closes' => '17:00',
+                'closes' => '18:00',
             ],
         ];
         $schemaGraph[3]['openingHours'] = $companyOpeningHours;
         $schemaGraph[3]['sameAs'] = $organizationSameAs;
+        $schemaGraph[2]['openingHoursSpecification'] = $schemaGraph[3]['openingHoursSpecification'];
+        $schemaGraph[2]['openingHours'] = $companyOpeningHours;
+        $schemaGraph[2]['sameAs'] = $organizationSameAs;
 
         $schemaGraph[] = [
             '@context' => 'https://schema.org',
@@ -1251,6 +1254,7 @@
                 $founderNode['sameAs'] = $founderSameAs;
             }
             $schemaGraph[0]['founder'] = ['@id' => $siteRootUrl . '#founder'];
+            $schemaGraph[2]['founder'] = ['@id' => $siteRootUrl . '#founder'];
             $schemaGraph[] = $founderNode;
         }
 
@@ -2395,7 +2399,7 @@
                             <div class="main-menu-two__top-time-icon">
                                 <span class="icon-time"></span>
                             </div>
-                            <p class="main-menu-two__top-text">Mon - Fri: 09:00 - 05:00</p>
+                            <p class="main-menu-two__top-text">Mon – Fri: 09:00 – 18:00</p>
                         </div>
                         <div class="main-menu-two__social">
                             <a class="main-menu-two__social-link" href="https://www.facebook.com/arsdeveloperuk" target="_blank" rel="noopener" aria-label="ARSDeveloper on Facebook"><i class="fab fa-facebook"></i></a>

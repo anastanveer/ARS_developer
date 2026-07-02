@@ -452,7 +452,7 @@
                                 <li>UK Companies House No. 17039150</li>
                                 <li>GBP milestone contracts — clear scope</li>
                                 <li>UK GDPR compliant delivery</li>
-                                <li>UK timezone support, Mon–Fri 09:00–17:00</li>
+                                <li>UK timezone support, Mon–Fri 09:00–18:00</li>
                             </ul>
                         </div>
                     </div>
@@ -515,7 +515,7 @@
             <div class="col-lg-3 d-none d-lg-block">
                 <div class="svc-hero__cta" style="position:sticky;top:100px;">
                     <h3 style="font-size:16px;">Got a question?</h3>
-                    <p>Our UK team is available Mon–Fri, 09:00–17:00 GMT.</p>
+                    <p>Our UK team is available Mon–Fri, 09:00–18:00 GMT.</p>
                     <div class="svc-hero__cta-links">
                         <a href="/contact" class="svc-hero__link-chip" style="background:#117be8;color:#fff;border-color:#117be8;">
                             <i class="fa fa-envelope"></i> Contact Us
@@ -659,7 +659,7 @@
         '@type'     => 'OpeningHoursSpecification',
         'dayOfWeek' => ['Monday','Tuesday','Wednesday','Thursday','Friday'],
         'opens'     => '09:00',
-        'closes'    => '17:00',
+        'closes'    => '18:00',
     ]],
     'aggregateRating' => $aggRating ? [
         '@type'       => 'AggregateRating',
