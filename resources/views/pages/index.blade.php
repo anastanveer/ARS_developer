@@ -92,33 +92,32 @@
                                 <p class="hero-text-slider__eyebrow">UK Software Partner</p>
                                 <h1 class="main-slider__title"><span class="hero-title-line-one"><span style="color:#ffffff;">Custom</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Software Development</span></span><span class="hero-title-line-two"> <span class="hero-accent-blue" style="color:#1d93ff;">Company</span> <span style="color:#ffffff;">in</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Stoke-on-Trent</span></span></h1>
                                 <style>
-                                /* ===== Hero redesign: wide, no clipping, premium feel ===== */
-                                /* widen the REAL constraint (was 980px) and stop clipping (overflow was hidden) */
-                                .hero-text-slider__content{width:min(100%,1400px)!important;overflow:visible!important}
-                                .main-slider__content.hero-text-slider__content{overflow:visible!important}
-                                .hero-text-slider__title-box{max-width:1400px!important;width:100%!important;padding-left:20px;padding-right:20px}
-                                /* big impactful H1 — 2 clean lines, scales with screen so it NEVER cuts */
-                                .hero-text-slider__title-box .main-slider__title{font-size:clamp(30px,4.6vw,64px)!important;line-height:1.08!important;font-weight:800!important;text-transform:none!important;letter-spacing:-0.02em!important;max-width:100%!important;margin:0 auto 18px}
-                                .hero-text-slider__title-box .main-slider__title .hero-title-line-one,.hero-text-slider__title-box .main-slider__title .hero-title-line-two{display:block!important;white-space:nowrap!important}
-                                /* readable, wider paragraph */
-                                .hero-text-slider__title-box .main-slider__text{max-width:900px;margin:0 auto 6px;font-size:17px;line-height:1.65;color:rgba(255,255,255,.92)}
-                                /* both CTAs in ONE row, equal height, breathing room above/below */
-                                .main-slider__btn.hero-text-slider__cta{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;justify-content:center;align-items:stretch;gap:18px;margin-top:26px!important;margin-bottom:6px}
+                                /* ===== Hero: bulletproof — nothing can clip, everything wide & centered ===== */
+                                /* every wrapper wide + visible (bootstrap .container was 1140px, content box 980px, overflow hidden) */
+                                .hero-text-slider .item>.container{max-width:1440px!important;width:100%!important}
+                                .hero-text-slider__content{width:100%!important;max-width:1440px!important;overflow:visible!important}
+                                .hero-text-slider__title-box{display:block!important;width:100%!important;max-width:100%!important;overflow:visible!important;padding:0 20px;text-align:center}
+                                /* H1: big & bold; NATURAL wrapping with balanced lines — clipping is impossible */
+                                .hero-text-slider__title-box .main-slider__title{font-size:clamp(30px,4.4vw,60px)!important;line-height:1.1!important;font-weight:800!important;text-transform:none!important;letter-spacing:-0.02em!important;white-space:normal!important;overflow:visible!important;text-wrap:balance;max-width:1200px!important;margin:0 auto 18px}
+                                .hero-text-slider__title-box .main-slider__title span{white-space:normal!important;display:inline!important}
+                                /* paragraph: wider + readable */
+                                .hero-text-slider__title-box .main-slider__text{max-width:920px;margin:0 auto 6px;font-size:17px;line-height:1.65;color:rgba(255,255,255,.92)}
+                                /* CTAs: one row, centered, hover lift */
+                                .main-slider__btn.hero-text-slider__cta{display:flex!important;flex-direction:row!important;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:18px;margin:26px auto 6px!important;width:auto!important;max-width:none!important}
                                 .main-slider__btn.hero-text-slider__cta a{margin:0!important;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;transition:transform .18s ease, box-shadow .18s ease}
                                 .main-slider__btn.hero-text-slider__cta a:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(0,48,120,.45)}
-                                /* trust line under buttons + space before the stats row */
-                                .hero-text-slider__title-box>.hero-text-slider__proof:last-child{margin-top:14px;margin-bottom:34px;opacity:.85;letter-spacing:.02em}
-                                .hero-text-slider__stats{margin-top:10px}
-                                /* gentle entrance so it feels alive */
-                                @keyframes heroRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+                                /* trust line + space before stats */
+                                .hero-text-slider__title-box>.hero-text-slider__proof:last-child{margin-top:14px;margin-bottom:30px;opacity:.85;letter-spacing:.02em}
+                                .hero-text-slider__stats{margin-top:12px}
+                                /* soft entrance */
+                                @keyframes heroRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
                                 .hero-text-slider__eyebrow{animation:heroRise .5s ease both}
                                 .hero-text-slider__title-box .main-slider__title{animation:heroRise .6s .06s ease both}
                                 .hero-text-slider__title-box .hero-text-slider__proof,.hero-text-slider__title-box .main-slider__text{animation:heroRise .6s .14s ease both}
                                 .main-slider__btn.hero-text-slider__cta{animation:heroRise .6s .22s ease both}
                                 @media(max-width:900px){
-                                  .hero-text-slider__title-box .main-slider__title{font-size:clamp(24px,6.2vw,42px)!important}
-                                  .hero-text-slider__title-box .main-slider__title .hero-title-line-one,.hero-text-slider__title-box .main-slider__title .hero-title-line-two{white-space:normal!important}
-                                  .main-slider__btn.hero-text-slider__cta{flex-direction:column!important;flex-wrap:wrap!important;align-items:center}
+                                  .hero-text-slider__title-box .main-slider__title{font-size:clamp(24px,6.2vw,40px)!important}
+                                  .main-slider__btn.hero-text-slider__cta{flex-direction:column!important;align-items:center}
                                   .main-slider__btn.hero-text-slider__cta a{width:100%;max-width:360px}
                                 }
                                 </style>
