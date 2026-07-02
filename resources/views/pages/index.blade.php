@@ -92,19 +92,34 @@
                                 <p class="hero-text-slider__eyebrow">UK Software Partner</p>
                                 <h1 class="main-slider__title"><span class="hero-title-line-one"><span style="color:#ffffff;">Custom</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Software Development</span></span><span class="hero-title-line-two"> <span class="hero-accent-blue" style="color:#1d93ff;">Company</span> <span style="color:#ffffff;">in</span> <span class="hero-accent-cyan" style="color:#28d7ff;">Stoke-on-Trent</span></span></h1>
                                 <style>
-                                /* Hero: wider content, big impactful H1 on 2 clean lines, both CTAs in one row */
-                                .hero-text-slider__title-box{max-width:1340px!important;width:100%!important;padding-left:16px;padding-right:16px}
-                                .hero-text-slider .auto-container,.hero-text-slider .container{max-width:1340px!important}
-                                .hero-text-slider__title-box .main-slider__title{font-size:clamp(30px,5vw,62px)!important;line-height:1.08!important;font-weight:800!important;text-transform:none!important;letter-spacing:-0.02em!important;max-width:100%!important;margin-left:auto;margin-right:auto}
+                                /* ===== Hero redesign: wide, no clipping, premium feel ===== */
+                                /* widen the REAL constraint (was 980px) and stop clipping (overflow was hidden) */
+                                .hero-text-slider__content{width:min(100%,1400px)!important;overflow:visible!important}
+                                .main-slider__content.hero-text-slider__content{overflow:visible!important}
+                                .hero-text-slider__title-box{max-width:1400px!important;width:100%!important;padding-left:20px;padding-right:20px}
+                                /* big impactful H1 — 2 clean lines, scales with screen so it NEVER cuts */
+                                .hero-text-slider__title-box .main-slider__title{font-size:clamp(30px,4.6vw,64px)!important;line-height:1.08!important;font-weight:800!important;text-transform:none!important;letter-spacing:-0.02em!important;max-width:100%!important;margin:0 auto 18px}
                                 .hero-text-slider__title-box .main-slider__title .hero-title-line-one,.hero-text-slider__title-box .main-slider__title .hero-title-line-two{display:block!important;white-space:nowrap!important}
-                                .hero-text-slider__title-box .main-slider__text{max-width:860px;margin-left:auto;margin-right:auto}
-                                .hero-text-slider__cta{display:flex!important;flex-direction:row!important;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px}
-                                .hero-text-slider__cta a{margin:0!important;white-space:nowrap}
-                                @media(max-width:820px){
-                                  .hero-text-slider__title-box .main-slider__title{font-size:clamp(24px,6.4vw,40px)!important}
+                                /* readable, wider paragraph */
+                                .hero-text-slider__title-box .main-slider__text{max-width:900px;margin:0 auto 6px;font-size:17px;line-height:1.65;color:rgba(255,255,255,.92)}
+                                /* both CTAs in ONE row, equal height, breathing room above/below */
+                                .main-slider__btn.hero-text-slider__cta{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;justify-content:center;align-items:stretch;gap:18px;margin-top:26px!important;margin-bottom:6px}
+                                .main-slider__btn.hero-text-slider__cta a{margin:0!important;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;transition:transform .18s ease, box-shadow .18s ease}
+                                .main-slider__btn.hero-text-slider__cta a:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(0,48,120,.45)}
+                                /* trust line under buttons + space before the stats row */
+                                .hero-text-slider__title-box>.hero-text-slider__proof:last-child{margin-top:14px;margin-bottom:34px;opacity:.85;letter-spacing:.02em}
+                                .hero-text-slider__stats{margin-top:10px}
+                                /* gentle entrance so it feels alive */
+                                @keyframes heroRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+                                .hero-text-slider__eyebrow{animation:heroRise .5s ease both}
+                                .hero-text-slider__title-box .main-slider__title{animation:heroRise .6s .06s ease both}
+                                .hero-text-slider__title-box .hero-text-slider__proof,.hero-text-slider__title-box .main-slider__text{animation:heroRise .6s .14s ease both}
+                                .main-slider__btn.hero-text-slider__cta{animation:heroRise .6s .22s ease both}
+                                @media(max-width:900px){
+                                  .hero-text-slider__title-box .main-slider__title{font-size:clamp(24px,6.2vw,42px)!important}
                                   .hero-text-slider__title-box .main-slider__title .hero-title-line-one,.hero-text-slider__title-box .main-slider__title .hero-title-line-two{white-space:normal!important}
-                                  .hero-text-slider__cta{flex-direction:column!important}
-                                  .hero-text-slider__cta a{width:100%;max-width:360px}
+                                  .main-slider__btn.hero-text-slider__cta{flex-direction:column!important;flex-wrap:wrap!important;align-items:center}
+                                  .main-slider__btn.hero-text-slider__cta a{width:100%;max-width:360px}
                                 }
                                 </style>
                                 <p class="hero-text-slider__proof" style="font-size:15px;font-weight:600;color:#ffffff;">We Build Custom Software That Scales Your Business.</p>
