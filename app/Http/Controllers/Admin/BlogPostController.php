@@ -8,6 +8,7 @@ use App\Services\IndexNowService;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -15,6 +16,52 @@ class BlogPostController extends Controller
 {
     public function __construct(private readonly IndexNowService $indexNow)
     {
+    }
+
+    /**
+     * Evenly re-space every post's published_at so they publish on a steady
+     * cadence (default 2/week: Tue & Fri), fixing clustered dates and gaps.
+     * Order of content is preserved (by current published_at, then id).
+     */
+    public function respace(Request $request): RedirectResponse
+    {
+        $days = collect(explode(',', (string) $request->input('days', '2,5')))
+            ->map(fn ($d) => (int) trim($d))
+            ->filter(fn ($d) => $d >= 1 && $d <= 7)
+            ->unique()->sort()->values();
+
+        if ($days->isEmpty()) {
+            $days = collect([2, 5]); // Tue & Fri
+        }
+
+        $posts = BlogPost::query()
+            ->orderByRaw('published_at IS NULL')
+            ->orderBy('published_at')
+            ->orderBy('id')
+            ->get();
+
+        if ($posts->isEmpty()) {
+            return back()->with('status', 'No blog posts to re-space.');
+        }
+
+        $firstDated = $posts->first(fn ($p) => $p->published_at !== null);
+        $anchor = ($firstDated?->published_at ?? now())->copy()->startOfWeek(Carbon::MONDAY);
+
+        $slots = [];
+        $weeks = (int) ceil($posts->count() / $days->count()) + 1;
+        for ($w = 0; $w < $weeks; $w++) {
+            foreach ($days as $dow) {
+                $slots[] = $anchor->copy()->addWeeks($w)->addDays($dow - 1)->setTime(10, 0, 0);
+            }
+        }
+
+        DB::transaction(function () use ($posts, $slots) {
+            foreach ($posts as $i => $post) {
+                $post->forceFill(['published_at' => $slots[$i]])->save();
+            }
+        });
+
+        return back()->with('status', 'Blog dates re-spaced evenly ('.$days->count().'/week). '.$posts->count().' posts updated.');
     }
 
     public function index(): View

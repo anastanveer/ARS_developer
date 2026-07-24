@@ -3,8 +3,21 @@
 @section('content')
 <div class="top">
     <h1 style="margin:0">Blog Posts</h1>
-    <a class="btn" href="{{ route('admin.blog-posts.create') }}">Add Blog Post</a>
+    <div style="display:flex;gap:8px;align-items:center">
+        <form method="post" action="{{ route('admin.blog-posts.respace') }}" class="inline"
+              onsubmit="return confirm('Re-space ALL blog post dates evenly (2 per week: Tue & Fri)? This updates every post\'s publish date.')">
+            @csrf
+            <button type="submit" class="btn gray" title="Evenly space all posts 2 per week (Tue & Fri)">Re-space dates</button>
+        </form>
+        <a class="btn" href="{{ route('admin.blog-posts.create') }}">Add Blog Post</a>
+    </div>
 </div>
+
+@if (session('status'))
+    <div style="margin:12px 0;padding:10px 14px;border-radius:8px;background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46">
+        {{ session('status') }}
+    </div>
+@endif
 
 <style>
     .blog-status{
