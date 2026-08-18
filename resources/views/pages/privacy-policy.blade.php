@@ -4,7 +4,7 @@
         'title' => 'Privacy Policy for ARSDeveloper UK Services',
         'description' => 'Read how ARSDeveloper UK collects, stores, and protects personal data for enquiries, meetings, projects, billing, and support.',
         'keywords' => 'privacy policy uk software agency, gdpr data handling uk, arsdeveloper privacy notice',
-        'robots' => 'noindex, follow',
+        'robots' => 'index, follow',
         'type' => 'WebPage',
     ];
     $policyLastUpdated = '17 February 2026';
@@ -81,7 +81,26 @@
                     <li>We recommend clients verify invoice references and portal links before payment.</li>
                 </ul>
 
-                <h3 style="margin-top: 28px;">10. Contact and complaints</h3>
+                <h3 style="margin-top: 28px;">10. Analytics</h3>
+                <p>We use Google Analytics to understand how the site is used &mdash; which pages get read, how visitors arrive, and where they drop off. It sets cookies that record a randomised identifier for your browser, not your identity, and IP addresses are anonymised. We use this to decide what to write and what to fix, nothing else.</p>
+                <p>If you would rather not be measured at all, Google publishes a browser add-on that blocks it everywhere: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">tools.google.com/dlpage/gaoptout</a>.</p>
+
+                <h3 style="margin-top: 28px;">11. Advertising</h3>
+                <p>This site may display advertising served through Google AdSense. A few things follow from that, and you should know all of them.</p>
+                <ul style="margin: 10px 0 0 18px;">
+                    <li>Google uses cookies &mdash; including the DoubleClick DART cookie &mdash; to serve ads based on your previous visits to this site and other sites on the internet.</li>
+                    <li>Third-party vendors and ad networks other than Google may also serve ads here, and may set their own cookies to measure how those ads perform.</li>
+                    <li>We do not control those cookies, cannot read them, and do not receive the personal data behind them. We see aggregate performance only.</li>
+                </ul>
+                <p style="margin-top: 12px;">You can switch personalised advertising off without going through us:</p>
+                <ul style="margin: 10px 0 0 18px;">
+                    <li>Google&rsquo;s own controls: <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">google.com/settings/ads</a></li>
+                    <li>Many vendors at once: <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">aboutads.info/choices</a> or <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">youronlinechoices.eu</a></li>
+                    <li>The full vendor list: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Google&rsquo;s partner sites page</a></li>
+                </ul>
+                <p style="margin-top: 12px;">Visitors in the UK, EEA and Switzerland are shown a consent message before advertising cookies are set, and can change that choice at any time.</p>
+
+                <h3 style="margin-top: 28px;">12. Contact and complaints</h3>
                 <p>For privacy requests, email <a href="mailto:info@arsdeveloper.co.uk">info@arsdeveloper.co.uk</a> with subject line <strong>Privacy Request</strong>. We aim to acknowledge within 2 business days and resolve within a reasonable period depending on request complexity.</p>
 
                 <h4 style="margin-top: 28px;">Last updated</h4>

@@ -111,6 +111,14 @@ class SitemapController extends Controller
             ['path' => '/node-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
             ['path' => '/typescript-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
             ['path' => '/crm-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
+            // Legal pages. Low priority — they are here so they are crawlable and
+            // discoverable (AdSense and users both expect to find them), not to
+            // compete for search traffic.
+            ['path' => '/privacy-policy', 'changefreq' => 'yearly', 'priority' => '0.3'],
+            ['path' => '/cookie-policy', 'changefreq' => 'yearly', 'priority' => '0.3'],
+            ['path' => '/terms-and-conditions', 'changefreq' => 'yearly', 'priority' => '0.3'],
+            ['path' => '/refund-policy', 'changefreq' => 'yearly', 'priority' => '0.3'],
+            ['path' => '/service-disclaimer', 'changefreq' => 'yearly', 'priority' => '0.3'],
         ]);
 
         return $staticPages->map(function (array $page) use ($today) {

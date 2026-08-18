@@ -4,7 +4,7 @@
         'title' => 'Service Disclaimer for ARSDeveloper UK',
         'description' => 'Important service disclaimer on third-party platforms, expected outcomes, and communication safety for ARSDeveloper clients.',
         'keywords' => 'service disclaimer uk software agency, arsdeveloper disclaimer, website service limitations uk',
-        'robots' => 'noindex, follow',
+        'robots' => 'index, follow',
         'type' => 'WebPage',
     ];
     $disclaimerLastUpdated = '17 February 2026';
@@ -56,7 +56,12 @@
                 <h3 style="margin-top: 28px;">6. Limitation note</h3>
                 <p>Where legally permitted, ARSDeveloper is not liable for indirect loss or third-party service interruption beyond our direct control.</p>
 
-                <h3 style="margin-top: 28px;">7. Contact</h3>
+                <h3 style="margin-top: 28px;">7. Advertising disclosure</h3>
+                <p>This site may display advertising served through Google AdSense and other third-party ad vendors. Where it does, we earn revenue when those ads are shown or clicked.</p>
+                <p>We do not choose the individual adverts, we do not vet the advertisers, and their appearance here is not a recommendation. Ad placement never influences what we publish &mdash; an article recommending one platform over another says so because of project experience, not because of what sits in the ad slot beside it.</p>
+                <p>If an article ever contains an affiliate link or covers a product we have a commercial relationship with, that is stated in the article itself. How advertising cookies work, and how to switch personalised ads off, is set out in our <a href="{{ url('/cookie-policy') }}" style="text-decoration: underline;">Cookie Policy</a> and <a href="{{ url('/privacy-policy') }}" style="text-decoration: underline;">Privacy Policy</a>.</p>
+
+                <h3 style="margin-top: 28px;">8. Contact</h3>
                 <p>For clarification on any project or policy point, contact <a href="mailto:info@arsdeveloper.co.uk">info@arsdeveloper.co.uk</a>.</p>
 
                 <h4 style="margin-top: 28px;">Last updated</h4>

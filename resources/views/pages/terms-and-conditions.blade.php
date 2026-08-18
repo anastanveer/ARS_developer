@@ -4,7 +4,7 @@
         'title' => 'Terms and Conditions for ARSDeveloper UK Projects',
         'description' => 'Read ARSDeveloper terms covering scope, approvals, payments, intellectual property, liability, and dispute handling for UK projects.',
         'keywords' => 'terms and conditions uk software agency, project service terms uk, arsdeveloper contract terms',
-        'robots' => 'noindex, follow',
+        'robots' => 'index, follow',
         'type' => 'WebPage',
     ];
     $termsLastUpdated = '17 February 2026';

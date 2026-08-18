@@ -2307,6 +2307,11 @@
     .wow { visibility: visible !important; }
     [data-aos] { pointer-events: auto !important; }
     </style>
+
+    {{-- Google AdSense. Shared publisher account with anastanveer.com; one AdSense
+         account can serve multiple sites, so this is the same ca-pub id. --}}
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9027630763788678" crossorigin="anonymous"></script>
 </head>
 
 <body class="{{ $isHomePath ? 'is-home' : 'custom-cursor' }}">

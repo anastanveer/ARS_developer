@@ -4,7 +4,7 @@
         'title' => 'Cookie Policy for ARSDeveloper UK Website',
         'description' => 'Learn how ARSDeveloper uses essential and analytics cookies, and how visitors can manage browser-level cookie controls.',
         'keywords' => 'cookie policy uk website, analytics cookies policy uk, arsdeveloper cookie notice',
-        'robots' => 'noindex, follow',
+        'robots' => 'index, follow',
         'type' => 'WebPage',
     ];
     $cookieLastUpdated = '17 February 2026';
@@ -57,7 +57,13 @@
                 <h3 style="margin-top: 28px;">5. Security and fraud awareness</h3>
                 <p>Cookies are not used by us to request payment credentials by email or chat. If you receive suspicious messages claiming to be ARSDeveloper, verify through <a href="mailto:info@arsdeveloper.co.uk">info@arsdeveloper.co.uk</a>.</p>
 
-                <h3 style="margin-top: 28px;">6. Policy updates</h3>
+                <h3 style="margin-top: 28px;">6. Analytics and advertising cookies</h3>
+                <p><strong>Analytics.</strong> Google Analytics sets cookies that count visits and record which pages are read. They identify a browser, not a person, and IP addresses are anonymised.</p>
+                <p><strong>Advertising.</strong> This site may display ads served through Google AdSense. Google uses cookies &mdash; including the DoubleClick DART cookie &mdash; to serve ads based on your previous visits to this and other sites. Third-party vendors and ad networks other than Google may also serve ads here and set their own cookies to measure performance. We cannot read those cookies and do not receive the data behind them.</p>
+                <p>Only essential cookies are genuinely necessary. Blocking the analytics and advertising ones costs you nothing on this site &mdash; you will simply see less relevant ads. You can opt out at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">google.com/settings/ads</a>, <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">aboutads.info/choices</a> or <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">youronlinechoices.eu</a>, or block cookies in your browser settings.</p>
+                <p>Visitors in the UK, EEA and Switzerland are asked for consent before any advertising cookie is set, and that choice can be changed at any time.</p>
+
+                <h3 style="margin-top: 28px;">7. Policy updates</h3>
                 <p>This policy may be updated when technology, regulations, or integrations change. The latest version is always shown on this page.</p>
 
                 <h4 style="margin-top: 28px;">Last updated</h4>

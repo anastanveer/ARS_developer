@@ -4,7 +4,7 @@
         'title' => 'Refund Policy for ARSDeveloper UK Services',
         'description' => 'Read ARSDeveloper refund policy for project milestones, subscriptions, cancellations, third-party costs, and chargeback handling.',
         'keywords' => 'refund policy uk software agency, web development refund terms uk, arsdeveloper refunds',
-        'robots' => 'noindex, follow',
+        'robots' => 'index, follow',
         'type' => 'WebPage',
     ];
     $refundLastUpdated = '17 February 2026';
