@@ -29,11 +29,38 @@
     $placename      = $geo['placename'] ?? 'United Kingdom';
     $cityWikiSameAs = $cityWikiMap[$placename] ?? $cityWikiMap['United Kingdom'];
     $isCityPage     = !in_array($placename, ['United Kingdom'], true);
+    // The delivery process is the same discipline everywhere, but describing it in
+    // identical words on all 37 pages made a fifth of each page a duplicate of the
+    // other 36. These pages genuinely differ on two axes — what is being built and
+    // who it is being built for — so the steps are written from those, using data the
+    // page already holds. Nothing here is inserted for search engines; if a page has
+    // no city, it simply reads as UK-wide.
+    $buildMap = [
+        'laravel'    => ['Laravel application', 'the data model, background jobs and admin tooling'],
+        'php'        => ['PHP application',     'the data model, integrations and admin tooling'],
+        'wordpress'  => ['WordPress build',     'the theme, editing experience and plugin footprint'],
+        'shopify'    => ['Shopify store',       'the theme, checkout flow and app stack'],
+        'ecommerce'  => ['ecommerce build',     'the catalogue, checkout and fulfilment flow'],
+        'vue'        => ['Vue front end',       'component structure, state handling and API contracts'],
+        'react'      => ['React front end',     'component structure, state handling and API contracts'],
+        'nextjs'     => ['Next.js build',       'rendering strategy, routing and Core Web Vitals'],
+        'node'       => ['Node service',        'endpoints, the data model and integration points'],
+        'typescript' => ['TypeScript codebase', 'types, module boundaries and test coverage'],
+        'crm'        => ['CRM',                 'pipeline stages, user roles and reporting'],
+    ];
+    $buildKey  = 'web';
+    foreach (array_keys($buildMap) as $k) {
+        if (str_starts_with($slug ?? '', $k . '-') || str_contains($slug ?? '', $k . '-develop')) { $buildKey = $k; break; }
+    }
+    [$buildNoun, $scopeDetail] = $buildMap[$buildKey]
+        ?? ['website', 'page structure, the content model and conversion paths'];
+    $audience = $isCityPage ? "{$placename} businesses" : 'businesses across the UK';
+
     $howToSteps = [
-        ['name' => 'Book a Free Consultation', 'text' => 'Complete the contact form or book a strategy call. We review your requirements and respond within one business day with next-step recommendations.'],
-        ['name' => 'Receive a Scoped Proposal', 'text' => 'We prepare a detailed proposal covering scope, delivery timeline, milestones, and GBP pricing. No open-ended retainers — every project has a clear contract.'],
-        ['name' => 'Milestone-Based Delivery', 'text' => 'Work is delivered in structured milestones with review and approval at each stage. You maintain full visibility and sign off before the next phase begins.'],
-        ['name' => 'Launch and Post-Launch Support', 'text' => 'We handle launch, post-launch monitoring, and hand over full documentation. Monthly growth and maintenance support available after launch.'],
+        ['name' => 'Book a Free Consultation', 'text' => "Tell us what the {$buildNoun} has to do. We work with {$audience}, reply within one business day in UK hours, and will say up front if this is not the right approach."],
+        ['name' => 'Receive a Scoped Proposal', 'text' => "A written proposal covering {$scopeDetail}, milestones and GBP pricing. Scope is fixed before work starts — no open-ended retainer."],
+        ['name' => 'Milestone-Based Delivery', 'text' => "The {$buildNoun} arrives in reviewable stages. You approve each milestone before the next begins, so there is no large unreviewed handover at the end."],
+        ['name' => 'Launch and Post-Launch Support', 'text' => "We run the launch, monitor it afterwards, and hand over documentation another developer could pick up. Monthly maintenance is available, not compulsory."],
     ];
 @endphp
 @include('layouts.header')
