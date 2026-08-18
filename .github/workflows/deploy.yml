@@ -32,9 +32,19 @@ jobs:
           WEB_DIR: /home/arsdojcg/arsdeveloper.co.uk
         run: |
           set -uo pipefail
-          for v in SSH_KEY SSH_HOST SSH_USER; do
-            [ -n "${!v:-}" ] || { echo "::error::Secret $v is empty or not set."; exit 1; }
-          done
+          # Report the SECRET name, not the local env var name — naming the wrong one
+          # sends people to create a secret that this workflow never reads.
+          echo "SSH_PRIVATE_KEY set: $([ -n "${SSH_KEY:-}" ] && echo yes || echo NO)"
+          echo "SSH_HOST set:        $([ -n "${SSH_HOST:-}" ] && echo "yes (${SSH_HOST})" || echo NO)"
+          echo "SSH_USER set:        $([ -n "${SSH_USER:-}" ] && echo "yes (${SSH_USER})" || echo NO)"
+          missing=""
+          [ -n "${SSH_KEY:-}"  ] || missing="$missing SSH_PRIVATE_KEY"
+          [ -n "${SSH_HOST:-}" ] || missing="$missing SSH_HOST"
+          [ -n "${SSH_USER:-}" ] || missing="$missing SSH_USER"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secret(s):$missing — add them under Settings > Secrets and variables > Actions on THIS repository (secrets are not shared between repositories)."
+            exit 1
+          fi
 
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           if printf '%s' "$SSH_KEY" | grep -q 'BEGIN .*PRIVATE KEY'; then
