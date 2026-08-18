@@ -1,0 +1,87 @@
+name: Deploy to Namecheap
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-arsdeveloper
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # This site is deployed in two halves, which is why a single rsync will not do.
+      # index.php in the document root resolves the framework to ../arsdeveloper_app,
+      # so PHP source lives there while the browser-facing assets sit in the document
+      # root itself. Both have to move, and each has its own set of things that must
+      # survive: .env, vendor/ and storage/ on the app side (storage holds real
+      # uploads and generated data), and the document root's own files on the other.
+      - name: Deploy over rsync/SSH
+        env:
+          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: "21098"
+          APP_DIR: /home/arsdojcg/arsdeveloper_app
+          WEB_DIR: /home/arsdojcg/arsdeveloper.co.uk
+        run: |
+          set -uo pipefail
+          for v in SSH_KEY SSH_HOST SSH_USER; do
+            [ -n "${!v:-}" ] || { echo "::error::Secret $v is empty or not set."; exit 1; }
+          done
+
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          if printf '%s' "$SSH_KEY" | grep -q 'BEGIN .*PRIVATE KEY'; then
+            printf '%s\n' "$SSH_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          else
+            printf '%s' "$SSH_KEY" | tr -d '[:space:]' | base64 -d > ~/.ssh/deploy_key 2>/dev/null
+          fi
+          printf '%s\n' "$(cat ~/.ssh/deploy_key)" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keygen -y -f ~/.ssh/deploy_key >/dev/null 2>&1 \
+            || { echo "::error::SSH_PRIVATE_KEY did not parse (paste the full PEM or its base64 form)."; exit 1; }
+
+          SSH_OPTS="ssh -i ~/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=no -o IdentitiesOnly=yes"
+          $SSH_OPTS -o BatchMode=yes -o ConnectTimeout=20 "$SSH_USER@$SSH_HOST" true \
+            || { echo "::error::SSH auth failed — check SSH_USER and that this key is in authorized_keys."; exit 1; }
+          echo "ssh auth OK"
+
+          set -e
+          # 1) PHP source. --delete keeps the app a mirror of the repo, but never
+          #    touches runtime state or anything the server owns.
+          rsync -az --delete --stats \
+            --exclude '/.git/' --exclude '/.github/' \
+            --exclude '/.env*' --exclude '/vendor/' --exclude '/storage/' \
+            --exclude '/node_modules/' --exclude '/bootstrap/cache/' \
+            --exclude '/public/' \
+            --exclude '/error_log' --exclude '/CHANGELOG_LIVE_CHANGES.md' \
+            --exclude '/database/database.sqlite' \
+            -e "$SSH_OPTS" ./ "$SSH_USER@$SSH_HOST:$APP_DIR/"
+
+          # 2) Browser-facing assets. No --delete here: the document root also holds
+          #    files this repo does not own, and losing them would break the site.
+          rsync -az --stats \
+            -e "$SSH_OPTS" ./public/ "$SSH_USER@$SSH_HOST:$WEB_DIR/"
+
+          # Blade and route changes need the compiled caches dropped, or the old
+          # views keep being served.
+          $SSH_OPTS "$SSH_USER@$SSH_HOST" \
+            "cd $APP_DIR && /usr/local/bin/php artisan view:clear && /usr/local/bin/php artisan route:clear && /usr/local/bin/php artisan config:clear"
+
+          rm -f ~/.ssh/deploy_key
+
+      # A deploy that uploads nothing still exits zero, so prove the site answers.
+      - name: Verify the site responds
+        run: |
+          set -euo pipefail
+          for path in "" "blog" "privacy-policy" "contact"; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "https://arsdeveloper.co.uk/$path")
+            echo "  /$path -> $code"
+            [ "$code" = "200" ] || { echo "::error::https://arsdeveloper.co.uk/$path returned $code"; exit 1; }
+          done
