@@ -70,7 +70,7 @@
         Header set Cache-Control "public, max-age=3600, s-maxage=3600"
     </FilesMatch>
     <FilesMatch "\.(html|php)$">
-        Header set Cache-Control "public, max-age=300, s-maxage=300"
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
     </FilesMatch>
     Header append Vary "Accept-Encoding"
     Header unset ETag
@@ -102,3 +102,14 @@ FileETag None
 <IfModule mod_brotli.c>
     AddOutputFilterByType BROTLI_COMPRESS text/plain text/html text/xml text/css application/javascript application/json application/xml image/svg+xml
 </IfModule>
+
+# Block internal project files that sit in the document root.
+# The whole Laravel source is deployed here, so docs, manifests and the artisan
+# entrypoint were being served as plain text (CLAUDE.md, PROJECT_MAP.md and the
+# rest all returned 200). .env and composer.json were already denied; these were not.
+<FilesMatch "(?i)\.(md|lock|json|xml|yml|yaml|dist|example|sh)$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "(?i)^(artisan|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|\.env.*|\.git.*)$">
+    Require all denied
+</FilesMatch>
