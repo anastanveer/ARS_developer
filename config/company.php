@@ -24,6 +24,20 @@ return [
         'A Private Limited Company incorporated under the Companies Act 2006.'
     ),
     'opening_hours' => env('COMPANY_OPENING_HOURS', 'Mo-Fr 09:00-18:00'),
+
+    // Bank transfer details shown on invoices. Kept in .env, not in the repo, and
+    // every field defaults to empty: the invoice only renders the bank block when
+    // an account number or IBAN is actually present, so a half-filled config can
+    // never put incomplete payment instructions in front of a client.
+    'bank' => [
+        'account_name'   => env('COMPANY_BANK_ACCOUNT_NAME', ''),
+        'bank_name'      => env('COMPANY_BANK_NAME', ''),
+        'sort_code'      => env('COMPANY_BANK_SORT_CODE', ''),
+        'account_number' => env('COMPANY_BANK_ACCOUNT_NUMBER', ''),
+        'iban'           => env('COMPANY_BANK_IBAN', ''),
+        'swift'          => env('COMPANY_BANK_SWIFT', ''),
+        'bank_address'   => env('COMPANY_BANK_ADDRESS', ''),
+    ],
     'same_as' => array_values(array_filter(array_map(
         static fn ($value) => trim((string) $value),
         explode(',', (string) env(
