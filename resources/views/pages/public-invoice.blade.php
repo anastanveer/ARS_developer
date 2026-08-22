@@ -263,12 +263,14 @@
                         </div>
                     @endif
 
-                    @if(!$isPrintMode)
+                    {{-- Card box is hidden rather than shown disabled when online payment
+                         is off for this invoice: a greyed-out "payment disabled" panel reads
+                         as something broken, when the intent is simply bank transfer only. --}}
+                    @if(!$isPrintMode && $invoice->show_pay_button)
                         <div class="pay-box card">
                             <h3>Pay by Card</h3>
                             <p class="hint">Secure checkout via Stripe. Instant confirmation.</p>
-                            @if($invoice->show_pay_button)
-                                <form method="post" action="{{ route('invoice.public.pay', ['token' => $invoice->public_token]) }}" data-ga4-submit-event="begin_checkout" data-ga4-form-name="public_invoice_payment" data-ga4-value-field="amount" data-ga4-currency="{{ $project->currency }}">
+                            <form method="post" action="{{ route('invoice.public.pay', ['token' => $invoice->public_token]) }}" data-ga4-submit-event="begin_checkout" data-ga4-form-name="public_invoice_payment" data-ga4-value-field="amount" data-ga4-currency="{{ $project->currency }}">
                                     @csrf
                                     <div class="field">
                                         <label>Amount ({{ $project->currency }})</label>
@@ -279,10 +281,7 @@
                                         <input type="text" name="reference" maxlength="120" value="{{ old('reference') }}">
                                     </div>
                                     <button type="submit" class="btn btn-primary">{{ $invoicePayload['payment_label'] ?: 'Pay Now' }}</button>
-                                </form>
-                            @else
-                                <button type="button" class="btn btn-light" disabled>Online Payment Disabled</button>
-                            @endif
+                            </form>
                         </div>
                     @endif
                 </div>
