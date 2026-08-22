@@ -130,9 +130,12 @@
 </head>
 <body>
 @php
-    $bank = (array) config('company.bank', []);
-    // Only offer bank transfer when the details are actually complete enough to pay against.
-    $hasBank = filled($bank['account_number'] ?? null) || filled($bank['iban'] ?? null);
+    // Show only the account matching this invoice's currency — see config/company.php.
+    $currency = strtoupper((string) ($project->currency ?: 'GBP'));
+    $bank     = (array) (config('company.bank.' . $currency) ?? []);
+    $bankFields = array_filter((array) ($bank['fields'] ?? []));
+    $hasBank  = filled($bank['account_name'] ?? null) && count($bankFields) > 0;
+    $interac  = $currency === 'CAD' ? (string) config('company.interac_email', '') : '';
     $status  = strtolower((string) $invoice->status);
     $badge   = $balance <= 0 ? 'paid' : (in_array($status, ['overdue','unpaid','sent'], true) ? 'due' : 'other');
     $initials = strtoupper(substr((string) config('company.brand_name', 'ARS'), 0, 3));
@@ -244,27 +247,19 @@
                 <div class="pay-grid" id="payment">
                     @if($hasBank)
                         <div class="pay-box">
-                            <h3>Bank Transfer</h3>
+                            <h3>Bank Transfer &middot; {{ $currency }}</h3>
                             <p class="hint">No processing fee. Please quote <strong>{{ $invoice->invoice_number }}</strong> as the reference.</p>
-                            @if(filled($bank['account_name'] ?? null))
-                                <div class="bank-row"><span>Account name</span><b>{{ $bank['account_name'] }}</b></div>
+                            <div class="bank-row"><span>Account name</span><b>{{ $bank['account_name'] }}</b></div>
+                            @if(filled($bank['bank'] ?? null))
+                                <div class="bank-row"><span>Bank</span><b>{{ $bank['bank'] }}</b></div>
                             @endif
-                            @if(filled($bank['bank_name'] ?? null))
-                                <div class="bank-row"><span>Bank</span><b>{{ $bank['bank_name'] }}</b></div>
-                            @endif
-                            @if(filled($bank['sort_code'] ?? null))
-                                <div class="bank-row"><span>Sort code</span><b>{{ $bank['sort_code'] }}</b></div>
-                            @endif
-                            @if(filled($bank['account_number'] ?? null))
-                                <div class="bank-row"><span>Account number</span><b>{{ $bank['account_number'] }}</b></div>
-                            @endif
-                            @if(filled($bank['iban'] ?? null))
-                                <div class="bank-row"><span>IBAN</span><b>{{ $bank['iban'] }}</b></div>
-                            @endif
-                            @if(filled($bank['swift'] ?? null))
-                                <div class="bank-row"><span>SWIFT / BIC</span><b>{{ $bank['swift'] }}</b></div>
-                            @endif
+                            @foreach($bankFields as $label => $value)
+                                <div class="bank-row"><span>{{ $label }}</span><b>{{ $value }}</b></div>
+                            @endforeach
                             <div class="bank-row"><span>Reference</span><b>{{ $invoice->invoice_number }}</b></div>
+                            @if(filled($interac))
+                                <div class="bank-row"><span>Interac e-Transfer</span><b>{{ $interac }}</b></div>
+                            @endif
                         </div>
                     @endif
 

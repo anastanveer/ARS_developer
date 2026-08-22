@@ -25,19 +25,52 @@ return [
     ),
     'opening_hours' => env('COMPANY_OPENING_HOURS', 'Mo-Fr 09:00-18:00'),
 
-    // Bank transfer details shown on invoices. Kept in .env, not in the repo, and
-    // every field defaults to empty: the invoice only renders the bank block when
-    // an account number or IBAN is actually present, so a half-filled config can
-    // never put incomplete payment instructions in front of a client.
+    // Bank transfer details shown on invoices, keyed by currency.
+    //
+    // Wise issues separate local account details per currency on the same account,
+    // and they are not interchangeable: a UK client paying a GBP invoice into the
+    // CAD account pays conversion on the way in and cannot use a domestic transfer.
+    // So the invoice looks up the block matching its own currency and shows nothing
+    // if that currency has no details — better an absent block than instructions
+    // that quietly cost the client money.
+    //
+    // Values live in .env, never in the repo. 'fields' is an ordered label => value
+    // map so each currency can carry the identifiers its own banking system uses
+    // (sort code in the UK, institution and transit numbers in Canada).
     'bank' => [
-        'account_name'   => env('COMPANY_BANK_ACCOUNT_NAME', ''),
-        'bank_name'      => env('COMPANY_BANK_NAME', ''),
-        'sort_code'      => env('COMPANY_BANK_SORT_CODE', ''),
-        'account_number' => env('COMPANY_BANK_ACCOUNT_NUMBER', ''),
-        'iban'           => env('COMPANY_BANK_IBAN', ''),
-        'swift'          => env('COMPANY_BANK_SWIFT', ''),
-        'bank_address'   => env('COMPANY_BANK_ADDRESS', ''),
+        'GBP' => [
+            'account_name' => env('BANK_GBP_ACCOUNT_NAME', ''),
+            'bank'         => env('BANK_GBP_BANK', ''),
+            'fields'       => array_filter([
+                'Sort code'      => env('BANK_GBP_SORT_CODE', ''),
+                'Account number' => env('BANK_GBP_ACCOUNT_NUMBER', ''),
+                'IBAN'           => env('BANK_GBP_IBAN', ''),
+                'SWIFT / BIC'    => env('BANK_GBP_SWIFT', ''),
+            ]),
+        ],
+        'CAD' => [
+            'account_name' => env('BANK_CAD_ACCOUNT_NAME', ''),
+            'bank'         => env('BANK_CAD_BANK', ''),
+            'fields'       => array_filter([
+                'Account number'      => env('BANK_CAD_ACCOUNT_NUMBER', ''),
+                'Institution number'  => env('BANK_CAD_INSTITUTION', ''),
+                'Transit number'      => env('BANK_CAD_TRANSIT', ''),
+                'SWIFT / BIC'         => env('BANK_CAD_SWIFT', ''),
+            ]),
+        ],
+        'EUR' => [
+            'account_name' => env('BANK_EUR_ACCOUNT_NAME', ''),
+            'bank'         => env('BANK_EUR_BANK', ''),
+            'fields'       => array_filter([
+                'IBAN'        => env('BANK_EUR_IBAN', ''),
+                'SWIFT / BIC' => env('BANK_EUR_SWIFT', ''),
+            ]),
+        ],
     ],
+
+    // Interac e-Transfer — Canadian clients only, so it is shown beside the CAD
+    // details rather than on every invoice.
+    'interac_email' => env('BANK_INTERAC_EMAIL', ''),
     'same_as' => array_values(array_filter(array_map(
         static fn ($value) => trim((string) $value),
         explode(',', (string) env(
