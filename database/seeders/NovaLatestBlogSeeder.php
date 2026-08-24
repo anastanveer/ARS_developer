@@ -197,7 +197,7 @@ class NovaLatestBlogSeeder extends Seeder
   <p>If you are weighing custom software development in the UK against a ready-made product, <a href="https://arsdeveloper.co.uk/contact">book a free discovery call with ARS Developer Ltd</a>. We will map your process, model the real costs, and give you a straight recommendation, even if that recommendation is to keep what you already have.</p>
 </article>
 HTML_1,
-                'featured_image' => 'assets/images/blog/growth-2026/custom-software-vs-off-the-shelf-uk-cost-reality-check.png',
+                'featured_image' => 'assets/images/blog/growth-2026/custom-software-vs-off-the-shelf-uk-cost-reality-check.webp',
                 'featured_image_alt' => 'Custom Software vs Off-the-Shelf: How UK Businesses Decide (A Cost Reality Check) featured image',
                 'is_published' => true,
                 'published_at' => '2026-07-03 11:30:00',
@@ -340,7 +340,7 @@ HTML_1,
   <p>At ARS Developer Ltd we build software you own, on standard technology, with the kind of handover that means you are never trapped. If you would like a straight, jargon-free assessment of your project — including an honest view of what you should and should not build — <a href="https://arsdeveloper.co.uk/contact">book a free project review with our team</a> and put these questions to us directly.</p>
 </article>
 HTML_2,
-                'featured_image' => 'assets/images/blog/growth-2026/software-development-agency-uk-12-questions.png',
+                'featured_image' => 'assets/images/blog/growth-2026/software-development-agency-uk-12-questions.webp',
                 'featured_image_alt' => 'How to Choose a Software Development Agency in the UK: 12 Questions Before You Sign featured image',
                 'is_published' => true,
                 'published_at' => '2026-07-08 11:30:00',
@@ -512,7 +512,7 @@ HTML_2,
   <p>Customer portal development doesn't have to be a leap of faith. Start with the one admin task that costs you the most time, and let a focused build prove its worth. As a UK software house in Stoke-on-Trent, ARS Developer Ltd designs and builds secure Laravel portals and custom web apps for service firms across the UK. <strong>Get in touch to scope a portal around your busiest workflow</strong> — we'll map the MVP, the cost, and the timeline before you commit a penny to the build.</p>
 </article>
 HTML_3,
-                'featured_image' => 'assets/images/blog/growth-2026/customer-portal-development-uk-service-firms-cost.png',
+                'featured_image' => 'assets/images/blog/growth-2026/customer-portal-development-uk-service-firms-cost.webp',
                 'featured_image_alt' => 'Customer Portal Development for UK Service Firms: What to Build and What It Costs featured image',
                 'is_published' => true,
                 'published_at' => '2026-07-13 11:30:00',

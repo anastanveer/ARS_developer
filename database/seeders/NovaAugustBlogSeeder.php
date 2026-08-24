@@ -257,7 +257,7 @@ class NovaAugustBlogSeeder extends Seeder
   </script>
 </article>
 HTML_1,
-                'featured_image' => 'assets/images/blog/growth-2026/custom-crm-development-uk-features-cost-roi.png',
+                'featured_image' => 'assets/images/blog/growth-2026/custom-crm-development-uk-features-cost-roi.webp',
                 'featured_image_alt' => 'Custom CRM Development for UK Businesses: Features, Cost & ROI blog visual',
                 'published_at' => '2026-08-06 12:00:00',
                 'is_published' => true,
@@ -496,7 +496,7 @@ HTML_1,
   </script>
 </article>
 HTML_2,
-                'featured_image' => 'assets/images/blog/growth-2026/business-process-automation-uk-ai-saves-money.png',
+                'featured_image' => 'assets/images/blog/growth-2026/business-process-automation-uk-ai-saves-money.webp',
                 'featured_image_alt' => 'Business Process Automation in the UK: Where AI Actually Saves Money blog visual',
                 'published_at' => '2026-08-13 12:00:00',
                 'is_published' => true,
@@ -713,7 +713,7 @@ HTML_2,
   <p>At ARS Developer Ltd, based in Stoke-on-Trent, we plan migrations that protect your data and your rankings, and we will tell you plainly if WordPress is still the right home for you. If you are weighing up whether to <strong>migrate WordPress to Laravel</strong>, talk to us for a straight technical assessment — we will map the risks, the timeline, and the return, then help you make the right call for your business.</p>
 </article>
 HTML_3,
-                'featured_image' => 'assets/images/blog/growth-2026/wordpress-to-laravel-migration-uk.png',
+                'featured_image' => 'assets/images/blog/growth-2026/wordpress-to-laravel-migration-uk.webp',
                 'featured_image_alt' => 'WordPress to Laravel Migration: When UK Businesses Should Switch blog visual',
                 'published_at' => '2026-08-20 12:00:00',
                 'is_published' => true,
@@ -976,7 +976,7 @@ HTML_3,
   </script>
 </article>
 HTML_4,
-                'featured_image' => 'assets/images/blog/growth-2026/saas-mvp-development-uk-launch-without-overspending.png',
+                'featured_image' => 'assets/images/blog/growth-2026/saas-mvp-development-uk-launch-without-overspending.webp',
                 'featured_image_alt' => 'SaaS MVP Development in the UK: How to Launch Without Overspending blog visual',
                 'published_at' => '2026-08-27 12:00:00',
                 'is_published' => true,

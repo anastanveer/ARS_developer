@@ -1924,11 +1924,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
 
 
-    <link rel="preload" href="{{ asset('assets/css/bundle.css') }}" as="style">
+    @php
+        // One cache-busting URL, built once and used by BOTH tags below. When the
+        // preload and the stylesheet differ by even a query string the browser treats
+        // them as two resources and downloads bundle.css twice (~127 KB brotli each),
+        // and the preload buys nothing.
+        $bundleCss = asset('assets/css/bundle.css') . '?v=' . filemtime(public_path('assets/css/bundle.css'));
+    @endphp
+    <link rel="preload" href="{{ $bundleCss }}" as="style">
     @if($isHomePath)
         <link rel="preload" href="{{ asset('assets/images/resources/banner-one-img-1.png') }}" as="image" fetchpriority="high">
     @endif
-    <link rel="stylesheet" href="{{ asset('assets/css/bundle.css') }}?v={{ filemtime(public_path('assets/css/bundle.css')) }}" />
+    <link rel="stylesheet" href="{{ $bundleCss }}" />
     <style>
         /* Fallback so page never stays blank if JS fails before preloader close */
         .js-preloader {
