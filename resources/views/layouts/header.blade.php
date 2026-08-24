@@ -1041,7 +1041,7 @@
                 'image' => url('/assets/images/resources/ars-logo-dark.png'),
                 'telephone' => $companyPhone,
                 'email' => $companyEmail,
-                'priceRange' => 'GBP',
+                'priceRange' => '££',
                 'address' => [
                     '@type' => 'PostalAddress',
                     'streetAddress' => $companyStreetAddress,
@@ -1067,7 +1067,12 @@
             ],
             [
                 '@context' => 'https://schema.org',
-                '@type' => $seoType,
+                // $seoType is 'Article' on blog posts so that og:type resolves to
+                // "article", but the real Article lives at #article with headline,
+                // author, datePublished and image. Typing this node Article too gave
+                // Google two competing Article entities, one of which carried none of
+                // the required properties. The page node is a WebPage.
+                '@type' => strtolower((string) $seoType) === 'article' ? 'WebPage' : $seoType,
                 '@id' => $canonicalUrl . '#webpage',
                 'url' => $canonicalUrl,
                 'name' => $seoTitle,
@@ -1081,9 +1086,16 @@
             $schemaGraph[0]['knowsAbout'] = $entityTopics;
         }
 
+        // The config value is human-readable ("17 February 2026") because the privacy
+        // policy renders it as prose. schema.org Date wants ISO 8601, so convert here
+        // rather than making the visible page read 2026-02-17.
         $foundingDate = trim((string) config('company.incorporation_date', ''));
         if ($foundingDate !== '') {
-            $schemaGraph[0]['foundingDate'] = $foundingDate;
+            try {
+                $schemaGraph[0]['foundingDate'] = \Carbon\Carbon::parse($foundingDate)->toDateString();
+            } catch (\Throwable $e) {
+                $schemaGraph[0]['foundingDate'] = $foundingDate;
+            }
         }
 
         $schemaGraph[0]['legalName'] = $companyName;
@@ -1145,14 +1157,32 @@
             ],
         ];
 
-        $schemaGraph[3]['openingHoursSpecification'] = [
-            [
-                '@type' => 'OpeningHoursSpecification',
-                'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-                'opens' => '09:00',
-                'closes' => '18:00',
-            ],
+        // Derived from the same config string as openingHours below. These used to be
+        // written independently — the spec hardcoded 09:00-18:00 while the string came
+        // from config, which on this server is 09:00-17:00 — so one entity published
+        // two different closing times in the same object.
+        $dayNames = [
+            'Mo' => 'Monday', 'Tu' => 'Tuesday', 'We' => 'Wednesday', 'Th' => 'Thursday',
+            'Fr' => 'Friday', 'Sa' => 'Saturday', 'Su' => 'Sunday',
         ];
+        $dayOrder = array_keys($dayNames);
+        $hoursSpec = [];
+        if (preg_match('/^([A-Za-z]{2})-([A-Za-z]{2})\s+(\d{2}:\d{2})-(\d{2}:\d{2})$/', trim($companyOpeningHours), $m)) {
+            $from = array_search(ucfirst(strtolower($m[1])), $dayOrder, true);
+            $to = array_search(ucfirst(strtolower($m[2])), $dayOrder, true);
+            if ($from !== false && $to !== false && $to >= $from) {
+                $hoursSpec = [[
+                    '@type' => 'OpeningHoursSpecification',
+                    'dayOfWeek' => array_map(
+                        fn ($d) => $dayNames[$d],
+                        array_slice($dayOrder, $from, $to - $from + 1)
+                    ),
+                    'opens' => $m[3],
+                    'closes' => $m[4],
+                ]];
+            }
+        }
+        $schemaGraph[3]['openingHoursSpecification'] = $hoursSpec;
         $schemaGraph[3]['openingHours'] = $companyOpeningHours;
         $schemaGraph[3]['sameAs'] = $organizationSameAs;
         $schemaGraph[2]['openingHoursSpecification'] = $schemaGraph[3]['openingHoursSpecification'];
@@ -1494,8 +1524,14 @@
                     ?? ucfirst(str_replace(['-', '_'], ' ', $segmentKey));
 
                 $isLast = $position === (count($segments) + 1);
-                if ($isLast && isset($seoTitleBase) && is_string($seoTitleBase) && trim($seoTitleBase) !== '') {
-                    $segmentLabel = trim((string) $seoTitleBase);
+                if ($isLast) {
+                    $leaf = trim((string) ($seo['breadcrumb_name'] ?? ''));
+                    if ($leaf === '' && isset($seoTitleBase) && is_string($seoTitleBase)) {
+                        $leaf = trim((string) $seoTitleBase);
+                    }
+                    if ($leaf !== '') {
+                        $segmentLabel = $leaf;
+                    }
                 }
 
                 $breadcrumbItems[] = [

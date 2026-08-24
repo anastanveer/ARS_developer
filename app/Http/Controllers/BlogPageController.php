@@ -119,6 +119,10 @@ class BlogPageController extends Controller
             'description' => $metaDescription,
             'keywords' => $post->meta_keywords ?: 'uk software blog, web development insights, seo tips',
             'type' => 'Article',
+            // The breadcrumb leaf renders verbatim in the SERP trail and carries no
+            // brand suffix, so it does not need the 44-char budget $seo['title'] is
+            // trimmed to — it gets the real title.
+            'breadcrumb_name' => trim((string) $post->title),
             'robots' => $post->meta_robots ?: 'index, follow',
             'canonical' => $postCanonical,
             'og_title' => $post->og_title ?: $metaTitle,
@@ -177,11 +181,34 @@ class BlogPageController extends Controller
         return redirect('/blog', 301);
     }
 
+    /**
+     * Trim to a length without slicing a word in half.
+     *
+     * Str::limit() cuts at an exact character count, which is fine for a body
+     * excerpt but not for text that renders verbatim in a search result — a
+     * breadcrumb reading "AI Search Optimisation UK: Get Recommended i" or an
+     * FAQ answer ending "rank a page in a list of l" is what the user sees.
+     */
+    private function trimToWords(string $text, int $limit): string
+    {
+        $text = trim(preg_replace('/\s+/', ' ', $text));
+        if (mb_strlen($text) <= $limit) {
+            return $text;
+        }
+        $cut = mb_substr($text, 0, $limit);
+        $space = mb_strrpos($cut, ' ');
+        // Only fall back to the hard cut if the last word is implausibly long.
+        if ($space !== false && $space > $limit * 0.6) {
+            $cut = mb_substr($cut, 0, $space);
+        }
+        return rtrim($cut, " \t\n\r\0\x0B,.;:-–—");
+    }
+
     private function normalizeSeoTitle(string $title): string
     {
         $clean = trim(preg_replace('/\s+/', ' ', strip_tags($title)));
         // Keep room for " | ARSDeveloper" suffix added in global header.
-        return Str::limit($clean, 44, '');
+        return $this->trimToWords($clean, 44);
     }
 
     private function buildArticleSchema(BlogPost $post, string $canonical): array
@@ -206,12 +233,22 @@ class BlogPageController extends Controller
         $entityCoverage = $this->buildEntityCoverage($post);
         $citations = $this->buildCitations($post, $canonical);
 
+        $published = $post->published_at ?: $post->created_at;
+        $modified  = $post->updated_at ?: $published;
+        if ($published && $modified && $modified->lt($published)) {
+            $modified = $published;
+        }
+
         return [
             'headline' => trim((string) ($post->meta_title ?: $post->title)),
             'description' => $description,
             'image' => $post->featured_image ? url('/' . ltrim($post->featured_image, '/')) : url('/assets/images/resources/ars-logo-dark.png'),
-            'datePublished' => optional($post->published_at ?: $post->created_at)?->toIso8601String(),
-            'dateModified' => optional($post->updated_at ?: $post->published_at ?: $post->created_at)?->toIso8601String(),
+            'datePublished' => optional($published)?->toIso8601String(),
+            // A post scheduled ahead of time keeps the updated_at from when it was
+            // written, so dateModified could land BEFORE datePublished — an article
+            // modified before it existed. Google drops the freshness signal, and the
+            // rendered byline showed the same contradiction.
+            'dateModified' => optional($modified)?->toIso8601String(),
             'author' => $authorName,
             'authorType' => $authorType,
             'authorUrl' => $authorUrl,
@@ -329,41 +366,81 @@ class BlogPageController extends Controller
         ];
     }
 
-    private function extractFaqItems(string $content, int $limit = 4): array
+    /**
+     * Pull the post's real FAQ block out of its body HTML.
+     *
+     * Previously this walked every h2/h3 in document order and took the first four
+     * containing a "?" anywhere. On a post whose body argues in questions that meant
+     * the marked-up FAQ was four section headings — including one, "Entity strength
+     * (does the AI know who you are?)", that is not a question at all — while the six
+     * questions in the article's actual FAQ accordion went unmarked. Google requires
+     * FAQPage content to be visible on the page as a question and answer.
+     *
+     * A real FAQ is a run of consecutive same-level headings that each END with "?".
+     * Section headings that happen to contain one do not cluster that way, so the
+     * longest such run is the FAQ; the last one wins a tie, since the FAQ block
+     * conventionally closes the article.
+     */
+    private function extractFaqItems(string $content, int $limit = 6): array
     {
-        $items = [];
         if (trim($content) === '') {
-            return $items;
+            return [];
         }
 
         preg_match_all('/<(h2|h3)[^>]*>(.*?)<\/\1>/i', $content, $matches, PREG_OFFSET_CAPTURE);
         if (empty($matches[0])) {
-            return $items;
+            return [];
         }
 
+        $headings = [];
         foreach ($matches[0] as $index => $headingMatch) {
-            $headingHtml = (string) ($matches[2][$index][0] ?? '');
-            $question = trim(preg_replace('/\s+/', ' ', strip_tags($headingHtml)));
-            if ($question === '' || !str_contains($question, '?')) {
+            $text = trim(preg_replace('/\s+/', ' ', strip_tags((string) ($matches[2][$index][0] ?? ''))));
+            $headings[] = [
+                'level' => strtolower((string) ($matches[1][$index][0] ?? '')),
+                'text' => $text,
+                'isQuestion' => $text !== '' && str_ends_with($text, '?'),
+                'offset' => (int) $headingMatch[1] + strlen((string) $headingMatch[0]),
+            ];
+        }
+
+        $best = [];
+        $run = [];
+        $runLevel = null;
+        foreach ($headings as $heading) {
+            if ($heading['isQuestion'] && ($runLevel === null || $runLevel === $heading['level'])) {
+                $runLevel = $heading['level'];
+                $run[] = $heading;
                 continue;
             }
+            if (count($run) >= count($best)) {
+                $best = $run;
+            }
+            $run = $heading['isQuestion'] ? [$heading] : [];
+            $runLevel = $heading['isQuestion'] ? $heading['level'] : null;
+        }
+        if (count($run) >= count($best)) {
+            $best = $run;
+        }
 
-            $offset = (int) $headingMatch[1] + strlen((string) $headingMatch[0]);
-            $remaining = substr($content, $offset) ?: '';
+        // A lone question heading is a section title, not an FAQ.
+        if (count($best) < 2) {
+            return [];
+        }
+
+        $items = [];
+        foreach ($best as $heading) {
+            $remaining = substr($content, $heading['offset']) ?: '';
             if (!preg_match('/<p[^>]*>(.*?)<\/p>/is', $remaining, $paragraphMatch)) {
                 continue;
             }
-
             $answer = trim(preg_replace('/\s+/', ' ', strip_tags((string) ($paragraphMatch[1] ?? ''))));
             if ($answer === '') {
                 continue;
             }
-
             $items[] = [
-                'question' => $question,
-                'answer' => Str::limit($answer, 220, ''),
+                'question' => $heading['text'],
+                'answer' => $this->trimToWords($answer, 220),
             ];
-
             if (count($items) >= $limit) {
                 break;
             }
