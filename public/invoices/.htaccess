@@ -1,0 +1,8 @@
+# Invoice PDFs are addressed by an unguessable filename and shared one-to-one with
+# the client they belong to. Listing the directory would defeat that, so it is off,
+# and crawlers are told not to index anything served from here.
+Options -Indexes
+
+<IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>

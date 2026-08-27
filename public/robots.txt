@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /invoices/
 Disallow: /client-portal/
 Disallow: /client-portal-access
 Disallow: /review/
