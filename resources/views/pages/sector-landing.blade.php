@@ -269,4 +269,47 @@
     </div>
 </section>
 
+{{-- The page above is a hero, a one-line summary and four bullets — 123-131 words,
+     which is not enough for a page that is indexed and sitting in the sitemap. This
+     is the substance: what this sector actually struggles with, what the build
+     involves, and the questions a buyer here asks before enquiring. --}}
+@if(!empty($sector['body']))
+<section class="sector-detail">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-9 col-lg-10">
+                <h2 class="sector-detail__title">How we approach {{ $sector['name'] }}</h2>
+                @foreach($sector['body'] as $para)
+                    <p class="sector-detail__para">{{ $para }}</p>
+                @endforeach
+
+                @if(!empty($sector['faq']))
+                    <h2 class="sector-detail__title sector-detail__title--mt">Common questions</h2>
+                    @foreach($sector['faq'] as $item)
+                        <div class="sector-detail__faq">
+                            <h3>{{ $item['q'] }}</h3>
+                            <p>{{ $item['a'] }}</p>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .sector-detail { padding: 0 0 90px; }
+    .sector-detail__title { font-size: 30px; line-height: 1.25; margin: 0 0 22px; }
+    .sector-detail__title--mt { margin-top: 54px; }
+    .sector-detail__para { font-size: 16px; line-height: 1.95; margin: 0 0 22px; }
+    .sector-detail__faq { margin: 0 0 26px; }
+    .sector-detail__faq h3 { font-size: 19px; line-height: 1.4; margin: 0 0 8px; }
+    .sector-detail__faq p { font-size: 16px; line-height: 1.9; margin: 0; }
+    @media (max-width: 767px) {
+        .sector-detail { padding-bottom: 60px; }
+        .sector-detail__title { font-size: 25px; }
+    }
+</style>
+@endif
+
 @include('layouts.footer')

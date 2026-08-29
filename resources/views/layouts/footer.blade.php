@@ -82,7 +82,7 @@
                                             <li><a href="/cookie-policy">{{ __('ui.cookie_policy') }}</a></li>
                                             <li><a href="/refund-policy">{{ __('ui.refund_policy') }}</a></li>
                                             <li><a href="/service-disclaimer">{{ __('ui.service_disclaimer') }}</a></li>
-                                            <li><a href="/gallery">{{ __('ui.gallery') }}</a></li>
+                                            <li><a href="/portfolio">{{ __('ui.gallery') }}</a></li>
                                             <li><a href="/faq">{{ __('ui.faqs') }}</a></li>
                                         </ul>
                                     </div>

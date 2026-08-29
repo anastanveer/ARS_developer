@@ -82,6 +82,17 @@ Route::get('/sectors/{sector}', function (string $sector) {
                 'Location pages, service pages, and clinician profile setup',
                 'GDPR-aware form capture and admin notification flow',
             ],
+            'body' => [
+                'Private clinics lose enquiries in the gap between someone deciding they need an appointment and actually asking for one. A patient arriving from a Google search is usually comparing two or three practices, on a phone, and is deciding on a small number of things: whether the clinic treats their specific problem, who the clinician is, where the clinic actually is, and how quickly they can be seen. A site that buries any of those behind a menu loses the enquiry to whichever competitor answered faster.',
+                'The build starts with the service pages, because that is what people search for — a condition or a treatment, not the clinic\'s name. Each treatment gets its own page written in the words patients use rather than clinical terminology, with the practical questions answered on the page: what the appointment involves, how long it takes, what it costs or what the consultation costs, and what happens next. Clinician profiles carry qualifications and registration numbers, because in healthcare the person matters as much as the practice.',
+                'Enquiry handling is where most clinic sites are weakest. A contact form that emails an inbox nobody watches on a Friday afternoon is not a booking system. We build appointment-request and callback flows that capture what the clinic needs to triage — treatment, preferred times, whether the patient is new or returning — notify the right person immediately, and confirm to the patient that the request arrived. Form data is handled with GDPR in mind: no unnecessary fields, clear consent wording, and no patient detail sitting in a system that does not need it.',
+                'For clinics with more than one site, location pages carry the details Google\'s local results depend on — address, opening hours, parking, nearest transport — kept consistent with the Google Business Profile, since a mismatch between the two is one of the most common reasons a clinic ranks below a competitor in map results.',
+            ],
+            'faq' => [
+                ['q' => 'How long does a clinic website take to build?', 'a' => 'A single-location clinic site with treatment pages, clinician profiles and an enquiry workflow is typically four to six weeks, most of which is content: writing treatment pages that answer real patient questions takes longer than building them.'],
+                ['q' => 'Can patients book directly, or only request an appointment?', 'a' => 'Both are possible. Direct booking needs to connect to whatever system the clinic already runs its diary in, so it depends on that system\'s API. Where it does not exist or is closed, a structured appointment request that reaches reception with everything needed to book is faster to deliver and creates less risk of double-booking.'],
+                ['q' => 'Is the site GDPR compliant?', 'a' => 'The forms are built to collect only what is needed to respond, with explicit consent wording and no health detail requested in a public form. Full compliance also depends on how the clinic stores and handles data after it arrives, which we advise on but do not control.'],
+            ],
             'related_links' => ['/services', '/web-design-development', '/search-engine-optimization', '/portfolio', '/pricing', '/contact'],
         ],
         'law-firms' => [
@@ -94,6 +105,17 @@ Route::get('/sectors/{sector}', function (string $sector) {
                 'Consultation forms and lead qualification workflow',
                 'Trust badges, review blocks, and local authority signals',
                 'Content architecture for long-term legal SEO growth',
+            ],
+            'body' => [
+                'Legal enquiries are researched, not impulsive. Someone with a dispute, an injury claim or a property matter reads several firms before contacting any of them, and the reading is genuine — they are trying to work out whether the firm handles their exact situation and whether they can afford to ask. A site organised around the firm\'s internal departments rather than the client\'s problem makes that harder than it needs to be.',
+                'The structure that works is one page per practice area, each written for the person with that problem rather than for other solicitors. That means explaining the process in order, saying what the first conversation covers, being clear about how fees work — fixed fee, hourly, conditional — and answering the question every prospective client has and few firm sites address: roughly how long this takes. Firms that answer the fee question openly get fewer enquiries and better ones.',
+                'Credibility signals do heavy work in this sector. SRA registration, individual solicitor profiles with their qualifications and practice areas, genuine client reviews attached to the matter type they relate to, and case outcomes described within what professional conduct rules allow. These matter more than design polish; a plain page from a firm that clearly does this work beats a handsome page that could belong to anyone.',
+                'On the enquiry side, the form is a qualification step rather than a contact box. Capturing the matter type, rough timeline and whether the person has instructed anyone else lets the firm route the enquiry to the right fee earner and reply with something useful instead of a generic acknowledgement. Conflict-check questions can be built into that first step where the firm wants them.',
+            ],
+            'faq' => [
+                ['q' => 'Do you write the practice-area content?', 'a' => 'The structure and the client-facing explanation, yes. Anything that states legal position or advice is drafted with the firm and signed off by a fee earner — publishing legal content that has not been reviewed by the firm is not something we do.'],
+                ['q' => 'Can the enquiry form run a conflict check?', 'a' => 'It can capture the information a conflict check needs — other parties, matter type, whether the person has instructed another firm — and route it before anyone responds. The check itself remains a decision for the firm.'],
+                ['q' => 'Will this help us rank for our practice areas?', 'a' => 'Practice-area pages are the foundation, but for most firms the competitive factor locally is the Google Business Profile and review volume alongside the site. We build the site to support that rather than pretending pages alone will do it.'],
             ],
             'related_links' => ['/services', '/search-engine-optimization', '/digital-marketing', '/portfolio', '/pricing', '/contact'],
         ],
@@ -108,6 +130,17 @@ Route::get('/sectors/{sector}', function (string $sector) {
                 'Checkout, shipping, and payment journey optimization',
                 'Analytics tracking and campaign-ready landing pages',
             ],
+            'body' => [
+                'Most UK ecommerce stores do not have a traffic problem, they have a checkout problem. Traffic arrives, products get viewed, carts get built, and then a measurable share of buyers stop — at shipping cost, at an unexpected account requirement, at a payment method they do not use, or at a product page that failed to answer whether the item would fit. Fixing that is usually worth more than any increase in visitors.',
+                'So the work starts with the product page, because that is where the decision is made. Variants and sizing have to be unambiguous, the images have to show the thing at the scale people actually care about, delivery cost and timing belong on the page rather than three steps later, and returns terms belong where the hesitation happens. On stores with sizing complexity this alone moves conversion more than a redesign.',
+                'Catalogue structure comes next. Collections and filters should follow how customers shop rather than how the warehouse is organised, with category pages that can rank on their own instead of existing only as a grid. Search matters more than most stores allow for: a shopper who uses site search is far closer to buying, and a search that returns nothing for a product you stock is a sale handed to someone else.',
+                'Then speed, which on Shopify usually means the theme rather than the platform — unused apps still loading their scripts, images shipped at desktop size to phones, third-party tags accumulated over years that nobody has audited. And finally the tracking, because a store that cannot see where in the funnel people leave cannot fix it. Analytics and conversion events are set up so the next decision is based on measurement rather than opinion.',
+            ],
+            'faq' => [
+                ['q' => 'Shopify or WooCommerce?', 'a' => 'Shopify for most brands that want to sell rather than maintain infrastructure — hosting, security and payments are handled, at the cost of monthly fees and less freedom deep in checkout. WooCommerce where the store needs unusual logic, complex B2B pricing or tight integration with an existing system, and where someone will own the maintenance. The right answer depends on the catalogue and the team, not on which is generally better.'],
+                ['q' => 'Can you improve our current store without rebuilding it?', 'a' => 'Usually yes, and usually that is the better first step. An audit of the product page, checkout and speed typically finds enough to work on for months. A rebuild makes sense when the theme is so heavily modified that changes are risky, not merely because the store looks dated.'],
+                ['q' => 'Will a redesign increase sales?', 'a' => 'Not on its own, and anyone promising that is guessing. Removing specific friction — sizing confusion, hidden delivery cost, a slow product page — has a measurable effect. We identify which of those apply to your store before recommending work.'],
+            ],
             'related_links' => ['/services', '/web-design-development', '/digital-marketing', '/search-engine-optimization', '/portfolio', '/pricing'],
         ],
         'b2b' => [
@@ -120,6 +153,17 @@ Route::get('/sectors/{sector}', function (string $sector) {
                 'CRM handoff automation and internal team workflows',
                 'Role-based admin views and client communication timeline',
                 'Reporting structure for enquiry, conversion, and follow-up',
+            ],
+            'body' => [
+                'B2B service companies rarely lose deals on the website; they lose them in what happens after the form is submitted. An enquiry lands in a shared inbox, sits over a weekend, gets picked up by whoever notices, and is answered with a generic reply while the prospect has already spoken to two competitors. The site and the sales process have to be one system rather than two.',
+                'That starts with the enquiry itself capturing enough to qualify. What the prospect is trying to achieve, rough budget band, timescale, and who else is involved in the decision — asked in a way that does not feel like an interrogation. That information routes the enquiry to the right person and lets the first reply be specific, which is the single biggest factor in whether a B2B lead progresses.',
+                'From there it is CRM alignment. The enquiry should create the record automatically rather than being retyped, with the source, campaign and page it came from attached, so the business can eventually see which service pages produce clients rather than merely traffic. Follow-up sequences, ownership and stage changes live in the CRM; the site\'s job is to feed it clean data and stop the manual re-entry that causes leads to be lost.',
+                'For firms running delivery as well as sales, client portals are where the real operational gain sits — a logged-in area showing project stage, what is outstanding, who is responsible and what happens next. Most of the status-chasing email a service business generates exists only because the client has no other way to find out. Role-based views keep each side seeing what is relevant, and the reporting layer turns enquiry, conversion and delivery data into something the leadership team can act on.',
+            ],
+            'faq' => [
+                ['q' => 'Do we need a CRM before this is worth doing?', 'a' => 'Not necessarily. If enquiries are currently handled in an inbox and a spreadsheet, the first useful step is often structured capture and routing, which works without a CRM and makes choosing one easier later because you will know what you actually need.'],
+                ['q' => 'Which CRMs do you integrate with?', 'a' => 'Anything with a usable API — HubSpot, Pipedrive, Zoho and Salesforce are the common ones. Where a business runs a custom or closed system, the integration is scoped separately once we have seen what it can accept.'],
+                ['q' => 'What does a client portal typically cost?', 'a' => 'It depends almost entirely on how much of the delivery process it needs to reflect. A portal showing project stage, files and messages is a much smaller build than one that runs approvals, billing and resourcing. We scope it from the workflow rather than quoting a portal as a fixed product.'],
             ],
             'related_links' => ['/services', '/software-development', '/app-development', '/portfolio', '/pricing', '/contact'],
         ],
@@ -210,7 +254,11 @@ Route::view('/testimonial-carousel', 'pages.testimonial-carousel');
 Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
 Route::post('/pricing/coupon-preview', [PricingController::class, 'previewCoupon'])->name('pricing.coupon.preview');
 Route::post('/pricing/order', [PricingController::class, 'submitOrder'])->name('pricing.order');
-Route::view('/gallery', 'pages.gallery');
+// /gallery was still the purchased theme's demo page — ten 7-13 KB stock images,
+// every alt empty, no text at all — yet it was indexed and carrying ad code, which
+// is exactly the 'low value content' shape AdSense rejects a site for. The real
+// gallery is /portfolio (34 project images, ~985 words), so this consolidates there.
+Route::redirect('/gallery', '/portfolio', 301);
 Route::view('/faq', 'pages.faq');
 Route::view('/404', 'pages.404');
 Route::view('/coming-soon', 'pages.coming-soon');
