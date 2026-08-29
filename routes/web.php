@@ -249,8 +249,15 @@ Route::get('/{slug}', function (string $slug) {
 Route::get('/portfolio', [PortfolioPageController::class, 'index']);
 Route::get('/portfolio-details', [PortfolioPageController::class, 'details'])->name('portfolio.details');
 Route::get('/portfolio-details/{slug}', [PortfolioPageController::class, 'details'])->name('portfolio.show');
-Route::view('/testimonials', 'pages.testimonials');
-Route::view('/testimonial-carousel', 'pages.testimonial-carousel');
+// Both testimonial pages carried the purchased theme's placeholder reviews — two
+// different names above word-for-word identical text, and one praising "fast
+// delivery" and being a "returning customer", which is ecommerce boilerplate, not
+// something a software client writes. Publishing invented reviews is a Google
+// policy problem and, in the UK, a DMCC Act 2024 problem. There are no real
+// reviews on this site to put in their place, so the pages go rather than being
+// refilled with better-written fakes. /portfolio is the honest proof of work.
+Route::redirect('/testimonials', '/portfolio', 301);
+Route::redirect('/testimonial-carousel', '/portfolio', 301);
 Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
 Route::post('/pricing/coupon-preview', [PricingController::class, 'previewCoupon'])->name('pricing.coupon.preview');
 Route::post('/pricing/order', [PricingController::class, 'submitOrder'])->name('pricing.order');
@@ -353,8 +360,8 @@ Route::get('/portfolio-details.php', function (Request $request) {
     }
     return redirect('/portfolio-details', 301);
 });
-Route::redirect('/testimonials.php', '/testimonials', 301);
-Route::redirect('/testimonial-carousel.php', '/testimonial-carousel', 301);
+Route::redirect('/testimonials.php', '/portfolio', 301);
+Route::redirect('/testimonial-carousel.php', '/portfolio', 301);
 Route::redirect('/pricing.php', '/pricing', 301);
 Route::redirect('/gallery.php', '/gallery', 301);
 Route::redirect('/faq.php', '/faq', 301);

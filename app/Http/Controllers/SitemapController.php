@@ -69,7 +69,6 @@ class SitemapController extends Controller
             ['path' => '/portfolio', 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['path' => '/blog', 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['path' => '/uk-growth-hub', 'changefreq' => 'weekly', 'priority' => '0.9'],
-            ['path' => '/testimonials', 'changefreq' => 'monthly', 'priority' => '0.6'],
             // UK service / city landing pages
             ['path' => '/laravel-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
             ['path' => '/wordpress-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],

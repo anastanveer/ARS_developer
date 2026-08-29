@@ -447,22 +447,14 @@
                 </ul>
                 <!-- Trust badge strip -->
                 <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="150" style="margin-top:40px;padding-top:32px;border-top:1px solid #e8edf5;">
-                    <p style="text-align:center;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin:0 0 20px;font-family:Arial,sans-serif;">Trusted &amp; reviewed by UK business clients</p>
+                    <p style="text-align:center;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin:0 0 20px;font-family:Arial,sans-serif;">A UK registered company, working with you directly</p>
                     <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
-                        {{-- Google Stars badge --}}
-                        <a href="/testimonials" style="display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px 20px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.06);">
-                            <svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"/><path fill="#34A853" d="M6.3 14.7l7 5.1C15.1 16.1 19.2 13 24 13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2c-7.6 0-14.2 4.5-17.7 11.1-.4.8-.7 1.7-1 2.6z" opacity=".8"/><path fill="#FBBC05" d="M24 46c5.9 0 10.9-1.9 14.6-5.2l-6.7-5.6C29.9 36.8 27.1 38 24 38c-5.9 0-10.9-4-12.7-9.5l-7 5.4C7.9 41.2 15.4 46 24 46z" opacity=".8"/><path fill="#EA4335" d="M44.5 20H24v8.5h11.8c-.6 2.3-1.9 4.3-3.6 5.8l6.7 5.6C43.2 36.3 46 30.6 46 24c0-1.3-.2-2.7-.5-4z" opacity=".8"/></svg>
-                            <div>
-                                <div style="display:flex;gap:2px;margin-bottom:2px;">
-                                    <i class="fas fa-star" style="color:#f59e0b;font-size:11px;"></i>
-                                    <i class="fas fa-star" style="color:#f59e0b;font-size:11px;"></i>
-                                    <i class="fas fa-star" style="color:#f59e0b;font-size:11px;"></i>
-                                    <i class="fas fa-star" style="color:#f59e0b;font-size:11px;"></i>
-                                    <i class="fas fa-star" style="color:#f59e0b;font-size:11px;"></i>
-                                </div>
-                                <span style="font-size:12px;font-weight:700;color:#0f1e35;font-family:Arial,sans-serif;">Google Reviews</span>
-                            </div>
-                        </a>
+                        {{-- A "Google Reviews" badge — Google's logo, five gold stars --}}
+                        {{-- sat here linking to a page of the theme's invented testimonials. --}}
+                        {{-- Claiming a Google rating the business does not hold, under Google's --}}
+                        {{-- own mark, is a misrepresentation regardless of AdSense. Removed with --}}
+                        {{-- the fake reviews it pointed at; it can return once there is a real --}}
+                        {{-- Google Business Profile with real reviews to link to. --}}
                         {{-- UK Registered badge --}}
                         <div style="display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px 20px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
                             <div style="width:36px;height:36px;background:#173153;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -663,9 +655,6 @@
                         </div>
                     </div>
                     <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                        <a href="/testimonials" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#e2e8f0;text-decoration:none;padding:10px 22px;border-radius:9px;font-size:13px;font-weight:600;font-family:Arial,sans-serif;">
-                            <i class="fas fa-quote-right" style="font-size:12px;"></i> Read More Reviews
-                        </a>
                         <a href="/portfolio" style="display:inline-flex;align-items:center;gap:8px;background:#1d93ff;color:#fff;text-decoration:none;padding:10px 22px;border-radius:9px;font-size:13px;font-weight:700;font-family:Arial,sans-serif;box-shadow:0 4px 16px rgba(29,147,255,.3);">
                             <i class="fas fa-briefcase" style="font-size:12px;"></i> View Our Work
                         </a>
