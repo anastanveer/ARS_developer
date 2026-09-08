@@ -606,10 +606,36 @@
         if ($hasQueryParams && !$isAllowedQueryIndexable) {
             $resolvedRobots = 'noindex, follow';
         }
+        $currentPathKey = $canonicalPath !== '' ? $canonicalPath : '/';
+        $adsenseAllowedStaticPaths = [
+            '/',
+            '/about',
+            '/services',
+            '/software-development',
+            '/web-design-development',
+            '/search-engine-optimization',
+            '/digital-marketing',
+            '/app-development',
+            '/design-and-branding',
+            '/sectors/healthcare',
+            '/sectors/law-firms',
+            '/sectors/ecommerce',
+            '/sectors/b2b',
+            '/pricing',
+            '/faq',
+            '/portfolio',
+            '/blog',
+            '/uk-growth-hub',
+        ];
+        $shouldLoadAdsense = !str_contains(strtolower($resolvedRobots), 'noindex')
+            && (
+                in_array($currentPathKey, $adsenseAllowedStaticPaths, true)
+                || str_starts_with($currentPathKey, '/blog/')
+                || str_starts_with($currentPathKey, '/portfolio-details/')
+            );
         $siteRootUrl = $ukBase;
         $areaServed = 'United Kingdom';
         $schemaLanguage = $currentHreflang;
-        $currentPathKey = $canonicalPath !== '' ? $canonicalPath : '/';
 
         $companyName = (string) config('company.legal_name', 'ARS Developer Ltd');
         $companyBrand = (string) config('company.brand_name', 'ARSDeveloper');
@@ -2351,10 +2377,12 @@
     [data-aos] { pointer-events: auto !important; }
     </style>
 
-    {{-- Google AdSense. Shared publisher account with anastanveer.com; one AdSense
-         account can serve multiple sites, so this is the same ca-pub id. --}}
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9027630763788678" crossorigin="anonymous"></script>
+    @if($shouldLoadAdsense)
+        {{-- Google AdSense. Shared publisher account with anastanveer.com; one AdSense
+             account can serve multiple sites, so this is the same ca-pub id. --}}
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9027630763788678" crossorigin="anonymous"></script>
+    @endif
 </head>
 
 <body class="{{ $isHomePath ? 'is-home' : 'custom-cursor' }}">

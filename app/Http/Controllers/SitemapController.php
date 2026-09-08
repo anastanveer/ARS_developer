@@ -73,14 +73,8 @@ class SitemapController extends Controller
             // during AdSense approval. They remain reachable from internal links,
             // but are noindexed at render time so the sitemap only promotes the
             // strongest human-edited cornerstone, sector, blog, and portfolio URLs.
-            // Legal pages. Low priority — they are here so they are crawlable and
-            // discoverable (AdSense and users both expect to find them), not to
-            // compete for search traffic.
-            ['path' => '/privacy-policy', 'changefreq' => 'yearly', 'priority' => '0.3'],
-            ['path' => '/cookie-policy', 'changefreq' => 'yearly', 'priority' => '0.3'],
-            ['path' => '/terms-and-conditions', 'changefreq' => 'yearly', 'priority' => '0.3'],
-            ['path' => '/refund-policy', 'changefreq' => 'yearly', 'priority' => '0.3'],
-            ['path' => '/service-disclaimer', 'changefreq' => 'yearly', 'priority' => '0.3'],
+            // Noindex legal/support pages stay discoverable from the footer, but
+            // are not submitted in XML sitemaps.
         ]);
 
         return $staticPages->map(function (array $page) use ($today) {
