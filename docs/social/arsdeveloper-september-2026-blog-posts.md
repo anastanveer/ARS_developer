@@ -5,6 +5,7 @@ Use the same image for Facebook and Instagram. Cadence: every 3 days. Preferred 
 ## 2026-09-08
 
 Image: `public/assets/images/social/arsdeveloper-september-2026/2026-09-08-making-tax-digital-ai-bookkeeping.webp`
+Meta upload image: `public/assets/images/social/arsdeveloper-september-2026/2026-09-08-making-tax-digital-ai-bookkeeping.jpg`
 
 Link: `https://arsdeveloper.co.uk/blog/making-tax-digital-ai-bookkeeping-software-uk-2026`
 
@@ -22,6 +23,7 @@ Hashtags:
 ## 2026-09-11
 
 Image: `public/assets/images/social/arsdeveloper-september-2026/2026-09-11-companies-house-identity-verification.webp`
+Meta upload image: `public/assets/images/social/arsdeveloper-september-2026/2026-09-11-companies-house-identity-verification.jpg`
 
 Link: `https://arsdeveloper.co.uk/blog/companies-house-identity-verification-software-uk-2026`
 
@@ -39,6 +41,7 @@ Hashtags:
 ## 2026-09-14
 
 Image: `public/assets/images/social/arsdeveloper-september-2026/2026-09-14-uk-sme-cyber-resilience.webp`
+Meta upload image: `public/assets/images/social/arsdeveloper-september-2026/2026-09-14-uk-sme-cyber-resilience.jpg`
 
 Link: `https://arsdeveloper.co.uk/blog/uk-sme-cyber-resilience-ransomware-backup-plan-2026`
 
@@ -56,6 +59,7 @@ Hashtags:
 ## 2026-09-17
 
 Image: `public/assets/images/social/arsdeveloper-september-2026/2026-09-17-ai-receptionist-lead-triage.webp`
+Meta upload image: `public/assets/images/social/arsdeveloper-september-2026/2026-09-17-ai-receptionist-lead-triage.jpg`
 
 Link: `https://arsdeveloper.co.uk/blog/ai-receptionist-lead-triage-uk-service-businesses`
 
@@ -73,6 +77,7 @@ Hashtags:
 ## 2026-09-20
 
 Image: `public/assets/images/social/arsdeveloper-september-2026/2026-09-20-ai-search-trust-signals.webp`
+Meta upload image: `public/assets/images/social/arsdeveloper-september-2026/2026-09-20-ai-search-trust-signals.jpg`
 
 Link: `https://arsdeveloper.co.uk/blog/ai-search-trust-signals-uk-businesses-2026`
 
