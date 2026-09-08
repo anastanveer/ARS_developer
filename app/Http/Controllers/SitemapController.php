@@ -69,46 +69,10 @@ class SitemapController extends Controller
             ['path' => '/portfolio', 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['path' => '/blog', 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['path' => '/uk-growth-hub', 'changefreq' => 'weekly', 'priority' => '0.9'],
-            // UK service / city landing pages
-            ['path' => '/laravel-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/wordpress-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/shopify-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/php-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/react-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/crm-development-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/ecommerce-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-stoke-on-trent', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-manchester', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-birmingham', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/laravel-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/wordpress-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/shopify-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-leeds', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-sheffield', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-bristol', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-glasgow', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-edinburgh', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/react-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/php-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/nextjs-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-uk', 'changefreq' => 'monthly', 'priority' => '1.0'],
-            ['path' => '/nextjs-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/typescript-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/vue-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/node-developer-uk', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            // Additional UK city pages
-            ['path' => '/web-developer-liverpool', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-cardiff', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-nottingham', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-newcastle', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-leicester', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/web-developer-coventry', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            // London tech stack combos
-            ['path' => '/vue-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/node-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/typescript-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/crm-developer-london', 'changefreq' => 'monthly', 'priority' => '0.9'],
+            // Programmatic UK service/city landing pages are intentionally omitted
+            // during AdSense approval. They remain reachable from internal links,
+            // but are noindexed at render time so the sitemap only promotes the
+            // strongest human-edited cornerstone, sector, blog, and portfolio URLs.
             // Legal pages. Low priority — they are here so they are crawlable and
             // discoverable (AdSense and users both expect to find them), not to
             // compete for search traffic.

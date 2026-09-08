@@ -230,6 +230,11 @@ Route::get('/{slug}', function (string $slug) {
         'keywords'         => $page['keywords'],
         'canonical'        => $canonicalBase . '/' . $slug,
         'type'             => $page['type'] ?? 'Service',
+        // These programmatic service/location pages are useful as campaign
+        // landing pages, but they can look like doorway pages during AdSense
+        // approval. Keep links crawlable while the monetization review focuses on
+        // the stronger cornerstone pages, blog, portfolio, and sector content.
+        'robots'           => 'noindex, follow',
         'faq_items'        => array_map(
             static fn (array $f) => ['question' => $f['q'], 'answer' => $f['a']],
             $page['faqs'] ?? []

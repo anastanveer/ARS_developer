@@ -260,6 +260,10 @@ class ForcePrimaryDomain
             return $this->finalizeHtmlResponse($request, $response, 'noindex, follow');
         }
 
+        if ((string) optional($request->route())->getName() === 'seo.service.page') {
+            return $this->finalizeHtmlResponse($request, $response, 'noindex, follow');
+        }
+
         if ($this->shouldNoindexForDuplicateQuery($request)) {
             return $this->finalizeHtmlResponse($request, $response, 'noindex, follow');
         }
