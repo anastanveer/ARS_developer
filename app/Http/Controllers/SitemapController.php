@@ -120,6 +120,10 @@ class SitemapController extends Controller
     {
         $publishedPosts = BlogPost::query()
             ->live()
+            ->where(function ($query) {
+                $query->whereNull('meta_robots')
+                    ->orWhere('meta_robots', 'not like', '%noindex%');
+            })
             ->orderByRaw('CASE WHEN sort_order = 0 THEN 0 ELSE 1 END')
             ->orderByDesc('published_at')
             ->orderBy('sort_order')
