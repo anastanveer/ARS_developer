@@ -81,8 +81,14 @@ jobs:
 
           # Blade and route changes need the compiled caches dropped, or the old
           # views keep being served.
+          #
+          # portfolio:prune-claims deletes portfolio rows whose client claim cannot be
+          # supported (major brands the business did not work for, a Canva editor link,
+          # a URL pasted out of a chatbot). It targets a fixed list rather than
+          # reseeding, so entries added through the admin are untouched, and it is a
+          # no-op once they are gone — which is why it is safe on every deploy.
           $SSH_OPTS "$SSH_USER@$SSH_HOST" \
-            "cd $APP_DIR && /usr/local/bin/php artisan view:clear && /usr/local/bin/php artisan route:clear && /usr/local/bin/php artisan config:clear"
+            "cd $APP_DIR && /usr/local/bin/php artisan view:clear && /usr/local/bin/php artisan route:clear && /usr/local/bin/php artisan config:clear && /usr/local/bin/php artisan portfolio:prune-claims"
 
           rm -f ~/.ssh/deploy_key
 
@@ -90,7 +96,7 @@ jobs:
       - name: Verify the site responds
         run: |
           set -euo pipefail
-          for path in "" "blog" "privacy-policy" "contact"; do
+          for path in "" "blog" "privacy-policy" "contact" "portfolio"; do
             code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "https://arsdeveloper.co.uk/$path")
             echo "  /$path -> $code"
             [ "$code" = "200" ] || { echo "::error::https://arsdeveloper.co.uk/$path returned $code"; exit 1; }

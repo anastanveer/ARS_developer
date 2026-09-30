@@ -1,9 +1,18 @@
 @php
     $page_title = 'Portfolio Details';
-    $seoOverride = [
+    // The controller already passes a $seoOverride carrying canonical and robots.
+    // Assigning a fresh array here used to throw that away, which is why the
+    // noindex set in PortfolioPageController never reached the <head>. Merge so the
+    // page-specific title and description win while the controller's SEO decisions
+    // survive.
+    $seoOverride = array_merge(isset($seoOverride) && is_array($seoOverride) ? $seoOverride : [], [
         'title' => ($portfolio->title ?: 'Project') . ' | UK Software Development Case Study',
         'description' => \Illuminate\Support\Str::limit(strip_tags((string) ($portfolio->excerpt ?: $portfolio->description ?: 'UK software, website, SEO, and ecommerce case study with delivery details and practical business outcomes.')), 160),
         'keywords' => 'software development case study uk, website project case study uk, crm project delivery uk, ecommerce case study uk, seo case study uk, portfolio details uk',
+        // The merge keeps the controller's og_/twitter_ titles alive, and those are
+        // the bare project name. Restate them so the social cards match the <title>.
+        'og_title' => ($portfolio->title ?: 'Project') . ' | UK Software Development Case Study',
+        'twitter_title' => ($portfolio->title ?: 'Project') . ' | UK Software Development Case Study',
         'related_links' => array_values(array_filter([
             '/portfolio',
             '/services',
@@ -12,8 +21,8 @@
             '/pricing',
             $portfolio->project_url ?: null,
         ])),
-    ];
-    $summaryText = $portfolio->excerpt ?: 'This project was delivered for a UK business with a practical implementation plan, measurable milestones, and commercial outcomes.';
+    ]);
+    $summaryText = $portfolio->excerpt ?: 'Project summary will be updated shortly.';
     $description = $portfolio->description ?: 'Project details will be updated soon.';
     $clientWebsite = $portfolio->project_url ?: null;
     $isFiverrCase = strcasecmp((string) ($portfolio->category ?? ''), 'Fiverr') === 0;
@@ -202,16 +211,12 @@
                                         <p>{{ optional($portfolio->updated_at)->format('d M Y') ?: '-' }}</p>
                                     </li>
                                     <li>
-                                        <span>Client:</span>
-                                        <p>{{ $portfolio->client_name ?: 'UK Business Client' }}</p>
+                                        <span>Project site:</span>
+                                        <p>{{ $portfolio->client_name ?: '—' }}</p>
                                     </li>
                                     <li>
                                         <span>Category:</span>
                                         <p>{{ $portfolio->category ?: 'Digital Project' }}</p>
-                                    </li>
-                                    <li>
-                                        <span>Region:</span>
-                                        <p>United Kingdom</p>
                                     </li>
                                     <li>
                                         <span>Project Status:</span>
@@ -325,9 +330,6 @@
                                 @if($clientWebsite)
                                     <h3 class="portfolio-details__title-5">Live Project</h3>
                                     <p class="portfolio-details__text-6">Visit the live project: <a href="{{ $clientWebsite }}" target="_blank" rel="noopener">{{ $clientWebsite }}</a></p>
-                                @else
-                                    <h3 class="portfolio-details__title-5">Client Feedback</h3>
-                                    <p class="portfolio-details__text-6">Client teams highlighted the clarity of delivery, practical communication, and quality of implementation as key strengths of this project.</p>
                                 @endif
 
                                 <div class="portfolio-details__prev-and-next">

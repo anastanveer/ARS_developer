@@ -1,5 +1,25 @@
 <?php
 
+/**
+ * The portfolio catalogue.
+ *
+ * This list used to set `client_name` to whatever host a URL happened to have, which
+ * put "Client: kyliecosmetics.com" on a live page — along with gymshark.com,
+ * colourpop.com and allbirds.com. Those are companies with their own in-house teams
+ * and agencies; presenting them as clients is a claim that cannot be supported, and
+ * it is a trademark and misrepresentation problem well before it is an AdSense one.
+ *
+ * Three entries were not client projects at all: a canva.com/design/…/edit link,
+ * which is an editor URL rather than a website; risdcareers.wixsite.com carrying
+ * ?utm_source=chatgpt.com, which is how a URL looks when it has been pasted out of a
+ * chatbot answer; and two 2017 .webflow.io subdomains. The Wix and Webflow categories
+ * consisted only of those, so both are gone.
+ *
+ * What remains is the small-business and startup work that a freelance developer
+ * plausibly delivers. If any entry here is not genuinely yours, remove it — a
+ * portfolio is only worth what its weakest claim can survive.
+ */
+
 namespace Database\Seeders;
 
 use App\Models\Portfolio;
@@ -14,58 +34,34 @@ class PortfolioCatalogSeeder extends Seeder
         $sort = 10;
 
         $entries = array_merge($entries, $this->buildEntries('WordPress', 'WordPress', [
-            'https://www.tlcplumbing.com/',
-            'https://cardiffpest.co.uk/',
-            'https://www.abathhouse.com/',
-            'https://allpawsvet.com/',
-            'https://beaverbrookah.com/',
-            'https://thecolourloungesalon.com/',
-            'https://foxmarin.ca/',
-            'https://www.halcyonhealth.us/',
-            'https://goblueox.com/',
-            'https://www.goldmedalservice.com/',
-            'https://prestigedetailingco.com/',
-            'https://bathpestcontrollers.co.uk/',
+            ['https://www.tlcplumbing.com/', '1.avif'],
+            ['https://cardiffpest.co.uk/', '2.avif'],
+            ['https://www.abathhouse.com/', '3.avif'],
+            ['https://allpawsvet.com/', '4.avif'],
+            ['https://beaverbrookah.com/', '5.avif'],
+            ['https://thecolourloungesalon.com/', '6.avif'],
+            ['https://foxmarin.ca/', '7.avif'],
+            ['https://www.halcyonhealth.us/', '8.avif'],
+            ['https://goblueox.com/', '9.avif'],
+            ['https://www.goldmedalservice.com/', '10.avif'],
+            ['https://prestigedetailingco.com/', '11.avif'],
+            ['https://bathpestcontrollers.co.uk/', '12.avif'],
         ], $sort));
         $sort += 100;
 
         $entries = array_merge($entries, $this->buildEntries('Shopify', 'Shopify', [
-            'https://kyliecosmetics.com/en-ae',
-            'https://www.gymshark.com/',
-            'https://colourpop.com/',
-            'https://skincarestore.com.co/',
-            'https://graflantz.com/',
-            'https://nerdynuts.com/',
-            'https://www.allbirds.com/',
-        ], $sort));
-        $sort += 100;
-
-        $entries = array_merge($entries, $this->buildEntries('Wix', 'Wix', [
-            'https://gannonchess.wixsite.com/',
-            'https://risdcareers.wixsite.com/design-review/2016?utm_source=chatgpt.com',
-            'https://www.canva.com/design/DAGx6qeJGHI/rGeJ3m1PnVCkM-B20-V-dQ/edit',
-        ], $sort));
-        $sort += 100;
-
-        $entries = array_merge($entries, $this->buildEntries('Webflow', 'Webflow', [
-            'https://imo2017.webflow.io/',
-            'https://uwdesign2017.webflow.io/',
+            ['https://skincarestore.com.co/', '4.avif'],
+            ['https://graflantz.com/', '5.avif'],
+            ['https://nerdynuts.com/', '6.avif'],
         ], $sort));
         $sort += 100;
 
         $entries = array_merge($entries, $this->buildEntries('Custom Coding', 'Custom', [
-            'https://www.getonce.com/#referrer=https%3A%2F%2Fdemo.torontobytes.com%2F&sso_redirect=true',
-            'https://www.getthursday.com/',
-            'https://www.adaline.ai/',
-            'https://finotivefunding.com/',
-            'https://4proptrader.com/',
-            'https://traivend.com/',
-        ], $sort));
-        $sort += 100;
-
-        $entries = array_merge($entries, $this->buildEntries('Landing Pages', 'Landing', [
-            'https://www.loxclubapp.com/',
-            'https://www.butter.us/',
+            ['https://www.getonce.com/', '1.avif'],
+            ['https://www.getthursday.com/', '2.avif'],
+            ['https://finotivefunding.com/', '4.avif'],
+            ['https://4proptrader.com/', '5.avif'],
+            ['https://traivend.com/', '6.avif'],
         ], $sort));
         $sort += 100;
 
@@ -114,7 +110,13 @@ class PortfolioCatalogSeeder extends Seeder
     {
         $rows = [];
 
-        foreach ($urls as $index => $url) {
+        foreach ($urls as $index => $entry) {
+            // The screenshot is named for the project, not for its position in this
+            // list. When entries were removed from the middle, position-based naming
+            // silently handed each surviving project the previous one's screenshot —
+            // Kylie Cosmetics' homepage ended up labelled as another client's work,
+            // which is a worse version of the claim the removals were meant to undo.
+            [$url, $image] = $entry;
             $num = $index + 1;
             $host = preg_replace('/^www\./', '', (string) (parse_url($url, PHP_URL_HOST) ?: 'project'));
             $rows[] = [
@@ -124,7 +126,7 @@ class PortfolioCatalogSeeder extends Seeder
                 'client_name' => $host,
                 'excerpt' => $this->excerptByCategory($category, $host, $num),
                 'description' => $this->descriptionByCategory($category, $host, $num),
-                'image_path' => 'assets/Portfolio/' . $folder . '/' . $num . '.avif',
+                'image_path' => 'assets/Portfolio/' . $folder . '/' . $image,
                 'image_path_2' => null,
                 'image_path_3' => null,
                 'project_url' => $url,

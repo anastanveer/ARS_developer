@@ -1,9 +1,15 @@
 @php
     $page_title = 'Portfolio';
-    $seoOverride = [
+    // Merge rather than assign: the controller sets the canonical and
+    // 'type' => 'CollectionPage', and a fresh array here would silently drop both.
+    // The description no longer offers landing pages — that category was removed
+    // along with the entries that could not be substantiated, and a description
+    // promising content the page does not hold is a mismatch on the one portfolio
+    // URL that stays indexed.
+    $seoOverride = array_merge(isset($seoOverride) && is_array($seoOverride) ? $seoOverride : [], [
         'title' => 'Web & Software Case Studies | ARS Developer, Stoke-on-Trent',
-        'description' => 'Review ARS Developer case studies across UK websites, CRM systems, ecommerce builds, landing pages, and search-led growth projects with practical delivery notes and live proof where available.',
-        'keywords' => 'software development portfolio uk, website case studies uk, crm development case study uk, ecommerce portfolio uk, seo case studies uk, landing page case studies uk',
+        'description' => 'ARS Developer case studies across UK websites, CRM systems and ecommerce builds, with delivery notes and a live link for each project.',
+        'keywords' => 'software development portfolio uk, website case studies uk, crm development case study uk, ecommerce portfolio uk',
         'related_links' => [
             '/services',
             '/software-development',
@@ -11,7 +17,7 @@
             '/pricing',
             '/contact',
         ],
-    ];
+    ]);
 
     $normaliseCategory = static function (?string $value): string {
         $raw = trim((string) $value);
@@ -19,10 +25,7 @@
 
         if (str_contains($slug, 'wordpress')) return 'WordPress';
         if (str_contains($slug, 'shopify') || str_contains($slug, 'woocommerce') || str_contains($slug, 'ecommerce')) return 'Shopify';
-        if ($slug === 'wix') return 'Wix';
-        if ($slug === 'webflow') return 'Webflow';
         if (str_contains($slug, 'crm') || str_contains($slug, 'portal')) return 'CRM';
-        if (str_contains($slug, 'landing')) return 'Landing Pages';
         if (str_contains($slug, 'fiverr')) return 'Fiverr';
         if (str_contains($slug, 'custom') || str_contains($slug, 'software') || str_contains($slug, 'saas')) return 'Custom Coding';
 

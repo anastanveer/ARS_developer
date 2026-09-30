@@ -631,7 +631,6 @@
             && (
                 in_array($currentPathKey, $adsenseAllowedStaticPaths, true)
                 || str_starts_with($currentPathKey, '/blog/')
-                || str_starts_with($currentPathKey, '/portfolio-details/')
             );
         $siteRootUrl = $ukBase;
         $areaServed = 'United Kingdom';

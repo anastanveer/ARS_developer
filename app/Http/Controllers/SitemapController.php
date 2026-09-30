@@ -98,22 +98,14 @@ class SitemapController extends Controller
             'priority' => '0.8',
         ]]);
 
-        $portfolioItems = Portfolio::query()
-            ->where('is_published', true)
-            ->orderByRaw('CASE WHEN sort_order = 0 THEN 1 ELSE 0 END')
-            ->orderBy('sort_order')
-            ->orderByDesc('id')
-            ->get()
-            ->map(function (Portfolio $portfolio) {
-                return [
-                    'loc' => url('/portfolio-details/' . $portfolio->slug),
-                    'lastmod' => $portfolio->updated_at ?: $portfolio->created_at,
-                    'changefreq' => 'monthly',
-                    'priority' => '0.7',
-                ];
-            });
-
-        return $indexEntry->concat($portfolioItems);
+        // The /portfolio-details/ pages are generated from one template with the
+        // project name substituted in, which leaves ~450 words that overlap each
+        // other by 43-75%. That is the shape Google calls scaled content, and it is
+        // what got the sister domain rejected from AdSense twice. They stay live and
+        // linked for anyone browsing the work; they are simply not submitted for
+        // indexing, and they carry noindex to match. /portfolio itself is the real
+        // showcase — one page listing every project, written rather than generated.
+        return $indexEntry;
     }
 
     private function blogEntries(): Collection
