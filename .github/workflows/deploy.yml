@@ -112,6 +112,15 @@ jobs:
             "cd $APP_DIR && /usr/local/bin/php artisan blog:strip-boilerplate" \
             || echo "::warning::blog:strip-boilerplate failed — run it manually"
 
+          # blog:retopic rewrites the posts that duplicated each other's subject —
+          # six on answer-engine optimisation, five on hiring a Laravel developer —
+          # onto subjects nothing else on the site covers. It changes the slug with
+          # the subject; BlogPageController 301s the old URLs. Skips posts already
+          # moved, so it is a no-op after the first run.
+          $SSH_OPTS "$SSH_USER@$SSH_HOST" \
+            "cd $APP_DIR && /usr/local/bin/php artisan blog:retopic" \
+            || echo "::warning::blog:retopic failed — run it manually"
+
           # blog:add-depth then gives the shortened posts sections written for them
           # individually, so removing the duplication does not simply leave thin
           # pages behind. It skips any heading already present, so it will not fight

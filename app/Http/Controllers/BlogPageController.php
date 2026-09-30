@@ -64,12 +64,24 @@ class BlogPageController extends Controller
         return view('pages.blog', compact('posts', 'query', 'seoOverride'));
     }
 
-    public function show(string $slug): View
+    public function show(string $slug): View|RedirectResponse
     {
         $post = BlogPost::query()
             ->live()
             ->where('slug', $slug)
-            ->firstOrFail();
+            ->first();
+
+        if (!$post) {
+            // Posts rewritten onto a new subject changed slug with it. Their old URLs
+            // are indexed and linked, so they redirect permanently rather than 404.
+            $retopic = require database_path('content/blog-retopic.php');
+
+            if (isset($retopic[$slug]['slug'])) {
+                return redirect('/blog/' . $retopic[$slug]['slug'], 301);
+            }
+
+            abort(404);
+        }
 
         $recentPosts = BlogPost::query()
             ->live()

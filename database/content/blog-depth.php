@@ -85,23 +85,6 @@ return [
         ],
     ],
 
-    'hiring-laravel-development-company-2026' => [
-        [
-            'heading' => 'Own the repository from day one',
-            'body' => [
-                'The single clause worth insisting on is that the code is yours and it lives in your organisation\'s repository, with the supplier added as a collaborator. It costs nothing at the start and it is the difference between changing supplier in a week and changing supplier in three months.',
-                'The same applies to hosting, the domain, the DNS, and any third-party account the build depends on. If the supplier holds those in their own name, a routine disagreement becomes leverage, and the recovery is usually more expensive than the work in dispute.',
-            ],
-        ],
-        [
-            'heading' => 'What a proposal should contain before you sign',
-            'body' => [
-                'A proposal worth accepting names the deliverables, the milestones, what is explicitly out of scope, and what happens when something takes longer than estimated. The out-of-scope list is the most useful part: a supplier willing to write down what they are not doing has thought about the project.',
-                'Ask what the handover includes. Documentation, environment setup instructions, a seeded local environment, and a named person for support after launch are all cheap to agree in advance and difficult to obtain once the final invoice has been paid.',
-            ],
-        ],
-    ],
-
     'hire-a-laravel-developer-in-the-uk-freelancer-agency-or-in-house' => [
         [
             'heading' => 'The comparison that is usually missing: bus factor',
@@ -115,23 +98,6 @@ return [
             'body' => [
                 'Work that is bounded and well understood — a migration, an integration, a performance pass — suits a freelancer or a fixed-price supplier, because the scope can be written down and finished. Work that is continuous and shaped by what users do next suits an employee or a long retainer, because the cost of re-explaining the business every few months eventually exceeds the salary.',
                 'The expensive mistake is using the second arrangement for the first kind of work: paying a retainer for a project that finished months ago, and calling it maintenance.',
-            ],
-        ],
-    ],
-
-    'laravel-development-agency-uk-what-good-delivery-looks-like-before-you-sign' => [
-        [
-            'heading' => 'Ask to see the deploy, not the design',
-            'body' => [
-                'Design work is what gets shown in a pitch and it is the part least likely to go wrong. Ask instead how code reaches production: whether there is a staging environment that matches live, whether deploys are scripted or done by hand over FTP, and what the rollback is when a release breaks something.',
-                'A supplier who deploys by dragging files into a file manager can still build a good website. They cannot safely maintain a business system, and the difference will show up in the first incident rather than in the proposal.',
-            ],
-        ],
-        [
-            'heading' => 'Migrations and data are where delivery quality shows',
-            'body' => [
-                'Schema changes under version control, applied the same way in every environment, are the boring practice that separates a team that can change a live system from one that is frightened of it. Ask whether migrations are reversible and whether anyone has ever run one against production data of a realistic size.',
-                'The related question is backups: not whether they exist, but when a restore was last tested. An untested backup is a belief, and the moment it matters is the worst possible moment to discover which one you had.',
             ],
         ],
     ],
@@ -327,23 +293,6 @@ return [
         ],
     ],
 
-    'website-development-cost-uk-in-2026-what-small-businesses-should-budget-for' => [
-        [
-            'heading' => 'Budget for three years, not for the build',
-            'body' => [
-                'A website is not a purchase, it is a subscription with a large first payment. Over three years a small business site carries hosting, a domain, SSL where it is not included, plugin or app licences, and someone\'s time applying updates. Those recurring items frequently add up to more than the original build.',
-                'Setting the budget across three years also changes what you buy. A cheaper build with no maintenance plan tends to reach the point of needing replacement inside two, at which stage the saving has been spent twice.',
-            ],
-        ],
-        [
-            'heading' => 'Where a small budget is best spent',
-            'body' => [
-                'With limited money, the order that produces the most enquiries is usually: clear service pages that answer what it costs and what happens next, fast loading on a phone, a contact method that works in one tap, and proof — real photographs, real reviews, real company details.',
-                'Bespoke design and animation come after those. A plain site that answers the buyer\'s questions consistently outperforms an attractive one that makes them hunt for a price or a phone number.',
-            ],
-        ],
-    ],
-
     'custom-crm-development-cost-uk-what-affects-budget-and-timeline' => [
         [
             'heading' => 'Roles multiply the work more than features do',
@@ -518,74 +467,6 @@ return [
         ],
     ],
 
-    'llm-seo-uk-how-to-structure-service-pages-for-chatgpt-google-ai-and-answer-engines' => [
-        [
-            'heading' => 'Structure so a passage survives being extracted',
-            'body' => [
-                'Write each section so it makes sense with everything above it removed. That means resolving pronouns and references in the first sentence — "the service" becomes the service\'s name, "as mentioned above" disappears entirely — because an extracted passage arrives without its context.',
-                'The same reasoning applies to tables and lists. A list whose items only make sense under the heading two screens up will be reproduced without it, and the result reads as nonsense attributed to your business.',
-            ],
-        ],
-        [
-            'heading' => 'Make the entity unambiguous',
-            'body' => [
-                'A model connecting a claim to a business needs to know which business. Consistent naming, a registered company number, an address, and matching details across your site, Companies House and your business profiles are what make that connection reliable.',
-                'Where those disagree — a different trading name in one place, an old address in another — the safest thing a system can do is decline to attribute anything, which is indistinguishable from not existing.',
-            ],
-        ],
-    ],
-
-    'answer-engine-optimization-uk-how-service-businesses-structure-content-for-ai-search' => [
-        [
-            'heading' => 'How to tell whether it is working',
-            'body' => [
-                'AI referrals are measurable, just awkwardly. Traffic from assistants arrives with its own referrers, so a segment in analytics for those sources separates it from ordinary search. The pattern is distinctive: low volume, high engagement, and visitors who arrive already knowing what you do.',
-                'Alongside that, check directly. Ask the assistants the questions your buyers ask and record who gets cited. Doing it monthly turns an anxiety into a tracked number, which is the only way to know whether a change helped.',
-            ],
-        ],
-        [
-            'heading' => 'Expect fewer visits that convert harder',
-            'body' => [
-                'Assistants answer the research questions that used to bring informational traffic, so the top of the funnel shrinks. What arrives instead has already been filtered — the visitor has read a summary of the options and chosen to click through to one of them.',
-                'Judged on sessions, this looks like decline. Judged on enquiries per session it usually looks like the opposite, which is why the reporting has to change at the same time as the content, or good work gets reported as a loss.',
-            ],
-        ],
-    ],
-
-    'ai-seo-services-uk-how-businesses-turn-ai-search-visibility-into-qualified-leads' => [
-        [
-            'heading' => 'The landing page has to skip the introduction',
-            'body' => [
-                'A visitor arriving from an assistant has already had the concept explained. Opening with a paragraph defining the service repeats what they just read and wastes the click, which is why AI-referred traffic often bounces on pages that convert ordinary search traffic perfectly well.',
-                'Those pages should start where the assistant stopped: specifics, evidence, price shape, and what happens if they get in touch. The explanatory content still has a job elsewhere on the site — just not as the first thing this visitor sees.',
-            ],
-        ],
-        [
-            'heading' => 'Attribution will under-report it, so ask',
-            'body' => [
-                'A meaningful share of assistant-driven visits arrive with no referrer at all, because the person read the answer, then searched your name or typed the domain. Analytics files that as direct or branded search, and the AI work that produced it gets no credit.',
-                'The cheapest correction is a field on the enquiry form asking how they heard about you, with the assistants named as options. It is crude, and it will tell you more about this channel than your analytics currently can.',
-            ],
-        ],
-    ],
-
-    'ai-mode-seo-uk-how-service-brands-create-content-that-earns-clicks' => [
-        [
-            'heading' => 'What makes someone click when the answer is on screen',
-            'body' => [
-                'Nobody clicks to re-read a summary. They click when they need something the summary cannot contain: a number for their own situation, a tool, a document, a specific example that matches their circumstances, or the ability to act.',
-                'So the page has to hold something genuinely unsummarisable. A calculator, a template, a detailed worked example with real figures, an interactive checker — these survive the summary because the answer depends on input the assistant does not have.',
-            ],
-        ],
-        [
-            'heading' => 'Write for the follow-up question',
-            'body' => [
-                'The summary handles "what is it" and "how much roughly". What it handles badly is the next question, which is always conditional: what about my situation, my building, my sector, my timescale, my existing system.',
-                'Content built around those conditionals earns the click, because the assistant can fairly say that the details depend on circumstances and point somewhere they are set out. That is a better position than competing to answer the question that has already been answered.',
-            ],
-        ],
-    ],
-
     'google-search-console-insights-uk-how-to-find-easy-seo-wins-faster' => [
         [
             'heading' => 'Positions five to twenty are where the work pays',
@@ -703,23 +584,6 @@ return [
             'body' => [
                 'For a straightforward business site, expect roughly a week of discovery and structure, two to three weeks of design and build, a week of content population and review, and a short period after launch for the adjustments that only appear once it is live. Bigger scopes extend the middle rather than adding new stages.',
                 'Compress that and something gets skipped, usually testing or content. Both failures surface after launch, when they cost more attention than they would have taken to do properly.',
-            ],
-        ],
-    ],
-
-    'software-development-company-tunbridge-wells-how-to-choose-the-right-partner' => [
-        [
-            'heading' => 'What local actually buys you',
-            'body' => [
-                'Almost all development work is now done remotely regardless of where the supplier is registered, so proximity buys fewer things than it appears to. What it does buy is worth naming: the ability to sit with the people who will use the system during discovery, and a supplier in your timezone with an address you could visit.',
-                'The discovery part is the one that matters. Watching someone do the job you are automating, in the room, surfaces exceptions that no amount of remote questioning produces.',
-            ],
-        ],
-        [
-            'heading' => 'Ask how the work is actually staffed',
-            'body' => [
-                'A small local company may subcontract the build, and a larger one may staff it with whoever is free. Neither is disqualifying, but you should know which you are buying, because it determines who understands your system in a year\'s time.',
-                'Ask who specifically will write the code, whether you will speak to them, and what happens when they are unavailable. A supplier who answers plainly is telling you how the project will feel; one who deflects to "our team" has answered as well.',
             ],
         ],
     ],
