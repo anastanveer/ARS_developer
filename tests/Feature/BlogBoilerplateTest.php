@@ -77,6 +77,76 @@ class BlogBoilerplateTest extends TestCase
         $this->artisan('blog:strip-boilerplate')->expectsOutputToContain('nothing to remove');
     }
 
+    public function test_depth_sections_are_not_shared_between_posts(): void
+    {
+        // The whole point of the depth file is that each section belongs to one post.
+        // If a heading or a sentence appears under two slugs, the filler has been
+        // reintroduced by hand, which is the failure this guards against.
+        $depth = require database_path('content/blog-depth.php');
+
+        $headings = [];
+        $sentences = [];
+
+        foreach ($depth as $slug => $sections) {
+            foreach ($sections as $section) {
+                $heading = strtolower($section['heading']);
+                $this->assertArrayNotHasKey(
+                    $heading,
+                    $headings,
+                    "Heading \"{$section['heading']}\" is used by both {$slug} and " . ($headings[$heading] ?? '?') . '.'
+                );
+                $headings[$heading] = $slug;
+
+                foreach ($section['body'] as $paragraph) {
+                    foreach (preg_split('/(?<=[.!?])\s+/', strip_tags($paragraph)) as $sentence) {
+                        $sentence = strtolower(trim($sentence));
+
+                        if (str_word_count($sentence) < 8) {
+                            continue;
+                        }
+
+                        $this->assertArrayNotHasKey(
+                            $sentence,
+                            $sentences,
+                            "A sentence is repeated in {$slug} and " . ($sentences[$sentence] ?? '?') . '.'
+                        );
+                        $sentences[$sentence] = $slug;
+                    }
+                }
+            }
+        }
+
+        $this->assertGreaterThan(50, count($sentences), 'The depth file looks empty.');
+    }
+
+    public function test_add_depth_is_idempotent(): void
+    {
+        $depth = require database_path('content/blog-depth.php');
+        $slug = array_key_first($depth);
+
+        BlogPost::query()->create([
+            'title' => 'Depth Target',
+            'slug' => $slug,
+            'excerpt' => 'x',
+            'content' => '<h2>Quick Answer</h2><p>Something.</p><h2>Frequently Asked Questions</h2><h3>Q</h3><p>A</p>',
+            'is_published' => true,
+            'published_at' => now()->subDay(),
+        ]);
+
+        $this->artisan('blog:add-depth')->assertSuccessful();
+        $once = (string) BlogPost::query()->where('slug', $slug)->firstOrFail()->content;
+
+        $this->artisan('blog:add-depth')->expectsOutputToContain('nothing to add');
+        $twice = (string) BlogPost::query()->where('slug', $slug)->firstOrFail()->content;
+
+        $this->assertSame($once, $twice);
+        // The FAQ has to stay after the new sections, not before them.
+        $this->assertLessThan(
+            strpos($once, 'Frequently Asked Questions'),
+            strpos($once, '<h2>' . $depth[$slug][0]['heading'] . '</h2>')
+        );
+    }
+
     public function test_strip_command_leaves_untemplated_posts_untouched(): void
     {
         $original = '<h2>A real heading</h2><p>Prose that no template produced.</p>';

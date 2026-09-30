@@ -112,6 +112,14 @@ jobs:
             "cd $APP_DIR && /usr/local/bin/php artisan blog:strip-boilerplate" \
             || echo "::warning::blog:strip-boilerplate failed — run it manually"
 
+          # blog:add-depth then gives the shortened posts sections written for them
+          # individually, so removing the duplication does not simply leave thin
+          # pages behind. It skips any heading already present, so it will not fight
+          # an edit made from the admin and is a no-op once applied.
+          $SSH_OPTS "$SSH_USER@$SSH_HOST" \
+            "cd $APP_DIR && /usr/local/bin/php artisan blog:add-depth" \
+            || echo "::warning::blog:add-depth failed — run it manually"
+
           rm -f ~/.ssh/deploy_key
 
       # A deploy that uploads nothing still exits zero, so prove the site answers.
