@@ -79,6 +79,13 @@ jobs:
           rsync -az --stats \
             -e "$SSH_OPTS" ./public/ "$SSH_USER@$SSH_HOST:$WEB_DIR/"
 
+          # assets/Portfolio/ is the one tree this repo fully owns, so it syncs with
+          # --delete. Without it a file removed from the repo stays served forever,
+          # and the files removed here are screenshots of companies the business did
+          # not work for, which were being published under other clients' names.
+          rsync -az --delete --stats \
+            -e "$SSH_OPTS" ./public/assets/Portfolio/ "$SSH_USER@$SSH_HOST:$WEB_DIR/assets/Portfolio/"
+
           # Blade and route changes need the compiled caches dropped, or the old
           # views keep being served.
           #
@@ -88,7 +95,14 @@ jobs:
           # reseeding, so entries added through the admin are untouched, and it is a
           # no-op once they are gone — which is why it is safe on every deploy.
           $SSH_OPTS "$SSH_USER@$SSH_HOST" \
-            "cd $APP_DIR && /usr/local/bin/php artisan view:clear && /usr/local/bin/php artisan route:clear && /usr/local/bin/php artisan config:clear && /usr/local/bin/php artisan portfolio:prune-claims"
+            "cd $APP_DIR && /usr/local/bin/php artisan view:clear && /usr/local/bin/php artisan route:clear && /usr/local/bin/php artisan config:clear"
+
+          # Deliberately not chained onto the command above. The code has already
+          # shipped by this point, so a database hiccup here must not fail the step
+          # and skip the deploy-key cleanup below.
+          $SSH_OPTS "$SSH_USER@$SSH_HOST" \
+            "cd $APP_DIR && /usr/local/bin/php artisan portfolio:prune-claims" \
+            || echo "::warning::portfolio:prune-claims failed — run it manually"
 
           rm -f ~/.ssh/deploy_key
 
