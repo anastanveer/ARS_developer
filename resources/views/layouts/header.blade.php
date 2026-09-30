@@ -625,7 +625,11 @@
             '/faq',
             '/portfolio',
             '/blog',
-            '/uk-growth-hub',
+            // /uk-growth-hub is deliberately absent. It is a hub of around 380 words
+            // whose job is to send people elsewhere, and AdSense's own guidance is
+            // against placing ads on pages with little content of their own. It earns
+            // almost nothing there and it is the weakest page on a site that has
+            // already been refused twice for low value content.
         ];
         $shouldLoadAdsense = !str_contains(strtolower($resolvedRobots), 'noindex')
             && (
