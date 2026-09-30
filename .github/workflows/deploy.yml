@@ -104,6 +104,14 @@ jobs:
             "cd $APP_DIR && /usr/local/bin/php artisan portfolio:prune-claims" \
             || echo "::warning::portfolio:prune-claims failed — run it manually"
 
+          # blog:strip-boilerplate subtracts the templated sections that made most
+          # posts copies of one another. Same reasoning as the prune: the seeders no
+          # longer emit it, but they are not run here, and posts are editable from the
+          # admin. It only removes what it recognises and is a no-op once done.
+          $SSH_OPTS "$SSH_USER@$SSH_HOST" \
+            "cd $APP_DIR && /usr/local/bin/php artisan blog:strip-boilerplate" \
+            || echo "::warning::blog:strip-boilerplate failed — run it manually"
+
           rm -f ~/.ssh/deploy_key
 
       # A deploy that uploads nothing still exits zero, so prove the site answers.

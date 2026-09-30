@@ -334,7 +334,6 @@ class SeoBlogPost2026Seeder extends Seeder
     {
         $html = '<h2>Quick Answer</h2>';
         $html .= '<p>' . e($post['excerpt']) . '</p>';
-        $html .= '<p>For UK businesses in 2026, the safest approach is to connect ' . e($post['keyword']) . ' with clear scope, useful content, technical quality, performance, and a measurable path from research to enquiry. The goal is not instant ranking promises; it is helpful, people-first content and implementation that supports real decisions.</p>';
 
         $images = array_values($post['images'] ?? []);
 
@@ -352,52 +351,22 @@ class SeoBlogPost2026Seeder extends Seeder
             }
         }
 
-        $html .= '<h2>UK buyer decision framework</h2>';
-        $html .= '<p>Most UK teams do not need more vague technology options; they need a clearer way to decide what should happen first. Start by separating must-have workflow requirements from features that are only useful after launch. Then compare suppliers on discovery quality, technical judgement, communication, testing, support, and whether they can explain trade-offs without hiding behind jargon.</p>';
-        $html .= '<p>A stronger decision framework also includes commercial fit. Ask how the work will improve enquiries, reduce admin, protect performance, improve reporting, or make a system easier to maintain. If the answer is not specific, the project may be at risk of becoming a cosmetic or experimental spend rather than a useful business improvement.</p>';
-
-        $html .= '<h2>Cost, timeline, and scope planning</h2>';
-        $html .= '<p>Budget and timeline depend on content depth, design complexity, user roles, integrations, approvals, data quality, performance requirements, and post-launch support. For ' . e($post['keyword']) . ', the safest estimate usually comes after a short discovery stage where workflows, pages, systems, and business priorities are mapped properly.</p>';
-        $html .= '<p>Phased delivery is usually better than trying to launch every idea at once. A focused first release gives the business something measurable, reduces rework, and keeps future improvements tied to real user behaviour. This is especially important for startups, SaaS products, ERP-style systems, ecommerce operations, and AI automation where assumptions can change quickly once users interact with the system.</p>';
-
-        $html .= '<h2>SEO, content, and trust signals</h2>';
-        $html .= '<p>Helpful SEO content should answer the buyer question directly, then support the answer with examples, process detail, risk warnings, internal links, and a clear next step. It should not overpromise rankings, use copied claims, or repeat keywords unnaturally. Strong pages are useful even if the visitor arrived from a referral, paid ad, AI answer, or direct brand search.</p>';
-        $html .= '<p>Trust signals should be visible throughout the journey. That includes real company identity, practical service explanations, accessible contact routes, descriptive image alt text, valid schema where supported, sensible metadata, and links to relevant service pages. ARS Developer Ltd keeps this structure focused on people-first usefulness rather than artificial SEO tricks.</p>';
-
-        $html .= '<h2>Governance, testing, and post-launch support</h2>';
-        $html .= '<p>Production work needs ownership after launch. Before publishing or deploying, confirm who reviews content, who handles technical issues, how analytics will be checked, how forms or integrations will be tested, and what happens if a page or workflow does not perform as expected. These details prevent small issues from becoming business disruption.</p>';
-        $html .= '<p>After launch, review Search Console, analytics, enquiry quality, page speed, error logs, and user feedback. The best websites and systems improve through measured iteration. For a UK business, that means combining SEO visibility, conversion quality, operational reliability, and maintainable code into one practical improvement cycle.</p>';
-
-        $html .= '<h2>Example project scenario</h2>';
-        $html .= '<p>A typical UK company researching this topic might already have a website, several disconnected tools, a small internal team, and pressure to improve leads or operational speed without creating technical debt. The first useful step is not a full rebuild by default. It is a review of the highest-value pages, workflows, data points, and handovers that currently slow the business down.</p>';
-        $html .= '<p>From there, the project can be shaped into a clear first phase: improve the commercial page structure, connect the right internal systems, add practical automation where it reduces admin, and publish supporting content that answers real buyer questions. This keeps the work useful for search engines, visitors, and the team responsible for managing the system after launch.</p>';
-        $html .= '<p>That kind of staged approach also makes reporting easier. The business can compare traffic, qualified enquiries, admin time, page speed, and support requests before and after the work, which gives leadership a clearer view of whether the investment is producing useful progress.</p>';
-        $html .= '<p>It also gives the team a cleaner content and delivery record for future updates, which helps later SEO reviews, supplier handovers, audits, and roadmap decisions.</p>';
-
-        $html .= '<h2>Practical implementation checklist</h2><ul>';
-        foreach ([
-            'Confirm the business goal, audience, budget range, and success metric before production starts.',
-            'Map the user journey from search intent to service page, proof, contact action, and follow-up workflow.',
-            'Keep headings clear, answers direct, metadata accurate, and internal links useful for real readers.',
-            'Use descriptive image filenames, alt text, compressed visuals, lazy loading, and performance checks.',
-            'Review the page after launch using Search Console, analytics, enquiry quality, and technical QA.',
-        ] as $item) {
-            $html .= '<li>' . e($item) . '</li>';
-        }
-        $html .= '</ul>';
-
-        $html .= '<h2>How ARS Developer Ltd can help</h2>';
-        $html .= '<p>ARS Developer Ltd helps UK businesses plan and build websites, Laravel applications, SaaS products, ecommerce systems, APIs, automation workflows, and SEO-ready content structures. The practical value comes from connecting strategy with implementation, not leaving the business with isolated advice.</p>';
-        $html .= '<p>Useful next pages include <a href="/services">services</a>, <a href="/software-development">software development</a>, <a href="/web-design-development">web design and development</a>, <a href="/search-engine-optimization">SEO</a>, <a href="/blog">blog insights</a>, and <a href="/contact">contact</a>.</p>';
+        // Six sections used to sit here — "UK buyer decision framework", "Cost,
+        // timeline, and scope planning", "SEO, content, and trust signals",
+        // "Governance, testing, and post-launch support", "Example project scenario",
+        // "Practical implementation checklist" and "How ARS Developer Ltd can help".
+        // Every one of them was a fixed block of prose with at most the keyword
+        // swapped in, so all ten posts this seeder writes carried the same ~1,000
+        // words. One post was 1,060 of its 1,449 words identical to another. What is
+        // left is the part that was ever about the subject: the answer, the sections,
+        // and the questions.
 
         $html .= '<h2>Frequently Asked Questions</h2>';
         foreach ($post['faq'] as $faq) {
             $html .= '<h3>' . e($faq[0]) . '</h3><p>' . e($faq[1]) . '</p>';
         }
 
-        $html .= '<h2>Next Step</h2>';
-        $html .= '<p>If this topic is active in your business, start with a scoped review of goals, current systems, search opportunity, technical risk, and implementation priorities. Then build the smallest useful improvement that can be measured and improved.</p>';
-        $html .= '<p><a href="/contact">Contact ARS Developer Ltd</a> to discuss a practical UK-focused roadmap.</p>';
+        $html .= '<p><a href="/contact">Contact ARS Developer Ltd</a> to talk through ' . e($post['keyword']) . ' for your business.</p>';
 
         return $html;
     }

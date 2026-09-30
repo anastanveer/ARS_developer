@@ -2033,10 +2033,6 @@ class BlogPostSeeder extends Seeder
             }
         }
 
-        foreach ($this->buildCommercialContext($post) as $paragraph) {
-            $html .= '<p>' . $paragraph . '</p>';
-        }
-
         if (!empty($post['featured_image_for_content'])) {
             $html .= $this->buildInlineImageBlock($post['featured_image_for_content'], $post['title'] ?? 'Blog illustration');
         }
@@ -2054,7 +2050,6 @@ class BlogPostSeeder extends Seeder
                     $html .= '<li>' . $item . '</li>';
                 }
                 $html .= '</ul>';
-                $html .= '<p>' . $this->buildSectionSupportParagraph($post, $section) . '</p>';
             }
         }
 
@@ -2083,29 +2078,22 @@ class BlogPostSeeder extends Seeder
             }
         }
 
-        $html .= '<h2>Who this is for</h2>';
-        $html .= '<ul>';
-        foreach ($this->buildAudienceBullets($post) as $item) {
-            $html .= '<li>' . $item . '</li>';
+        // "Who this is for", "Common mistakes to avoid", "What this means in
+        // practice" and a four-item "Implementation checklist" used to be emitted
+        // here from templates with only the topic phrase swapped in. Across the 39
+        // posts this seeder produces, that was roughly 600 identical words each —
+        // enough that some posts were more than two-thirds word-for-word the same as
+        // each other. Only the checklist's per-slug line said anything specific, so
+        // that is all that survives.
+        $checklist = $this->buildImplementationChecklist($post);
+        if (!empty($checklist)) {
+            $html .= '<h2>Before you start</h2>';
+            $html .= '<ul>';
+            foreach ($checklist as $item) {
+                $html .= '<li>' . $item . '</li>';
+            }
+            $html .= '</ul>';
         }
-        $html .= '</ul>';
-
-        $html .= '<h2>Common mistakes to avoid</h2>';
-        foreach ($this->buildCommonMistakes($post) as $paragraph) {
-            $html .= '<p>' . $paragraph . '</p>';
-        }
-
-        $html .= '<h2>What this means in practice</h2>';
-        foreach ($this->buildPracticalTakeaways($post) as $paragraph) {
-            $html .= '<p>' . $paragraph . '</p>';
-        }
-
-        $html .= '<h2>Implementation checklist</h2>';
-        $html .= '<ul>';
-        foreach ($this->buildImplementationChecklist($post) as $item) {
-            $html .= '<li>' . $item . '</li>';
-        }
-        $html .= '</ul>';
 
         if (!empty($post['faq'])) {
             $html .= '<h2>Frequently Asked Questions</h2>';
@@ -2115,81 +2103,34 @@ class BlogPostSeeder extends Seeder
             }
         }
 
-        $html .= '<h2>Further Reading</h2>';
-        $html .= '<p>' . $this->buildFurtherReadingParagraph($post) . '</p>';
+        $furtherReading = $this->buildFurtherReadingParagraph($post);
+        if ($furtherReading !== null) {
+            $html .= '<h2>Further Reading</h2>';
+            $html .= '<p>' . $furtherReading . '</p>';
+        }
 
         if (!empty($post['cta'])) {
             $html .= '<h2>Next Step</h2>';
             $html .= '<p>' . $post['cta'] . '</p>';
-            $html .= '<p>' . $this->buildClosingParagraph($post) . '</p>';
+
+            $closing = $this->buildClosingParagraph($post);
+            if ($closing !== null) {
+                $html .= '<p>' . $closing . '</p>';
+            }
         }
 
         return $html;
     }
 
-    private function buildCommercialContext(array $post): array
-    {
-        $category = strtolower((string) ($post['category'] ?? 'service growth'));
-        $topic = $this->extractTopicPhrase($post);
-
-        return [
-            'For UK buyers comparing suppliers, the strongest content usually explains commercial outcomes, project expectations, and how the service connects with trust, delivery clarity, and measurable growth. This is where ' . $topic . ' becomes more useful than generic marketing copy.',
-            'In practical terms, a strong ' . $category . ' article should help a reader understand what good looks like, what mistakes to avoid, and what questions to ask before spending budget. That type of clarity tends to improve both engagement quality and search relevance over time.',
-        ];
-    }
-
-    private function buildSectionSupportParagraph(array $post, array $section): string
-    {
-        $topic = $this->extractTopicPhrase($post);
-        $sectionTitle = strtolower((string) ($section['title'] ?? 'delivery planning'));
-
-        return 'Taken together, these points show how ' . $topic . ' should support better decision-making, cleaner delivery planning, and stronger buyer confidence around ' . $sectionTitle . '. When the page explains this clearly, it becomes more useful for both search engines and commercial readers.';
-    }
-
-    private function buildPracticalTakeaways(array $post): array
-    {
-        $topic = $this->extractTopicPhrase($post);
-
-        return [
-            'If a business is actively researching ' . $topic . ', they usually want clear next steps rather than broad theory. The strongest pages help the reader compare options, understand likely timelines, and see what affects scope, cost, or implementation quality.',
-            'This is also why long-form content tends to perform better when it stays commercially focused. Search visibility improves when the article answers related questions thoroughly, but conversions improve when the page also explains proof, process, and realistic outcomes in plain language.',
-            'For UK service brands, the best-performing pages also reduce commercial ambiguity. They show what happens first, what gets quoted, what affects timelines, and where the engagement fits alongside pricing, implementation, and support.',
-        ];
-    }
-
-    private function buildAudienceBullets(array $post): array
-    {
-        $topic = $this->extractTopicPhrase($post);
-        $category = strtolower((string) ($post['category'] ?? 'service delivery'));
-
-        return [
-            'UK businesses comparing suppliers for ' . $topic . ' and looking for a commercially credible next step.',
-            'Internal teams that need clearer expectations around budget, delivery scope, workflow quality, or search performance.',
-            'Decision-makers reviewing ' . $category . ' options and trying to reduce risk before committing to a project or retainer.',
-        ];
-    }
-
-    private function buildCommonMistakes(array $post): array
-    {
-        $topic = $this->extractTopicPhrase($post);
-
-        return [
-            'A common mistake is treating ' . $topic . ' like a checklist exercise instead of a commercial decision. That usually leads to vague scope, weak implementation detail, and pages that look acceptable but do not create enough trust or conversion momentum.',
-            'Another mistake is focusing only on surface-level SEO phrases without connecting the page to proof, FAQs, pricing logic, service scope, and internal links. Search engines increasingly reward stronger context, while real buyers still expect clarity before they enquire.',
-        ];
-    }
-
+    /**
+     * The one line of this checklist that was ever about the post in question.
+     *
+     * The other four items were generated from the topic phrase and so were
+     * identical across all 39 posts. A checklist that says the same thing on every
+     * page is not a checklist; it is padding, and it is what "scaled content" means.
+     */
     private function buildImplementationChecklist(array $post): array
     {
-        $topic = $this->extractTopicPhrase($post);
-
-        $items = [
-            'Define the exact commercial goal behind ' . $topic . ' before expanding delivery scope.',
-            'Align the page with related service, pricing, case-study, and FAQ content so Google and buyers can follow the topic clearly.',
-            'Use Search Console data, internal linking, and conversion tracking to measure whether the page is attracting useful visibility instead of low-value impressions.',
-            'Review the content regularly so it stays relevant, trustworthy, and commercially stronger than generic competitor pages.',
-        ];
-
         $extraItems = [
             'uk-seo-growth-system-2026-aeo-geo-eeat-guide' => 'Pair the pillar with one pricing article, one implementation article, and one proof-based case study so the cluster covers both research and buying intent.',
             'how-uk-service-businesses-generate-more-leads-with-conversion-focused-websites' => 'Check that your main CTA, trust proof, pricing guidance, and booking flow all work cleanly on mobile before scaling more traffic.',
@@ -2204,14 +2145,11 @@ class BlogPostSeeder extends Seeder
         ];
 
         $slug = (string) ($post['slug'] ?? '');
-        if (isset($extraItems[$slug])) {
-            $items[] = $extraItems[$slug];
-        }
 
-        return $items;
+        return isset($extraItems[$slug]) ? [$extraItems[$slug]] : [];
     }
 
-    private function buildClosingParagraph(array $post): string
+    private function buildClosingParagraph(array $post): ?string
     {
         $topic = $this->extractTopicPhrase($post);
 
@@ -2230,7 +2168,9 @@ class BlogPostSeeder extends Seeder
             'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner' => 'If you are comparing local software partners, the safest next step is a scoped conversation around discovery, milestones, support, and commercial ownership. That tends to filter out weak proposals very quickly.',
         ];
 
-        return $closers[$slug] ?? 'If your team is reviewing ' . $topic . ' right now, the safest next step is usually a scoped conversation that covers delivery fit, commercial priorities, and the fastest path to a useful first result. That tends to produce better outcomes than choosing based on vague promises or generic package language.';
+        // No generic fallback: the same closing paragraph on 39 pages adds nothing
+        // a reader could not have guessed, and it was a third of the duplication.
+        return $closers[$slug] ?? null;
     }
 
     private function buildInlineImageBlock(string $path, string $alt): string
@@ -2243,7 +2183,7 @@ class BlogPostSeeder extends Seeder
             . '</figure>';
     }
 
-    private function buildFurtherReadingParagraph(array $post): string
+    private function buildFurtherReadingParagraph(array $post): ?string
     {
         $slug = (string) ($post['slug'] ?? '');
 
@@ -2260,7 +2200,7 @@ class BlogPostSeeder extends Seeder
             'software-development-company-stoke-on-trent-how-to-choose-the-right-uk-partner' => 'Continue with <a href="/blog/custom-software-development-pricing-uk-what-businesses-should-budget-for-in-2026">software pricing guidance</a>, <a href="/portfolio">portfolio proof</a>, and our <a href="/software-development">software development service</a>.',
         ];
 
-        return $map[$slug] ?? 'Continue with our <a href="/services">services</a>, <a href="/pricing">pricing guidance</a>, and <a href="/contact">contact page</a> if you want a commercial plan built around this topic.';
+        return $map[$slug] ?? null;
     }
 
     private function buildStrategicDeepDiveSection(array $post): ?array
