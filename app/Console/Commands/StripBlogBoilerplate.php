@@ -7,6 +7,7 @@ use DOMDocument;
 use DOMElement;
 use DOMXPath;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Removes the generated filler that made most blog posts copies of each other.
@@ -74,6 +75,12 @@ class StripBlogBoilerplate extends Command
         $changed = 0;
         $wordsRemoved = 0;
 
+        // This deletes prose from a live table and the seeders can no longer
+        // regenerate it, so the original goes to disk first. It has never been
+        // needed; it costs a few hundred kilobytes and removes the one reason to
+        // hesitate before letting this run on deploy.
+        $backup = [];
+
         foreach (BlogPost::query()->cursor() as $post) {
             $original = (string) $post->content;
 
@@ -99,6 +106,7 @@ class StripBlogBoilerplate extends Command
             $this->line(sprintf('  %-58s %5d -> %4d words', $post->slug, $before, $after));
 
             if (!$dryRun) {
+                $backup[$post->slug] = $original;
                 $post->content = $stripped;
                 $post->save();
             }
@@ -108,6 +116,13 @@ class StripBlogBoilerplate extends Command
             $this->info('blog:strip-boilerplate — nothing to remove.');
 
             return self::SUCCESS;
+        }
+
+        if ($backup !== []) {
+            $path = 'blog-boilerplate-backup-' . now()->format('Y-m-d-His') . '.json';
+            $disk = Storage::disk('local');
+            $disk->put($path, json_encode($backup, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+            $this->line('  Original content saved to ' . $disk->path($path));
         }
 
         $this->info(sprintf(
