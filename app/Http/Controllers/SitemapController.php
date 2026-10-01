@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
-use App\Models\Portfolio;
 use Carbon\CarbonInterface;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
@@ -16,10 +15,6 @@ class SitemapController extends Controller
             [
                 'loc' => route('sitemap.section', ['section' => 'pages']),
                 'lastmod' => $this->latestTimestamp($this->pageEntries()->pluck('lastmod')->filter()),
-            ],
-            [
-                'loc' => route('sitemap.section', ['section' => 'portfolio']),
-                'lastmod' => $this->latestTimestamp($this->portfolioEntries()->pluck('lastmod')->filter()),
             ],
             [
                 'loc' => route('sitemap.section', ['section' => 'blog']),
@@ -36,7 +31,6 @@ class SitemapController extends Controller
     {
         $entries = match ($section) {
             'pages' => $this->pageEntries(),
-            'portfolio' => $this->portfolioEntries(),
             'blog' => $this->blogEntries(),
             default => abort(404),
         };
@@ -48,27 +42,41 @@ class SitemapController extends Controller
 
     private function pageEntries(): Collection
     {
-        $today = now();
+        // Real dates, not now().
+        //
+        // Every entry here used to carry the time the sitemap was fetched, so all
+        // nineteen pages claimed to have changed on every request. Google's
+        // documented response to a lastmod it finds consistently inaccurate is to
+        // stop trusting the field — which is the opposite of useful when one page
+        // genuinely has changed and needs recrawling.
+        //
+        // These are the dates the page's own template last changed. Update the date
+        // when you change the page; leaving it stale is better than moving them all
+        // to today, because a date that never moves is merely unhelpful while a date
+        // that always moves is actively disbelieved.
         $staticPages = collect([
-            ['path' => '/', 'changefreq' => 'weekly', 'priority' => '1.0'],
-            ['path' => '/about', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['path' => '/services', 'changefreq' => 'weekly', 'priority' => '0.9'],
-            ['path' => '/software-development', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['path' => '/web-design-development', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/search-engine-optimization', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/digital-marketing', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['path' => '/app-development', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['path' => '/design-and-branding', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['path' => '/sectors/healthcare', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['path' => '/sectors/law-firms', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['path' => '/sectors/ecommerce', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['path' => '/sectors/b2b', 'changefreq' => 'monthly', 'priority' => '0.8'],
-            ['path' => '/pricing', 'changefreq' => 'weekly', 'priority' => '0.8'],
-            ['path' => '/faq', 'changefreq' => 'monthly', 'priority' => '0.7'],
-            ['path' => '/contact', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            ['path' => '/portfolio', 'changefreq' => 'weekly', 'priority' => '0.8'],
-            ['path' => '/blog', 'changefreq' => 'weekly', 'priority' => '0.9'],
-            ['path' => '/uk-growth-hub', 'changefreq' => 'weekly', 'priority' => '0.9'],
+            ['path' => '/', 'changed' => '2026-08-30', 'changefreq' => 'weekly', 'priority' => '1.0'],
+            ['path' => '/about', 'changed' => '2026-05-14', 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['path' => '/services', 'changed' => '2026-03-26', 'changefreq' => 'weekly', 'priority' => '0.9'],
+            ['path' => '/software-development', 'changed' => '2026-06-03', 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['path' => '/web-design-development', 'changed' => '2026-05-13', 'changefreq' => 'monthly', 'priority' => '0.9'],
+            ['path' => '/search-engine-optimization', 'changed' => '2026-06-03', 'changefreq' => 'monthly', 'priority' => '0.9'],
+            ['path' => '/digital-marketing', 'changed' => '2026-05-13', 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['path' => '/app-development', 'changed' => '2026-05-13', 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['path' => '/design-and-branding', 'changed' => '2026-05-13', 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['path' => '/sectors/healthcare', 'changed' => '2026-09-08', 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['path' => '/sectors/law-firms', 'changed' => '2026-09-08', 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['path' => '/sectors/ecommerce', 'changed' => '2026-09-08', 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['path' => '/sectors/b2b', 'changed' => '2026-09-08', 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['path' => '/pricing', 'changed' => '2026-07-02', 'changefreq' => 'weekly', 'priority' => '0.8'],
+            ['path' => '/faq', 'changed' => '2026-05-13', 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['path' => '/contact', 'changed' => '2026-07-02', 'changefreq' => 'monthly', 'priority' => '0.9'],
+            // The portfolio catalogue was restructured on 2026-09-30: entries naming
+            // companies the business had not worked for were removed. This is the one
+            // page that most needs recrawling, so its date has to be right.
+            ['path' => '/portfolio', 'changed' => '2026-09-30', 'changefreq' => 'weekly', 'priority' => '0.8'],
+            ['path' => '/blog', 'changed' => null, 'changefreq' => 'weekly', 'priority' => '0.9'],
+            ['path' => '/uk-growth-hub', 'changed' => '2026-04-18', 'changefreq' => 'weekly', 'priority' => '0.9'],
             // Programmatic UK service/city landing pages are intentionally omitted
             // during AdSense approval. They remain reachable from internal links,
             // but are noindexed at render time so the sitemap only promotes the
@@ -77,35 +85,24 @@ class SitemapController extends Controller
             // are not submitted in XML sitemaps.
         ]);
 
-        return $staticPages->map(function (array $page) use ($today) {
+        // The blog index changes whenever a post does, so it takes its date from the
+        // posts rather than from a constant somebody has to remember to update.
+        $latestPost = $this->latestTimestamp(
+            BlogPost::query()->live()->pluck('updated_at')
+        );
+
+        return $staticPages->map(function (array $page) use ($latestPost) {
+            $changed = $page['path'] === '/blog'
+                ? $latestPost
+                : ($page['changed'] ? now()->parse($page['changed']) : null);
+
             return [
                 'loc' => url($page['path']),
-                'lastmod' => $today,
+                'lastmod' => $changed,
                 'changefreq' => $page['changefreq'],
                 'priority' => $page['priority'],
             ];
         });
-    }
-
-    private function portfolioEntries(): Collection
-    {
-        $indexEntry = collect([[
-            'loc' => url('/portfolio'),
-            'lastmod' => $this->latestTimestamp(
-                Portfolio::query()->where('is_published', true)->pluck('updated_at')
-            ) ?? now(),
-            'changefreq' => 'weekly',
-            'priority' => '0.8',
-        ]]);
-
-        // The /portfolio-details/ pages are generated from one template with the
-        // project name substituted in, which leaves ~450 words that overlap each
-        // other by 43-75%. That is the shape Google calls scaled content, and it is
-        // what got the sister domain rejected from AdSense twice. They stay live and
-        // linked for anyone browsing the work; they are simply not submitted for
-        // indexing, and they carry noindex to match. /portfolio itself is the real
-        // showcase — one page listing every project, written rather than generated.
-        return $indexEntry;
     }
 
     private function blogEntries(): Collection

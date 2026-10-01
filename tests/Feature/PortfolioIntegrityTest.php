@@ -127,11 +127,31 @@ class PortfolioIntegrityTest extends TestCase
     {
         $this->seedCatalogue();
 
-        $response = $this->get('/sitemaps/portfolio.xml')->assertOk();
-        $body = $response->getContent();
+        // /portfolio lives in the pages sitemap. It used to be in a portfolio
+        // sitemap as well, which meant two files submitting the same URL with
+        // different lastmod values; the portfolio section is gone.
+        $body = $this->get('/sitemaps/pages.xml')->assertOk()->getContent();
 
         $this->assertStringContainsString('/portfolio<', $body);
         $this->assertStringNotContainsString('/portfolio-details/', $body);
+
+        $this->get('/sitemaps/portfolio.xml')->assertNotFound();
+    }
+
+    public function test_the_portfolio_lastmod_reflects_when_the_catalogue_changed(): void
+    {
+        $this->seedCatalogue();
+
+        // The catalogue was corrected on 2026-09-30. Deleting rows does not touch
+        // any surviving row's updated_at, so a lastmod derived from the rows reported
+        // February and told Google not to bother recrawling the page that had just
+        // had its false client claims removed.
+        $body = $this->get('/sitemaps/pages.xml')->assertOk()->getContent();
+
+        $this->assertMatchesRegularExpression(
+            '~<loc>[^<]*/portfolio</loc>\s*<lastmod>2026-09-30~',
+            preg_replace('/\s+/', ' ', $body)
+        );
     }
 
     public function test_listing_page_stays_indexable(): void

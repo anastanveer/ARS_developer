@@ -49,7 +49,10 @@ Route::post('/whatsapp/webhook', [\App\Http\Controllers\WhatsAppWebhookControlle
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
 Route::get('/sitemaps/{section}.xml', [SitemapController::class, 'section'])
-    ->where('section', 'pages|portfolio|blog')
+    // 'portfolio' is gone: it held exactly one URL, /portfolio, which pages.xml
+    // already carries. Two sitemaps listing the same URL with different lastmod
+    // values is a contradiction Google has to resolve, and it resolved it badly.
+    ->where('section', 'pages|blog')
     ->name('sitemap.section');
 
 Route::get('/{indexNowKey}.txt', function (string $indexNowKey) {
