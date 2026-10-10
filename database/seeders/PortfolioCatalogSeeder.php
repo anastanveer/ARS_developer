@@ -15,6 +15,12 @@
  * chatbot answer; and two 2017 .webflow.io subdomains. The Wix and Webflow categories
  * consisted only of those, so both are gone.
  *
+ * 4proptrader.com and traivend.com were later withdrawn at the owner's request,
+ * along with the CRM category, which listed only Traivend. That is a different
+ * reason from the removals above — not a claim that could not be supported, just
+ * work the owner no longer wants shown — but the effect has to be the same, so
+ * PrunePortfolioClaims deletes them from live too.
+ *
  * What remains is the small-business and startup work that a freelance developer
  * plausibly delivers. If any entry here is not genuinely yours, remove it — a
  * portfolio is only worth what its weakest claim can survive.
@@ -60,25 +66,8 @@ class PortfolioCatalogSeeder extends Seeder
             ['https://www.getonce.com/', '1.avif'],
             ['https://www.getthursday.com/', '2.avif'],
             ['https://finotivefunding.com/', '4.avif'],
-            ['https://4proptrader.com/', '5.avif'],
-            ['https://traivend.com/', '6.avif'],
         ], $sort));
         $sort += 100;
-
-        $entries[] = [
-            'title' => 'CRM Project 1',
-            'slug' => 'crm-project-1',
-            'category' => 'CRM',
-            'client_name' => 'traivend.com',
-            'excerpt' => 'CRM implementation for lead tracking, workflow automation, and operational visibility across the business pipeline.',
-            'description' => 'CRM case study covering contact lifecycle, status pipelines, automation touchpoints, and practical reporting for daily operations.',
-            'image_path' => 'assets/Portfolio/Crm/continentdispo/crm-main.avif',
-            'image_path_2' => 'assets/Portfolio/Crm/continentdispo/crm-1.avif',
-            'image_path_3' => 'assets/Portfolio/Crm/continentdispo/crm-2.avif',
-            'project_url' => 'https://traivend.com/',
-            'is_published' => true,
-            'sort_order' => $sort,
-        ];
 
         $entries[] = [
             'title' => 'Fiverr Project Portfolio',

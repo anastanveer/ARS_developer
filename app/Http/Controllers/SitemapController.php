@@ -71,10 +71,12 @@ class SitemapController extends Controller
             ['path' => '/pricing', 'changed' => '2026-07-02', 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['path' => '/faq', 'changed' => '2026-05-13', 'changefreq' => 'monthly', 'priority' => '0.7'],
             ['path' => '/contact', 'changed' => '2026-07-02', 'changefreq' => 'monthly', 'priority' => '0.9'],
-            // The portfolio catalogue was restructured on 2026-09-30: entries naming
-            // companies the business had not worked for were removed. This is the one
-            // page that most needs recrawling, so its date has to be right.
-            ['path' => '/portfolio', 'changed' => '2026-09-30', 'changefreq' => 'weekly', 'priority' => '0.8'],
+            // The portfolio catalogue changed twice: on 2026-09-30 entries naming
+            // companies the business had not worked for were removed, and on
+            // 2026-10-10 the 4PropTrader and Traivend work was withdrawn. Keep this
+            // date current whenever the catalogue changes — a listing page that has
+            // lost entries needs recrawling as much as one that has gained them.
+            ['path' => '/portfolio', 'changed' => '2026-10-10', 'changefreq' => 'weekly', 'priority' => '0.8'],
             ['path' => '/blog', 'changed' => null, 'changefreq' => 'weekly', 'priority' => '0.9'],
             ['path' => '/uk-growth-hub', 'changed' => '2026-04-18', 'changefreq' => 'weekly', 'priority' => '0.9'],
             // Programmatic UK service/city landing pages are intentionally omitted

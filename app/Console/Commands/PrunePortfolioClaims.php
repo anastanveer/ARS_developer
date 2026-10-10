@@ -6,7 +6,7 @@ use App\Models\Portfolio;
 use Illuminate\Console\Command;
 
 /**
- * Removes portfolio entries that make a claim the business cannot support.
+ * Removes portfolio entries that must not appear on the site.
  *
  * The catalogue was built by mapping a list of URLs to "Client: <domain>", and the
  * list included kyliecosmetics.com, gymshark.com, colourpop.com and allbirds.com —
@@ -17,8 +17,10 @@ use Illuminate\Console\Command;
  *
  * The seeder no longer produces these, but the seeder is not run on deploy — the
  * catalogue is editable from the admin, so reseeding would discard real edits. This
- * command deletes only the rows matching the list below, which makes it safe to run
- * on every deploy: it is a guard that keeps them from coming back, not a reseed.
+ * command deletes only the rows matching the lists below, which makes it safe to
+ * run on every deploy: it is a guard that keeps them from coming back, not a
+ * reseed. A second list holds work withdrawn at the owner's request, which is a
+ * different reason for the same outcome.
  */
 class PrunePortfolioClaims extends Command
 {
@@ -46,11 +48,23 @@ class PrunePortfolioClaims extends Command
         'uwdesign2017.webflow.io',
     ];
 
+    /**
+     * Work withdrawn at the owner's request.
+     *
+     * Kept separate from the list above because the reason is different: nothing
+     * here was an unsupportable claim, the owner simply no longer wants it shown.
+     * The effect is the same, so they are matched and deleted together.
+     */
+    private const WITHDRAWN = [
+        '4proptrader.com',
+        'traivend.com',
+    ];
+
     public function handle(): int
     {
         $matches = Portfolio::query()
             ->where(function ($query) {
-                foreach (self::BANNED as $needle) {
+                foreach ([...self::BANNED, ...self::WITHDRAWN] as $needle) {
                     $query->orWhere('project_url', 'like', '%' . $needle . '%')
                         ->orWhere('client_name', 'like', '%' . $needle . '%');
                 }

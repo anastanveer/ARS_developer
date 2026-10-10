@@ -21,7 +21,11 @@ class PortfolioIntegrityTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** Companies with their own in-house teams, plus links that are not projects. */
+    /**
+     * Companies with their own in-house teams, links that are not projects, and
+     * work withdrawn at the owner's request. Different reasons, same requirement:
+     * none of it may appear in the catalogue.
+     */
     private const UNSUPPORTABLE = [
         'kyliecosmetics.com',
         'gymshark.com',
@@ -34,6 +38,8 @@ class PortfolioIntegrityTest extends TestCase
         'utm_source=chatgpt.com',
         'wixsite.com',
         'webflow.io',
+        '4proptrader.com',
+        'traivend.com',
     ];
 
     private function seedCatalogue(): void
@@ -80,6 +86,11 @@ class PortfolioIntegrityTest extends TestCase
             'assets/Portfolio/Shopify/3.avif',
             'assets/Portfolio/Shopify/7.avif',
             'assets/Portfolio/Custom/3.avif',
+            // Withdrawn at the owner's request. Traivend's screenshot also sat
+            // under a title that did not name it, so the files are the check.
+            'assets/Portfolio/Custom/5.avif',
+            'assets/Portfolio/Custom/6.avif',
+            'assets/Portfolio/Crm/continentdispo/crm-main.avif',
         ] as $path) {
             $this->assertFileDoesNotExist(public_path($path), "{$path} is still shipped.");
         }
@@ -142,14 +153,14 @@ class PortfolioIntegrityTest extends TestCase
     {
         $this->seedCatalogue();
 
-        // The catalogue was corrected on 2026-09-30. Deleting rows does not touch
-        // any surviving row's updated_at, so a lastmod derived from the rows reported
-        // February and told Google not to bother recrawling the page that had just
-        // had its false client claims removed.
+        // Deleting rows does not touch any surviving row's updated_at, so a lastmod
+        // derived from the rows reported February and told Google not to bother
+        // recrawling the page that had just had its false client claims removed. The
+        // date is therefore stated, and has to be moved whenever the catalogue does.
         $body = $this->get('/sitemaps/pages.xml')->assertOk()->getContent();
 
         $this->assertMatchesRegularExpression(
-            '~<loc>[^<]*/portfolio</loc>\s*<lastmod>2026-09-30~',
+            '~<loc>[^<]*/portfolio</loc>\s*<lastmod>2026-10-10~',
             preg_replace('/\s+/', ' ', $body)
         );
     }
